@@ -1,0 +1,42 @@
+name: Check public Portal URL
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    if: github.event.issue.title == 'Check Portal URL'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify URL
+        env:
+          TARGET_URL: https://darumappap.github.io/MyResourceCenter-Portal/
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          ok=0
+          code=000
+          title=''
+          for i in {1..12}; do
+            code="$(curl -L -sS -o /tmp/portal.html -w '%{http_code}' --max-time 20 "$TARGET_URL" || true)"
+            if [[ "$code" == '200' ]] && grep -q 'MyResourceCenter' /tmp/portal.html; then
+              title="$(grep -o '<title>[^<]*</title>' /tmp/portal.html | head -1 | sed -e 's#<title>##' -e 's#</title>##' || true)"
+              ok=1
+              break
+            fi
+            sleep 5
+          done
+          if [[ "$ok" == '1' ]]; then
+            gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body "LIVE_OK | HTTP $code | title=$title | $TARGET_URL"
+            exit 0
+          fi
+          snippet="$(head -c 180 /tmp/portal.html 2>/dev/null | tr '\n' ' ' || true)"
+          gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body "LIVE_FAIL | HTTP $code | $TARGET_URL | response=$snippet"
+          exit 1
