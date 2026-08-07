@@ -1,0 +1,31 @@
+name: Pages diagnostic
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pages: write
+  pull-requests: write
+
+jobs:
+  pages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ensure Pages site exists
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if gh api "repos/$GITHUB_REPOSITORY/pages" > /tmp/pages.json 2>/tmp/pages.err; then
+            state="existing"
+          else
+            gh api --method POST "repos/$GITHUB_REPOSITORY/pages" -f build_type=workflow > /tmp/pages.json
+            state="created"
+          fi
+          html_url="$(jq -r '.html_url // empty' /tmp/pages.json)"
+          build_type="$(jq -r '.build_type // empty' /tmp/pages.json)"
+          gh pr comment "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --body "Pages diagnostic: state=$state, build_type=$build_type, url=$html_url"
