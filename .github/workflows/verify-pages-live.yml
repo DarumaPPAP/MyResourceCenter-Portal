@@ -1,0 +1,53 @@
+name: Verify Pages Live
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v6
+        with:
+          ref: main
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload portal artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: '.'
+
+      - name: Deploy current main
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Verify public URL
+        env:
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "PAGE_URL=$PAGE_URL"
+          for i in {1..12}; do
+            if body="$(curl -fsSL --max-time 20 "$PAGE_URL")"; then
+              if grep -q 'MyResourceCenter' <<< "$body"; then
+                echo 'LIVE_OK: Portal returned expected MyResourceCenter HTML.'
+                exit 0
+              fi
+            fi
+            sleep 5
+          done
+          echo 'Portal URL did not return expected HTML.'
+          exit 1
