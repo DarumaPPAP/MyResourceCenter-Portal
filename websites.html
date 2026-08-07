@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="MyResourceCenter registered websites">
+  <title>Websites · MyResourceCenter</title>
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="メインナビゲーション">
+      <div class="brand-lockup"><div class="brand-mark">M</div><div class="brand-name">MyResourceCenter</div></div>
+      <nav class="side-nav">
+        <a href="index.html"><span class="icon">⌂</span>ポータル TOP</a>
+        <a class="active" href="websites.html"><span class="icon">◎</span>Webサイト一覧</a>
+        <a href="documents.html"><span class="icon">▤</span>ドキュメント一覧</a>
+        <a href="index.html#tags"><span class="icon">◇</span>タグから探す</a>
+        <a href="index.html#flow"><span class="icon">⇄</span>登録フロー</a>
+      </nav>
+      <div class="sidebar-note">Website Registry は公開URLだけを扱います。原資料・内部Knowledgeはprivate Source Libraryへ分離しています。</div>
+    </aside>
+
+    <div class="main">
+      <header class="topbar">
+        <div class="breadcrumb">Human Portal / Websites</div>
+        <div class="top-actions">
+          <a class="icon-button repo-link" href="https://github.com/DarumaPPAP/MyResourceCenter-Portal/tree/main/catalog" target="_blank" rel="noreferrer">Catalog ↗</a>
+          <button class="icon-button" type="button" data-theme-toggle aria-label="ダークモードへ切替">☾</button>
+        </div>
+      </header>
+      <nav class="mobile-nav" aria-label="モバイルナビゲーション"><a href="index.html">TOP</a><a href="websites.html">Websites</a><a href="documents.html">Documents</a></nav>
+
+      <main class="content">
+        <section class="hero">
+          <div class="hero-copy">
+            <div class="eyebrow">External Source Registry</div>
+            <h1>登録Webサイト一覧</h1>
+            <p>技術ブログ、公式資料、論文、講演ページなどの外部Sourceを検索できます。</p>
+          </div>
+          <div class="hero-visual" aria-hidden="true"><div class="library-illustration"><div class="book"></div><div class="book"></div><div class="book"></div><div class="book"></div></div></div>
+        </section>
+
+        <section class="section panel">
+          <div class="toolbar">
+            <label class="sr-only" for="q">Webサイトを検索</label>
+            <input id="q" placeholder="タイトル・公開元・技術領域・タグで検索">
+            <label class="sr-only" for="status">Status</label>
+            <select id="status"><option value="">Status: すべて</option></select>
+            <label class="sr-only" for="publisher">公開元</label>
+            <select id="publisher"><option value="">公開元: すべて</option></select>
+            <label class="sr-only" for="sort">並び順</label>
+            <select id="sort"><option value="id-desc">登録順: 新しい順</option><option value="id-asc">登録順: 古い順</option><option value="title">タイトル順</option></select>
+            <button id="reset" type="button">リセット</button>
+          </div>
+          <div class="result-meta"><span id="count">読み込み中...</span><span>1ページ 10件</span></div>
+          <div id="rows" class="data-list" aria-live="polite"></div>
+          <div id="pagination" class="pagination" aria-label="ページネーション"></div>
+        </section>
+      </main>
+      <footer class="footer">Registered websites only · Documents are intentionally separated.</footer>
+    </div>
+  </div>
+
+  <script src="assets/portal.js"></script>
+  <script>
+    const state={data:[],filtered:[],page:1,pageSize:10};
+    const els={q:document.querySelector('#q'),status:document.querySelector('#status'),publisher:document.querySelector('#publisher'),sort:document.querySelector('#sort'),reset:document.querySelector('#reset'),rows:document.querySelector('#rows'),count:document.querySelector('#count'),pagination:document.querySelector('#pagination')};
+    const esc=v=>String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+    function fillSelect(el,values,prefix){el.innerHTML=`<option value="">${prefix}: すべて</option>`+[...new Set(values.filter(Boolean))].sort((a,b)=>String(a).localeCompare(String(b),'ja')).map(v=>`<option value="${esc(v)}">${esc(v)}</option>`).join('')}
+    function apply(){const q=els.q.value.trim().toLowerCase(),status=els.status.value,publisher=els.publisher.value;state.filtered=state.data.filter(x=>{const hay=[x.id,x.title,x.publisher,x.topic,...(x.tags||[])].join(' ').toLowerCase();return(!q||hay.includes(q))&&(!status||x.status===status)&&(!publisher||x.publisher===publisher)});const mode=els.sort.value;state.filtered.sort((a,b)=>mode==='id-asc'?String(a.id).localeCompare(String(b.id)):mode==='title'?String(a.title).localeCompare(String(b.title),'ja'):String(b.id).localeCompare(String(a.id)));state.page=Math.min(state.page,Math.max(1,Math.ceil(state.filtered.length/state.pageSize)));render()}
+    function render(){const total=state.filtered.length,pages=Math.max(1,Math.ceil(total/state.pageSize)),start=(state.page-1)*state.pageSize,items=state.filtered.slice(start,start+state.pageSize);els.count.textContent=`${total} 件`;els.rows.innerHTML=items.length?items.map(x=>`<article class="data-row"><div><div class="data-label">${esc(x.id)}</div><a class="data-title" href="${esc(x.url)}" target="_blank" rel="noreferrer">${esc(x.title)} ↗</a><div class="data-sub">${esc(x.topic)}</div></div><div><div class="data-label">公開元</div><div>${esc(x.publisher)}</div></div><div><div class="data-label">Status</div><span class="status ${String(x.status||'').toLowerCase()}">${esc(x.status)}</span></div><div><div class="data-label">Tags</div><div class="tag-cloud">${(x.tags||[]).slice(0,7).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div></div></article>`).join(''):`<div class="empty">条件に一致するWebサイトがありません。</div>`;els.pagination.innerHTML='';for(let p=1;p<=pages;p++){const b=document.createElement('button');b.type='button';b.textContent=p;b.className=p===state.page?'active':'';b.addEventListener('click',()=>{state.page=p;render();scrollTo({top:0,behavior:'smooth'})});els.pagination.appendChild(b)}}
+    [els.q,els.status,els.publisher,els.sort].forEach(el=>el.addEventListener(el.tagName==='INPUT'?'input':'change',()=>{state.page=1;apply()}));els.reset.addEventListener('click',()=>{els.q.value='';els.status.value='';els.publisher.value='';els.sort.value='id-desc';state.page=1;apply()});
+    fetch('catalog/websites-data.json').then(r=>r.json()).then(data=>{state.data=data;fillSelect(els.status,state.data.map(x=>x.status),'Status');fillSelect(els.publisher,state.data.map(x=>x.publisher),'公開元');apply()}).catch(()=>{els.rows.innerHTML='<div class="empty">Catalogの読み込みに失敗しました。</div>';els.count.textContent='0 件'});
+  </script>
+</body>
+</html>
