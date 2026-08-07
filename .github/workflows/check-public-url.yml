@@ -1,4 +1,4 @@
-name: Check public Portal URL
+name: Check public Portal URLs
 
 on:
   issues:
@@ -10,33 +10,40 @@ permissions:
 
 jobs:
   check:
-    if: github.event.issue.title == 'Check Portal URL'
+    if: github.event.issue.title == 'Check Portal URLs'
     runs-on: ubuntu-latest
     steps:
-      - name: Verify URL
+      - name: Verify all public pages
         env:
-          TARGET_URL: https://darumappap.github.io/MyResourceCenter-Portal/
+          BASE_URL: https://darumappap.github.io/MyResourceCenter-Portal/
           ISSUE_NUMBER: ${{ github.event.issue.number }}
           GH_TOKEN: ${{ github.token }}
         shell: bash
         run: |
           set -euo pipefail
-          ok=0
-          code=000
-          title=''
-          for i in {1..12}; do
-            code="$(curl -L -sS -o /tmp/portal.html -w '%{http_code}' --max-time 20 "$TARGET_URL" || true)"
-            if [[ "$code" == '200' ]] && grep -q 'MyResourceCenter' /tmp/portal.html; then
-              title="$(grep -o '<title>[^<]*</title>' /tmp/portal.html | head -1 | sed -e 's#<title>##' -e 's#</title>##' || true)"
-              ok=1
-              break
+          declare -a paths=('' 'websites.html' 'documents.html')
+          declare -a expects=('MyResourceCenter' '登録Webサイト一覧' '変換済みMarkdown一覧')
+          report=''
+          failed=0
+          for idx in 0 1 2; do
+            url="${BASE_URL}${paths[$idx]}"
+            expected="${expects[$idx]}"
+            code=000
+            ok=0
+            for i in {1..6}; do
+              code="$(curl -L -sS -o /tmp/page.html -w '%{http_code}' --max-time 20 "$url" || true)"
+              if [[ "$code" == '200' ]] && grep -q "$expected" /tmp/page.html; then
+                ok=1
+                break
+              fi
+              sleep 3
+            done
+            if [[ "$ok" == '1' ]]; then
+              report+="✅ ${paths[$idx]:-index.html}: HTTP $code; expected text found%0A"
+            else
+              report+="❌ ${paths[$idx]:-index.html}: HTTP $code; expected text missing%0A"
+              failed=1
             fi
-            sleep 5
           done
-          if [[ "$ok" == '1' ]]; then
-            gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body "LIVE_OK | HTTP $code | title=$title | $TARGET_URL"
-            exit 0
-          fi
-          snippet="$(head -c 180 /tmp/portal.html 2>/dev/null | tr '\n' ' ' || true)"
-          gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body "LIVE_FAIL | HTTP $code | $TARGET_URL | response=$snippet"
-          exit 1
+          gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body "Portal live verification:%0A$report%0A$BASE_URL"
+          exit "$failed"
