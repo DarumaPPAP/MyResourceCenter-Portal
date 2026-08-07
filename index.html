@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="MyResourceCenter - Source Library & Knowledge Portal">
+  <title>MyResourceCenter</title>
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="メインナビゲーション">
+      <div class="brand-lockup"><div class="brand-mark">M</div><div class="brand-name">MyResourceCenter</div></div>
+      <nav class="side-nav">
+        <a class="active" href="index.html"><span class="icon">⌂</span>ポータル TOP</a>
+        <a href="websites.html"><span class="icon">◎</span>Webサイト一覧</a>
+        <a href="documents.html"><span class="icon">▤</span>ドキュメント一覧</a>
+        <a href="#tags"><span class="icon">◇</span>タグから探す</a>
+        <a href="#flow"><span class="icon">⇄</span>登録フロー</a>
+      </nav>
+      <div class="sidebar-note">公開用Human Portal。Source本体・原資料・Skillsはprivateな <b>MyResourceCenter</b> を正本として維持します。</div>
+    </aside>
+
+    <div class="main">
+      <header class="topbar">
+        <div class="breadcrumb">Human Portal / Home</div>
+        <div class="top-actions">
+          <a class="icon-button repo-link" href="https://github.com/DarumaPPAP/MyResourceCenter-Portal" target="_blank" rel="noreferrer">GitHub ↗</a>
+          <button class="icon-button" type="button" data-theme-toggle aria-label="ダークモードへ切替">☾</button>
+        </div>
+      </header>
+      <nav class="mobile-nav" aria-label="モバイルナビゲーション">
+        <a href="index.html">TOP</a><a href="websites.html">Websites</a><a href="documents.html">Documents</a>
+      </nav>
+
+      <main class="content">
+        <section class="hero">
+          <div class="hero-copy">
+            <div class="eyebrow">Source Library & Knowledge Portal</div>
+            <h1>技術資料を、見つけやすく。<br>理解しやすく。</h1>
+            <p>Webサイト、PDF/PPTX由来の強化Markdownをひとつの入口から探索できます。Unity固有の実装解釈は <b>Unity-Knowledge-Products</b> に分離し、ここではSource Factを明確に管理します。</p>
+            <div class="search-global">
+              <label class="sr-only" for="global-search">ドキュメントを検索</label>
+              <input id="global-search" data-global-search placeholder="例: GI / Visibility Buffer / Volumetric / Mobile">
+              <button class="primary-button" type="button" data-global-search-button>検索</button>
+            </div>
+          </div>
+          <div class="hero-visual" aria-hidden="true">
+            <div class="library-illustration"><div class="book"></div><div class="book"></div><div class="book"></div><div class="book"></div></div>
+          </div>
+        </section>
+
+        <section class="stats" aria-label="ライブラリ統計">
+          <div class="metric"><div class="value">81</div><div class="label">登録Source</div></div>
+          <div class="metric"><div class="value">63</div><div class="label">Webサイト</div></div>
+          <div class="metric"><div class="value">19</div><div class="label">強化Markdown</div></div>
+          <div class="metric"><div class="value">60</div><div class="label">重要図版</div></div>
+          <div class="metric"><div class="value">19</div><div class="label">原資料 PDF/PPTX</div></div>
+        </section>
+
+        <section class="section">
+          <div class="section-head"><div><h2>クイックアクセス</h2><p>目的から直接ライブラリへ移動します。</p></div></div>
+          <div class="quick-grid">
+            <a class="quick-card" href="websites.html"><div class="kicker">63 Websites</div><h3>登録Webサイトを探す</h3><p>技術ブログ、論文、公式資料、講演ページを検索・フィルタ。</p></a>
+            <a class="quick-card" href="documents.html"><div class="kicker">19 Documents</div><h3>強化Markdownを探す</h3><p>日本語化、重要図、実装観点、性能値を保持したKnowledge Note。</p></a>
+            <a class="quick-card" href="catalog/documents.json"><div class="kicker">Machine Readable</div><h3>公開Catalogを確認</h3><p>Portalが利用する公開可能なDocument metadataをJSONで確認。</p></a>
+          </div>
+        </section>
+
+        <section class="section two-col">
+          <article class="panel">
+            <div class="section-head"><div><h2>ドキュメント・ピックアップ</h2><p>登録済みKnowledge Noteから代表資料を表示。</p></div><a href="documents.html">すべて見る →</a></div>
+            <div id="doc-picks" class="doc-mini-list" aria-live="polite"></div>
+          </article>
+          <article class="panel" id="tags">
+            <div class="section-head"><div><h2>タグから探す</h2><p>現在のMarkdown群から主要タグを抽出。</p></div></div>
+            <div id="tag-cloud" class="tag-cloud" aria-live="polite"></div>
+          </article>
+        </section>
+
+        <section class="section panel" id="flow">
+          <div class="section-head"><div><h2>Source登録フロー</h2><p>正本管理と公開Portalを分離。</p></div></div>
+          <div class="flow">
+            <div class="flow-step"><b>1. Intake</b><span>Website URL または Google Drive「未登録」からprivate Source Libraryへ登録。</span></div>
+            <div class="flow-step"><b>2. Normalize</b><span>Markdown化、日本語化、強化、重要図抽出、Source metadata整理。</span></div>
+            <div class="flow-step"><b>3. Publish</b><span>公開可能なIndex / CatalogだけをこのPortalへ反映。原本・Skillsはprivate側に保持。</span></div>
+          </div>
+        </section>
+      </main>
+      <footer class="footer">MyResourceCenter Human Portal · Public index, private source of truth.</footer>
+    </div>
+  </div>
+
+  <script src="assets/portal.js"></script>
+  <script>
+    fetch('catalog/documents.json').then(r => r.json()).then(docs => {
+      const picks = docs.slice(0, 5);
+      document.querySelector('#doc-picks').innerHTML = picks.map(doc => `
+        <div class="doc-mini">
+          <div class="doc-icon">MD</div>
+          <div><a href="https://github.com/DarumaPPAP/MyResourceCenter/blob/main/${encodeURI(doc.path)}" target="_blank" rel="noreferrer">${escapeHtml(doc.title)}</a><small>${escapeHtml(doc.engine)} · ${escapeHtml(doc.sourceFormat)}</small></div>
+        </div>`).join('');
+      const counts = new Map();
+      docs.flatMap(d => d.tags || []).forEach(tag => counts.set(tag, (counts.get(tag) || 0) + 1));
+      const tags = [...counts.entries()].sort((a,b) => b[1] - a[1]).slice(0, 18);
+      document.querySelector('#tag-cloud').innerHTML = tags.map(([tag,count]) => `<a class="tag accent" href="documents.html?q=${encodeURIComponent(tag)}">${escapeHtml(tag)} · ${count}</a>`).join('');
+    });
+    function escapeHtml(value){return String(value ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));}
+  </script>
+</body>
+</html>
