@@ -12,11 +12,10 @@
     <aside class="sidebar" aria-label="メインナビゲーション">
       <div class="brand-lockup"><div class="brand-mark">M</div><div class="brand-name">MyResourceCenter</div></div>
       <nav class="side-nav">
-        <a href="index.html"><span class="icon">⌂</span>ポータル TOP</a>
+        <a href="index.html"><span class="icon">⌂</span>ホーム</a>
         <a href="websites.html"><span class="icon">◎</span>Webサイト一覧</a>
         <a class="active" href="documents.html"><span class="icon">▤</span>ドキュメント一覧</a>
         <a href="index.html#tags"><span class="icon">◇</span>タグから探す</a>
-        <a href="index.html#flow"><span class="icon">⇄</span>登録フロー</a>
       </nav>
       <div class="sidebar-note">公開PortalにはDocument metadataだけを掲載。本文Markdownと原資料はprivate Source Libraryに保持します。</div>
     </aside>
@@ -29,7 +28,7 @@
           <button class="icon-button" type="button" data-theme-toggle aria-label="ダークモードへ切替">☾</button>
         </div>
       </header>
-      <nav class="mobile-nav" aria-label="モバイルナビゲーション"><a href="index.html">TOP</a><a href="websites.html">Websites</a><a href="documents.html">Documents</a></nav>
+      <nav class="mobile-nav" aria-label="モバイルナビゲーション"><a href="index.html">ホーム</a><a href="websites.html">Websites</a><a href="documents.html">Documents</a></nav>
 
       <main class="content">
         <section class="hero">
@@ -66,7 +65,7 @@
   <script>
     const state={data:[],filtered:[],page:1,pageSize:8};
     const els={q:document.querySelector('#q'),format:document.querySelector('#format'),level:document.querySelector('#level'),engine:document.querySelector('#engine'),reset:document.querySelector('#reset'),rows:document.querySelector('#rows'),count:document.querySelector('#count'),pagination:document.querySelector('#pagination')};
-    const esc=v=>String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+    const esc=v=>String(v??'').replace(/[&<>'\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','\"':'&quot;'}[c]));
     const ghPath=path=>`https://github.com/DarumaPPAP/MyResourceCenter/blob/main/${String(path).split('/').map(encodeURIComponent).join('/')}`;
     function fillSelect(el,values,prefix){el.innerHTML=`<option value="">${prefix}: すべて</option>`+[...new Set(values.filter(Boolean))].sort((a,b)=>String(a).localeCompare(String(b),'ja')).map(v=>`<option value="${esc(v)}">${esc(v)}</option>`).join('')}
     function apply(){const q=els.q.value.trim().toLowerCase(),format=els.format.value,level=els.level.value,engine=els.engine.value;state.filtered=state.data.filter(x=>{const hay=[x.title,x.file,x.original,x.engine,x.level,...(x.tags||[])].join(' ').toLowerCase();return(!q||hay.includes(q))&&(!format||x.sourceFormat===format)&&(!level||x.level===level)&&(!engine||x.engine===engine)});state.page=Math.min(state.page,Math.max(1,Math.ceil(state.filtered.length/state.pageSize)));render()}

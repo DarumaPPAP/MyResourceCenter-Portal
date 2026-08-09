@@ -12,11 +12,10 @@
     <aside class="sidebar" aria-label="メインナビゲーション">
       <div class="brand-lockup"><div class="brand-mark">M</div><div class="brand-name">MyResourceCenter</div></div>
       <nav class="side-nav">
-        <a href="index.html"><span class="icon">⌂</span>ポータル TOP</a>
+        <a href="index.html"><span class="icon">⌂</span>ホーム</a>
         <a class="active" href="websites.html"><span class="icon">◎</span>Webサイト一覧</a>
         <a href="documents.html"><span class="icon">▤</span>ドキュメント一覧</a>
         <a href="index.html#tags"><span class="icon">◇</span>タグから探す</a>
-        <a href="index.html#flow"><span class="icon">⇄</span>登録フロー</a>
       </nav>
       <div class="sidebar-note">Website Registry は公開URLだけを扱います。原資料・内部Knowledgeはprivate Source Libraryへ分離しています。</div>
     </aside>
@@ -29,7 +28,7 @@
           <button class="icon-button" type="button" data-theme-toggle aria-label="ダークモードへ切替">☾</button>
         </div>
       </header>
-      <nav class="mobile-nav" aria-label="モバイルナビゲーション"><a href="index.html">TOP</a><a href="websites.html">Websites</a><a href="documents.html">Documents</a></nav>
+      <nav class="mobile-nav" aria-label="モバイルナビゲーション"><a href="index.html">ホーム</a><a href="websites.html">Websites</a><a href="documents.html">Documents</a></nav>
 
       <main class="content">
         <section class="hero">
@@ -66,7 +65,7 @@
   <script>
     const state={data:[],filtered:[],page:1,pageSize:10};
     const els={q:document.querySelector('#q'),status:document.querySelector('#status'),publisher:document.querySelector('#publisher'),sort:document.querySelector('#sort'),reset:document.querySelector('#reset'),rows:document.querySelector('#rows'),count:document.querySelector('#count'),pagination:document.querySelector('#pagination')};
-    const esc=v=>String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+    const esc=v=>String(v??'').replace(/[&<>'\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','\"':'&quot;'}[c]));
     function fillSelect(el,values,prefix){el.innerHTML=`<option value="">${prefix}: すべて</option>`+[...new Set(values.filter(Boolean))].sort((a,b)=>String(a).localeCompare(String(b),'ja')).map(v=>`<option value="${esc(v)}">${esc(v)}</option>`).join('')}
     function apply(){const q=els.q.value.trim().toLowerCase(),status=els.status.value,publisher=els.publisher.value;state.filtered=state.data.filter(x=>{const hay=[x.id,x.title,x.publisher,x.topic,...(x.tags||[])].join(' ').toLowerCase();return(!q||hay.includes(q))&&(!status||x.status===status)&&(!publisher||x.publisher===publisher)});const mode=els.sort.value;state.filtered.sort((a,b)=>mode==='id-asc'?String(a.id).localeCompare(String(b.id)):mode==='title'?String(a.title).localeCompare(String(b.title),'ja'):String(b.id).localeCompare(String(a.id)));state.page=Math.min(state.page,Math.max(1,Math.ceil(state.filtered.length/state.pageSize)));render()}
     function render(){const total=state.filtered.length,pages=Math.max(1,Math.ceil(total/state.pageSize)),start=(state.page-1)*state.pageSize,items=state.filtered.slice(start,start+state.pageSize);els.count.textContent=`${total} 件`;els.rows.innerHTML=items.length?items.map(x=>`<article class="data-row"><div><div class="data-label">${esc(x.id)}</div><a class="data-title" href="${esc(x.url)}" target="_blank" rel="noreferrer">${esc(x.title)} ↗</a><div class="data-sub">${esc(x.topic)}</div></div><div><div class="data-label">公開元</div><div>${esc(x.publisher)}</div></div><div><div class="data-label">Status</div><span class="status ${String(x.status||'').toLowerCase()}">${esc(x.status)}</span></div><div><div class="data-label">Tags</div><div class="tag-cloud">${(x.tags||[]).slice(0,7).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div></div></article>`).join(''):`<div class="empty">条件に一致するWebサイトがありません。</div>`;els.pagination.innerHTML='';for(let p=1;p<=pages;p++){const b=document.createElement('button');b.type='button';b.textContent=p;b.className=p===state.page?'active':'';b.addEventListener('click',()=>{state.page=p;render();scrollTo({top:0,behavior:'smooth'})});els.pagination.appendChild(b)}}
