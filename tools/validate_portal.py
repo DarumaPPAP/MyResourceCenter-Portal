@@ -112,6 +112,10 @@ COLLECTION_ROLES = {
     "advanced",
 }
 SHA_RE = re.compile(r"^[0-9a-f]{40}$")
+REMOVED_HOME_COPY = (
+    "技術資料を、見つけやすく。",
+    "技術資料を見つけやすく、理解しやすく",
+)
 
 
 def load(name: str):
@@ -267,6 +271,11 @@ def main() -> None:
         errors.append("Portal must not link directly to private Markdown blobs")
     if "websites-data.json" in html:
         errors.append("Portal must not reference legacy websites-data.json")
+
+    index_html = (ROOT / "index.html").read_text(encoding="utf-8")
+    for removed_copy in REMOVED_HOME_COPY:
+        if removed_copy in index_html:
+            errors.append(f"removed Home copy must not be restored: {removed_copy}")
 
     if (CATALOG / "websites-data.json").exists():
         errors.append("legacy catalog/websites-data.json must be removed")
