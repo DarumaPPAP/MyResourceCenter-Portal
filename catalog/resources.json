@@ -1,0 +1,1625 @@
+[
+  {
+    "id": "RES-20260714-001",
+    "title": "Unity6の新機能 STPについての話 / CA.unity #9",
+    "url": "https://developers.cyberagent.co.jp/blog/archives/54536/",
+    "canonicalUrl": "https://developers.cyberagent.co.jp/blog/archives/54536/",
+    "kind": "website",
+    "topics": [
+      "STP / RenderGraph / URP / UI描画"
+    ],
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "STP",
+      "RenderGraph",
+      "URP",
+      "UI",
+      "Depth",
+      "MotionVector",
+      "CameraStack"
+    ]
+  },
+  {
+    "id": "RES-20260714-002",
+    "title": "『学園アイドルマスター』モバイルでも“ライティングと反射”を描き切る！ライブの臨場感と迫力を追求したレンダリングパイプライン",
+    "url": "https://gamemakers.jp/article/2025_01_29_90729/",
+    "canonicalUrl": "https://gamemakers.jp/article/2025_01_29_90729/",
+    "kind": "website",
+    "topics": [
+      "モバイルレンダリング / ライティング / 反射"
+    ],
+    "reviewState": "Triaged",
+    "useState": "ToTry",
+    "tags": [
+      "学マス",
+      "ライティング",
+      "反射",
+      "モバイル",
+      "ライブ",
+      "URP"
+    ]
+  },
+  {
+    "id": "RES-20260714-003",
+    "title": "「学園アイドルマスター」の3Dグラフィックについて語る",
+    "url": "https://blog.tachibanai.one/article/2025-02-11_01",
+    "canonicalUrl": "https://blog.tachibanai.one/article/2025-02-11_01",
+    "kind": "website",
+    "topics": [
+      "3Dグラフィック / キャラクター表現"
+    ],
+    "reviewState": "Triaged",
+    "useState": "ToTry",
+    "tags": [
+      "学マス",
+      "3D",
+      "キャラクター",
+      "考察"
+    ]
+  },
+  {
+    "id": "RES-20260714-004",
+    "title": "学園アイドルマスターのアイドルをより輝かせるライティング手法",
+    "url": "https://learning.unity3d.jp/10126/",
+    "canonicalUrl": "https://learning.unity3d.jp/10126/",
+    "kind": "website",
+    "topics": [
+      "キャラクターライティング"
+    ],
+    "reviewState": "Triaged",
+    "useState": "ToTry",
+    "tags": [
+      "学マス",
+      "ライティング",
+      "キャラクター",
+      "リムライト"
+    ]
+  },
+  {
+    "id": "RES-20260714-005",
+    "title": "『学園アイドルマスター』はアイドルの新たな魅力をいかに引き出したか？ キャラクターモデリングや背景づくりなどその手法をあますことなく解説！",
+    "url": "https://cgworld.jp/article/202410-cedec-imas.html",
+    "canonicalUrl": "https://cgworld.jp/article/202410-cedec-imas.html",
+    "kind": "website",
+    "topics": [
+      "モデリング / シェーダ / ライティング / アニメーション"
+    ],
+    "reviewState": "Triaged",
+    "useState": "ToTry",
+    "tags": [
+      "学マス",
+      "モデリング",
+      "Def",
+      "ランプ",
+      "GraphicsBuffer",
+      "頂点カラー",
+      "デカール"
+    ]
+  },
+  {
+    "id": "RES-20260714-006",
+    "title": "Unity ECSでスキンメッシュをアニメーションさせる",
+    "url": "https://technote.qualiarts.jp/article/108",
+    "canonicalUrl": "https://technote.qualiarts.jp/article/108",
+    "kind": "website",
+    "topics": [
+      "ECS / スキニング / アニメーション"
+    ],
+    "reviewState": "Triaged",
+    "useState": "ToTry",
+    "tags": [
+      "ECS",
+      "スキニング",
+      "Animation",
+      "群衆",
+      "CPU最適化"
+    ]
+  },
+  {
+    "id": "RES-20260714-007",
+    "title": "IDOLY PRIDEが魅せる初音ミクコラボへのこだわり 2025年夏編",
+    "url": "https://technote.qualiarts.jp/article/97",
+    "canonicalUrl": "https://technote.qualiarts.jp/article/97",
+    "kind": "website",
+    "topics": [
+      "キャラクター表現 / コラボ演出"
+    ],
+    "reviewState": "Triaged",
+    "useState": "ToTry",
+    "tags": [
+      "IDOLY PRIDE",
+      "初音ミク",
+      "コラボ",
+      "キャラクター表現"
+    ]
+  },
+  {
+    "id": "RES-20260714-008",
+    "title": "IDOLY PRIDE新機能360°ライブのこだわり",
+    "url": "https://technote.qualiarts.jp/article/93",
+    "canonicalUrl": "https://technote.qualiarts.jp/article/93",
+    "kind": "website",
+    "topics": [
+      "360度ライブ / カメラ / レンダリング"
+    ],
+    "reviewState": "Triaged",
+    "useState": "ToTry",
+    "tags": [
+      "360ライブ",
+      "カメラ",
+      "ライブ",
+      "LOD",
+      "背景"
+    ]
+  },
+  {
+    "id": "RES-20260714-009",
+    "title": "Unity Timelineでポストエフェクト制作を効率化するテクニック",
+    "url": "https://technote.qualiarts.jp/article/89",
+    "canonicalUrl": "https://technote.qualiarts.jp/article/89",
+    "kind": "website",
+    "topics": [
+      "Timeline / Volume / EditorTool"
+    ],
+    "reviewState": "Triaged",
+    "useState": "ToTry",
+    "tags": [
+      "Timeline",
+      "VolumeProfile",
+      "SubAsset",
+      "EditorTool",
+      "PostEffect"
+    ]
+  },
+  {
+    "id": "RES-20260714-010",
+    "title": "QualiArts Article 84（詳細取得待ち）",
+    "url": "https://technote.qualiarts.jp/article/84",
+    "canonicalUrl": "https://technote.qualiarts.jp/article/84",
+    "kind": "website",
+    "topics": [
+      "未分類"
+    ],
+    "reviewState": "Inbox",
+    "useState": "Reference",
+    "tags": [
+      "QualiArts",
+      "未調査"
+    ]
+  },
+  {
+    "id": "RES-20260714-011",
+    "title": "QualiArts Article 82（詳細取得待ち）",
+    "url": "https://technote.qualiarts.jp/article/82",
+    "canonicalUrl": "https://technote.qualiarts.jp/article/82",
+    "kind": "website",
+    "topics": [
+      "未分類"
+    ],
+    "reviewState": "Inbox",
+    "useState": "Reference",
+    "tags": [
+      "QualiArts",
+      "未調査"
+    ]
+  },
+  {
+    "id": "RES-20260714-012",
+    "title": "QualiArts Article 77（詳細取得待ち）",
+    "url": "https://technote.qualiarts.jp/article/77",
+    "canonicalUrl": "https://technote.qualiarts.jp/article/77",
+    "kind": "website",
+    "topics": [
+      "未分類"
+    ],
+    "reviewState": "Inbox",
+    "useState": "Reference",
+    "tags": [
+      "QualiArts",
+      "未調査"
+    ]
+  },
+  {
+    "id": "RES-20260714-013",
+    "title": "「IDOLY PRIDE」の着替えのカメラ実装の紹介",
+    "url": "https://technote.qualiarts.jp/article/71",
+    "canonicalUrl": "https://technote.qualiarts.jp/article/71",
+    "kind": "website",
+    "topics": [
+      "Cinemachine / Orbital Camera / Physical Camera"
+    ],
+    "reviewState": "Triaged",
+    "useState": "ToTry",
+    "tags": [
+      "Cinemachine",
+      "OrbitalCamera",
+      "PhysicalCamera",
+      "焦点距離",
+      "着替え"
+    ]
+  },
+  {
+    "id": "RES-20260714-014",
+    "title": "QualiArts Article 65（詳細取得待ち）",
+    "url": "https://technote.qualiarts.jp/article/65",
+    "canonicalUrl": "https://technote.qualiarts.jp/article/65",
+    "kind": "website",
+    "topics": [
+      "未分類"
+    ],
+    "reviewState": "Inbox",
+    "useState": "Reference",
+    "tags": [
+      "QualiArts",
+      "未調査"
+    ]
+  },
+  {
+    "id": "RES-20260714-015",
+    "title": "ライブ制作の課題を解決！Unityで高速化した画像比較ツール",
+    "url": "https://technote.qualiarts.jp/article/63",
+    "canonicalUrl": "https://technote.qualiarts.jp/article/63",
+    "kind": "website",
+    "topics": [
+      "画像比較 / PSNR / Burst / Jobs / 品質検証"
+    ],
+    "reviewState": "Triaged",
+    "useState": "ToTry",
+    "tags": [
+      "画像比較",
+      "PSNR",
+      "Burst",
+      "Jobs",
+      "回帰テスト",
+      "ライブ"
+    ]
+  },
+  {
+    "id": "RES-20260714-016",
+    "title": "ゲームの「最適化」って何？ Vol.2 カメラ外のオブジェクトを描画しない「カリング」の仕組みや軽くなる理由を解説！",
+    "url": "https://gamemakers.jp/article/2024_10_04_77250/",
+    "canonicalUrl": "https://gamemakers.jp/article/2024_10_04_77250/",
+    "kind": "website",
+    "topics": [
+      "カリング / 描画最適化"
+    ],
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "最適化",
+      "カリング",
+      "FrustumCulling",
+      "描画"
+    ]
+  },
+  {
+    "id": "RES-20260714-017",
+    "title": "ゲームの「最適化」って何？ Vol.1 オープンワールドゲームはなぜ処理落ちせずに動くのか",
+    "url": "https://gamemakers.jp/article/2024_08_09_75452/",
+    "canonicalUrl": "https://gamemakers.jp/article/2024_08_09_75452/",
+    "kind": "website",
+    "topics": [
+      "最適化基礎 / カリング / LOD / ライトベイク"
+    ],
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "最適化",
+      "LOD",
+      "カリング",
+      "ライトベイク",
+      "フレーム予算"
+    ]
+  },
+  {
+    "id": "RES-20260714-018",
+    "title": "『IDOLY PRIDE』の安定運用を支える多機能管理ツール",
+    "url": "https://technote.qualiarts.jp/article/74",
+    "canonicalUrl": "https://technote.qualiarts.jp/article/74",
+    "kind": "website",
+    "topics": [
+      "運用管理ツール / ゲーム運営"
+    ],
+    "reviewState": "Triaged",
+    "useState": "ToTry",
+    "tags": [
+      "管理ツール",
+      "運用",
+      "IDOLY PRIDE",
+      "Dashboard",
+      "品質管理"
+    ]
+  },
+  {
+    "id": "RES-20260715-001",
+    "title": "シェーダー最適化入門 第3回「レンダリングターゲットの解像度～縮小バッファエフェクト～」",
+    "url": "https://blog.sge-coretech.com/entry/2025/04/24/163531",
+    "canonicalUrl": "https://blog.sge-coretech.com/entry/2025/04/24/163531",
+    "kind": "website",
+    "topics": [
+      "RenderGraph / 縮小バッファ / 半透明 / Overdraw"
+    ],
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "RenderGraph",
+      "URP",
+      "透明",
+      "Overdraw",
+      "Downscale",
+      "Switch",
+      "Blend"
+    ]
+  },
+  {
+    "id": "RES-20260715-002",
+    "title": "DirectXの話 第122回 縮小深度バッファを利用したオクルージョンカリング",
+    "url": "https://sites.google.com/site/monshonosuana/directx%E3%81%AE%E8%A9%B1/directx%E3%81%AE%E8%A9%B1-%E7%AC%AC122%E5%9B%9E",
+    "canonicalUrl": "https://sites.google.com/site/monshonosuana/directx%E3%81%AE%E8%A9%B1/directx%E3%81%AE%E8%A9%B1-%E7%AC%AC122%E5%9B%9E",
+    "kind": "website",
+    "topics": [
+      "Occlusion Culling / Hierarchical Z / AABB"
+    ],
+    "reviewState": "Triaged",
+    "useState": "ToTry",
+    "tags": [
+      "Occlusion",
+      "Hi-Z",
+      "Depth Pyramid",
+      "AABB",
+      "GPU Culling"
+    ]
+  },
+  {
+    "id": "RES-20260715-003",
+    "title": "DirectXの話 第168回 Variable Rate Shading",
+    "url": "https://sites.google.com/site/monshonosuana/directx%E3%81%AE%E8%A9%B1/directx%E3%81%AE%E8%A9%B1-%E7%AC%AC168%E5%9B%9E",
+    "canonicalUrl": "https://sites.google.com/site/monshonosuana/directx%E3%81%AE%E8%A9%B1/directx%E3%81%AE%E8%A9%B1-%E7%AC%AC168%E5%9B%9E",
+    "kind": "website",
+    "topics": [
+      "Variable Rate Shading / Mixed Resolution Rendering"
+    ],
+    "reviewState": "Triaged",
+    "useState": "ToTry",
+    "tags": [
+      "VRS",
+      "Shading Rate",
+      "D3D12",
+      "Particle",
+      "VR",
+      "Optimization"
+    ]
+  },
+  {
+    "id": "RES-20260715-004",
+    "title": "描画高速化のテクニック（2015年度 情報可視化論）",
+    "url": "https://www.research.kobe-u.ac.jp/csi-viz/members/kageyama/lectures/H27_FY2015_former/visualization/150609_note07.pdf",
+    "canonicalUrl": "https://www.research.kobe-u.ac.jp/csi-viz/members/kageyama/lectures/H27_FY2015_former/visualization/150609_note07.pdf",
+    "kind": "website",
+    "topics": [
+      "描画高速化 / 頂点データ / Triangle Strip / Interleave"
+    ],
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "Mesh",
+      "Vertex Buffer",
+      "Interleave",
+      "Triangle Strip",
+      "Draw Call"
+    ]
+  },
+  {
+    "id": "RES-20260715-005",
+    "title": "なぜなにリアルタイムレンダリング",
+    "url": "https://www.docswell.com/s/2191436787/ZENEP7-2023-05-25-230031",
+    "canonicalUrl": "https://www.docswell.com/s/2191436787/ZENEP7-2023-05-25-230031",
+    "kind": "website",
+    "topics": [
+      "Forward / Deferred / Rendering Pipeline基礎"
+    ],
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "Forward",
+      "Deferred",
+      "DrawCall",
+      "RenderPass",
+      "Rendering Pipeline"
+    ]
+  },
+  {
+    "id": "RES-20260715-006",
+    "title": "メッシュシェーダカリング",
+    "url": "https://www.project-asura.com/articles/d3d12/d3d12_022.html",
+    "canonicalUrl": "https://www.project-asura.com/articles/d3d12/d3d12_022.html",
+    "kind": "website",
+    "topics": [
+      "Mesh Shader / Meshlet / GPU Culling"
+    ],
+    "reviewState": "Triaged",
+    "useState": "ToTry",
+    "tags": [
+      "Mesh Shader",
+      "Meshlet",
+      "GPU Culling",
+      "Primitive Culling",
+      "D3D12"
+    ]
+  },
+  {
+    "id": "RES-20260715-007",
+    "title": "メッシュレット圧縮",
+    "url": "https://www.project-asura.com/articles/d3d12/d3d12_028.html",
+    "canonicalUrl": "https://www.project-asura.com/articles/d3d12/d3d12_028.html",
+    "kind": "website",
+    "topics": [
+      "Meshlet / Vertex Compression / Normal Encoding"
+    ],
+    "reviewState": "Triaged",
+    "useState": "ToTry",
+    "tags": [
+      "Meshlet",
+      "Octahedral",
+      "Diamond Encoding",
+      "Quantization",
+      "GraphicsBuffer",
+      "Switch"
+    ]
+  },
+  {
+    "id": "RES-20260715-008",
+    "title": "メッシュレットの詳細度制御 (1)",
+    "url": "https://www.project-asura.com/articles/d3d12/d3d12_029.html",
+    "canonicalUrl": "https://www.project-asura.com/articles/d3d12/d3d12_029.html",
+    "kind": "website",
+    "topics": [
+      "Meshlet / LOD / Graph Partitioning / METIS"
+    ],
+    "reviewState": "Triaged",
+    "useState": "ToTry",
+    "tags": [
+      "Meshlet",
+      "LOD",
+      "METIS",
+      "Graph Partitioning",
+      "Simplification",
+      "Mesh Tool"
+    ]
+  },
+  {
+    "id": "RES-20260716-001",
+    "title": "Temporal Antialiasing Starter Pack",
+    "url": "https://alextardif.com/TAA.html",
+    "canonicalUrl": "https://alextardif.com/TAA.html",
+    "kind": "website",
+    "topics": [
+      "TAA / Motion Vector / Reprojection / Variance Clipping / Jitter"
+    ],
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "TAA",
+      "MotionVector",
+      "VarianceClipping",
+      "CatmullRom",
+      "Halton",
+      "Jitter",
+      "Ghosting"
+    ]
+  },
+  {
+    "id": "RES-20260716-002",
+    "title": "Rock-Solid Shading: Image Stability Without Sacrificing Detail",
+    "url": "https://advances.realtimerendering.com/s2012/Ubisoft/Rock-Solid%20Shading.pdf",
+    "canonicalUrl": "https://advances.realtimerendering.com/s2012/Ubisoft/Rock-Solid%20Shading.pdf",
+    "kind": "website",
+    "topics": [
+      "Specular Aliasing / Shading Stability / Normal Filtering"
+    ],
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "RockSolidShading",
+      "SpecularAA",
+      "NormalFiltering",
+      "Shimmering",
+      "Ubisoft"
+    ]
+  },
+  {
+    "id": "RES-20260716-003",
+    "title": "Improved Geometric Specular Antialiasing",
+    "url": "https://www.jp.square-enix.com/tech/library/pdf/ImprovedGeometricSpecularAA.pdf",
+    "canonicalUrl": "https://www.jp.square-enix.com/tech/library/pdf/ImprovedGeometricSpecularAA.pdf",
+    "kind": "website",
+    "topics": [
+      "Geometric Specular AA / GGX / Roughness Filtering"
+    ],
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "SpecularAA",
+      "GGX",
+      "Roughness",
+      "NormalVariance",
+      "SquareEnix",
+      "Shimmering"
+    ]
+  },
+  {
+    "id": "RES-20260716-004",
+    "title": "The Order: 1886 – Pushing the Boundaries of Real-Time Graphics",
+    "url": "https://advances.realtimerendering.com/s2015/mmalex_siggraph2015_hires_final.pdf",
+    "canonicalUrl": "https://advances.realtimerendering.com/s2015/mmalex_siggraph2015_hires_final.pdf",
+    "kind": "website",
+    "topics": [
+      "High Quality Filtering / Reconstruction / Temporal Stability"
+    ],
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "TheOrder1886",
+      "Filtering",
+      "Reconstruction",
+      "TAA",
+      "CatmullRom",
+      "Mitchell"
+    ]
+  },
+  {
+    "id": "RES-20260716-005",
+    "title": "Temporal AA and the Quest for the Holy Trail",
+    "url": "https://www.elopezr.com/temporal-aa-and-the-quest-for-the-holy-trail/",
+    "canonicalUrl": "https://www.elopezr.com/temporal-aa-and-the-quest-for-the-holy-trail/",
+    "kind": "website",
+    "topics": [
+      "TAA / Reprojection / Ghosting / Disocclusion / Visualization"
+    ],
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "TAA",
+      "Ghosting",
+      "Disocclusion",
+      "Reprojection",
+      "HistoryReject",
+      "Debug"
+    ]
+  },
+  {
+    "id": "RES-20260716-006",
+    "title": "AMD FidelityFX Contrast Adaptive Sharpening (CAS)",
+    "url": "https://gpuopen.com/fidelityfx-cas/",
+    "canonicalUrl": "https://gpuopen.com/fidelityfx-cas/",
+    "kind": "website",
+    "topics": [
+      "CAS / Sharpening / Upsampling / Post Process"
+    ],
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "CAS",
+      "FidelityFX",
+      "Sharpening",
+      "TAA",
+      "STP",
+      "Compute",
+      "AMD"
+    ]
+  },
+  {
+    "id": "RES-20260716-007",
+    "title": "FidelityFX-CAS GitHub Repository",
+    "url": "https://github.com/GPUOpen-Effects/FidelityFX-CAS",
+    "canonicalUrl": "https://github.com/GPUOpen-Effects/FidelityFX-CAS",
+    "kind": "website",
+    "topics": [
+      "CAS / HLSL / Compute Shader / Integration"
+    ],
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "CAS",
+      "GitHub",
+      "HLSL",
+      "Compute",
+      "FidelityFX",
+      "Sharpen"
+    ]
+  },
+  {
+    "id": "RES-20260716-008",
+    "title": "FidelityFX Super Resolution 2 (FSR2) GitHub Repository",
+    "url": "https://github.com/GPUOpen-Effects/FidelityFX-FSR2",
+    "canonicalUrl": "https://github.com/GPUOpen-Effects/FidelityFX-FSR2",
+    "kind": "website",
+    "topics": [
+      "FSR2 / Temporal Upscaling / Reactive Mask / Motion Vector / RCAS"
+    ],
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "FSR2",
+      "TemporalUpscaling",
+      "ReactiveMask",
+      "MotionVector",
+      "RCAS",
+      "Disocclusion",
+      "AMD"
+    ]
+  },
+  {
+    "id": "RES-20260716-009",
+    "title": "Physically Based and Unified Volumetric Rendering in Frostbite",
+    "url": "https://drive.google.com/file/d/1E2HT57uLj3v6Fghj2_4odWqII3uIOJWB/view?usp=drivesdk",
+    "kind": "drive",
+    "topic": "Volumetric Rendering / Froxel / Temporal Integration / Volumetric Shadow",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "Frostbite",
+      "Froxel",
+      "Volumetric Fog",
+      "Temporal",
+      "Scattering",
+      "Transmittance",
+      "Volumetric Shadow",
+      "Particle Voxelization"
+    ]
+  },
+  {
+    "id": "RES-20260717-001",
+    "title": "FFT（高速フーリエ変換）を完全に理解する話",
+    "url": "https://qiita.com/ageprocpp/items/0d63d4ed80de4a35fe79",
+    "canonicalUrl": "https://qiita.com/ageprocpp/items/0d63d4ed80de4a35fe79",
+    "kind": "website",
+    "topics": [
+      "FFT / DFT / 複素数 / 分割統治 / 多項式乗算"
+    ],
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "FFT",
+      "DFT",
+      "IFFT",
+      "Complex",
+      "CooleyTukey",
+      "Polynomial",
+      "Ocean",
+      "Convolution"
+    ]
+  },
+  {
+    "id": "RES-20260717-002",
+    "title": "【Unity】高速フーリエ変換でやるガウシアンブラーとConvolution Bloom（レンズフレア）［URP］",
+    "url": "https://qiita.com/Red_Black_GPGPU/items/5cb479f8a30f2065d543",
+    "canonicalUrl": "https://qiita.com/Red_Black_GPGPU/items/5cb479f8a30f2065d543",
+    "kind": "website",
+    "topics": [
+      "Unity / URP / FFT / ComputeShader / Gaussian Blur / Convolution Bloom"
+    ],
+    "reviewState": "Triaged",
+    "useState": "ToTry",
+    "tags": [
+      "Unity",
+      "URP",
+      "FFT",
+      "ComputeShader",
+      "GaussianBlur",
+      "ConvolutionBloom",
+      "LensFlare",
+      "HDR",
+      "RenderGraph"
+    ]
+  },
+  {
+    "id": "RES-20260717-003",
+    "title": "［Unity］海洋シミュレーションFFT Oceanを実装したい",
+    "url": "https://qiita.com/Red_Black_GPGPU/items/2652f5bfd6d311d2034b",
+    "canonicalUrl": "https://qiita.com/Red_Black_GPGPU/items/2652f5bfd6d311d2034b",
+    "kind": "website",
+    "topics": [
+      "FFT Ocean / Tessendorf / ComputeShader / Wave Spectrum / Displacement / Normal"
+    ],
+    "reviewState": "Triaged",
+    "useState": "ToTry",
+    "tags": [
+      "FFT Ocean",
+      "Tessendorf",
+      "Ocean",
+      "ComputeShader",
+      "WaveSpectrum",
+      "Displacement",
+      "Normal",
+      "Foam",
+      "GeometryClipmaps"
+    ]
+  },
+  {
+    "id": "RES-20260717-004",
+    "title": "Unity、URP、RenderFeature を用いたマルチパスレンダリング【実装編】",
+    "url": "https://engineering.cocone.io/2025/10/16/unity-urp-multipass-simple-implementation-vol1/",
+    "canonicalUrl": "https://engineering.cocone.io/2025/10/16/unity-urp-multipass-simple-implementation-vol1/",
+    "kind": "website",
+    "topics": [
+      "Unity 6 / URP 17 / RenderGraph / Multipass / Stencil"
+    ],
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "Unity6",
+      "URP17",
+      "RenderGraph",
+      "RenderFeature",
+      "Multipass",
+      "Stencil",
+      "ShaderTagId",
+      "RendererList"
+    ]
+  },
+  {
+    "id": "RES-20260717-005",
+    "title": "Unity、URP、RenderFeature を用いたマルチパスレンダリング【解説編】",
+    "url": "https://engineering.cocone.io/2025/10/16/unity-urp-multipass-simple-implementation-vol2/",
+    "canonicalUrl": "https://engineering.cocone.io/2025/10/16/unity-urp-multipass-simple-implementation-vol2/",
+    "kind": "website",
+    "topics": [
+      "RenderGraph / RendererList / ShaderTagId / RenderStateBlock"
+    ],
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "RenderGraph",
+      "RendererList",
+      "ShaderTagId",
+      "RenderStateBlock",
+      "PassData",
+      "URP17"
+    ]
+  },
+  {
+    "id": "RES-20260717-006",
+    "title": "Unity、URP、RenderFeature を用いたマルチパスレンダリング【実践編】",
+    "url": "https://engineering.cocone.io/2025/11/27/unity-urp-multipass-simple-implementation-vol3/",
+    "canonicalUrl": "https://engineering.cocone.io/2025/11/27/unity-urp-multipass-simple-implementation-vol3/",
+    "kind": "website",
+    "topics": [
+      "Transparent / Depth Prepass / Frontmost Surface / Multipass / RenderGraph"
+    ],
+    "reviewState": "Triaged",
+    "useState": "ToTry",
+    "tags": [
+      "Transparent",
+      "DepthPrepass",
+      "Frontmost",
+      "Multipass",
+      "RenderGraph",
+      "Overdraw",
+      "InternalMesh"
+    ]
+  },
+  {
+    "id": "RES-20260722-001",
+    "title": "Unity Surface Cache GI - Getting Started",
+    "url": "https://docs.google.com/document/d/1QkYO3IF4G9kWV5swcOP4R3C1U3mkujeTONJcP2ECPzw/edit?pli=1&tab=t.0",
+    "kind": "drive",
+    "topic": "Dynamic GI / Surface Cache / Ray Tracing / URP",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "SurfaceCacheGI",
+      "DynamicGI",
+      "URP",
+      "RayTracing",
+      "ComputeShader",
+      "BVH",
+      "TemporalFiltering",
+      "VRAM"
+    ]
+  },
+  {
+    "id": "RES-20260723-001",
+    "title": "【Unity】正式リリースされたばかりのECS Graphicsを触ってみた – DOTS Instancingとは？",
+    "url": "https://logicalbeat.co.jp/blog/15417/",
+    "canonicalUrl": "https://logicalbeat.co.jp/blog/15417/",
+    "kind": "website",
+    "topics": [
+      "ECS Graphics / DOTS Instancing"
+    ],
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "ECSGraphics",
+      "DOTSInstancing",
+      "RenderMeshArray",
+      "MaterialMeshInfo",
+      "SRPBatcher"
+    ]
+  },
+  {
+    "id": "RES-20260723-002",
+    "title": "Unity: ECSの性能を引き出すデータ設計の勘所",
+    "url": "https://zenn.dev/ruccho/articles/unity-ecs-data-optimization",
+    "canonicalUrl": "https://zenn.dev/ruccho/articles/unity-ecs-data-optimization",
+    "kind": "website",
+    "topics": [
+      "ECS Data-Oriented Design"
+    ],
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "ECS",
+      "Archetype",
+      "Chunk",
+      "Cache",
+      "IJobEntity",
+      "IEnableableComponent"
+    ]
+  },
+  {
+    "id": "RES-20260723-003",
+    "title": "【Unity】10万オブジェクトを回転させたらどこがボトルネックになるのか（後編：ISystemで一桁msへ）",
+    "url": "https://zenn.dev/wuyukwi/articles/8577fbf1074840",
+    "canonicalUrl": "https://zenn.dev/wuyukwi/articles/8577fbf1074840",
+    "kind": "website",
+    "topics": [
+      "Pure DOTS / Entities Graphics"
+    ],
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "PureDOTS",
+      "EntitiesGraphics",
+      "ISystem",
+      "IJobEntity",
+      "BatchRendererGroup",
+      "Culling"
+    ]
+  },
+  {
+    "id": "RES-20260724-001",
+    "title": "『アークナイツ：エンドフィールド』はUnityを魔改造してレンダリングを最適化。高ポリゴンキャラ・4人パーティー・工場多数など“重いもの”がとにかく多くて",
+    "url": "https://automaton-media.com/articles/newsjp/endfield-20251112-365651/",
+    "canonicalUrl": "https://automaton-media.com/articles/newsjp/endfield-20251112-365651/",
+    "kind": "website",
+    "topics": [
+      "Custom Unity Engine / ECS / Rendering Optimization"
+    ],
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "Endfield",
+      "Unity改造",
+      "ECS",
+      "Rendering",
+      "DynamicShadow",
+      "Factory",
+      "HighPolygon"
+    ]
+  },
+  {
+    "id": "RES-20260724-002",
+    "title": "『アークナイツ：エンドフィールド』開発者、“きびきび美麗グラフィック”の秘訣を明かす。がっつり魔改造Unityによる、汎用基盤と独自技術の「いいとこどり」",
+    "url": "https://automaton-media.com/articles/newsjp/20260723-456355/",
+    "canonicalUrl": "https://automaton-media.com/articles/newsjp/20260723-456355/",
+    "kind": "website",
+    "topics": [
+      "Custom ECS / C++ Rendering Pipeline / RenderGraph-like Resource Scheduling"
+    ],
+    "reviewState": "Triaged",
+    "useState": "ToTry",
+    "tags": [
+      "Endfield",
+      "CustomECS",
+      "SoA",
+      "C++Renderer",
+      "RenderGraph",
+      "ResourceAliasing",
+      "Culling",
+      "Batching"
+    ]
+  },
+  {
+    "id": "RES-20260724-003",
+    "title": "Autodesk Flow Studio 徹底解説 ～ゲーム制作とAI活用～",
+    "url": "https://drive.google.com/file/d/1mpBBMCRT7qn8g739xQZHgb3Qjo8tqEGY/view",
+    "kind": "drive",
+    "topic": "Autodesk Flow Studio / DCC",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": []
+  },
+  {
+    "id": "RES-20260724-004",
+    "title": "自分流 MMORPG ロードナインでの先行適用事例から学ぶ Unity の CoreCLR 移行",
+    "url": "https://drive.google.com/file/d/13EBcExB-Vi3K8Nmcu4Mj6m0TvtR2i2MG/view",
+    "kind": "drive",
+    "topic": "Unity CoreCLR",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": []
+  },
+  {
+    "id": "RES-20260724-005",
+    "title": "使いやすいエフェクト素材の効率的な制作とライブラリ化",
+    "url": "https://drive.google.com/file/d/1GuaNUJBB893aE_fiUBrm7c2RKJMtdyhJ/view",
+    "kind": "drive",
+    "topic": "Procedural Asset",
+    "reviewState": "Triaged",
+    "useState": "ToTry",
+    "tags": []
+  },
+  {
+    "id": "RES-20260724-006",
+    "title": "Pokémon TCG Pocket の安定したバトル実装を支えるカードロジック基盤設計",
+    "url": "https://drive.google.com/file/d/1iG8hFJwSVs28JGZ820FhABfwheJwE_AJ/view",
+    "kind": "drive",
+    "topic": "Card Logic / Code Generation",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": []
+  },
+  {
+    "id": "RES-20260724-007",
+    "title": "Perforce P4とAIをつなぐ―エンジニアもデザイナーも使えるAI連携機能の今とこれから―",
+    "url": "https://drive.google.com/file/d/1S_PtoYRY4QGukgjAlDow4F0hOQYr2fLx/view",
+    "kind": "drive",
+    "topic": "Perforce / AI",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": []
+  },
+  {
+    "id": "RES-20260724-008",
+    "title": "グラフィックス基盤によるVAT活用 ─『使える技術』として組織に届ける",
+    "url": "https://drive.google.com/file/d/16av5icVtUG7XF3-SfM39aFeryfwEh3G9/view",
+    "kind": "drive",
+    "topic": "Vertex Animation Texture",
+    "reviewState": "Triaged",
+    "useState": "ToTry",
+    "tags": []
+  },
+  {
+    "id": "RES-20260724-009",
+    "title": "Cinemachineを活用した魅力的なカメラワークを実現するための技術",
+    "url": "https://drive.google.com/file/d/18Fj-tyOjoie39IXprJsSVwW6Ip2aHjPX/view",
+    "kind": "drive",
+    "topic": "Cinemachine / 360° Live",
+    "reviewState": "Triaged",
+    "useState": "ToTry",
+    "tags": []
+  },
+  {
+    "id": "RES-20260724-010",
+    "title": "モバイルゲーム開発におけるエージェント技術活用への試行錯誤",
+    "url": "https://drive.google.com/file/d/1O8QvY6EN5URKT7gt23lNsHYnwh1KQyjo/view",
+    "kind": "drive",
+    "topic": "Development Agent",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": []
+  },
+  {
+    "id": "RES-20260724-011",
+    "title": "ダンジョン飯の音響",
+    "url": "https://drive.google.com/file/d/1RniwBLUF1F3jogD5qZf0OUC_k7K5yGrj/view",
+    "kind": "drive",
+    "topic": "Sound Direction",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": []
+  },
+  {
+    "id": "RES-20260724-012",
+    "title": "『龍が如く』シリーズ20周年 超ハイペースでタイトルをリリースし続けるエンジニアチームの秘密",
+    "url": "https://drive.google.com/file/d/10IuJqaUNjtcVHONb66e2leHyb3a2UkZv/view",
+    "kind": "drive",
+    "topic": "Engineering Organization",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": []
+  },
+  {
+    "id": "RES-20260724-013",
+    "title": "なぜ勉強会だけでは浸透しないのか―数百人規模の組織でコーディングエージェントを当たり前にした戦略とその結果―",
+    "url": "https://docs.google.com/presentation/d/16IYHBd0PoJJnN21JPx8RuwlhG3iomGHp/edit",
+    "kind": "drive",
+    "topic": "AI Adoption",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": []
+  },
+  {
+    "id": "RES-20260724-014",
+    "title": "学生・若手必見！テクニカルアーティスト大全",
+    "url": "https://drive.google.com/file/d/131nCmLyqyOLKTcntqW-hy1ftysMv3MHh/view",
+    "kind": "drive",
+    "topic": "TA Career / Pipeline",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": []
+  },
+  {
+    "id": "RES-20260724-015",
+    "title": "『派手さと遊びやすさ！』～俯瞰型バトルで挑んだVFXアーティストの工夫～",
+    "url": "https://drive.google.com/file/d/1iFchQtPcphKhr0cjYAWOUCulV_he8ctj/view",
+    "kind": "drive",
+    "topic": "Top-down Battle VFX",
+    "reviewState": "Triaged",
+    "useState": "ToTry",
+    "tags": []
+  },
+  {
+    "id": "RES-20260724-016",
+    "title": "縦でも横でもない第3のインタラクティブ音楽―同一MIDIによる調性感情リアルタイム制御―",
+    "url": "https://docs.google.com/presentation/d/1OEjiWOW4HaDS2W3V3RpBSV6WVQbrVXeZ/edit",
+    "kind": "drive",
+    "topic": "Interactive Music",
+    "reviewState": "Triaged",
+    "useState": "ToTry",
+    "tags": []
+  },
+  {
+    "id": "RES-20260724-017",
+    "title": "千葉大学 CG関連研究ニュース（詳細取得待ち）",
+    "url": "https://www.chiba-u.ac.jp/news/research-collab/cg.html",
+    "canonicalUrl": "https://www.chiba-u.ac.jp/news/research-collab/cg.html",
+    "kind": "website",
+    "topics": [
+      "Computer Graphics / Research"
+    ],
+    "reviewState": "Inbox",
+    "useState": "Reference",
+    "tags": [
+      "千葉大学",
+      "CG",
+      "研究"
+    ]
+  },
+  {
+    "id": "RES-20260724-018",
+    "title": "A Field Guide to Rendering",
+    "url": "https://www.4rknova.com/blog/2026/07/19/a-field-guide-to-rendering",
+    "canonicalUrl": "https://www.4rknova.com/blog/2026/07/19/a-field-guide-to-rendering",
+    "kind": "website",
+    "topics": [
+      "Rendering Fundamentals / Graphics Pipeline"
+    ],
+    "reviewState": "Inbox",
+    "useState": "Reference",
+    "tags": [
+      "Rendering",
+      "GraphicsPipeline",
+      "WebGL",
+      "Shader"
+    ]
+  },
+  {
+    "id": "RES-20260724-019",
+    "title": "【Unity】より良い表現のためのライティング戦略",
+    "url": "https://www.slideshare.net/slideshow/unity-196887851/196887851",
+    "canonicalUrl": "https://www.slideshare.net/slideshow/unity-196887851/196887851",
+    "kind": "website",
+    "topics": [
+      "Unity Lighting / GI / Probe / Color Space"
+    ],
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "Unity",
+      "Lighting",
+      "GI",
+      "Lightmap",
+      "LightProbe",
+      "ReflectionProbe",
+      "ColorSpace",
+      "LWRP",
+      "HDRP"
+    ]
+  },
+  {
+    "id": "RES-20260726-001",
+    "title": "学園アイドルマスターにおけるモバイルの性能を限界まで引き出すレンダリングパイプライン",
+    "url": "https://drive.google.com/file/d/1Fex6eoFhMVWsnmfaMkqSw3KTysZl1Xft/view",
+    "kind": "drive",
+    "topic": "Mobile Tile-Based Deferred / Hybrid Rendering / Reflection / TAA / FSR",
+    "reviewState": "Triaged",
+    "useState": "ToTry",
+    "tags": [
+      "学マス",
+      "QualiArts",
+      "CEDEC2024",
+      "MobileRendering",
+      "TileBasedDeferred",
+      "Memoryless",
+      "RenderGraph",
+      "HybridRendering",
+      "DepthID",
+      "HiZSSR",
+      "PlanarReflection",
+      "PBRDecal",
+      "DownscaleTransparent",
+      "TAA",
+      "FSR",
+      "DecalLight"
+    ]
+  },
+  {
+    "id": "RES-20260729-001",
+    "title": "Unity AI Knowledge Product・Execution Profile・Safe Tool分離 Decision",
+    "url": "https://docs.google.com/document/d/1wKuhXLAFhJcynM1lgyPkuaG2HNwJT91Btolu-4Te3B4/edit",
+    "kind": "drive",
+    "topic": "Knowledge Product / Task Contract / Execution Profile / Safe Import",
+    "reviewState": "Reviewed",
+    "useState": "Adopted",
+    "tags": [
+      "KnowledgeProduct",
+      "TaskContract",
+      "ExecutionProfile",
+      "GenericPlanning",
+      "PersonalFullControl",
+      "TeamSafeImport",
+      "TAA",
+      "ProjectContext"
+    ]
+  },
+  {
+    "id": "RES-20260729-002",
+    "title": "Unity Knowledge Products 全Portal Coverage HTML群",
+    "url": "https://github.com/DarumaPPAP/Unity-Knowledge-Products",
+    "canonicalUrl": "https://github.com/DarumaPPAP/Unity-Knowledge-Products",
+    "kind": "website",
+    "topics": [
+      "Unity Knowledge Product / Rendering / Visual"
+    ],
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "KnowledgeProduct",
+      "HTML",
+      "Coverage",
+      "67Resources",
+      "37Products",
+      "Rendering",
+      "Animation",
+      "VFX",
+      "Camera",
+      "Tools",
+      "Architecture",
+      "AI",
+      "DCC",
+      "Audio",
+      "Organization",
+      "Backlog"
+    ]
+  },
+  {
+    "id": "RES-20260730-001",
+    "title": "Voxel Smoothing using SurfaceNets in Unity",
+    "url": "https://www.reddit.com/r/VoxelGameDev/comments/831wuj/voxel_smoothing_using_surfacenets_in_unity/?tl=ja",
+    "canonicalUrl": "https://www.reddit.com/r/VoxelGameDev/comments/831wuj/voxel_smoothing_using_surfacenets_in_unity/?tl=ja",
+    "kind": "website",
+    "topics": [
+      "Voxel Meshing / Surface Nets / Unity"
+    ],
+    "reviewState": "Inbox",
+    "useState": "Reference",
+    "tags": [
+      "SurfaceNets",
+      "Voxel",
+      "Unity",
+      "CSharp",
+      "MeshSmoothing",
+      "Reddit"
+    ]
+  },
+  {
+    "id": "RES-20260730-002",
+    "title": "Unityでボクセルデータをもとにメッシュを生成する方法(Naive Surface Nets)",
+    "url": "https://qiita.com/GossiperLoturot/items/671ae90dfa0dc8ebacfa",
+    "canonicalUrl": "https://qiita.com/GossiperLoturot/items/671ae90dfa0dc8ebacfa",
+    "kind": "website",
+    "topics": [
+      "Voxel Meshing / Naive Surface Nets / Unity"
+    ],
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "NaiveSurfaceNets",
+      "Unity",
+      "CSharp",
+      "NativeArray",
+      "MarchingCubes",
+      "VoxelMesh"
+    ]
+  },
+  {
+    "id": "RES-20260730-003",
+    "title": "Implementing Surface Nets in Godot",
+    "url": "https://medium.com/@ryandremer/implementing-surface-nets-in-godot-f48ecd5f29ff",
+    "canonicalUrl": "https://medium.com/@ryandremer/implementing-surface-nets-in-godot-f48ecd5f29ff",
+    "kind": "website",
+    "topics": [
+      "Voxel Meshing / Surface Nets / Godot"
+    ],
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "SurfaceNets",
+      "Godot",
+      "GDScript",
+      "SignedField",
+      "QuadMesh",
+      "DestructibleTerrain"
+    ]
+  },
+  {
+    "id": "RES-20260730-004",
+    "title": "Voxels and Seamless LOD Transitions",
+    "url": "https://dexyfex.com/2016/07/14/voxels-and-seamless-lod-transitions/",
+    "canonicalUrl": "https://dexyfex.com/2016/07/14/voxels-and-seamless-lod-transitions/",
+    "kind": "website",
+    "topics": [
+      "Voxel LOD / Seamless Chunk Transitions"
+    ],
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "VoxelLOD",
+      "SeamlessLOD",
+      "Octree",
+      "Geomorphing",
+      "Chunk",
+      "ComputeShader"
+    ]
+  },
+  {
+    "id": "RES-20260730-005",
+    "title": "Smooth Voxel Terrain (Part 2)",
+    "url": "https://0fps.net/2012/07/12/smooth-voxel-terrain-part-2/",
+    "canonicalUrl": "https://0fps.net/2012/07/12/smooth-voxel-terrain-part-2/",
+    "kind": "website",
+    "topics": [
+      "Isosurface Extraction / Surface Nets / Dual Methods"
+    ],
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "SurfaceNets",
+      "NaiveSurfaceNets",
+      "MarchingCubes",
+      "DualContouring",
+      "Isosurface",
+      "NonManifold"
+    ]
+  },
+  {
+    "id": "RES-20260730-006",
+    "title": "Dual Contouring Tutorial",
+    "url": "https://www.boristhebrave.com/2018/04/15/dual-contouring-tutorial/",
+    "canonicalUrl": "https://www.boristhebrave.com/2018/04/15/dual-contouring-tutorial/",
+    "kind": "website",
+    "topics": [
+      "Isosurface Extraction / Dual Contouring"
+    ],
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "DualContouring",
+      "HermiteData",
+      "QEF",
+      "SharpFeatures",
+      "Octree",
+      "NonManifold"
+    ]
+  },
+  {
+    "id": "RES-20260730-007",
+    "title": "I Wish I Found Surface Nets Sooner!",
+    "url": "https://www.reddit.com/r/VoxelGameDev/comments/pklhuo/i_wish_i_found_surface_nets_sooner/?tl=ja",
+    "canonicalUrl": "https://www.reddit.com/r/VoxelGameDev/comments/pklhuo/i_wish_i_found_surface_nets_sooner/?tl=ja",
+    "kind": "website",
+    "topics": [
+      "Voxel Meshing / Surface Nets / Community"
+    ],
+    "reviewState": "Inbox",
+    "useState": "Reference",
+    "tags": [
+      "SurfaceNets",
+      "VoxelGameDev",
+      "ProceduralTerrain",
+      "MeshGeneration",
+      "Reddit"
+    ]
+  },
+  {
+    "id": "RES-20260730-008",
+    "title": "Understanding Surface Nets",
+    "url": "https://cerbion.net/blog/understanding-surface-nets/",
+    "canonicalUrl": "https://cerbion.net/blog/understanding-surface-nets/",
+    "kind": "website",
+    "topics": [
+      "Voxel Meshing / Surface Nets / Unity"
+    ],
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "SurfaceNets",
+      "Unity",
+      "CSharp",
+      "VoxelTerrain",
+      "MeshSmoothing",
+      "Shrinkage"
+    ]
+  },
+  {
+    "id": "RES-20260730-009",
+    "title": "チャンク化による高速ダウンロードを可能にするツールと最適化の考察",
+    "url": "https://www.unrealengine.com/tech-blog/optimizing-battle-breakers-for-chunked-downloading?lang=ja",
+    "canonicalUrl": "https://www.unrealengine.com/tech-blog/optimizing-battle-breakers-for-chunked-downloading?lang=ja",
+    "kind": "website",
+    "topics": [
+      "Asset Chunking / On-Demand Download / Dependency Audit"
+    ],
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "ChunkedDownload",
+      "AssetManager",
+      "PrimaryAssetLabel",
+      "AssetAudit",
+      "OnDemandDownload",
+      "BattleBreakers"
+    ]
+  },
+  {
+    "id": "RES-20260730-010",
+    "title": "Git 研修【MIXI 26新卒技術研修】",
+    "url": "https://speakerdeck.com/mixi_engineers/2026_new_grad_training_git",
+    "canonicalUrl": "https://speakerdeck.com/mixi_engineers/2026_new_grad_training_git",
+    "kind": "website",
+    "topics": [
+      "Git / Version Control / Internal Model / Team Workflow"
+    ],
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "Git",
+      "VersionControl",
+      "GitInternals",
+      "Branching",
+      "Reset",
+      "TeamWorkflow",
+      "CI/CD"
+    ]
+  },
+  {
+    "id": "RES-20260730-011",
+    "title": "セキュリティ研修【MIXI 26新卒技術研修】",
+    "url": "https://speakerdeck.com/mixi_engineers/2026_new_grad_training_security",
+    "canonicalUrl": "https://speakerdeck.com/mixi_engineers/2026_new_grad_training_security",
+    "kind": "website",
+    "topics": [
+      "Information Security / OWASP / Access Control / AI Security"
+    ],
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "InformationSecurity",
+      "CIA",
+      "OWASP",
+      "AccessControl",
+      "ZeroTrust",
+      "SecureDevelopment",
+      "AIDataLeak",
+      "Secrets"
+    ]
+  },
+  {
+    "id": "RES-20260730-012",
+    "title": "AI研修 Day 1【MIXI 26新卒技術研修】",
+    "url": "https://speakerdeck.com/mixi_engineers/2026_new_grad_training_ai_day1",
+    "canonicalUrl": "https://speakerdeck.com/mixi_engineers/2026_new_grad_training_ai_day1",
+    "kind": "website",
+    "topics": [
+      "ML Fundamentals / Model Lifecycle / MLOps"
+    ],
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "MachineLearning",
+      "Inference",
+      "Training",
+      "Evaluation",
+      "MLOps",
+      "ModelOptimization",
+      "Deployment",
+      "Monitoring"
+    ]
+  },
+  {
+    "id": "RES-20260730-013",
+    "title": "AI研修 Day 2【MIXI 26新卒技術研修】",
+    "url": "https://speakerdeck.com/mixi_engineers/2026_new_grad_training_ai_day2",
+    "canonicalUrl": "https://speakerdeck.com/mixi_engineers/2026_new_grad_training_ai_day2",
+    "kind": "website",
+    "topics": [
+      "LLM / RAG / Tool Use / AI Agent / Evaluation"
+    ],
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "LLM",
+      "Transformer",
+      "Attention",
+      "Tokenization",
+      "RAG",
+      "FunctionCalling",
+      "StructuredOutput",
+      "AIAgent",
+      "ReAct",
+      "HumanInTheLoop",
+      "LLMEvaluation"
+    ]
+  },
+  {
+    "id": "RES-20260730-014",
+    "title": "データ活用研修 ～問いの設定と仮説の立て方～【MIXI 26新卒技術研修】",
+    "url": "https://speakerdeck.com/mixi_engineers/2026_new_grad_training_problem-framing-hypothesis-building",
+    "canonicalUrl": "https://speakerdeck.com/mixi_engineers/2026_new_grad_training_problem-framing-hypothesis-building",
+    "kind": "website",
+    "topics": [
+      "Problem Framing / Hypothesis Building / Decision Making"
+    ],
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "ProblemFraming",
+      "HypothesisBuilding",
+      "MECE",
+      "KPITree",
+      "DataAnalysis",
+      "DecisionMaking",
+      "GenerativeAI",
+      "Validation"
+    ]
+  },
+  {
+    "id": "RES-20260808-001",
+    "title": "コードレビュー支援ツール「Lyra」— LLM業務システムの運用設計",
+    "url": "https://drive.google.com/file/d/1dCKTpbDYHrv9LipzJI7trBFUEXdw2Ysf/view",
+    "kind": "drive",
+    "topic": "LLM Code Review / Structured Output / Multi-Agent",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "LLM",
+      "CodeReview",
+      "MultiAgent",
+      "StructuredOutput",
+      "Operations"
+    ]
+  },
+  {
+    "id": "RES-20260808-002",
+    "title": "ゲームシナリオライターを支援するAIツール開発の実践",
+    "url": "https://drive.google.com/file/d/1g-VSA86GwGztXt8If9EQqstzJuNpEoia/view",
+    "kind": "drive",
+    "topic": "Scenario Writing / Dify / Prompt Engineering",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "Dify",
+      "ScenarioWriting",
+      "PromptEngineering",
+      "HumanInTheLoop"
+    ]
+  },
+  {
+    "id": "RES-20260808-003",
+    "title": "Shadowverse: Worlds Beyond アーキテクチャ再設計",
+    "url": "https://drive.google.com/file/d/1dol8fBmky7IAbUy1YwsM-xfbMwExPUMI/view",
+    "kind": "drive",
+    "topic": "Unity / MagicOnion / Server Architecture",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "Unity",
+      "MagicOnion",
+      "Architecture",
+      "Automation"
+    ]
+  },
+  {
+    "id": "RES-20260808-004",
+    "title": "ウマ娘 映像制作のさらなる高品質化",
+    "url": "https://drive.google.com/file/d/17eZIHclD776Re25YT9o7CnpRtSngdgn6/view",
+    "kind": "drive",
+    "topic": "Video Production / Compositing Tooling",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "Unity",
+      "VideoProduction",
+      "Compositing",
+      "EditorTool"
+    ]
+  },
+  {
+    "id": "RES-20260808-005",
+    "title": "グラフィックスエンジニアのためのニューラルシェーディング入門",
+    "url": "https://drive.google.com/file/d/1mqFbheaRYRkKpu6hkipHc7hffWyH--La/view",
+    "kind": "drive",
+    "topic": "Neural Shading / Slang / Cooperative Vector",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "NeuralShading",
+      "Slang",
+      "CooperativeVector",
+      "GPU"
+    ]
+  },
+  {
+    "id": "RES-20260808-006",
+    "title": "Shadowverse: Worlds Beyond エフェクト・3D背景のVisual設計",
+    "url": "https://drive.google.com/file/d/1vQI3dSSIZQXPSFXbxOqqFVDdgHqxfBNI/view",
+    "kind": "drive",
+    "topic": "VFX / 3D Background / Readability",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "VFX",
+      "3DBackground",
+      "Readability",
+      "VisualDesign"
+    ]
+  },
+  {
+    "id": "RES-20260808-007",
+    "title": "Endless Ragnarokの開発速度と品質を守るCI運用",
+    "url": "https://drive.google.com/file/d/1CRGQj2V5SKozAcQ0raotcmG5c3FSm8Sr/view",
+    "kind": "drive",
+    "topic": "CI / Datadog / Static Analysis / SnapshotQA",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "CI",
+      "Datadog",
+      "StaticAnalysis",
+      "SnapshotQA"
+    ]
+  },
+  {
+    "id": "RES-20260808-008",
+    "title": "Endless RagnarokのBattle制作事例",
+    "url": "https://drive.google.com/file/d/1Yr-Eww1FacrbXGqnKhGpUaXDeHjs9YO0/view",
+    "kind": "drive",
+    "topic": "Combat Design / Companion AI / Assist Mode",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "CombatDesign",
+      "CompanionAI",
+      "AssistMode",
+      "Iteration"
+    ]
+  },
+  {
+    "id": "RES-20260808-009",
+    "title": "Endless Ragnarok — ArtとGame DesignをつなぐVFX設計",
+    "url": "https://drive.google.com/file/d/11Ujh25yFFp_yk6-Z6qwYhiGonlq696fz/view",
+    "kind": "drive",
+    "topic": "VFX / Readability / Information Density",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "tags": [
+      "VFX",
+      "Readability",
+      "InformationDensity",
+      "CombatDesign"
+    ]
+  }
+]
