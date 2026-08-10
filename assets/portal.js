@@ -32,4 +32,26 @@
       location.href = `documents.html?q=${encodeURIComponent(q)}`;
     });
   });
+
+  function ensureTrendNavigation() {
+    const sidebarNav = document.querySelector('.sidebar .side-nav');
+    if (sidebarNav && !sidebarNav.querySelector('a[href="trend.html"]')) {
+      const link = document.createElement('a');
+      link.href = 'trend.html';
+      link.innerHTML = '<span class="icon">↗</span>Trend Radar';
+      const websites = sidebarNav.querySelector('a[href="websites.html"]');
+      if (websites) websites.insertAdjacentElement('afterend', link);
+      else sidebarNav.appendChild(link);
+    }
+
+    const mobileNav = document.querySelector('.mobile-nav');
+    if (mobileNav && !mobileNav.querySelector('a[href="trend.html"]')) {
+      const link = document.createElement('a');
+      link.href = 'trend.html';
+      link.textContent = 'Trend';
+      mobileNav.appendChild(link);
+    }
+  }
+
+  ensureTrendNavigation();
 })();
