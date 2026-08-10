@@ -1,78 +1,15 @@
 <!doctype html>
-<html lang="ja">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="MyResourceCenter converted Markdown documents">
-  <title>Documents · MyResourceCenter</title>
-  <link rel="stylesheet" href="assets/site.css">
-</head>
-<body>
-  <div class="app-shell">
-    <aside class="sidebar" aria-label="メインナビゲーション">
-      <div class="brand-lockup"><div class="brand-mark">M</div><div class="brand-name">MyResourceCenter</div></div>
-      <nav class="side-nav">
-        <a href="index.html"><span class="icon">⌂</span>ホーム</a>
-        <a href="websites.html"><span class="icon">◎</span>Webサイト一覧</a>
-        <a class="active" href="documents.html"><span class="icon">▤</span>ドキュメント一覧</a>
-        <a href="index.html#tags"><span class="icon">◇</span>タグから探す</a>
-      </nav>
-      <div class="sidebar-note">公開PortalにはDocument metadataだけを掲載。本文Markdownと原資料はprivate Source Libraryに保持します。</div>
-    </aside>
-
-    <div class="main">
-      <header class="topbar">
-        <div class="breadcrumb">Human Portal / Documents</div>
-        <div class="top-actions">
-          <a class="icon-button repo-link" href="https://github.com/DarumaPPAP/MyResourceCenter-Portal" target="_blank" rel="noreferrer">Portal GitHub ↗</a>
-          <button class="icon-button" type="button" data-theme-toggle aria-label="ダークモードへ切替">☾</button>
-        </div>
-      </header>
-      <nav class="mobile-nav" aria-label="モバイルナビゲーション"><a href="index.html">ホーム</a><a href="websites.html">Websites</a><a href="documents.html">Documents</a></nav>
-
-      <main class="content">
-        <section class="hero">
-          <div class="hero-copy">
-            <div class="eyebrow">Strengthened Knowledge Notes</div>
-            <h1>変換済みMarkdown一覧</h1>
-            <p>PDF/PPTXから日本語化・強化したKnowledge Noteを、Format・Level・Engine・Tagから検索できます。本文リンクはprivateなSource Repositoryを開きます。</p>
-          </div>
-          <div class="hero-visual" aria-hidden="true"><div class="library-illustration"><div class="book"></div><div class="book"></div><div class="book"></div><div class="book"></div></div></div>
-        </section>
-
-        <section class="section panel">
-          <div class="toolbar">
-            <label class="sr-only" for="q">ドキュメントを検索</label>
-            <input id="q" placeholder="タイトル・タグ・Engine・原資料名で検索">
-            <label class="sr-only" for="format">Format</label>
-            <select id="format"><option value="">Format: すべて</option></select>
-            <label class="sr-only" for="level">Level</label>
-            <select id="level"><option value="">Level: すべて</option></select>
-            <label class="sr-only" for="engine">Engine</label>
-            <select id="engine"><option value="">Engine: すべて</option></select>
-            <button id="reset" type="button">リセット</button>
-          </div>
-          <div class="result-meta"><span id="count">読み込み中...</span><span>1ページ 8件</span></div>
-          <div id="rows" class="data-list" aria-live="polite"></div>
-          <div id="pagination" class="pagination" aria-label="ページネーション"></div>
-        </section>
-      </main>
-      <footer class="footer">Document metadata is public · Source Markdown remains private.</footer>
-    </div>
-  </div>
-
-  <script src="assets/portal.js"></script>
-  <script>
-    const state={data:[],filtered:[],page:1,pageSize:8};
-    const els={q:document.querySelector('#q'),format:document.querySelector('#format'),level:document.querySelector('#level'),engine:document.querySelector('#engine'),reset:document.querySelector('#reset'),rows:document.querySelector('#rows'),count:document.querySelector('#count'),pagination:document.querySelector('#pagination')};
-    const esc=v=>String(v??'').replace(/[&<>'\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','\"':'&quot;'}[c]));
-    const ghPath=path=>`https://github.com/DarumaPPAP/MyResourceCenter/blob/main/${String(path).split('/').map(encodeURIComponent).join('/')}`;
-    function fillSelect(el,values,prefix){el.innerHTML=`<option value="">${prefix}: すべて</option>`+[...new Set(values.filter(Boolean))].sort((a,b)=>String(a).localeCompare(String(b),'ja')).map(v=>`<option value="${esc(v)}">${esc(v)}</option>`).join('')}
-    function apply(){const q=els.q.value.trim().toLowerCase(),format=els.format.value,level=els.level.value,engine=els.engine.value;state.filtered=state.data.filter(x=>{const hay=[x.title,x.file,x.original,x.engine,x.level,...(x.tags||[])].join(' ').toLowerCase();return(!q||hay.includes(q))&&(!format||x.sourceFormat===format)&&(!level||x.level===level)&&(!engine||x.engine===engine)});state.page=Math.min(state.page,Math.max(1,Math.ceil(state.filtered.length/state.pageSize)));render()}
-    function render(){const total=state.filtered.length,pages=Math.max(1,Math.ceil(total/state.pageSize)),start=(state.page-1)*state.pageSize,items=state.filtered.slice(start,start+state.pageSize);els.count.textContent=`${total} 件`;els.rows.innerHTML=items.length?items.map(x=>`<article class="doc-row"><div class="thumb" style="display:grid;place-items:center"><div class="doc-icon">${esc(x.sourceFormat||'MD')}</div></div><div><a class="data-title" href="${ghPath(x.path)}" target="_blank" rel="noreferrer">${esc(x.title)} ↗</a><div class="data-sub">${esc(x.original)}</div><div class="tag-cloud" style="margin-top:8px">${(x.tags||[]).slice(0,6).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div></div><div><div class="data-label">Format / Level</div><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="format">${esc(x.sourceFormat)}</span><span class="level">${esc(x.level)}</span></div><div class="data-sub">重要図 ${esc(x.imageCount)} 枚</div></div><div><div class="data-label">Engine</div><div>${esc(x.engine)}</div></div></article>`).join(''):`<div class="empty">条件に一致するドキュメントがありません。</div>`;els.pagination.innerHTML='';for(let p=1;p<=pages;p++){const b=document.createElement('button');b.type='button';b.textContent=p;b.className=p===state.page?'active':'';b.addEventListener('click',()=>{state.page=p;render();scrollTo({top:0,behavior:'smooth'})});els.pagination.appendChild(b)}}
-    [els.q,els.format,els.level,els.engine].forEach(el=>el.addEventListener(el.tagName==='INPUT'?'input':'change',()=>{state.page=1;apply()}));els.reset.addEventListener('click',()=>{els.q.value='';els.format.value='';els.level.value='';els.engine.value='';state.page=1;apply()});
-    const params=new URLSearchParams(location.search);els.q.value=params.get('q')||'';
-    fetch('catalog/documents.json').then(r=>r.json()).then(data=>{state.data=data;fillSelect(els.format,data.map(x=>x.sourceFormat),'Format');fillSelect(els.level,data.map(x=>x.level),'Level');fillSelect(els.engine,data.map(x=>x.engine),'Engine');apply()}).catch(()=>{els.rows.innerHTML='<div class="empty">Catalogの読み込みに失敗しました。</div>';els.count.textContent='0 件'});
-  </script>
-</body>
-</html>
+<html lang="ja" data-theme="light">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Documents | MyResourceCenter</title><meta name="description" content="公開可能なDocument metadataを検索しPortal Detailへ辿ります。"><link rel="stylesheet" href="assets/site.css"><script defer src="assets/portal.js"></script><script defer src="assets/catalog.js"></script></head>
+<body><div class="app-shell">
+<aside class="sidebar"><div class="brand-lockup"><div class="brand-mark">M</div><div class="brand-name">MyResourceCenter</div></div><nav class="side-nav"><a href="index.html"><span class="icon">⌂</span>ホーム</a><a class="active" href="documents.html"><span class="icon">▤</span>ドキュメント</a><a href="websites.html"><span class="icon">◎</span>Webサイト</a></nav><div class="sidebar-note">本文・原資料・画像pathはprivate側。Portalは公開metadataとDetail導線だけを持ちます。</div></aside>
+<main class="main"><header class="topbar"><div class="breadcrumb">Documents / 公開Catalog</div><div class="top-actions"><button class="icon-button theme-toggle" type="button">Dark</button></div></header><nav class="mobile-nav"><a href="index.html">ホーム</a><a href="documents.html">Documents</a><a href="websites.html">Websites</a></nav>
+<div class="content"><section class="hero"><div class="hero-copy"><div class="eyebrow">Knowledge Documents</div><h1>強化Documentを探す</h1><p>Format / Engine / Level / Tagで絞り込み、Portal内Detailで公開metadataを確認します。</p></div><div class="hero-visual"><div class="library-illustration"><div class="book"></div><div class="book"></div><div class="book"></div><div class="book"></div></div></div></section>
+<div class="toolbar"><input id="q" type="search" placeholder="タイトル・Tag・Engineを検索"><select id="format"><option value="">Formatすべて</option></select><select id="level"><option value="">Levelすべて</option></select><select id="engine"><option value="">Engineすべて</option></select><button id="clear" type="button">クリア</button></div><div class="result-meta"><span id="count">読み込み中…</span><span>Detailはpublic metadataのみ</span></div><div class="data-list" id="list"></div></div><footer class="footer">MyResourceCenter Human Portal · private source paths are not published</footer></main></div>
+<script>
+window.addEventListener('DOMContentLoaded', async () => {
+ const C=window.MRCCatalog,q=document.getElementById('q'),format=document.getElementById('format'),level=document.getElementById('level'),engine=document.getElementById('engine'),list=document.getElementById('list'),count=document.getElementById('count');
+ try{const docs=await C.load('documents');const initial=C.query('q');if(initial)q.value=initial;const fill=(el,values)=>{[...new Set(values.filter(Boolean))].sort().forEach(v=>el.insertAdjacentHTML('beforeend',`<option value="${C.escapeHtml(v)}">${C.escapeHtml(v)}</option>`));};fill(format,docs.map(x=>x.sourceFormat));fill(level,docs.map(x=>x.level));fill(engine,docs.map(x=>x.engine));
+ const render=()=>{const s=q.value.trim().toLowerCase();const rows=docs.filter(x=>(!s||[x.title,x.engine,x.level,...(x.tags||[])].join(' ').toLowerCase().includes(s))&&(!format.value||x.sourceFormat===format.value)&&(!level.value||x.level===level.value)&&(!engine.value||x.engine===engine.value));count.textContent=`${rows.length} / ${docs.length} Documents`;list.innerHTML=rows.map(x=>`<div class="data-row"><div><a class="data-title" href="document.html?id=${encodeURIComponent(x.id)}">${C.escapeHtml(x.title)}</a><div class="data-sub">${C.escapeHtml(x.id)}</div></div><div><div class="data-label">Format</div><span class="format">${C.escapeHtml(x.sourceFormat||'—')}</span></div><div><div class="data-label">Level</div><span class="level">${C.escapeHtml(x.level||'—')}</span></div><div><div class="data-label">Tags</div><div class="tag-cloud">${C.chips((x.tags||[]).slice(0,6))}</div></div></div>`).join('')||'<div class="empty">条件に一致するDocumentはありません。</div>';};[q,format,level,engine].forEach(el=>el.addEventListener(el===q?'input':'change',render));document.getElementById('clear').addEventListener('click',()=>{q.value='';format.value='';level.value='';engine.value='';render();});render();}catch(e){console.error(e);list.innerHTML='<div class="empty">Document Catalogの読み込みに失敗しました。</div>';}
+});
+</script></body></html>
