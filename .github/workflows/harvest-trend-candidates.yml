@@ -5,6 +5,13 @@ on:
     # 08:35 JST. ChatGPT Trend task starts at 09:00 JST.
     - cron: '35 23 * * *'
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'data/trend-sources.json'
+      - 'tools/harvest_trend_sources.py'
+      - 'tools/validate_trend_candidates.py'
+      - '.github/workflows/harvest-trend-candidates.yml'
 
 permissions:
   contents: write
