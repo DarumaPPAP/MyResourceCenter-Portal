@@ -37,6 +37,17 @@
     return (values || []).map(value => `<span class="${className}">${escapeHtml(value)}</span>`).join('');
   }
 
+  function safeExternalUrl(value) {
+    if (!value) return '';
+    try {
+      const url = new URL(String(value));
+      if (url.protocol !== 'https:' && url.protocol !== 'http:') return '';
+      return url.href;
+    } catch {
+      return '';
+    }
+  }
+
   const relationLabels = {
     related: '関連',
     extends: '拡張',
@@ -70,7 +81,7 @@
   function resourceHref(resource, websiteIds = new Set()) {
     if (!resource) return '';
     if (websiteIds.has(resource.id)) return `website.html?id=${encodeURIComponent(resource.id)}`;
-    return resource.url || resource.canonicalUrl || '';
+    return safeExternalUrl(resource.url || resource.canonicalUrl || '');
   }
 
   function relationEntries(resourceId, relations, resourcesById) {
@@ -94,9 +105,9 @@
   }
 
   function externalLink(url, label = 'Sourceを開く') {
-    if (!url) return '';
-    const safe = escapeHtml(url);
-    return `<a class="primary-button detail-action" href="${safe}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)} ↗</a>`;
+    const safe = safeExternalUrl(url);
+    if (!safe) return '';
+    return `<a class="primary-button detail-action" href="${escapeHtml(safe)}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)} ↗</a>`;
   }
 
   window.MRCCatalog = {
@@ -106,6 +117,7 @@
     byId,
     chips,
     escapeHtml,
+    safeExternalUrl,
     relationLabel,
     roleLabel,
     resourceHref,
