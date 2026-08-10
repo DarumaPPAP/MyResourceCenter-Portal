@@ -8,9 +8,14 @@ on:
       - 'assets/trend.js'
       - 'assets/portal.js'
       - 'data/trends.json'
+      - 'data/trend-candidates.json'
+      - 'data/trend-sources.json'
       - 'tools/validate_trends.py'
       - 'tools/update_trends.py'
+      - 'tools/harvest_trend_sources.py'
+      - 'tools/validate_trend_candidates.py'
       - '.github/workflows/validate-trends.yml'
+      - '.github/workflows/harvest-trend-candidates.yml'
   push:
     branches: [main]
     paths:
@@ -19,9 +24,14 @@ on:
       - 'assets/trend.js'
       - 'assets/portal.js'
       - 'data/trends.json'
+      - 'data/trend-candidates.json'
+      - 'data/trend-sources.json'
       - 'tools/validate_trends.py'
       - 'tools/update_trends.py'
+      - 'tools/harvest_trend_sources.py'
+      - 'tools/validate_trend_candidates.py'
       - '.github/workflows/validate-trends.yml'
+      - '.github/workflows/harvest-trend-candidates.yml'
 
 permissions:
   contents: read
@@ -32,8 +42,40 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
-      - name: Validate Trend dataset
-        run: python3 tools/validate_trends.py
+
+      - name: Compile Trend tools
+        run: |
+          python3 -m py_compile \
+            tools/validate_trends.py \
+            tools/update_trends.py \
+            tools/harvest_trend_sources.py \
+            tools/validate_trend_candidates.py
+
+      - name: Validate Trend datasets
+        run: |
+          python3 tools/validate_trends.py
+          python3 tools/validate_trend_candidates.py
+
+      - name: Smoke test Harvest parser
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from tools.harvest_trend_sources import parse_datetime, parse_feed
+
+          cutoff = parse_datetime('2026-08-03T00:00:00+09:00')
+          fixture = b'''<?xml version="1.0"?>
+          <rss><channel><item>
+            <title>Unity Shader smoke test</title>
+            <link>https://example.com/zenn-smoke</link>
+            <pubDate>Mon, 10 Aug 2026 01:00:00 GMT</pubDate>
+            <description>URP RenderGraph</description>
+          </item></channel></rss>'''
+          items = parse_feed(fixture, 'Zenn', {'Unity'}, 'zenn-topic-feed:unity', cutoff)
+          assert len(items) == 1
+          assert items[0]['matchedKeywords'] == ['Unity']
+          assert items[0]['url'] == 'https://example.com/zenn-smoke'
+          PY
+
       - name: Smoke test Trend updater
         shell: bash
         run: |

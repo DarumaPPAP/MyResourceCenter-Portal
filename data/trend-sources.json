@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "1.0",
+  "lookbackDays": 7,
+  "maxCandidates": 500,
+  "enabledHarvesters": ["zenn", "qiita", "hatena", "note"],
+  "requiredHarvesters": ["zenn", "qiita"],
+  "keywords": [
+    {
+      "name": "Unity",
+      "aliases": ["Unity 6", "URP", "HDRP", "SRP", "RenderGraph", "RendererFeature", "Shader Graph", "DOTS", "ECS", "Burst", "Addressables", "Lightmap", "APV"],
+      "zennTopics": ["unity", "unity6", "urp", "hdrp", "rendergraph", "shadergraph", "dots", "ecs", "addressables"],
+      "qiitaTags": ["Unity", "Unity6", "URP", "RenderGraph", "ShaderGraph"]
+    },
+    {
+      "name": "Unreal",
+      "aliases": ["Unreal Engine", "UE5", "UnrealEngine", "Nanite", "Lumen", "Substrate", "Niagara", "PCG", "RHI", "TSR", "MetaHuman"],
+      "zennTopics": ["unrealengine", "unrealengine5", "ue5"],
+      "qiitaTags": ["UnrealEngine", "UE5"]
+    },
+    {
+      "name": "Shader",
+      "aliases": ["HLSL", "GLSL", "SPIR-V", "Vulkan", "DirectX", "DX12", "Metal", "WebGPU", "Compute Shader", "Mesh Shader", "Ray Tracing", "Path Tracing", "PBR", "TAA", "DLSS", "FSR"],
+      "zennTopics": ["shader", "hlsl", "glsl", "vulkan", "directx", "webgpu", "shadergraph"],
+      "qiitaTags": ["Shader", "HLSL", "Vulkan", "DirectX"]
+    },
+    {
+      "name": "C#",
+      "aliases": ["CSharp", ".NET", "Roslyn", "NativeAOT", "AOT", "JIT", "GC"],
+      "zennTopics": ["csharp", "dotnet"],
+      "qiitaTags": ["C#", ".NET"]
+    },
+    {
+      "name": "C++",
+      "aliases": ["CPP", "C++26", "Clang", "LLVM", "MSVC", "SIMD"],
+      "zennTopics": ["cpp", "cplusplus", "llvm"],
+      "qiitaTags": ["C++", "LLVM"]
+    },
+    {
+      "name": "CG",
+      "aliases": ["3DCG", "Computer Graphics", "Graphics", "Rendering", "GPU", "モデリング", "Modeling", "Technical Art", "テクニカルアート"],
+      "zennTopics": ["graphics", "レンダリング", "3dcg", "gpu", "technicalart"],
+      "qiitaTags": ["3DCG", "GPU", "Rendering"]
+    },
+    {
+      "name": "Blender",
+      "aliases": ["Geometry Nodes", "GeometryNodes", "Cycles", "Eevee"],
+      "zennTopics": ["blender", "geometrynodes"],
+      "qiitaTags": ["Blender"]
+    },
+    {
+      "name": "Houdini",
+      "aliases": ["SideFX", "VEX", "SOP", "Solaris", "Karma"],
+      "zennTopics": ["houdini"],
+      "qiitaTags": ["Houdini"]
+    }
+  ],
+  "hatenaFeeds": [
+    {"name": "LIGHT11", "url": "https://light11.hatenadiary.com/feed?size=100"},
+    {"name": "おもちゃラボ", "url": "https://nn-hokuson.hatenablog.com/feed?size=100"}
+  ]
+}
