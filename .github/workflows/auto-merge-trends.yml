@@ -8,6 +8,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  actions: write
 
 jobs:
   merge-trend-update:
@@ -16,7 +17,7 @@ jobs:
       github.event.workflow_run.event == 'pull_request'
     runs-on: ubuntu-latest
     steps:
-      - name: Verify Trend-only scope and merge
+      - name: Verify Trend-only scope, merge and deploy
         env:
           GH_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}
@@ -65,8 +66,23 @@ jobs:
           fi
 
           echo "Validated Trend-only PR #${PR_NUMBER}; merging."
-          gh api \
+          merge_json="$(gh api \
             --method PUT \
             "repos/${REPO}/pulls/${PR_NUMBER}/merge" \
             -f merge_method=merge \
-            -f commit_title="chore: refresh Trend Radar (#${PR_NUMBER})"
+            -f commit_title="chore: refresh Trend Radar (#${PR_NUMBER})")"
+
+          merged="$(jq -r '.merged // false' <<<"${merge_json}")"
+          if [[ "${merged}" != "true" ]]; then
+            echo "Trend PR merge did not complete successfully."
+            jq . <<<"${merge_json}"
+            exit 1
+          fi
+
+          echo "Trend PR merged. Dispatching GitHub Pages deployment from main."
+          gh api \
+            --method POST \
+            "repos/${REPO}/actions/workflows/deploy-pages.yml/dispatches" \
+            -f ref=main
+
+          echo "Pages deployment dispatch accepted."
