@@ -8,7 +8,8 @@ on:
 permissions:
   contents: write
   pull-requests: write
-  actions: write
+  pages: write
+  id-token: write
 
 jobs:
   merge-trend-update:
@@ -16,15 +17,20 @@ jobs:
       github.event.workflow_run.conclusion == 'success' &&
       github.event.workflow_run.event == 'pull_request'
     runs-on: ubuntu-latest
+    outputs:
+      should_deploy: ${{ steps.merge.outputs.should_deploy }}
     steps:
-      - name: Verify Trend-only scope, merge and deploy
+      - name: Verify Trend-only scope and merge validated head
+        id: merge
         env:
           GH_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}
           PR_NUMBER: ${{ github.event.workflow_run.pull_requests[0].number }}
+          VALIDATED_HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
         shell: bash
         run: |
           set -euo pipefail
+          echo "should_deploy=false" >> "${GITHUB_OUTPUT}"
 
           if [[ -z "${PR_NUMBER:-}" ]]; then
             echo "No pull request is associated with the completed validation run."
@@ -36,6 +42,7 @@ jobs:
           base_ref="$(jq -r '.base.ref' <<<"${pr_json}")"
           head_ref="$(jq -r '.head.ref' <<<"${pr_json}")"
           head_repo="$(jq -r '.head.repo.full_name' <<<"${pr_json}")"
+          current_head_sha="$(jq -r '.head.sha' <<<"${pr_json}")"
 
           if [[ "${state}" != "open" ]]; then
             echo "PR #${PR_NUMBER} is not open; nothing to merge."
@@ -57,6 +64,13 @@ jobs:
             exit 1
           fi
 
+          if [[ "${current_head_sha}" != "${VALIDATED_HEAD_SHA}" ]]; then
+            echo "Refusing auto-merge: PR head changed after validation."
+            echo "Validated: ${VALIDATED_HEAD_SHA}"
+            echo "Current:   ${current_head_sha}"
+            exit 1
+          fi
+
           mapfile -t files < <(gh api --paginate "repos/${REPO}/pulls/${PR_NUMBER}/files" --jq '.[].filename')
 
           if [[ "${#files[@]}" -ne 1 || "${files[0]}" != "data/trends.json" ]]; then
@@ -65,11 +79,12 @@ jobs:
             exit 1
           fi
 
-          echo "Validated Trend-only PR #${PR_NUMBER}; merging."
+          echo "Validated Trend-only PR #${PR_NUMBER}; merging exact validated head ${current_head_sha}."
           merge_json="$(gh api \
             --method PUT \
             "repos/${REPO}/pulls/${PR_NUMBER}/merge" \
             -f merge_method=merge \
+            -f sha="${current_head_sha}" \
             -f commit_title="chore: refresh Trend Radar (#${PR_NUMBER})")"
 
           merged="$(jq -r '.merged // false' <<<"${merge_json}")"
@@ -79,10 +94,35 @@ jobs:
             exit 1
           fi
 
-          echo "Trend PR merged. Dispatching GitHub Pages deployment from main."
-          gh api \
-            --method POST \
-            "repos/${REPO}/actions/workflows/deploy-pages.yml/dispatches" \
-            -f ref=main
+          echo "should_deploy=true" >> "${GITHUB_OUTPUT}"
+          echo "Trend PR merged; Pages deploy will run in this workflow."
 
-          echo "Pages deployment dispatch accepted."
+  deploy-pages:
+    needs: merge-trend-update
+    if: needs.merge-trend-update.outputs.should_deploy == 'true'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout merged main
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          ref: main
+
+      - name: Validate Trend Radar dataset
+        run: python3 tools/validate_trends.py
+
+      - name: Setup Pages
+        uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5.0.0
+        with:
+          enablement: true
+
+      - name: Upload static site
+        uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4.0.0
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5
