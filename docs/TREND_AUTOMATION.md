@@ -12,7 +12,7 @@ Unity / Unreal / Real-time Graphics / Shader / C# / C++ / DCC / CG制作を中�
 
 - 毎日09:00 JSTに過去24時間を中心にWebを調査する。
 - 良質な情報が不足する専門カテゴリだけ、最大過去7日間まで段階的に検索範囲を広げる。
-- 件数は固定ノルマにしない。通常15〜30件程度、情報が多い日は最大50件まで許可する。
+- 件数は固定ノルマにしない。通常30〜60件程度、情報が多い日は最大100件まで許可する。
 - 少ない日は低品質情報で水増ししない。
 - Primary Source、公式Documentation、Release Notes、Changelog、Engineering Blog、GitHub、Conference、Research Paper、Project Page、開発者本人の技術発信を優先する。
 - 記事本文・画像・PDF/PPTXはRepositoryへ保存しない。
@@ -108,7 +108,7 @@ Trend Datasetで使用できるCategoryは次の通り。
    - head repository = `DarumaPPAP/MyResourceCenter-Portal`
    - head branch = `trend/YYYY-MM-DD[-suffix]`
    - changed files = `data/trends.json` の1ファイルだけ
-4. Merge成功後、Auto Merge Workflowが`deploy-pages.yml`を`workflow_dispatch`しPortalを再Deployする。
+4. Merge成功後、Auto Merge WorkflowがPortalを再Deployする。
 
 ## 禁止
 
