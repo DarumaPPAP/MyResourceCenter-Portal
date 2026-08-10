@@ -19,7 +19,7 @@
     <nav class="mobile-nav"><a href="index.html">ホーム</a><a href="documents.html">Documents</a><a href="websites.html">Websites</a><a href="collections.html">Collections</a><a href="taxonomy.html">Taxonomy</a></nav>
     <div class="content">
       <section class="hero"><div class="hero-copy"><div class="eyebrow">Canonical Navigation</div><h1>表記を揃えて、資料へ辿る。</h1><p>Domain / Canonical Tag / EngineのRegistryです。Aliasは検索入口として表示しますが、CatalogへAliasを保存することは推奨しません。</p><div class="search-global"><input id="search" type="search" placeholder="RenderGraph / C# / Unity / AI…"><button class="primary-button" id="clear" type="button">クリア</button></div></div><div class="hero-visual"><div class="library-illustration"><div class="book"></div><div class="book"></div><div class="book"></div><div class="book"></div></div></div></section>
-      <section class="section"><div class="section-head"><div><h2>Domains</h2><p>Canonical DomainからTagへ絞り込みます。</p></div></div><div id="domains"></div></section>
+      <section class="section"><div class="section-head"><div><h2>Domains</h2><p>Canonical DomainからTagへ絞り込み、Website / Documentの双方へ移動します。</p></div></div><div id="domains"></div></section>
       <section class="section"><div class="section-head"><div><h2>Engines</h2><p>Engine名・AliasからWebsite / Documentを検索。</p></div></div><div class="taxonomy-tag-grid" id="engines"></div></section>
     </div>
     <footer class="footer">Taxonomy Registry is canonical · legacy unknown values remain explicit</footer>
@@ -31,6 +31,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   const search = document.getElementById('search');
   const domainsRoot = document.getElementById('domains');
   const enginesRoot = document.getElementById('engines');
+  const navigation = key => `<div class="relation-meta"><a class="tag accent" href="websites.html?q=${encodeURIComponent(key)}">Websites</a><a class="tag" href="documents.html?q=${encodeURIComponent(key)}">Documents</a></div>`;
   try {
     const taxonomy = await C.load('taxonomy');
     const initial = C.query('q'); if (initial) search.value = initial;
@@ -40,11 +41,11 @@ window.addEventListener('DOMContentLoaded', async () => {
       const domains = Object.entries(taxonomy.domains || {}).map(([domain, info]) => {
         const domainTags = tags.filter(([key, entry]) => entry.domain === domain).filter(([key, entry]) => !q || [key, entry.displayName, ...(entry.aliases || []), domain, info.displayName].join(' ').toLowerCase().includes(q));
         if (q && !domainTags.length && ![domain, info.displayName].join(' ').toLowerCase().includes(q)) return '';
-        return `<div class="taxonomy-domain"><h2>${C.escapeHtml(info.displayName || domain)} <span class="detail-id">${C.escapeHtml(domain)}</span></h2><div class="taxonomy-tag-grid">${domainTags.map(([key, entry]) => `<a class="taxonomy-tag" href="websites.html?q=${encodeURIComponent(key)}"><b>${C.escapeHtml(entry.displayName || key)}</b><small>${C.escapeHtml(key)}${(entry.aliases || []).length ? ` · alias: ${C.escapeHtml(entry.aliases.join(', '))}` : ''}</small></a>`).join('') || '<div class="detail-empty">該当Tagなし</div>'}</div></div>`;
+        return `<div class="taxonomy-domain"><h2>${C.escapeHtml(info.displayName || domain)} <span class="detail-id">${C.escapeHtml(domain)}</span></h2><div class="taxonomy-tag-grid">${domainTags.map(([key, entry]) => `<div class="taxonomy-tag"><b>${C.escapeHtml(entry.displayName || key)}</b><small>${C.escapeHtml(key)}${(entry.aliases || []).length ? ` · alias: ${C.escapeHtml(entry.aliases.join(', '))}` : ''}</small>${navigation(key)}</div>`).join('') || '<div class="detail-empty">該当Tagなし</div>'}</div></div>`;
       }).join('');
       domainsRoot.innerHTML = domains || '<div class="detail-empty">条件に一致するTaxonomyはありません。</div>';
       const engines = Object.entries(taxonomy.engines || {}).filter(([key, entry]) => !q || [key, entry.displayName, ...(entry.aliases || [])].join(' ').toLowerCase().includes(q));
-      enginesRoot.innerHTML = engines.map(([key, entry]) => `<a class="taxonomy-tag" href="websites.html?q=${encodeURIComponent(key)}"><b>${C.escapeHtml(entry.displayName || key)}</b><small>${C.escapeHtml(key)}${(entry.aliases || []).length ? ` · ${C.escapeHtml(entry.aliases.join(', '))}` : ''}</small></a>`).join('') || '<div class="detail-empty">該当Engineなし</div>';
+      enginesRoot.innerHTML = engines.map(([key, entry]) => `<div class="taxonomy-tag"><b>${C.escapeHtml(entry.displayName || key)}</b><small>${C.escapeHtml(key)}${(entry.aliases || []).length ? ` · ${C.escapeHtml(entry.aliases.join(', '))}` : ''}</small>${navigation(key)}</div>`).join('') || '<div class="detail-empty">該当Engineなし</div>';
     };
     search.addEventListener('input', render);
     document.getElementById('clear').addEventListener('click', () => { search.value = ''; render(); search.focus(); });
