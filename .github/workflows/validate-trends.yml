@@ -117,3 +117,37 @@ jobs:
           JSON
           python3 tools/update_trends.py --input /tmp/trend-items.json --date 2099-01-03
           python3 tools/validate_trends.py
+
+      - name: Smoke test 100-item daily limit
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json
+
+          items = []
+          for index in range(100):
+              items.append({
+                  'title': f'100 item limit smoke test {index + 1}',
+                  'url': f'https://example.com/trend-limit-{index + 1}',
+                  'source': 'CI Fixture',
+                  'publishedAt': '2099-01-04T09:00:00+09:00',
+                  'category': 'Tools',
+                  'type': 'TOOL',
+                  'summary': 'Trend Radarの1日100件上限を実際に通すCI用データ。',
+                  'tags': ['CI'],
+                  'score': 100 - index,
+              })
+
+          with open('/tmp/trend-items-100.json', 'w', encoding='utf-8') as handle:
+              json.dump({'items': items}, handle, ensure_ascii=False)
+          PY
+          python3 tools/update_trends.py --input /tmp/trend-items-100.json --date 2099-01-04
+          python3 tools/validate_trends.py
+          python3 - <<'PY'
+          import json
+
+          with open('data/trends.json', encoding='utf-8') as handle:
+              data = json.load(handle)
+          assert len(data['days'][0]['items']) == 100
+          assert data['days'][0]['items'][-1]['id'].endswith('-100')
+          PY

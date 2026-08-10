@@ -8,10 +8,10 @@
 - General AI/business news is excluded unless it directly changes development technology or workflow.
 - AI-only items do not dominate the feed; AI-for-development is treated as a supporting category.
 - Low-depth articles, hype, leaks, rumors and duplicate rewrites are rejected even when the item count is low.
-- Trend candidate count is not padded; maximum is 50 per day.
+- Trend candidate count is not padded; maximum is 100 per day.
 - Only `data/trends.json` is changed by automated Trend PRs.
 - Automated branches use `trend/YYYY-MM-DD[-suffix]`.
 - `Validate Trend Radar` must succeed before merge.
 - `Auto Merge Trend Updates` re-checks branch, repository, base branch and changed-file scope.
-- Successful automated Trend merge explicitly dispatches the Pages deploy workflow.
+- Successful automated Trend merge deploys the updated Portal.
 - Trend content never auto-promotes into Websites or Documents.

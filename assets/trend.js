@@ -127,7 +127,7 @@
       .filter(day => day && typeof day.date === 'string' && Array.isArray(day.items))
       .sort((a, b) => String(b.date).localeCompare(String(a.date)))
       .slice(0, 3)
-      .map(day => ({...day, items: day.items.slice(0, 50)}));
+      .map(day => ({...day, items: day.items.slice(0, 100)}));
   }
 
   els.search?.addEventListener('input', () => {
