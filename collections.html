@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ja" data-theme="light">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Collections | MyResourceCenter</title>
+  <meta name="description" content="目的と読み順で資料を辿るMyResourceCenter Reading Guide。">
+  <link rel="stylesheet" href="assets/site.css"><link rel="stylesheet" href="assets/detail.css">
+  <script defer src="assets/portal.js"></script><script defer src="assets/catalog.js"></script>
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand-lockup"><div class="brand-mark">M</div><div class="brand-name">MyResourceCenter</div></div>
+    <nav class="side-nav"><a href="index.html"><span class="icon">⌂</span>ホーム</a><a href="documents.html"><span class="icon">▤</span>ドキュメント</a><a href="websites.html"><span class="icon">◎</span>Webサイト</a><a class="active" href="collections.html"><span class="icon">◫</span>コレクション</a><a href="taxonomy.html"><span class="icon">#</span>Taxonomy</a></nav>
+    <div class="sidebar-note">CollectionはHuman向けReading Guideです。Relation Networkとは責務を分離しています。</div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div class="breadcrumb">Collections / Reading Guides</div><div class="top-actions"><button class="icon-button theme-toggle" type="button">Dark</button></div></header>
+    <nav class="mobile-nav"><a href="index.html">ホーム</a><a href="documents.html">Documents</a><a href="websites.html">Websites</a><a href="collections.html">Collections</a><a href="taxonomy.html">Taxonomy</a></nav>
+    <div class="content">
+      <section class="hero"><div class="hero-copy"><div class="eyebrow">Reading Guides</div><h1>目的から、読む順番を見つける。</h1><p>Collectionは資料を優劣で分類する仕組みではなく、特定テーマを基礎→実装→Production Caseへ辿るためのHuman navigationです。</p><div class="search-global"><input id="search" type="search" placeholder="Temporal / GPU Driven / Voxel / AI Agent…"><button class="primary-button" id="clear" type="button">クリア</button></div></div><div class="hero-visual"><div class="library-illustration"><div class="book"></div><div class="book"></div><div class="book"></div><div class="book"></div></div></div></section>
+      <div class="result-meta"><span id="count">読み込み中…</span><span>明示Collectionのみ</span></div>
+      <div class="collection-grid" id="grid"></div>
+    </div>
+    <footer class="footer">Collection ≠ quality score · empty Collectionも削除候補扱いしません</footer>
+  </main>
+</div>
+<script>
+window.addEventListener('DOMContentLoaded', async () => {
+  const C = window.MRCCatalog;
+  const search = document.getElementById('search');
+  const grid = document.getElementById('grid');
+  const count = document.getElementById('count');
+  try {
+    const collections = await C.load('collections');
+    const initial = C.query('q'); if (initial) search.value = initial;
+    const render = () => {
+      const q = search.value.trim().toLowerCase();
+      const rows = collections.filter(item => !q || [item.title, item.description, ...(item.topics || [])].join(' ').toLowerCase().includes(q));
+      count.textContent = `${rows.length} / ${collections.length} Collections`;
+      grid.innerHTML = rows.map(item => `<a class="collection-card" href="collection.html?id=${encodeURIComponent(item.id)}"><div class="collection-count">${(item.resources || []).length} Resources</div><h2>${C.escapeHtml(item.title)}</h2><p>${C.escapeHtml(item.description)}</p><div class="tag-cloud" style="margin-top:12px">${C.chips(item.topics, 'tag accent')}</div></a>`).join('') || '<div class="detail-empty">条件に一致するCollectionはありません。</div>';
+    };
+    search.addEventListener('input', render);
+    document.getElementById('clear').addEventListener('click', () => { search.value = ''; render(); search.focus(); });
+    render();
+  } catch (error) { console.error(error); grid.innerHTML = '<div class="detail-empty">Collection Catalogの読み込みに失敗しました。</div>'; }
+});
+</script>
+</body></html>
