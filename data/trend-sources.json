@@ -7,8 +7,8 @@
   "keywords": [
     {
       "name": "Unity",
-      "aliases": ["Unity 6", "URP", "HDRP", "SRP", "RenderGraph", "RendererFeature", "Shader Graph", "DOTS", "ECS", "Burst", "Addressables", "Lightmap", "APV"],
-      "zennTopics": ["unity", "unity6", "urp", "hdrp", "rendergraph", "shadergraph", "dots", "ecs", "addressables"],
+      "aliases": ["Unity 6", "Unity Engine", "Unity Editor", "Unity ECS", "Unity Entities", "URP", "HDRP", "SRP", "RenderGraph", "RendererFeature", "Shader Graph", "DOTS", "Burst", "Addressables", "Lightmap", "APV"],
+      "zennTopics": ["unity", "unity6", "urp", "hdrp", "rendergraph", "shadergraph", "dots", "addressables"],
       "qiitaTags": ["Unity", "Unity6", "URP", "RenderGraph", "ShaderGraph"]
     },
     {
@@ -38,7 +38,7 @@
     {
       "name": "CG",
       "aliases": ["3DCG", "Computer Graphics", "Graphics", "Rendering", "GPU", "モデリング", "Modeling", "Technical Art", "テクニカルアート"],
-      "zennTopics": ["graphics", "レンダリング", "3dcg", "gpu", "technicalart"],
+      "zennTopics": ["cg", "graphics", "レンダリング", "3dcg", "gpu"],
       "qiitaTags": ["3DCG", "GPU", "Rendering"]
     },
     {

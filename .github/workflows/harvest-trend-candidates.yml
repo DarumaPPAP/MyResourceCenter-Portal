@@ -10,12 +10,12 @@ on:
     paths:
       - 'data/trend-sources.json'
       - 'tools/harvest_trend_sources.py'
+      - 'tools/refine_trend_candidates.py'
       - 'tools/validate_trend_candidates.py'
       - '.github/workflows/harvest-trend-candidates.yml'
 
 permissions:
   contents: write
-  pull-requests: write
 
 jobs:
   harvest:
@@ -34,18 +34,21 @@ jobs:
 
       - name: Compile harvest tools
         run: |
-          python3 -m py_compile tools/harvest_trend_sources.py tools/validate_trend_candidates.py
+          python3 -m py_compile \
+            tools/harvest_trend_sources.py \
+            tools/refine_trend_candidates.py \
+            tools/validate_trend_candidates.py
 
       - name: Harvest source-native candidates
         run: python3 tools/harvest_trend_sources.py
 
+      - name: Refine candidates and add note API hits
+        run: python3 tools/refine_trend_candidates.py
+
       - name: Validate candidate dataset
         run: python3 tools/validate_trend_candidates.py
 
-      - name: Create audited candidate refresh PR
-        env:
-          GH_TOKEN: ${{ github.token }}
-          REPO: ${{ github.repository }}
+      - name: Publish transient candidate cache branch
         shell: bash
         run: |
           set -euo pipefail
@@ -55,57 +58,21 @@ jobs:
             exit 0
           fi
 
-          branch="trend-candidates/$(date -u +%Y-%m-%d)-${GITHUB_RUN_ID}"
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git switch -c "${branch}"
+
+          # Candidate data is transient discovery cache, not Portal source-of-truth.
+          # Keep main untouched and replace one dedicated cache branch each run.
+          git switch -c trend-candidates/latest
           git add data/trend-candidates.json
 
           mapfile -t staged < <(git diff --cached --name-only)
           if [[ "${#staged[@]}" -ne 1 || "${staged[0]}" != 'data/trend-candidates.json' ]]; then
-            echo 'Refusing candidate update: only data/trend-candidates.json may change.'
+            echo 'Refusing candidate publish: only data/trend-candidates.json may change.'
             printf 'Staged file: %s\n' "${staged[@]}"
             exit 1
           fi
 
-          git commit -m 'chore: refresh Trend candidate harvest'
-          head_sha="$(git rev-parse HEAD)"
-          git push origin "HEAD:${branch}"
-
-          pr_url="$(gh pr create \
-            --repo "${REPO}" \
-            --base main \
-            --head "${branch}" \
-            --title 'chore: refresh Trend candidate harvest' \
-            --body 'Automated source-native candidate refresh. Only `data/trend-candidates.json` is changed. Candidate data is transient discovery metadata and is not promoted to permanent Knowledge.')"
-
-          pr_number="$(gh pr view "${pr_url}" --repo "${REPO}" --json number --jq '.number')"
-          pr_head_sha="$(gh pr view "${pr_url}" --repo "${REPO}" --json headRefOid --jq '.headRefOid')"
-
-          if [[ "${pr_head_sha}" != "${head_sha}" ]]; then
-            echo 'Refusing merge: PR head changed after harvest validation.'
-            exit 1
-          fi
-
-          mapfile -t files < <(gh api --paginate "repos/${REPO}/pulls/${pr_number}/files" --jq '.[].filename')
-          if [[ "${#files[@]}" -ne 1 || "${files[0]}" != 'data/trend-candidates.json' ]]; then
-            echo 'Refusing merge: candidate PR scope changed.'
-            printf 'Changed file: %s\n' "${files[@]}"
-            exit 1
-          fi
-
-          merge_json="$(gh api \
-            --method PUT \
-            "repos/${REPO}/pulls/${pr_number}/merge" \
-            -f merge_method=merge \
-            -f sha="${head_sha}" \
-            -f commit_title="chore: refresh Trend candidate harvest (#${pr_number})")"
-
-          if [[ "$(jq -r '.merged // false' <<<"${merge_json}")" != 'true' ]]; then
-            echo 'Candidate PR merge failed.'
-            jq . <<<"${merge_json}"
-            exit 1
-          fi
-
-          gh api --method DELETE "repos/${REPO}/git/refs/heads/${branch//\//%2F}" || true
-          echo "Candidate harvest merged as PR #${pr_number}."
+          git commit -m 'chore: refresh transient Trend candidate cache'
+          git push --force origin HEAD:refs/heads/trend-candidates/latest
+          echo 'Published candidate cache to trend-candidates/latest.'

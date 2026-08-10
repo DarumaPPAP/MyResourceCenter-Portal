@@ -13,6 +13,7 @@ on:
       - 'tools/validate_trends.py'
       - 'tools/update_trends.py'
       - 'tools/harvest_trend_sources.py'
+      - 'tools/refine_trend_candidates.py'
       - 'tools/validate_trend_candidates.py'
       - '.github/workflows/validate-trends.yml'
       - '.github/workflows/harvest-trend-candidates.yml'
@@ -29,6 +30,7 @@ on:
       - 'tools/validate_trends.py'
       - 'tools/update_trends.py'
       - 'tools/harvest_trend_sources.py'
+      - 'tools/refine_trend_candidates.py'
       - 'tools/validate_trend_candidates.py'
       - '.github/workflows/validate-trends.yml'
       - '.github/workflows/harvest-trend-candidates.yml'
@@ -49,6 +51,7 @@ jobs:
             tools/validate_trends.py \
             tools/update_trends.py \
             tools/harvest_trend_sources.py \
+            tools/refine_trend_candidates.py \
             tools/validate_trend_candidates.py
 
       - name: Validate Trend datasets
@@ -56,11 +59,12 @@ jobs:
           python3 tools/validate_trends.py
           python3 tools/validate_trend_candidates.py
 
-      - name: Smoke test Harvest parser
+      - name: Smoke test Harvest parser and domain filter
         shell: bash
         run: |
           python3 - <<'PY'
           from tools.harvest_trend_sources import parse_datetime, parse_feed
+          from tools.refine_trend_candidates import remove_ambiguous_matches
 
           cutoff = parse_datetime('2026-08-03T00:00:00+09:00')
           fixture = b'''<?xml version="1.0"?>
@@ -73,7 +77,22 @@ jobs:
           items = parse_feed(fixture, 'Zenn', {'Unity'}, 'zenn-topic-feed:unity', cutoff)
           assert len(items) == 1
           assert items[0]['matchedKeywords'] == ['Unity']
-          assert items[0]['url'] == 'https://example.com/zenn-smoke'
+
+          false_hit = {
+              'title': 'Databricks Unity Catalog update',
+              'snippet': 'Unity Catalog governance',
+              'tags': [],
+              'matchedKeywords': ['Unity'],
+          }
+          assert remove_ambiguous_matches(false_hit) is None
+
+          real_hit = {
+              'title': 'Unity 6 URP RenderGraph update',
+              'snippet': 'Unity Editor rendering',
+              'tags': ['Unity'],
+              'matchedKeywords': ['Unity'],
+          }
+          assert remove_ambiguous_matches(real_hit) is not None
           PY
 
       - name: Smoke test Trend updater
