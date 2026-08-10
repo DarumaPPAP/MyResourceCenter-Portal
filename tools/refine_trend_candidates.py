@@ -52,8 +52,9 @@ def note_candidates(config: dict, cutoff: datetime, diagnostics: list[dict]) -> 
 
     for query in queries:
         start = 0
-        size = 100
-        for _ in range(5):
+        # noteの検索APIは公開仕様ではないため、1回の取得量を小さくして負荷と互換性を優先する。
+        size = 20
+        for _ in range(25):
             params = urlencode({
                 'context': 'note',
                 'q': query,
@@ -144,7 +145,7 @@ def remove_ambiguous_matches(item: dict) -> dict | None:
             'unity ai gateway',
         )
         game_unity_markers = (
-            'unity engine', 'unity 6', 'unity editor', 'unity3d', 'unity ',
+            'unity engine', 'unity 6', 'unity editor', 'unity3d',
             'monobehaviour', 'gameobject', 'scriptableobject', 'urp', 'hdrp',
             'addressables', 'rendergraph', 'shader graph', 'il2cpp', 'ugui',
         )
