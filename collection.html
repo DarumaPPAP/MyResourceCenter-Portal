@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ja" data-theme="light">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Collection Detail | MyResourceCenter</title>
+  <meta name="description" content="MyResourceCenter CollectionのReading Guideと資料の役割を確認します。">
+  <link rel="stylesheet" href="assets/site.css"><link rel="stylesheet" href="assets/detail.css">
+  <script defer src="assets/portal.js"></script><script defer src="assets/catalog.js"></script>
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand-lockup"><div class="brand-mark">M</div><div class="brand-name">MyResourceCenter</div></div>
+    <nav class="side-nav"><a href="index.html"><span class="icon">⌂</span>ホーム</a><a href="documents.html"><span class="icon">▤</span>ドキュメント</a><a href="websites.html"><span class="icon">◎</span>Webサイト</a><a class="active" href="collections.html"><span class="icon">◫</span>コレクション</a><a href="taxonomy.html"><span class="icon">#</span>Taxonomy</a></nav>
+    <div class="sidebar-note">順番はCollectionに明示された配列順を使用します。AIが自動並び替えしません。</div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div class="breadcrumb"><a href="collections.html">Collections</a> / Reading Guide</div><div class="top-actions"><button class="icon-button theme-toggle" type="button">Dark</button></div></header>
+    <nav class="mobile-nav"><a href="index.html">ホーム</a><a href="documents.html">Documents</a><a href="websites.html">Websites</a><a href="collections.html">Collections</a><a href="taxonomy.html">Taxonomy</a></nav>
+    <div class="content" id="content"><div class="detail-empty">Collectionを読み込んでいます…</div></div>
+    <footer class="footer">Reading order is explicit · no automatic promotion</footer>
+  </main>
+</div>
+<script>
+window.addEventListener('DOMContentLoaded', async () => {
+  const C = window.MRCCatalog;
+  const root = document.getElementById('content');
+  try {
+    const { collections, resources, websites, relations, manifest } = await C.loadMany('collections', 'resources', 'websites', 'relations', 'manifest');
+    const collection = collections.find(item => item.id === C.query('id'));
+    if (!collection) { root.innerHTML = '<div class="detail-empty">指定されたCollectionが見つかりません。<br><a href="collections.html">Collection一覧へ戻る</a></div>'; return; }
+    document.title = `${collection.title} | MyResourceCenter`;
+    const resourcesById = C.byId(resources);
+    const websiteIds = new Set(websites.map(item => item.id));
+    const reading = (collection.resources || []).map((member, index) => {
+      const resource = resourcesById.get(member.id) || { id: member.id, title: member.id };
+      const href = C.resourceHref(resource, websiteIds);
+      const relationCount = C.relationEntries(member.id, relations, resourcesById).length;
+      const title = C.escapeHtml(resource.title || member.id);
+      const link = href ? `<a href="${C.escapeHtml(href)}"${href.startsWith('http') ? ' target="_blank" rel="noopener noreferrer"' : ''}>${title}</a>` : `<span class="reading-title">${title}</span>`;
+      return `<div class="reading-item"><div class="reading-order">${index + 1}</div><div>${link}<div class="reading-sub">${C.escapeHtml(member.id)} · ${C.escapeHtml(resource.kind || 'resource')}</div><div class="reading-meta"><span class="role-chip">${C.escapeHtml(C.roleLabel(member.role))}</span>${relationCount ? `<span class="relation-direction">Relations ${relationCount}</span>` : ''}</div></div><div>${resource.url && !websiteIds.has(resource.id) ? C.externalLink(resource.url, 'Source') : ''}</div></div>`;
+    }).join('');
+    root.innerHTML = `
+      <div class="detail-shell">
+        <div class="detail-main">
+          <section class="detail-hero"><div class="eyebrow">Collection / Reading Guide</div><h1>${C.escapeHtml(collection.title)}</h1><p>${C.escapeHtml(collection.description)}</p><div class="detail-id">${C.escapeHtml(collection.id)}</div><div class="detail-actions"><a class="secondary-button" href="collections.html">← Collection一覧</a></div></section>
+          <section class="detail-section"><h2>Reading Order</h2><p class="description">Collection Catalogに保存された順番とRoleをそのまま表示します。</p><div class="reading-list">${reading || '<div class="detail-empty">このCollectionにはまだ明示Resourceがありません。空Collectionを低品質・削除候補とは扱いません。</div>'}</div></section>
+        </div>
+        <aside class="detail-side">
+          <section class="detail-section"><h2>Topics</h2><div class="tag-cloud">${C.chips(collection.topics, 'tag accent')}</div></section>
+          <div class="privacy-note"><b>Collectionの責務</b><br>Human向けReading Guideです。Relation GraphやHealth Scoreとは別物で、所属していないSourceを低品質扱いしません。</div>
+          <section class="detail-section"><h2>Catalog lineage</h2><p class="catalog-freshness">Source commit<br>${C.escapeHtml(manifest.sourceCommit || 'unknown')}</p><p class="catalog-freshness">Generated<br>${C.escapeHtml(manifest.generatedAt || 'unknown')}</p></section>
+        </aside>
+      </div>`;
+  } catch (error) { console.error(error); root.innerHTML = '<div class="detail-empty">Collection Catalogの読み込みに失敗しました。</div>'; }
+});
+</script>
+</body></html>
