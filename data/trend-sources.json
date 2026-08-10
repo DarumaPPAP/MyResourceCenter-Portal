@@ -9,49 +9,57 @@
       "name": "Unity",
       "aliases": ["Unity 6", "Unity Engine", "Unity Editor", "Unity ECS", "Unity Entities", "URP", "HDRP", "SRP", "RenderGraph", "RendererFeature", "Shader Graph", "DOTS", "Burst", "Addressables", "Lightmap", "APV"],
       "zennTopics": ["unity", "unity6", "urp", "hdrp", "rendergraph", "shadergraph", "dots", "addressables"],
-      "qiitaTags": ["Unity", "Unity6", "URP", "RenderGraph", "ShaderGraph"]
+      "qiitaTags": ["Unity", "Unity6", "URP", "RenderGraph", "ShaderGraph"],
+      "noteTags": ["Unity", "Unity6"]
     },
     {
       "name": "Unreal",
       "aliases": ["Unreal Engine", "UE5", "UnrealEngine", "Nanite", "Lumen", "Substrate", "Niagara", "PCG", "RHI", "TSR", "MetaHuman"],
       "zennTopics": ["unrealengine", "unrealengine5", "ue5"],
-      "qiitaTags": ["UnrealEngine", "UE5"]
+      "qiitaTags": ["UnrealEngine", "UE5"],
+      "noteTags": ["Unreal", "UnrealEngine", "UE5"]
     },
     {
       "name": "Shader",
       "aliases": ["HLSL", "GLSL", "SPIR-V", "Vulkan", "DirectX", "DX12", "Metal", "WebGPU", "Compute Shader", "Mesh Shader", "Ray Tracing", "Path Tracing", "PBR", "TAA", "DLSS", "FSR"],
       "zennTopics": ["shader", "hlsl", "glsl", "vulkan", "directx", "webgpu", "shadergraph"],
-      "qiitaTags": ["Shader", "HLSL", "Vulkan", "DirectX"]
+      "qiitaTags": ["Shader", "HLSL", "Vulkan", "DirectX"],
+      "noteTags": ["Shader", "HLSL"]
     },
     {
       "name": "C#",
       "aliases": ["CSharp", ".NET", "Roslyn", "NativeAOT", "AOT", "JIT", "GC"],
       "zennTopics": ["csharp", "dotnet"],
-      "qiitaTags": ["C#", ".NET"]
+      "qiitaTags": ["C#", ".NET"],
+      "noteTags": ["CSharp"]
     },
     {
       "name": "C++",
       "aliases": ["CPP", "C++26", "Clang", "LLVM", "MSVC", "SIMD"],
       "zennTopics": ["cpp", "cplusplus", "llvm"],
-      "qiitaTags": ["C++", "LLVM"]
+      "qiitaTags": ["C++", "LLVM"],
+      "noteTags": ["CPP"]
     },
     {
       "name": "CG",
       "aliases": ["3DCG", "Computer Graphics", "Graphics", "Rendering", "GPU", "モデリング", "Modeling", "Technical Art", "テクニカルアート"],
       "zennTopics": ["cg", "graphics", "レンダリング", "3dcg", "gpu"],
-      "qiitaTags": ["3DCG", "GPU", "Rendering"]
+      "qiitaTags": ["3DCG", "GPU", "Rendering"],
+      "noteTags": ["CG", "3DCG", "モデリング"]
     },
     {
       "name": "Blender",
       "aliases": ["Geometry Nodes", "GeometryNodes", "Cycles", "Eevee"],
       "zennTopics": ["blender", "geometrynodes"],
-      "qiitaTags": ["Blender"]
+      "qiitaTags": ["Blender"],
+      "noteTags": ["Blender"]
     },
     {
       "name": "Houdini",
       "aliases": ["SideFX", "VEX", "SOP", "Solaris", "Karma"],
       "zennTopics": ["houdini"],
-      "qiitaTags": ["Houdini"]
+      "qiitaTags": ["Houdini"],
+      "noteTags": ["Houdini"]
     }
   ],
   "hatenaFeeds": [

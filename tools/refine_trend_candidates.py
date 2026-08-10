@@ -38,19 +38,24 @@ def clean_text(value: object) -> str:
 
 
 def note_candidates(config: dict, cutoff: datetime, diagnostics: list[dict]) -> list[dict]:
-    """Harvest note from its public hashtag "new" pages.
+    """Harvest note from public hashtag newest pages.
 
-    We intentionally do not depend on note's undocumented search JSON API because
-    GitHub-hosted runners receive HTTP 403 from it. Public hashtag pages are the
-    browser-facing path and expose a dedicated newest tab via ``?f=new``.
+    note の非公開検索APIには依存しない。各Domainの noteTags を
+    ``/hashtag/<tag>?f=new`` で巡回し、記事ページの公開日時を確認する。
     """
     result: list[dict] = []
     failures = 0
-    visited: set[str] = set()
-    queries = [str(entry['name']) for entry in config.get('keywords', [])]
+    visited: dict[str, set[str]] = {}
+    targets: list[tuple[str, str]] = []
 
-    for query in queries:
-        hashtag_url = f'https://note.com/hashtag/{quote(query, safe="")}?f=new'
+    for entry in config.get('keywords', []):
+        domain = str(entry['name'])
+        note_tags = entry.get('noteTags') or [domain]
+        for tag in note_tags:
+            targets.append((domain, str(tag)))
+
+    for domain, note_tag in targets:
+        hashtag_url = f'https://note.com/hashtag/{quote(note_tag, safe="")}?f=new'
         try:
             html = fetch_text(hashtag_url)
             links = links_from_html(
@@ -70,9 +75,23 @@ def note_candidates(config: dict, cutoff: datetime, diagnostics: list[dict]) -> 
             continue
 
         for article_url, anchor in links:
-            if article_url in visited:
+            matched = visited.setdefault(article_url, set())
+            if domain in matched:
                 continue
-            visited.add(article_url)
+            matched.add(domain)
+
+            # 同じ記事を別Tagで既に取得済みなら、後段のdedupeでKeywordだけ統合する。
+            existing = next((x for x in result if x.get('url') == article_url), None)
+            if existing is not None:
+                existing['matchedKeywords'] = sorted(
+                    set(existing.get('matchedKeywords', [])) | {domain}
+                )
+                existing['discoveredVia'] = '|'.join(sorted(
+                    set(str(existing.get('discoveredVia', '')).split('|'))
+                    | {f'note-hashtag-new:{note_tag}'}
+                ))
+                continue
+
             try:
                 article_html = fetch_text(article_url)
                 title, published, snippet = page_metadata(
@@ -96,17 +115,17 @@ def note_candidates(config: dict, cutoff: datetime, diagnostics: list[dict]) -> 
                 'url': article_url,
                 'source': 'note',
                 'publishedAt': published.isoformat(timespec='seconds') if published else None,
-                'matchedKeywords': [query],
-                'tags': [],
+                'matchedKeywords': [domain],
+                'tags': [note_tag],
                 'snippet': clean_text(snippet)[:MAX_SNIPPET],
-                'discoveredVia': f'note-hashtag-new:{query}',
+                'discoveredVia': f'note-hashtag-new:{note_tag}',
                 'needsDateVerification': published is None,
             })
 
     diagnostics.append({
         'source': 'note-hashtag',
         'status': 'ok' if failures == 0 else 'partial',
-        'targets': len(queries),
+        'targets': len(targets),
         'failures': failures,
         'items': len(result),
         'coverage': 'public-hashtag-new-pages',
