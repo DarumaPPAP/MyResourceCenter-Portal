@@ -1,0 +1,58 @@
+name: Validate Trend Radar
+
+on:
+  pull_request:
+    paths:
+      - 'trend.html'
+      - 'assets/trend.css'
+      - 'assets/trend.js'
+      - 'assets/portal.js'
+      - 'data/trends.json'
+      - 'tools/validate_trends.py'
+      - 'tools/update_trends.py'
+      - '.github/workflows/validate-trends.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'trend.html'
+      - 'assets/trend.css'
+      - 'assets/trend.js'
+      - 'assets/portal.js'
+      - 'data/trends.json'
+      - 'tools/validate_trends.py'
+      - 'tools/update_trends.py'
+      - '.github/workflows/validate-trends.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+      - name: Validate Trend dataset
+        run: python3 tools/validate_trends.py
+      - name: Smoke test Trend updater
+        shell: bash
+        run: |
+          cat > /tmp/trend-items.json <<'JSON'
+          {
+            "items": [
+              {
+                "title": "Updater smoke test",
+                "url": "https://example.com/trend-smoke-test",
+                "source": "CI Fixture",
+                "publishedAt": "2099-01-03T09:00:00+09:00",
+                "category": "Tools",
+                "type": "TOOL",
+                "summary": "Trend updaterの保持・検証経路だけを確認するCI用データ。",
+                "tags": ["CI"],
+                "score": 80
+              }
+            ]
+          }
+          JSON
+          python3 tools/update_trends.py --input /tmp/trend-items.json --date 2099-01-03
+          python3 tools/validate_trends.py
