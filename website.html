@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ja" data-theme="light">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Website Detail | MyResourceCenter</title>
+  <meta name="description" content="登録Webサイトの公開metadata、明示Relation、Collection所属を確認します。">
+  <link rel="stylesheet" href="assets/site.css"><link rel="stylesheet" href="assets/detail.css">
+  <script defer src="assets/portal.js"></script><script defer src="assets/catalog.js"></script>
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand-lockup"><div class="brand-mark">M</div><div class="brand-name">MyResourceCenter</div></div>
+    <nav class="side-nav">
+      <a href="index.html"><span class="icon">⌂</span>ホーム</a>
+      <a href="documents.html"><span class="icon">▤</span>ドキュメント</a>
+      <a class="active" href="websites.html"><span class="icon">◎</span>Webサイト</a>
+      <a href="collections.html"><span class="icon">◫</span>コレクション</a>
+      <a href="taxonomy.html"><span class="icon">#</span>Taxonomy</a>
+    </nav>
+    <div class="sidebar-note">Related Resourcesはrelations.jsonに明示されたEdgeだけを表示し、Tag類似で推測しません。</div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div class="breadcrumb"><a href="websites.html">Websites</a> / Detail</div><div class="top-actions"><button class="icon-button theme-toggle" type="button">Dark</button></div></header>
+    <nav class="mobile-nav"><a href="index.html">ホーム</a><a href="documents.html">Documents</a><a href="websites.html">Websites</a><a href="collections.html">Collections</a><a href="taxonomy.html">Taxonomy</a></nav>
+    <div class="content" id="content"><div class="detail-empty">Website metadataを読み込んでいます…</div></div>
+    <footer class="footer">MyResourceCenter Human Portal · explicit relations only</footer>
+  </main>
+</div>
+<script>
+window.addEventListener('DOMContentLoaded', async () => {
+  const C = window.MRCCatalog;
+  const root = document.getElementById('content');
+  try {
+    const { websites, resources, relations, collections, manifest } = await C.loadMany('websites', 'resources', 'relations', 'collections', 'manifest');
+    const id = C.query('id');
+    const website = websites.find(item => item.id === id);
+    if (!website) {
+      root.innerHTML = '<div class="detail-empty">指定されたWebsiteが見つかりません。<br><a href="websites.html">Website一覧へ戻る</a></div>';
+      return;
+    }
+    document.title = `${website.title} | MyResourceCenter`;
+    const resourcesById = C.byId(resources);
+    const websiteIds = new Set(websites.map(item => item.id));
+    const related = C.relationEntries(id, relations, resourcesById);
+    const memberships = C.collectionEntries(id, collections);
+    const relatedHtml = related.map(item => {
+      const resource = item.resource || { id: item.otherId, title: item.otherId };
+      const href = C.resourceHref(resource, websiteIds);
+      const title = C.escapeHtml(resource.title || item.otherId);
+      const link = href ? `<a href="${C.escapeHtml(href)}"${href.startsWith('http') ? ' target="_blank" rel="noopener noreferrer"' : ''}>${title}</a>` : `<b>${title}</b>`;
+      return `<div class="relation-card">${link}<div class="data-sub">${C.escapeHtml(item.otherId)}</div><div class="relation-meta"><span class="relation-direction">${item.outgoing ? '→' : '←'} ${C.escapeHtml(C.relationLabel(item.edge.relation))}</span><span class="source-type">${C.escapeHtml(resource.kind || 'resource')}</span></div></div>`;
+    }).join('');
+    const collectionsHtml = memberships.map(item => `<div class="collection-mini"><a href="collection.html?id=${encodeURIComponent(item.collection.id)}">${C.escapeHtml(item.collection.title)}</a><div class="relation-meta"><span class="role-chip">${C.escapeHtml(C.roleLabel(item.member.role))}</span></div></div>`).join('');
+    const topics = (website.topics || []).map(topic => `<a class="tag accent" href="websites.html?q=${encodeURIComponent(topic)}">${C.escapeHtml(topic)}</a>`).join('');
+    const tags = (website.tags || []).map(tag => `<a class="tag" href="websites.html?q=${encodeURIComponent(tag)}">${C.escapeHtml(tag)}</a>`).join('');
+    root.innerHTML = `
+      <div class="detail-shell">
+        <div class="detail-main">
+          <section class="detail-hero">
+            <div class="eyebrow">Website Detail</div><h1>${C.escapeHtml(website.title)}</h1>
+            <p>${C.escapeHtml(website.summary || 'Source Factを管理する登録Webリソース。')}</p>
+            <div class="detail-id">${C.escapeHtml(website.id)}</div>
+            <div class="detail-actions">${C.externalLink(website.canonicalUrl || website.url)}<a class="secondary-button" href="websites.html">← Website一覧</a></div>
+          </section>
+          <section class="detail-section"><h2>Source metadata</h2><p class="description">Public Projectionで許可されたSource metadataのみ。</p>
+            <dl class="detail-grid">
+              <div class="detail-field"><dt>Publisher</dt><dd>${C.escapeHtml(website.publisher || '—')}</dd></div>
+              <div class="detail-field"><dt>Review State</dt><dd>${C.escapeHtml(website.reviewState || '—')}</dd></div>
+              <div class="detail-field"><dt>Use State</dt><dd>${C.escapeHtml(website.useState || '—')}</dd></div>
+              <div class="detail-field"><dt>Confidence</dt><dd>${C.escapeHtml(website.confidence || '—')}</dd></div>
+              <div class="detail-field"><dt>Freshness</dt><dd>${C.escapeHtml(website.freshness || '—')}</dd></div>
+              <div class="detail-field"><dt>Content Type</dt><dd>${C.escapeHtml(website.contentType || website.kind || 'website')}</dd></div>
+            </dl>
+          </section>
+          <section class="detail-section"><h2>Topics / Tags</h2><p class="description">検索・Taxonomy探索用metadata。</p><div class="tag-cloud">${topics}${tags}</div></section>
+          <section class="detail-section"><h2>Related Resources</h2><p class="description">relations.jsonに存在する明示Edgeのみ。類似度やTag一致からは生成しません。</p><div class="relation-list">${relatedHtml || '<div class="detail-empty">明示Relationはありません。</div>'}</div></section>
+        </div>
+        <aside class="detail-side">
+          <section class="detail-section"><h2>Collections</h2><p class="description">Reading Guide内での明示的な所属。</p><div class="collection-list">${collectionsHtml || '<div class="detail-empty">Collection未所属です。</div>'}</div></section>
+          <div class="privacy-note"><b>Source Fact / Knowledge境界</b><br>Source Note、Markdown本文、Evidence、Search Index、LineageはPortalへ公開しません。Source変更からKnowledgeを自動更新しません。</div>
+          <section class="detail-section"><h2>Catalog lineage</h2><p class="catalog-freshness">Source commit<br>${C.escapeHtml(manifest.sourceCommit || 'unknown')}</p><p class="catalog-freshness">Generated<br>${C.escapeHtml(manifest.generatedAt || 'unknown')}</p></section>
+        </aside>
+      </div>`;
+  } catch (error) {
+    console.error(error);
+    root.innerHTML = '<div class="detail-empty">Website Catalogの読み込みに失敗しました。</div>';
+  }
+});
+</script>
+</body></html>
