@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ja" data-theme="light">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Document Detail | MyResourceCenter</title>
+  <meta name="description" content="MyResourceCenterの公開可能なDocument metadataを詳しく確認します。">
+  <link rel="stylesheet" href="assets/site.css"><link rel="stylesheet" href="assets/detail.css">
+  <script defer src="assets/portal.js"></script><script defer src="assets/catalog.js"></script>
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand-lockup"><div class="brand-mark">M</div><div class="brand-name">MyResourceCenter</div></div>
+    <nav class="side-nav">
+      <a href="index.html"><span class="icon">⌂</span>ホーム</a>
+      <a class="active" href="documents.html"><span class="icon">▤</span>ドキュメント</a>
+      <a href="websites.html"><span class="icon">◎</span>Webサイト</a>
+      <a href="collections.html"><span class="icon">◫</span>コレクション</a>
+      <a href="taxonomy.html"><span class="icon">#</span>Taxonomy</a>
+    </nav>
+    <div class="sidebar-note">本文・原資料はprivate Source of Truthに保持し、Portalには公開可能なmetadataだけを表示します。</div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div class="breadcrumb"><a href="documents.html">Documents</a> / Detail</div><div class="top-actions"><button class="icon-button theme-toggle" type="button">Dark</button></div></header>
+    <nav class="mobile-nav"><a href="index.html">ホーム</a><a href="documents.html">Documents</a><a href="websites.html">Websites</a><a href="collections.html">Collections</a><a href="taxonomy.html">Taxonomy</a></nav>
+    <div class="content" id="content"><div class="detail-empty">Document metadataを読み込んでいます…</div></div>
+    <footer class="footer">MyResourceCenter Human Portal · public-safe metadata only</footer>
+  </main>
+</div>
+<script>
+window.addEventListener('DOMContentLoaded', async () => {
+  const C = window.MRCCatalog;
+  const root = document.getElementById('content');
+  try {
+    const { documents, taxonomy, manifest } = await C.loadMany('documents', 'taxonomy', 'manifest');
+    const id = C.query('id');
+    const doc = documents.find(item => item.id === id);
+    if (!doc) {
+      root.innerHTML = '<div class="detail-empty">指定されたDocumentが見つかりません。<br><a href="documents.html">Document一覧へ戻る</a></div>';
+      return;
+    }
+    document.title = `${doc.title} | MyResourceCenter`;
+    const registry = taxonomy.tags || {};
+    const canonical = (doc.tags || []).filter(tag => registry[tag]);
+    const legacy = (doc.tags || []).filter(tag => !registry[tag]);
+    const tagLinks = (doc.tags || []).map(tag => `<a class="tag" href="documents.html?q=${encodeURIComponent(tag)}">${C.escapeHtml(tag)}</a>`).join('');
+    const canonicalLinks = canonical.map(tag => {
+      const entry = registry[tag];
+      return `<a class="taxonomy-tag" href="taxonomy.html?q=${encodeURIComponent(tag)}"><b>${C.escapeHtml(entry.displayName || tag)}</b><small>${C.escapeHtml(tag)} · ${C.escapeHtml(entry.domain || '')}</small></a>`;
+    }).join('');
+    root.innerHTML = `
+      <div class="detail-shell">
+        <div class="detail-main">
+          <section class="detail-hero">
+            <div class="eyebrow">Document Detail</div>
+            <h1>${C.escapeHtml(doc.title)}</h1>
+            <p>公開可能なDocument metadataを表示しています。本文・原資料・Knowledge Figureのprivate pathはPortalへ公開しません。</p>
+            <div class="detail-id">${C.escapeHtml(doc.id)}</div>
+            <div class="detail-actions"><a class="secondary-button" href="documents.html">← Document一覧</a></div>
+          </section>
+          <section class="detail-section">
+            <h2>資料情報</h2><p class="description">検索・分類に必要な公開metadata。</p>
+            <dl class="detail-grid">
+              <div class="detail-field"><dt>Format</dt><dd>${C.escapeHtml(doc.sourceFormat || 'Unknown')}</dd></div>
+              <div class="detail-field"><dt>Engine / Context</dt><dd>${C.escapeHtml(doc.engine || 'General')}</dd></div>
+              <div class="detail-field"><dt>Level</dt><dd>${C.escapeHtml(doc.level || '—')}</dd></div>
+              <div class="detail-field"><dt>Catalog Schema</dt><dd>${C.escapeHtml(manifest.schemaVersion || '—')}</dd></div>
+            </dl>
+          </section>
+          <section class="detail-section">
+            <h2>Tags</h2><p class="description">Relationではなく探索用metadataです。同じTagのDocumentへ絞り込めます。</p>
+            <div class="tag-cloud">${tagLinks || '<span class="detail-empty">Tagなし</span>'}</div>
+          </section>
+          <section class="detail-section">
+            <h2>Canonical Taxonomy</h2><p class="description">現Taxonomy Registryと明示一致するTagだけを表示します。</p>
+            ${canonicalLinks ? `<div class="taxonomy-tag-grid">${canonicalLinks}</div>` : '<div class="detail-empty">Canonical Registryとの明示一致はありません。Legacy Tagを自動変換しません。</div>'}
+          </section>
+        </div>
+        <aside class="detail-side">
+          <div class="privacy-note"><b>公開境界</b><br>Markdown本文、PDF/PPTX原本、画像path、Evidence、Search Index、Cross Repository Lineageはprivate側に保持されます。</div>
+          <section class="detail-section"><h2>Catalog lineage</h2><p class="catalog-freshness">Source commit<br>${C.escapeHtml(manifest.sourceCommit || 'unknown')}</p><p class="catalog-freshness">Generated<br>${C.escapeHtml(manifest.generatedAt || 'unknown')}</p></section>
+          ${legacy.length ? `<section class="detail-section"><h2>Legacy / Unregistered Tags</h2><p class="description">推測Canonical化せず、そのまま保持します。</p><div class="tag-cloud">${C.chips(legacy)}</div></section>` : ''}
+        </aside>
+      </div>`;
+  } catch (error) {
+    console.error(error);
+    root.innerHTML = '<div class="detail-empty">Document Catalogの読み込みに失敗しました。</div>';
+  }
+});
+</script>
+</body></html>
