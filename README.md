@@ -34,3 +34,4 @@ python3 tools/validate_trends.py
 ```
 
 `update_trends.py` はURL重複を除去し、Score降順で最大50件へ制限し、古いDayを落として最大3日だけ保持します。
+
