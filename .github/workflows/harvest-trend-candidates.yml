@@ -10,6 +10,7 @@ on:
     paths:
       - 'data/trend-sources.json'
       - 'tools/harvest_trend_sources.py'
+      - 'tools/refine_trend_candidates.py'
       - 'tools/validate_trend_candidates.py'
       - '.github/workflows/harvest-trend-candidates.yml'
 
@@ -32,10 +33,17 @@ jobs:
           python-version: '3.13'
 
       - name: Compile harvest tools
-        run: python3 -m py_compile tools/harvest_trend_sources.py tools/validate_trend_candidates.py
+        run: |
+          python3 -m py_compile \
+            tools/harvest_trend_sources.py \
+            tools/refine_trend_candidates.py \
+            tools/validate_trend_candidates.py
 
       - name: Harvest source-native candidates
         run: python3 tools/harvest_trend_sources.py
+
+      - name: Refine candidates and add note API hits
+        run: python3 tools/refine_trend_candidates.py
 
       - name: Validate candidate dataset
         run: python3 tools/validate_trend_candidates.py
