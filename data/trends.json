@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-08-10T14:50:00+09:00",
+  "generatedAt": "2026-08-10T15:17:00+09:00",
   "days": [
     {
       "date": "2026-08-10",
@@ -13,13 +13,7 @@
           "category": "Unity",
           "type": "HOT",
           "summary": "1 Asset=1 Content Fileで細粒度ロードを実現。Loadable弱参照やSchema Driven BuildによるAddressables連携まで解説。",
-          "tags": [
-            "Unity",
-            "Unity 6.6",
-            "Content Directories",
-            "Addressables",
-            "Asset Pipeline"
-          ],
+          "tags": ["Unity", "Unity 6.6", "Content Directories", "Addressables", "Asset Pipeline"],
           "score": 98,
           "id": "TREND-20260810-001"
         },
@@ -31,14 +25,7 @@
           "category": "DCC",
           "type": "NEW",
           "summary": "ベベル、UVパッキング、ウェザリングまで実在感を作る工程を通して、ゲーム向け武器モデリングの実制作手順を追える。",
-          "tags": [
-            "Modeling",
-            "Hard Surface",
-            "UV",
-            "Texturing",
-            "Weathering",
-            "Game Art"
-          ],
+          "tags": ["Modeling", "Hard Surface", "UV", "Texturing", "Weathering", "Game Art"],
           "score": 97,
           "id": "TREND-20260810-002"
         },
@@ -50,14 +37,7 @@
           "category": "Unity",
           "type": "CASE",
           "summary": "測量座標のfloat32誤差を実測し、原点アンカー化とImport時LOD生成で精度・読込コストを改善。OSS Importerも公開。",
-          "tags": [
-            "Unity",
-            "C#",
-            "Point Cloud",
-            "float32",
-            "LOD",
-            "OSS"
-          ],
+          "tags": ["Unity", "C#", "Point Cloud", "float32", "LOD", "OSS"],
           "score": 96,
           "id": "TREND-20260810-003"
         },
@@ -69,14 +49,7 @@
           "category": "Graphics",
           "type": "RESEARCH",
           "summary": "EA SEEDのOnline Radiance Cache AccelerationとGlacier EngineのVolumetric Rendering技術を実資料付きで確認できる。",
-          "tags": [
-            "SIGGRAPH",
-            "Rendering",
-            "Global Illumination",
-            "Volumetrics",
-            "EA SEED",
-            "Glacier"
-          ],
+          "tags": ["SIGGRAPH", "Rendering", "Global Illumination", "Volumetrics", "EA SEED", "Glacier"],
           "score": 96,
           "id": "TREND-20260810-004"
         },
@@ -88,14 +61,7 @@
           "category": "Unreal",
           "type": "CASE",
           "summary": "本人演技の3D化を題材に、Unreal Engine側の最適化、モーション処理、フェイシャル制作をProduction事例として追える。",
-          "tags": [
-            "Unreal Engine",
-            "Optimization",
-            "Motion",
-            "Facial",
-            "Production",
-            "CG"
-          ],
+          "tags": ["Unreal Engine", "Optimization", "Motion", "Facial", "Production", "CG"],
           "score": 95,
           "id": "TREND-20260810-005"
         },
@@ -107,14 +73,7 @@
           "category": "Tools",
           "type": "UPDATE",
           "summary": "Air Sticker 2.1、UEFN 41.30、Unity Hub 3.20、Cesium、SDLなど、ゲーム開発周辺Toolの更新を横断確認できる。",
-          "tags": [
-            "Unity",
-            "UEFN",
-            "Cesium",
-            "SDL",
-            "Developer Tools",
-            "Release"
-          ],
+          "tags": ["Unity", "UEFN", "Cesium", "SDL", "Developer Tools", "Release"],
           "score": 94,
           "id": "TREND-20260810-006"
         },
@@ -126,13 +85,7 @@
           "category": "DCC",
           "type": "CASE",
           "summary": "MVと3D LIVE制作を横断する制作基盤を題材に、アセット・ショット・チーム運用をProduction Pipeline視点で確認できる。",
-          "tags": [
-            "Production Pipeline",
-            "3DCG",
-            "Asset Management",
-            "Animation",
-            "Technical Art"
-          ],
+          "tags": ["Production Pipeline", "3DCG", "Asset Management", "Animation", "Technical Art"],
           "score": 93,
           "id": "TREND-20260810-007"
         },
@@ -144,13 +97,7 @@
           "category": "Research",
           "type": "NEW",
           "summary": "ゲーム制作・Engine・Graphics・AI・運用などCEDEC 2026の公開資料をまとめて辿れる。国内技術発表の入口として有用。",
-          "tags": [
-            "CEDEC",
-            "Game Development",
-            "Slides",
-            "Rendering",
-            "Engineering"
-          ],
+          "tags": ["CEDEC", "Game Development", "Slides", "Rendering", "Engineering"],
           "score": 92,
           "id": "TREND-20260810-008"
         },
@@ -162,14 +109,7 @@
           "category": "Unity",
           "type": "RELEASE",
           "summary": "Project Auditorのルール拡張APIを公開し、Graphics修正に加えてBurst 1.8.30・Netcode 2.13.1などを更新。",
-          "tags": [
-            "Unity",
-            "Unity 6",
-            "Project Auditor",
-            "Burst",
-            "Netcode",
-            "Graphics"
-          ],
+          "tags": ["Unity", "Unity 6", "Project Auditor", "Burst", "Netcode", "Graphics"],
           "score": 91,
           "id": "TREND-20260810-009"
         },
@@ -181,14 +121,7 @@
           "category": "DCC",
           "type": "UPDATE",
           "summary": "Bake GSplat属性処理、OpenEXR読込、Rasterize Layer COP、Copernicus Sub-Network、XPU Light Filterなどを修正。",
-          "tags": [
-            "Houdini",
-            "SideFX",
-            "Copernicus",
-            "GSplat",
-            "OpenEXR",
-            "XPU"
-          ],
+          "tags": ["Houdini", "SideFX", "Copernicus", "GSplat", "OpenEXR", "XPU"],
           "score": 90,
           "id": "TREND-20260810-010"
         },
@@ -200,13 +133,7 @@
           "category": "Programming",
           "type": "TOOL",
           "summary": "MTP 2.3+でInline Annotation、Job Summary、Crash耐性Reportを提供し、C#/.NET CIの失敗箇所を追いやすくする。",
-          "tags": [
-            "C#",
-            ".NET",
-            "Testing",
-            "GitHub Actions",
-            "CI"
-          ],
+          "tags": ["C#", ".NET", "Testing", "GitHub Actions", "CI"],
           "score": 89,
           "id": "TREND-20260810-011"
         },
@@ -218,13 +145,7 @@
           "category": "Research",
           "type": "PAPER",
           "summary": "Autodiff、Optimizer、Memory PlannerまでVulkan/Metal上へ統合し、Vendor依存を抑えたGPU Compiler Stackを評価。",
-          "tags": [
-            "Vulkan",
-            "Metal",
-            "GPU",
-            "Compiler",
-            "Research"
-          ],
+          "tags": ["Vulkan", "Metal", "GPU", "Compiler", "Research"],
           "score": 88,
           "id": "TREND-20260810-012"
         },
@@ -236,13 +157,7 @@
           "category": "Graphics",
           "type": "NEW",
           "summary": "TinyTapeout ASICでT&L、最大1K Triangle、Z-buffer、Backface Culling、Directional Light、Affine Textureを実装。",
-          "tags": [
-            "GPU",
-            "ASIC",
-            "Rasterization",
-            "Verilog",
-            "Open Hardware"
-          ],
+          "tags": ["GPU", "ASIC", "Rasterization", "Verilog", "Open Hardware"],
           "score": 87,
           "id": "TREND-20260810-013"
         },
@@ -254,13 +169,7 @@
           "category": "Programming",
           "type": "TOOL",
           "summary": "C#/.NET 10でローカルModelを動かし、PCM Streaming、Async Stream、Bounded Channelでリアルタイム音声認識を構成。",
-          "tags": [
-            "C#",
-            ".NET",
-            "Speech-to-Text",
-            "Async",
-            "Local AI"
-          ],
+          "tags": ["C#", ".NET", "Speech-to-Text", "Async", "Local AI"],
           "score": 86,
           "id": "TREND-20260810-014"
         },
@@ -272,14 +181,7 @@
           "category": "Research",
           "type": "PAPER",
           "summary": "FP4 E2M1をBase-13 Limbへ分解しFP32 Accumulatorで合成。低精度Tensor Coreを高精度計算へ転用する研究。",
-          "tags": [
-            "GPU",
-            "FP4",
-            "Tensor Core",
-            "FP64",
-            "Blackwell",
-            "HPC"
-          ],
+          "tags": ["GPU", "FP4", "Tensor Core", "FP64", "Blackwell", "HPC"],
           "score": 85,
           "id": "TREND-20260810-015"
         },
@@ -291,13 +193,7 @@
           "category": "Unity",
           "type": "UPDATE",
           "summary": "Play中のRenderer Shader User Value変更時、SRP Batcher非経路でShadowCaster更新が遅れる描画不具合を修正。",
-          "tags": [
-            "Unity",
-            "Shader",
-            "ShadowCaster",
-            "SRP Batcher",
-            "Rendering"
-          ],
+          "tags": ["Unity", "Shader", "ShadowCaster", "SRP Batcher", "Rendering"],
           "score": 84,
           "id": "TREND-20260810-016"
         },
@@ -309,14 +205,7 @@
           "category": "Programming",
           "type": "UPDATE",
           "summary": "新規API Keyの最大寿命を30日に短縮。長期Secretを持たないOIDCベースのTrusted Publishing移行を推奨する。",
-          "tags": [
-            "NuGet",
-            ".NET",
-            "CI",
-            "Security",
-            "OIDC",
-            "Supply Chain"
-          ],
+          "tags": ["NuGet", ".NET", "CI", "Security", "OIDC", "Supply Chain"],
           "score": 83,
           "id": "TREND-20260810-017"
         },
@@ -328,13 +217,7 @@
           "category": "AI",
           "type": "PAPER",
           "summary": "8言語・1663 Taskで、Agent自身がBugを見つけて修正する能力を測定。Coding Agentの実運用評価に近いBenchmark。",
-          "tags": [
-            "Coding Agent",
-            "Benchmark",
-            "Bug Fix",
-            "SWE",
-            "Evaluation"
-          ],
+          "tags": ["Coding Agent", "Benchmark", "Bug Fix", "SWE", "Evaluation"],
           "score": 82,
           "id": "TREND-20260810-018"
         },
@@ -346,13 +229,7 @@
           "category": "Unity",
           "type": "CASE",
           "summary": "Addressables Assetロード後にApplication.Quitを呼ぶとWindows PlayerがSilent Crashする既知Issue。終了処理検証時に注意。",
-          "tags": [
-            "Unity",
-            "Addressables",
-            "Windows",
-            "Crash",
-            "Application.Quit"
-          ],
+          "tags": ["Unity", "Addressables", "Windows", "Crash", "Application.Quit"],
           "score": 81,
           "id": "TREND-20260810-019"
         }
