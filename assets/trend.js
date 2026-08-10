@@ -1,11 +1,15 @@
 (() => {
   const CATEGORY_LABELS = {
-    Game: '🎮 Game',
+    Unity: '◈ Unity',
+    Unreal: '◆ Unreal',
     Graphics: '🎨 Graphics',
+    Programming: '⌘ C# / C++',
+    DCC: '🧊 DCC / CG',
+    Game: '🎮 Game',
     AI: '🤖 AI',
-    Engine: '🧱 Engine',
     Tools: '🛠 Tools',
-    Research: '📄 Research'
+    Research: '📄 Research',
+    Engine: '🧱 Other Engine'
   };
 
   const state = {
