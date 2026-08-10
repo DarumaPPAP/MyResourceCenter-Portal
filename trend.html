@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="MyResourceCenter Trend Radar - 直近3日だけ保持するゲーム開発・Graphics・AI・ToolingのDaily Discovery Feed">
+  <title>Trend Radar · MyResourceCenter</title>
+  <link rel="stylesheet" href="assets/site.css">
+  <link rel="stylesheet" href="assets/trend.css">
+</head>
+<body class="trend-page">
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="メインナビゲーション">
+      <div class="brand-lockup"><div class="brand-mark">M</div><div class="brand-name">MyResourceCenter</div></div>
+      <nav class="side-nav">
+        <a href="index.html"><span class="icon">⌂</span>ホーム</a>
+        <a href="documents.html"><span class="icon">▤</span>ドキュメント一覧</a>
+        <a href="websites.html"><span class="icon">◎</span>Webサイト一覧</a>
+        <a class="active" href="trend.html"><span class="icon">↗</span>Trend Radar</a>
+        <a href="index.html#tags"><span class="icon">#</span>タグから探す</a>
+      </nav>
+      <div class="sidebar-note">Trendは正式Knowledgeではありません。AIが毎日発見する短期Feedで、最大3日だけ保持します。</div>
+    </aside>
+
+    <div class="main">
+      <header class="topbar">
+        <div class="breadcrumb">Human Portal / Trend Radar</div>
+        <div class="top-actions">
+          <a class="icon-button repo-link" href="https://github.com/DarumaPPAP/MyResourceCenter-Portal/blob/main/data/trends.json" target="_blank" rel="noreferrer">Trend JSON ↗</a>
+          <button class="icon-button" type="button" data-theme-toggle aria-label="ダークモードへ切替">☾</button>
+        </div>
+      </header>
+
+      <nav class="mobile-nav" aria-label="モバイルナビゲーション">
+        <a href="index.html">ホーム</a><a href="documents.html">Documents</a><a href="websites.html">Websites</a><a href="trend.html">Trend</a>
+      </nav>
+
+      <main class="content">
+        <section class="trend-header">
+          <div>
+            <div class="trend-kicker">TREND RADAR <span class="trend-retention">3日限定</span></div>
+            <h1>今日の技術トレンド</h1>
+            <p>ゲーム開発・Graphics・AI・Engine・Tools・Researchの新着を短く一覧化。価値があるものだけ通常Libraryへ昇格します。</p>
+          </div>
+          <div class="trend-updated" id="trend-updated">読み込み中...</div>
+        </section>
+
+        <section aria-label="Trend検索と絞り込み">
+          <div class="trend-controls">
+            <label>
+              <span class="sr-only">Trendを検索</span>
+              <input id="trend-search" type="search" placeholder="Trendを検索… 例: Rendering / Agent / Blender">
+            </label>
+            <div id="trend-days" class="trend-days" aria-label="日付切り替え"></div>
+          </div>
+
+          <div class="trend-filter-row">
+            <div id="trend-filters" class="trend-filters" aria-label="カテゴリ絞り込み"></div>
+            <div class="trend-count" id="trend-count">0 件</div>
+          </div>
+        </section>
+
+        <section id="trend-list" class="trend-list" aria-live="polite">
+          <div class="trend-empty">Trendを読み込み中...</div>
+        </section>
+
+        <div class="trend-boundary">Trendは最大50件 / 日・最大3日。記事本文・画像は保存せず、正式Libraryへは自動登録しません。</div>
+      </main>
+
+      <footer class="footer">Trend Radar · Daily discovery only, curated Knowledge remains separate.</footer>
+    </div>
+  </div>
+
+  <script src="assets/portal.js"></script>
+  <script src="assets/trend.js"></script>
+</body>
+</html>
