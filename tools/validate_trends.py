@@ -10,7 +10,18 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 TREND_PATH = ROOT / 'data' / 'trends.json'
 
-CATEGORIES = {'Game', 'Graphics', 'AI', 'Engine', 'Tools', 'Research'}
+CATEGORIES = {
+    'Unity',
+    'Unreal',
+    'Graphics',
+    'Programming',
+    'DCC',
+    'Game',
+    'AI',
+    'Tools',
+    'Research',
+    'Engine',
+}
 TYPES = {'HOT', 'NEW', 'RELEASE', 'UPDATE', 'PAPER', 'RESEARCH', 'CASE', 'TOOL'}
 ID_RE = re.compile(r'^TREND-\d{8}-\d{3}$')
 MAX_DAYS = 3
