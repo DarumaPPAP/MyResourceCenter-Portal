@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "1.2.0",
+  "sourceCommit": "9db1d6d334c9adedd189f633b82aa4dcf8311122",
+  "generatedAt": "2026-08-10T14:59:13.936024+00:00",
+  "counts": {
+    "resources": 90,
+    "websites": 63,
+    "documents": 28,
+    "taxonomy": 26,
+    "relations": 23,
+    "collections": 12
+  }
+}
