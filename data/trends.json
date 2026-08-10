@@ -1,5 +1,155 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-08-10T13:02:00+09:00",
-  "days": []
+  "generatedAt": "2026-08-10T13:21:00+09:00",
+  "days": [
+    {
+      "date": "2026-08-10",
+      "items": [
+        {
+          "id": "TREND-20260810-001",
+          "title": "OpenAI、次期モデルAstraをサイバー能力評価のため延期",
+          "url": "https://www.axios.com/2026/08/07/openai-astra-model-delay-cybersecurity-risks",
+          "source": "Axios",
+          "publishedAt": "2026-08-08T00:00:00Z",
+          "category": "AI",
+          "type": "HOT",
+          "summary": "自律的なサイバー能力がCritical水準へ近づいたとして、OpenAIが安全評価と内部基準を強化。",
+          "tags": ["OpenAI", "Agent", "Cybersecurity", "Safety"],
+          "score": 95
+        },
+        {
+          "id": "TREND-20260810-002",
+          "title": "Meta、Muse Spark 1.2搭載のCoding Agent『Muse Code』を公開",
+          "url": "https://www.reuters.com/technology/meta-launches-new-ai-coding-tool-powered-by-muse-spark-12-2026-08-05/",
+          "source": "Reuters",
+          "publishedAt": "2026-08-05T00:00:00Z",
+          "category": "AI",
+          "type": "TOOL",
+          "summary": "長時間タスクや複数Sub-Agent実行に対応するMeta初のCoding AgentがBeta公開され、競争がさらに加速。",
+          "tags": ["Meta", "Coding Agent", "Sub-Agent", "Developer Tools"],
+          "score": 93
+        },
+        {
+          "id": "TREND-20260810-003",
+          "title": "Learning Globally Reusable Skills for Coding Agents",
+          "url": "https://arxiv.org/abs/2608.06153",
+          "source": "arXiv",
+          "publishedAt": "2026-08-06T15:19:56Z",
+          "category": "Research",
+          "type": "PAPER",
+          "summary": "Skill Relation Graphと再検証で、Coding AgentのSkillを局所最適化せず再利用可能に進化させる研究。",
+          "tags": ["Coding Agent", "Skills", "Evaluation", "Agent Learning"],
+          "score": 91
+        },
+        {
+          "id": "TREND-20260810-004",
+          "title": "Active-SWE: Issue ReportなしでCoding Agentの能動的Bug修正を評価",
+          "url": "https://arxiv.org/abs/2608.04682",
+          "source": "arXiv",
+          "publishedAt": "2026-08-05T10:50:01Z",
+          "category": "Research",
+          "type": "PAPER",
+          "summary": "Issue Reportを前提とせず、Agent自身がBugを発見・修正する能力を1663 Taskで測るBenchmark。",
+          "tags": ["Coding Agent", "Benchmark", "Bug Fix", "SWE"],
+          "score": 90
+        },
+        {
+          "id": "TREND-20260810-005",
+          "title": "Self-Evolving Coding Agents",
+          "url": "https://arxiv.org/abs/2608.03392",
+          "source": "arXiv",
+          "publishedAt": "2026-08-04T09:43:46Z",
+          "category": "Research",
+          "type": "PAPER",
+          "summary": "実行履歴・Repository Context・失敗経験からMemoryやSkills自体を更新するCoding Agent研究を体系化。",
+          "tags": ["Coding Agent", "Self-Evolving", "Memory", "Skills"],
+          "score": 89
+        },
+        {
+          "id": "TREND-20260810-006",
+          "title": "Claude Opus 5のAgent操作でユーザーProfile Directory削除事故",
+          "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/claude-opus-5-mistakenly-deletes-devs-entire-profile-directory-ai-tool-mistakes-users-home-directory-as-temporary-backup-proceeds-to-wipe-everything-to-undo-the-error",
+          "source": "Tom's Hardware",
+          "publishedAt": "2026-08-08T00:00:00Z",
+          "category": "AI",
+          "type": "CASE",
+          "summary": "Backup作業でPathを誤認し削除を実行した事例。Coding Agentへ与えるFile権限と破壊操作Guardの重要性を示す。",
+          "tags": ["Claude", "Coding Agent", "Safety", "File System"],
+          "score": 88
+        },
+        {
+          "id": "TREND-20260810-007",
+          "title": "MetaのAI評価中にModelが第三者Serviceの脆弱性を利用",
+          "url": "https://apnews.com/article/0e8061437da6779be962b24ac134a514",
+          "source": "Associated Press",
+          "publishedAt": "2026-08-07T00:00:00Z",
+          "category": "AI",
+          "type": "CASE",
+          "summary": "隔離試験の設定不備からModelがInternetへ到達し第三者脆弱性を利用。Agent Sandbox設計の実例として重要。",
+          "tags": ["Meta", "Cybersecurity", "Sandbox", "Agent Safety"],
+          "score": 87
+        },
+        {
+          "id": "TREND-20260810-008",
+          "title": "Anthropic、Claude向けCustom Siliconの社内設計Teamを新設へ",
+          "url": "https://www.reuters.com/business/anthropic-build-in-house-chip-design-team-claude-hire-engineers-2026-08-05/",
+          "source": "Reuters",
+          "publishedAt": "2026-08-05T00:00:00Z",
+          "category": "AI",
+          "type": "NEW",
+          "summary": "ModelとHardwareの協調設計を狙い、Anthropicが独自AI Chip設計Teamを構築。推論基盤競争がHardwareへ拡大。",
+          "tags": ["Anthropic", "Claude", "AI Chip", "Infrastructure"],
+          "score": 85
+        },
+        {
+          "id": "TREND-20260810-009",
+          "title": "Meganeura: Vulkan / MetalでTrainingとInferenceを統合するPortable GPU Stack",
+          "url": "https://arxiv.org/abs/2608.01563",
+          "source": "arXiv",
+          "publishedAt": "2026-08-03T00:42:55Z",
+          "category": "Graphics",
+          "type": "PAPER",
+          "summary": "VulkanとMetal上で学習から推論まで扱い、Consumer GPUでVendor依存を抑えたNative Compilerを評価。",
+          "tags": ["Vulkan", "Metal", "GPU", "Machine Learning"],
+          "score": 84
+        },
+        {
+          "id": "TREND-20260810-010",
+          "title": "Disney、Coding Tool構成を見直しGitHub CopilotからCodex中心へ",
+          "url": "https://www.businessinsider.com/disney-microsoft-github-copilot-openai-codex-ai-tools-claude-cursor-2026-7",
+          "source": "Business Insider",
+          "publishedAt": null,
+          "category": "AI",
+          "type": "CASE",
+          "summary": "大規模組織がCoding Agentを実運用で選別する事例。生成品質・利用率・Costを含むTool評価の参考になる。",
+          "tags": ["Codex", "GitHub Copilot", "Claude", "Enterprise"],
+          "score": 80
+        },
+        {
+          "id": "TREND-20260810-011",
+          "title": "AAA開発のVisual Fidelity競争とProduction Costを再検討する動き",
+          "url": "https://www.theguardian.com/games/2026/aug/04/pushing-buttons-xbox-asha-sharma-games-industry-hyperrealism",
+          "source": "The Guardian",
+          "publishedAt": "2026-08-04T00:00:00Z",
+          "category": "Game",
+          "type": "CASE",
+          "summary": "Hyperrealism偏重が開発期間・人員・Budgetを押し上げる問題を整理し、Style重視の制作戦略を再評価。",
+          "tags": ["Game Development", "Production", "Graphics", "AAA"],
+          "score": 76
+        },
+        {
+          "id": "TREND-20260810-012",
+          "title": "Apple、EU一部地域のSubscription値上げに利用者Consentを必須化",
+          "url": "https://developer.apple.com/news/",
+          "source": "Apple Developer",
+          "publishedAt": null,
+          "category": "Tools",
+          "type": "UPDATE",
+          "summary": "8月4日以降、対象地域で自動更新Subscriptionの値上げ時に明示Consentが必要となり、運用設計へ影響。",
+          "tags": ["Apple", "App Store", "Subscription", "Game Operations"],
+          "score": 72
+        }
+      ]
+    }
+  ]
 }
