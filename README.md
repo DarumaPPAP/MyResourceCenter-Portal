@@ -21,7 +21,7 @@ Trendは正式Knowledgeではありません。
 
 - `data/trends.json` 1ファイルだけを使用
 - 最大3日保持
-- 1日最大50件
+- 1日最大100件
 - 記事本文・画像・PDF等は保存しない
 - Trendから`MyResourceCenter`のWebsites / Documentsへ自動登録しない
 - 残したいSourceだけ、ユーザー判断後に通常の登録フローへ昇格する
@@ -33,5 +33,5 @@ python3 tools/update_trends.py --input /tmp/today-trends.json
 python3 tools/validate_trends.py
 ```
 
-`update_trends.py` はURL重複を除去し、Score降順で最大50件へ制限し、古いDayを落として最大3日だけ保持します。
+`update_trends.py` はURL重複を除去し、Score降順で最大100件へ制限し、古いDayを落として最大3日だけ保持します。
 
