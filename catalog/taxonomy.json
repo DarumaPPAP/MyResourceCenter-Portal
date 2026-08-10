@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "1.0.0",
+  "domains": {
+    "Graphics": {"displayName": "Graphics"},
+    "Programming": {"displayName": "Programming"},
+    "AI": {"displayName": "AI"},
+    "Tools": {"displayName": "Development Tools"},
+    "GameDevelopment": {"displayName": "Game Development"},
+    "Audio": {"displayName": "Audio"},
+    "DCC": {"displayName": "DCC / CG"},
+    "Research": {"displayName": "Research"},
+    "Security": {"displayName": "Security"}
+  },
+  "tags": {
+    "CSharp": {"displayName": "C#", "domain": "Programming", "aliases": ["C#", "C Sharp"]},
+    "CPlusPlus": {"displayName": "C++", "domain": "Programming", "aliases": ["Cpp", "C Plus Plus"]},
+    "GPUDriven": {"displayName": "GPU Driven", "domain": "Graphics", "aliases": ["GPU Driven", "GPU-Driven"]},
+    "RayTracing": {"displayName": "Ray Tracing", "domain": "Graphics", "aliases": ["Ray Tracing"]},
+    "RenderGraph": {"displayName": "RenderGraph", "domain": "Graphics", "aliases": ["Render Graph"]},
+    "Shader": {"displayName": "Shader", "domain": "Graphics", "aliases": ["Shaders", "シェーダ", "シェーダー"]},
+    "ECS": {"displayName": "ECS", "domain": "Programming", "aliases": ["Entity Component System"]},
+    "TAA": {"displayName": "Temporal Anti-Aliasing", "domain": "Graphics", "aliases": ["Temporal AA", "Temporal Anti Aliasing"]},
+    "VRS": {"displayName": "Variable Rate Shading", "domain": "Graphics", "aliases": ["Variable Rate Shading"]},
+    "SurfaceNets": {"displayName": "Surface Nets", "domain": "Graphics", "aliases": ["Surface Nets"]},
+    "DualContouring": {"displayName": "Dual Contouring", "domain": "Graphics", "aliases": ["Dual Contouring"]},
+    "MachineLearning": {"displayName": "Machine Learning", "domain": "AI", "aliases": ["Machine Learning", "ML"]},
+    "AIAgent": {"displayName": "AI Agent", "domain": "AI", "aliases": ["AI Agent", "AI Agents"]},
+    "RAG": {"displayName": "RAG", "domain": "AI", "aliases": ["Retrieval Augmented Generation"]}
+  },
+  "engines": {
+    "Unity": {"displayName": "Unity", "aliases": ["Unity Engine"]},
+    "Unreal": {"displayName": "Unreal Engine", "aliases": ["UE", "UE5"]},
+    "Godot": {"displayName": "Godot", "aliases": ["Godot Engine"]}
+  }
+}
