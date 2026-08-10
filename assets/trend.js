@@ -135,7 +135,8 @@
     renderRows();
   });
 
-  fetch('data/trends.json', {cache:'no-store'})
+  const trendDataUrl = `data/trends.json?v=${Date.now()}`;
+  fetch(trendDataUrl, {cache:'no-store'})
     .then(response => {
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       return response.json();
