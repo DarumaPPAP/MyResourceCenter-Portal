@@ -2,13 +2,16 @@ from __future__ import annotations
 
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from urllib.parse import quote, urlparse
+from urllib.parse import quote
 from zoneinfo import ZoneInfo
 import json
 import re
 import sys
 
-from harvest_trend_sources import fetch_text, links_from_html, page_metadata
+try:
+    from tools.harvest_trend_sources import fetch_text, links_from_html, page_metadata
+except ModuleNotFoundError:
+    from harvest_trend_sources import fetch_text, links_from_html, page_metadata
 
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG_PATH = ROOT / 'data' / 'trend-sources.json'
@@ -39,7 +42,7 @@ def note_candidates(config: dict, cutoff: datetime, diagnostics: list[dict]) -> 
 
     We intentionally do not depend on note's undocumented search JSON API because
     GitHub-hosted runners receive HTTP 403 from it. Public hashtag pages are the
-    stable browser-facing path and expose a dedicated newest tab via ``?f=new``.
+    browser-facing path and expose a dedicated newest tab via ``?f=new``.
     """
     result: list[dict] = []
     failures = 0
@@ -196,7 +199,6 @@ def main() -> int:
     lookback = int(config.get('lookbackDays', 7))
     cutoff = now - timedelta(days=lookback)
 
-    # Remove diagnostics from superseded note implementations before refreshing.
     diagnostics = [
         row for row in data.get('diagnostics', [])
         if row.get('source') not in {'note', 'note-api', 'note-hashtag'}
