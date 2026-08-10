@@ -1,57 +1,60 @@
 (() => {
   const root = document.documentElement;
-  const savedTheme = localStorage.getItem('myresourcecenter-theme');
-  if (savedTheme) root.dataset.theme = savedTheme;
+  const key = 'myresourcecenter-theme';
+  const stored = localStorage.getItem(key);
+  if (stored) root.dataset.theme = stored;
 
-  document.querySelectorAll('[data-theme-toggle]').forEach(button => {
-    button.addEventListener('click', () => {
-      const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
-      root.dataset.theme = next;
-      localStorage.setItem('myresourcecenter-theme', next);
-      button.setAttribute('aria-label', next === 'dark' ? 'ライトモードへ切替' : 'ダークモードへ切替');
-      button.textContent = next === 'dark' ? '☀' : '☾';
+  function syncButtons() {
+    document.querySelectorAll('.theme-toggle').forEach(button => {
+      button.textContent = root.dataset.theme === 'dark' ? 'Light' : 'Dark';
     });
-    button.textContent = root.dataset.theme === 'dark' ? '☀' : '☾';
+  }
+
+  document.addEventListener('click', event => {
+    const button = event.target.closest('.theme-toggle');
+    if (!button) return;
+    root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    localStorage.setItem(key, root.dataset.theme);
+    syncButtons();
   });
 
   const globalSearch = document.querySelector('[data-global-search]');
   if (globalSearch) {
+    const submit = () => {
+      const value = globalSearch.value.trim();
+      if (value) location.href = `documents.html?q=${encodeURIComponent(value)}`;
+    };
     globalSearch.addEventListener('keydown', event => {
-      if (event.key !== 'Enter') return;
-      const q = globalSearch.value.trim();
-      if (!q) return;
-      location.href = `documents.html?q=${encodeURIComponent(q)}`;
+      if (event.key === 'Enter') submit();
     });
+    document.querySelector('[data-global-search-button]')?.addEventListener('click', submit);
   }
 
-  document.querySelectorAll('[data-global-search-button]').forEach(button => {
-    button.addEventListener('click', () => {
-      const input = document.querySelector('[data-global-search]');
-      const q = input?.value.trim();
-      if (!q) return;
-      location.href = `documents.html?q=${encodeURIComponent(q)}`;
+  const items = [
+    { href: 'collections.html', label: 'コレクション', icon: '◫' },
+    { href: 'taxonomy.html', label: 'Taxonomy', icon: '#' },
+    { href: 'trend.html', label: 'トレンド', icon: '↗' }
+  ];
+  const current = location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.side-nav').forEach(nav => {
+    items.forEach(item => {
+      if (nav.querySelector(`a[href="${item.href}"]`)) return;
+      const link = document.createElement('a');
+      link.href = item.href;
+      link.innerHTML = `<span class="icon">${item.icon}</span>${item.label}`;
+      if (current === item.href || (item.href === 'collections.html' && current === 'collection.html')) link.classList.add('active');
+      nav.appendChild(link);
+    });
+  });
+  document.querySelectorAll('.mobile-nav').forEach(nav => {
+    items.forEach(item => {
+      if (nav.querySelector(`a[href="${item.href}"]`)) return;
+      const link = document.createElement('a');
+      link.href = item.href;
+      link.textContent = item.label;
+      nav.appendChild(link);
     });
   });
 
-  function ensureTrendNavigation() {
-    const sidebarNav = document.querySelector('.sidebar .side-nav');
-    if (sidebarNav && !sidebarNav.querySelector('a[href="trend.html"]')) {
-      const link = document.createElement('a');
-      link.href = 'trend.html';
-      link.innerHTML = '<span class="icon">↗</span>Trend Radar';
-      const websites = sidebarNav.querySelector('a[href="websites.html"]');
-      if (websites) websites.insertAdjacentElement('afterend', link);
-      else sidebarNav.appendChild(link);
-    }
-
-    const mobileNav = document.querySelector('.mobile-nav');
-    if (mobileNav && !mobileNav.querySelector('a[href="trend.html"]')) {
-      const link = document.createElement('a');
-      link.href = 'trend.html';
-      link.textContent = 'Trend';
-      mobileNav.appendChild(link);
-    }
-  }
-
-  ensureTrendNavigation();
+  syncButtons();
 })();
