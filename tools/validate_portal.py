@@ -112,6 +112,12 @@ COLLECTION_ROLES = {
     "advanced",
 }
 SHA_RE = re.compile(r"^[0-9a-f]{40}$")
+DOCUMENT_SOURCE_PREFIX = (
+    "https://github.com/DarumaPPAP/MyResourceCenter/blob/main/sources/markdown/"
+)
+DOCUMENT_SOURCE_URL_RE = re.compile(
+    r"https://github\.com/DarumaPPAP/MyResourceCenter/blob/main/[^\"'\s<`]+"
+)
 REMOVED_HOME_COPY = (
     "技術資料を、見つけやすく。",
     "技術資料を見つけやすく、理解しやすく",
@@ -266,10 +272,24 @@ def main() -> None:
             if member.get("role") not in COLLECTION_ROLES:
                 errors.append(f"{collection_id}: invalid role {member.get('role')}")
 
-    html = "\n".join((ROOT / page).read_text(encoding="utf-8") for page in REQUIRED_PAGES)
-    if "github.com/DarumaPPAP/MyResourceCenter/blob" in html:
-        errors.append("Portal must not link directly to private Markdown blobs")
-    if "websites-data.json" in html:
+    document_html = (ROOT / "documents.html").read_text(encoding="utf-8")
+    document_source_urls = DOCUMENT_SOURCE_URL_RE.findall(document_html)
+    if len(set(document_source_urls)) != len(documents):
+        errors.append(
+            "Documents page must expose exactly one unique direct source URL for every Document"
+        )
+    for url in document_source_urls:
+        if not url.startswith(DOCUMENT_SOURCE_PREFIX) or not url.endswith(".md"):
+            errors.append(f"invalid direct Document source URL: {url}")
+
+    other_html = "\n".join(
+        (ROOT / page).read_text(encoding="utf-8")
+        for page in REQUIRED_PAGES
+        if page != "documents.html"
+    )
+    if "github.com/DarumaPPAP/MyResourceCenter/blob" in other_html:
+        errors.append("private Markdown blob links are only allowed on Documents list")
+    if "websites-data.json" in document_html or "websites-data.json" in other_html:
         errors.append("Portal must not reference legacy websites-data.json")
 
     index_html = (ROOT / "index.html").read_text(encoding="utf-8")
@@ -281,13 +301,13 @@ def main() -> None:
         errors.append("legacy catalog/websites-data.json must be removed")
 
     if errors:
-        print("FAILED: Portal Detail / Collection UX validation")
+        print("FAILED: Portal direct-link / Detail / Collection UX validation")
         for error in errors:
             print("-", error)
         raise SystemExit(1)
 
     print(
-        "OK: Portal PR4 boundary validated: "
+        "OK: Portal boundary validated with direct resource navigation: "
         f"{len(resources)} resources, {len(websites)} websites, {len(documents)} documents, "
         f"{len(relations)} relations, {len(collections)} collections"
     )
