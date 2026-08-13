@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ja" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PR #40 Preview | MyResourceCenter</title>
+<meta name="description" content="MyResourceCenter PR #40 CEDEC 2026 Knowledge Foundation preview">
+<style>
+:root{color-scheme:dark;--bg:#0b0d10;--panel:#141820;--panel2:#1a2029;--line:#2b3440;--text:#f3f6fa;--muted:#9aa8b8;--accent:#8ab4ff;--ok:#73d89d;--warn:#ffd166}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.shell{max-width:1500px;margin:auto;padding:28px}.top{display:flex;gap:18px;align-items:flex-start;justify-content:space-between;margin-bottom:24px}.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:800}.title{font-size:clamp(28px,4vw,50px);margin:8px 0 10px}.desc{color:var(--muted);max-width:900px;line-height:1.7}.badge{border:1px solid var(--line);background:var(--panel);padding:10px 14px;border-radius:999px;white-space:nowrap}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:22px 0}.stat{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px}.stat b{display:block;font-size:28px}.stat span{color:var(--muted);font-size:13px}.toolbar{display:grid;grid-template-columns:1fr 220px 160px;gap:10px;position:sticky;top:0;padding:12px 0;background:linear-gradient(var(--bg) 72%,transparent);z-index:5}.toolbar input,.toolbar select{width:100%;background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:14px}.meta{color:var(--muted);margin:8px 0 14px}.list{display:grid;gap:10px}.row{display:grid;grid-template-columns:minmax(0,1fr) 180px 140px;gap:16px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px}.row:hover{border-color:#47627f;background:var(--panel2)}.name{font-weight:750;line-height:1.45}.sub{font-size:12px;color:var(--muted);margin-top:6px;word-break:break-all}.status{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:800}.dot{width:8px;height:8px;border-radius:50%;background:var(--warn)}.complete .dot{background:var(--ok)}a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}.actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}.btn{display:inline-block;border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:12px;background:#10151c}.notice{margin:16px 0 22px;padding:14px 16px;border-radius:12px;border:1px solid #4c4020;background:#211d11;color:#ffe3a3;line-height:1.6;font-size:13px}@media(max-width:900px){.stats{grid-template-columns:repeat(2,1fr)}.toolbar{grid-template-columns:1fr}.row{grid-template-columns:1fr}.actions{justify-content:flex-start}.top{display:block}.badge{display:inline-block;margin-top:12px}}
+</style>
+</head>
+<body><main class="shell">
+<div class="top"><div><div class="eyebrow">Branch Preview · MyResourceCenter PR #40</div><h1 class="title">CEDEC 2026 Knowledge Foundation</h1><div class="desc">`knowledge/cedec2026-progressive-synthesis-recovery` のHuman V2 / Evidence Workspace統合内容を、mainへMergeする前に直接確認するための静的Previewです。タイトルからPR branch上のMarkdownを開けます。</div></div><div class="badge">PREVIEW / NOT PRODUCTION</div></div>
+<div class="notice">このページは検証専用です。本番PortalのCatalogには未反映です。`partial` は未確認Source Unitが残るためCompleteとして扱っていません。</div>
+<section class="stats"><div class="stat"><b id="total">54</b><span>CEDEC2026 Documents</span></div><div class="stat"><b id="complete">34</b><span>Complete</span></div><div class="stat"><b id="partial">20</b><span>Partial / Provisional</span></div><div class="stat"><b>82</b><span>Logical Documents after merge</span></div></section>
+<div class="toolbar"><input id="q" type="search" placeholder="タイトル / Resource ID を検索"><select id="coverage"><option value="">Coverageすべて</option><option value="complete">complete</option><option value="partial">partial</option></select><select id="sort"><option value="id">ID順</option><option value="title">タイトル順</option></select></div>
+<div class="meta" id="meta"></div><div class="list" id="list"></div>
+</main>
+<script>
+const docs=[
+{"resourceId":"RES-20260812-001","path":"sources/markdown/CEDEC2026_001_続！ニューラルネットワークを用いた音声信号によるリップシンク（口パク生成）技術.md","coverageStatus":"complete"},
+{"resourceId":"RES-20260812-002","path":"sources/markdown/CEDEC2026_002_Wwise_Acoustics_(JPN).md","coverageStatus":"complete"},
+{"resourceId":"RES-20260812-003","path":"sources/markdown/CEDEC2026_003_REALITY-asset-flow.md","coverageStatus":"complete"},
+{"resourceId":"RES-20260812-004","path":"sources/markdown/CEDEC2026_004_02_CEDEC_音のXR体験_大規模イマーシブシステム構築紹介.md","coverageStatus":"complete"},
+{"resourceId":"RES-20260812-005","path":"sources/markdown/CEDEC2026_005_CEDEC_Forza_Horizon_6_copy.md","coverageStatus":"partial"},
+{"resourceId":"RES-20260812-006","path":"sources/markdown/CEDEC2026_006_01_CEDEC_音のXR体験_概要紹介.md","coverageStatus":"partial"},
+{"resourceId":"RES-20260812-007","path":"sources/markdown/CEDEC2026_007_GPGPU_×_クロスシミュレーション：物理初心者でも「リッチな布表現」を自在に操る！独自の構築アプローチとUE5での最適化の実践.md","coverageStatus":"complete"},
+{"resourceId":"RES-20260812-008","path":"sources/markdown/CEDEC2026_008_When_AAA_Fits_in_Your_Hand_—_Efficient_High_Quality_GI,_AO_and_DOF_on_Mobile.md","coverageStatus":"partial"},
+{"resourceId":"RES-20260812-009","path":"sources/markdown/CEDEC2026_009_Creativity_in_the_age_of_AI_-_CEDEC_-_Fawzi_Mesmar.md","coverageStatus":"partial"},
+{"resourceId":"RES-20260812-010","path":"sources/markdown/CEDEC2026_010_フルスクラッチ3D生成AI_荒木.md","coverageStatus":"complete"},
+{"resourceId":"RES-20260812-011","path":"sources/markdown/CEDEC2026_NINJA_GAIDEN_4_120FPS.md","coverageStatus":"complete"},
+{"resourceId":"RES-20260812-012","path":"sources/markdown/CEDEC2026_012_【提出用】長期運営で肥大化したExcelマスターデータの解消に向けた移行事例.md","coverageStatus":"complete"},
+{"resourceId":"RES-20260812-013","path":"sources/markdown/CEDEC2026_013_「壊れないテスト」から「10分で作り直せるテスト」へ_—_LLM×ノーコードの自動テスト手法.md","coverageStatus":"complete"},
+{"resourceId":"RES-20260812-014","path":"sources/markdown/CEDEC2026_014_【UE5×RIGDOCKS】自社専用システム『RIGDRED』を構築!~SKYSQUAREから始まる次世代の音響ワークフロー~.md","coverageStatus":"complete"},
+{"resourceId":"RES-20260812-015","path":"sources/markdown/CEDEC2026_015_REALITY_課題発見から始めるプロダクト密着型TA組織立ち上げ.md","coverageStatus":"complete"},
+{"resourceId":"RES-20260812-016","path":"sources/markdown/CEDEC2026_016_AI画像認識を活用した_ゲーム内決済処理検証の自動化.md","coverageStatus":"complete"},
+{"resourceId":"RES-20260812-017","path":"sources/markdown/CEDEC2026_017_スクリプト不要、仕込みも最小限。動画と生成AIで挑むゲームQAの現在地.md","coverageStatus":"partial"},
+{"resourceId":"RES-20260812-018","path":"sources/markdown/CEDEC2026_018_ラクしたいので作ってみた_—_サウンド内製波形ファイル管理ツール育成日記.md","coverageStatus":"partial"},
+{"resourceId":"RES-20260812-019","path":"sources/markdown/CEDEC2026_019_球面調和関数の新展開_—_回転・積分・勾配計算の最新技術.md","coverageStatus":"partial"},
+{"resourceId":"RES-20260812-020","path":"sources/markdown/CEDEC2026_020_「作ること」と「価値を生むこと」はなぜズレるのか_—_アウトプットと価値の断絶を乗り越える.md","coverageStatus":"complete"},
+{"resourceId":"RES-20260812-021","path":"sources/markdown/CEDEC2026_021_Developing_with_Unity_AI_—_Practical_Use_Cases.md","coverageStatus":"complete"},
+{"resourceId":"RES-20260812-022","path":"sources/markdown/CEDEC2026_022_Unity_3D&2Dグラフィックス最新情報.md","coverageStatus":"complete"},
+{"resourceId":"RES-20260812-023","path":"sources/markdown/CEDEC2026_023_ゲームオーディオ実装の現在と未来_—_サウンドミドルウェアは何を支え、どこへ向かうのか.md","coverageStatus":"complete"},
+{"resourceId":"RES-20260812-024","path":"sources/markdown/CEDEC2026_024_「SOL-AVES」とゲームで実践した描画最適化事例_20260723.md","coverageStatus":"partial"},
+{"resourceId":"RES-20260812-025","path":"sources/markdown/CEDEC2026_025_CODE_VEIN_II_—_バイクのリアルな物理表現と手触り設計.md","coverageStatus":"complete"},
+{"resourceId":"RES-20260812-026","path":"sources/markdown/CEDEC2026_026_CODE_VEIN_II_—_テーブル＋モジュール＋ランチャー方式のバレットシステム.md","coverageStatus":"partial"},
+{"resourceId":"RES-20260812-027","path":"sources/markdown/CEDEC2026_027_LIVING_with_LIVLIES_を支える技術.md","coverageStatus":"partial"},
+{"resourceId":"RES-20260812-028","path":"sources/markdown/CEDEC2026_028_【坂見耕輔】Pokémon_TCG_Pocketのバトルを支える強化学習AI技術_-_Google_スライド.md","coverageStatus":"complete"},
+{"resourceId":"RES-20260812-029","path":"sources/markdown/CEDEC2026_029_UIの実装に強くなる！ゲームでUIを動かすための知識と考え方.md","coverageStatus":"complete"},
+{"resourceId":"RES-20260812-030","path":"sources/markdown/CEDEC2026_030_AIネイティブゲームの面白さはどこで決まるのか.md","coverageStatus":"complete"},
+{"resourceId":"RES-20260812-031","path":"sources/markdown/CEDEC2026_031_HEXADRIVE_Ritaro_WaterColorToon.md","coverageStatus":"complete"},
+{"resourceId":"RES-20260812-032","path":"sources/markdown/CEDEC2026_032_ムービーカットシーンデザイナーの集い～正解のない制作現場での戦い方を共に考える～完成版.md","coverageStatus":"complete"},
+{"resourceId":"RES-20260812-033","path":"sources/markdown/CEDEC2026_033_大量のデータから「いい感じに」抽選する時系列バケット式抽選法.md","coverageStatus":"partial"},
+{"resourceId":"RES-20260812-034","path":"sources/markdown/CEDEC2026_034_内製ゲームエンジンのスマートフォン対応_—_C++_iOS_Metal.md","coverageStatus":"complete"},
+{"resourceId":"RES-20260812-035","path":"sources/markdown/CEDEC2026_035_『モンスターハンターストーリーズ３』_RPGバトルAIにおける機械学習と従来手法の融合.md","coverageStatus":"complete"},
+{"resourceId":"RES-20260812-036","path":"sources/markdown/CEDEC2026_036_TB級アセット時代の開発基盤再構成_—_VHDX_COW_CAS.md","coverageStatus":"complete"},
+{"resourceId":"RES-20260812-037","path":"sources/markdown/CEDEC2026_037_モンスト_データ民主化への3アプローチ.md","coverageStatus":"complete"},
+{"resourceId":"RES-20260812-038","path":"sources/markdown/CEDEC2026_038_【EIZO】モニター色管理による制作環境の効率化_ColorEdge初のOLEDモデル登場！.md","coverageStatus":"partial"},
+{"resourceId":"RES-20260812-039","path":"sources/markdown/CEDEC2026_039_『プラグマタ』における髪・表情表現の開発事例.md","coverageStatus":"complete"},
+{"resourceId":"RES-20260812-040","path":"sources/markdown/CEDEC2026_040_脱Jenkins、_インターン生が挑んだCIツールGitHub_Actions移行.md","coverageStatus":"partial"},
+{"resourceId":"RES-20260812-041","path":"sources/markdown/CEDEC2026_041_Build_System_in_the_Autonomous_Agents_Era.md","coverageStatus":"partial"},
+{"resourceId":"RES-20260812-042","path":"sources/markdown/CEDEC2026_042_Marvel_Rivals_—_Architecture_Built_to_Support_Mass_Monster_Assault.md","coverageStatus":"complete"},
+{"resourceId":"RES-20260812-043","path":"sources/markdown/CEDEC2026_043_『モンスターハンターストーリーズ3』アニメ調レンダリングを徹底解剖.md","coverageStatus":"partial"},
+{"resourceId":"RES-20260812-044","path":"sources/markdown/CEDEC2026_044_AI_Agent導入のラストマイル_—_Agentはなぜ本番で止まるのか.md","coverageStatus":"complete"},
+{"resourceId":"RES-20260812-045","path":"sources/markdown/CEDEC2026_045_レベル職人に依存しない！_ギミックを活かしたパズルゲームのレベル自動生成.md","coverageStatus":"partial"},
+{"resourceId":"RES-20260812-046","path":"sources/markdown/CEDEC2026_046_20年続く社内勉強会_ALMの運用哲学.md","coverageStatus":"partial"},
+{"resourceId":"RES-20260812-047","path":"sources/markdown/CEDEC2026_047_ミアレシティがメガシンカ⁉_『Pokémon_LEGENDS_Z-A』の描画技術.md","coverageStatus":"complete"},
+{"resourceId":"RES-20260812-048","path":"sources/markdown/CEDEC2026_048_「集める」のではなく、データが「勝手に集まる」世界へ_—_定点観測から始まるパフォーマンス改善ライフ.md","coverageStatus":"complete"},
+{"resourceId":"RES-20260812-049","path":"sources/markdown/CEDEC2026_049_高品質な表現をもっと現実的に_—_Enlighten_&_Bone_Dynamics_最新技術と導入事例.md","coverageStatus":"complete"},
+{"resourceId":"RES-20260812-050","path":"sources/markdown/CEDEC2026_050_GS2-Studio_—_運営型ゲームの開発を再構成するモデル・コード・UI生成.md","coverageStatus":"partial"},
+{"resourceId":"RES-20260812-051","path":"sources/markdown/CEDEC2026_051_「カミとミコ」開発におけるCMSとFigma活用_—_エンジニアなしでゲーム内容を更新する.md","coverageStatus":"partial"},
+{"resourceId":"RES-20260812-052","path":"sources/markdown/CEDEC2026_052_『モンスターハンターストーリーズ3』LLM×VLMで拡張する自動プレイエージェントの構築と運用.md","coverageStatus":"complete"},
+{"resourceId":"RES-20260812-053","path":"sources/markdown/CEDEC2026_053_100名規模のVTuberコラボ配信を実現するために刷新した配信システム.md","coverageStatus":"partial"},
+{"resourceId":"RES-20260812-054","path":"sources/markdown/CEDEC2026_054_『モンスターハンターストーリーズ３』QAQCを変革する自律型マルチAIエージェント.md","coverageStatus":"complete"}
+];
+const branch='knowledge/cedec2026-progressive-synthesis-recovery';
+function titleOf(path){let f=path.split('/').pop().replace(/\.md$/,'');f=f.replace(/^CEDEC2026_(?:\d{3}_)?/,'').replaceAll('_',' ');return f;}
+function gh(path){return `https://github.com/DarumaPPAP/MyResourceCenter/blob/${branch}/${path.split('/').map(encodeURIComponent).join('/')}`;}
+const q=document.getElementById('q'),coverage=document.getElementById('coverage'),sort=document.getElementById('sort'),list=document.getElementById('list'),meta=document.getElementById('meta');
+function render(){const s=q.value.trim().toLowerCase();let rows=docs.filter(d=>(!coverage.value||d.coverageStatus===coverage.value)&&(!s||`${d.resourceId} ${titleOf(d.path)}`.toLowerCase().includes(s)));rows.sort(sort.value==='title'?(a,b)=>titleOf(a.path).localeCompare(titleOf(b.path),'ja'):(a,b)=>a.resourceId.localeCompare(b.resourceId));meta.textContent=`${rows.length} / ${docs.length} Documents`;list.innerHTML=rows.map(d=>{const t=titleOf(d.path);return `<article class="row"><div><div class="name">${t}</div><div class="sub">${d.resourceId}<br>${d.path}</div></div><div class="status ${d.coverageStatus}"><span class="dot"></span>${d.coverageStatus}${d.coverageStatus==='partial'?' / provisional':' / complete'}</div><div class="actions"><a class="btn" href="${gh(d.path)}" target="_blank" rel="noopener noreferrer">Human V2 ↗</a></div></article>`}).join('');}
+[q,coverage,sort].forEach(el=>el.addEventListener(el===q?'input':'change',render));render();
+</script></body></html>
