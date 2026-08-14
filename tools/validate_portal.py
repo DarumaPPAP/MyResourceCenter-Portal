@@ -21,6 +21,7 @@ REQUIRED_PAGES = {
 REQUIRED_CATALOG = {
     "manifest.json",
     "resources.json",
+    "resources-06.json",
     "websites.json",
     "documents.json",
     "taxonomy.json",
@@ -168,7 +169,7 @@ def main() -> None:
         raise SystemExit("FAILED: Portal structure\n- " + "\n- ".join(errors))
 
     manifest = load("manifest.json")
-    resources = load("resources.json")
+    resources = load("resources.json") + load("resources-06.json")
     websites = load("websites.json")
     documents = load("documents.json")
     taxonomy = load("taxonomy.json")
