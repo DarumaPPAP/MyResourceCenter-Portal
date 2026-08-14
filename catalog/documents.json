@@ -5,13 +5,7 @@
     "sourceFormat": "PDF",
     "level": "algorithm / implementation",
     "engine": "General",
-    "tags": [
-      "Transparency",
-      "OIT",
-      "AVBOIT",
-      "Voxel",
-      "Blending"
-    ]
+    "tags": ["Transparency", "OIT", "AVBOIT", "Voxel", "Blending"]
   },
   {
     "id": "DOC-3E892BA01B45",
@@ -19,14 +13,7 @@
     "sourceFormat": "PDF",
     "level": "algorithm / implementation",
     "engine": "Mobile rendering",
-    "tags": [
-      "NanoMesh",
-      "Mobile",
-      "ClusterRendering",
-      "LOD",
-      "GPUDriven",
-      "Geometry"
-    ]
+    "tags": ["NanoMesh", "Mobile", "ClusterRendering", "LOD", "GPUDriven", "Geometry"]
   },
   {
     "id": "DOC-D572B476A0E7",
@@ -34,28 +21,15 @@
     "sourceFormat": "PDF",
     "level": "production / implementation",
     "engine": "Anvil / Assassin’s Creed Shadows",
-    "tags": [
-      "RayTracing",
-      "RTGI",
-      "GPUDriven",
-      "SceneDescription",
-      "PlatformScalability",
-      "Ubisoft"
-    ]
+    "tags": ["RayTracing", "RTGI", "GPUDriven", "SceneDescription", "PlatformScalability", "Ubisoft"]
   },
   {
     "id": "DOC-01794D3365E5",
-    "title": "Caldera — Call of Duty: Warzone OpenUSD データセット",
+    "title": "Caldera — Call of Duty: Warzone OpenUSD Data Set",
     "sourceFormat": "PPTX",
     "level": "reference / dataset",
     "engine": "Call of Duty / OpenUSD",
-    "tags": [
-      "OpenUSD",
-      "Dataset",
-      "Warzone",
-      "AssetPipeline",
-      "Validation"
-    ]
+    "tags": ["OpenUSD", "Dataset", "Warzone", "SceneGraph", "AssetPipeline", "PlayerData", "Validation"]
   },
   {
     "id": "DOC-0D8A799A6DFF",
@@ -63,27 +37,15 @@
     "sourceFormat": "PPTX",
     "level": "research-to-production",
     "engine": "Production rendering",
-    "tags": [
-      "MachineLearning",
-      "NeuralLighting",
-      "LightGrid",
-      "PrecomputedLighting",
-      "Inference"
-    ]
+    "tags": ["MachineLearning", "NeuralLighting", "LightGrid", "PrecomputedLighting", "ProbeWeighting"]
   },
   {
     "id": "DOC-951E68AE9350",
-    "title": "Variable Rate Shading with Visibility Buffer Rendering",
+    "title": "Visibility Buffer RenderingによるVariable Rate Shading",
     "sourceFormat": "PPTX",
     "level": "implementation / optimization",
-    "engine": "General",
-    "tags": [
-      "VisibilityBuffer",
-      "VRS",
-      "QuadUtilization",
-      "HelperLane",
-      "GPUOptimization"
-    ]
+    "engine": "Northlight / Alan Wake 2",
+    "tags": ["VisibilityBuffer", "VRS", "WaveIntrinsics", "QuadUtilization", "GPUOptimization", "AlanWake2"]
   },
   {
     "id": "DOC-3F145306D66A",
@@ -91,30 +53,15 @@
     "sourceFormat": "PPTX",
     "level": "production / implementation",
     "engine": "Glacier",
-    "tags": [
-      "Volumetric",
-      "Smolder",
-      "MBOIT",
-      "AdaptiveSampling",
-      "OpenVDB",
-      "GPUCompute",
-      "007FirstLight"
-    ]
+    "tags": ["Volumetric", "Smolder", "Raymarching", "MBOIT", "OpenVDB", "GPUCompute", "WaveIntrinsics", "AdaptiveSampling", "007FirstLight"]
   },
   {
     "id": "DOC-D9BF50081FE0",
-    "title": "Shipping Dynamic GI — Frostbite GIBS（Global Illumination Based on Surfels）",
+    "title": "Shipping Dynamic GI — GIBSをProduction Budgetへ収める設計",
     "sourceFormat": "PDF",
     "level": "production / implementation",
     "engine": "Frostbite",
-    "tags": [
-      "GI",
-      "Surfels",
-      "GIBS",
-      "Frostbite",
-      "DynamicGI",
-      "Production"
-    ]
+    "tags": ["GI", "Surfels", "GIBS", "Frostbite", "DynamicGI", "Production"]
   },
   {
     "id": "DOC-3FBC83135073",
@@ -122,58 +69,31 @@
     "sourceFormat": "PDF",
     "level": "production / optimization",
     "engine": "Unity / custom mobile pipeline",
-    "tags": [
-      "Unity",
-      "MobileRendering",
-      "TileBasedDeferred",
-      "Optimization",
-      "GakuenIdolmaster",
-      "CEDEC"
-    ]
+    "tags": ["Unity", "MobileRendering", "TileBasedDeferred", "HybridRendering", "SSR", "PlanarReflection", "TAA", "FSR", "CEDEC"]
   },
   {
     "id": "DOC-E987BF5DBF03",
-    "title": "FrostbiteにおけるSeracによる柔軟で拡張可能なShader Authoring",
+    "title": "Serac — FrostbiteのFlexible / Extensible Shader Authoring",
     "sourceFormat": "PPTX",
     "level": "architecture / tooling",
     "engine": "Frostbite",
-    "tags": [
-      "ShaderAuthoring",
-      "Serac",
-      "DSL",
-      "HLSL",
-      "Frostbite",
-      "Compiler"
-    ]
+    "tags": ["ShaderAuthoring", "Serac", "HLSL", "Frostbite", "ComponentReplacement", "CodeGeneration", "NodeGraph", "DXC"]
   },
   {
     "id": "DOC-3647B41168E7",
     "title": "Physically Based and Unified Volumetric Rendering in Frostbite",
     "sourceFormat": "PDF",
-    "level": "overview / reference",
+    "level": "production / implementation",
     "engine": "Frostbite",
-    "tags": [
-      "Volumetric",
-      "Froxel",
-      "Frostbite",
-      "ParticipatingMedia",
-      "Summary"
-    ]
+    "tags": ["Volumetric", "Froxel", "ParticipatingMedia", "TemporalIntegration", "VolumetricShadow", "ParticleVoxelization", "Frostbite", "SIGGRAPH"]
   },
   {
     "id": "DOC-7E8B968F5D91",
-    "title": "Physically-Based & Unified Volumetric Rendering in Frostbite",
+    "title": "Physically-Based & Unified Volumetric Rendering in Frostbite — Speaker Notes版",
     "sourceFormat": "PPTX",
     "level": "foundation / implementation",
     "engine": "Frostbite",
-    "tags": [
-      "Volumetric",
-      "Froxel",
-      "VBuffer",
-      "Frostbite",
-      "ParticipatingMedia",
-      "PhysicallyBased"
-    ]
+    "tags": ["Volumetric", "Froxel", "VBuffer", "ParticipatingMedia", "TemporalIntegration", "VolumetricShadow", "Performance", "Frostbite"]
   },
   {
     "id": "DOC-03C63F025BC3",
@@ -181,28 +101,15 @@
     "sourceFormat": "PPTX",
     "level": "research-to-production / implementation",
     "engine": "Halcyon / F1 / EA internal",
-    "tags": [
-      "PathTracing",
-      "ORCA",
-      "RadianceCache",
-      "GPUHashMap",
-      "VoxelHierarchy",
-      "EASeed"
-    ]
+    "tags": ["PathTracing", "ORCA", "RadianceCache", "GPUHashMap", "VoxelHierarchy", "EASeed"]
   },
   {
     "id": "DOC-1A8C78435C4E",
     "title": "Hemispherical Lighting Insights — Call of Duty Production Lessons",
-    "sourceFormat": "PPTX",
+    "sourceFormat": "PDF",
     "level": "production / lighting",
     "engine": "Call of Duty engine",
-    "tags": [
-      "Lighting",
-      "BakedLighting",
-      "SphericalHarmonics",
-      "DirectionalLightmap",
-      "CallOfDuty"
-    ]
+    "tags": ["Lighting", "DirectionalLightmap", "IrradZ", "HHD", "HLSH", "SphericalHarmonics", "AmbientOcclusion", "CallOfDuty"]
   },
   {
     "id": "DOC-7AC1381980A0",
@@ -210,75 +117,39 @@
     "sourceFormat": "PPTX",
     "level": "production / implementation",
     "engine": "idTech 8",
-    "tags": [
-      "GI",
-      "idTech8",
-      "RadianceCache",
-      "IrradianceVolume",
-      "RayTracing",
-      "AsyncCompute",
-      "DOOM"
-    ]
+    "tags": ["GI", "idTech8", "RadianceCache", "IrradianceVolume", "RayTracing", "AsyncCompute", "DOOM"]
   },
   {
     "id": "DOC-E10B437D456F",
-    "title": "Strand-based Hair and Fur in *Indiana Jones and the Great Circle*",
+    "title": "Strand-based Hair and Fur in Indiana Jones and the Great Circle",
     "sourceFormat": "PPTX",
     "level": "production / implementation",
     "engine": "MOTOR / idTech-derived",
-    "tags": [
-      "Hair",
-      "Fur",
-      "SoftwareRasterization",
-      "VisibilityBuffer",
-      "Marschner",
-      "LOD",
-      "IndianaJones"
-    ]
+    "tags": ["Hair", "Fur", "SoftwareRasterization", "VisibilityBuffer", "Marschner", "LOD", "AsyncCompute", "IndianaJones"]
   },
   {
     "id": "DOC-D992E586A541",
-    "title": "Concurrent Binary Trees（CBT-V2）による大規模ゲームコンポーネントのスケーラブル描画",
+    "title": "Concurrent Binary Trees V2 — Large-Scale Game Components",
     "sourceFormat": "PDF",
     "level": "algorithm / implementation",
     "engine": "General / research-to-production",
-    "tags": [
-      "CBT",
-      "LOD",
-      "GPUDriven",
-      "Terrain",
-      "Tessellation",
-      "AdaptiveMesh"
-    ]
+    "tags": ["CBT", "AdaptiveMesh", "GPUDriven", "LOD", "Terrain", "Tessellation", "MemoryPool"]
   },
   {
     "id": "DOC-4E3F45D3C46F",
-    "title": "HypeHypeにおけるStochastic Tile-Based Lighting",
+    "title": "Stochastic Tile-Based Lighting — HypeHype Mobile Lighting",
     "sourceFormat": "PPTX",
     "level": "production / algorithm",
     "engine": "HypeHype",
-    "tags": [
-      "Lighting",
-      "MobileGPU",
-      "TileBasedRendering",
-      "StochasticSampling",
-      "SRS",
-      "HypeHype"
-    ]
+    "tags": ["Lighting", "MobileGPU", "TileBasedRendering", "StochasticSampling", "SRS", "Shadow", "TAA", "HypeHype"]
   },
   {
     "id": "DOC-E5027A739171",
-    "title": "Real-Time Subsurface Scattering via Hybrid ReSTIR-Path-Tracing and Diffusion",
+    "title": "Real-Time Subsurface Scattering — Hybrid ReSTIR Path Tracing + Diffusion",
     "sourceFormat": "PPTX",
     "level": "algorithm / implementation",
-    "engine": "General",
-    "tags": [
-      "SSS",
-      "ReSTIR",
-      "PathTracing",
-      "Diffusion",
-      "SkinRendering"
-    ]
+    "engine": "Omniverse RTX Renderer / NVIDIA RTX Character Rendering",
+    "tags": ["SSS", "SubsurfaceScattering", "ReSTIR", "PathTracing", "Diffusion", "BSSRDF", "RayTracing", "CharacterRendering"]
   },
   {
     "id": "DOC-33076D59B43A",
@@ -286,15 +157,7 @@
     "sourceFormat": "PDF",
     "level": "production / AI system operations",
     "engine": "GitHub / LLM / CloudWatch",
-    "tags": [
-      "LLM",
-      "CodeReview",
-      "StructuredOutput",
-      "MultiAgent",
-      "GitHub",
-      "CloudWatch",
-      "AIQuality"
-    ]
+    "tags": ["LLM", "CodeReview", "StructuredOutput", "MultiAgent", "GitHub", "CloudWatch", "AIQuality"]
   },
   {
     "id": "DOC-E51533733F48",
@@ -302,14 +165,7 @@
     "sourceFormat": "PDF",
     "level": "production / AI tooling",
     "engine": "Dify / Cygames internal tools",
-    "tags": [
-      "LLM",
-      "Dify",
-      "ScenarioWriting",
-      "PromptEngineering",
-      "StructuredOutput",
-      "HumanInTheLoop"
-    ]
+    "tags": ["LLM", "Dify", "ScenarioWriting", "PromptEngineering", "StructuredOutput", "HumanInTheLoop"]
   },
   {
     "id": "DOC-326D8F6D7A18",
@@ -317,15 +173,7 @@
     "sourceFormat": "PDF",
     "level": "architecture / production",
     "engine": "Unity / MagicOnion / Shadowverse: Worlds Beyond",
-    "tags": [
-      "Unity",
-      "MagicOnion",
-      "ServerAuthoritative",
-      "Architecture",
-      "Automation",
-      "Mobile",
-      "ShadowverseWorldsBeyond"
-    ]
+    "tags": ["Unity", "MagicOnion", "ServerAuthoritative", "Architecture", "Automation", "Mobile", "ShadowverseWorldsBeyond"]
   },
   {
     "id": "DOC-AD094CAB6658",
@@ -333,92 +181,6 @@
     "sourceFormat": "PDF",
     "level": "production / tooling",
     "engine": "Unity / Unity Recorder / After Effects",
-    "tags": [
-      "Unity",
-      "VideoProduction",
-      "UnityRecorder",
-      "AfterEffects",
-      "Compositing",
-      "EditorTool"
-    ]
-  },
-  {
-    "id": "DOC-0B6DF850F0FB",
-    "title": "グラフィックスエンジニアのためのニューラルシェーディング入門",
-    "sourceFormat": "PDF",
-    "level": "foundation / implementation",
-    "engine": "GPU Shader / Slang / SlangPy / Cooperative Vector",
-    "tags": [
-      "NeuralShading",
-      "Slang",
-      "SlangPy",
-      "CooperativeVector",
-      "MLP",
-      "NeuralTexture",
-      "NeuralGI"
-    ]
-  },
-  {
-    "id": "DOC-993E844262D1",
-    "title": "派手さと見やすさは両立できる — Shadowverse: Worlds Beyond エフェクト・3D背景のVisual設計",
-    "sourceFormat": "PDF",
-    "level": "visual design / production",
-    "engine": "Shadowverse: Worlds Beyond",
-    "tags": [
-      "ShadowverseWorldsBeyond",
-      "VFX",
-      "3DBackground",
-      "Readability",
-      "Shader",
-      "PostEffect",
-      "VisualDesign"
-    ]
-  },
-  {
-    "id": "DOC-197D9EECCD46",
-    "title": "Relinkを拡張せよ — Endless Ragnarokの開発速度と品質を守るCI運用",
-    "sourceFormat": "PDF",
-    "level": "production / CI quality",
-    "engine": "Jenkins / Datadog / Cygames console pipeline",
-    "tags": [
-      "CI",
-      "CD",
-      "Datadog",
-      "Jenkins",
-      "StaticAnalysis",
-      "SnapshotQA",
-      "VisualRegression"
-    ]
-  },
-  {
-    "id": "DOC-C94962EB3D53",
-    "title": "GRANBLUE FANTASY: Relink - Endless Ragnarok のBattle制作事例 — 最高のCharacter Gameを目指して",
-    "sourceFormat": "PDF",
-    "level": "game design / production",
-    "engine": "GRANBLUE FANTASY: Relink - Endless Ragnarok",
-    "tags": [
-      "CombatDesign",
-      "CompanionAI",
-      "BehaviorTree",
-      "FSM",
-      "AssistMode",
-      "Iteration",
-      "Relink"
-    ]
-  },
-  {
-    "id": "DOC-EC2B2C7B6514",
-    "title": "アートとゲームデザインをつなぐVFX設計 — Endless Ragnarokにおける表現と可読性",
-    "sourceFormat": "PDF",
-    "level": "visual design / game design",
-    "engine": "GRANBLUE FANTASY: Relink - Endless Ragnarok",
-    "tags": [
-      "VFX",
-      "Readability",
-      "CombatDesign",
-      "InformationDensity",
-      "ArtDirection",
-      "Relink"
-    ]
+    "tags": ["Unity", "VideoProduction", "UnityRecorder", "AfterEffects", "Compositing", "EditorTool"]
   }
 ]
