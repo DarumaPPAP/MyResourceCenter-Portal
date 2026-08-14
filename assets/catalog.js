@@ -10,12 +10,25 @@
       .replaceAll("'", '&#039;');
   }
 
+  async function fetchCatalog(name) {
+    const response = await fetch(`catalog/${name}.json`, { cache: 'no-store' });
+    if (!response.ok) throw new Error(`${name}.json: HTTP ${response.status}`);
+    return response.json();
+  }
+
   async function load(name) {
     if (!cache.has(name)) {
-      cache.set(name, fetch(`catalog/${name}.json`, { cache: 'no-store' }).then(response => {
-        if (!response.ok) throw new Error(`${name}.json: HTTP ${response.status}`);
-        return response.json();
-      }));
+      if (name === 'resources') {
+        cache.set(name, Promise.all([
+          fetchCatalog('resources'),
+          fetchCatalog('resources-06')
+        ]).then(([baseResources, supplementalResources]) => [
+          ...baseResources,
+          ...supplementalResources
+        ]));
+      } else {
+        cache.set(name, fetchCatalog(name));
+      }
     }
     return cache.get(name);
   }
