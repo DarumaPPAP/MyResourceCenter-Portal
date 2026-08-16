@@ -72,8 +72,13 @@ def build_page(row: dict) -> tuple[str, str]:
 def main() -> None:
     data = json.loads(MANIFEST.read_text(encoding="utf-8"))
     rows = data.get("presentations", [])
-    if data.get("count") != 21 or len(rows) != 21:
-        raise SystemExit(f"English presentation manifest must contain 21 entries, got {len(rows)}")
+    pending = data.get("pending", [])
+    if data.get("classifiedEnglishCount") != 21:
+        raise SystemExit("classifiedEnglishCount must remain 21 until the registry is re-audited")
+    if data.get("completedCount") != len(rows) or data.get("pendingCount") != len(pending):
+        raise SystemExit("English presentation completion counts do not match manifest arrays")
+    if len(rows) + len(pending) != 21:
+        raise SystemExit("completed + pending English documents must equal 21")
 
     if OUTPUT_ROOT.exists():
         shutil.rmtree(OUTPUT_ROOT)
@@ -87,8 +92,15 @@ def main() -> None:
         (out_dir / "index.html").write_text(page, encoding="utf-8")
         built.append({"slug": row["slug"], "title": title, "driveId": row["driveId"], "path": f"documents/English/{row['slug']}/index.html"})
 
-    (OUTPUT_ROOT / "index.json").write_text(json.dumps({"count": len(built), "presentations": built}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"Built {len(built)} English -> Japanese static HTML presentations")
+    output = {
+        "classifiedEnglishCount": 21,
+        "completedCount": len(built),
+        "pendingCount": len(pending),
+        "presentations": built,
+        "pending": pending,
+    }
+    (OUTPUT_ROOT / "index.json").write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"Built {len(built)} completed English -> Japanese static HTML presentations; {len(pending)} pending Source-faithful rebuild")
 
 
 if __name__ == "__main__":
