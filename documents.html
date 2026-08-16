@@ -1,34 +1,37 @@
 <!doctype html>
 <html lang="ja" data-theme="light">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Documents | MyResourceCenter</title><meta name="description" content="Original Sourceを言語別に検索し、日本語資料は原資料へ、英語資料は日本語HTMLへ案内します。"><link rel="stylesheet" href="assets/site.css"><script defer src="assets/portal.js"></script><script defer src="assets/catalog.js"></script></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Documents | MyResourceCenter</title><meta name="description" content="Original Sourceを言語・形式別に検索し、日本語資料は原資料へ、英語資料は日本語HTMLへ案内します。"><link rel="stylesheet" href="assets/site.css"><script defer src="assets/portal.js"></script><script defer src="assets/catalog.js"></script></head>
 <body><div class="app-shell">
 <aside class="sidebar"><div class="brand-lockup"><div class="brand-mark">M</div><div class="brand-name">MyResourceCenter</div></div><nav class="side-nav"><a href="index.html"><span class="icon">⌂</span>ホーム</a><a class="active" href="documents.html"><span class="icon">▤</span>ドキュメント</a><a href="websites.html"><span class="icon">◎</span>Webサイト</a></nav><div class="sidebar-note">Originalが唯一の一次資料です。Japanese / EnglishはHuman向けPresentation routingです。</div></aside>
 <main class="main"><header class="topbar"><div class="breadcrumb">Documents / Original Library</div><div class="top-actions"><button class="icon-button theme-toggle" type="button">Dark</button></div></header><nav class="mobile-nav"><a href="index.html">ホーム</a><a href="documents.html">Documents</a><a href="websites.html">Websites</a></nav>
 <div class="content"><section class="hero"><div class="hero-copy"><div class="eyebrow">Original-first Library</div><h1>登録資料を探す</h1><p>日本語資料はOriginalをそのまま開きます。英語資料はOriginalを正本とし、日本語Source-faithful HTMLをHuman向けPresentationとして順次追加します。</p></div><div class="hero-visual"><div class="library-illustration"><div class="book"></div><div class="book"></div><div class="book"></div><div class="book"></div></div></div></section>
-<div class="toolbar"><input id="q" type="search" placeholder="資料名を検索"><select id="language"><option value="">言語すべて</option><option value="ja">Japanese</option><option value="en">English</option><option value="unknown">未判定</option></select><button id="clear" type="button">クリア</button></div><div class="result-meta"><span id="count">読み込み中…</span><span>Original Source = AI / factual Source of Truth</span></div><div class="data-list" id="list"></div></div><footer class="footer">MyResourceCenter Human Portal · Japanese = Original / English = Japanese HTML + Original</footer></main></div>
+<div class="toolbar"><input id="q" type="search" placeholder="資料名を検索"><select id="language"><option value="">言語すべて</option><option value="ja">Japanese</option><option value="en">English</option><option value="unknown">未判定</option></select><select id="format"><option value="">形式すべて</option><option value="PDF">PDF</option><option value="PPTX">PPTX</option></select><button id="clear" type="button">クリア</button></div><div class="result-meta"><span id="count">読み込み中…</span><span>Original Source = AI / factual Source of Truth</span></div><div class="data-list" id="list"></div></div><footer class="footer">MyResourceCenter Human Portal · Japanese = Original / English = Japanese HTML + Original</footer></main></div>
 <script>
 window.addEventListener('DOMContentLoaded',async()=>{
- const C=window.MRCCatalog,q=document.getElementById('q'),language=document.getElementById('language'),list=document.getElementById('list'),count=document.getElementById('count');
+ const C=window.MRCCatalog,q=document.getElementById('q'),language=document.getElementById('language'),format=document.getElementById('format'),list=document.getElementById('list'),count=document.getElementById('count');
  try{
   const data=await C.load('original-documents');
   const initial=C.query('q');if(initial)q.value=initial;
-  const rows=[...(data.japanese||[]).map(file=>({file,language:'ja'})),...(data.english||[]).map(file=>({file,language:'en'})),...(data.unclassified||[]).map(file=>({file,language:'unknown'}))];
-  const sourceRoot=data.sourceRoot||'sources/Original/PDF/';
+  const rows=(data.groups||[]).flatMap(group=>(group.files||[]).map(file=>({file,language:group.language,format:group.format,sourceRoot:group.sourceRoot})));
   const label={ja:'Japanese / Original',en:'English / 日本語HTML',unknown:'言語未判定'};
-  const originalUrl=file=>`https://github.com/DarumaPPAP/MyResourceCenter/blob/main/${sourceRoot}${encodeURIComponent(file)}`;
+  const originalUrl=x=>`https://github.com/DarumaPPAP/MyResourceCenter/blob/main/${x.sourceRoot}${encodeURIComponent(x.file)}`;
   const title=file=>file.replace(/\.pdf$/i,'').replace(/\.pptx$/i,'');
   const render=()=>{
    const s=q.value.trim().toLowerCase();
-   const filtered=rows.filter(x=>(!s||title(x.file).toLowerCase().includes(s))&&(!language.value||x.language===language.value));
-   count.textContent=`${filtered.length} / ${rows.length} Documents · Japanese ${data.japanese?.length||0} · English ${data.english?.length||0} · 未判定 ${data.unclassified?.length||0}`;
+   const filtered=rows.filter(x=>(!s||title(x.file).toLowerCase().includes(s))&&(!language.value||x.language===language.value)&&(!format.value||x.format===format.value));
+   const c=data.counts||{};
+   count.textContent=`${filtered.length} / ${rows.length} Documents · Japanese ${c.japanese||0} · English ${c.english||0} · 未判定 ${c.unclassified||0}`;
    list.innerHTML=filtered.map(x=>{
-    const original=C.escapeHtml(originalUrl(x.file));
-    const action=x.language==='en'?'<span class="level">日本語HTML 生成待ち</span>':x.language==='unknown'?'<span class="level">言語確認待ち</span>':'<span class="level">Originalを直接閲覧</span>';
-    return `<div class="data-row"><div><a class="data-title" href="${original}" target="_blank" rel="noopener noreferrer">${C.escapeHtml(title(x.file))} ↗</a><div class="data-sub">${C.escapeHtml(x.file)}</div></div><div><div class="data-label">Language</div><span class="format">${label[x.language]}</span></div><div><div class="data-label">Presentation</div>${action}</div><div><div class="data-label">Action</div><a href="${original}" target="_blank" rel="noopener noreferrer">Originalを開く ↗</a></div></div>`;
+    const original=C.escapeHtml(originalUrl(x));
+    const presentation=(data.presentations||{})[`${x.format}:${x.file}`]||'';
+    const presentationHref=presentation?C.escapeHtml(presentation):'';
+    const state=x.language==='en'?(presentationHref?'<span class="level">日本語HTML 公開済み</span>':'<span class="level">日本語HTML 生成待ち</span>'):x.language==='unknown'?'<span class="level">言語確認待ち</span>':'<span class="level">Originalを直接閲覧</span>';
+    const action=x.language==='en'&&presentationHref?`<a href="${presentationHref}">日本語版を読む</a><br><a href="${original}" target="_blank" rel="noopener noreferrer">Original ↗</a>`:`<a href="${original}" target="_blank" rel="noopener noreferrer">Originalを開く ↗</a>`;
+    return `<div class="data-row"><div><a class="data-title" href="${x.language==='en'&&presentationHref?presentationHref:original}"${x.language==='en'&&presentationHref?'':' target="_blank" rel="noopener noreferrer"'}>${C.escapeHtml(title(x.file))}${x.language==='en'&&presentationHref?'':' ↗'}</a><div class="data-sub">${C.escapeHtml(x.file)}</div></div><div><div class="data-label">Language / Format</div><span class="format">${label[x.language]}</span> <span class="format">${C.escapeHtml(x.format)}</span></div><div><div class="data-label">Presentation</div>${state}</div><div><div class="data-label">Action</div>${action}</div></div>`;
    }).join('')||'<div class="empty">条件に一致するDocumentはありません。</div>';
   };
-  [q,language].forEach(el=>el.addEventListener(el===q?'input':'change',render));
-  document.getElementById('clear').addEventListener('click',()=>{q.value='';language.value='';render();});render();
+  [q,language,format].forEach(el=>el.addEventListener(el===q?'input':'change',render));
+  document.getElementById('clear').addEventListener('click',()=>{q.value='';language.value='';format.value='';render();});render();
  }catch(e){console.error(e);list.innerHTML='<div class="empty">Original Document Catalogの読み込みに失敗しました。</div>';}
 });
 </script></body></html>
