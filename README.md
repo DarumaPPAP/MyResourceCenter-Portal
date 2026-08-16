@@ -1,37 +1,32 @@
 # MyResourceCenter-Portal
 
-`MyResourceCenter` の人間向け公開Portalです。
+`DarumaPPAP/MyResourceCenter` のHuman向けPresentation Layerです。
 
-- Source of Truth: private `DarumaPPAP/MyResourceCenter`
-- Public Portal: this repository
-- Public contents: HTML / CSS / JS / Website registry / Document metadata / short-lived Trend metadata
-- Not published here: PDF/PPTX原本、Markdown本文、図版、Skills、private source metadata
+## Source model
 
-## Pages
+- AI / factual Source of Truth: `MyResourceCenter/sources/Original/`
+- Japanese: Originalをそのまま開く
+- English: Originalを正本として、日本語Source-faithful HTMLをPortalへDeploy
+- Portal metadata: `catalog/original-documents.json`
+
+Portalの表示内容をAIの一次Evidenceとして扱いません。登録資料を根拠に回答・分析・設計・実装・問題作成等を行う場合は、MyResourceCenter側のOriginal Sourceへ戻ります。
+
+## Documents
+
+`documents.html` はOriginal Libraryを言語別に表示します。
+
+- Japanese: `Originalを開く`
+- English: `日本語HTML` + `Original`（HTML未生成時は準備中表示）
+- unclassified: 言語確認待ち
+
+現在のOriginal routingは `catalog/original-documents.json` を正本としてPortalへ投影します。
+
+## GitHub Pages
 
 https://darumappap.github.io/MyResourceCenter-Portal/
 
-GitHub Pagesは `.github/workflows/deploy-pages.yml` から自動Deployします。
+`.github/workflows/deploy-pages.yml` から自動Deployします。
 
 ## Trend Radar
 
-`trend.html` はゲーム開発・Graphics・AI・Engine・Tools・Researchの新着を一覧する **Discovery Feed** です。
-
-Trendは正式Knowledgeではありません。
-
-- `data/trends.json` 1ファイルだけを使用
-- 最大3日保持
-- 1日最大100件
-- 記事本文・画像・PDF等は保存しない
-- Trendから`MyResourceCenter`のWebsites / Documentsへ自動登録しない
-- 残したいSourceだけ、ユーザー判断後に通常の登録フローへ昇格する
-
-AI/Task等が当日分を生成した場合は、軽量JSONを入力として安全更新Toolへ渡します。
-
-```bash
-python3 tools/update_trends.py --input /tmp/today-trends.json
-python3 tools/validate_trends.py
-```
-
-`update_trends.py` はURL重複を除去し、Score降順で最大100件へ制限し、古いDayを落として最大3日だけ保持します。
-
+`trend.html` はゲーム開発・Graphics・AI・Engine・Tools・Researchの短期Discovery Feedです。正式Knowledgeとは分離し、最大3日・1日最大100件の運用を維持します。
