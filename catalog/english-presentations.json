@@ -1,29 +1,33 @@
 {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "1.1.0",
   "sourceLanguage": "en",
   "presentationLanguage": "ja",
-  "count": 21,
+  "classifiedEnglishCount": 21,
+  "completedCount": 13,
+  "pendingCount": 8,
   "presentations": [
     {"slug":"avboit","driveId":"10sUfQ6bC9Xba1PAnoTZEpdRlait8lFUk","originalFilename":"AVBOIT_SIG2025_MDROBOT-final.pdf","markdownPath":"sources/markdown/AVBOIT_SIG2025_MDROBOT-final.md"},
     {"slug":"nanomesh","driveId":"1obT-tA734X8LlgmAzc6bok_QvMUsKv-c","originalFilename":"AdavanceRealtimeRendering_NanoMesh0810.pdf","markdownPath":"sources/markdown/AdavanceRealtimeRendering_NanoMesh0810.md"},
     {"slug":"assassins-creed-shadows-rt","driveId":"1UvRLS-vA9eTU_EQ2n7rVMd5JfrrGZ9QL","originalFilename":"Advances 2025 - Raytracing the world of Assassin_s Creed Shadows.pdf","markdownPath":"sources/markdown/Advances 2025 - Raytracing the world of Assassin’s Creed Shadows.md"},
     {"slug":"shipping-dynamic-gi","driveId":"1Tox5QnuDzWDQ1Q_PVVeZSEbTv-satADk","originalFilename":"Apers_Advances-s2024_Shipping-Dynamic-GI.pdf","markdownPath":"sources/markdown/Apers_Advances-s2024_Shipping-Dynamic-GI.md"},
-    {"slug":"marvel-rivals-mass-monster","driveId":"1i1FK7Ig1EzsaNEIl1vlLyiTF-k33dC_t","originalFilename":"Expanding to Diverse Battlefields-Marvel Rivals Architecture Built to Support Mass Monster Assault.pdf","markdownPath":"sources/markdown/Expanding to Diverse Battlefields-Marvel Rivals Architecture Built to Support Mass Monster Assault.md"},
-    {"slug":"frostbite-volumetrics-pdf","driveId":"1E2HT57uLj3v6Fghj2_4odWqII3uIOJWB","originalFilename":"Frostbite PB and unified volumetrics.pdf","markdownPath":"sources/markdown/Frostbite PB and unified volumetrics.md"},
+    {"slug":"frostbite-volumetrics-pdf","driveId":"1E2HT57uLj3v6Fghj2_4odWqII3uIOJWB","originalFilename":"Frostbite PB and unified volumetrics.pdf","markdownPath":"sources/markdown/Frostbite PB and unified volumetrics__PDF.md"},
     {"slug":"hemispheres","driveId":"1sy6vys_8cikTUBdBwZe-q5hQtHdL_suw","originalFilename":"SIGGRAPH Advances 2024 - Hemispheres Presentation Notes.pdf","markdownPath":"sources/markdown/SIGGRAPH Advances 2024 - Hemispheres Presentation Notes.md"},
-    {"slug":"large-scale-cbt","driveId":"1ra0PbNCNcUl7xj2NKkwrQwbzN4BnzRrV","originalFilename":"large_scale_cbt_slides_siggraph_advances_2024.pdf","markdownPath":"sources/markdown/large_scale_cbt_slides_siggraph_advances_2024.md"},
     {"slug":"caldera-openusd","driveId":"1jiChGgro-bgeh398mF5V-vRUIheKanZP","originalFilename":"Advances_2024_Caldera_Atvi_new_template.pptx","markdownPath":"sources/markdown/Advances_2024_Caldera_Atvi_new_template.md"},
     {"slug":"neural-light-grid","driveId":"1nMUHUxJDiHzFET5cQwUanW4652DuL9zU","originalFilename":"Advances_SIGGRAPH_2024_Neural_LightGrid - 29.07.pptx","markdownPath":"sources/markdown/Advances_SIGGRAPH_2024_Neural_LightGrid - 29.07.md"},
     {"slug":"visibility-vrs","driveId":"1ERe4e4zE-U79lv8QPPV1VxbJXxDJOi37","originalFilename":"Advances_SIGGRAPH_2024_VisibilityVRS-SIGGRAPH_Advances_2024.pptx","markdownPath":"sources/markdown/Advances_SIGGRAPH_2024_VisibilityVRS-SIGGRAPH_Advances_2024.md"},
     {"slug":"smolder","driveId":"14cxwI3iYkFCrhb1-gfVAKBThauz-zqRe","originalFilename":"AlexanderMueller_Smolder_Siggraph26.pptx","markdownPath":"sources/markdown/AlexanderMueller_Smolder_Siggraph26.md"},
-    {"slug":"creativity-ai","driveId":"1o4ac9OZbTpmKnJG7WHGceGfTX6m3cBst","originalFilename":"Creativity in the age of AI - CEDEC - Fawzi Mesmar.pptx","markdownPath":"sources/markdown/Creativity in the age of AI - CEDEC - Fawzi Mesmar.md"},
     {"slug":"frostbite-serac","driveId":"1bVURJft8uAdp6aCq9ueeHYAsyVfwkKwm","originalFilename":"Flexible and Extensible Shader Authoring in Frostbite with Serac-SIGGRAPH2024Advances_8.2.2024.pptx","markdownPath":"sources/markdown/Flexible and Extensible Shader Authoring in Frostbite with Serac-SIGGRAPH2024Advances_8.2.2024.md"},
-    {"slug":"frostbite-volumetrics-pptx","driveId":"1OkbS7E0wkly1drrra9afwBK1Zco8bT_k","originalFilename":"Frostbite PB and unified volumetrics.pptx","markdownPath":"sources/markdown/Frostbite PB and unified volumetrics.md"},
-    {"slug":"orca","driveId":"1olyBBMv7ioCNT0VayTXI48rbunSXM1jx","originalFilename":"ORCA Siggraph r3.4_ Advances.pptx","markdownPath":"sources/markdown/ORCA Siggraph r3.4_ Advances.md"},
-    {"slug":"sousa","driveId":"1caexXCgoO1zDddHUl8bPsrsr5LNdIYa5","originalFilename":"SOUSA_SIGGRAPH_2025_Final.pptx","markdownPath":"sources/markdown/SOUSA_SIGGRAPH_2025_Final.md"},
-    {"slug":"strand-hair","driveId":"1EcWb7hDcGdfLmeooDze7yFad3KvTzKKz","originalFilename":"Strand Hair in IJGC - Final Slides (Post-Conference).pptx","markdownPath":"sources/markdown/Strand Hair in IJGC - Final Slides (Post-Conference).md"},
-    {"slug":"mobile-aaa-gi-ao-dof","driveId":"1xCFGRnfIEqsL_QJeAol9NKVo1e0gczU3","originalFilename":"When AAA Fits in Your Hand - Efficient High Quality GI, AO and DOF on Mobile - Jose Schneider.pptx","markdownPath":"sources/markdown/When AAA Fits in Your Hand - Efficient High Quality GI, AO and DOF on Mobile - Jose Schneider.md"},
-    {"slug":"stb-lighting","driveId":"1rpyyQc8HvaX5lStFa-YefposJjGO4xU0","originalFilename":"s2025_stb_lighting_v1.1.pptx","markdownPath":"sources/markdown/s2025_stb_lighting_v1.1.md"},
-    {"slug":"sss-advances","driveId":"1rYjv2_KuwqYUyqVdO9EdtxO7OTTOxybs","originalFilename":"sss-siggraph-2025-advances-published.pptx","markdownPath":"sources/markdown/sss-siggraph-2025-advances-published.md"}
+    {"slug":"frostbite-volumetrics-pptx","driveId":"1OkbS7E0wkly1drrra9afwBK1Zco8bT_k","originalFilename":"Frostbite PB and unified volumetrics.pptx","markdownPath":"sources/markdown/Frostbite PB and unified volumetrics__PPTX.md"},
+    {"slug":"orca","driveId":"1olyBBMv7ioCNT0VayTXI48rbunSXM1jx","originalFilename":"ORCA Siggraph r3.4_ Advances.pptx","markdownPath":"sources/markdown/ORCA Siggraph r3.4_ Advances.md"}
+  ],
+  "pending": [
+    {"slug":"marvel-rivals-mass-monster","driveId":"1i1FK7Ig1EzsaNEIl1vlLyiTF-k33dC_t","originalFilename":"Expanding to Diverse Battlefields-Marvel Rivals Architecture Built to Support Mass Monster Assault.pdf"},
+    {"slug":"large-scale-cbt","driveId":"1ra0PbNCNcUl7xj2NKkwrQwbzN4BnzRrV","originalFilename":"large_scale_cbt_slides_siggraph_advances_2024.pdf"},
+    {"slug":"creativity-ai","driveId":"1o4ac9OZbTpmKnJG7WHGceGfTX6m3cBst","originalFilename":"Creativity in the age of AI - CEDEC - Fawzi Mesmar.pptx"},
+    {"slug":"sousa","driveId":"1caexXCgoO1zDddHUl8bPsrsr5LNdIYa5","originalFilename":"SOUSA_SIGGRAPH_2025_Final.pptx"},
+    {"slug":"strand-hair","driveId":"1EcWb7hDcGdfLmeooDze7yFad3KvTzKKz","originalFilename":"Strand Hair in IJGC - Final Slides (Post-Conference).pptx"},
+    {"slug":"mobile-aaa-gi-ao-dof","driveId":"1xCFGRnfIEqsL_QJeAol9NKVo1e0gczU3","originalFilename":"When AAA Fits in Your Hand - Efficient High Quality GI, AO and DOF on Mobile - Jose Schneider.pptx"},
+    {"slug":"stb-lighting","driveId":"1rpyyQc8HvaX5lStFa-YefposJjGO4xU0","originalFilename":"s2025_stb_lighting_v1.1.pptx"},
+    {"slug":"sss-advances","driveId":"1rYjv2_KuwqYUyqVdO9EdtxO7OTTOxybs","originalFilename":"sss-siggraph-2025-advances-published.pptx"}
   ]
 }
