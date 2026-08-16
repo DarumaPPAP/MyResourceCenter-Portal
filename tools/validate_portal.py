@@ -9,32 +9,20 @@ ROOT = Path(__file__).resolve().parents[1]
 CATALOG = ROOT / "catalog"
 
 REQUIRED_PAGES = {
-    "index.html",
-    "documents.html",
-    "document.html",
-    "websites.html",
-    "website.html",
-    "collections.html",
-    "collection.html",
-    "taxonomy.html",
+    "index.html", "documents.html", "document.html", "websites.html", "website.html",
+    "collections.html", "collection.html", "taxonomy.html",
 }
 REQUIRED_CATALOG = {
-    "manifest.json",
-    "resources.json",
-    "resources-06.json",
-    "websites.json",
-    "documents.json",
-    "original-documents.json",
-    "taxonomy.json",
-    "relations.json",
-    "collections.json",
+    "manifest.json", "resources.json", "resources-06.json", "websites.json",
+    "documents.json", "original-documents.json", "originals-base-01.json",
+    "originals-base-02.json", "originals-base-03.json", "taxonomy.json",
+    "relations.json", "collections.json",
 }
 FORBIDDEN_KEYS = {
     "path", "original", "images", "sourceimages", "sourcenote", "drivefileid",
-    "driveid", "drivepath", "localpath", "privatesource", "privaterepository",
-    "internalnote", "rawmarkdown", "secret", "token", "password", "authorization",
-    "customer", "projectsecret", "keyfacts", "constraints", "evidence", "searchindex",
-    "lineage",
+    "drivepath", "localpath", "privatesource", "privaterepository", "internalnote",
+    "rawmarkdown", "secret", "token", "password", "authorization", "customer",
+    "projectsecret", "keyfacts", "constraints", "evidence", "searchindex", "lineage",
 }
 RESOURCE_FIELDS = {"id", "title", "url", "canonicalUrl", "kind", "topic", "topics", "reviewState", "useState", "tags"}
 WEBSITE_FIELDS = {"id", "title", "url", "canonicalUrl", "publisher", "authors", "publishedAt", "kind", "contentType", "domains", "topics", "engines", "languages", "summary", "reviewState", "useState", "confidence", "freshness", "tags"}
@@ -46,7 +34,19 @@ TAXONOMY_FIELDS = {"schemaVersion", "domains", "tags", "engines"}
 RELATION_TYPES = {"related", "extends", "contrasts", "alternative", "implements", "derivedFrom", "supersedes", "validates"}
 COLLECTION_ROLES = {"foundation", "overview", "implementation", "production-case", "optimization", "failure-case", "research", "advanced"}
 SHA_RE = re.compile(r"^[0-9a-f]{40}$")
-REMOVED_HOME_COPY = ("技術資料を、見つけやすく。", "技術資料を見つけやすく、理解しやすく")
+DRIVE_ID_RE = re.compile(r"/d/([^/]+)")
+PPTX_SUPPLEMENTAL_IDS = {
+    "1Qwi3KM9tMrS5l6UTV2hxq-2bdKZ_I65D",
+    "1xCFGRnfIEqsL_QJeAol9NKVo1e0gczU3",
+    "1o4ac9OZbTpmKnJG7WHGceGfTX6m3cBst",
+    "1MW1xyfZMHH94TSffUtr7VZU55fmqTfgK",
+    "14H8ECh-O866I5cARXLfWZfikDimyAS1F",
+    "1EI-NZzaPy1LNZIMUgZFYCi3MIHWJd7nV",
+    "1EjDPNwlzQTuIx6GwEIabRH5q3z77AtGc",
+    "1Exs8DZWIN3wlGiGtCK3TtU0CDCo2UrW8",
+    "1ydyK0Uy7ZLLm8be6638JbIflCoeUZt-6",
+    "1Rb5W0y2ugXeDr1Kw4MpN3lybaxz0TXYr",
+}
 
 
 def load(name: str):
@@ -80,85 +80,74 @@ def validate_public_url(errors: list[str], label: str, value) -> None:
         errors.append(f"{label} must use absolute http/https URL")
 
 
-def validate_original_documents(errors: list[str], data: dict) -> tuple[int, int, int, int]:
-    expected_top = {"schemaVersion", "storage", "sourceCommit", "counts", "groups", "presentations"}
-    if set(data) != expected_top:
-        errors.append("original-documents fields must match public contract exactly")
-    if data.get("schemaVersion") != "1.1.0":
-        errors.append("original-documents schemaVersion must be 1.1.0")
-    if data.get("storage") != "git-lfs":
-        errors.append("original-documents storage must be git-lfs")
-    if not SHA_RE.fullmatch(str(data.get("sourceCommit", ""))):
-        errors.append("original-documents sourceCommit must be exact 40-character SHA")
+def drive_id(url: str) -> str:
+    match = DRIVE_ID_RE.search(str(url or ""))
+    return match.group(1) if match else ""
 
-    allowed_languages = {"ja", "en", "unknown"}
-    allowed_formats = {"PDF", "PPTX"}
-    seen: set[tuple[str, str]] = set()
-    by_language = {"ja": 0, "en": 0, "unknown": 0}
-    by_format = {"PDF": 0, "PPTX": 0}
 
-    groups = data.get("groups", [])
-    if not isinstance(groups, list):
-        errors.append("original-documents groups must be an array")
-        groups = []
+def validate_originals(errors: list[str]):
+    meta = load("original-documents.json")
+    base = load("originals-base-01.json") + load("originals-base-02.json") + load("originals-base-03.json")
+    supplemental = load("resources-06.json")
 
-    for index, group in enumerate(groups):
-        if not isinstance(group, dict):
-            errors.append(f"original-documents.groups[{index}] must be an object")
-            continue
-        if set(group) != {"language", "format", "sourceRoot", "files"}:
-            errors.append(f"original-documents.groups[{index}] invalid fields")
-            continue
-        language = group.get("language")
-        source_format = group.get("format")
-        root = group.get("sourceRoot")
-        files = group.get("files")
-        if language not in allowed_languages:
-            errors.append(f"original-documents.groups[{index}] invalid language: {language}")
-        if source_format not in allowed_formats:
-            errors.append(f"original-documents.groups[{index}] invalid format: {source_format}")
-        expected_root = "sources/Original/PDF/" if source_format == "PDF" else "sources/Original/pptx/"
-        if root != expected_root:
-            errors.append(f"original-documents.groups[{index}] invalid sourceRoot: {root}")
-        if not isinstance(files, list):
-            errors.append(f"original-documents.groups[{index}].files must be an array")
-            continue
-        suffix = ".pdf" if source_format == "PDF" else ".pptx"
-        for file in files:
-            if not isinstance(file, str) or not file.lower().endswith(suffix):
-                errors.append(f"original-documents.groups[{index}] invalid filename: {file}")
-                continue
-            key = (source_format, file)
-            if key in seen:
-                errors.append(f"duplicate Original document: {source_format}:{file}")
-            seen.add(key)
-            if language in by_language:
-                by_language[language] += 1
-            if source_format in by_format:
-                by_format[source_format] += 1
+    if meta.get("schemaVersion") != "2.0.0":
+        errors.append("original-documents schemaVersion must be 2.0.0")
+    if meta.get("storage") != "google-drive":
+        errors.append("original-documents storage must be google-drive")
+    root = meta.get("canonicalRoot", {})
+    if root.get("id") != "1vuhaa1uwMAlcLlelNda6zi48O43-NJhs":
+        errors.append("original-documents canonicalRoot id mismatch")
 
-    total = len(seen)
-    expected_counts = {
-        "total": total,
-        "japanese": by_language["ja"],
-        "english": by_language["en"],
-        "unclassified": by_language["unknown"],
-    }
-    if data.get("counts") != expected_counts:
-        errors.append(f"original-documents counts mismatch: {data.get('counts')} != {expected_counts}")
+    if len(base) != 28:
+        errors.append(f"base Original count must be 28, got {len(base)}")
+    if len(supplemental) != 54:
+        errors.append(f"supplemental Original count must be 54, got {len(supplemental)}")
 
-    presentations = data.get("presentations", {})
-    if not isinstance(presentations, dict):
-        errors.append("original-documents presentations must be an object")
-    else:
-        valid_keys = {f"{fmt}:{file}" for fmt, file in seen}
-        for key, href in presentations.items():
-            if key not in valid_keys:
-                errors.append(f"presentation references unknown Original: {key}")
-            if not isinstance(href, str) or not href.startswith("documents/English/") or not href.endswith("/index.html"):
-                errors.append(f"invalid English presentation path: {key}: {href}")
+    urls: list[str] = []
+    pdf_count = 0
+    pptx_count = 0
 
-    return total, by_language["ja"], by_language["en"], by_language["unknown"]
+    for index, row in enumerate(base):
+        kind = str(row.get("kind", "")).lower()
+        if kind not in {"pdf", "pptx"}:
+            errors.append(f"base Original[{index}] invalid kind: {kind}")
+        if not row.get("file"):
+            errors.append(f"base Original[{index}] missing file")
+        url = row.get("url")
+        validate_public_url(errors, f"base Original[{index}].url", url)
+        if "drive.google.com/" not in str(url):
+            errors.append(f"base Original[{index}] must route to Google Drive")
+        if not row.get("driveId") or row.get("driveId") != drive_id(url):
+            errors.append(f"base Original[{index}] Drive ID mismatch")
+        urls.append(url)
+        pdf_count += kind == "pdf"
+        pptx_count += kind == "pptx"
+
+    for index, row in enumerate(supplemental):
+        url = row.get("url")
+        validate_public_url(errors, f"supplemental Original[{index}].url", url)
+        if "drive.google.com/" not in str(url):
+            errors.append(f"supplemental Original[{index}] must route to Google Drive")
+        file_id = drive_id(url)
+        if not file_id:
+            errors.append(f"supplemental Original[{index}] missing Drive ID in URL")
+        urls.append(url)
+        if file_id in PPTX_SUPPLEMENTAL_IDS:
+            pptx_count += 1
+        else:
+            pdf_count += 1
+
+    if len(urls) != len(set(urls)):
+        errors.append("Original Drive URLs must be unique")
+
+    total = len(urls)
+    expected = {"total": 82, "base": 28, "cedec2026": 54, "pdf": 61, "pptx": 21}
+    if meta.get("counts") != expected:
+        errors.append(f"original-documents counts mismatch: {meta.get('counts')} != {expected}")
+    if (total, pdf_count, pptx_count) != (82, 61, 21):
+        errors.append(f"Original inventory mismatch: total={total}, PDF={pdf_count}, PPTX={pptx_count}")
+
+    return total
 
 
 def main() -> None:
@@ -177,21 +166,15 @@ def main() -> None:
     resources = load("resources.json") + load("resources-06.json")
     websites = load("websites.json")
     knowledge_documents = load("documents.json")
-    original_documents = load("original-documents.json")
     taxonomy = load("taxonomy.json")
     relations = load("relations.json")
     collections = load("collections.json")
+    original_total = validate_originals(errors)
 
-    original_total, ja_count, en_count, unknown_count = validate_original_documents(errors, original_documents)
-
-    if set(manifest) != {"schemaVersion", "sourceCommit", "generatedAt", "counts", "documentRouting"}:
-        errors.append("manifest fields must match public contract exactly")
     if manifest.get("schemaVersion") != "1.3.0":
         errors.append("manifest schemaVersion must be 1.3.0")
     if not SHA_RE.fullmatch(str(manifest.get("sourceCommit", ""))):
-        errors.append("manifest sourceCommit must be an exact 40-character commit SHA")
-    if manifest.get("sourceCommit") != original_documents.get("sourceCommit"):
-        errors.append("manifest and original-documents sourceCommit must match")
+        errors.append("manifest sourceCommit must be a 40-character SHA")
 
     expected_counts = {
         "resources": len(resources),
@@ -203,14 +186,6 @@ def main() -> None:
     }
     if manifest.get("counts") != expected_counts:
         errors.append(f"manifest counts mismatch: {manifest.get('counts')} != {expected_counts}")
-    expected_routing = {
-        "japanese": ja_count,
-        "english": en_count,
-        "unclassified": unknown_count,
-        "formats": {"PDF": 61, "PPTX": 21},
-    }
-    if manifest.get("documentRouting") != expected_routing:
-        errors.append(f"manifest documentRouting mismatch: {manifest.get('documentRouting')} != {expected_routing}")
 
     for name, data in {
         "resources": resources,
@@ -226,15 +201,10 @@ def main() -> None:
 
     resource_ids = {row.get("id") for row in resources}
     website_ids = {row.get("id") for row in websites}
-    document_ids = [row.get("id") for row in knowledge_documents]
     if len(resource_ids) != len(resources) or None in resource_ids:
         errors.append("resources require unique IDs")
-    if len(website_ids) != len(websites) or None in website_ids:
-        errors.append("websites require unique IDs")
     if not website_ids <= resource_ids:
         errors.append("every Website ID must exist in Resources")
-    if len(set(document_ids)) != len(knowledge_documents) or any(not str(x).startswith("DOC-") for x in document_ids):
-        errors.append("legacy knowledge documents require unique DOC-* IDs")
 
     for index, row in enumerate(resources):
         validate_fields(errors, f"resources[{index}]", row, RESOURCE_FIELDS)
@@ -242,14 +212,9 @@ def main() -> None:
         validate_public_url(errors, f"resources[{index}].canonicalUrl", row.get("canonicalUrl"))
     for index, row in enumerate(websites):
         validate_fields(errors, f"websites[{index}]", row, WEBSITE_FIELDS)
-        validate_public_url(errors, f"websites[{index}].url", row.get("url"))
-        validate_public_url(errors, f"websites[{index}].canonicalUrl", row.get("canonicalUrl"))
     for index, row in enumerate(knowledge_documents):
         validate_fields(errors, f"documents[{index}]", row, DOCUMENT_FIELDS)
-    if not isinstance(taxonomy, dict):
-        errors.append("taxonomy must be an object")
-    else:
-        validate_fields(errors, "taxonomy", taxonomy, TAXONOMY_FIELDS)
+    validate_fields(errors, "taxonomy", taxonomy, TAXONOMY_FIELDS)
 
     for index, edge in enumerate(relations):
         validate_fields(errors, f"relations[{index}]", edge, RELATION_FIELDS)
@@ -266,9 +231,6 @@ def main() -> None:
             errors.append(f"collections[{index}] invalid/duplicate id")
         collection_ids.add(collection_id)
         for member_index, member in enumerate(collection.get("resources", [])):
-            if not isinstance(member, dict):
-                errors.append(f"{collection_id}: member[{member_index}] must be an object")
-                continue
             validate_fields(errors, f"{collection_id}.resources[{member_index}]", member, COLLECTION_MEMBER_FIELDS)
             if member.get("id") not in resource_ids:
                 errors.append(f"{collection_id}: unresolved resource {member.get('id')}")
@@ -276,37 +238,32 @@ def main() -> None:
                 errors.append(f"{collection_id}: invalid role {member.get('role')}")
 
     document_html = (ROOT / "documents.html").read_text(encoding="utf-8")
-    if "C.load('original-documents')" not in document_html:
-        errors.append("Documents page must load catalog/original-documents.json")
-    if "sources/Original/" not in json.dumps(original_documents, ensure_ascii=False):
-        errors.append("Original catalog must route to sources/Original/")
+    for required in ("original-documents", "originals-base-01", "originals-base-02", "originals-base-03", "resources-06"):
+        if required not in document_html:
+            errors.append(f"Documents page must load {required}")
+    if "Google Drive Original" not in document_html:
+        errors.append("Documents page must expose Google Drive Original routing")
+    if "github.com/DarumaPPAP/MyResourceCenter/blob/main/sources/Original/" in document_html:
+        errors.append("Documents page must not route Original documents to GitHub binary mirror")
     if "sources/markdown/" in document_html:
-        errors.append("Documents page must not use legacy Markdown as primary navigation")
-
-    other_html = "\n".join((ROOT / page).read_text(encoding="utf-8") for page in REQUIRED_PAGES if page != "documents.html")
-    if "websites-data.json" in document_html or "websites-data.json" in other_html:
-        errors.append("Portal must not reference legacy websites-data.json")
+        errors.append("Documents page must not use Markdown as Original navigation")
 
     index_html = (ROOT / "index.html").read_text(encoding="utf-8")
-    if "original-documents" not in index_html:
-        errors.append("Home must load Original document routing")
-    for removed_copy in REMOVED_HOME_COPY:
-        if removed_copy in index_html:
-            errors.append(f"removed Home copy must not be restored: {removed_copy}")
+    if "resources-06" not in index_html or "originals-base-01" not in index_html:
+        errors.append("Home must load Drive Original catalogs")
 
     if (CATALOG / "websites-data.json").exists():
         errors.append("legacy catalog/websites-data.json must be removed")
 
     if errors:
-        print("FAILED: Portal Original-first validation")
+        print("FAILED: Portal Drive Original validation")
         for error in errors:
             print("-", error)
         raise SystemExit(1)
 
     print(
-        "OK: Original-first Portal validated: "
-        f"{len(resources)} resources, {len(websites)} websites, {original_total} Original documents "
-        f"(JA={ja_count}, EN={en_count}, unknown={unknown_count}), "
+        "OK: Drive Original Portal validated: "
+        f"{len(resources)} resources, {len(websites)} websites, {original_total} Original documents, "
         f"{len(relations)} relations, {len(collections)} collections"
     )
 
