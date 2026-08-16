@@ -30,11 +30,11 @@
         <div class="hero-visual"><div class="library-illustration"><div class="book"></div><div class="book"></div><div class="book"></div><div class="book"></div></div></div>
       </section>
 
-      <div class="library-note"><span>ⓘ</span><div><strong>Source boundary:</strong> 日本語版HTMLはHuman Presentationです。AI / factual Source of Truthは言語に関係なくGoogle Drive上のOriginalです。</div></div>
+      <div class="library-note"><span>ⓘ</span><div><strong>Source boundary:</strong> 日本語版HTMLはHuman Presentationです。AI / factual Source of Truthは言語に関係なくGoogle Drive上のOriginalです。日本語再構築が未完了の英語資料は、完了済みとして表示しません。</div></div>
 
       <div class="toolbar">
         <input id="q" type="search" placeholder="資料名を検索">
-        <select id="language"><option value="">言語すべて</option><option value="ja">Japanese Original</option><option value="en">English → 日本語版</option></select>
+        <select id="language"><option value="">言語すべて</option><option value="ja">Japanese Original</option><option value="en">English</option></select>
         <select id="format"><option value="">形式すべて</option><option value="PDF">PDF</option><option value="PPTX">PPTX</option></select>
         <button id="clear" type="button">クリア</button>
       </div>
@@ -54,28 +54,32 @@ window.addEventListener('DOMContentLoaded',async()=>{
  try{
   const loaded=await C.loadMany('original-documents','originals-base-01','originals-base-02','originals-base-03','resources-06','english-presentations');
   const meta=loaded['original-documents'];
-  const englishRows=loaded['english-presentations']?.presentations||[];
+  const englishManifest=loaded['english-presentations']||{};
+  const englishRows=englishManifest.presentations||[];
+  const pendingEnglishRows=englishManifest.pending||[];
   const englishByDriveId=new Map(englishRows.map(x=>[x.driveId,x]));
+  const pendingEnglishByDriveId=new Map(pendingEnglishRows.map(x=>[x.driveId,x]));
   const base=[...loaded['originals-base-01'],...loaded['originals-base-02'],...loaded['originals-base-03']].map(x=>({id:`DRIVE:${x.driveId}`,title:titleOf(x.file),file:x.file,url:x.url,driveId:x.driveId,format:String(x.kind||'').toUpperCase()}));
   const supplemental=(loaded['resources-06']||[]).map(x=>{const driveId=driveIdOf(x.url);return{id:x.id,title:x.title,file:x.title,url:x.url,driveId,format:pptxDriveIds.has(driveId)?'PPTX':'PDF'};});
   const unique=new Map();[...base,...supplemental].forEach(x=>{if(x.url&&!unique.has(x.url))unique.set(x.url,x);});
-  const rows=[...unique.values()].map(x=>{const presentation=englishByDriveId.get(x.driveId);return{...x,language:presentation?'en':'ja',presentation};});
+  const rows=[...unique.values()].map(x=>{const presentation=englishByDriveId.get(x.driveId);const pendingEnglish=pendingEnglishByDriveId.get(x.driveId);return{...x,language:(presentation||pendingEnglish)?'en':'ja',presentation,pendingEnglish};});
   const initial=C.query('q');if(initial)q.value=initial;
   const render=()=>{
    const s=q.value.trim().toLowerCase();
    const filtered=rows.filter(x=>(!s||x.title.toLowerCase().includes(s)||String(x.file).toLowerCase().includes(s))&&(!language.value||x.language===language.value)&&(!format.value||x.format===format.value));
    const configured=meta.counts?.total||rows.length;
-   count.textContent=`${filtered.length} / ${rows.length} Documents · English日本語版 ${englishRows.length} · Canonical ${configured}`;
+   count.textContent=`${filtered.length} / ${rows.length} Documents · English日本語版 ${englishRows.length} 完了 / ${pendingEnglishRows.length} 再構築待ち · Canonical ${configured}`;
    list.innerHTML=filtered.map(x=>{
     const original=C.safeExternalUrl(x.url);
     const viewer=viewerHref(x);
-    const isEnglish=Boolean(x.presentation);
-    const primary=isEnglish?`documents/English/${encodeURIComponent(x.presentation.slug)}/index.html`:viewer;
-    const languageLabel=isEnglish?'English → 日本語版':'Japanese Original';
+    const isEnglishComplete=Boolean(x.presentation);
+    const isEnglishPending=Boolean(x.pendingEnglish);
+    const primary=isEnglishComplete?`documents/English/${encodeURIComponent(x.presentation.slug)}/index.html`:viewer;
+    const languageLabel=isEnglishComplete?'English → 日本語版':isEnglishPending?'English · 日本語版再構築待ち':'Japanese Original';
     const resourceLabel=x.id.startsWith('RES-')?x.id:x.driveId;
-    const primaryLabel=isEnglish?'日本語版を読む':'ブラウザで見る';
-    const routeLabel=isEnglish?'Source-faithful Japanese HTML':'Google Drive Original';
-    return `<article class="resource-card"><div class="resource-main"><a class="resource-title" href="${C.escapeHtml(primary)}">${C.escapeHtml(x.title)}</a><div class="resource-id">${C.escapeHtml(resourceLabel)}</div><div class="resource-meta"><span class="resource-pill">${C.escapeHtml(languageLabel)}</span><span class="resource-pill format-pill">${C.escapeHtml(x.format)}</span><span class="resource-pill storage-pill">${C.escapeHtml(routeLabel)}</span></div></div><div class="resource-actions"><a class="resource-button primary" href="${C.escapeHtml(primary)}">${C.escapeHtml(primaryLabel)}</a>${isEnglish?`<a class="resource-button" href="${C.escapeHtml(viewer)}">Originalを見る</a>`:''}<a class="resource-button" href="${C.escapeHtml(original)}" target="_blank" rel="noopener noreferrer">Drive Original ↗</a></div></article>`;
+    const primaryLabel=isEnglishComplete?'日本語版を読む':isEnglishPending?'Originalを見る':'ブラウザで見る';
+    const routeLabel=isEnglishComplete?'Source-faithful Japanese HTML':isEnglishPending?'Japanese rebuild pending':'Google Drive Original';
+    return `<article class="resource-card"><div class="resource-main"><a class="resource-title" href="${C.escapeHtml(primary)}">${C.escapeHtml(x.title)}</a><div class="resource-id">${C.escapeHtml(resourceLabel)}</div><div class="resource-meta"><span class="resource-pill">${C.escapeHtml(languageLabel)}</span><span class="resource-pill format-pill">${C.escapeHtml(x.format)}</span><span class="resource-pill storage-pill">${C.escapeHtml(routeLabel)}</span></div></div><div class="resource-actions"><a class="resource-button primary" href="${C.escapeHtml(primary)}">${C.escapeHtml(primaryLabel)}</a>${isEnglishComplete?`<a class="resource-button" href="${C.escapeHtml(viewer)}">Originalを見る</a>`:''}<a class="resource-button" href="${C.escapeHtml(original)}" target="_blank" rel="noopener noreferrer">Drive Original ↗</a></div></article>`;
    }).join('')||'<div class="empty">条件に一致するDocumentはありません。</div>';
   };
   [q,language,format].forEach(el=>el.addEventListener(el===q?'input':'change',render));
