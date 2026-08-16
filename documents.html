@@ -1,11 +1,49 @@
 <!doctype html>
 <html lang="ja" data-theme="light">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Documents | MyResourceCenter</title><meta name="description" content="Google DriveをCanonical Original Storageとして、登録済みPDF / PPTXへ直接アクセスします。"><link rel="stylesheet" href="assets/site.css"><script defer src="assets/portal.js"></script><script defer src="assets/catalog.js"></script></head>
-<body><div class="app-shell">
-<aside class="sidebar"><div class="brand-lockup"><div class="brand-mark">M</div><div class="brand-name">MyResourceCenter</div></div><nav class="side-nav"><a href="index.html"><span class="icon">⌂</span>ホーム</a><a class="active" href="documents.html"><span class="icon">▤</span>ドキュメント</a><a href="websites.html"><span class="icon">◎</span>Webサイト</a></nav><div class="sidebar-note">OriginalはGoogle DriveのCanonical fileです。巨大ファイルはDriveプレビューではなくOriginal Downloadを使用してください。</div></aside>
-<main class="main"><header class="topbar"><div class="breadcrumb">Documents / Original Library</div><div class="top-actions"><button class="icon-button theme-toggle" type="button">Dark</button></div></header><nav class="mobile-nav"><a href="index.html">ホーム</a><a href="documents.html">Documents</a><a href="websites.html">Websites</a></nav>
-<div class="content"><section class="hero"><div class="hero-copy"><div class="eyebrow">Canonical Original Library</div><h1>登録資料を探す</h1><p>OriginalはGoogle Driveに保存しています。Driveでプレビューできない大容量PDF / PPTXは「Originalをダウンロード」から直接取得できます。</p></div><div class="hero-visual"><div class="library-illustration"><div class="book"></div><div class="book"></div><div class="book"></div><div class="book"></div></div></div></section>
-<div class="toolbar"><input id="q" type="search" placeholder="資料名を検索"><select id="language"><option value="">言語すべて</option><option value="ja">Japanese</option><option value="en">English / Latin title</option></select><select id="format"><option value="">形式すべて</option><option value="PDF">PDF</option><option value="PPTX">PPTX</option></select><button id="clear" type="button">クリア</button></div><div class="result-meta"><span id="count">読み込み中…</span><span>Drive preview不可 → Original Download</span></div><div class="data-list" id="list"></div></div><footer class="footer">MyResourceCenter Human Portal · Drive Original-first routing</footer></main></div>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Documents | MyResourceCenter</title>
+  <meta name="description" content="Google Drive OriginalをPortal内ブラウザViewerで閲覧します。">
+  <link rel="stylesheet" href="assets/site.css">
+  <link rel="stylesheet" href="assets/documents.css">
+  <script defer src="assets/portal.js"></script>
+  <script defer src="assets/catalog.js"></script>
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand-lockup"><div class="brand-mark">M</div><div class="brand-name">MyResourceCenter</div></div>
+    <nav class="side-nav"><a href="index.html"><span class="icon">⌂</span>ホーム</a><a class="active" href="documents.html"><span class="icon">▤</span>ドキュメント</a><a href="websites.html"><span class="icon">◎</span>Webサイト</a></nav>
+    <div class="sidebar-note">OriginalはGoogle Driveを正本として保持し、PortalではDrive Previewをブラウザ内に表示します。</div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div class="breadcrumb">Documents / Original Library</div><div class="top-actions"><button class="icon-button theme-toggle" type="button">Dark</button></div></header>
+    <nav class="mobile-nav"><a href="index.html">ホーム</a><a href="documents.html">Documents</a><a href="websites.html">Websites</a></nav>
+    <div class="content">
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow">Browser Original Library</div>
+          <h1>登録資料をブラウザで見る</h1>
+          <p>PDF / PPTXはサイズに関係なく同じPortal導線から開きます。「ブラウザで見る」はGoogle Slidesへの変換ではなく、DriveのPreview表示を使用します。</p>
+        </div>
+        <div class="hero-visual"><div class="library-illustration"><div class="book"></div><div class="book"></div><div class="book"></div><div class="book"></div></div></div>
+      </section>
+
+      <div class="library-note"><span>ⓘ</span><div><strong>Original-first:</strong> Portal ViewerはHuman閲覧用です。AI / factual Source of TruthはGoogle Drive上のOriginalのままです。</div></div>
+
+      <div class="toolbar">
+        <input id="q" type="search" placeholder="資料名を検索">
+        <select id="language"><option value="">言語すべて</option><option value="ja">Japanese</option><option value="en">English / Latin title</option></select>
+        <select id="format"><option value="">形式すべて</option><option value="PDF">PDF</option><option value="PPTX">PPTX</option></select>
+        <button id="clear" type="button">クリア</button>
+      </div>
+      <div class="result-meta"><span id="count">読み込み中…</span><span>Browser Viewer → Drive Preview → Original</span></div>
+      <div class="document-library" id="list"></div>
+    </div>
+    <footer class="footer">MyResourceCenter Human Portal · Browser Original Viewer</footer>
+  </main>
+</div>
 <script>
 window.addEventListener('DOMContentLoaded',async()=>{
  const C=window.MRCCatalog,q=document.getElementById('q'),language=document.getElementById('language'),format=document.getElementById('format'),list=document.getElementById('list'),count=document.getElementById('count');
@@ -13,12 +51,12 @@ window.addEventListener('DOMContentLoaded',async()=>{
  const titleOf=file=>String(file||'').replace(/\.pdf$/i,'').replace(/\.pptx$/i,'');
  const langOf=value=>/[ぁ-んァ-ヶ一-龠々〆〤]/.test(String(value||''))?'ja':'en';
  const driveIdOf=url=>{const m=String(url||'').match(/\/d\/([^/]+)/);return m?m[1]:'';};
- const downloadUrlOf=driveId=>driveId?`https://drive.google.com/uc?export=download&id=${encodeURIComponent(driveId)}`:'';
+ const viewerHref=x=>`viewer.html?id=${encodeURIComponent(x.driveId)}&format=${encodeURIComponent(x.format)}&title=${encodeURIComponent(x.title)}`;
  try{
   const loaded=await C.loadMany('original-documents','originals-base-01','originals-base-02','originals-base-03','resources-06');
   const meta=loaded['original-documents'];
-  const base=[...loaded['originals-base-01'],...loaded['originals-base-02'],...loaded['originals-base-03']].map(x=>({id:`DRIVE:${x.driveId}`,title:titleOf(x.file),file:x.file,url:x.url,driveId:x.driveId,format:String(x.kind||'').toUpperCase(),language:langOf(x.file),catalog:'Base Original'}));
-  const supplemental=(loaded['resources-06']||[]).map(x=>{const driveId=driveIdOf(x.url);return{id:x.id,title:x.title,file:x.title,url:x.url,driveId,format:pptxDriveIds.has(driveId)?'PPTX':'PDF',language:langOf(x.title),catalog:'CEDEC 2026 Original'};});
+  const base=[...loaded['originals-base-01'],...loaded['originals-base-02'],...loaded['originals-base-03']].map(x=>({id:`DRIVE:${x.driveId}`,title:titleOf(x.file),file:x.file,url:x.url,driveId:x.driveId,format:String(x.kind||'').toUpperCase(),language:langOf(x.file)}));
+  const supplemental=(loaded['resources-06']||[]).map(x=>{const driveId=driveIdOf(x.url);return{id:x.id,title:x.title,file:x.title,url:x.url,driveId,format:pptxDriveIds.has(driveId)?'PPTX':'PDF',language:langOf(x.title)};});
   const unique=new Map();[...base,...supplemental].forEach(x=>{if(x.url&&!unique.has(x.url))unique.set(x.url,x);});
   const rows=[...unique.values()];
   const initial=C.query('q');if(initial)q.value=initial;
@@ -29,15 +67,17 @@ window.addEventListener('DOMContentLoaded',async()=>{
    count.textContent=`${filtered.length} / ${rows.length} Documents · Canonical ${configured}`;
    list.innerHTML=filtered.map(x=>{
     const original=C.safeExternalUrl(x.url);
-    const download=C.safeExternalUrl(downloadUrlOf(x.driveId));
+    const viewer=viewerHref(x);
     const label=x.language==='ja'?'Japanese':'English / Latin title';
     const resourceLabel=x.id.startsWith('RES-')?x.id:x.driveId;
-    const downloadAction=download?`<a class="primary-button detail-action" href="${C.escapeHtml(download)}" target="_blank" rel="noopener noreferrer">Originalをダウンロード ↓</a>`:'';
-    return `<div class="data-row"><div><a class="data-title" href="${C.escapeHtml(original)}" target="_blank" rel="noopener noreferrer">${C.escapeHtml(x.title)} ↗</a><div class="data-sub">${C.escapeHtml(resourceLabel)}</div></div><div><div class="data-label">Language / Format</div><span class="format">${C.escapeHtml(label)}</span> <span class="format">${C.escapeHtml(x.format)}</span></div><div><div class="data-label">Storage</div><span class="level">Google Drive Original</span></div><div><div class="data-label">Action</div>${downloadAction}<br><a href="${C.escapeHtml(original)}" target="_blank" rel="noopener noreferrer">Driveで表示 ↗</a></div></div>`;
+    return `<article class="resource-card"><div class="resource-main"><a class="resource-title" href="${C.escapeHtml(viewer)}">${C.escapeHtml(x.title)}</a><div class="resource-id">${C.escapeHtml(resourceLabel)}</div><div class="resource-meta"><span class="resource-pill">${C.escapeHtml(label)}</span><span class="resource-pill format-pill">${C.escapeHtml(x.format)}</span><span class="resource-pill storage-pill">Google Drive Original</span></div></div><div class="resource-actions"><a class="resource-button primary" href="${C.escapeHtml(viewer)}">ブラウザで見る</a><a class="resource-button" href="${C.escapeHtml(original)}" target="_blank" rel="noopener noreferrer">Drive Original ↗</a></div></article>`;
    }).join('')||'<div class="empty">条件に一致するDocumentはありません。</div>';
   };
   [q,language,format].forEach(el=>el.addEventListener(el===q?'input':'change',render));
-  document.getElementById('clear').addEventListener('click',()=>{q.value='';language.value='';format.value='';render();});render();
+  document.getElementById('clear').addEventListener('click',()=>{q.value='';language.value='';format.value='';render();});
+  render();
  }catch(e){console.error(e);list.innerHTML='<div class="empty">Original Document Catalogの読み込みに失敗しました。</div>';count.textContent='Catalog load failed';}
 });
-</script></body></html>
+</script>
+</body>
+</html>
