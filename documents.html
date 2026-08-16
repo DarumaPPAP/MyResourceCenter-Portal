@@ -1,37 +1,40 @@
 <!doctype html>
 <html lang="ja" data-theme="light">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Documents | MyResourceCenter</title><meta name="description" content="Original Sourceを言語・形式別に検索し、日本語資料は原資料へ、英語資料は日本語HTMLへ案内します。"><link rel="stylesheet" href="assets/site.css"><script defer src="assets/portal.js"></script><script defer src="assets/catalog.js"></script></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Documents | MyResourceCenter</title><meta name="description" content="Google DriveをCanonical Original Storageとして、登録済みPDF / PPTXへ直接アクセスします。"><link rel="stylesheet" href="assets/site.css"><script defer src="assets/portal.js"></script><script defer src="assets/catalog.js"></script></head>
 <body><div class="app-shell">
-<aside class="sidebar"><div class="brand-lockup"><div class="brand-mark">M</div><div class="brand-name">MyResourceCenter</div></div><nav class="side-nav"><a href="index.html"><span class="icon">⌂</span>ホーム</a><a class="active" href="documents.html"><span class="icon">▤</span>ドキュメント</a><a href="websites.html"><span class="icon">◎</span>Webサイト</a></nav><div class="sidebar-note">Originalが唯一の一次資料です。Japanese / EnglishはHuman向けPresentation routingです。</div></aside>
+<aside class="sidebar"><div class="brand-lockup"><div class="brand-mark">M</div><div class="brand-name">MyResourceCenter</div></div><nav class="side-nav"><a href="index.html"><span class="icon">⌂</span>ホーム</a><a class="active" href="documents.html"><span class="icon">▤</span>ドキュメント</a><a href="websites.html"><span class="icon">◎</span>Webサイト</a></nav><div class="sidebar-note">OriginalはGoogle DriveのCanonical fileです。GitHub / PortalはCatalogとPresentationを担当します。</div></aside>
 <main class="main"><header class="topbar"><div class="breadcrumb">Documents / Original Library</div><div class="top-actions"><button class="icon-button theme-toggle" type="button">Dark</button></div></header><nav class="mobile-nav"><a href="index.html">ホーム</a><a href="documents.html">Documents</a><a href="websites.html">Websites</a></nav>
-<div class="content"><section class="hero"><div class="hero-copy"><div class="eyebrow">Original-first Library</div><h1>登録資料を探す</h1><p>日本語資料はOriginalをそのまま開きます。英語資料はOriginalを正本とし、日本語Source-faithful HTMLをHuman向けPresentationとして順次追加します。</p></div><div class="hero-visual"><div class="library-illustration"><div class="book"></div><div class="book"></div><div class="book"></div><div class="book"></div></div></div></section>
-<div class="toolbar"><input id="q" type="search" placeholder="資料名を検索"><select id="language"><option value="">言語すべて</option><option value="ja">Japanese</option><option value="en">English</option><option value="unknown">未判定</option></select><select id="format"><option value="">形式すべて</option><option value="PDF">PDF</option><option value="PPTX">PPTX</option></select><button id="clear" type="button">クリア</button></div><div class="result-meta"><span id="count">読み込み中…</span><span>Original Source = AI / factual Source of Truth</span></div><div class="data-list" id="list"></div></div><footer class="footer">MyResourceCenter Human Portal · Japanese = Original / English = Japanese HTML + Original</footer></main></div>
+<div class="content"><section class="hero"><div class="hero-copy"><div class="eyebrow">Canonical Original Library</div><h1>登録資料を探す</h1><p>PDF / PPTXはサイズに関係なくGoogle Driveの同一Original Storageで管理します。各カードからCanonical Originalを直接開けます。</p></div><div class="hero-visual"><div class="library-illustration"><div class="book"></div><div class="book"></div><div class="book"></div><div class="book"></div></div></div></section>
+<div class="toolbar"><input id="q" type="search" placeholder="資料名を検索"><select id="language"><option value="">言語すべて</option><option value="ja">Japanese</option><option value="en">English / Latin title</option></select><select id="format"><option value="">形式すべて</option><option value="PDF">PDF</option><option value="PPTX">PPTX</option></select><button id="clear" type="button">クリア</button></div><div class="result-meta"><span id="count">読み込み中…</span><span>Canonical Original = Google Drive</span></div><div class="data-list" id="list"></div></div><footer class="footer">MyResourceCenter Human Portal · Drive Original-first routing</footer></main></div>
 <script>
 window.addEventListener('DOMContentLoaded',async()=>{
  const C=window.MRCCatalog,q=document.getElementById('q'),language=document.getElementById('language'),format=document.getElementById('format'),list=document.getElementById('list'),count=document.getElementById('count');
+ const pptxDriveIds=new Set(['1Qwi3KM9tMrS5l6UTV2hxq-2bdKZ_I65D','1xCFGRnfIEqsL_QJeAol9NKVo1e0gczU3','1o4ac9OZbTpmKnJG7WHGceGfTX6m3cBst','1MW1xyfZMHH94TSffUtr7VZU55fmqTfgK','14H8ECh-O866I5cARXLfWZfikDimyAS1F','1EI-NZzaPy1LNZIMUgZFYCi3MIHWJd7nV','1EjDPNwlzQTuIx6GwEIabRH5q3z77AtGc','1Exs8DZWIN3wlGiGtCK3TtU0CDCo2UrW8','1ydyK0Uy7ZLLm8be6638JbIflCoeUZt-6','1Rb5W0y2ugXeDr1Kw4MpN3lybaxz0TXYr']);
+ const titleOf=file=>String(file||'').replace(/\.pdf$/i,'').replace(/\.pptx$/i,'');
+ const langOf=value=>/[ぁ-んァ-ヶ一-龠々〆〤]/.test(String(value||''))?'ja':'en';
+ const driveIdOf=url=>{const m=String(url||'').match(/\/d\/([^/]+)/);return m?m[1]:'';};
  try{
-  const data=await C.load('original-documents');
+  const loaded=await C.loadMany('original-documents','originals-base-01','originals-base-02','originals-base-03','resources-06');
+  const meta=loaded['original-documents'];
+  const base=[...loaded['originals-base-01'],...loaded['originals-base-02'],...loaded['originals-base-03']].map(x=>({id:`DRIVE:${x.driveId}`,title:titleOf(x.file),file:x.file,url:x.url,driveId:x.driveId,format:String(x.kind||'').toUpperCase(),language:langOf(x.file),catalog:'Base Original'}));
+  const supplemental=(loaded['resources-06']||[]).map(x=>{const driveId=driveIdOf(x.url);return{id:x.id,title:x.title,file:x.title,url:x.url,driveId,format:pptxDriveIds.has(driveId)?'PPTX':'PDF',language:langOf(x.title),catalog:'CEDEC 2026 Original'};});
+  const unique=new Map();[...base,...supplemental].forEach(x=>{if(x.url&&!unique.has(x.url))unique.set(x.url,x);});
+  const rows=[...unique.values()];
   const initial=C.query('q');if(initial)q.value=initial;
-  const rows=(data.groups||[]).flatMap(group=>(group.files||[]).map(file=>({file,language:group.language,format:group.format,sourceRoot:group.sourceRoot})));
-  const label={ja:'Japanese / Original',en:'English / 日本語HTML',unknown:'言語未判定'};
-  const originalUrl=x=>`https://github.com/DarumaPPAP/MyResourceCenter/blob/main/${x.sourceRoot}${encodeURIComponent(x.file)}`;
-  const title=file=>file.replace(/\.pdf$/i,'').replace(/\.pptx$/i,'');
   const render=()=>{
    const s=q.value.trim().toLowerCase();
-   const filtered=rows.filter(x=>(!s||title(x.file).toLowerCase().includes(s))&&(!language.value||x.language===language.value)&&(!format.value||x.format===format.value));
-   const c=data.counts||{};
-   count.textContent=`${filtered.length} / ${rows.length} Documents · Japanese ${c.japanese||0} · English ${c.english||0} · 未判定 ${c.unclassified||0}`;
+   const filtered=rows.filter(x=>(!s||x.title.toLowerCase().includes(s)||String(x.file).toLowerCase().includes(s))&&(!language.value||x.language===language.value)&&(!format.value||x.format===format.value));
+   const configured=meta.counts?.total||rows.length;
+   count.textContent=`${filtered.length} / ${rows.length} Documents · Canonical ${configured}`;
    list.innerHTML=filtered.map(x=>{
-    const original=C.escapeHtml(originalUrl(x));
-    const presentation=(data.presentations||{})[`${x.format}:${x.file}`]||'';
-    const presentationHref=presentation?C.escapeHtml(presentation):'';
-    const state=x.language==='en'?(presentationHref?'<span class="level">日本語HTML 公開済み</span>':'<span class="level">日本語HTML 生成待ち</span>'):x.language==='unknown'?'<span class="level">言語確認待ち</span>':'<span class="level">Originalを直接閲覧</span>';
-    const action=x.language==='en'&&presentationHref?`<a href="${presentationHref}">日本語版を読む</a><br><a href="${original}" target="_blank" rel="noopener noreferrer">Original ↗</a>`:`<a href="${original}" target="_blank" rel="noopener noreferrer">Originalを開く ↗</a>`;
-    return `<div class="data-row"><div><a class="data-title" href="${x.language==='en'&&presentationHref?presentationHref:original}"${x.language==='en'&&presentationHref?'':' target="_blank" rel="noopener noreferrer"'}>${C.escapeHtml(title(x.file))}${x.language==='en'&&presentationHref?'':' ↗'}</a><div class="data-sub">${C.escapeHtml(x.file)}</div></div><div><div class="data-label">Language / Format</div><span class="format">${label[x.language]}</span> <span class="format">${C.escapeHtml(x.format)}</span></div><div><div class="data-label">Presentation</div>${state}</div><div><div class="data-label">Action</div>${action}</div></div>`;
+    const original=C.safeExternalUrl(x.url);
+    const label=x.language==='ja'?'Japanese':'English / Latin title';
+    const resourceLabel=x.id.startsWith('RES-')?x.id:x.driveId;
+    return `<div class="data-row"><div><a class="data-title" href="${C.escapeHtml(original)}" target="_blank" rel="noopener noreferrer">${C.escapeHtml(x.title)} ↗</a><div class="data-sub">${C.escapeHtml(resourceLabel)}</div></div><div><div class="data-label">Language / Format</div><span class="format">${C.escapeHtml(label)}</span> <span class="format">${C.escapeHtml(x.format)}</span></div><div><div class="data-label">Storage</div><span class="level">Google Drive Original</span></div><div><div class="data-label">Action</div><a href="${C.escapeHtml(original)}" target="_blank" rel="noopener noreferrer">Originalを開く ↗</a></div></div>`;
    }).join('')||'<div class="empty">条件に一致するDocumentはありません。</div>';
   };
   [q,language,format].forEach(el=>el.addEventListener(el===q?'input':'change',render));
   document.getElementById('clear').addEventListener('click',()=>{q.value='';language.value='';format.value='';render();});render();
- }catch(e){console.error(e);list.innerHTML='<div class="empty">Original Document Catalogの読み込みに失敗しました。</div>';}
+ }catch(e){console.error(e);list.innerHTML='<div class="empty">Original Document Catalogの読み込みに失敗しました。</div>';count.textContent='Catalog load failed';}
 });
 </script></body></html>
