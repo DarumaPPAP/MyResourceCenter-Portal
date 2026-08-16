@@ -27,6 +27,9 @@ jobs:
       - name: Validate Portal public boundary
         run: python3 tools/validate_portal.py
 
+      - name: Validate Browser Viewer routing and responsive UI
+        run: python3 tools/validate_browser_viewer.py
+
       - name: Validate Trend Radar dataset
         run: python3 tools/validate_trends.py
 
