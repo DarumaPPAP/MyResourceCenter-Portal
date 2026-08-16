@@ -11,6 +11,7 @@ window.addEventListener('DOMContentLoaded',async()=>{
  const C=window.MRCCatalog,q=document.getElementById('q'),language=document.getElementById('language'),list=document.getElementById('list'),count=document.getElementById('count');
  try{
   const data=await C.load('original-documents');
+  const initial=C.query('q');if(initial)q.value=initial;
   const rows=[...(data.japanese||[]).map(file=>({file,language:'ja'})),...(data.english||[]).map(file=>({file,language:'en'})),...(data.unclassified||[]).map(file=>({file,language:'unknown'}))];
   const sourceRoot=data.sourceRoot||'sources/Original/PDF/';
   const label={ja:'Japanese / Original',en:'English / 日本語HTML',unknown:'言語未判定'};
