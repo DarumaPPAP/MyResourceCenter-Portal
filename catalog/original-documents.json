@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "2.0.0",
+  "schemaVersion": "2.1.0",
   "storage": "google-drive",
   "canonicalRoot": {
     "name": "Sources",
@@ -23,13 +23,21 @@
   },
   "routing": {
     "originalAction": "open-google-drive-original",
+    "humanViewer": "adaptive-browser-viewer",
+    "largePdfViewer": "adobe-pdf-embed-api",
+    "defaultViewer": "google-drive-preview",
+    "largePdfThresholdBytes": 26214400,
+    "fallbackViewer": "google-drive-preview",
     "derivedArtifactsAreCanonical": false,
     "gitLfsIsCanonical": false,
     "gitBinaryMirrorIsCanonical": false
   },
   "notes": [
     "Original binary documents are canonical on Google Drive regardless of file size.",
-    "Portal metadata is navigation only; Original remains the factual Source of Truth.",
+    "Human Viewer routing never changes the factual Source of Truth.",
+    "PDF files at or above 25 MiB use Adobe PDF Embed API when size metadata and Adobe credentials are available.",
+    "If Adobe initialization or rendering fails, the viewer falls back to Google Drive Preview.",
+    "PPTX continues to use Google Drive Preview even when the file is large.",
     "The supplemental CEDEC 2026 catalog contains 54 canonical Drive URLs."
   ]
 }
