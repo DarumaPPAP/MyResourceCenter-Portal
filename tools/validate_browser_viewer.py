@@ -36,7 +36,7 @@ def main() -> None:
         errors.append("Documents must load shared viewer routing config")
     if "sizeBytes" not in documents or "p.set('size'" not in documents:
         errors.append("Documents must forward sizeBytes metadata to viewer.html")
-    if "format === 'PDF'" not in documents or "largePdfThresholdBytes" not in documents:
+    if "const isHeavyPdf=" not in documents or "x.format==='PDF'" not in documents or "largePdfThresholdBytes" not in documents:
         errors.append("Documents must classify only large PDF files for Adobe routing")
 
     if "adobe-dc-view" not in viewer or "viewer.js" not in viewer:
