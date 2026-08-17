@@ -29,6 +29,15 @@
     return value.length > 0 && !/REPLACE|YOUR_CLIENT_ID/i.test(value);
   };
 
+  const resolveAdobePdfUrl = defaultUrl => {
+    const template = String(config.adobePdfUrlTemplate || '').trim();
+    if (!template) return defaultUrl;
+
+    return template
+      .replaceAll('{id}', encodeURIComponent(fileId))
+      .replaceAll('{driveId}', encodeURIComponent(fileId));
+  };
+
   const setLoading = (heading, message) => {
     loadingTitle.textContent = heading;
     loadingMessage.textContent = message;
@@ -118,6 +127,7 @@
   const previewUrl = `https://drive.google.com/file/d/${encodeURIComponent(fileId)}/preview`;
   const originalUrl = `https://drive.google.com/file/d/${encodeURIComponent(fileId)}/view`;
   const downloadUrl = `https://drive.google.com/uc?export=download&id=${encodeURIComponent(fileId)}`;
+  const adobePdfUrl = resolveAdobePdfUrl(downloadUrl);
   const sizeLabel = formatSize(sizeBytes);
   const shouldUseAdobe = format === 'PDF' && sizeBytes >= largePdfThresholdBytes;
   let fallbackStarted = false;
@@ -184,7 +194,7 @@
       const fileName = /\.pdf$/i.test(title) ? title : `${title}.pdf`;
       adobeDCView.previewFile(
         {
-          content: { location: { url: downloadUrl } },
+          content: { location: { url: adobePdfUrl } },
           metaData: { fileName, hasReadOnlyAccess: true }
         },
         {
