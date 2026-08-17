@@ -3,5 +3,6 @@ window.MRCViewerConfig = Object.freeze({
   adobeClientId: '',
   adobeSdkUrl: 'https://acrobatservices.adobe.com/view-sdk/viewer.js',
   adobeLocale: 'ja-JP',
-  adobeEnableLinearization: true
+  adobeEnableLinearization: true,
+  adobePdfUrlTemplate: ''
 });
