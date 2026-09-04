@@ -4,10 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Viewer | MyResourceCenter</title>
-  <meta name="description" content="MyResourceCenterのGoogle Drive Originalをブラウザ内でPreviewします。">
+  <meta name="description" content="MyResourceCenterのOriginalを資料サイズに応じてDrive PreviewまたはAdobe PDF Embed APIで表示します。">
   <link rel="stylesheet" href="assets/site.css">
   <link rel="stylesheet" href="assets/documents.css">
   <script defer src="assets/portal.js"></script>
+  <script defer src="assets/viewer-config.js"></script>
   <script defer src="assets/viewer.js"></script>
 </head>
 <body class="viewer-body">
@@ -17,7 +18,7 @@
         <a class="viewer-back" href="documents.html" aria-label="Documentsへ戻る">←</a>
         <div class="viewer-title-wrap">
           <h1 class="viewer-title" id="viewer-title">Original Document</h1>
-          <div class="viewer-meta" id="viewer-meta">Google Drive Preview</div>
+          <div class="viewer-meta" id="viewer-meta">Adaptive Viewer</div>
         </div>
       </div>
       <div class="viewer-actions">
@@ -27,11 +28,12 @@
     </header>
     <section class="viewer-stage" aria-label="Document preview">
       <iframe class="viewer-frame" id="viewer-frame" title="Google Drive document preview" allow="fullscreen" allowfullscreen></iframe>
+      <div class="adobe-view is-hidden" id="adobe-dc-view" aria-label="Adobe PDF document preview"></div>
       <div class="viewer-loading" id="viewer-loading">
         <div class="viewer-loading-card">
           <div class="viewer-spinner" aria-hidden="true"></div>
-          <strong>Originalをブラウザで読み込み中</strong>
-          <p>PDF / PPTXはGoogle DriveのPreview機能で表示します。大容量資料は初回表示に時間がかかる場合があります。</p>
+          <strong id="viewer-loading-title">Originalをブラウザで読み込み中</strong>
+          <p id="viewer-loading-message">資料サイズと形式から最適なViewerを選択しています。</p>
           <div class="viewer-error" id="viewer-error"></div>
         </div>
       </div>
