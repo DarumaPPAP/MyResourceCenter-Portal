@@ -8,6 +8,17 @@ from urllib.parse import urlparse
 ROOT = Path(__file__).resolve().parents[1]
 CATALOG = ROOT / "catalog"
 
+LATEST_WEBSITE_SHARDS = {
+    "websites-latest-01.json",
+    "websites-latest-02.json",
+    "websites-latest-03.json",
+    "websites-latest-04.json",
+}
+RESOURCE_FIELD_ORDER = (
+    "id", "title", "url", "canonicalUrl", "kind", "topic", "topics",
+    "reviewState", "useState", "tags",
+)
+
 REQUIRED_PAGES = {
     "index.html", "documents.html", "document.html", "websites.html", "website.html",
     "collections.html", "collection.html", "taxonomy.html",
@@ -17,7 +28,7 @@ REQUIRED_CATALOG = {
     "documents.json", "original-documents.json", "originals-base-01.json",
     "originals-base-02.json", "originals-base-03.json", "taxonomy.json",
     "relations.json", "collections.json",
-}
+} | LATEST_WEBSITE_SHARDS
 FORBIDDEN_KEYS = {
     "path", "original", "images", "sourceimages", "sourcenote", "drivefileid",
     "drivepath", "localpath", "privatesource", "privaterepository", "internalnote",
@@ -51,6 +62,17 @@ PPTX_SUPPLEMENTAL_IDS = {
 
 def load(name: str):
     return json.loads((CATALOG / name).read_text(encoding="utf-8"))
+
+
+def project_resource(row: dict) -> dict:
+    return {key: row[key] for key in RESOURCE_FIELD_ORDER if key in row}
+
+
+def load_latest_websites() -> list[dict]:
+    rows: list[dict] = []
+    for name in sorted(LATEST_WEBSITE_SHARDS):
+        rows.extend(load(name))
+    return rows
 
 
 def walk_keys(value):
@@ -163,8 +185,9 @@ def main() -> None:
         raise SystemExit("FAILED: Portal structure\n- " + "\n- ".join(errors))
 
     manifest = load("manifest.json")
-    resources = load("resources.json") + load("resources-06.json")
-    websites = load("websites.json")
+    latest_websites = load_latest_websites()
+    resources = load("resources.json") + load("resources-06.json") + [project_resource(row) for row in latest_websites]
+    websites = load("websites.json") + latest_websites
     knowledge_documents = load("documents.json")
     taxonomy = load("taxonomy.json")
     relations = load("relations.json")
@@ -203,6 +226,8 @@ def main() -> None:
     website_ids = {row.get("id") for row in websites}
     if len(resource_ids) != len(resources) or None in resource_ids:
         errors.append("resources require unique IDs")
+    if len(website_ids) != len(websites) or None in website_ids:
+        errors.append("websites require unique IDs")
     if not website_ids <= resource_ids:
         errors.append("every Website ID must exist in Resources")
 
@@ -212,6 +237,8 @@ def main() -> None:
         validate_public_url(errors, f"resources[{index}].canonicalUrl", row.get("canonicalUrl"))
     for index, row in enumerate(websites):
         validate_fields(errors, f"websites[{index}]", row, WEBSITE_FIELDS)
+        validate_public_url(errors, f"websites[{index}].url", row.get("url"))
+        validate_public_url(errors, f"websites[{index}].canonicalUrl", row.get("canonicalUrl"))
     for index, row in enumerate(knowledge_documents):
         validate_fields(errors, f"documents[{index}]", row, DOCUMENT_FIELDS)
     validate_fields(errors, "taxonomy", taxonomy, TAXONOMY_FIELDS)
