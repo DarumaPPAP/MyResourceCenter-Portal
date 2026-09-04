@@ -16,6 +16,12 @@ jobs:
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: '3.12'
+      - name: Install presentation builder dependency
+        run: python -m pip install Markdown==3.7
+      - name: Build English to Japanese presentations
+        run: python tools/build_english_presentations.py
+      - name: Validate English to Japanese presentations
+        run: python tools/validate_english_presentations.py
       - name: Validate Portal public boundary and UX data
         run: python tools/validate_portal.py
       - name: Validate Browser Viewer routing and responsive UI
