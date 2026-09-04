@@ -1,5 +1,14 @@
 (() => {
   const cache = new Map();
+  const latestWebsiteShards = [
+    'websites-latest-01',
+    'websites-latest-02',
+    'websites-latest-03',
+    'websites-latest-04'
+  ];
+  const resourcePublicFields = [
+    'id', 'title', 'url', 'canonicalUrl', 'kind', 'topic', 'topics', 'reviewState', 'useState', 'tags'
+  ];
 
   function escapeHtml(value) {
     return String(value ?? '')
@@ -16,15 +25,38 @@
     return response.json();
   }
 
+  function toResource(row) {
+    return Object.fromEntries(
+      resourcePublicFields
+        .filter(key => row?.[key] != null)
+        .map(key => [key, row[key]])
+    );
+  }
+
+  async function loadLatestWebsites() {
+    const shards = await Promise.all(latestWebsiteShards.map(fetchCatalog));
+    return shards.flat();
+  }
+
   async function load(name) {
     if (!cache.has(name)) {
       if (name === 'resources') {
         cache.set(name, Promise.all([
           fetchCatalog('resources'),
-          fetchCatalog('resources-06')
-        ]).then(([baseResources, supplementalResources]) => [
+          fetchCatalog('resources-06'),
+          loadLatestWebsites()
+        ]).then(([baseResources, supplementalResources, latestWebsites]) => [
           ...baseResources,
-          ...supplementalResources
+          ...supplementalResources,
+          ...latestWebsites.map(toResource)
+        ]));
+      } else if (name === 'websites') {
+        cache.set(name, Promise.all([
+          fetchCatalog('websites'),
+          loadLatestWebsites()
+        ]).then(([baseWebsites, latestWebsites]) => [
+          ...baseWebsites,
+          ...latestWebsites
         ]));
       } else {
         cache.set(name, fetchCatalog(name));
