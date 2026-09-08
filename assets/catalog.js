@@ -155,7 +155,34 @@
     return `<a class="primary-button detail-action" href="${escapeHtml(safe)}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)} ↗</a>`;
   }
 
+  // Persist only visible filter values; keep unrelated URL parameters intact.
+  function bindFilterState(controls, render) {
+    const restore = () => {
+      const params = new URLSearchParams(location.search);
+      controls.forEach(control => { control.value = params.get(control.id) || ''; });
+    };
+    const persist = () => {
+      const url = new URL(location.href);
+      controls.forEach(control => {
+        if (control.value) url.searchParams.set(control.id, control.value);
+        else url.searchParams.delete(control.id);
+      });
+      history.replaceState(null, '', url);
+    };
+    restore();
+    controls.forEach(control => control.addEventListener(control.tagName === 'INPUT' ? 'input' : 'change', persist));
+    document.getElementById('clear')?.addEventListener('click', () => {
+      persist();
+      controls[0]?.focus();
+    });
+    document.addEventListener('click', event => {
+      if (event.target.closest('[data-reset-filters]')) document.getElementById('clear')?.click();
+    });
+    window.addEventListener('popstate', () => { restore(); render(); });
+  }
+
   window.MRCCatalog = {
+    bindFilterState,
     load,
     loadMany,
     query,

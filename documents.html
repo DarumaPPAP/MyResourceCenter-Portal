@@ -10,7 +10,7 @@
   <script defer src="assets/portal.js"></script>
   <script defer src="assets/catalog.js"></script>
 </head>
-<body>
+<body class="browse-page">
 <div class="app-shell">
   <aside class="sidebar">
     <div class="brand-lockup"><div class="brand-mark">M</div><div class="brand-name">MyResourceCenter</div></div>
@@ -25,20 +25,19 @@
         <div class="hero-copy">
           <div class="eyebrow">Browser Original Library</div>
           <h1>登録資料をブラウザで見る</h1>
-          <p>PDF / PPTXはサイズに関係なく同じPortal導線から開きます。「ブラウザで見る」はGoogle Slidesへの変換ではなく、DriveのPreview表示を使用します。</p>
+          <p>講演スライドや論文を検索。PDF・PPTXをブラウザで閲覧できます。</p>
         </div>
-        <div class="hero-visual"><div class="library-illustration"><div class="book"></div><div class="book"></div><div class="book"></div><div class="book"></div></div></div>
-      </section>
+        </section>
 
       <div class="library-note"><span>ⓘ</span><div><strong>Original-first:</strong> Portal ViewerはHuman閲覧用です。AI / factual Source of TruthはGoogle Drive上のOriginalのままです。</div></div>
 
       <div class="toolbar">
-        <input id="q" type="search" placeholder="資料名を検索">
-        <select id="language"><option value="">言語すべて</option><option value="ja">Japanese</option><option value="en">English / Latin title</option></select>
-        <select id="format"><option value="">形式すべて</option><option value="PDF">PDF</option><option value="PPTX">PPTX</option></select>
-        <button id="clear" type="button">クリア</button>
+        <input aria-label="キーワード検索" id="q" type="search" placeholder="資料名を検索">
+        <select aria-label="資料タイトルの言語" id="language"><option value="">言語すべて</option><option value="ja">日本語（タイトルから推定）</option><option value="en">英語・その他（タイトルから推定）</option></select>
+        <select aria-label="ファイル形式" id="format"><option value="">形式すべて</option><option value="PDF">PDF</option><option value="PPTX">PPTX</option></select>
+        <button id="clear" type="button">条件をリセット</button>
       </div>
-      <div class="result-meta"><span id="count">読み込み中…</span><span>Browser Viewer → Drive Preview → Original</span></div>
+      <div class="result-meta"><span id="count" role="status" aria-live="polite">読み込み中…</span><span>タイトルを選ぶとプレビューを開きます</span></div>
       <div class="document-library" id="list"></div>
     </div>
     <footer class="footer">MyResourceCenter Human Portal · Browser Original Viewer</footer>
@@ -64,17 +63,18 @@ window.addEventListener('DOMContentLoaded',async()=>{
    const s=q.value.trim().toLowerCase();
    const filtered=rows.filter(x=>(!s||x.title.toLowerCase().includes(s)||String(x.file).toLowerCase().includes(s))&&(!language.value||x.language===language.value)&&(!format.value||x.format===format.value));
    const configured=meta.counts?.total||rows.length;
-   count.textContent=`${filtered.length} / ${rows.length} Documents · Canonical ${configured}`;
+   count.textContent=`${filtered.length} 件 / 全 ${rows.length} 件`;
    list.innerHTML=filtered.map(x=>{
     const original=C.safeExternalUrl(x.url);
     const viewer=viewerHref(x);
-    const label=x.language==='ja'?'Japanese':'English / Latin title';
+    const label=x.language==='ja'?'日本語（タイトルから推定）':'英語・その他（タイトルから推定）';
     const resourceLabel=x.id.startsWith('RES-')?x.id:x.driveId;
-    return `<article class="resource-card"><div class="resource-main"><a class="resource-title" href="${C.escapeHtml(viewer)}">${C.escapeHtml(x.title)}</a><div class="resource-id">${C.escapeHtml(resourceLabel)}</div><div class="resource-meta"><span class="resource-pill">${C.escapeHtml(label)}</span><span class="resource-pill format-pill">${C.escapeHtml(x.format)}</span><span class="resource-pill storage-pill">Google Drive Original</span></div></div><div class="resource-actions"><a class="resource-button primary" href="${C.escapeHtml(viewer)}">ブラウザで見る</a><a class="resource-button" href="${C.escapeHtml(original)}" target="_blank" rel="noopener noreferrer">Drive Original ↗</a></div></article>`;
-   }).join('')||'<div class="empty">条件に一致するDocumentはありません。</div>';
+    return `<article class="resource-card"><div class="resource-main"><a class="resource-title" href="${C.escapeHtml(viewer)}">${C.escapeHtml(x.title)}</a><div class="resource-meta"><span class="resource-pill">${C.escapeHtml(label)}</span><span class="resource-pill format-pill">${C.escapeHtml(x.format)}</span><span class="resource-pill storage-pill">Google Drive Original</span></div></div><div class="resource-actions"><a class="resource-button primary" href="${C.escapeHtml(viewer)}">ブラウザで見る</a><a class="resource-button" href="${C.escapeHtml(original)}" target="_blank" rel="noopener noreferrer">Drive Original ↗</a></div></article>`;
+   }).join('')||'<div class="empty">条件に一致する資料がありません。キーワードを短くするか、条件をリセットしてください。<br><button type="button" class="icon-button" data-reset-filters>条件をリセット</button></div>';
   };
   [q,language,format].forEach(el=>el.addEventListener(el===q?'input':'change',render));
   document.getElementById('clear').addEventListener('click',()=>{q.value='';language.value='';format.value='';render();});
+  C.bindFilterState([q,language,format],render);
   render();
  }catch(e){console.error(e);list.innerHTML='<div class="empty">Original Document Catalogの読み込みに失敗しました。</div>';count.textContent='Catalog load failed';}
 });
