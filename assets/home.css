@@ -58,3 +58,21 @@
 @media(max-width:1100px){.home-page .stats{grid-template-columns:repeat(3,1fr)}.home-category-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.home-library-grid{grid-template-columns:1fr}.home-side-stack{grid-template-columns:1fr 1fr}}
 @media(max-width:820px){.home-page .hero-copy{padding:24px}.home-page .hero h1{font-size:31px}.home-page .stats{grid-template-columns:repeat(2,1fr)}.home-side-stack{grid-template-columns:1fr}.home-resource{grid-template-columns:44px minmax(0,1fr)}.home-file-icon{width:44px;height:44px}.home-resource-meta{grid-column:2}}
 @media(max-width:480px){.home-category-grid{grid-template-columns:1fr}.home-page .stats{grid-template-columns:1fr 1fr}.home-hot-search{align-items:flex-start}.home-resource{padding:13px}.home-page .search-global{display:grid}.home-page .hero-copy{padding:20px}}
+
+/* Reuse existing tokens; give search and actual library entries priority. */
+.home-page .hero{display:block}
+.home-page .hero-copy{padding:28px 32px}
+.home-page .hero h1{font-size:34px}
+.home-page .search-global{margin-top:10px;max-width:850px}
+.search-scope{display:flex;align-items:center;gap:12px;margin-top:20px;font-size:13px}
+.search-scope label{font-weight:700}
+.search-scope select{min-height:40px;max-width:100%;padding:7px 12px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--text)}
+.home-page .search-hint{font-size:12px;margin-top:10px;color:var(--muted)}
+kbd{border:1px solid var(--line);border-radius:4px;padding:0 5px;font:inherit;background:var(--panel-soft)}
+.home-page .doc-mini{padding:12px 0;align-items:flex-start}
+.home-page .doc-mini a{font-size:14px;line-height:1.6}
+.home-page .doc-mini a:hover{color:var(--accent);text-decoration:underline}
+.home-page .doc-mini small{font-size:12px}
+.home-page .section-head a{font-size:13px;color:var(--accent);text-underline-offset:3px}
+@media(max-width:820px){.home-page .hero-copy{padding:22px}.home-page .hero h1{font-size:28px}}
+@media(max-width:480px){.search-scope{align-items:flex-start;flex-direction:column;gap:5px}.search-scope select{width:100%}.home-page .search-global{display:flex}.home-page .hero-copy{padding:18px}.home-page .search-global .primary-button{padding:10px 14px}.home-page .search-hint kbd{display:none}}
