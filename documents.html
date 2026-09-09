@@ -52,9 +52,9 @@ window.addEventListener('DOMContentLoaded',async()=>{
  const driveIdOf=url=>{const m=String(url||'').match(/\/d\/([^/]+)/);return m?m[1]:'';};
  const viewerHref=x=>`viewer.html?id=${encodeURIComponent(x.driveId)}&format=${encodeURIComponent(x.format)}&title=${encodeURIComponent(x.title)}`;
  try{
-  const loaded=await C.loadMany('original-documents','originals-base-01','originals-base-02','originals-base-03','resources-06');
+  const loaded=await C.loadMany('original-documents','originals-base-01','originals-base-02','originals-base-03','originals-base-04','resources-06');
   const meta=loaded['original-documents'];
-  const base=[...loaded['originals-base-01'],...loaded['originals-base-02'],...loaded['originals-base-03']].map(x=>({id:`DRIVE:${x.driveId}`,title:titleOf(x.file),file:x.file,url:x.url,driveId:x.driveId,format:String(x.kind||'').toUpperCase(),language:langOf(x.file)}));
+  const base=[...loaded['originals-base-01'],...loaded['originals-base-02'],...loaded['originals-base-03'],...loaded['originals-base-04']].map(x=>({id:`DRIVE:${x.driveId}`,title:titleOf(x.file),file:x.file,url:x.url,driveId:x.driveId,format:String(x.kind||'').toUpperCase(),language:langOf(x.file)}));
   const supplemental=(loaded['resources-06']||[]).map(x=>{const driveId=driveIdOf(x.url);return{id:x.id,title:x.title,file:x.title,url:x.url,driveId,format:pptxDriveIds.has(driveId)?'PPTX':'PDF',language:langOf(x.title)};});
   const unique=new Map();[...base,...supplemental].forEach(x=>{if(x.url&&!unique.has(x.url))unique.set(x.url,x);});
   const rows=[...unique.values()];
@@ -62,13 +62,11 @@ window.addEventListener('DOMContentLoaded',async()=>{
   const render=()=>{
    const s=q.value.trim().toLowerCase();
    const filtered=rows.filter(x=>(!s||x.title.toLowerCase().includes(s)||String(x.file).toLowerCase().includes(s))&&(!language.value||x.language===language.value)&&(!format.value||x.format===format.value));
-   const configured=meta.counts?.total||rows.length;
    count.textContent=`${filtered.length} 件 / 全 ${rows.length} 件`;
    list.innerHTML=filtered.map(x=>{
     const original=C.safeExternalUrl(x.url);
     const viewer=viewerHref(x);
     const label=x.language==='ja'?'日本語（タイトルから推定）':'英語・その他（タイトルから推定）';
-    const resourceLabel=x.id.startsWith('RES-')?x.id:x.driveId;
     return `<article class="resource-card"><div class="resource-main"><a class="resource-title" href="${C.escapeHtml(viewer)}">${C.escapeHtml(x.title)}</a><div class="resource-meta"><span class="resource-pill">${C.escapeHtml(label)}</span><span class="resource-pill format-pill">${C.escapeHtml(x.format)}</span><span class="resource-pill storage-pill">Google Drive Original</span></div></div><div class="resource-actions"><a class="resource-button primary" href="${C.escapeHtml(viewer)}">ブラウザで見る</a><a class="resource-button" href="${C.escapeHtml(original)}" target="_blank" rel="noopener noreferrer">Drive Original ↗</a></div></article>`;
    }).join('')||'<div class="empty">条件に一致する資料がありません。キーワードを短くするか、条件をリセットしてください。<br><button type="button" class="icon-button" data-reset-filters>条件をリセット</button></div>';
   };

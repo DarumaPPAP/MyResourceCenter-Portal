@@ -1,21 +1,21 @@
 {
   "schemaVersion": "1.3.0",
-  "sourceCommit": "750b09a4db9e4e467bf2eb4f1d29379ad3228f2e",
-  "generatedAt": "2026-09-08T12:41:09+00:00",
+  "sourceCommit": "de5fd30a98022f5cb9cc61ffc38f39b6a2a1e27c",
+  "generatedAt": "2026-09-09T05:15:00+00:00",
   "counts": {
     "resources": 181,
     "websites": 100,
-    "documents": 82,
+    "documents": 100,
     "taxonomy": 26,
     "relations": 23,
     "collections": 12
   },
   "documentRouting": {
-    "japanese": 57,
+    "japanese": 75,
     "english": 21,
     "unclassified": 4,
     "formats": {
-      "PDF": 61,
+      "PDF": 79,
       "PPTX": 21
     }
   }
