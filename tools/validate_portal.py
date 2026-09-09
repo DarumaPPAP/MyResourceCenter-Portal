@@ -14,6 +14,12 @@ LATEST_WEBSITE_SHARDS = {
     "websites-latest-03.json",
     "websites-latest-04.json",
 }
+BASE_ORIGINAL_SHARDS = (
+    "originals-base-01.json",
+    "originals-base-02.json",
+    "originals-base-03.json",
+    "originals-base-04.json",
+)
 RESOURCE_FIELD_ORDER = (
     "id", "title", "url", "canonicalUrl", "kind", "topic", "topics",
     "reviewState", "useState", "tags",
@@ -25,8 +31,7 @@ REQUIRED_PAGES = {
 }
 REQUIRED_CATALOG = {
     "manifest.json", "resources.json", "resources-06.json", "websites.json",
-    "documents.json", "original-documents.json", "originals-base-01.json",
-    "originals-base-02.json", "originals-base-03.json", "taxonomy.json",
+    "documents.json", "original-documents.json", *BASE_ORIGINAL_SHARDS, "taxonomy.json",
     "relations.json", "collections.json",
 } | LATEST_WEBSITE_SHARDS
 FORBIDDEN_KEYS = {
@@ -109,7 +114,9 @@ def drive_id(url: str) -> str:
 
 def validate_originals(errors: list[str]):
     meta = load("original-documents.json")
-    base = load("originals-base-01.json") + load("originals-base-02.json") + load("originals-base-03.json")
+    base: list[dict] = []
+    for shard in BASE_ORIGINAL_SHARDS:
+        base.extend(load(shard))
     supplemental = load("resources-06.json")
 
     if meta.get("schemaVersion") != "2.0.0":
@@ -120,8 +127,8 @@ def validate_originals(errors: list[str]):
     if root.get("id") != "1vuhaa1uwMAlcLlelNda6zi48O43-NJhs":
         errors.append("original-documents canonicalRoot id mismatch")
 
-    if len(base) != 28:
-        errors.append(f"base Original count must be 28, got {len(base)}")
+    if len(base) != 46:
+        errors.append(f"base Original count must be 46, got {len(base)}")
     if len(supplemental) != 54:
         errors.append(f"supplemental Original count must be 54, got {len(supplemental)}")
 
@@ -163,10 +170,10 @@ def validate_originals(errors: list[str]):
         errors.append("Original Drive URLs must be unique")
 
     total = len(urls)
-    expected = {"total": 82, "base": 28, "cedec2026": 54, "pdf": 61, "pptx": 21}
+    expected = {"total": 100, "base": 46, "cedec2026": 54, "pdf": 79, "pptx": 21}
     if meta.get("counts") != expected:
         errors.append(f"original-documents counts mismatch: {meta.get('counts')} != {expected}")
-    if (total, pdf_count, pptx_count) != (82, 61, 21):
+    if (total, pdf_count, pptx_count) != (100, 79, 21):
         errors.append(f"Original inventory mismatch: total={total}, PDF={pdf_count}, PPTX={pptx_count}")
 
     return total
@@ -265,7 +272,8 @@ def main() -> None:
                 errors.append(f"{collection_id}: invalid role {member.get('role')}")
 
     document_html = (ROOT / "documents.html").read_text(encoding="utf-8")
-    for required in ("original-documents", "originals-base-01", "originals-base-02", "originals-base-03", "resources-06"):
+    required_document_catalogs = ("original-documents", "originals-base-01", "originals-base-02", "originals-base-03", "originals-base-04", "resources-06")
+    for required in required_document_catalogs:
         if required not in document_html:
             errors.append(f"Documents page must load {required}")
     if "Google Drive Original" not in document_html:
