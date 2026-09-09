@@ -7,17 +7,18 @@
     "url": "https://drive.google.com/drive/folders/1vuhaa1uwMAlcLlelNda6zi48O43-NJhs"
   },
   "counts": {
-    "total": 82,
-    "base": 28,
+    "total": 100,
+    "base": 46,
     "cedec2026": 54,
-    "pdf": 61,
+    "pdf": 79,
     "pptx": 21
   },
   "catalogs": {
     "base": [
       "originals-base-01",
       "originals-base-02",
-      "originals-base-03"
+      "originals-base-03",
+      "originals-base-04"
     ],
     "supplemental": "resources-06"
   },
