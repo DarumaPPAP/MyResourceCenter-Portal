@@ -4,7 +4,7 @@
 
 ## Source model
 
-- AI / factual Source of Truth: Google Drive `/Sources` のCanonical Original
+- AI / factual Source of Truth: Google Drive `KnowledgeLibrary/Sources` のCanonical Original
 - PDF / PPTXはファイルサイズに関係なく同じDrive Storage policyで管理
 - Japanese: Canonical Drive Originalをそのまま開く
 - English: Canonical Drive Original + 日本語Source-faithful HTML Presentation
@@ -13,6 +13,20 @@
 - CEDEC 2026 Original URL: `catalog/resources-06.json`
 
 Portalの表示内容、GitHub上のLegacy binary mirror、Markdown、Generated SkillをAIの一次Evidenceとして扱いません。登録資料を根拠に回答・分析・設計・実装・問題作成等を行う場合は、CatalogからGoogle Drive Originalへ戻ります。
+
+## Public boundary
+
+Portalへ同期できるのは **KnowledgeLibrary/Sources由来のallowlistされたpublic-safe metadata / Presentation** だけです。
+
+以下はPrivate運用領域でありPortalへ同期しません。
+
+- KnowledgeLibrary/Assets
+- KnowledgeLibrary/Logs
+- KnowledgeLibrary_Restricted
+- Drive folder topology / folder URLs
+- Asset source / analysis cache / operational trace
+
+Private MyResourceCenterからPortalへの同期は、public projection + Validator + PRを境界として維持します。
 
 ## Documents
 
@@ -46,6 +60,7 @@ Validatorは次を確認します。
 - Drive URLが重複していない
 - Documents pageがGitHub binary mirrorへ戻っていない
 - Portal Catalog / Resource / Relation / Collection整合性
+- KnowledgeLibraryのPrivate folder URL / topologyが公開Catalogへ混入していない
 
 ## Trend Radar
 
