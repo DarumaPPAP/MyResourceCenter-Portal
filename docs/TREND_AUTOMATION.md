@@ -122,3 +122,17 @@ Trend自動更新から以下を変更しない。
 - MyResourceCenter private Library
 
 TrendからWebsites / Documentsへの昇格はユーザーの明示指示がある場合だけ既存登録フローで行う。
+
+## KnowledgeLibrary boundary
+
+Trend RadarはPublic Discovery Feedであり、Google DriveのPrivate KnowledgeLibraryを収集Sourceや出力先として使用しない。
+
+自動化から以下を読み取り・公開・同期しない。
+
+- KnowledgeLibrary/Assets
+- KnowledgeLibrary/Logs
+- KnowledgeLibrary_Restricted
+- Drive folder topology / folder URL
+- Asset analysis cache / Agent run trace
+
+KnowledgeLibrary/Sourcesの登録済みResourceをPortalへ昇格する場合も、MyResourceCenter側のallowlist public projectionとPR Validationを通す。
