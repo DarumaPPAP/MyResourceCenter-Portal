@@ -39,7 +39,9 @@ FORBIDDEN_KEYS = {
     "drivepath", "localpath", "privatesource", "privaterepository", "internalnote",
     "rawmarkdown", "secret", "token", "password", "authorization", "customer",
     "projectsecret", "keyfacts", "constraints", "evidence", "searchindex", "lineage",
+    "folderid", "folderids", "knowledgelibrary", "assetsroot", "logsroot", "restrictedroot",
 }
+FORBIDDEN_DRIVE_FOLDER_FRAGMENT = "drive.google.com/drive/folders/"
 RESOURCE_FIELDS = {"id", "title", "url", "canonicalUrl", "kind", "topic", "topics", "reviewState", "useState", "tags"}
 WEBSITE_FIELDS = {"id", "title", "url", "canonicalUrl", "publisher", "authors", "publishedAt", "kind", "contentType", "domains", "topics", "engines", "languages", "summary", "reviewState", "useState", "confidence", "freshness", "tags"}
 DOCUMENT_FIELDS = {"id", "title", "sourceFormat", "level", "engine", "tags"}
@@ -88,6 +90,17 @@ def walk_keys(value):
     elif isinstance(value, list):
         for child in value:
             yield from walk_keys(child)
+
+
+def walk_strings(value):
+    if isinstance(value, dict):
+        for child in value.values():
+            yield from walk_strings(child)
+    elif isinstance(value, list):
+        for child in value:
+            yield from walk_strings(child)
+    elif isinstance(value, str):
+        yield value
 
 
 def validate_fields(errors: list[str], label: str, row: dict, allowed: set[str]) -> None:
@@ -228,6 +241,9 @@ def main() -> None:
         for key in walk_keys(data):
             if key.lower() in FORBIDDEN_KEYS:
                 errors.append(f"{name}: forbidden private field: {key}")
+        for value in walk_strings(data):
+            if FORBIDDEN_DRIVE_FOLDER_FRAGMENT in value:
+                errors.append(f"{name}: Google Drive folder URL/private topology must not be public")
 
     resource_ids = {row.get("id") for row in resources}
     website_ids = {row.get("id") for row in websites}
