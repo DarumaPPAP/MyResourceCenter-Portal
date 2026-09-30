@@ -13,6 +13,8 @@ for (const url of ['https://evil.test/file/d/abc/view','https://drive.google.com
 assert.equal(new URL(C.viewerHref({...doc,sourceFormat:'GOOGLE_SLIDES',canonicalUrl:'https://docs.google.com/presentation/d/native123/edit'}),'https://example.test/').searchParams.get('id'),'native123');
 assert.equal(new URL(C.viewerHref({...doc,sourceFormat:'GOOGLE_DOC',canonicalUrl:'https://docs.google.com/document/d/native456/edit?tab=t.0'}),'https://example.test/').searchParams.get('id'),'native456');
 assert.match(C.documentThumbnail(doc), /loading="lazy"/);
+assert.match(C.documentThumbnail({...doc,thumbnail:'assets/generated/documents/DOC-ABC.webp'}), /DOC-ABC\.webp/);
+assert.doesNotMatch(C.documentThumbnail({...doc,thumbnail:'assets/generated/documents/DOC-ABC.jpg'}), /<img/);
 assert.match(C.documentThumbnail({...doc,thumbnail:null,sourceFormat:'PPTX'}), /PPTX/);
 assert.doesNotMatch(C.documentThumbnail({...doc,thumbnail:'../../secret.png'}), /<img/);
 const image = { hidden:false, closest:()=>({classList:{add(v){assert.equal(v,'is-missing');}}}) };
@@ -71,5 +73,11 @@ with tempfile.TemporaryDirectory() as tmp:
     def chunk(kind,payload):return struct.pack('>I',len(payload))+kind+payload+struct.pack('>I',zlib.crc32(kind+payload)&0xffffffff)
     asset.write_bytes(b'\x89PNG\r\n\x1a\n'+chunk(b'IHDR',struct.pack('>IIBBBBB',0,100,8,2,0,0,0))+chunk(b'IDAT',b'x')+chunk(b'IEND',b''))
     errors=[];v.validate_png(errors,'bad',asset);assert any('dimensions' in error for error in errors)
+from PIL import Image
+with tempfile.TemporaryDirectory() as tmp:
+    asset=Path(tmp)/'bad.webp';asset.write_bytes(b'RIFF-not-a-WebP')
+    assert not v.validate_thumbnail_asset(asset)
+    Image.new('RGB',(1201,800),'white').save(asset,'WEBP');assert not v.validate_thumbnail_asset(asset)
+    Image.new('RGB',(1200,800),'white').save(asset,'WEBP');assert v.validate_thumbnail_asset(asset)
 print('OK: public validator rejects private fields/topology, invalid mappings, unsafe URLs/paths, unsupported thumbnails and malformed PNGs')
 `], {cwd:path.join(__dirname,'..'),stdio:'inherit'});

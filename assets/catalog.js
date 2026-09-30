@@ -194,7 +194,7 @@
 
   function documentThumbnail(doc) {
     const fallback = `<span class="thumbnail-fallback">${escapeHtml(doc.sourceFormat || 'DOCUMENT')}<small>プレビューなし</small></span>`;
-    const valid = /^assets\/generated\/documents\/DOC-[A-Za-z0-9_-]+\.png$/.test(doc.thumbnail || '');
+    const valid = /^assets\/generated\/documents\/DOC-[A-Za-z0-9_-]+\.(?:png|webp)$/.test(doc.thumbnail || '');
     return `<div class="document-thumbnail${valid ? '' : ' is-missing'}">${valid ? `<img src="${escapeHtml(doc.thumbnail)}" alt="" loading="lazy" decoding="async">` : ''}${fallback}</div>`;
   }
 

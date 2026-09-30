@@ -4,6 +4,10 @@ import json
 import re
 import struct
 import zlib
+try:
+    from thumbnail_artifact import stable_thumbnail_path,validate_thumbnail_asset,no_symlink_path
+except ModuleNotFoundError:
+    from tools.thumbnail_artifact import stable_thumbnail_path,validate_thumbnail_asset,no_symlink_path
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -314,14 +318,17 @@ def validate_presentation(errors: list[str], rows: list[dict], resources: list[d
             continue  # Explicit format fallback; no fabricated previews.
         if source_format not in {"PDF", "PPTX"}:
             errors.append(f"{label}: unsupported sourceFormat must use null thumbnail fallback")
-        if not isinstance(thumbnail, str) or thumbnail != f"assets/generated/documents/{document_id}.png":
+        if not isinstance(thumbnail, str) or not stable_thumbnail_path(thumbnail,document_id):
             errors.append(f"{label}: invalid thumbnail asset path")
             continue
         asset = ROOT / thumbnail
-        if not asset.is_file() or asset.is_symlink() or not asset.resolve().is_relative_to((ROOT / "assets/generated/documents").resolve()):
+        if not no_symlink_path(asset,ROOT):
             errors.append(f"{label}: thumbnail file missing or outside asset root")
             continue
-        validate_png(errors, label, asset)
+        if asset.suffix==".png":
+            validate_png(errors,label,asset)
+        if not validate_thumbnail_asset(asset):
+            errors.append(f"{label}: invalid bounded static PNG/WebP")
     document_resources = {row["id"] for row in resources if row.get("kind") == "document"}
     if seen_res != document_resources:
         errors.append("document-presentation must map every document Resource exactly once")
@@ -450,8 +457,13 @@ def main() -> None:
         errors.append("Documents page must not use Markdown as Original navigation")
 
     index_html = (ROOT / "index.html").read_text(encoding="utf-8")
-    if "assets/human-portal.js" not in index_html or "const docs=data['document-presentation']" not in consumer:
-        errors.append("Home must use presentation catalog for current Document counts")
+    home_contract=('Game Development','Knowledge Portal','data-global-search','featured-title','paths-title','discovery-title','id="docs"','id="collections"')
+    if "assets/human-portal.js" not in index_html or any(token not in index_html for token in home_contract):
+        errors.append("Home must provide discovery hero, search and actual knowledge content")
+    if any(token in index_html for token in ('stats-grid','stat-card','quick-card','quick-grid','renderStats')):
+        errors.append("Home must not expose Dashboard metrics or generic menu cards")
+    if any(token not in consumer for token in ("document-presentation","documentThumbnail","readingPreview")):
+        errors.append("Home must use actual document and reading-guide presentation data")
     if "technical-environment.svg" not in index_html or not (ROOT / "assets/technical-environment.svg").exists():
         errors.append("Home must include the locally authored technical environment visual")
 

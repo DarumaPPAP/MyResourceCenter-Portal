@@ -15,7 +15,7 @@
     "documentId": "DOC-6CE36A9C2BA7",
     "title": "AVBOIT_SIG2025_MDROBOT-final",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-6CE36A9C2BA7.png",
+    "thumbnail": "assets/generated/documents/DOC-6CE36A9C2BA7.webp",
     "engine": "General",
     "level": "algorithm / implementation",
     "tags": [
@@ -32,7 +32,7 @@
     "documentId": "DOC-CF4D6C3FE273",
     "title": "AI画像認識を活用した ゲーム内決済処理検証の自動化",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-CF4D6C3FE273.png",
+    "thumbnail": "assets/generated/documents/DOC-CF4D6C3FE273.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -66,7 +66,7 @@
     "documentId": "DOC-0F6D8FCB3F66",
     "title": "「SOL-AVES」とゲームで実践した 描画最適化事例",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-0F6D8FCB3F66.png",
+    "thumbnail": "assets/generated/documents/DOC-0F6D8FCB3F66.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -79,7 +79,7 @@
     "documentId": "DOC-BC200F87E5D7",
     "title": "CEDEC2026_100名規模のVTuberコラボ配信を実現するために刷新した配信システムについて",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-BC200F87E5D7.png",
+    "thumbnail": "assets/generated/documents/DOC-BC200F87E5D7.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -92,7 +92,7 @@
     "documentId": "DOC-A9DA92FBFC45",
     "title": "「壊れないテスト」から 「10分で作り直せるテスト」へ",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-A9DA92FBFC45.png",
+    "thumbnail": "assets/generated/documents/DOC-A9DA92FBFC45.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -127,7 +127,7 @@
     "documentId": "DOC-AF0E226E0351",
     "title": "『モンスターストライク』 の運営に伴走する！",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-AF0E226E0351.png",
+    "thumbnail": "assets/generated/documents/DOC-AF0E226E0351.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -164,7 +164,7 @@
     "documentId": "DOC-9188F51A6099",
     "title": "GPGPU × クロスシミュレーション：物理初心者でも「リッチな布表現」を自在に操る！独自の構築アプローチとUE5での最適化の実践",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-9188F51A6099.png",
+    "thumbnail": "assets/generated/documents/DOC-9188F51A6099.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -220,7 +220,7 @@
     "documentId": "DOC-8E223BFD4F8E",
     "title": "大量のデータから「いい感じに」抽選する時 系列バケット式抽選法",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-8E223BFD4F8E.png",
+    "thumbnail": "assets/generated/documents/DOC-8E223BFD4F8E.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -244,7 +244,7 @@
     "documentId": "DOC-76DE38CD969C",
     "title": "『モンスターハンターストーリーズ3』LLM×VLMで拡張する自動プレイエージェントの構築と運用",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-76DE38CD969C.png",
+    "thumbnail": "assets/generated/documents/DOC-76DE38CD969C.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -257,7 +257,7 @@
     "documentId": "DOC-CF0062C8C7DF",
     "title": "20年続く社内勉強会 ALM (All Layer Meeting) の運用哲学",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-CF0062C8C7DF.png",
+    "thumbnail": "assets/generated/documents/DOC-CF0062C8C7DF.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -270,7 +270,7 @@
     "documentId": "DOC-AD094CAB6658",
     "title": "ウマ娘 プリティーダービーにおける映像制作のさらなる高品質化へ",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-AD094CAB6658.png",
+    "thumbnail": "assets/generated/documents/DOC-AD094CAB6658.webp",
     "engine": "Unity / Unity Recorder / After Effects",
     "level": "production / tooling",
     "tags": [
@@ -288,7 +288,7 @@
     "documentId": "DOC-E5AB97930AA4",
     "title": "「作ること」と 「価値を生むこと」は なぜズレるのか",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-E5AB97930AA4.png",
+    "thumbnail": "assets/generated/documents/DOC-E5AB97930AA4.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -312,7 +312,7 @@
     "documentId": "DOC-68059CA5B5BC",
     "title": "プロジェクト整理と バージョン管理の ベストプラクティス",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-68059CA5B5BC.png",
+    "thumbnail": "assets/generated/documents/DOC-68059CA5B5BC.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [],
@@ -323,7 +323,7 @@
     "documentId": "DOC-FFA0A07A16DE",
     "title": "ラクしたいので作ってみた",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-FFA0A07A16DE.png",
+    "thumbnail": "assets/generated/documents/DOC-FFA0A07A16DE.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -368,7 +368,7 @@
     "documentId": "DOC-4E1DF6E0C0B7",
     "title": "「集める」のではなく、データが「勝手に集まる」世界へ。定点観測から始まる「令和」のパフォーマンス改善ライフ_CEDiL用",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-4E1DF6E0C0B7.png",
+    "thumbnail": "assets/generated/documents/DOC-4E1DF6E0C0B7.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -381,7 +381,7 @@
     "documentId": "DOC-FD9778E67484",
     "title": "Frostbite PB and unified volumetrics",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-FD9778E67484.png",
+    "thumbnail": "assets/generated/documents/DOC-FD9778E67484.webp",
     "engine": "Frostbite",
     "level": "production / implementation",
     "tags": [
@@ -458,7 +458,7 @@
     "documentId": "DOC-C7108261D3AE",
     "title": "Build System in the Autonomous Agents Era",
     "sourceFormat": "PPTX",
-    "thumbnail": "assets/generated/documents/DOC-C7108261D3AE.png",
+    "thumbnail": "assets/generated/documents/DOC-C7108261D3AE.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -484,7 +484,7 @@
     "documentId": "DOC-927F89DA3F32",
     "title": "学園アイドルマスターにおけるモバイルの性能を限 界まで引き出すレンダリングパイプライン",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-927F89DA3F32.png",
+    "thumbnail": "assets/generated/documents/DOC-927F89DA3F32.webp",
     "engine": "Unity / custom mobile pipeline",
     "level": "production / optimization",
     "tags": [
@@ -515,7 +515,7 @@
     "documentId": "DOC-6C59AC1C182B",
     "title": "レベル職人に依存しない！ ギミックを活かした パズルゲームのレベル自動生成",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-6C59AC1C182B.png",
+    "thumbnail": "assets/generated/documents/DOC-6C59AC1C182B.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -528,7 +528,7 @@
     "documentId": "DOC-7B8E0467124E",
     "title": "WwiseとUnrealによる Wwise Acoustics活用法",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-7B8E0467124E.png",
+    "thumbnail": "assets/generated/documents/DOC-7B8E0467124E.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -631,7 +631,7 @@
     "documentId": "DOC-F66F28B3B1C5",
     "title": "上級 Unity クリエイター 向けのユニバーサルレンダー パイプライン（URP）",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-F66F28B3B1C5.png",
+    "thumbnail": "assets/generated/documents/DOC-F66F28B3B1C5.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [],
@@ -642,7 +642,7 @@
     "documentId": "DOC-CF0263275870",
     "title": "Unity の 上級開発者向け Data-Oriented",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-CF0263275870.png",
+    "thumbnail": "assets/generated/documents/DOC-CF0263275870.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [],
@@ -653,7 +653,7 @@
     "documentId": "DOC-5169D10CAD0D",
     "title": "Unity によるコンソール と PC 向けゲームの パフォーマンス最適化",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-5169D10CAD0D.png",
+    "thumbnail": "assets/generated/documents/DOC-5169D10CAD0D.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [],
@@ -697,7 +697,7 @@
     "documentId": "DOC-8B551939E308",
     "title": "GS2-Studio の紹介",
     "sourceFormat": "PPTX",
-    "thumbnail": "assets/generated/documents/DOC-8B551939E308.png",
+    "thumbnail": "assets/generated/documents/DOC-8B551939E308.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -710,7 +710,7 @@
     "documentId": "DOC-4F27073C8F02",
     "title": "Unity 上級開発者向け UI Toolkit",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-4F27073C8F02.png",
+    "thumbnail": "assets/generated/documents/DOC-4F27073C8F02.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [],
@@ -743,7 +743,7 @@
     "documentId": "DOC-135CA74564B6",
     "title": "ゲームオーディオ実装の現在と未来は？ サウンドミドルウェアは何を支え、 どこへ向かうのか",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-135CA74564B6.png",
+    "thumbnail": "assets/generated/documents/DOC-135CA74564B6.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -756,7 +756,7 @@
     "documentId": "DOC-8F36629A52C4",
     "title": "Apers_Advances-s2024_Shipping-Dynamic-GI",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-8F36629A52C4.png",
+    "thumbnail": "assets/generated/documents/DOC-8F36629A52C4.webp",
     "engine": "Frostbite",
     "level": "production / implementation",
     "tags": [
@@ -774,7 +774,7 @@
     "documentId": "DOC-12776F73CFB8",
     "title": "CEDEC2026_フルスクラッチ3D生成AI_荒木",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-12776F73CFB8.png",
+    "thumbnail": "assets/generated/documents/DOC-12776F73CFB8.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -787,7 +787,7 @@
     "documentId": "DOC-C29B55EBE666",
     "title": "Ray tracing the world of Assassin's Creed Shadows",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-C29B55EBE666.png",
+    "thumbnail": "assets/generated/documents/DOC-C29B55EBE666.webp",
     "engine": "Anvil / Assassin’s Creed Shadows",
     "level": "production / implementation",
     "tags": [
@@ -805,7 +805,7 @@
     "documentId": "DOC-27BF0A330306",
     "title": "Pokémon TCG Pocketのバトルを⽀える 強化学習AI技術",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-27BF0A330306.png",
+    "thumbnail": "assets/generated/documents/DOC-27BF0A330306.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -818,7 +818,7 @@
     "documentId": "DOC-CBBFD96145CE",
     "title": "『モンスターハンターストーリーズ３』 共に闘うキャラの個性：RPGバトルAIにおける機械学習と従来手法の融合",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-CBBFD96145CE.png",
+    "thumbnail": "assets/generated/documents/DOC-CBBFD96145CE.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -831,7 +831,7 @@
     "documentId": "DOC-8803597D996E",
     "title": "【UE5×RIGDOCKS】自社専用システム『RIGDRED』を構築!~SKYSQUAREから始まる次世代の音響ワークフロー~",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-8803597D996E.png",
+    "thumbnail": "assets/generated/documents/DOC-8803597D996E.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -844,7 +844,7 @@
     "documentId": "DOC-1BA723D58541",
     "title": "『LIVING with LIVLIES』運用を支える技術",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-1BA723D58541.png",
+    "thumbnail": "assets/generated/documents/DOC-1BA723D58541.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -876,7 +876,7 @@
     "documentId": "DOC-326300CB503C",
     "title": "Unity ゲームの プロファイリングに 関する決定版ガイド",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-326300CB503C.png",
+    "thumbnail": "assets/generated/documents/DOC-326300CB503C.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [],
@@ -887,7 +887,7 @@
     "documentId": "DOC-1DD0E8CAF7D6",
     "title": "Unity における モバイル、XR、ウェブの パフォーマンス最適化",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-1DD0E8CAF7D6.png",
+    "thumbnail": "assets/generated/documents/DOC-1DD0E8CAF7D6.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [],
@@ -898,7 +898,7 @@
     "documentId": "DOC-F043AC1AEC3B",
     "title": "Unity 3D&2D グラフィックス 最新情報",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-F043AC1AEC3B.png",
+    "thumbnail": "assets/generated/documents/DOC-F043AC1AEC3B.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -911,7 +911,7 @@
     "documentId": "DOC-DB6CD7F0387F",
     "title": "120fps達成の道",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-DB6CD7F0387F.png",
+    "thumbnail": "assets/generated/documents/DOC-DB6CD7F0387F.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -924,7 +924,7 @@
     "documentId": "DOC-A534CB071E49",
     "title": "脱Jenkins、 インターン生が挑んだCIツール GitHub Actions移行",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-A534CB071E49.png",
+    "thumbnail": "assets/generated/documents/DOC-A534CB071E49.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -937,7 +937,7 @@
     "documentId": "DOC-DCF9F0ADFB97",
     "title": "CEDEC2026_REALITY_課題発見から始めるプロダクト密着型TA組織立ち上げ",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-DCF9F0ADFB97.png",
+    "thumbnail": "assets/generated/documents/DOC-DCF9F0ADFB97.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -950,7 +950,7 @@
     "documentId": "DOC-DC765C894C31",
     "title": "上級 Unity クリエイター 向けのユニバーサル",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-DC765C894C31.png",
+    "thumbnail": "assets/generated/documents/DOC-DC765C894C31.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [],
@@ -1024,7 +1024,7 @@
     "documentId": "DOC-33076D59B43A",
     "title": "コードレビュー支援ツール開発から学ぶ",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-33076D59B43A.png",
+    "thumbnail": "assets/generated/documents/DOC-33076D59B43A.webp",
     "engine": "GitHub / LLM / CloudWatch",
     "level": "production / AI system operations",
     "tags": [
@@ -1044,7 +1044,7 @@
     "documentId": "DOC-325BB7666462",
     "title": "PRAGMATA Making Diana",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-325BB7666462.png",
+    "thumbnail": "assets/generated/documents/DOC-325BB7666462.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -1057,7 +1057,7 @@
     "documentId": "DOC-326D8F6D7A18",
     "title": "Cygames 流 最新スマートフォンゲームの技術設計",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-326D8F6D7A18.png",
+    "thumbnail": "assets/generated/documents/DOC-326D8F6D7A18.webp",
     "engine": "Unity / MagicOnion / Shadowverse: Worlds Beyond",
     "level": "architecture / production",
     "tags": [
@@ -1076,7 +1076,7 @@
     "documentId": "DOC-C79302ACFB9B",
     "title": "世界創造謎解きアドベンチャーゲーム 「カミとミコ」開発における CMSとFigma活用",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-C79302ACFB9B.png",
+    "thumbnail": "assets/generated/documents/DOC-C79302ACFB9B.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -1089,7 +1089,7 @@
     "documentId": "DOC-E51533733F48",
     "title": "ゲームシナリオライターを支援するAIツール開発の実践",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-E51533733F48.png",
+    "thumbnail": "assets/generated/documents/DOC-E51533733F48.webp",
     "engine": "Dify / Cygames internal tools",
     "level": "production / AI tooling",
     "tags": [
@@ -1107,7 +1107,7 @@
     "documentId": "DOC-4957D092E818",
     "title": "CEDEC2026_HEXADRIVE_Ritaro_WarterColorToon",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-4957D092E818.png",
+    "thumbnail": "assets/generated/documents/DOC-4957D092E818.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -1120,7 +1120,7 @@
     "documentId": "DOC-0996FC52496F",
     "title": "AIネイティブゲームの面白さは どこで決まるのか",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-0996FC52496F.png",
+    "thumbnail": "assets/generated/documents/DOC-0996FC52496F.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -1133,7 +1133,7 @@
     "documentId": "DOC-FC81DF2829BB",
     "title": "多様な戦場へ拡張する ⼤量モンスター戦を⽀える Marvel Rivals のアーキテクチャ",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-FC81DF2829BB.png",
+    "thumbnail": "assets/generated/documents/DOC-FC81DF2829BB.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -1168,7 +1168,7 @@
     "documentId": "DOC-12D46B399AE4",
     "title": "モニター色管理による制作環境の効率化/ ColorEdge初のOLEDモデル登場！",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-12D46B399AE4.png",
+    "thumbnail": "assets/generated/documents/DOC-12D46B399AE4.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -1211,7 +1211,7 @@
     "documentId": "DOC-29C041110624",
     "title": "長期運営で肥大化したExcel マスターデータの解消に向けた移行事例",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-29C041110624.png",
+    "thumbnail": "assets/generated/documents/DOC-29C041110624.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -1224,7 +1224,7 @@
     "documentId": "DOC-20DDB5EF12B2",
     "title": "大阪・関西万博における 大規模イマーシブシステム構築",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-20DDB5EF12B2.png",
+    "thumbnail": "assets/generated/documents/DOC-20DDB5EF12B2.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -1237,7 +1237,7 @@
     "documentId": "DOC-AD86B360B030",
     "title": "球面調和関数の新展開 -回転・積分・勾配計算の最新技術-",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-AD86B360B030.png",
+    "thumbnail": "assets/generated/documents/DOC-AD86B360B030.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -1272,7 +1272,7 @@
     "documentId": "DOC-0B6DF850F0FB",
     "title": "グラフィックスエンジニアのための ニューラルシェーディング入門",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-0B6DF850F0FB.png",
+    "thumbnail": "assets/generated/documents/DOC-0B6DF850F0FB.webp",
     "engine": "GPU Shader / Slang / SlangPy / Cooperative Vector",
     "level": "foundation / implementation",
     "tags": [
@@ -1292,7 +1292,7 @@
     "documentId": "DOC-5587CACA14FE",
     "title": "大規模イマーシブオーディオの設計と実装",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-5587CACA14FE.png",
+    "thumbnail": "assets/generated/documents/DOC-5587CACA14FE.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -1322,7 +1322,7 @@
     "documentId": "DOC-97BB7B7A38AA",
     "title": "ゲームレベルデザイン入門",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-97BB7B7A38AA.png",
+    "thumbnail": "assets/generated/documents/DOC-97BB7B7A38AA.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [],
@@ -1346,7 +1346,7 @@
     "documentId": "DOC-37BD9A0D9109",
     "title": "TB級アセット時代の開発基盤再構成: COWファイルシステム・コンテンツアドレス型差分配布・コンテナ技術 で実現するAIワークフロー",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-37BD9A0D9109.png",
+    "thumbnail": "assets/generated/documents/DOC-37BD9A0D9109.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -1370,7 +1370,7 @@
     "documentId": "DOC-3E892BA01B45",
     "title": "AdavanceRealtimeRendering_NanoMesh0810",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-3E892BA01B45.png",
+    "thumbnail": "assets/generated/documents/DOC-3E892BA01B45.webp",
     "engine": "Mobile rendering",
     "level": "algorithm / implementation",
     "tags": [
@@ -1406,7 +1406,7 @@
     "documentId": "DOC-C7F01108E47C",
     "title": "ミアレシティがメガシンカ!? 『Pokémon LEGENDS Z-A』の描画技術",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-C7F01108E47C.png",
+    "thumbnail": "assets/generated/documents/DOC-C7F01108E47C.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -1439,7 +1439,7 @@
     "documentId": "DOC-D992E586A541",
     "title": "large_scale_cbt_slides_siggraph_advances_2024",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-D992E586A541.png",
+    "thumbnail": "assets/generated/documents/DOC-D992E586A541.webp",
     "engine": "General / research-to-production",
     "level": "algorithm / implementation",
     "tags": [
@@ -1478,7 +1478,7 @@
     "documentId": "DOC-896B81BD99B0",
     "title": "続！ニューラルネットワークを用いた 音声信号によるリップシンク （口パク生成）技術",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-896B81BD99B0.png",
+    "thumbnail": "assets/generated/documents/DOC-896B81BD99B0.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -1511,7 +1511,7 @@
     "documentId": "DOC-51F7D61800FB",
     "title": "CEDEC2026_REALITY-asset-flow",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-51F7D61800FB.png",
+    "thumbnail": "assets/generated/documents/DOC-51F7D61800FB.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -1524,7 +1524,7 @@
     "documentId": "DOC-2B317B78B36A",
     "title": "AI Agent導⼊のラストマイル",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-2B317B78B36A.png",
+    "thumbnail": "assets/generated/documents/DOC-2B317B78B36A.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -1556,7 +1556,7 @@
     "documentId": "DOC-5C70FB2A7049",
     "title": "UIの実装に強くなる！",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-5C70FB2A7049.png",
+    "thumbnail": "assets/generated/documents/DOC-5C70FB2A7049.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -1613,7 +1613,7 @@
     "documentId": "DOC-9DFAB64ACDEF",
     "title": "スクリプト不要、仕込みも最小限。 動画と生成AIで挑む ゲームQAの現在地",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-9DFAB64ACDEF.png",
+    "thumbnail": "assets/generated/documents/DOC-9DFAB64ACDEF.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -1626,7 +1626,7 @@
     "documentId": "DOC-3B179F2265CE",
     "title": "高品質な表現を、もっと現実的に。 ライティングと揺れもの表現を進化させる Enlighten & Bone Dynamics の最新技術と導入事例",
     "sourceFormat": "PPTX",
-    "thumbnail": "assets/generated/documents/DOC-3B179F2265CE.png",
+    "thumbnail": "assets/generated/documents/DOC-3B179F2265CE.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
@@ -1639,7 +1639,7 @@
     "documentId": "DOC-99BE3E6DB6E7",
     "title": "ScriptableObject を使って Unity でモジュラーゲーム アーキテクチャを作成する",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-99BE3E6DB6E7.png",
+    "thumbnail": "assets/generated/documents/DOC-99BE3E6DB6E7.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [],

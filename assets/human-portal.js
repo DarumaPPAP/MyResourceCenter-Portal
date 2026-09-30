@@ -61,13 +61,21 @@ window.addEventListener('DOMContentLoaded', async () => {
       el('content').innerHTML = `<div class="detail-shell"><div class="detail-main"><section class="detail-hero"><div class="eyebrow">Document</div><h1>${C.escapeHtml(doc.title)}</h1><div class="detail-actions"><a class="primary-button" href="${C.escapeHtml(C.viewerHref(doc))}">ブラウザで読む</a>${C.externalLink(doc.canonicalUrl,'Google Drive Original')}<a href="documents.html">← 一覧へ</a></div></section><section class="detail-section">${C.documentThumbnail(doc)}<dl class="detail-grid"><div><dt>Format</dt><dd>${C.escapeHtml(doc.sourceFormat)}</dd></div><div><dt>Engine</dt><dd>${C.escapeHtml(doc.engine)}</dd></div><div><dt>Level</dt><dd>${C.escapeHtml(doc.level)}</dd></div></dl></section><section class="detail-section"><h2>Tags</h2><div class="tag-cloud">${doc.tags.map(tag=>`<a class="tag" href="documents.html?tag=${encodeURIComponent(tag)}">${C.escapeHtml(tag)}</a>`).join('') || 'タグなし'}</div></section></div><aside class="detail-side"><section class="detail-section"><h2>Collections</h2>${collections.map(({collection,member})=>`<p><a href="collection.html?id=${encodeURIComponent(collection.id)}">${C.escapeHtml(collection.title)}</a><small class="document-meta"> · ${C.escapeHtml(C.roleLabel(member.role))}</small></p>`).join('') || '<p class="document-meta">Collectionを準備中</p>'}</section><section class="detail-section"><h2>関連資料</h2>${relations.map(entry=>`<p>${entry.resource ? resourceLink(entry.resource,websiteIds) : '資料'}<small class="document-meta"> · ${C.escapeHtml(C.relationLabel(entry.edge.relation))}</small></p>`).join('') || '<p class="document-meta">関連資料なし</p>'}</section></aside></div>`;
       C.bindThumbnailFallback(el('content'));
     } else if (page === 'index.html') {
-      const data=await C.loadMany('document-presentation','resources','websites','collections','relations');
-      const docs=data['document-presentation'];
-      const counts=[data.resources.length,data.websites.length,docs.length,data.relations.length,data.collections.length];
-      document.querySelectorAll('#stats .value').forEach((element,i)=>element.textContent=counts[i]);
-      el('docs').innerHTML = docs.filter(doc=>doc.thumbnail).slice(0,4).map(doc=>`<div class="doc-mini">${C.documentThumbnail(doc)}<div><a href="${C.escapeHtml(C.viewerHref(doc))}">${C.escapeHtml(doc.title)}</a><small>${C.escapeHtml(doc.sourceFormat)} · ${C.escapeHtml(doc.engine)}</small></div></div>`).join('');
+      const data = await C.loadMany('document-presentation','resources','collections');
+      const byId = C.byId(data.resources);
+      // Feature available page previews without inventing publication dates.
+      const docs = data['document-presentation'].filter(doc=>doc.thumbnail).slice(0,4);
+      el('docs').innerHTML = docs.map(doc => {
+        const href = C.viewerHref(doc) || `document.html?id=${encodeURIComponent(doc.resourceId)}`;
+        return `<article class="document-entry"><a class="thumbnail-link" aria-label="${C.escapeHtml(doc.title)}を読む" href="${C.escapeHtml(href)}">${C.documentThumbnail(doc)}</a><div class="document-copy"><h3><a href="${C.escapeHtml(href)}">${C.escapeHtml(doc.title)}</a></h3><div class="document-meta">${C.escapeHtml(doc.sourceFormat === 'UNKNOWN' ? '形式未確認' : doc.sourceFormat)} · ${C.escapeHtml(doc.engine || 'General')}</div><div class="tag-cloud">${C.chips(doc.tags.slice(0,3))}</div><a class="document-detail" href="document.html?id=${encodeURIComponent(doc.resourceId)}">資料情報・関連資料 →</a></div></article>`;
+      }).join('') || '<p role="status">プレビュー付きの資料を準備中です。<a href="documents.html">資料一覧へ →</a></p>';
       C.bindThumbnailFallback(el('docs'));
-      el('collections').innerHTML = C.sortCollections(data.collections).slice(0,5).map(col=>`<div class="doc-mini"><div><small>${C.escapeHtml(col.category)} · ${col.resources.length} steps</small><a href="collection.html?id=${encodeURIComponent(col.id)}">${C.escapeHtml(col.title)}</a></div></div>`).join('');
+      // Only display paths with at least two real, resolvable reading steps.
+      const paths = C.sortCollections(data.collections).filter(col=>col.resources.length >= 2 && col.resources.every(step=>byId.has(step.id))).slice(0,3);
+      el('collections').innerHTML = paths.map(col => {
+        const preview = C.readingPreview(col);
+        return `<a class="reading-guide" href="collection.html?id=${encodeURIComponent(col.id)}"><div class="eyebrow">${C.escapeHtml(col.category)}</div><h3>${C.escapeHtml(col.title)}</h3><p>${C.escapeHtml(col.description)}</p><ol class="path-preview">${preview.steps.map((step,i)=>`<li><span class="path-number">${String(i+1).padStart(2,'0')}</span><div><strong>${C.escapeHtml(C.roleLabel(step.role))}</strong><span>${C.escapeHtml(byId.get(step.id).title)}</span></div></li>`).join('')}</ol>${preview.more ? `<div class="path-more">+${preview.more} more</div>` : ''}</a>`;
+      }).join('') || '<p role="status">読み順を準備中です。<a href="collections.html">コレクション一覧へ →</a></p>';
     }
   } catch (error) {
     console.error(error);
