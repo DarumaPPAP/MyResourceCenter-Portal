@@ -2,6 +2,12 @@ from __future__ import annotations
 
 import json
 import re
+import struct
+import zlib
+try:
+    from thumbnail_artifact import stable_thumbnail_path,validate_thumbnail_asset,no_symlink_path
+except ModuleNotFoundError:
+    from tools.thumbnail_artifact import stable_thumbnail_path,validate_thumbnail_asset,no_symlink_path
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -31,7 +37,7 @@ REQUIRED_PAGES = {
 }
 REQUIRED_CATALOG = {
     "manifest.json", "resources.json", "resources-06.json", "websites.json",
-    "documents.json", "original-documents.json", *BASE_ORIGINAL_SHARDS, "taxonomy.json",
+    "documents.json", "document-presentation.json", "original-documents.json", *BASE_ORIGINAL_SHARDS, "taxonomy.json",
     "relations.json", "collections.json",
 } | LATEST_WEBSITE_SHARDS
 FORBIDDEN_KEYS = {
@@ -39,14 +45,14 @@ FORBIDDEN_KEYS = {
     "drivepath", "localpath", "privatesource", "privaterepository", "internalnote",
     "rawmarkdown", "secret", "token", "password", "authorization", "customer",
     "projectsecret", "keyfacts", "constraints", "evidence", "searchindex", "lineage",
-    "folderid", "folderids", "knowledgelibrary", "assetsroot", "logsroot", "restrictedroot",
+    "driveid", "privatetitleprovenance", "canonicalroot", "sources", "sourcefolder", "foldermetadata", "folderid", "folderids", "knowledgelibrary", "assetsroot", "logsroot", "restrictedroot",
 }
 FORBIDDEN_DRIVE_FOLDER_FRAGMENT = "drive.google.com/drive/folders/"
 RESOURCE_FIELDS = {"id", "title", "url", "canonicalUrl", "kind", "topic", "topics", "reviewState", "useState", "tags"}
 WEBSITE_FIELDS = {"id", "title", "url", "canonicalUrl", "publisher", "authors", "publishedAt", "kind", "contentType", "domains", "topics", "engines", "languages", "summary", "reviewState", "useState", "confidence", "freshness", "tags"}
 DOCUMENT_FIELDS = {"id", "title", "sourceFormat", "level", "engine", "tags"}
 RELATION_FIELDS = {"from", "to", "relation"}
-COLLECTION_FIELDS = {"id", "title", "description", "topics", "resources"}
+COLLECTION_FIELDS = {"id", "title", "description", "topics", "resources", "category"}
 COLLECTION_MEMBER_FIELDS = {"id", "role"}
 TAXONOMY_FIELDS = {"schemaVersion", "domains", "tags", "engines"}
 RELATION_TYPES = {"related", "extends", "contrasts", "alternative", "implements", "derivedFrom", "supersedes", "validates"}
@@ -115,9 +121,21 @@ def validate_public_url(errors: list[str], label: str, value) -> None:
     if not isinstance(value, str) or not value:
         errors.append(f"{label} must be a non-empty string")
         return
-    parsed = urlparse(value)
-    if parsed.scheme not in {"http", "https"} or not parsed.netloc:
-        errors.append(f"{label} must use absolute http/https URL")
+    # Reject characters parsers/browsers can silently normalize before parsing.
+    if any(ord(char) <= 0x20 or ord(char) == 0x7f or char.isspace() or char == "\\" for char in value):
+        errors.append(f"{label} contains forbidden whitespace/control/backslash")
+        return
+    try:
+        parsed = urlparse(value)
+        hostname = parsed.hostname
+        port = parsed.port  # Access validates both numeric ports and range.
+        if parsed.scheme not in {"http", "https"} or not hostname:
+            errors.append(f"{label} must use absolute http/https URL")
+        if parsed.username is not None or parsed.password is not None:
+            errors.append(f"{label} must not contain URL credentials")
+    except (ValueError, TypeError):
+        # Do not echo URL or parse exception text: either may contain secrets.
+        errors.append(f"{label} is a malformed public URL")
 
 
 def drive_id(url: str) -> str:
@@ -136,9 +154,21 @@ def validate_originals(errors: list[str]):
         errors.append("original-documents schemaVersion must be 2.0.0")
     if meta.get("storage") != "google-drive":
         errors.append("original-documents storage must be google-drive")
-    root = meta.get("canonicalRoot", {})
-    if root.get("id") != "1vuhaa1uwMAlcLlelNda6zi48O43-NJhs":
-        errors.append("original-documents canonicalRoot id mismatch")
+    validate_fields(errors, "original-documents", meta, {"schemaVersion", "storage", "counts", "catalogs", "routing", "notes"})
+    # Folder topology is private. Legacy Original shards retain file navigation
+    # compatibility, never folder metadata.
+    for key in walk_keys(meta):
+        if key.lower() in FORBIDDEN_KEYS:
+            errors.append(f"original-documents: forbidden private field: {key}")
+    for value in walk_strings(meta):
+        if FORBIDDEN_DRIVE_FOLDER_FRAGMENT in value:
+            errors.append("original-documents: private Drive folder topology")
+    for shard in BASE_ORIGINAL_SHARDS:
+        for row in load(shard):
+            validate_fields(errors, shard, row, {"file", "kind", "url", "driveId"})
+            for value in walk_strings(row):
+                if FORBIDDEN_DRIVE_FOLDER_FRAGMENT in value:
+                    errors.append(f"{shard}: private Drive folder topology")
 
     if len(base) != 46:
         errors.append(f"base Original count must be 46, got {len(base)}")
@@ -192,6 +222,118 @@ def validate_originals(errors: list[str]):
     return total
 
 
+PRESENTATION_FIELDS = {"resourceId", "documentId", "title", "sourceFormat", "thumbnail", "engine", "level", "tags", "canonicalUrl"}
+SOURCE_FORMATS = {"PDF", "PPTX", "GOOGLE_DOC", "GOOGLE_SLIDES", "UNKNOWN"}
+
+
+def canonical_document_id(value: str) -> str:
+    parsed = urlparse(str(value or ""))
+    if parsed.scheme != "https" or parsed.username or parsed.password or parsed.port:
+        return ""
+    if parsed.hostname == "drive.google.com":
+        match = re.fullmatch(r"/file/d/([A-Za-z0-9_-]+)/view", parsed.path)
+    elif parsed.hostname == "docs.google.com":
+        match = re.fullmatch(r"/(?:document|presentation)/d/([A-Za-z0-9_-]+)/edit", parsed.path)
+    else:
+        return ""
+    return match.group(1) if match else ""
+
+
+def validate_png(errors: list[str], label: str, asset: Path) -> None:
+    data = asset.read_bytes()
+    if data[:8] != b"\x89PNG\r\n\x1a\n":
+        errors.append(f"{label}: thumbnail must have PNG signature")
+        return
+    offset, chunks, ended = 8, [], False
+    try:
+        while offset < len(data):
+            length = struct.unpack_from(">I", data, offset)[0]
+            kind = data[offset+4:offset+8]
+            payload = data[offset+8:offset+8+length]
+            crc = struct.unpack_from(">I", data, offset+8+length)[0]
+            if zlib.crc32(kind + payload) & 0xffffffff != crc:
+                raise ValueError("invalid PNG CRC")
+            chunks.append(kind)
+            if kind == b"IHDR":
+                if len(chunks) != 1 or length != 13:
+                    raise ValueError("invalid PNG header")
+                width, height = struct.unpack_from(">II", payload)
+                if not (1 <= width <= 4096 and 1 <= height <= 4096):
+                    raise ValueError("thumbnail dimensions outside 1..4096")
+            offset += 12 + length
+            if kind == b"IEND":
+                ended = True
+                if length or offset != len(data):
+                    raise ValueError("invalid PNG ending")
+                break
+        if not ended or not chunks or chunks[0] != b"IHDR" or b"IDAT" not in chunks:
+            raise ValueError("incomplete PNG")
+    except (ValueError, struct.error) as exc:
+        errors.append(f"{label}: {exc}")
+
+
+def validate_presentation(errors: list[str], rows: list[dict], resources: list[dict]) -> None:
+    resources_by_id = {row["id"]: row for row in resources}
+    seen_res, seen_doc, seen_original = set(), set(), set()
+    for index, row in enumerate(rows):
+        label = f"document-presentation[{index}]"
+        validate_fields(errors, label, row, PRESENTATION_FIELDS)
+        if set(row) != PRESENTATION_FIELDS:
+            errors.append(f"{label}: required presentation fields missing")
+        resource_id, document_id = row.get("resourceId"), row.get("documentId")
+        resource = resources_by_id.get(resource_id)
+        if not resource or resource.get("kind") != "document":
+            errors.append(f"{label}: unresolved document Resource")
+        if resource_id in seen_res or not isinstance(resource_id, str) or not resource_id.startswith("RES-"):
+            errors.append(f"{label}: invalid/duplicate resourceId")
+        if document_id in seen_doc or not re.fullmatch(r"DOC-[A-Za-z0-9_-]+", str(document_id or "")):
+            errors.append(f"{label}: invalid/duplicate documentId")
+        seen_res.add(resource_id); seen_doc.add(document_id)
+        for field in ("title", "engine", "level"):
+            if not isinstance(row.get(field), str) or not row[field].strip():
+                errors.append(f"{label}: {field} must be non-empty text")
+        tags = row.get("tags")
+        if not isinstance(tags, list) or any(not isinstance(tag, str) or not tag.strip() for tag in tags):
+            errors.append(f"{label}: tags must be public text labels")
+        source_format = row.get("sourceFormat")
+        if source_format not in SOURCE_FORMATS:
+            errors.append(f"{label}: invalid sourceFormat")
+        canonical = row.get("canonicalUrl")
+        validate_public_url(errors, f"{label}.canonicalUrl", canonical)
+        try:
+            original_id = canonical_document_id(canonical)
+        except ValueError:
+            original_id = ""
+        if not original_id or original_id in seen_original:
+            errors.append(f"{label}: invalid/duplicate canonical Original URL")
+        seen_original.add(original_id)
+        if resource and canonical != (resource.get("canonicalUrl") or resource.get("url")):
+            errors.append(f"{label}: canonical URL does not match Resource")
+        if source_format in {"GOOGLE_DOC", "GOOGLE_SLIDES"}:
+            expected_kind = "document" if source_format == "GOOGLE_DOC" else "presentation"
+            if not str(canonical).startswith(f"https://docs.google.com/{expected_kind}/d/"):
+                errors.append(f"{label}: native Google format/URL mismatch")
+        thumbnail = row.get("thumbnail")
+        if thumbnail is None:
+            continue  # Explicit format fallback; no fabricated previews.
+        if source_format not in {"PDF", "PPTX"}:
+            errors.append(f"{label}: unsupported sourceFormat must use null thumbnail fallback")
+        if not isinstance(thumbnail, str) or not stable_thumbnail_path(thumbnail,document_id):
+            errors.append(f"{label}: invalid thumbnail asset path")
+            continue
+        asset = ROOT / thumbnail
+        if not no_symlink_path(asset,ROOT):
+            errors.append(f"{label}: thumbnail file missing or outside asset root")
+            continue
+        if asset.suffix==".png":
+            validate_png(errors,label,asset)
+        if not validate_thumbnail_asset(asset):
+            errors.append(f"{label}: invalid bounded static PNG/WebP")
+    document_resources = {row["id"] for row in resources if row.get("kind") == "document"}
+    if seen_res != document_resources:
+        errors.append("document-presentation must map every document Resource exactly once")
+
+
 def main() -> None:
     errors: list[str] = []
 
@@ -209,6 +351,7 @@ def main() -> None:
     resources = load("resources.json") + load("resources-06.json") + [project_resource(row) for row in latest_websites]
     websites = load("websites.json") + latest_websites
     knowledge_documents = load("documents.json")
+    presentation = load("document-presentation.json")
     taxonomy = load("taxonomy.json")
     relations = load("relations.json")
     collections = load("collections.json")
@@ -223,6 +366,7 @@ def main() -> None:
         "resources": len(resources),
         "websites": len(websites),
         "documents": original_total,
+        "document-presentation": len(presentation),
         "taxonomy": sum(len(taxonomy.get(k, {})) for k in ("domains", "tags", "engines")),
         "relations": len(relations),
         "collections": len(collections),
@@ -234,6 +378,7 @@ def main() -> None:
         "resources": resources,
         "websites": websites,
         "documents": knowledge_documents,
+        "document-presentation": presentation,
         "taxonomy": taxonomy,
         "relations": relations,
         "collections": collections,
@@ -280,6 +425,12 @@ def main() -> None:
         if not collection_id or collection_id in collection_ids:
             errors.append(f"collections[{index}] invalid/duplicate id")
         collection_ids.add(collection_id)
+        category = collection.get("category")
+        if not isinstance(category, str) or not category.strip() or len(category) > 80:
+            errors.append(f"{collection_id}: category must be a non-empty public label")
+        member_ids = [member.get("id") for member in collection.get("resources", [])]
+        if len(member_ids) != len(set(member_ids)):
+            errors.append(f"{collection_id}: duplicate resource membership")
         for member_index, member in enumerate(collection.get("resources", [])):
             validate_fields(errors, f"{collection_id}.resources[{member_index}]", member, COLLECTION_MEMBER_FIELDS)
             if member.get("id") not in resource_ids:
@@ -287,21 +438,34 @@ def main() -> None:
             if member.get("role") not in COLLECTION_ROLES:
                 errors.append(f"{collection_id}: invalid role {member.get('role')}")
 
+    validate_presentation(errors, presentation, resources)
+
     document_html = (ROOT / "documents.html").read_text(encoding="utf-8")
-    required_document_catalogs = ("original-documents", "originals-base-01", "originals-base-02", "originals-base-03", "originals-base-04", "resources-06")
-    for required in required_document_catalogs:
-        if required not in document_html:
-            errors.append(f"Documents page must load {required}")
-    if "Google Drive Original" not in document_html:
-        errors.append("Documents page must expose Google Drive Original routing")
+    consumer = (ROOT / "assets/human-portal.js").read_text(encoding="utf-8")
+    catalog_js = (ROOT / "assets/catalog.js").read_text(encoding="utf-8")
+    if "assets/human-portal.js" not in document_html or "C.loadMany('document-presentation'" not in consumer:
+        errors.append("Documents page must consume document-presentation")
+    if "C.viewerHref(doc)" not in consumer or "viewer.html?" not in catalog_js:
+        errors.append("Documents page must use safe canonical-URL Viewer routing")
+    if "Google Drive Original" not in consumer:
+        errors.append("Document details must expose Google Drive Original routing")
+    if "object-fit:contain" not in (ROOT / "assets/documents.css").read_text() or 'loading="lazy"' not in catalog_js or 'bindThumbnailFallback' not in consumer:
+        errors.append("Document thumbnails require contain, lazy loading and error fallback")
     if "github.com/DarumaPPAP/MyResourceCenter/blob/main/sources/Original/" in document_html:
         errors.append("Documents page must not route Original documents to GitHub binary mirror")
     if "sources/markdown/" in document_html:
         errors.append("Documents page must not use Markdown as Original navigation")
 
     index_html = (ROOT / "index.html").read_text(encoding="utf-8")
-    if "resources-06" not in index_html or "originals-base-01" not in index_html:
-        errors.append("Home must load Drive Original catalogs")
+    home_contract=('Game Development','Knowledge Portal','data-global-search','featured-title','paths-title','discovery-title','id="docs"','id="collections"')
+    if "assets/human-portal.js" not in index_html or any(token not in index_html for token in home_contract):
+        errors.append("Home must provide discovery hero, search and actual knowledge content")
+    if any(token in index_html for token in ('stats-grid','stat-card','quick-card','quick-grid','renderStats')):
+        errors.append("Home must not expose Dashboard metrics or generic menu cards")
+    if any(token not in consumer for token in ("document-presentation","documentThumbnail","readingPreview")):
+        errors.append("Home must use actual document and reading-guide presentation data")
+    if "technical-environment.svg" not in index_html or not (ROOT / "assets/technical-environment.svg").exists():
+        errors.append("Home must include the locally authored technical environment visual")
 
     if (CATALOG / "websites-data.json").exists():
         errors.append("legacy catalog/websites-data.json must be removed")

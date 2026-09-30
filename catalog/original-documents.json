@@ -1,11 +1,6 @@
 {
   "schemaVersion": "2.0.0",
   "storage": "google-drive",
-  "canonicalRoot": {
-    "name": "Sources",
-    "id": "1vuhaa1uwMAlcLlelNda6zi48O43-NJhs",
-    "url": "https://drive.google.com/drive/folders/1vuhaa1uwMAlcLlelNda6zi48O43-NJhs"
-  },
   "counts": {
     "total": 100,
     "base": 46,

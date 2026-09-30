@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="600" viewBox="0 0 760 600" role="img" aria-labelledby="title desc">
+<title id="title">Environment / Geometry / GPU</title><desc id="desc">A technical cutaway of a game environment with geometry wireframes, light rays, and a GPU frame graph.</desc>
+<defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#16272a"/><stop offset="1" stop-color="#30434a"/></linearGradient><linearGradient id="ground" x2="1" y2="1"><stop stop-color="#455b60"/><stop offset="1" stop-color="#142b31"/></linearGradient><pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse"><path d="M36 0H0V36" fill="none" stroke="#9ac3c3" stroke-opacity=".1"/></pattern></defs>
+<rect width="760" height="600" fill="url(#sky)"/><rect width="760" height="600" fill="url(#grid)"/>
+<g fill="none" stroke="#67858b" stroke-width="1"><path d="M0 400L300 250 760 350M0 480L300 300 760 420M0 550L300 350 760 490M70 600L300 400 760 550M200 600L300 450M360 600L300 500M540 600L300 550"/></g>
+<path d="M48 391L325 232 730 378 451 545Z" fill="url(#ground)" stroke="#92b6bb"/>
+<!-- Modular environment geometry -->
+<path d="M137 348V222L246 160 246 285Z" fill="#65787a"/><path d="M246 160L447 230V353L246 285Z" fill="#3a5259"/><path d="M137 222L246 160 447 230 338 291Z" fill="#7f9190"/>
+<path d="M246 196V269L301 288V216Z" fill="#152a31"/>
+<path d="M382 397V273L490 211 490 335Z" fill="#687d7c"/><path d="M490 211L611 255V378L490 335Z" fill="#37535b"/><path d="M382 273L490 211 611 255 504 318Z" fill="#7d9290"/>
+<path d="M419 360V296L461 271V337Z" fill="#1b3138"/>
+<path d="M218 441V408L293 366V399Z" fill="#6d8789"/><path d="M293 366L351 387V420L293 399Z" fill="#2a4850"/><path d="M218 408L293 366 351 387 276 430Z" fill="#a0b1a7"/>
+<!-- Mesh overlay: original geometry stays legible -->
+<g fill="none" stroke="#62d4c9" stroke-width="1" opacity=".72"><path d="M382 397L490 211 611 378 382 273 490 335 504 318 490 211M382 273L611 255 490 335 382 397 611 378 611 255M137 348L246 160 447 353 137 222 246 285 338 291 246 160M137 222L447 230 246 285 137 348 447 353 447 230M218 441L293 366 351 420 218 408 293 399 351 387"/></g>
+<!-- Lighting probes and rays -->
+<g stroke="#d8d5ab" fill="none"><path d="M321 80L165 223M321 80L431 299M321 80L296 398" stroke-opacity=".42" stroke-dasharray="4 5"/><circle cx="321" cy="80" r="15"/><path d="M321 54V42M321 106V118M295 80H283M347 80H359"/></g>
+<g fill="#dfdcc1"><circle cx="165" cy="223" r="3"/><circle cx="431" cy="299" r="3"/><circle cx="296" cy="398" r="3"/></g>
+<!-- GPU frame graph -->
+<g transform="translate(40 40)" font-family="monospace" font-size="11" fill="#b7cece"><text letter-spacing="2">FRAME 042 / 16.67 ms</text><path d="M0 16H180" stroke="#80a7a9"/><text y="38">GEOMETRY → LIGHT → COMPOSITE</text></g>
+<g transform="translate(508 74)" fill="none" stroke="#91bdbb"><rect width="210" height="99"/><path d="M14 72H194M14 20V72M27 72V51H43V72M53 72V40H70V72M81 72V22H98V72M108 72V48H125V72M135 72V31H151V72M163 72V57H180V72"/><text x="14" y="91" fill="#b7cece" stroke="none" font-family="monospace" font-size="10">GPU PASS TIMING / ms</text></g>
+<g transform="translate(40 548)" font-family="monospace" font-size="11" fill="#b7cece"><text letter-spacing="2">ENVIRONMENT / WIREFRAME / LIGHTING</text><text y="20" fill="#789b9e">Scene study · Game development library</text></g>
+</svg>

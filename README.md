@@ -6,9 +6,8 @@
 
 - AI / factual Source of Truth: Google Drive `KnowledgeLibrary/Sources` のCanonical Original
 - PDF / PPTXはファイルサイズに関係なく同じDrive Storage policyで管理
-- Japanese: Canonical Drive Originalをそのまま開く
-- English: Canonical Drive Original + 日本語Source-faithful HTML Presentation
-- Portal metadata: `catalog/original-documents.json`
+- Documents表示: `catalog/document-presentation.json` の実Title・Format・Thumbnail
+- Legacy Original inventory: `catalog/original-documents.json`
 - Base Original URL shards: `catalog/originals-base-01.json` ～ `04.json`
 - CEDEC 2026 Original URL: `catalog/resources-06.json`
 
@@ -30,15 +29,18 @@ Private MyResourceCenterからPortalへの同期は、public projection + Valida
 
 ## Documents
 
-`documents.html` は登録済みOriginal Libraryを横断表示します。
+`documents.html` は公開Document Presentationを横断表示します。Thumbnail / 実Title優先で、Search・Category・Format・Tagsから探し、Portal Viewer → Google Drive Originalへ進めます。
 
-- 100 Original Documents
+- 116 Document Presentations（66件の実Original Page 1 Thumbnail + 明示Fallback）
+- Legacy inventory: 100 Original Documents
 - PDF: 79
 - PPTX: 21
 - 46 base Originals + 54 CEDEC 2026 Originals
-- 各DocumentからGoogle Drive Originalへ直接アクセス
+- 各DocumentからPortal Viewer・資料情報・関連Collectionへアクセス
 
 Git LFS pointerやGitHub binary pathをPortalのCanonical Original URLとして使用しません。
+
+Homeは技術Environment SVGと現在のCatalog件数を表示。Websitesは画像なしの技術Directory、CollectionsはCategory / Title順のReading Path、TrendsはEditorial表示です。表示契約・検証方法は [Human Portal](docs/human-portal.md) を参照してください。
 
 ## GitHub Pages
 
@@ -50,6 +52,11 @@ https://darumappap.github.io/MyResourceCenter-Portal/
 
 ```bash
 python tools/validate_portal.py
+python tools/validate_browser_viewer.py
+python tools/validate_trends.py
+python tools/validate_trend_candidates.py
+node tools/test_filter_state.cjs
+node tools/test_human_portal.cjs
 ```
 
 Validatorは次を確認します。
@@ -58,6 +65,8 @@ Validatorは次を確認します。
 - Originalが46 + 54 = 100件である
 - PDF 79 / PPTX 21である
 - Drive URLが重複していない
+- URL credential・空白 / 制御文字・不正Port・Malformed URLを拒否
+- PresentationのRES / DOC / Canonical URL対応、Thumbnail path / PNG integrity / dimensions
 - Documents pageがGitHub binary mirrorへ戻っていない
 - Portal Catalog / Resource / Relation / Collection整合性
 - KnowledgeLibraryのPrivate folder URL / topologyが公開Catalogへ混入していない
