@@ -1,0 +1,12 @@
+.collection-grid{display:block}.collection-group{margin:30px 0}.group-title{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border-bottom:1px solid var(--line-strong);padding-bottom:12px;margin-bottom:0}
+.reading-guides{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 38px}
+.reading-guide{display:block;padding:24px 0;border-bottom:1px solid var(--line);text-decoration:none;min-width:0}
+.reading-guide:hover h3{color:var(--accent);text-decoration:underline;text-underline-offset:4px}
+.reading-guide h3{font-size:21px;font-weight:650;margin:0 0 8px}.reading-guide p{font-size:13px;color:var(--muted);margin:0 0 20px;line-height:1.7}
+.path-preview{list-style:none;margin:0;padding:0}.path-preview li{display:flex;align-items:flex-start;gap:16px;position:relative;padding:0 0 19px}
+.path-preview li:not(:last-child)::after{content:'';position:absolute;top:27px;bottom:3px;left:13px;border-left:1px solid var(--line-strong)}
+.path-number{font-family:monospace;font-size:12px;color:var(--accent);border:1px solid var(--line);padding:3px;width:28px;text-align:center;flex-shrink:0}
+.path-preview strong{display:block;font-size:12px;font-weight:650}.path-preview li div>span{display:block;font-size:12px;color:var(--muted);line-height:1.6;margin-top:3px;overflow-wrap:anywhere}
+.path-more{font-family:monospace;font-size:12px;color:var(--accent);padding-left:44px}.path-pending{padding:18px 0;color:var(--muted)}.path-pending strong,.path-pending span{display:block;font-size:13px}.path-pending span{font-size:12px;margin-top:4px}
+.reading-path{list-style:none;margin:0;padding:0}.reading-path li{display:flex;gap:22px;align-items:flex-start;padding:20px 0;border-bottom:1px solid var(--line)}.reading-path li:last-child{border-bottom:0}.reading-path a{font-size:17px;line-height:1.6;text-underline-offset:4px}.reading-path .reading-order{background:transparent;border-radius:2px;color:var(--accent);font:16px monospace;flex-shrink:0}.reading-path .document-meta{margin-bottom:5px}
+@media(max-width:850px){.reading-guides{grid-template-columns:1fr}.reading-guide h3{font-size:20px}}

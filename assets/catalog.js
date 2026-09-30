@@ -125,6 +125,7 @@
 
   function resourceHref(resource, websiteIds = new Set()) {
     if (!resource) return '';
+    if (resource.kind === 'document') return `document.html?id=${encodeURIComponent(resource.id)}`;
     if (websiteIds.has(resource.id)) return `website.html?id=${encodeURIComponent(resource.id)}`;
     return safeExternalUrl(resource.url || resource.canonicalUrl || '');
   }
@@ -181,7 +182,61 @@
     window.addEventListener('popstate', () => { restore(); render(); });
   }
 
+  // Viewer IDs are derived only from the approved public canonical URL.
+  function viewerHref(doc) {
+    try {
+      const url = new URL(doc.canonicalUrl);
+      const match = url.hostname === 'drive.google.com' ? url.pathname.match(/^\/file\/d\/([A-Za-z0-9_-]+)\/view$/) : url.hostname === 'docs.google.com' ? url.pathname.match(/^\/(?:presentation|document)\/d\/([A-Za-z0-9_-]+)\/edit$/) : null;
+      if (url.protocol !== 'https:' || url.port || url.username || url.password || !match) return '';
+      return `viewer.html?${new URLSearchParams({id:match[1], format:doc.sourceFormat || 'UNKNOWN', title:doc.title || 'Document'})}`;
+    } catch { return ''; }
+  }
+
+  function documentThumbnail(doc) {
+    const fallback = `<span class="thumbnail-fallback">${escapeHtml(doc.sourceFormat || 'DOCUMENT')}<small>プレビューなし</small></span>`;
+    const valid = /^assets\/generated\/documents\/DOC-[A-Za-z0-9_-]+\.png$/.test(doc.thumbnail || '');
+    return `<div class="document-thumbnail${valid ? '' : ' is-missing'}">${valid ? `<img src="${escapeHtml(doc.thumbnail)}" alt="" loading="lazy" decoding="async">` : ''}${fallback}</div>`;
+  }
+
+  function thumbnailFailed(image) {
+    image.hidden = true;
+    image.closest('.document-thumbnail')?.classList.add('is-missing');
+  }
+
+  function bindThumbnailFallback(root) {
+    // Capture error because image errors do not bubble; handles cards added by filters.
+    root.addEventListener('error', event => {
+      if (event.target.matches('.document-thumbnail img')) thumbnailFailed(event.target);
+    }, true);
+  }
+
+  function presentDocuments(rows, resourcesById, taxonomy = {}) {
+    return rows.map(doc => {
+      const resource = resourcesById.get(doc.resourceId) || {};
+      const topics = resource.topics || (resource.topic ? [resource.topic] : []);
+      const categories = [...new Set((doc.tags || []).map(tag => taxonomy.tags?.[tag]?.domain).filter(Boolean))];
+      return {...doc, topics, categories};
+    });
+  }
+
+  function filterDocuments(rows, {q = '', category = '', format = '', tag = ''} = {}) {
+    const term = q.trim().toLowerCase();
+    return rows.filter(doc => (!term || [doc.title, doc.engine, ...(doc.tags || []), ...(doc.topics || [])].join(' ').toLowerCase().includes(term)) &&
+      (!category || doc.categories.includes(category)) && (!format || doc.sourceFormat === format) && (!tag || doc.tags.includes(tag)));
+  }
+
+  function sortCollections(rows) {
+    return [...rows].sort((a,b) => (a.category || 'Other').localeCompare(b.category || 'Other', 'en') || a.title.localeCompare(b.title, 'en') || a.id.localeCompare(b.id));
+  }
+
+  function readingPreview(collection) {
+    const members = collection.resources || [];
+    return {steps:members.slice(0,3), more:Math.max(0,members.length - 3)};
+  }
+
   window.MRCCatalog = {
+    viewerHref, documentThumbnail, thumbnailFailed, bindThumbnailFallback,
+    presentDocuments, filterDocuments, sortCollections, readingPreview,
     bindFilterState,
     load,
     loadMany,

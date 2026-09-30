@@ -34,7 +34,8 @@
         "id": "RES-20260716-008",
         "role": "advanced"
       }
-    ]
+    ],
+    "category": "Rendering"
   },
   {
     "id": "COL-GPU-DRIVEN",
@@ -67,17 +68,24 @@
         "id": "RES-20260723-003",
         "role": "implementation"
       }
-    ]
+    ],
+    "category": "Rendering"
   },
   {
     "id": "COL-OIT",
     "title": "Order Independent Transparency",
-    "description": "OIT / Transparency資料を段階的に束ねるCollection。現Catalogで直接紐づけ可能なResource IDが不足するため、推測リンクは作らない。",
+    "description": "OIT / Transparencyの基礎、アルゴリズム実装、Production Caseを段階的に追うReading Guide。",
     "topics": [
       "OIT",
       "Transparency"
     ],
-    "resources": []
+    "resources": [
+      {
+        "id": "RES-DOC-9EDDB022345B",
+        "role": "overview"
+      }
+    ],
+    "category": "Rendering"
   },
   {
     "id": "COL-MOBILE-RENDERING",
@@ -109,8 +117,13 @@
       {
         "id": "RES-20260724-002",
         "role": "advanced"
+      },
+      {
+        "id": "RES-20260726-001",
+        "role": "overview"
       }
-    ]
+    ],
+    "category": "Rendering"
   },
   {
     "id": "COL-CHARACTER-RENDERING",
@@ -138,7 +151,8 @@
         "id": "RES-20260724-019",
         "role": "foundation"
       }
-    ]
+    ],
+    "category": "Rendering"
   },
   {
     "id": "COL-VOXEL-GEOMETRY",
@@ -170,8 +184,21 @@
       {
         "id": "RES-20260730-008",
         "role": "implementation"
+      },
+      {
+        "id": "RES-20260730-003",
+        "role": "implementation"
+      },
+      {
+        "id": "RES-20260730-007",
+        "role": "overview"
+      },
+      {
+        "id": "RES-DOC-8E5DC32C8B1F",
+        "role": "overview"
       }
-    ]
+    ],
+    "category": "Rendering"
   },
   {
     "id": "COL-UNITY-ECS",
@@ -200,7 +227,8 @@
         "id": "RES-20260723-003",
         "role": "optimization"
       }
-    ]
+    ],
+    "category": "Rendering"
   },
   {
     "id": "COL-SHADER-OPTIMIZATION",
@@ -229,7 +257,8 @@
         "id": "RES-20260716-006",
         "role": "optimization"
       }
-    ]
+    ],
+    "category": "Rendering"
   },
   {
     "id": "COL-RENDERING-ARCHITECTURE",
@@ -262,7 +291,8 @@
         "id": "RES-20260724-002",
         "role": "production-case"
       }
-    ]
+    ],
+    "category": "Rendering"
   },
   {
     "id": "COL-GAME-DEVELOPMENT-AI",
@@ -287,7 +317,8 @@
         "id": "RES-20260730-011",
         "role": "overview"
       }
-    ]
+    ],
+    "category": "AI"
   },
   {
     "id": "COL-AI-AGENT-ENGINEERING",
@@ -307,8 +338,13 @@
       {
         "id": "RES-20260730-011",
         "role": "overview"
+      },
+      {
+        "id": "RES-20260904-026",
+        "role": "overview"
       }
-    ]
+    ],
+    "category": "AI"
   },
   {
     "id": "COL-DEVELOPMENT-TOOLS",
@@ -336,7 +372,12 @@
       {
         "id": "RES-20260730-010",
         "role": "foundation"
+      },
+      {
+        "id": "RES-20260808-007",
+        "role": "overview"
       }
-    ]
+    ],
+    "category": "Tools"
   }
 ]
