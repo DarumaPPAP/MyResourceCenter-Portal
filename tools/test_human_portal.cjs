@@ -191,6 +191,9 @@ assert.deepEqual(Array.from(W.filterWebsites(websiteRows,{site:'__other__'},face
 assert.deepEqual(Array.from(W.filterWebsites(websiteRows,{author:'__other__'},facetConfig),row=>row.id),['RES-2','RES-5']);
 assert.equal(W.presentWebsites(websiteRows,facetConfig).find(row=>row.id==='RES-4').hasOtherAuthor,false,'an article with any approved Author must not also match Author Other');
 assert.deepEqual(Array.from(W.filterWebsites(websiteRows,{tag:'InventedTag'},facetConfig),row=>row.id),[]);
+const websiteCard = W.renderWebsiteCard({...websiteRows[0],publisher:'Example Site',contentType:'technical-article'}, C);
+assert.match(websiteCard,/Unity/); assert.match(websiteCard,/Shader/);
+assert.doesNotMatch(websiteCard,/technical-article/,'contentType must not be rendered as Website classification');
 assert.deepEqual(Array.from(W.sortWebsites(websiteRows,'desc'),row=>row.id),['RES-1','RES-3','RES-2','RES-4','RES-5']);
 assert.deepEqual(Array.from(W.sortWebsites(websiteRows,'asc'),row=>row.id),['RES-4','RES-2','RES-3','RES-1','RES-5']);
 assert.equal(W.siteIconPath(websiteRows[0]),'assets/generated/site-icons/a.example.png');
