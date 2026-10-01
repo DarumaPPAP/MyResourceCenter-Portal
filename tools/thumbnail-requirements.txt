@@ -1,2 +1,4 @@
 # Full WebP decoding is required for publication validation.
 Pillow==12.3.0
+# Match browser WHATWG hostname normalization for Website facet identity.
+idna==3.18

@@ -151,6 +151,8 @@ facets={'schemaVersion':'1.0.0','sites':[{'key':'site.test','displayName':'Examp
 facet_rows=[{'id':f'RES-{i}','url':f'https://site.test/{i}','authors':['Ada']} for i in range(4)]
 errors=[];v.validate_website_facets(errors,facets,facet_rows);assert not errors,errors
 errors=[];v.validate_website_facets(errors,facets,facet_rows[:3]);assert any('more than three' in error for error in errors),errors
+errors=[];v.validate_website_facets(errors,{'schemaVersion':'1.0.0','sites':[],'authors':[]},[{'id':'RES-bad','url':'https://site.test/a','authors':'Ada'}]);assert any('authors must be an array' in error for error in errors),errors
+assert v.normalize_website_host('https://faß.de/article') == 'xn--fa-hia.de'
 errors=[];v.validate_website_facets(errors,{'schemaVersion':'1.0.0','sites':[{'key':'site.test','displayName':'Example Site','status':'pending'}],'authors':[]},facet_rows);assert any('unexpected public fields' in error for error in errors),errors
 with tempfile.TemporaryDirectory() as tmp:
     root=Path(tmp);icon=root/'assets/generated/site-icons/site.test.png';icon.parent.mkdir(parents=True);icon.write_bytes(b'not a PNG')
@@ -174,6 +176,9 @@ const websiteRows = [
   {id:'RES-5',title:'Legacy B',canonicalUrl:'https://b.example/5',contentType:null,authors:['Bob'],publishedAt:null}
 ];
 assert.equal(W.normalizeAuthor(' Ａlice  '), 'alice');
+assert.equal(W.normalizeAuthor('ǰ'), 'j\u030c');
+assert.equal(W.websiteHost('https://faß.de/article'), 'xn--fa-hia.de');
+assert.equal(W.siteIconPath({canonicalUrl:'https://faß.de/article'}), 'assets/generated/site-icons/xn--fa-hia.de.png');
 assert.deepEqual(Array.from(W.filterWebsites(websiteRows,{q:'graphics'},facetConfig),row=>row.id),['RES-1']);
 assert.equal(W.filterWebsites(websiteRows,{category:'technical-article',site:'a.example'},facetConfig).length,2);
 assert.equal(W.filterWebsites(websiteRows,{category:'technical-article',author:'alice'},facetConfig).length,2);
@@ -188,5 +193,7 @@ assert.deepEqual(Array.from(W.sortWebsites(websiteRows,'desc'),row=>row.id),['RE
 assert.deepEqual(Array.from(W.sortWebsites(websiteRows,'asc'),row=>row.id),['RES-4','RES-2','RES-3','RES-1','RES-5']);
 assert.equal(W.siteIconPath(websiteRows[0]),'assets/generated/site-icons/a.example.png');
 assert.notEqual(W.siteIconPath({...websiteRows[0],canonicalUrl:'https://[2001:db8::1]/'}),W.siteIconPath({...websiteRows[0],canonicalUrl:'https://[200:1db8::1]/'}));
+assert.notEqual(W.siteIconPath({...websiteRows[0],canonicalUrl:'https://[a::b]/'}),W.siteIconPath({...websiteRows[0],canonicalUrl:'https://ip6-a--b/'}));
 assert.equal(W.siteIconPath({...websiteRows[0],canonicalUrl:'javascript:alert(1)'}),'');
+assert.deepEqual(Array.from(W.filterWebsites([{id:'RES-bad',title:'Bad authors',canonicalUrl:'https://bad.test',authors:'Alice'}],{author:'__other__'},facetConfig),row=>row.id),['RES-bad']);
 console.log('OK: Website facet AND filters, Other semantics, exact Category, date ordering and safe local Site Icon paths');

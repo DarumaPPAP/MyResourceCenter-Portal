@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import ipaddress
+import idna
 import re
 import struct
 import unicodedata
@@ -149,8 +150,8 @@ def normalize_website_host(value: str) -> str:
         return ipaddress.ip_address(parsed.hostname).compressed.lower()
     except ValueError:
         try:
-            host = parsed.hostname.rstrip(".").encode("idna").decode("ascii").lower()
-        except UnicodeError:
+            host = idna.encode(parsed.hostname.rstrip("."), uts46=True, transitional=False, std3_rules=True).decode("ascii").lower()
+        except (idna.IDNAError, UnicodeError):
             return ""
         if len(host) > 253 or any(not re.fullmatch(r"[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?", label) for label in host.split(".")):
             return ""
@@ -179,12 +180,14 @@ def validate_website_facets(errors: list[str], data: dict, websites: list[dict])
         if host:
             site_counts.setdefault(host, set()).add(identity)
         authors = row.get("authors") or []
-        if isinstance(authors, list):
-            for author in authors:
-                if not isinstance(author, str) or not author.strip():
-                    continue
-                key = normalize_author_key(author)
-                author_counts.setdefault(key, set()).add(identity)
+        if authors is not None and not isinstance(authors, list):
+            errors.append(f"websites[{index}].authors must be an array")
+            continue
+        for author in authors or []:
+            if not isinstance(author, str) or not author.strip():
+                continue
+            key = normalize_author_key(author)
+            author_counts.setdefault(key, set()).add(identity)
 
     for kind, values, active, normalize in (
         ("sites", data.get("sites"), site_counts, normalize_website_host),
@@ -222,8 +225,8 @@ def validate_website_facets(errors: list[str], data: dict, websites: list[dict])
 
 
 def site_icon_path_from_host(host: str) -> str:
-    safe = "ip6-" + host.replace(":", "-") if ":" in host else host
-    if not safe or not re.fullmatch(r"[a-z0-9.-]+", safe):
+    safe = "ip6_" + host.replace(":", "-") if ":" in host else host
+    if not safe or not re.fullmatch(r"[a-z0-9._-]+", safe):
         return ""
     return f"assets/generated/site-icons/{safe}.png"
 
