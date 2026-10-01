@@ -30,15 +30,14 @@
     }
   },
   "tags": {
-    "CSharp": {
+    "C#": {
       "displayName": "C#",
       "domain": "Programming",
       "aliases": [
-        "C#",
         "C Sharp"
       ]
     },
-    "CPlusPlus": {
+    "C++": {
       "displayName": "C++",
       "domain": "Programming",
       "aliases": [

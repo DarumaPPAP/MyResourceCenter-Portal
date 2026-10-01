@@ -1103,7 +1103,7 @@
       "SurfaceNets",
       "Voxel",
       "Unity",
-      "CSharp",
+      "C#",
       "MeshSmoothing",
       "Reddit"
     ]
@@ -1125,7 +1125,7 @@
     "tags": [
       "NaiveSurfaceNets",
       "Unity",
-      "CSharp",
+      "C#",
       "NativeArray",
       "MarchingCubes",
       "VoxelMesh"
@@ -1262,7 +1262,7 @@
     "tags": [
       "SurfaceNets",
       "Unity",
-      "CSharp",
+      "C#",
       "VoxelTerrain",
       "MeshSmoothing",
       "Shrinkage"
