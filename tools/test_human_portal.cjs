@@ -31,6 +31,13 @@ assert.match(humanPortalSource, /class="document-window-chrome" aria-hidden="tru
 assert.match(humanPortalSource, /C\.viewerHref\(doc\)/);
 assert.match(humanPortalSource, /C\.documentThumbnail\(doc\)/);
 assert.match(humanPortalSource, /C\.chips\(doc\.tags\.slice\(0,\s*6\)\)/);
+const websitesSource = fs.readFileSync(path.join(__dirname, '../websites.html'), 'utf8');
+assert.match(websitesSource, /assets\/websites\.css/);
+assert.match(websitesSource, /class="website-list-head"/);
+assert.match(websitesSource, /class="website-entry"/);
+assert.match(websitesSource, /website-state-badge/);
+assert.match(websitesSource, /tags\.slice\(0,4\)/);
+assert.match(websitesSource, /class="website-detail"/);
 async function renderDocumentCard(doc) {
   const elements = new Map();
   for (const id of ['q','category','format','tag','clear','list','count']) {
