@@ -151,7 +151,8 @@ facets={'schemaVersion':'1.0.0','sites':[{'key':'site.test','displayName':'Examp
 facet_rows=[{'id':f'RES-{i}','url':f'https://site.test/{i}','authors':['Ada']} for i in range(4)]
 errors=[];v.validate_website_facets(errors,facets,facet_rows);assert not errors,errors
 errors=[];v.validate_website_facets(errors,facets,facet_rows[:3]);assert any('more than three' in error for error in errors),errors
-errors=[];v.validate_website_facets(errors,{'schemaVersion':'1.0.0','sites':[],'authors':[]},[{'id':'RES-bad','url':'https://site.test/a','authors':'Ada'}]);assert any('authors must be an array' in error for error in errors),errors
+for malformed in ['',False,0,{},[1],['']]:
+    errors=[];v.validate_website_facets(errors,{'schemaVersion':'1.0.0','sites':[],'authors':[]},[{'id':'RES-bad','url':'https://site.test/a','authors':malformed}]);assert any('authors' in error for error in errors),errors
 assert v.normalize_website_host('https://faß.de/article') == 'xn--fa-hia.de'
 errors=[];v.validate_website_facets(errors,{'schemaVersion':'1.0.0','sites':[{'key':'site.test','displayName':'Example Site','status':'pending'}],'authors':[]},facet_rows);assert any('unexpected public fields' in error for error in errors),errors
 with tempfile.TemporaryDirectory() as tmp:

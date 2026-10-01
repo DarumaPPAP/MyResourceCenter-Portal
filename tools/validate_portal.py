@@ -179,12 +179,15 @@ def validate_website_facets(errors: list[str], data: dict, websites: list[dict])
         host = normalize_website_host(row.get("canonicalUrl") or row.get("url") or "")
         if host:
             site_counts.setdefault(host, set()).add(identity)
-        authors = row.get("authors") or []
-        if authors is not None and not isinstance(authors, list):
+        authors = row.get("authors")
+        if authors is None:
+            authors = []
+        if not isinstance(authors, list):
             errors.append(f"websites[{index}].authors must be an array")
             continue
-        for author in authors or []:
+        for author in authors:
             if not isinstance(author, str) or not author.strip():
+                errors.append(f"websites[{index}].authors entries must be non-empty text")
                 continue
             key = normalize_author_key(author)
             author_counts.setdefault(key, set()).add(identity)
