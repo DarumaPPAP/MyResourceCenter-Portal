@@ -29,7 +29,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         el('list').innerHTML = filtered.map(doc => {
           const viewer = C.viewerHref(doc);
           const href = viewer || `document.html?id=${encodeURIComponent(doc.resourceId)}`;
-          const category = doc.categories[0] || doc.engine || doc.sourceFormat || '';
+          const category = doc.categories[0] || doc.tags[0] || (doc.sourceFormat === 'UNKNOWN' ? 'Document' : doc.sourceFormat) || 'Document';
           const variants = ['cyan','blue','purple','pink','yellow','green'];
           const variantIndex = Array.from(category).reduce((sum, character) => sum + character.codePointAt(0), 0) % variants.length;
           const categoryBadge = category ? `<span class="document-category document-category--${variants[variantIndex]}">${C.escapeHtml(category)}</span>` : '';

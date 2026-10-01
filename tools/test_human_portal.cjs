@@ -28,11 +28,71 @@ for (const filters of [{q:'missing'},{category:'AI'},{format:'PPTX'},{tag:'RayTr
 assert.equal(C.filterDocuments(docs,{q:'lighting'}).length,1);
 const humanPortalSource = fs.readFileSync(path.join(__dirname, '../assets/human-portal.js'), 'utf8');
 assert.match(humanPortalSource, /class="document-window-chrome" aria-hidden="true"/);
-assert.match(humanPortalSource, /doc\.categories\[0\] \|\| doc\.engine \|\| doc\.sourceFormat/);
-assert.match(humanPortalSource, /C\.escapeHtml\(category\)/);
 assert.match(humanPortalSource, /C\.viewerHref\(doc\)/);
 assert.match(humanPortalSource, /C\.documentThumbnail\(doc\)/);
 assert.match(humanPortalSource, /C\.chips\(doc\.tags\.slice\(0,\s*6\)\)/);
+async function renderDocumentCard(doc) {
+  const elements = new Map();
+  for (const id of ['q','category','format','tag','clear','list','count']) {
+    elements.set(id, {
+      id,
+      tagName:id === 'q' ? 'INPUT' : id === 'clear' ? 'BUTTON' : 'SELECT',
+      value:'',
+      innerHTML:'',
+      textContent:'',
+      options:[],
+      listeners:{},
+      addEventListener(type,listener) { this.listeners[type] = listener; },
+      appendChild(option) { this.options.push(option); }
+    });
+  }
+  let onReady;
+  const catalog = {
+    loadMany:async () => ({'document-presentation':[doc],resources:[],taxonomy:{}}),
+    presentDocuments:rows => rows.map(row => ({...row,categories:row.categories || [],tags:row.tags || []})),
+    byId:() => new Map(),
+    filterDocuments:rows => rows,
+    viewerHref:() => '',
+    documentThumbnail:() => '<div class="document-thumbnail">preview</div>',
+    chips:() => '',
+    escapeHtml:value => String(value).replace(/[&<>"']/g,char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char])),
+    bindThumbnailFallback:() => {},
+    bindFilterState:(_controls,render) => render()
+  };
+  const context = {
+    location:{pathname:'/documents.html'},
+    document:{
+      getElementById:id => elements.get(id),
+      createElement:() => ({})
+    },
+    window:{
+      MRCCatalog:catalog,
+      addEventListener:(type,listener) => { if (type === 'DOMContentLoaded') onReady = listener; }
+    },
+    console,
+    encodeURIComponent
+  };
+  vm.runInNewContext(humanPortalSource,context);
+  await onReady();
+  const html = elements.get('list').innerHTML;
+  const badge = html.match(/<span class="document-category document-category--[a-z]+">([^<]+)<\/span>/)?.[1] || '';
+  return {badge,html};
+}
+Promise.resolve().then(async () => {
+  const cases = [
+    {name:'categories take priority',doc:{categories:['Graphics'],tags:['Shader'],sourceFormat:'PDF',engine:'General'},expected:'Graphics'},
+    {name:'first tag is the fallback',doc:{categories:[],tags:['Transparency'],sourceFormat:'PDF',engine:'General'},expected:'Transparency'},
+    {name:'format is the next fallback',doc:{categories:[],tags:[],sourceFormat:'PDF',engine:'General'},expected:'PDF'},
+    {name:'unknown format uses Document',doc:{categories:[],tags:[],sourceFormat:'UNKNOWN',engine:'General'},expected:'Document'},
+    {name:'long engine is not a badge fallback',doc:{categories:[],tags:[],sourceFormat:'UNKNOWN',engine:'Unity / Unity Recorder / After Effects'},expected:'Document'}
+  ];
+  for (const [index,test] of cases.entries()) {
+    const rendered = await renderDocumentCard({resourceId:`RES-${index}`,title:`Case ${index}`,tags:[],...test.doc});
+    assert.equal(rendered.badge,test.expected,test.name);
+    if (test.doc.engine) assert.ok(rendered.html.includes(test.doc.engine),'engine remains in card metadata');
+  }
+  console.log('OK: document category badge priority and engine metadata across five fallback cases');
+}).catch(error => { console.error(error); process.exitCode = 1; });
 const cols = [{id:'B',category:'Rendering',title:'Z',resources:[1,2,3,4].map((x,i)=>({id:`RES-${x}`,role:['foundation','implementation','production-case','advanced'][i]}))},{id:'A',category:'AI',title:'Agent',resources:[]},{id:'C',category:'Rendering',title:'Alpha',resources:[]}];
 assert.equal(C.sortCollections(cols).map(x=>x.id).join(','),'A,C,B');
 assert.equal(cols[0].id,'B','sorting must not mutate catalog order');
