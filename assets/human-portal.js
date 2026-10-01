@@ -28,7 +28,25 @@ window.addEventListener('DOMContentLoaded', async () => {
         el('count').textContent = `${filtered.length} 件 / 全 ${rows.length} 件`;
         el('list').innerHTML = filtered.map(doc => {
           const viewer = C.viewerHref(doc);
-          return `<article class="document-entry"><a class="thumbnail-link" aria-label="${C.escapeHtml(doc.title)}を読む" href="${C.escapeHtml(viewer || `document.html?id=${encodeURIComponent(doc.resourceId)}`)}">${C.documentThumbnail(doc)}</a><div class="document-copy"><h2><a href="${C.escapeHtml(viewer || `document.html?id=${encodeURIComponent(doc.resourceId)}`)}">${C.escapeHtml(doc.title)}</a></h2><div class="document-meta">${C.escapeHtml(doc.sourceFormat === 'UNKNOWN' ? '形式未確認' : doc.sourceFormat)} · ${C.escapeHtml(doc.engine || 'General')}</div><div class="tag-cloud">${C.chips(doc.tags.slice(0,6))}</div><a class="document-detail" href="document.html?id=${encodeURIComponent(doc.resourceId)}">資料情報・関連資料 →</a></div></article>`;
+          const href = viewer || `document.html?id=${encodeURIComponent(doc.resourceId)}`;
+          const category = doc.categories[0] || doc.engine || doc.sourceFormat || '';
+          const variants = ['cyan','blue','purple','pink','yellow','green'];
+          const variantIndex = Array.from(category).reduce((sum, character) => sum + character.codePointAt(0), 0) % variants.length;
+          const categoryBadge = category ? `<span class="document-category document-category--${variants[variantIndex]}">${C.escapeHtml(category)}</span>` : '';
+          const metadata = [doc.sourceFormat === 'UNKNOWN' ? '形式未確認' : doc.sourceFormat, doc.engine].filter(Boolean).map(C.escapeHtml).join(' · ');
+          return `<article class="document-entry">
+            <div class="document-window-chrome" aria-hidden="true"><span></span><span></span><span></span></div>
+            <div class="document-card-body">
+              <div class="document-category-row">${categoryBadge}</div>
+              <a class="thumbnail-link" aria-label="${C.escapeHtml(doc.title)}を読む" href="${C.escapeHtml(href)}">${C.documentThumbnail(doc)}</a>
+              <div class="document-copy">
+                <h2><a href="${C.escapeHtml(href)}">${C.escapeHtml(doc.title)}</a></h2>
+                <div class="document-meta">${metadata}</div>
+                <div class="tag-cloud">${C.chips(doc.tags.slice(0,6))}</div>
+                <a class="document-detail" href="document.html?id=${encodeURIComponent(doc.resourceId)}">資料情報・関連資料 →</a>
+              </div>
+            </div>
+          </article>`;
         }).join('') || '<div class="empty">条件に一致する資料がありません。<br><button class="icon-button" data-reset-filters>条件をリセット</button></div>';
       });
     } else if (page === 'collections.html') {
