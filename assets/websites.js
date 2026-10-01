@@ -229,7 +229,7 @@
         authorKeys,
         siteFacet: approvedSites.has(siteKey) ? siteKey : OTHER,
         authorFacet: authorKeys.find(key => approvedAuthors.has(key)) || OTHER,
-        hasOtherAuthor: authorKeys.length === 0 || authorKeys.some(key => !approvedAuthors.has(key))
+        hasOtherAuthor: authorKeys.length === 0 || !authorKeys.some(key => approvedAuthors.has(key))
       };
     });
   }
