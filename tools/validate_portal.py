@@ -623,7 +623,7 @@ def main() -> None:
     else:
         website_js = website_js_path.read_text(encoding="utf-8")
         website_css = website_css_path.read_text(encoding="utf-8")
-        for control in ('id="category"', 'id="site"', 'id="author"', 'id="sort"'):
+        for control in ('id="tag"', 'id="site"', 'id="author"', 'id="sort"'):
             if control not in website_html:
                 errors.append(f"Websites page is missing {control}")
         if "assets/websites.js" not in website_html or "assets/websites.css" not in website_html:

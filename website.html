@@ -53,7 +53,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     }).join('');
     const collectionsHtml = memberships.map(item => `<div class="collection-mini"><a href="collection.html?id=${encodeURIComponent(item.collection.id)}">${C.escapeHtml(item.collection.title)}</a><div class="relation-meta"><span class="role-chip">${C.escapeHtml(C.roleLabel(item.member.role))}</span></div></div>`).join('');
     const topics = (website.topics || []).map(topic => `<a class="tag accent" href="websites.html?q=${encodeURIComponent(topic)}">${C.escapeHtml(topic)}</a>`).join('');
-    const tags = (website.tags || []).map(tag => `<a class="tag" href="websites.html?q=${encodeURIComponent(tag)}">${C.escapeHtml(tag)}</a>`).join('');
+    const tags = (website.tags || []).map(tag => `<a class="tag" href="websites.html?tag=${encodeURIComponent(tag)}">${C.escapeHtml(tag)}</a>`).join('');
     root.innerHTML = `
       <div class="detail-shell">
         <div class="detail-main">
@@ -63,14 +63,13 @@ window.addEventListener('DOMContentLoaded', async () => {
             <div class="detail-id">${C.escapeHtml(website.id)}</div>
             <div class="detail-actions">${C.externalLink(website.canonicalUrl || website.url)}<a class="secondary-button" href="websites.html">← Website一覧</a></div>
           </section>
-          <section class="detail-section"><h2>Source metadata</h2><p class="description">発行元・公開日・記事の種類。</p>
+          <section class="detail-section"><h2>Source metadata</h2><p class="description">発行元とResource状態。</p>
             <dl class="detail-grid">
               <div class="detail-field"><dt>Publisher</dt><dd>${C.escapeHtml(website.publisher || '—')}</dd></div>
               <div class="detail-field"><dt>Review State</dt><dd>${C.escapeHtml(website.reviewState || '—')}</dd></div>
               <div class="detail-field"><dt>Use State</dt><dd>${C.escapeHtml(website.useState || '—')}</dd></div>
               <div class="detail-field"><dt>Confidence</dt><dd>${C.escapeHtml(website.confidence || '—')}</dd></div>
               <div class="detail-field"><dt>Freshness</dt><dd>${C.escapeHtml(website.freshness || '—')}</dd></div>
-              <div class="detail-field"><dt>Content Type</dt><dd>${C.escapeHtml(website.contentType || website.kind || 'website')}</dd></div>
             </dl>
           </section>
           <section class="detail-section"><h2>Topics / Tags</h2><p class="description">関連するテーマから記事を探せます。</p><div class="tag-cloud">${topics}${tags}</div></section>

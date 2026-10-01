@@ -170,27 +170,30 @@ const facetConfig = {
   authors:[{key:'alice',displayName:'Alice'}]
 };
 const websiteRows = [
-  {id:'RES-1',title:'Tech A Alice',canonicalUrl:'https://a.example/1',contentType:'technical-article',domains:['Graphics'],authors:['Ａlice'],publishedAt:'2026-09-30'},
-  {id:'RES-2',title:'Tech A Bob',canonicalUrl:'https://a.example/2',contentType:'technical-article',authors:['Bob'],publishedAt:'2026-09-28'},
-  {id:'RES-3',title:'QA A Alice',canonicalUrl:'https://a.example/3',contentType:'qa-article',authors:['Alice'],publishedAt:'2026-09-29'},
-  {id:'RES-4',title:'Tech B Alice',canonicalUrl:'https://b.example/4',contentType:'technical-article',authors:['Alice','Bob'],publishedAt:'2026-09-27'},
-  {id:'RES-5',title:'Legacy B',canonicalUrl:'https://b.example/5',contentType:null,authors:['Bob'],publishedAt:null}
+  {id:'RES-1',title:'Tech A Alice',canonicalUrl:'https://a.example/1',domains:['Graphics'],tags:['Unity','Shader'],authors:['Ａlice'],publishedAt:'2026-09-30'},
+  {id:'RES-2',title:'Tech A Bob',canonicalUrl:'https://a.example/2',tags:['Unity'],authors:['Bob'],publishedAt:'2026-09-28'},
+  {id:'RES-3',title:'QA A Alice',canonicalUrl:'https://a.example/3',tags:['QA'],authors:['Alice'],publishedAt:'2026-09-29'},
+  {id:'RES-4',title:'Tech B Alice',canonicalUrl:'https://b.example/4',tags:['Shader','Performance'],authors:['Alice','Bob'],publishedAt:'2026-09-27'},
+  {id:'RES-5',title:'Legacy B',canonicalUrl:'https://b.example/5',tags:[],authors:['Bob'],publishedAt:null}
 ];
 assert.equal(W.normalizeAuthor(' Ａlice  '), 'alice');
 assert.equal(W.normalizeAuthor('ǰ'), 'j\u030c');
 assert.equal(W.websiteHost('https://faß.de/article'), 'xn--fa-hia.de');
 assert.equal(W.siteIconPath({canonicalUrl:'https://faß.de/article'}), 'assets/generated/site-icons/xn--fa-hia.de.png');
 assert.deepEqual(Array.from(W.filterWebsites(websiteRows,{q:'graphics'},facetConfig),row=>row.id),['RES-1']);
-assert.equal(W.filterWebsites(websiteRows,{category:'technical-article',site:'a.example'},facetConfig).length,2);
-assert.equal(W.filterWebsites(websiteRows,{category:'technical-article',author:'alice'},facetConfig).length,2);
+assert.equal(W.filterWebsites(websiteRows,{tag:'Unity',site:'a.example'},facetConfig).length,2);
+assert.equal(W.filterWebsites(websiteRows,{tag:'Shader',author:'alice'},facetConfig).length,2);
 assert.equal(W.filterWebsites(websiteRows,{site:'a.example',author:'alice'},facetConfig).length,2);
-assert.deepEqual(Array.from(W.filterWebsites(websiteRows,{category:'technical-article',site:'a.example',author:'alice'},facetConfig),row=>row.id),['RES-1']);
+assert.deepEqual(Array.from(W.filterWebsites(websiteRows,{tag:'Unity',site:'a.example',author:'alice'},facetConfig),row=>row.id),['RES-1']);
 assert.equal(W.filterWebsites(websiteRows,{site:'b.example'},facetConfig).length,0,'unapproved Site query values must not expose dedicated filter results');
 assert.equal(W.filterWebsites(websiteRows,{author:'bob'},facetConfig).length,0,'unapproved Author query values must not expose dedicated filter results');
 assert.deepEqual(Array.from(W.filterWebsites(websiteRows,{site:'__other__'},facetConfig),row=>row.id),['RES-4','RES-5']);
 assert.deepEqual(Array.from(W.filterWebsites(websiteRows,{author:'__other__'},facetConfig),row=>row.id),['RES-2','RES-5']);
 assert.equal(W.presentWebsites(websiteRows,facetConfig).find(row=>row.id==='RES-4').hasOtherAuthor,false,'an article with any approved Author must not also match Author Other');
-assert.deepEqual(Array.from(W.filterWebsites(websiteRows,{category:'invented'},facetConfig),row=>row.id),[]);
+assert.deepEqual(Array.from(W.filterWebsites(websiteRows,{tag:'InventedTag'},facetConfig),row=>row.id),[]);
+const websiteCard = W.renderWebsiteCard({...websiteRows[0],publisher:'Example Site',contentType:'technical-article'}, C);
+assert.match(websiteCard,/Unity/); assert.match(websiteCard,/Shader/);
+assert.doesNotMatch(websiteCard,/technical-article/,'contentType must not be rendered as Website classification');
 assert.deepEqual(Array.from(W.sortWebsites(websiteRows,'desc'),row=>row.id),['RES-1','RES-3','RES-2','RES-4','RES-5']);
 assert.deepEqual(Array.from(W.sortWebsites(websiteRows,'asc'),row=>row.id),['RES-4','RES-2','RES-3','RES-1','RES-5']);
 assert.equal(W.siteIconPath(websiteRows[0]),'assets/generated/site-icons/a.example.png');
@@ -199,4 +202,4 @@ assert.notEqual(W.siteIconPath({...websiteRows[0],canonicalUrl:'https://[a::b]/'
 assert.equal(W.siteIconPath({...websiteRows[0],canonicalUrl:'javascript:alert(1)'}),'');
 assert.deepEqual(Array.from(W.filterWebsites([{id:'RES-bad',title:'Bad authors',canonicalUrl:'https://bad.test',authors:'Alice'}],{author:'__other__'},facetConfig),row=>row.id),['RES-bad']);
 assert.deepEqual(Array.from(W.filterWebsites([{id:'RES-object-authors',title:'Object authors',canonicalUrl:'https://bad.test',authors:{name:'Alice'}}],{author:'__other__'},facetConfig),row=>row.id),['RES-object-authors']);
-console.log('OK: Website facet AND filters, Other semantics, exact Category, date ordering and safe local Site Icon paths');
+console.log('OK: Website Tag/Site/Author AND filters, Other semantics, date ordering and safe local Site Icon paths');

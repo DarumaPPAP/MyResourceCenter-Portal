@@ -247,7 +247,7 @@
       const searchText = [row.title, row.publisher, row.siteKey, ...(Array.isArray(row.authors) ? row.authors : []), ...(Array.isArray(row.domains) ? row.domains : []), ...(row.topics || []), ...(row.tags || [])]
         .filter(Boolean).join(' ').toLocaleLowerCase();
       return (!term || searchText.includes(term)) &&
-        (!filters.category || row.contentType === filters.category) &&
+        (!filters.tag || (Array.isArray(row.tags) && row.tags.includes(filters.tag))) &&
         (!selectedSite || ((siteKey === OTHER || siteKey === 'other') ? row.siteFacet === OTHER : approvedSites.has(siteKey) && row.siteKey === siteKey)) &&
         (!selectedAuthor || ((authorKey === OTHER || authorKey === 'other') ? row.hasOtherAuthor : approvedAuthors.has(authorKey) && row.authorKeys.includes(authorKey)));
     });
@@ -283,12 +283,16 @@
     const authors = Array.isArray(row.authors) && row.authors.length
       ? row.authors.filter(value => typeof value === 'string' && value.trim()).join(' / ')
       : '—';
+    const tags = Array.isArray(row.tags)
+      ? row.tags.filter(value => typeof value === 'string' && value.trim()).slice(0, 6)
+      : [];
+    const tagHtml = tags.length ? catalog.chips(tags, 'website-tag') : '<span class="website-tag">—</span>';
     return `<article class="website-card">
       <div class="site-icon-box" aria-hidden="true"><span class="site-icon-fallback">${escape(initial)}</span>${icon ? `<img class="site-icon-image" src="${escape(icon)}" alt="" loading="lazy" decoding="async">` : ''}</div>
       <div class="website-info">
         <div class="website-head"><div class="site-line"><span class="site-badge">${escape(publisher)}</span><span class="site-domain">${escape(host)}</span></div><a class="website-details" href="website.html?id=${encodeURIComponent(row.id)}">詳細</a></div>
         <h2 class="website-title">${title}</h2>
-        <div class="website-bottom"><div class="website-byline"><span>${escape(authors)}</span><time class="website-published-at">${escape(row.publishedAt || '—')}</time></div><div class="website-categories"><span class="website-category">${escape(row.contentType || '—')}</span></div></div>
+        <div class="website-bottom"><div class="website-byline"><span>${escape(authors)}</span><time class="website-published-at">${escape(row.publishedAt || '—')}</time></div><div class="website-tags">${tagHtml}</div></div>
       </div>
     </article>`;
   }

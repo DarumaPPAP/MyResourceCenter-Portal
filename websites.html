@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Websites | MyResourceCenter</title>
-  <meta name="description" content="公開日・Category・Site・Authorから技術記事を探せるWebsite directory。">
+  <meta name="description" content="公開日・Tag・Site・Authorから技術記事を探せるWebsite directory。">
   <link rel="stylesheet" href="assets/site.css">
   <link rel="stylesheet" href="assets/websites.css">
   <script defer src="assets/portal.js"></script>
@@ -20,7 +20,7 @@
         <a href="documents.html"><span class="icon">▤</span>ドキュメント</a>
         <a class="active" href="websites.html"><span class="icon">◎</span>Webサイト</a>
       </nav>
-      <div class="sidebar-note">発行元・Category・Authorから技術記事を探すディレクトリ。</div>
+      <div class="sidebar-note">発行元・Tag・Authorから技術記事を探すディレクトリ。</div>
     </aside>
     <main class="main">
       <header class="topbar"><div class="breadcrumb">Websites / Source Catalog</div><div class="top-actions"><button class="icon-button theme-toggle" type="button">Dark</button></div></header>
@@ -29,11 +29,11 @@
         <section class="website-intro">
           <div class="eyebrow">SOURCE CATALOG</div>
           <h1>Websites</h1>
-          <p>公開日、Category、Site、Authorを組み合わせて、元記事へ直接アクセスできます。</p>
+          <p>公開日、Tag、Site、Authorを組み合わせて、元記事へ直接アクセスできます。</p>
         </section>
         <div class="toolbar website-toolbar" aria-label="Website filters">
-          <input aria-label="キーワード検索" id="q" type="search" placeholder="タイトル・Site・Domain・Authorを検索">
-          <select aria-label="Category" id="category"><option value="">Category：すべて</option></select>
+          <input aria-label="キーワード検索" id="q" type="search" placeholder="タイトル・Site・Tag・Authorを検索">
+          <select aria-label="Tag" id="tag"><option value="">Tag：すべて</option></select>
           <select aria-label="Site" id="site"><option value="">Site：すべて</option></select>
           <select aria-label="Author" id="author"><option value="">Author：すべて</option></select>
           <select aria-label="公開日順" id="sort"><option value="desc">公開日：新しい順</option><option value="asc">公開日：古い順</option></select>
@@ -49,7 +49,7 @@
     window.addEventListener('DOMContentLoaded', async () => {
       const C = window.MRCCatalog;
       const W = window.MRCWebsites;
-      const controls = Object.fromEntries(['q', 'category', 'site', 'author', 'sort', 'clear', 'list', 'count'].map(id => [id, document.getElementById(id)]));
+      const controls = Object.fromEntries(['q', 'tag', 'site', 'author', 'sort', 'clear', 'list', 'count'].map(id => [id, document.getElementById(id)]));
       W.bindSiteIconFallback(controls.list);
       let rows = [];
       let facets = {sites: [], authors: []};
@@ -64,7 +64,7 @@
       const render = () => {
         const filtered = W.filterWebsites(rows, {
           q: controls.q.value,
-          category: controls.category.value,
+          tag: controls.tag.value,
           site: controls.site.value,
           author: controls.author.value
         }, facets);
@@ -75,9 +75,9 @@
       };
       try {
         ({websites: rows, 'website-facets': facets} = await C.loadMany('websites', 'website-facets'));
-        const categories = [...new Set(rows.map(row => row.contentType).filter(value => typeof value === 'string' && value.trim()))]
+        const tags = [...new Set(rows.flatMap(row => Array.isArray(row.tags) ? row.tags : []).filter(value => typeof value === 'string' && value.trim()))]
           .sort((a, b) => a.localeCompare(b));
-        addOptions(controls.category, categories.map(value => ({value, label:value})));
+        addOptions(controls.tag, tags.map(value => ({value, label:value})));
         addOptions(controls.site, (facets.sites || []).map(item => ({value:`site:${item.key}`, label:item.displayName})));
         addOptions(controls.author, (facets.authors || []).map(item => ({value:`author:${item.key}`, label:item.displayName})));
         for (const control of [controls.site, controls.author]) {
@@ -88,16 +88,16 @@
         }
         controls.clear.addEventListener('click', () => {
           controls.q.value = '';
-          controls.category.value = '';
+          controls.tag.value = '';
           controls.site.value = '';
           controls.author.value = '';
           controls.sort.value = 'desc';
           render();
         });
-        [controls.q, controls.category, controls.site, controls.author, controls.sort].forEach(control => {
+        [controls.q, controls.tag, controls.site, controls.author, controls.sort].forEach(control => {
           control.addEventListener(control === controls.q ? 'input' : 'change', render);
         });
-        C.bindFilterState([controls.q, controls.category, controls.site, controls.author, controls.sort], render);
+        C.bindFilterState([controls.q, controls.tag, controls.site, controls.author, controls.sort], render);
         if (!controls.sort.value) controls.sort.value = 'desc';
         render();
       } catch (error) {
