@@ -1,5 +1,35 @@
 {
   "schemaVersion": "1.0.0",
-  "sites": [],
-  "authors": []
+  "sites": [
+    {
+      "key": "qiita.com",
+      "displayName": "Qiita"
+    },
+    {
+      "key": "technote.qualiarts.jp",
+      "displayName": "QualiArtsエンジニアブログ"
+    },
+    {
+      "key": "tech.spark-creative.co.jp",
+      "displayName": "SPARK CREATIVE Tech Blog"
+    },
+    {
+      "key": "speakerdeck.com",
+      "displayName": "Speaker Deck"
+    },
+    {
+      "key": "zenn.dev",
+      "displayName": "Zenn"
+    }
+  ],
+  "authors": [
+    {
+      "key": "uwa technology",
+      "displayName": "UWA Technology"
+    },
+    {
+      "key": "広本",
+      "displayName": "広本"
+    }
+  ]
 }
