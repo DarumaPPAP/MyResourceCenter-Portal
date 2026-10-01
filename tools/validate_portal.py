@@ -1,8 +1,10 @@
 from __future__ import annotations
 
 import json
+import ipaddress
 import re
 import struct
+import unicodedata
 import zlib
 try:
     from thumbnail_artifact import stable_thumbnail_path,validate_thumbnail_asset,no_symlink_path
@@ -37,7 +39,7 @@ REQUIRED_PAGES = {
 }
 REQUIRED_CATALOG = {
     "manifest.json", "resources.json", "resources-06.json", "websites.json",
-    "documents.json", "document-presentation.json", "original-documents.json", *BASE_ORIGINAL_SHARDS, "taxonomy.json",
+    "documents.json", "document-presentation.json", "website-facets.json", "original-documents.json", *BASE_ORIGINAL_SHARDS, "taxonomy.json",
     "relations.json", "collections.json",
 } | LATEST_WEBSITE_SHARDS
 FORBIDDEN_KEYS = {
@@ -49,7 +51,7 @@ FORBIDDEN_KEYS = {
 }
 FORBIDDEN_DRIVE_FOLDER_FRAGMENT = "drive.google.com/drive/folders/"
 RESOURCE_FIELDS = {"id", "title", "url", "canonicalUrl", "kind", "topic", "topics", "reviewState", "useState", "tags"}
-WEBSITE_FIELDS = {"id", "title", "url", "canonicalUrl", "publisher", "authors", "publishedAt", "kind", "contentType", "domains", "topics", "engines", "languages", "summary", "reviewState", "useState", "confidence", "freshness", "tags"}
+WEBSITE_FIELDS = {"id", "title", "url", "canonicalUrl", "publisher", "authors", "authorKeys", "publishedAt", "kind", "contentType", "domains", "topics", "engines", "languages", "summary", "reviewState", "useState", "confidence", "freshness", "tags"}
 DOCUMENT_FIELDS = {"id", "title", "sourceFormat", "level", "engine", "tags"}
 RELATION_FIELDS = {"from", "to", "relation"}
 COLLECTION_FIELDS = {"id", "title", "description", "topics", "resources", "category"}
@@ -136,6 +138,146 @@ def validate_public_url(errors: list[str], label: str, value) -> None:
     except (ValueError, TypeError):
         # Do not echo URL or parse exception text: either may contain secrets.
         errors.append(f"{label} is a malformed public URL")
+
+
+def normalize_website_host(value: str) -> str:
+    parsed = urlparse(str(value or ""))
+    if parsed.scheme.lower() not in {"http", "https"} or not parsed.hostname or parsed.username or parsed.password:
+        return ""
+    try:
+        _ = parsed.port
+        return ipaddress.ip_address(parsed.hostname).compressed.lower()
+    except ValueError:
+        try:
+            host = parsed.hostname.rstrip(".").encode("idna").decode("ascii").lower()
+        except UnicodeError:
+            return ""
+        if len(host) > 253 or any(not re.fullmatch(r"[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?", label) for label in host.split(".")):
+            return ""
+        return host
+
+
+def normalize_author_key(value: str) -> str:
+    return re.sub(r"\s+", " ", unicodedata.normalize("NFKC", value).strip()).casefold()
+
+
+def validate_website_facets(errors: list[str], data: dict, websites: list[dict]) -> None:
+    if not isinstance(data, dict):
+        errors.append("website-facets must be an object")
+        return
+    extra = set(data) - {"schemaVersion", "sites", "authors"}
+    if extra:
+        errors.append(f"website-facets unexpected public fields: {sorted(extra)}")
+    if data.get("schemaVersion") != "1.0.0":
+        errors.append("website-facets schemaVersion must be 1.0.0")
+
+    site_counts: dict[str, set[str]] = {}
+    author_counts: dict[str, set[str]] = {}
+    for index, row in enumerate(websites):
+        identity = str(row.get("id") or f"website-{index}")
+        host = normalize_website_host(row.get("canonicalUrl") or row.get("url") or "")
+        if host:
+            site_counts.setdefault(host, set()).add(identity)
+        authors = row.get("authors") or []
+        row_author_keys = []
+        if isinstance(authors, list):
+            for author in authors:
+                if not isinstance(author, str) or not author.strip():
+                    continue
+                key = normalize_author_key(author)
+                if key not in row_author_keys:
+                    row_author_keys.append(key)
+                    author_counts.setdefault(key, set()).add(identity)
+        if row.get("authorKeys", []) != row_author_keys:
+            errors.append(f"websites[{index}] authorKeys do not match public authors")
+
+    for kind, values, active, normalize in (
+        ("sites", data.get("sites"), site_counts, normalize_website_host),
+        ("authors", data.get("authors"), author_counts, normalize_author_key),
+    ):
+        if not isinstance(values, list):
+            errors.append(f"website-facets {kind} must be an array")
+            continue
+        seen = set()
+        for index, item in enumerate(values):
+            label = f"website-facets {kind}[{index}]"
+            if not isinstance(item, dict):
+                errors.append(f"{label} must be an object")
+                continue
+            unknown = set(item) - {"key", "displayName"}
+            if unknown:
+                errors.append(f"{label} unexpected public fields: {sorted(unknown)}")
+            key, display_name = item.get("key"), item.get("displayName")
+            if not isinstance(key, str) or not key or not isinstance(display_name, str) or not display_name.strip():
+                errors.append(f"{label} requires key and displayName")
+                continue
+            if key in seen:
+                errors.append(f"website-facets {kind} contains duplicate key: {key}")
+            seen.add(key)
+            try:
+                normalized = normalize((f"https://[{key}]" if ":" in key else f"https://{key}") if kind == "sites" else display_name)
+            except (ValueError, AttributeError):
+                normalized = ""
+            if normalized != key:
+                errors.append(f"{label} key is not normalized")
+            if key not in active:
+                errors.append(f"{label} key is not used by a public Website")
+            elif len(active[key]) <= 3:
+                errors.append(f"{label} requires more than three Websites before it can be approved")
+
+
+def site_icon_path_from_host(host: str) -> str:
+    safe = "ip6-" + host.replace(":", "") if ":" in host else host
+    if not safe or not re.fullmatch(r"[a-z0-9.-]+", safe):
+        return ""
+    return f"assets/generated/site-icons/{safe}.png"
+
+
+def validate_site_icon_file(errors: list[str], label: str, asset: Path, root: Path) -> None:
+    if not no_symlink_path(asset, root) or not asset.is_file():
+        errors.append(f"{label}: invalid Site Icon path or symlink")
+        return
+    if asset.stat().st_size > 512 * 1024:
+        errors.append(f"{label}: Site Icon exceeds 512 KiB")
+        return
+    png_errors: list[str] = []
+    validate_png(png_errors, label, asset)
+    if png_errors:
+        errors.append(f"{label}: invalid Site Icon PNG")
+        return
+    try:
+        data = asset.read_bytes()
+        width, height = struct.unpack_from(">II", data, 16)
+        if not (1 <= width <= 512 and 1 <= height <= 512):
+            errors.append(f"{label}: Site Icon dimensions outside 1..512")
+    except (OSError, struct.error):
+        errors.append(f"{label}: unreadable Site Icon")
+
+
+def validate_site_icons(errors: list[str], root: Path, websites: list[dict]) -> None:
+    expected = set()
+    for row in websites:
+        host = normalize_website_host(row.get("canonicalUrl") or row.get("url") or "")
+        path = site_icon_path_from_host(host) if host else ""
+        if path:
+            expected.add(path)
+    icon_root = root / "assets/generated/site-icons"
+    if icon_root.is_symlink():
+        errors.append("Site Icon directory cannot be a symlink")
+        return
+    if not icon_root.exists():
+        return
+    for asset in icon_root.rglob("*"):
+        if asset.is_dir() and not asset.is_symlink():
+            continue
+        try:
+            relative = asset.relative_to(root).as_posix()
+        except ValueError:
+            errors.append("Site Icon path escapes the Portal")
+            continue
+        if relative not in expected:
+            errors.append(f"unreferenced Site Icon asset: {relative}")
+        validate_site_icon_file(errors, f"Site Icon {relative}", asset, root)
 
 
 def drive_id(url: str) -> str:
@@ -350,6 +492,7 @@ def main() -> None:
     latest_websites = load_latest_websites()
     resources = load("resources.json") + load("resources-06.json") + [project_resource(row) for row in latest_websites]
     websites = load("websites.json") + latest_websites
+    website_facets = load("website-facets.json")
     knowledge_documents = load("documents.json")
     presentation = load("document-presentation.json")
     taxonomy = load("taxonomy.json")
@@ -370,6 +513,7 @@ def main() -> None:
         "taxonomy": sum(len(taxonomy.get(k, {})) for k in ("domains", "tags", "engines")),
         "relations": len(relations),
         "collections": len(collections),
+        "website-facets": sum(len(website_facets.get(k, [])) for k in ("sites", "authors")) if isinstance(website_facets, dict) else -1,
     }
     if manifest.get("counts") != expected_counts:
         errors.append(f"manifest counts mismatch: {manifest.get('counts')} != {expected_counts}")
@@ -382,6 +526,7 @@ def main() -> None:
         "taxonomy": taxonomy,
         "relations": relations,
         "collections": collections,
+        "website-facets": website_facets,
     }.items():
         for key in walk_keys(data):
             if key.lower() in FORBIDDEN_KEYS:
@@ -407,6 +552,8 @@ def main() -> None:
         validate_fields(errors, f"websites[{index}]", row, WEBSITE_FIELDS)
         validate_public_url(errors, f"websites[{index}].url", row.get("url"))
         validate_public_url(errors, f"websites[{index}].canonicalUrl", row.get("canonicalUrl"))
+    validate_website_facets(errors, website_facets, websites)
+    validate_site_icons(errors, ROOT, websites)
     for index, row in enumerate(knowledge_documents):
         validate_fields(errors, f"documents[{index}]", row, DOCUMENT_FIELDS)
     validate_fields(errors, "taxonomy", taxonomy, TAXONOMY_FIELDS)
@@ -466,6 +613,29 @@ def main() -> None:
         errors.append("Home must use actual document and reading-guide presentation data")
     if "technical-environment.svg" not in index_html or not (ROOT / "assets/technical-environment.svg").exists():
         errors.append("Home must include the locally authored technical environment visual")
+
+    website_html = (ROOT / "websites.html").read_text(encoding="utf-8")
+    website_js_path = ROOT / "assets/websites.js"
+    website_css_path = ROOT / "assets/websites.css"
+    if not website_js_path.is_file() or not website_css_path.is_file():
+        errors.append("Websites page requires its local filter and square-icon assets")
+    else:
+        website_js = website_js_path.read_text(encoding="utf-8")
+        website_css = website_css_path.read_text(encoding="utf-8")
+        for control in ('id="category"', 'id="site"', 'id="author"', 'id="sort"'):
+            if control not in website_html:
+                errors.append(f"Websites page is missing {control}")
+        if "assets/websites.js" not in website_html or "assets/websites.css" not in website_html:
+            errors.append("Websites page must load local Website presentation assets")
+        if "C.loadMany('websites', 'website-facets')" not in website_html:
+            errors.append("Websites page must consume the public Website facet projection")
+        for contract in ("filterWebsites", "sortWebsites", "siteIconPath", "bindSiteIconFallback"):
+            if contract not in website_js:
+                errors.append(f"Websites page is missing {contract} behavior")
+        if "assets/generated/site-icons/" not in website_js or "width:112px;height:112px" not in website_css:
+            errors.append("Websites page must use local square Site Icons")
+        if re.search(r'<img[^>]+src=["\']https?://', website_html, re.IGNORECASE):
+            errors.append("Websites page must not hotlink remote Site Icons")
 
     if (CATALOG / "websites-data.json").exists():
         errors.append("legacy catalog/websites-data.json must be removed")

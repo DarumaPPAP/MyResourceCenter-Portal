@@ -1265,36 +1265,6 @@
     ]
   },
   {
-    "id": "RES-20260729-002",
-    "title": "Unity Knowledge Products 全Portal Coverage HTML群",
-    "url": "https://github.com/DarumaPPAP/Unity-Knowledge-Products",
-    "canonicalUrl": "https://github.com/DarumaPPAP/Unity-Knowledge-Products",
-    "kind": "website",
-    "topics": [
-      "Unity Knowledge Product / Rendering / Visual"
-    ],
-    "reviewState": "Reviewed",
-    "useState": "Reference",
-    "tags": [
-      "KnowledgeProduct",
-      "HTML",
-      "Coverage",
-      "67Resources",
-      "37Products",
-      "Rendering",
-      "Animation",
-      "VFX",
-      "Camera",
-      "Tools",
-      "Architecture",
-      "AI",
-      "DCC",
-      "Audio",
-      "Organization",
-      "Backlog"
-    ]
-  },
-  {
     "id": "RES-20260730-001",
     "title": "Voxel Smoothing using SurfaceNets in Unity",
     "url": "https://www.reddit.com/r/VoxelGameDev/comments/831wuj/voxel_smoothing_using_surfacenets_in_unity/?tl=ja",
