@@ -197,4 +197,5 @@ assert.notEqual(W.siteIconPath({...websiteRows[0],canonicalUrl:'https://[2001:db
 assert.notEqual(W.siteIconPath({...websiteRows[0],canonicalUrl:'https://[a::b]/'}),W.siteIconPath({...websiteRows[0],canonicalUrl:'https://ip6-a--b/'}));
 assert.equal(W.siteIconPath({...websiteRows[0],canonicalUrl:'javascript:alert(1)'}),'');
 assert.deepEqual(Array.from(W.filterWebsites([{id:'RES-bad',title:'Bad authors',canonicalUrl:'https://bad.test',authors:'Alice'}],{author:'__other__'},facetConfig),row=>row.id),['RES-bad']);
+assert.deepEqual(Array.from(W.filterWebsites([{id:'RES-object-authors',title:'Object authors',canonicalUrl:'https://bad.test',authors:{name:'Alice'}}],{author:'__other__'},facetConfig),row=>row.id),['RES-object-authors']);
 console.log('OK: Website facet AND filters, Other semantics, exact Category, date ordering and safe local Site Icon paths');
