@@ -29,10 +29,7 @@
     "useState": "Reference",
     "confidence": "Medium",
     "freshness": "Current",
-    "tags": [],
-    "authorKeys": [
-      "gamedev tool lab"
-    ]
+    "tags": []
   },
   {
     "id": "RES-20260901-001",
@@ -67,9 +64,6 @@
     "tags": [
       "Shader",
       "TAA"
-    ],
-    "authorKeys": [
-      "広本"
     ]
   },
   {
@@ -105,9 +99,6 @@
     "freshness": "Current",
     "tags": [
       "Shader"
-    ],
-    "authorKeys": [
-      "広本"
     ]
   },
   {
@@ -143,9 +134,6 @@
     "freshness": "Current",
     "tags": [
       "Shader"
-    ],
-    "authorKeys": [
-      "広本"
     ]
   },
   {
@@ -181,9 +169,6 @@
     "freshness": "Current",
     "tags": [
       "Shader"
-    ],
-    "authorKeys": [
-      "広本"
     ]
   },
   {
@@ -219,9 +204,6 @@
     "freshness": "Current",
     "tags": [
       "Shader"
-    ],
-    "authorKeys": [
-      "広本"
     ]
   }
 ]

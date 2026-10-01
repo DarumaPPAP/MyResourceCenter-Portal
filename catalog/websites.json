@@ -21,8 +21,7 @@
       "Depth",
       "MotionVector",
       "CameraStack"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260714-002",
@@ -45,8 +44,7 @@
       "モバイル",
       "ライブ",
       "URP"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260714-003",
@@ -67,8 +65,7 @@
       "3D",
       "キャラクター",
       "考察"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260714-004",
@@ -89,8 +86,7 @@
       "ライティング",
       "キャラクター",
       "リムライト"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260714-005",
@@ -114,8 +110,7 @@
       "GraphicsBuffer",
       "頂点カラー",
       "デカール"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260714-006",
@@ -137,8 +132,7 @@
       "Animation",
       "群衆",
       "CPU最適化"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260714-007",
@@ -159,8 +153,7 @@
       "初音ミク",
       "コラボ",
       "キャラクター表現"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260714-008",
@@ -182,8 +175,7 @@
       "ライブ",
       "LOD",
       "背景"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260714-009",
@@ -205,8 +197,7 @@
       "SubAsset",
       "EditorTool",
       "PostEffect"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260714-010",
@@ -225,8 +216,7 @@
     "tags": [
       "QualiArts",
       "未調査"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260714-011",
@@ -245,8 +235,7 @@
     "tags": [
       "QualiArts",
       "未調査"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260714-012",
@@ -265,8 +254,7 @@
     "tags": [
       "QualiArts",
       "未調査"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260714-013",
@@ -288,8 +276,7 @@
       "PhysicalCamera",
       "焦点距離",
       "着替え"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260714-014",
@@ -308,8 +295,7 @@
     "tags": [
       "QualiArts",
       "未調査"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260714-015",
@@ -332,8 +318,7 @@
       "Jobs",
       "回帰テスト",
       "ライブ"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260714-016",
@@ -354,8 +339,7 @@
       "カリング",
       "FrustumCulling",
       "描画"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260714-017",
@@ -377,8 +361,7 @@
       "カリング",
       "ライトベイク",
       "フレーム予算"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260714-018",
@@ -400,8 +383,7 @@
       "IDOLY PRIDE",
       "Dashboard",
       "品質管理"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260715-001",
@@ -425,8 +407,7 @@
       "Downscale",
       "Switch",
       "Blend"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260715-002",
@@ -448,8 +429,7 @@
       "Depth Pyramid",
       "AABB",
       "GPU Culling"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260715-003",
@@ -472,8 +452,7 @@
       "Particle",
       "VR",
       "Optimization"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260715-004",
@@ -495,8 +474,7 @@
       "Interleave",
       "Triangle Strip",
       "Draw Call"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260715-005",
@@ -518,8 +496,7 @@
       "DrawCall",
       "RenderPass",
       "Rendering Pipeline"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260715-006",
@@ -541,8 +518,7 @@
       "GPU Culling",
       "Primitive Culling",
       "D3D12"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260715-007",
@@ -565,8 +541,7 @@
       "Quantization",
       "GraphicsBuffer",
       "Switch"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260715-008",
@@ -589,8 +564,7 @@
       "Graph Partitioning",
       "Simplification",
       "Mesh Tool"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260716-001",
@@ -614,8 +588,7 @@
       "Halton",
       "Jitter",
       "Ghosting"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260716-002",
@@ -637,8 +610,7 @@
       "NormalFiltering",
       "Shimmering",
       "Ubisoft"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260716-003",
@@ -661,8 +633,7 @@
       "NormalVariance",
       "SquareEnix",
       "Shimmering"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260716-004",
@@ -685,8 +656,7 @@
       "TAA",
       "CatmullRom",
       "Mitchell"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260716-005",
@@ -709,8 +679,7 @@
       "Reprojection",
       "HistoryReject",
       "Debug"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260716-006",
@@ -734,8 +703,7 @@
       "STP",
       "Compute",
       "AMD"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260716-007",
@@ -758,8 +726,7 @@
       "Compute",
       "FidelityFX",
       "Sharpen"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260716-008",
@@ -783,8 +750,7 @@
       "RCAS",
       "Disocclusion",
       "AMD"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260717-001",
@@ -809,8 +775,7 @@
       "Polynomial",
       "Ocean",
       "Convolution"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260717-002",
@@ -836,8 +801,7 @@
       "LensFlare",
       "HDR",
       "RenderGraph"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260717-003",
@@ -863,8 +827,7 @@
       "Normal",
       "Foam",
       "GeometryClipmaps"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260717-004",
@@ -889,8 +852,7 @@
       "Stencil",
       "ShaderTagId",
       "RendererList"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260717-005",
@@ -913,8 +875,7 @@
       "RenderStateBlock",
       "PassData",
       "URP17"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260717-006",
@@ -938,8 +899,7 @@
       "RenderGraph",
       "Overdraw",
       "InternalMesh"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260723-001",
@@ -961,8 +921,7 @@
       "RenderMeshArray",
       "MaterialMeshInfo",
       "SRPBatcher"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260723-002",
@@ -985,8 +944,7 @@
       "Cache",
       "IJobEntity",
       "IEnableableComponent"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260723-003",
@@ -1009,8 +967,7 @@
       "IJobEntity",
       "BatchRendererGroup",
       "Culling"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260724-001",
@@ -1034,8 +991,7 @@
       "DynamicShadow",
       "Factory",
       "HighPolygon"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260724-002",
@@ -1060,8 +1016,7 @@
       "ResourceAliasing",
       "Culling",
       "Batching"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260724-017",
@@ -1081,8 +1036,7 @@
       "千葉大学",
       "CG",
       "研究"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260724-018",
@@ -1103,8 +1057,7 @@
       "GraphicsPipeline",
       "WebGL",
       "Shader"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260724-019",
@@ -1130,8 +1083,7 @@
       "ColorSpace",
       "LWRP",
       "HDRP"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260730-001",
@@ -1154,8 +1106,7 @@
       "CSharp",
       "MeshSmoothing",
       "Reddit"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260730-002",
@@ -1178,8 +1129,7 @@
       "NativeArray",
       "MarchingCubes",
       "VoxelMesh"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260730-003",
@@ -1202,8 +1152,7 @@
       "SignedField",
       "QuadMesh",
       "DestructibleTerrain"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260730-004",
@@ -1226,8 +1175,7 @@
       "Geomorphing",
       "Chunk",
       "ComputeShader"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260730-005",
@@ -1250,8 +1198,7 @@
       "DualContouring",
       "Isosurface",
       "NonManifold"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260730-006",
@@ -1274,8 +1221,7 @@
       "SharpFeatures",
       "Octree",
       "NonManifold"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260730-007",
@@ -1297,8 +1243,7 @@
       "ProceduralTerrain",
       "MeshGeneration",
       "Reddit"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260730-008",
@@ -1321,8 +1266,7 @@
       "VoxelTerrain",
       "MeshSmoothing",
       "Shrinkage"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260730-009",
@@ -1345,8 +1289,7 @@
       "AssetAudit",
       "OnDemandDownload",
       "BattleBreakers"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260730-010",
@@ -1370,8 +1313,7 @@
       "Reset",
       "TeamWorkflow",
       "CI/CD"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260730-011",
@@ -1396,8 +1338,7 @@
       "SecureDevelopment",
       "AIDataLeak",
       "Secrets"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260730-012",
@@ -1422,8 +1363,7 @@
       "ModelOptimization",
       "Deployment",
       "Monitoring"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260730-013",
@@ -1451,8 +1391,7 @@
       "ReAct",
       "HumanInTheLoop",
       "LLMEvaluation"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260730-014",
@@ -1477,7 +1416,6 @@
       "DecisionMaking",
       "GenerativeAI",
       "Validation"
-    ],
-    "authorKeys": []
+    ]
   }
 ]

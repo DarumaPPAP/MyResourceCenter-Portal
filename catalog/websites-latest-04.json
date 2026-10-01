@@ -22,8 +22,7 @@
     "useState": "Reference",
     "confidence": "High",
     "freshness": "Current",
-    "tags": [],
-    "authorKeys": []
+    "tags": []
   },
   {
     "id": "RES-20260904-026",
@@ -54,9 +53,6 @@
     "freshness": "Current",
     "tags": [
       "RAG"
-    ],
-    "authorKeys": [
-      "u-hyszk"
     ]
   },
   {
@@ -86,10 +82,7 @@
     "useState": "Reference",
     "confidence": "High",
     "freshness": "Current",
-    "tags": [],
-    "authorKeys": [
-      "t.toda"
-    ]
+    "tags": []
   },
   {
     "id": "RES-20260904-028",
@@ -122,10 +115,7 @@
     "useState": "Reference",
     "confidence": "High",
     "freshness": "Current",
-    "tags": [],
-    "authorKeys": [
-      "takayuki-kiyohara"
-    ]
+    "tags": []
   },
   {
     "id": "RES-20260907-001",
@@ -155,9 +145,6 @@
     "freshness": "Stale",
     "tags": [
       "Shader"
-    ],
-    "authorKeys": [
-      "iain cantlay"
     ]
   },
   {
@@ -193,9 +180,6 @@
     "freshness": "Current",
     "tags": [
       "Shader"
-    ],
-    "authorKeys": [
-      "narita yugo"
     ]
   },
   {
@@ -226,8 +210,7 @@
     "tags": [
       "Shader",
       "RayTracing"
-    ],
-    "authorKeys": []
+    ]
   },
   {
     "id": "RES-20260924-001",
@@ -244,8 +227,7 @@
     "useState": "Reference",
     "confidence": "Unverified",
     "freshness": "Unknown",
-    "tags": [],
-    "authorKeys": []
+    "tags": []
   },
   {
     "id": "RES-20260924-002",
@@ -275,8 +257,7 @@
     "useState": "Reference",
     "confidence": "Medium",
     "freshness": "Current",
-    "tags": [],
-    "authorKeys": []
+    "tags": []
   },
   {
     "id": "RES-20260928-001",
@@ -308,9 +289,6 @@
     "freshness": "Stale",
     "tags": [
       "Shader"
-    ],
-    "authorKeys": [
-      "nagakagachi"
     ]
   },
   {
@@ -342,9 +320,6 @@
     "freshness": "Current",
     "tags": [
       "CPlusPlus"
-    ],
-    "authorKeys": [
-      "alex syniakov"
     ]
   }
 ]

@@ -51,7 +51,7 @@ FORBIDDEN_KEYS = {
 }
 FORBIDDEN_DRIVE_FOLDER_FRAGMENT = "drive.google.com/drive/folders/"
 RESOURCE_FIELDS = {"id", "title", "url", "canonicalUrl", "kind", "topic", "topics", "reviewState", "useState", "tags"}
-WEBSITE_FIELDS = {"id", "title", "url", "canonicalUrl", "publisher", "authors", "authorKeys", "publishedAt", "kind", "contentType", "domains", "topics", "engines", "languages", "summary", "reviewState", "useState", "confidence", "freshness", "tags"}
+WEBSITE_FIELDS = {"id", "title", "url", "canonicalUrl", "publisher", "authors", "publishedAt", "kind", "contentType", "domains", "topics", "engines", "languages", "summary", "reviewState", "useState", "confidence", "freshness", "tags"}
 DOCUMENT_FIELDS = {"id", "title", "sourceFormat", "level", "engine", "tags"}
 RELATION_FIELDS = {"from", "to", "relation"}
 COLLECTION_FIELDS = {"id", "title", "description", "topics", "resources", "category"}
@@ -179,17 +179,12 @@ def validate_website_facets(errors: list[str], data: dict, websites: list[dict])
         if host:
             site_counts.setdefault(host, set()).add(identity)
         authors = row.get("authors") or []
-        row_author_keys = []
         if isinstance(authors, list):
             for author in authors:
                 if not isinstance(author, str) or not author.strip():
                     continue
                 key = normalize_author_key(author)
-                if key not in row_author_keys:
-                    row_author_keys.append(key)
-                    author_counts.setdefault(key, set()).add(identity)
-        if row.get("authorKeys", []) != row_author_keys:
-            errors.append(f"websites[{index}] authorKeys do not match public authors")
+                author_counts.setdefault(key, set()).add(identity)
 
     for kind, values, active, normalize in (
         ("sites", data.get("sites"), site_counts, normalize_website_host),
@@ -227,7 +222,7 @@ def validate_website_facets(errors: list[str], data: dict, websites: list[dict])
 
 
 def site_icon_path_from_host(host: str) -> str:
-    safe = "ip6-" + host.replace(":", "") if ":" in host else host
+    safe = "ip6-" + host.replace(":", "-") if ":" in host else host
     if not safe or not re.fullmatch(r"[a-z0-9.-]+", safe):
         return ""
     return f"assets/generated/site-icons/{safe}.png"

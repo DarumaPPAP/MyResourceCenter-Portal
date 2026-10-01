@@ -148,7 +148,7 @@ with tempfile.TemporaryDirectory() as tmp:
     Image.new('RGB',(1201,800),'white').save(asset,'WEBP');assert not v.validate_thumbnail_asset(asset)
     Image.new('RGB',(1200,800),'white').save(asset,'WEBP');assert v.validate_thumbnail_asset(asset)
 facets={'schemaVersion':'1.0.0','sites':[{'key':'site.test','displayName':'Example Site'}],'authors':[{'key':'ada','displayName':'Ada'}]}
-facet_rows=[{'id':f'RES-{i}','url':f'https://site.test/{i}','authors':['Ada'],'authorKeys':['ada']} for i in range(4)]
+facet_rows=[{'id':f'RES-{i}','url':f'https://site.test/{i}','authors':['Ada']} for i in range(4)]
 errors=[];v.validate_website_facets(errors,facets,facet_rows);assert not errors,errors
 errors=[];v.validate_website_facets(errors,facets,facet_rows[:3]);assert any('more than three' in error for error in errors),errors
 errors=[];v.validate_website_facets(errors,{'schemaVersion':'1.0.0','sites':[{'key':'site.test','displayName':'Example Site','status':'pending'}],'authors':[]},facet_rows);assert any('unexpected public fields' in error for error in errors),errors
@@ -182,10 +182,11 @@ assert.deepEqual(Array.from(W.filterWebsites(websiteRows,{category:'technical-ar
 assert.equal(W.filterWebsites(websiteRows,{site:'b.example'},facetConfig).length,0,'unapproved Site query values must not expose dedicated filter results');
 assert.equal(W.filterWebsites(websiteRows,{author:'bob'},facetConfig).length,0,'unapproved Author query values must not expose dedicated filter results');
 assert.deepEqual(Array.from(W.filterWebsites(websiteRows,{site:'__other__'},facetConfig),row=>row.id),['RES-4','RES-5']);
-assert.deepEqual(Array.from(W.filterWebsites(websiteRows,{author:'__other__'},facetConfig),row=>row.id),['RES-2','RES-5']);
+assert.deepEqual(Array.from(W.filterWebsites(websiteRows,{author:'__other__'},facetConfig),row=>row.id),['RES-2','RES-4','RES-5']);
 assert.deepEqual(Array.from(W.filterWebsites(websiteRows,{category:'invented'},facetConfig),row=>row.id),[]);
 assert.deepEqual(Array.from(W.sortWebsites(websiteRows,'desc'),row=>row.id),['RES-1','RES-3','RES-2','RES-4','RES-5']);
 assert.deepEqual(Array.from(W.sortWebsites(websiteRows,'asc'),row=>row.id),['RES-4','RES-2','RES-3','RES-1','RES-5']);
 assert.equal(W.siteIconPath(websiteRows[0]),'assets/generated/site-icons/a.example.png');
+assert.notEqual(W.siteIconPath({...websiteRows[0],canonicalUrl:'https://[2001:db8::1]/'}),W.siteIconPath({...websiteRows[0],canonicalUrl:'https://[200:1db8::1]/'}));
 assert.equal(W.siteIconPath({...websiteRows[0],canonicalUrl:'javascript:alert(1)'}),'');
 console.log('OK: Website facet AND filters, Other semantics, exact Category, date ordering and safe local Site Icon paths');

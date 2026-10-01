@@ -30,9 +30,6 @@
     "freshness": "Stale",
     "tags": [
       "Shader"
-    ],
-    "authorKeys": [
-      "uwa technology"
     ]
   },
   {
@@ -64,10 +61,7 @@
     "useState": "Historical",
     "confidence": "Medium",
     "freshness": "Stale",
-    "tags": [],
-    "authorKeys": [
-      "uwa technology"
-    ]
+    "tags": []
   },
   {
     "id": "RES-20260904-015",
@@ -98,10 +92,7 @@
     "useState": "Historical",
     "confidence": "Medium",
     "freshness": "Stale",
-    "tags": [],
-    "authorKeys": [
-      "uwa technology"
-    ]
+    "tags": []
   },
   {
     "id": "RES-20260904-016",
@@ -132,10 +123,7 @@
     "useState": "Historical",
     "confidence": "Medium",
     "freshness": "Stale",
-    "tags": [],
-    "authorKeys": [
-      "uwa technology"
-    ]
+    "tags": []
   },
   {
     "id": "RES-20260904-017",
@@ -166,10 +154,7 @@
     "useState": "Historical",
     "confidence": "Medium",
     "freshness": "Stale",
-    "tags": [],
-    "authorKeys": [
-      "uwa technology"
-    ]
+    "tags": []
   },
   {
     "id": "RES-20260904-018",
@@ -200,10 +185,7 @@
     "useState": "Historical",
     "confidence": "Medium",
     "freshness": "Stale",
-    "tags": [],
-    "authorKeys": [
-      "uwa technology"
-    ]
+    "tags": []
   },
   {
     "id": "RES-20260904-019",
@@ -234,10 +216,7 @@
     "useState": "Historical",
     "confidence": "Medium",
     "freshness": "Stale",
-    "tags": [],
-    "authorKeys": [
-      "uwa technology"
-    ]
+    "tags": []
   },
   {
     "id": "RES-20260904-020",
@@ -268,10 +247,7 @@
     "useState": "Historical",
     "confidence": "Medium",
     "freshness": "Stale",
-    "tags": [],
-    "authorKeys": [
-      "uwa technology"
-    ]
+    "tags": []
   },
   {
     "id": "RES-20260904-021",
@@ -302,10 +278,7 @@
     "useState": "Historical",
     "confidence": "Medium",
     "freshness": "Stale",
-    "tags": [],
-    "authorKeys": [
-      "uwa technology"
-    ]
+    "tags": []
   },
   {
     "id": "RES-20260904-022",
@@ -336,10 +309,7 @@
     "useState": "Historical",
     "confidence": "Medium",
     "freshness": "Stale",
-    "tags": [],
-    "authorKeys": [
-      "uwa technology"
-    ]
+    "tags": []
   },
   {
     "id": "RES-20260904-023",
@@ -370,10 +340,7 @@
     "useState": "Historical",
     "confidence": "Medium",
     "freshness": "Stale",
-    "tags": [],
-    "authorKeys": [
-      "uwa technology"
-    ]
+    "tags": []
   },
   {
     "id": "RES-20260904-024",
@@ -404,9 +371,6 @@
     "useState": "Historical",
     "confidence": "Medium",
     "freshness": "Stale",
-    "tags": [],
-    "authorKeys": [
-      "uwa technology"
-    ]
+    "tags": []
   }
 ]

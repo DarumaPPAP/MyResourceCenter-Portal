@@ -25,7 +25,7 @@
   function siteIconPath(row) {
     const host = websiteHost(row);
     if (!host) return '';
-    const safeHost = host.includes(':') ? `ip6-${host.replace(/:/g, '')}` : host;
+    const safeHost = host.includes(':') ? `ip6-${host.replace(/:/g, '-')}` : host;
     if (!/^[a-z0-9.-]+$/i.test(safeHost)) return '';
     return `assets/generated/site-icons/${safeHost}.png`;
   }
@@ -35,18 +35,15 @@
     const approvedAuthors = new Set((facetConfig.authors || []).map(facet => facet.key));
     return (rows || []).map(row => {
       const siteKey = websiteHost(row);
-      const sourceAuthorKeys = Array.isArray(row.authorKeys)
-        ? row.authorKeys
-        : (row.authors || []).map(normalizeAuthor).filter(Boolean);
+      const sourceAuthorKeys = (row.authors || []).map(normalizeAuthor).filter(Boolean);
       const authorKeys = [...new Set(sourceAuthorKeys.filter(key => typeof key === 'string' && key))];
-      const approvedAuthorKeys = authorKeys.filter(key => approvedAuthors.has(key));
       return {
         ...row,
         siteKey,
         authorKeys,
         siteFacet: approvedSites.has(siteKey) ? siteKey : OTHER,
-        authorFacet: approvedAuthorKeys[0] || OTHER,
-        hasApprovedAuthor: approvedAuthorKeys.length > 0
+        authorFacet: authorKeys.find(key => approvedAuthors.has(key)) || OTHER,
+        hasOtherAuthor: authorKeys.length === 0 || authorKeys.some(key => !approvedAuthors.has(key))
       };
     });
   }
@@ -66,7 +63,7 @@
       return (!term || searchText.includes(term)) &&
         (!filters.category || row.contentType === filters.category) &&
         (!selectedSite || ((siteKey === OTHER || siteKey === 'other') ? row.siteFacet === OTHER : approvedSites.has(siteKey) && row.siteKey === siteKey)) &&
-        (!selectedAuthor || ((authorKey === OTHER || authorKey === 'other') ? !row.hasApprovedAuthor : approvedAuthors.has(authorKey) && row.authorKeys.includes(authorKey)));
+        (!selectedAuthor || ((authorKey === OTHER || authorKey === 'other') ? row.hasOtherAuthor : approvedAuthors.has(authorKey) && row.authorKeys.includes(authorKey)));
     });
   }
 
