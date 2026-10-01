@@ -1,11 +1,60 @@
 <!doctype html>
 <html lang="ja" data-theme="light">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Websites | MyResourceCenter</title><meta name="description" content="登録WebサイトをReview State / Use State / Topicで検索し、タイトルから元Webサイトへ直接移動します。"><link rel="stylesheet" href="assets/site.css"><script defer src="assets/portal.js"></script><script defer src="assets/catalog.js"></script></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Websites | MyResourceCenter</title><meta name="description" content="登録WebサイトをReview State / Use State / Topicで検索し、タイトルから元Webサイトへ直接移動します。"><link rel="stylesheet" href="assets/site.css"><link rel="stylesheet" href="assets/websites.css"><script defer src="assets/portal.js"></script><script defer src="assets/catalog.js"></script></head>
 <body class="browse-page"><div class="app-shell">
 <aside class="sidebar"><div class="brand-lockup"><div class="brand-mark">M</div><div class="brand-name">MyResourceCenter</div></div><nav class="side-nav"><a href="index.html"><span class="icon">⌂</span>ホーム</a><a href="documents.html"><span class="icon">▤</span>ドキュメント</a><a class="active" href="websites.html"><span class="icon">◎</span>Webサイト</a></nav><div class="sidebar-note">技術記事を発行元・テーマ・タグから素早く探すディレクトリ。</div></aside>
 <main class="main"><header class="topbar"><div class="breadcrumb">Websites / Source Catalog</div><div class="top-actions"><button class="icon-button theme-toggle" type="button">Dark</button></div></header><nav class="mobile-nav"><a href="index.html">ホーム</a><a href="documents.html">Documents</a><a href="websites.html">Websites</a></nav>
-<div class="content"><section class="hero"><div class="hero-copy"><div class="eyebrow">Source Catalog</div><h1>登録Webサイトを探す</h1><p>記事名・テーマ・発行元・タグから探せます。タイトルを選ぶと元の記事を新しいタブで開きます。</p></div></section>
-<div class="toolbar"><input aria-label="キーワード検索" id="q" type="search" placeholder="記事名・テーマ・発行元・タグで検索"><select aria-label="レビュー状態" id="review"><option value="">レビュー状態：すべて</option></select><select aria-label="利用状態" id="use"><option value="">利用状態：すべて</option></select><select aria-label="発行元" id="publisher"><option value="">発行元：すべて</option></select><button id="clear" type="button">条件をリセット</button></div><div class="result-meta"><span id="count" role="status" aria-live="polite">読み込み中…</span><span>記事は新しいタブで開きます</span></div><div class="data-list" id="list"></div></div><footer class="footer">MyResourceCenter · Technical Directory</footer></main></div>
+<div class="content"><section class="websites-heading" aria-labelledby="websites-title"><div class="eyebrow">WEBSITES</div><h1 id="websites-title">Webサイト</h1><p>技術記事をタイトル・テーマ・発行元・タグから探す。状態を確認しながら、元記事または詳細情報へ進めます。</p></section>
+<div class="toolbar website-toolbar"><input aria-label="キーワード検索" id="q" type="search" placeholder="記事名・発行元・タグを検索"><select aria-label="レビュー状態" id="review"><option value="">レビュー状態：すべて</option></select><select aria-label="利用状態" id="use"><option value="">利用状態：すべて</option></select><select aria-label="発行元" id="publisher"><option value="">発行元：すべて</option></select><button id="clear" type="button">条件をリセット</button></div><div class="result-meta"><span id="count" role="status" aria-live="polite">読み込み中…</span><span>タイトルまたは「記事を開く」から元記事へ移動します</span></div><div class="website-list-head" aria-hidden="true"><span>記事 / 発行元</span><span>状態</span><span>タグ / 詳細</span></div><div class="website-directory" id="list"></div></div><footer class="footer">MyResourceCenter · Technical Directory</footer></main></div>
 <script>
-window.addEventListener('DOMContentLoaded',async()=>{const C=window.MRCCatalog,q=document.getElementById('q'),review=document.getElementById('review'),use=document.getElementById('use'),publisher=document.getElementById('publisher'),list=document.getElementById('list'),count=document.getElementById('count');try{const rows=await C.load('websites');const initial=C.query('q');if(initial)q.value=initial;const fill=(el,values)=>{[...new Set(values.filter(Boolean))].sort().forEach(v=>el.insertAdjacentHTML('beforeend',`<option value="${C.escapeHtml(v)}">${C.escapeHtml(v)}</option>`));};fill(review,rows.map(x=>x.reviewState));fill(use,rows.map(x=>x.useState));fill(publisher,rows.map(x=>x.publisher));const render=()=>{const s=q.value.trim().toLowerCase();const filtered=rows.filter(x=>(!s||[x.title,x.publisher,...(x.topics||[]),...(x.tags||[])].join(' ').toLowerCase().includes(s))&&(!review.value||x.reviewState===review.value)&&(!use.value||x.useState===use.value)&&(!publisher.value||x.publisher===publisher.value));count.textContent=`${filtered.length} 件 / 全 ${rows.length} 件`;list.innerHTML=filtered.map(x=>{const source=C.safeExternalUrl(x.url||x.canonicalUrl||'');const titleLink=source?`<a class="data-title" href="${C.escapeHtml(source)}" target="_blank" rel="noopener noreferrer">${C.escapeHtml(x.title)} ↗</a>`:`<a class="data-title" href="website.html?id=${encodeURIComponent(x.id)}">${C.escapeHtml(x.title)}</a>`;return `<div class="data-row website-row"><div>${titleLink}<div class="data-sub">${C.escapeHtml(x.publisher||'')} · ${C.escapeHtml((x.topics||[]).join(' / '))} · <a href="website.html?id=${encodeURIComponent(x.id)}">詳細</a></div></div><div class="website-states">${C.escapeHtml(x.reviewState||'—')} · ${C.escapeHtml(x.useState||'—')}</div><div><div class="data-label">Tags</div><div class="tag-cloud">${C.chips((x.tags||[]).slice(0,6))}</div></div></div>`;}).join('')||'<div class="empty">条件に一致する記事がありません。キーワードを短くするか、条件をリセットしてください。<br><button type="button" class="icon-button" data-reset-filters>条件をリセット</button></div>';};[q,review,use,publisher].forEach(el=>el.addEventListener(el===q?'input':'change',render));document.getElementById('clear').addEventListener('click',()=>{q.value='';review.value='';use.value='';publisher.value='';render();});C.bindFilterState([q,review,use,publisher],render);render();}catch(e){console.error(e);list.innerHTML='<div class="empty">Website Catalogの読み込みに失敗しました。</div>';}});
+window.addEventListener('DOMContentLoaded',async()=>{
+  const C=window.MRCCatalog,q=document.getElementById('q'),review=document.getElementById('review'),use=document.getElementById('use'),publisher=document.getElementById('publisher'),list=document.getElementById('list'),count=document.getElementById('count');
+  const reviewTone=value=>({Reviewed:'is-reviewed',Triaged:'is-triaged',Inbox:'is-inbox'}[value]||'is-neutral');
+  const useTone=value=>({Reference:'is-reference',ToTry:'is-totry'}[value]||'is-neutral');
+  try{
+    const rows=await C.load('websites');
+    const initial=C.query('q');
+    if(initial) q.value=initial;
+    const fill=(el,values)=>{[...new Set(values.filter(Boolean))].sort().forEach(v=>el.insertAdjacentHTML('beforeend',`<option value="${C.escapeHtml(v)}">${C.escapeHtml(v)}</option>`));};
+    fill(review,rows.map(x=>x.reviewState));fill(use,rows.map(x=>x.useState));fill(publisher,rows.map(x=>x.publisher));
+    const render=()=>{
+      const s=q.value.trim().toLowerCase();
+      const filtered=rows.filter(x=>(!s||[x.title,x.publisher,...(x.topics||[]),...(x.tags||[])].join(' ').toLowerCase().includes(s))&&(!review.value||x.reviewState===review.value)&&(!use.value||x.useState===use.value)&&(!publisher.value||x.publisher===publisher.value));
+      count.textContent=`${filtered.length} 件 / 全 ${rows.length} 件`;
+      list.innerHTML=filtered.map(x=>{
+        const source=C.safeExternalUrl(x.url||x.canonicalUrl||'');
+        const titleHref=source||`website.html?id=${encodeURIComponent(x.id)}`;
+        const titleTarget=source?' target="_blank" rel="noopener noreferrer"':'';
+        const titleLink=`<a class="data-title" href="${C.escapeHtml(titleHref)}"${titleTarget}>${C.escapeHtml(x.title)}</a>`;
+        const sourceAction=source?`<a class="website-source-action" href="${C.escapeHtml(source)}" target="_blank" rel="noopener noreferrer">記事を開く <span aria-hidden="true">↗</span></a>`:'';
+        const topics=(x.topics||[]).filter(Boolean);
+        const topicText=topics.length?topics.join(' / '):'Topic未設定';
+        const publisherText=x.publisher||'発行元未設定';
+        const tags=x.tags||[];
+        const visibleTags=tags.slice(0,4);
+        const moreTags=tags.length>visibleTags.length?`<span class="tag tag-more">+${tags.length-visibleTags.length}</span>`:'';
+        const reviewValue=x.reviewState||'—',useValue=x.useState||'—';
+        return `<article class="website-entry">
+          <div class="website-main">
+            <div class="website-title-row"><h2>${titleLink}</h2>${sourceAction}</div>
+            <div class="website-topic"><span class="website-meta-label">Topic</span><span>${C.escapeHtml(topicText)}</span></div>
+            <div class="website-publisher"><span class="website-meta-label">発行元</span><span>${C.escapeHtml(publisherText)}</span></div>
+          </div>
+          <div class="website-states" aria-label="記事の状態">
+            <div class="website-state-item"><span class="website-meta-label">Review</span><span class="website-state-badge ${reviewTone(reviewValue)}">${C.escapeHtml(reviewValue)}</span></div>
+            <div class="website-state-item"><span class="website-meta-label">Use</span><span class="website-state-badge ${useTone(useValue)}">${C.escapeHtml(useValue)}</span></div>
+          </div>
+          <div class="website-tags">
+            <div class="website-meta-label">Tags</div>
+            <div class="tag-cloud">${C.chips(visibleTags)}${moreTags}</div>
+            <a class="website-detail" href="website.html?id=${encodeURIComponent(x.id)}">詳細を見る →</a>
+          </div>
+        </article>`;
+      }).join('')||'<div class="empty">条件に一致する記事がありません。キーワードを短くするか、条件をリセットしてください。<br><button type="button" class="icon-button" data-reset-filters>条件をリセット</button></div>';
+    };
+    [q,review,use,publisher].forEach(el=>el.addEventListener(el===q?'input':'change',render));
+    document.getElementById('clear').addEventListener('click',()=>{q.value='';review.value='';use.value='';publisher.value='';render();});
+    C.bindFilterState([q,review,use,publisher],render);render();
+  }catch(e){console.error(e);list.innerHTML='<div class="empty">Website Catalogの読み込みに失敗しました。</div>';}
+});
 </script></body></html>
