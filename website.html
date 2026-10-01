@@ -70,7 +70,6 @@ window.addEventListener('DOMContentLoaded', async () => {
               <div class="detail-field"><dt>Use State</dt><dd>${C.escapeHtml(website.useState || '—')}</dd></div>
               <div class="detail-field"><dt>Confidence</dt><dd>${C.escapeHtml(website.confidence || '—')}</dd></div>
               <div class="detail-field"><dt>Freshness</dt><dd>${C.escapeHtml(website.freshness || '—')}</dd></div>
-              <div class="detail-field"><dt>Content Type</dt><dd>${C.escapeHtml(website.contentType || website.kind || 'website')}</dd></div>
             </dl>
           </section>
           <section class="detail-section"><h2>Topics / Tags</h2><p class="description">関連するテーマから記事を探せます。</p><div class="tag-cloud">${topics}${tags}</div></section>
