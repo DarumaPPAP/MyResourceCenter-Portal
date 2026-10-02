@@ -196,6 +196,10 @@
       {
         "id": "RES-DOC-8E5DC32C8B1F",
         "role": "overview"
+      },
+      {
+        "id": "RES-20260730-004",
+        "role": "overview"
       }
     ],
     "category": "Rendering"
@@ -226,6 +230,14 @@
       {
         "id": "RES-20260723-003",
         "role": "optimization"
+      },
+      {
+        "id": "RES-20260724-001",
+        "role": "overview"
+      },
+      {
+        "id": "RES-20260724-002",
+        "role": "overview"
       }
     ],
     "category": "Rendering"
@@ -315,6 +327,14 @@
       },
       {
         "id": "RES-20260730-011",
+        "role": "overview"
+      },
+      {
+        "id": "RES-20260904-026",
+        "role": "overview"
+      },
+      {
+        "id": "RES-20260904-027",
         "role": "overview"
       }
     ],

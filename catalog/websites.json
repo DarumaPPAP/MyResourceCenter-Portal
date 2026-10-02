@@ -6,6 +6,7 @@
     "canonicalUrl": "https://developers.cyberagent.co.jp/blog/archives/54536/",
     "publisher": "CyberAgent Developers Blog",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "STP / RenderGraph / URP / UI描画"
     ],
@@ -14,13 +15,11 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "STP",
-      "RenderGraph",
+      "Unity",
       "URP",
-      "UI",
-      "Depth",
-      "MotionVector",
-      "CameraStack"
+      "STP",
+      "Upscaling",
+      "RenderGraph"
     ]
   },
   {
@@ -30,6 +29,7 @@
     "canonicalUrl": "https://gamemakers.jp/article/2025_01_29_90729/",
     "publisher": "ゲームメーカーズ",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "モバイルレンダリング / ライティング / 反射"
     ],
@@ -38,12 +38,11 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "学マス",
-      "ライティング",
-      "反射",
-      "モバイル",
-      "ライブ",
-      "URP"
+      "Unity",
+      "Mobile",
+      "URP",
+      "Lighting",
+      "Optimization"
     ]
   },
   {
@@ -53,6 +52,7 @@
     "canonicalUrl": "https://blog.tachibanai.one/article/2025-02-11_01",
     "publisher": "いんたーねっと☆えくすぷろーらー！",
     "kind": "website",
+    "category": "Idea",
     "topics": [
       "3Dグラフィック / キャラクター表現"
     ],
@@ -61,10 +61,11 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "学マス",
-      "3D",
-      "キャラクター",
-      "考察"
+      "Unity",
+      "Mobile",
+      "Rendering",
+      "PostProcessing",
+      "Anti-Aliasing"
     ]
   },
   {
@@ -74,6 +75,7 @@
     "canonicalUrl": "https://learning.unity3d.jp/10126/",
     "publisher": "Unity Learning Materials",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "キャラクターライティング"
     ],
@@ -82,10 +84,8 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "学マス",
-      "ライティング",
-      "キャラクター",
-      "リムライト"
+      "Unity",
+      "Lighting"
     ]
   },
   {
@@ -95,6 +95,7 @@
     "canonicalUrl": "https://cgworld.jp/article/202410-cedec-imas.html",
     "publisher": "CGWORLD",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "モデリング / シェーダ / ライティング / アニメーション"
     ],
@@ -103,13 +104,11 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "学マス",
-      "モデリング",
-      "Def",
-      "ランプ",
-      "GraphicsBuffer",
-      "頂点カラー",
-      "デカール"
+      "Unity",
+      "Shader",
+      "Texture",
+      "Lighting",
+      "Animation"
     ]
   },
   {
@@ -119,6 +118,7 @@
     "canonicalUrl": "https://technote.qualiarts.jp/article/108",
     "publisher": "QualiArtsエンジニアブログ",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "ECS / スキニング / アニメーション"
     ],
@@ -127,11 +127,11 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
+      "Unity",
       "ECS",
-      "スキニング",
+      "Mesh",
       "Animation",
-      "群衆",
-      "CPU最適化"
+      "C#"
     ]
   },
   {
@@ -141,6 +141,7 @@
     "canonicalUrl": "https://technote.qualiarts.jp/article/97",
     "publisher": "QualiArtsエンジニアブログ",
     "kind": "website",
+    "category": "Idea",
     "topics": [
       "キャラクター表現 / コラボ演出"
     ],
@@ -149,10 +150,9 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "IDOLY PRIDE",
-      "初音ミク",
-      "コラボ",
-      "キャラクター表現"
+      "Mobile",
+      "Animation",
+      "Camera"
     ]
   },
   {
@@ -162,6 +162,7 @@
     "canonicalUrl": "https://technote.qualiarts.jp/article/93",
     "publisher": "QualiArtsエンジニアブログ",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "360度ライブ / カメラ / レンダリング"
     ],
@@ -170,11 +171,10 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "360ライブ",
-      "カメラ",
-      "ライブ",
-      "LOD",
-      "背景"
+      "Mobile",
+      "Camera",
+      "Animation",
+      "Physics"
     ]
   },
   {
@@ -184,6 +184,7 @@
     "canonicalUrl": "https://technote.qualiarts.jp/article/89",
     "publisher": "QualiArtsエンジニアブログ",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "Timeline / Volume / EditorTool"
     ],
@@ -192,11 +193,10 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "Timeline",
-      "VolumeProfile",
-      "SubAsset",
-      "EditorTool",
-      "PostEffect"
+      "Unity",
+      "Editor",
+      "PostProcessing",
+      "C#"
     ]
   },
   {
@@ -206,6 +206,7 @@
     "canonicalUrl": "https://technote.qualiarts.jp/article/84",
     "publisher": "QualiArtsエンジニアブログ",
     "kind": "website",
+    "category": "Idea",
     "topics": [
       "未分類"
     ],
@@ -214,8 +215,10 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "QualiArts",
-      "未調査"
+      "Unity",
+      "Mesh",
+      "Animation",
+      "Camera"
     ]
   },
   {
@@ -225,6 +228,7 @@
     "canonicalUrl": "https://technote.qualiarts.jp/article/82",
     "publisher": "QualiArtsエンジニアブログ",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "未分類"
     ],
@@ -233,8 +237,11 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "QualiArts",
-      "未調査"
+      "Unity",
+      "Animation",
+      "Physics",
+      "C#",
+      "Optimization"
     ]
   },
   {
@@ -244,6 +251,7 @@
     "canonicalUrl": "https://technote.qualiarts.jp/article/77",
     "publisher": "QualiArtsエンジニアブログ",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "未分類"
     ],
@@ -252,8 +260,11 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "QualiArts",
-      "未調査"
+      "Unity",
+      "URP",
+      "Rendering",
+      "Mesh",
+      "C#"
     ]
   },
   {
@@ -263,6 +274,7 @@
     "canonicalUrl": "https://technote.qualiarts.jp/article/71",
     "publisher": "QualiArtsエンジニアブログ",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "Cinemachine / Orbital Camera / Physical Camera"
     ],
@@ -271,11 +283,9 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "Cinemachine",
-      "OrbitalCamera",
-      "PhysicalCamera",
-      "焦点距離",
-      "着替え"
+      "Unity",
+      "Camera",
+      "C#"
     ]
   },
   {
@@ -285,6 +295,7 @@
     "canonicalUrl": "https://technote.qualiarts.jp/article/65",
     "publisher": "QualiArtsエンジニアブログ",
     "kind": "website",
+    "category": "Idea",
     "topics": [
       "未分類"
     ],
@@ -293,8 +304,10 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "QualiArts",
-      "未調査"
+      "Unity",
+      "Mobile",
+      "Editor",
+      "AssetManagement"
     ]
   },
   {
@@ -304,6 +317,7 @@
     "canonicalUrl": "https://technote.qualiarts.jp/article/63",
     "publisher": "QualiArtsエンジニアブログ",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "画像比較 / PSNR / Burst / Jobs / 品質検証"
     ],
@@ -312,12 +326,10 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "画像比較",
-      "PSNR",
-      "Burst",
-      "Jobs",
-      "回帰テスト",
-      "ライブ"
+      "Unity",
+      "Texture",
+      "Optimization",
+      "C#"
     ]
   },
   {
@@ -327,6 +339,7 @@
     "canonicalUrl": "https://gamemakers.jp/article/2024_10_04_77250/",
     "publisher": "ゲームメーカーズ",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "カリング / 描画最適化"
     ],
@@ -335,10 +348,9 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "最適化",
-      "カリング",
-      "FrustumCulling",
-      "描画"
+      "Rendering",
+      "Culling",
+      "Optimization"
     ]
   },
   {
@@ -348,6 +360,7 @@
     "canonicalUrl": "https://gamemakers.jp/article/2024_08_09_75452/",
     "publisher": "ゲームメーカーズ",
     "kind": "website",
+    "category": "Idea",
     "topics": [
       "最適化基礎 / カリング / LOD / ライトベイク"
     ],
@@ -356,11 +369,11 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "最適化",
+      "Rendering",
+      "Optimization",
+      "Culling",
       "LOD",
-      "カリング",
-      "ライトベイク",
-      "フレーム予算"
+      "Lighting"
     ]
   },
   {
@@ -370,6 +383,7 @@
     "canonicalUrl": "https://technote.qualiarts.jp/article/74",
     "publisher": "QualiArtsエンジニアブログ",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "運用管理ツール / ゲーム運営"
     ],
@@ -378,11 +392,9 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "管理ツール",
-      "運用",
-      "IDOLY PRIDE",
-      "Dashboard",
-      "品質管理"
+      "Mobile",
+      "UI",
+      "AssetManagement"
     ]
   },
   {
@@ -392,6 +404,7 @@
     "canonicalUrl": "https://blog.sge-coretech.com/entry/2025/04/24/163531",
     "publisher": "CORETECH ENGINEER BLOG",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "RenderGraph / 縮小バッファ / 半透明 / Overdraw"
     ],
@@ -400,13 +413,11 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "RenderGraph",
+      "Unity",
       "URP",
-      "透明",
-      "Overdraw",
-      "Downscale",
-      "Switch",
-      "Blend"
+      "RenderGraph",
+      "Transparency",
+      "Optimization"
     ]
   },
   {
@@ -416,6 +427,7 @@
     "canonicalUrl": "https://sites.google.com/site/monshonosuana/directx%E3%81%AE%E8%A9%B1/directx%E3%81%AE%E8%A9%B1-%E7%AC%AC122%E5%9B%9E",
     "publisher": "もんしょの巣穴",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "Occlusion Culling / Hierarchical Z / AABB"
     ],
@@ -424,11 +436,10 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "Occlusion",
-      "Hi-Z",
-      "Depth Pyramid",
-      "AABB",
-      "GPU Culling"
+      "DirectX",
+      "Culling",
+      "ComputeShader",
+      "Optimization"
     ]
   },
   {
@@ -438,6 +449,7 @@
     "canonicalUrl": "https://sites.google.com/site/monshonosuana/directx%E3%81%AE%E8%A9%B1/directx%E3%81%AE%E8%A9%B1-%E7%AC%AC168%E5%9B%9E",
     "publisher": "もんしょの巣穴",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "Variable Rate Shading / Mixed Resolution Rendering"
     ],
@@ -446,11 +458,9 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "VRS",
-      "Shading Rate",
-      "D3D12",
-      "Particle",
-      "VR",
+      "DirectX",
+      "Shader",
+      "ComputeShader",
       "Optimization"
     ]
   },
@@ -461,6 +471,7 @@
     "canonicalUrl": "https://www.research.kobe-u.ac.jp/csi-viz/members/kageyama/lectures/H27_FY2015_former/visualization/150609_note07.pdf",
     "publisher": "神戸大学",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "描画高速化 / 頂点データ / Triangle Strip / Interleave"
     ],
@@ -469,11 +480,9 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
+      "Rendering",
       "Mesh",
-      "Vertex Buffer",
-      "Interleave",
-      "Triangle Strip",
-      "Draw Call"
+      "Optimization"
     ]
   },
   {
@@ -483,6 +492,7 @@
     "canonicalUrl": "https://www.docswell.com/s/2191436787/ZENEP7-2023-05-25-230031",
     "publisher": "Docswell",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "Forward / Deferred / Rendering Pipeline基礎"
     ],
@@ -491,11 +501,9 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "Forward",
-      "Deferred",
-      "DrawCall",
-      "RenderPass",
-      "Rendering Pipeline"
+      "Rendering",
+      "Lighting",
+      "Transparency"
     ]
   },
   {
@@ -505,6 +513,7 @@
     "canonicalUrl": "https://www.project-asura.com/articles/d3d12/d3d12_022.html",
     "publisher": "Project Asura",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "Mesh Shader / Meshlet / GPU Culling"
     ],
@@ -513,11 +522,11 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "Mesh Shader",
-      "Meshlet",
-      "GPU Culling",
-      "Primitive Culling",
-      "D3D12"
+      "DirectX",
+      "Shader",
+      "Mesh",
+      "Culling",
+      "Optimization"
     ]
   },
   {
@@ -527,6 +536,7 @@
     "canonicalUrl": "https://www.project-asura.com/articles/d3d12/d3d12_028.html",
     "publisher": "Project Asura",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "Meshlet / Vertex Compression / Normal Encoding"
     ],
@@ -535,12 +545,10 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "Meshlet",
-      "Octahedral",
-      "Diamond Encoding",
-      "Quantization",
-      "GraphicsBuffer",
-      "Switch"
+      "Mesh",
+      "Shader",
+      "Memory",
+      "Optimization"
     ]
   },
   {
@@ -550,6 +558,7 @@
     "canonicalUrl": "https://www.project-asura.com/articles/d3d12/d3d12_029.html",
     "publisher": "Project Asura",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "Meshlet / LOD / Graph Partitioning / METIS"
     ],
@@ -558,12 +567,9 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "Meshlet",
+      "Mesh",
       "LOD",
-      "METIS",
-      "Graph Partitioning",
-      "Simplification",
-      "Mesh Tool"
+      "Optimization"
     ]
   },
   {
@@ -573,6 +579,7 @@
     "canonicalUrl": "https://alextardif.com/TAA.html",
     "publisher": "Alex Tardif",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "TAA / Motion Vector / Reprojection / Variance Clipping / Jitter"
     ],
@@ -581,13 +588,10 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "TAA",
-      "MotionVector",
-      "VarianceClipping",
-      "CatmullRom",
-      "Halton",
-      "Jitter",
-      "Ghosting"
+      "Rendering",
+      "Shader",
+      "Anti-Aliasing",
+      "TAA"
     ]
   },
   {
@@ -597,6 +601,7 @@
     "canonicalUrl": "https://advances.realtimerendering.com/s2012/Ubisoft/Rock-Solid%20Shading.pdf",
     "publisher": "Ubisoft / Advances in Real-Time Rendering",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "Specular Aliasing / Shading Stability / Normal Filtering"
     ],
@@ -605,11 +610,11 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "RockSolidShading",
-      "SpecularAA",
-      "NormalFiltering",
-      "Shimmering",
-      "Ubisoft"
+      "Rendering",
+      "Shader",
+      "Anti-Aliasing",
+      "Texture",
+      "Lighting"
     ]
   },
   {
@@ -619,6 +624,7 @@
     "canonicalUrl": "https://www.jp.square-enix.com/tech/library/pdf/ImprovedGeometricSpecularAA.pdf",
     "publisher": "SQUARE ENIX Technical Library",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "Geometric Specular AA / GGX / Roughness Filtering"
     ],
@@ -627,12 +633,9 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "SpecularAA",
-      "GGX",
-      "Roughness",
-      "NormalVariance",
-      "SquareEnix",
-      "Shimmering"
+      "Rendering",
+      "Shader",
+      "Anti-Aliasing"
     ]
   },
   {
@@ -642,6 +645,7 @@
     "canonicalUrl": "https://advances.realtimerendering.com/s2015/mmalex_siggraph2015_hires_final.pdf",
     "publisher": "Ready At Dawn / Advances in Real-Time Rendering",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "High Quality Filtering / Reconstruction / Temporal Stability"
     ],
@@ -650,12 +654,10 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "TheOrder1886",
-      "Filtering",
-      "Reconstruction",
-      "TAA",
-      "CatmullRom",
-      "Mitchell"
+      "Rendering",
+      "Anti-Aliasing",
+      "PostProcessing",
+      "Lighting"
     ]
   },
   {
@@ -665,6 +667,7 @@
     "canonicalUrl": "https://www.elopezr.com/temporal-aa-and-the-quest-for-the-holy-trail/",
     "publisher": "The Code Corsair",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "TAA / Reprojection / Ghosting / Disocclusion / Visualization"
     ],
@@ -673,12 +676,10 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "TAA",
-      "Ghosting",
-      "Disocclusion",
-      "Reprojection",
-      "HistoryReject",
-      "Debug"
+      "Rendering",
+      "Shader",
+      "Anti-Aliasing",
+      "TAA"
     ]
   },
   {
@@ -688,6 +689,7 @@
     "canonicalUrl": "https://gpuopen.com/fidelityfx-cas/",
     "publisher": "AMD GPUOpen",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "CAS / Sharpening / Upsampling / Post Process"
     ],
@@ -696,13 +698,10 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "CAS",
-      "FidelityFX",
-      "Sharpening",
-      "TAA",
-      "STP",
-      "Compute",
-      "AMD"
+      "AMD",
+      "PostProcessing",
+      "Upscaling",
+      "TAA"
     ]
   },
   {
@@ -712,6 +711,7 @@
     "canonicalUrl": "https://github.com/GPUOpen-Effects/FidelityFX-CAS",
     "publisher": "AMD GPUOpen-Effects",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "CAS / HLSL / Compute Shader / Integration"
     ],
@@ -720,12 +720,11 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "CAS",
+      "AMD",
       "GitHub",
-      "HLSL",
-      "Compute",
-      "FidelityFX",
-      "Sharpen"
+      "ComputeShader",
+      "PostProcessing",
+      "Upscaling"
     ]
   },
   {
@@ -735,6 +734,7 @@
     "canonicalUrl": "https://github.com/GPUOpen-Effects/FidelityFX-FSR2",
     "publisher": "AMD GPUOpen-Effects",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "FSR2 / Temporal Upscaling / Reactive Mask / Motion Vector / RCAS"
     ],
@@ -743,13 +743,11 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "FSR2",
-      "TemporalUpscaling",
-      "ReactiveMask",
-      "MotionVector",
-      "RCAS",
-      "Disocclusion",
-      "AMD"
+      "AMD",
+      "GitHub",
+      "Upscaling",
+      "Anti-Aliasing",
+      "ComputeShader"
     ]
   },
   {
@@ -759,6 +757,7 @@
     "canonicalUrl": "https://qiita.com/ageprocpp/items/0d63d4ed80de4a35fe79",
     "publisher": "Qiita",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "FFT / DFT / 複素数 / 分割統治 / 多項式乗算"
     ],
@@ -767,14 +766,8 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "FFT",
-      "DFT",
-      "IFFT",
-      "Complex",
-      "CooleyTukey",
-      "Polynomial",
-      "Ocean",
-      "Convolution"
+      "Optimization",
+      "Performance"
     ]
   },
   {
@@ -784,6 +777,7 @@
     "canonicalUrl": "https://qiita.com/Red_Black_GPGPU/items/5cb479f8a30f2065d543",
     "publisher": "Qiita",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "Unity / URP / FFT / ComputeShader / Gaussian Blur / Convolution Bloom"
     ],
@@ -794,13 +788,9 @@
     "tags": [
       "Unity",
       "URP",
-      "FFT",
       "ComputeShader",
-      "GaussianBlur",
-      "ConvolutionBloom",
-      "LensFlare",
-      "HDR",
-      "RenderGraph"
+      "PostProcessing",
+      "Optimization"
     ]
   },
   {
@@ -810,6 +800,7 @@
     "canonicalUrl": "https://qiita.com/Red_Black_GPGPU/items/2652f5bfd6d311d2034b",
     "publisher": "Qiita",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "FFT Ocean / Tessendorf / ComputeShader / Wave Spectrum / Displacement / Normal"
     ],
@@ -818,15 +809,10 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "FFT Ocean",
-      "Tessendorf",
-      "Ocean",
+      "Unity",
       "ComputeShader",
-      "WaveSpectrum",
-      "Displacement",
-      "Normal",
-      "Foam",
-      "GeometryClipmaps"
+      "Shader",
+      "Rendering"
     ]
   },
   {
@@ -836,6 +822,7 @@
     "canonicalUrl": "https://engineering.cocone.io/2025/10/16/unity-urp-multipass-simple-implementation-vol1/",
     "publisher": "Cocone Engineering",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "Unity 6 / URP 17 / RenderGraph / Multipass / Stencil"
     ],
@@ -844,14 +831,11 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "Unity6",
-      "URP17",
+      "Unity",
+      "URP",
       "RenderGraph",
-      "RenderFeature",
-      "Multipass",
-      "Stencil",
-      "ShaderTagId",
-      "RendererList"
+      "Rendering",
+      "Shader"
     ]
   },
   {
@@ -861,6 +845,7 @@
     "canonicalUrl": "https://engineering.cocone.io/2025/10/16/unity-urp-multipass-simple-implementation-vol2/",
     "publisher": "Cocone Engineering",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "RenderGraph / RendererList / ShaderTagId / RenderStateBlock"
     ],
@@ -869,12 +854,11 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
+      "Unity",
+      "URP",
       "RenderGraph",
-      "RendererList",
-      "ShaderTagId",
-      "RenderStateBlock",
-      "PassData",
-      "URP17"
+      "Rendering",
+      "Shader"
     ]
   },
   {
@@ -884,6 +868,7 @@
     "canonicalUrl": "https://engineering.cocone.io/2025/11/27/unity-urp-multipass-simple-implementation-vol3/",
     "publisher": "Cocone Engineering",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "Transparent / Depth Prepass / Frontmost Surface / Multipass / RenderGraph"
     ],
@@ -892,13 +877,11 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "Transparent",
-      "DepthPrepass",
-      "Frontmost",
-      "Multipass",
+      "Unity",
+      "URP",
       "RenderGraph",
-      "Overdraw",
-      "InternalMesh"
+      "Rendering",
+      "Transparency"
     ]
   },
   {
@@ -908,6 +891,7 @@
     "canonicalUrl": "https://logicalbeat.co.jp/blog/15417/",
     "publisher": "株式会社ロジカルビート",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "ECS Graphics / DOTS Instancing"
     ],
@@ -916,11 +900,11 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "ECSGraphics",
-      "DOTSInstancing",
-      "RenderMeshArray",
-      "MaterialMeshInfo",
-      "SRPBatcher"
+      "Unity",
+      "ECS",
+      "URP",
+      "Rendering",
+      "Optimization"
     ]
   },
   {
@@ -930,6 +914,7 @@
     "canonicalUrl": "https://zenn.dev/ruccho/articles/unity-ecs-data-optimization",
     "publisher": "Zenn",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "ECS Data-Oriented Design"
     ],
@@ -938,12 +923,11 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
+      "Unity",
       "ECS",
-      "Archetype",
-      "Chunk",
-      "Cache",
-      "IJobEntity",
-      "IEnableableComponent"
+      "Memory",
+      "Optimization",
+      "Performance"
     ]
   },
   {
@@ -953,6 +937,7 @@
     "canonicalUrl": "https://zenn.dev/wuyukwi/articles/8577fbf1074840",
     "publisher": "Zenn",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "Pure DOTS / Entities Graphics"
     ],
@@ -961,11 +946,10 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "PureDOTS",
-      "EntitiesGraphics",
-      "ISystem",
-      "IJobEntity",
-      "BatchRendererGroup",
+      "Unity",
+      "ECS",
+      "Rendering",
+      "Optimization",
       "Culling"
     ]
   },
@@ -976,6 +960,7 @@
     "canonicalUrl": "https://automaton-media.com/articles/newsjp/endfield-20251112-365651/",
     "publisher": "AUTOMATON",
     "kind": "website",
+    "category": "Idea",
     "topics": [
       "Custom Unity Engine / ECS / Rendering Optimization"
     ],
@@ -984,13 +969,11 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "Endfield",
-      "Unity改造",
+      "Unity",
       "ECS",
       "Rendering",
-      "DynamicShadow",
-      "Factory",
-      "HighPolygon"
+      "Optimization",
+      "Lighting"
     ]
   },
   {
@@ -1000,6 +983,7 @@
     "canonicalUrl": "https://automaton-media.com/articles/newsjp/20260723-456355/",
     "publisher": "AUTOMATON",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "Custom ECS / C++ Rendering Pipeline / RenderGraph-like Resource Scheduling"
     ],
@@ -1008,14 +992,11 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "Endfield",
-      "CustomECS",
-      "SoA",
-      "C++Renderer",
-      "RenderGraph",
-      "ResourceAliasing",
-      "Culling",
-      "Batching"
+      "Unity",
+      "ECS",
+      "C++",
+      "Rendering",
+      "Optimization"
     ]
   },
   {
@@ -1025,6 +1006,7 @@
     "canonicalUrl": "https://www.chiba-u.ac.jp/news/research-collab/cg.html",
     "publisher": "千葉大学",
     "kind": "website",
+    "category": "Idea",
     "topics": [
       "Computer Graphics / Research"
     ],
@@ -1033,9 +1015,9 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "千葉大学",
-      "CG",
-      "研究"
+      "Rendering",
+      "Lighting",
+      "Optimization"
     ]
   },
   {
@@ -1045,6 +1027,7 @@
     "canonicalUrl": "https://www.4rknova.com/blog/2026/07/19/a-field-guide-to-rendering",
     "publisher": "4rknova",
     "kind": "website",
+    "category": "Idea",
     "topics": [
       "Rendering Fundamentals / Graphics Pipeline"
     ],
@@ -1054,9 +1037,10 @@
     "freshness": "Unknown",
     "tags": [
       "Rendering",
-      "GraphicsPipeline",
-      "WebGL",
-      "Shader"
+      "Voxel",
+      "Mesh",
+      "RayTracing",
+      "MachineLearning"
     ]
   },
   {
@@ -1066,6 +1050,7 @@
     "canonicalUrl": "https://www.slideshare.net/slideshow/unity-196887851/196887851",
     "publisher": "SlideShare",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "Unity Lighting / GI / Probe / Color Space"
     ],
@@ -1076,12 +1061,6 @@
     "tags": [
       "Unity",
       "Lighting",
-      "GI",
-      "Lightmap",
-      "LightProbe",
-      "ReflectionProbe",
-      "ColorSpace",
-      "LWRP",
       "HDRP"
     ]
   },
@@ -1092,6 +1071,7 @@
     "canonicalUrl": "https://www.reddit.com/r/VoxelGameDev/comments/831wuj/voxel_smoothing_using_surfacenets_in_unity/?tl=ja",
     "publisher": "Reddit r/VoxelGameDev",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "Voxel Meshing / Surface Nets / Unity"
     ],
@@ -1100,12 +1080,9 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "SurfaceNets",
-      "Voxel",
       "Unity",
-      "C#",
-      "MeshSmoothing",
-      "Reddit"
+      "Voxel",
+      "Mesh"
     ]
   },
   {
@@ -1115,6 +1092,7 @@
     "canonicalUrl": "https://qiita.com/GossiperLoturot/items/671ae90dfa0dc8ebacfa",
     "publisher": "Qiita",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "Voxel Meshing / Naive Surface Nets / Unity"
     ],
@@ -1123,12 +1101,10 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "NaiveSurfaceNets",
       "Unity",
       "C#",
-      "NativeArray",
-      "MarchingCubes",
-      "VoxelMesh"
+      "Voxel",
+      "Mesh"
     ]
   },
   {
@@ -1138,6 +1114,7 @@
     "canonicalUrl": "https://medium.com/@ryandremer/implementing-surface-nets-in-godot-f48ecd5f29ff",
     "publisher": "Medium",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "Voxel Meshing / Surface Nets / Godot"
     ],
@@ -1146,12 +1123,9 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "SurfaceNets",
       "Godot",
-      "GDScript",
-      "SignedField",
-      "QuadMesh",
-      "DestructibleTerrain"
+      "Voxel",
+      "Mesh"
     ]
   },
   {
@@ -1161,6 +1135,7 @@
     "canonicalUrl": "https://dexyfex.com/2016/07/14/voxels-and-seamless-lod-transitions/",
     "publisher": "dexyfex.com",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "Voxel LOD / Seamless Chunk Transitions"
     ],
@@ -1169,12 +1144,11 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "VoxelLOD",
-      "SeamlessLOD",
-      "Octree",
-      "Geomorphing",
-      "Chunk",
-      "ComputeShader"
+      "Voxel",
+      "Mesh",
+      "LOD",
+      "ComputeShader",
+      "Culling"
     ]
   },
   {
@@ -1184,6 +1158,7 @@
     "canonicalUrl": "https://0fps.net/2012/07/12/smooth-voxel-terrain-part-2/",
     "publisher": "0 FPS",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "Isosurface Extraction / Surface Nets / Dual Methods"
     ],
@@ -1192,12 +1167,8 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "SurfaceNets",
-      "NaiveSurfaceNets",
-      "MarchingCubes",
-      "DualContouring",
-      "Isosurface",
-      "NonManifold"
+      "Voxel",
+      "Mesh"
     ]
   },
   {
@@ -1207,6 +1178,7 @@
     "canonicalUrl": "https://www.boristhebrave.com/2018/04/15/dual-contouring-tutorial/",
     "publisher": "BorisTheBrave.Com",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "Isosurface Extraction / Dual Contouring"
     ],
@@ -1215,12 +1187,8 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "DualContouring",
-      "HermiteData",
-      "QEF",
-      "SharpFeatures",
-      "Octree",
-      "NonManifold"
+      "Voxel",
+      "Mesh"
     ]
   },
   {
@@ -1230,6 +1198,7 @@
     "canonicalUrl": "https://www.reddit.com/r/VoxelGameDev/comments/pklhuo/i_wish_i_found_surface_nets_sooner/?tl=ja",
     "publisher": "Reddit r/VoxelGameDev",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "Voxel Meshing / Surface Nets / Community"
     ],
@@ -1238,11 +1207,9 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "SurfaceNets",
-      "VoxelGameDev",
-      "ProceduralTerrain",
-      "MeshGeneration",
-      "Reddit"
+      "Voxel",
+      "Mesh",
+      "Performance"
     ]
   },
   {
@@ -1252,6 +1219,7 @@
     "canonicalUrl": "https://cerbion.net/blog/understanding-surface-nets/",
     "publisher": "Cerbion.NET",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "Voxel Meshing / Surface Nets / Unity"
     ],
@@ -1260,12 +1228,10 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "SurfaceNets",
       "Unity",
       "C#",
-      "VoxelTerrain",
-      "MeshSmoothing",
-      "Shrinkage"
+      "Voxel",
+      "Mesh"
     ]
   },
   {
@@ -1275,6 +1241,7 @@
     "canonicalUrl": "https://www.unrealengine.com/tech-blog/optimizing-battle-breakers-for-chunked-downloading?lang=ja",
     "publisher": "Epic Games / Unreal Engine",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "Asset Chunking / On-Demand Download / Dependency Audit"
     ],
@@ -1283,12 +1250,11 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "ChunkedDownload",
-      "AssetManager",
-      "PrimaryAssetLabel",
-      "AssetAudit",
-      "OnDemandDownload",
-      "BattleBreakers"
+      "UnrealEngine",
+      "AssetManagement",
+      "Load",
+      "Build",
+      "Optimization"
     ]
   },
   {
@@ -1298,6 +1264,7 @@
     "canonicalUrl": "https://speakerdeck.com/mixi_engineers/2026_new_grad_training_git",
     "publisher": "MIXI Engineers",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "Git / Version Control / Internal Model / Team Workflow"
     ],
@@ -1306,13 +1273,7 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
-      "Git",
-      "VersionControl",
-      "GitInternals",
-      "Branching",
-      "Reset",
-      "TeamWorkflow",
-      "CI/CD"
+      "Git"
     ]
   },
   {
@@ -1322,6 +1283,7 @@
     "canonicalUrl": "https://speakerdeck.com/mixi_engineers/2026_new_grad_training_security",
     "publisher": "MIXI Engineers",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "Information Security / OWASP / Access Control / AI Security"
     ],
@@ -1329,16 +1291,7 @@
     "useState": "Reference",
     "confidence": "Unverified",
     "freshness": "Unknown",
-    "tags": [
-      "InformationSecurity",
-      "CIA",
-      "OWASP",
-      "AccessControl",
-      "ZeroTrust",
-      "SecureDevelopment",
-      "AIDataLeak",
-      "Secrets"
-    ]
+    "tags": []
   },
   {
     "id": "RES-20260730-012",
@@ -1347,6 +1300,7 @@
     "canonicalUrl": "https://speakerdeck.com/mixi_engineers/2026_new_grad_training_ai_day1",
     "publisher": "MIXI Engineers",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "ML Fundamentals / Model Lifecycle / MLOps"
     ],
@@ -1355,14 +1309,9 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
+      "AI",
       "MachineLearning",
-      "Inference",
-      "Training",
-      "Evaluation",
-      "MLOps",
-      "ModelOptimization",
-      "Deployment",
-      "Monitoring"
+      "Optimization"
     ]
   },
   {
@@ -1372,6 +1321,7 @@
     "canonicalUrl": "https://speakerdeck.com/mixi_engineers/2026_new_grad_training_ai_day2",
     "publisher": "MIXI Engineers",
     "kind": "website",
+    "category": "Tech",
     "topics": [
       "LLM / RAG / Tool Use / AI Agent / Evaluation"
     ],
@@ -1380,17 +1330,10 @@
     "confidence": "Unverified",
     "freshness": "Unknown",
     "tags": [
+      "AI",
       "LLM",
-      "Transformer",
-      "Attention",
-      "Tokenization",
       "RAG",
-      "FunctionCalling",
-      "StructuredOutput",
-      "AIAgent",
-      "ReAct",
-      "HumanInTheLoop",
-      "LLMEvaluation"
+      "AIAgent"
     ]
   },
   {
@@ -1400,6 +1343,7 @@
     "canonicalUrl": "https://speakerdeck.com/mixi_engineers/2026_new_grad_training_problem-framing-hypothesis-building",
     "publisher": "MIXI Engineers",
     "kind": "website",
+    "category": "Idea",
     "topics": [
       "Problem Framing / Hypothesis Building / Decision Making"
     ],
@@ -1407,15 +1351,6 @@
     "useState": "Reference",
     "confidence": "Unverified",
     "freshness": "Unknown",
-    "tags": [
-      "ProblemFraming",
-      "HypothesisBuilding",
-      "MECE",
-      "KPITree",
-      "DataAnalysis",
-      "DecisionMaking",
-      "GenerativeAI",
-      "Validation"
-    ]
+    "tags": []
   }
 ]

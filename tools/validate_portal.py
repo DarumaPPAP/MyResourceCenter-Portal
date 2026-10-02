@@ -31,7 +31,7 @@ BASE_ORIGINAL_SHARDS = (
 )
 RESOURCE_FIELD_ORDER = (
     "id", "title", "url", "canonicalUrl", "kind", "topic", "topics",
-    "reviewState", "useState", "tags",
+    "reviewState", "useState", "category", "tags",
 )
 
 REQUIRED_PAGES = {
@@ -51,13 +51,13 @@ FORBIDDEN_KEYS = {
     "driveid", "privatetitleprovenance", "canonicalroot", "sources", "sourcefolder", "foldermetadata", "folderid", "folderids", "knowledgelibrary", "assetsroot", "logsroot", "restrictedroot",
 }
 FORBIDDEN_DRIVE_FOLDER_FRAGMENT = "drive.google.com/drive/folders/"
-RESOURCE_FIELDS = {"id", "title", "url", "canonicalUrl", "kind", "topic", "topics", "reviewState", "useState", "tags"}
-WEBSITE_FIELDS = {"id", "title", "url", "canonicalUrl", "publisher", "authors", "publishedAt", "kind", "contentType", "domains", "topics", "engines", "languages", "summary", "reviewState", "useState", "confidence", "freshness", "tags"}
-DOCUMENT_FIELDS = {"id", "title", "sourceFormat", "level", "engine", "tags"}
+RESOURCE_FIELDS = {"id", "title", "url", "canonicalUrl", "kind", "topic", "topics", "reviewState", "useState", "category", "tags"}
+WEBSITE_FIELDS = {"id", "title", "url", "canonicalUrl", "publisher", "authors", "publishedAt", "kind", "contentType", "category", "domains", "topics", "engines", "languages", "summary", "reviewState", "useState", "confidence", "freshness", "tags"}
+DOCUMENT_FIELDS = {"id", "title", "sourceFormat", "level", "engine", "tags", "domains"}
 RELATION_FIELDS = {"from", "to", "relation"}
 COLLECTION_FIELDS = {"id", "title", "description", "topics", "resources", "category"}
 COLLECTION_MEMBER_FIELDS = {"id", "role"}
-TAXONOMY_FIELDS = {"schemaVersion", "domains", "tags", "engines"}
+TAXONOMY_FIELDS = {"schemaVersion", "categories", "domains", "tags", "engines"}
 RELATION_TYPES = {"related", "extends", "contrasts", "alternative", "implements", "derivedFrom", "supersedes", "validates"}
 COLLECTION_ROLES = {"foundation", "overview", "implementation", "production-case", "optimization", "failure-case", "research", "advanced"}
 SHA_RE = re.compile(r"^[0-9a-f]{40}$")
@@ -365,7 +365,7 @@ def validate_originals(errors: list[str]):
     return total
 
 
-PRESENTATION_FIELDS = {"resourceId", "documentId", "title", "sourceFormat", "thumbnail", "engine", "level", "tags", "canonicalUrl"}
+PRESENTATION_FIELDS = {"resourceId", "documentId", "title", "sourceFormat", "thumbnail", "engine", "level", "tags", "domains", "canonicalUrl"}
 SOURCE_FORMATS = {"PDF", "PPTX", "GOOGLE_DOC", "GOOGLE_SLIDES", "UNKNOWN"}
 
 
@@ -438,6 +438,9 @@ def validate_presentation(errors: list[str], rows: list[dict], resources: list[d
         tags = row.get("tags")
         if not isinstance(tags, list) or any(not isinstance(tag, str) or not tag.strip() for tag in tags):
             errors.append(f"{label}: tags must be public text labels")
+        domains = row.get("domains")
+        if not isinstance(domains, list) or any(not isinstance(domain, str) or not domain.strip() for domain in domains):
+            errors.append(f"{label}: compatibility domains must be public text labels")
         source_format = row.get("sourceFormat")
         if source_format not in SOURCE_FORMATS:
             errors.append(f"{label}: invalid sourceFormat")
@@ -501,8 +504,8 @@ def main() -> None:
     collections = load("collections.json")
     original_total = validate_originals(errors)
 
-    if manifest.get("schemaVersion") != "1.3.0":
-        errors.append("manifest schemaVersion must be 1.3.0")
+    if manifest.get("schemaVersion") != "1.4.0":
+        errors.append("manifest schemaVersion must be 1.4.0")
     if not SHA_RE.fullmatch(str(manifest.get("sourceCommit", ""))):
         errors.append("manifest sourceCommit must be a 40-character SHA")
 
@@ -511,7 +514,7 @@ def main() -> None:
         "websites": len(websites),
         "documents": original_total,
         "document-presentation": len(presentation),
-        "taxonomy": sum(len(taxonomy.get(k, {})) for k in ("domains", "tags", "engines")),
+        "taxonomy": sum(len(taxonomy.get(k, {})) for k in ("categories", "domains", "tags", "engines")),
         "relations": len(relations),
         "collections": len(collections),
         "website-facets": sum(len(website_facets.get(k, [])) for k in ("sites", "authors")) if isinstance(website_facets, dict) else -1,
@@ -553,11 +556,33 @@ def main() -> None:
         validate_fields(errors, f"websites[{index}]", row, WEBSITE_FIELDS)
         validate_public_url(errors, f"websites[{index}].url", row.get("url"))
         validate_public_url(errors, f"websites[{index}].canonicalUrl", row.get("canonicalUrl"))
+        if not isinstance(row.get("category"), str) or row.get("category") not in {"Tech", "Idea"}:
+            errors.append(f"websites[{index}].category must be Tech or Idea")
+        tags = row.get("tags")
+        if not isinstance(tags, list) or any(not isinstance(tag, str) or tag not in taxonomy.get("tags", {}) for tag in (tags or [])):
+            errors.append(f"websites[{index}].tags must contain only public canonical tags")
+        elif len(tags) != len(set(tags)):
+            errors.append(f"websites[{index}].tags must not contain duplicates")
+        resource = next((candidate for candidate in resources if candidate.get("id") == row.get("id")), None)
+        if not resource or resource.get("category") != row.get("category") or resource.get("tags") != tags:
+            errors.append(f"{row.get('id')}: Website/Resource Category or Tag mismatch")
     validate_website_facets(errors, website_facets, websites)
     validate_site_icons(errors, ROOT, websites)
     for index, row in enumerate(knowledge_documents):
         validate_fields(errors, f"documents[{index}]", row, DOCUMENT_FIELDS)
     validate_fields(errors, "taxonomy", taxonomy, TAXONOMY_FIELDS)
+    categories = taxonomy.get("categories", {}) if isinstance(taxonomy, dict) else {}
+    tags = taxonomy.get("tags", {}) if isinstance(taxonomy, dict) else {}
+    if not isinstance(categories, dict) or set(categories) != {"Tech", "Idea"}:
+        errors.append("public taxonomy categories must be exactly Tech and Idea")
+    elif any(not isinstance(entry, dict) or entry != {"displayName": key} for key, entry in categories.items()):
+        errors.append("public taxonomy categories must contain only their displayName")
+    if taxonomy.get("schemaVersion") != "2.0.0":
+        errors.append("public taxonomy schemaVersion must be 2.0.0")
+    if not isinstance(tags, dict) or len(tags) != 50:
+        errors.append("public taxonomy must contain exactly 50 canonical tags")
+    elif any(not isinstance(entry, dict) or "domain" in entry or set(entry) != {"displayName", "aliases"} or entry.get("displayName") != key or entry.get("aliases") != [] for key, entry in tags.items()):
+        errors.append("public taxonomy tags must be flat v2 entries without parent domains")
 
     for index, edge in enumerate(relations):
         validate_fields(errors, f"relations[{index}]", edge, RELATION_FIELDS)
@@ -623,13 +648,21 @@ def main() -> None:
     else:
         website_js = website_js_path.read_text(encoding="utf-8")
         website_css = website_css_path.read_text(encoding="utf-8")
-        for control in ('id="tag"', 'id="site"', 'id="author"', 'id="sort"'):
+        for control in ('id="category"', 'id="tag"', 'id="site"', 'id="author"', 'id="sort"'):
             if control not in website_html:
                 errors.append(f"Websites page is missing {control}")
         if "assets/websites.js" not in website_html or "assets/websites.css" not in website_html:
             errors.append("Websites page must load local Website presentation assets")
-        if "C.loadMany('websites', 'website-facets')" not in website_html:
-            errors.append("Websites page must consume the public Website facet projection")
+        if "C.loadMany('websites', 'website-facets', 'taxonomy')" not in website_html:
+            errors.append("Websites page must consume public Websites, facets and taxonomy")
+        if "category: controls.category.value" not in website_html or "row.category === filters.category" not in website_js:
+            errors.append("Websites page must apply the dedicated Category filter")
+        if "taxonomy.tags" not in website_html or "taxonomy.categories" not in website_html:
+            errors.append("Website Category and Tag filters must use the public taxonomy")
+        if "website-category" not in website_js or "website.category" not in (ROOT / "website.html").read_text(encoding="utf-8"):
+            errors.append("Website cards and details must identify Category")
+        if "category" not in (ROOT / "assets/catalog.js").read_text(encoding="utf-8"):
+            errors.append("Website Resource projections must preserve Category")
         for contract in ("filterWebsites", "sortWebsites", "siteIconPath", "bindSiteIconFallback"):
             if contract not in website_js:
                 errors.append(f"Websites page is missing {contract} behavior")
@@ -637,6 +670,10 @@ def main() -> None:
             errors.append("Websites page must use local square Site Icons")
         if re.search(r'<img[^>]+src=["\']https?://', website_html, re.IGNORECASE):
             errors.append("Websites page must not hotlink remote Site Icons")
+
+    taxonomy_html = (ROOT / "taxonomy.html").read_text(encoding="utf-8")
+    if 'id="tags"' not in taxonomy_html or "entry.domain" in taxonomy_html:
+        errors.append("Taxonomy page must display flat Tags without parent Domain grouping")
 
     if (CATALOG / "websites-data.json").exists():
         errors.append("legacy catalog/websites-data.json must be removed")

@@ -66,6 +66,7 @@ window.addEventListener('DOMContentLoaded', async () => {
           <section class="detail-section"><h2>Source metadata</h2><p class="description">発行元とResource状態。</p>
             <dl class="detail-grid">
               <div class="detail-field"><dt>Publisher</dt><dd>${C.escapeHtml(website.publisher || '—')}</dd></div>
+              <div class="detail-field"><dt>Category</dt><dd>${C.escapeHtml(['Tech','Idea'].includes(website.category) ? website.category : '—')}</dd></div>
               <div class="detail-field"><dt>Review State</dt><dd>${C.escapeHtml(website.reviewState || '—')}</dd></div>
               <div class="detail-field"><dt>Use State</dt><dd>${C.escapeHtml(website.useState || '—')}</dd></div>
               <div class="detail-field"><dt>Confidence</dt><dd>${C.escapeHtml(website.confidence || '—')}</dd></div>

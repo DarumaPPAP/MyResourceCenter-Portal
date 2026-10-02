@@ -7,7 +7,7 @@
     'websites-latest-04'
   ];
   const resourcePublicFields = [
-    'id', 'title', 'url', 'canonicalUrl', 'kind', 'topic', 'topics', 'reviewState', 'useState', 'tags'
+    'id', 'title', 'url', 'canonicalUrl', 'kind', 'topic', 'topics', 'reviewState', 'useState', 'category', 'tags'
   ];
 
   function escapeHtml(value) {
@@ -214,7 +214,7 @@
     return rows.map(doc => {
       const resource = resourcesById.get(doc.resourceId) || {};
       const topics = resource.topics || (resource.topic ? [resource.topic] : []);
-      const categories = [...new Set((doc.tags || []).map(tag => taxonomy.tags?.[tag]?.domain).filter(Boolean))];
+      const categories = [...new Set(Array.isArray(doc.domains) ? doc.domains : (doc.tags || []).map(tag => taxonomy.tags?.[tag]?.domain).filter(Boolean))];
       return {...doc, topics, categories};
     });
   }

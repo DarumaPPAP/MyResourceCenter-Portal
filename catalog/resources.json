@@ -10,14 +10,13 @@
     ],
     "reviewState": "Reviewed",
     "useState": "Reference",
+    "category": "Tech",
     "tags": [
-      "STP",
-      "RenderGraph",
+      "Unity",
       "URP",
-      "UI",
-      "Depth",
-      "MotionVector",
-      "CameraStack"
+      "STP",
+      "Upscaling",
+      "RenderGraph"
     ]
   },
   {
@@ -31,13 +30,13 @@
     ],
     "reviewState": "Triaged",
     "useState": "ToTry",
+    "category": "Tech",
     "tags": [
-      "学マス",
-      "ライティング",
-      "反射",
-      "モバイル",
-      "ライブ",
-      "URP"
+      "Unity",
+      "Mobile",
+      "URP",
+      "Lighting",
+      "Optimization"
     ]
   },
   {
@@ -51,11 +50,13 @@
     ],
     "reviewState": "Triaged",
     "useState": "ToTry",
+    "category": "Idea",
     "tags": [
-      "学マス",
-      "3D",
-      "キャラクター",
-      "考察"
+      "Unity",
+      "Mobile",
+      "Rendering",
+      "PostProcessing",
+      "Anti-Aliasing"
     ]
   },
   {
@@ -69,11 +70,10 @@
     ],
     "reviewState": "Triaged",
     "useState": "ToTry",
+    "category": "Tech",
     "tags": [
-      "学マス",
-      "ライティング",
-      "キャラクター",
-      "リムライト"
+      "Unity",
+      "Lighting"
     ]
   },
   {
@@ -87,14 +87,13 @@
     ],
     "reviewState": "Triaged",
     "useState": "ToTry",
+    "category": "Tech",
     "tags": [
-      "学マス",
-      "モデリング",
-      "Def",
-      "ランプ",
-      "GraphicsBuffer",
-      "頂点カラー",
-      "デカール"
+      "Unity",
+      "Shader",
+      "Texture",
+      "Lighting",
+      "Animation"
     ]
   },
   {
@@ -108,12 +107,13 @@
     ],
     "reviewState": "Triaged",
     "useState": "ToTry",
+    "category": "Tech",
     "tags": [
+      "Unity",
       "ECS",
-      "スキニング",
+      "Mesh",
       "Animation",
-      "群衆",
-      "CPU最適化"
+      "C#"
     ]
   },
   {
@@ -127,11 +127,11 @@
     ],
     "reviewState": "Triaged",
     "useState": "ToTry",
+    "category": "Idea",
     "tags": [
-      "IDOLY PRIDE",
-      "初音ミク",
-      "コラボ",
-      "キャラクター表現"
+      "Mobile",
+      "Animation",
+      "Camera"
     ]
   },
   {
@@ -145,12 +145,12 @@
     ],
     "reviewState": "Triaged",
     "useState": "ToTry",
+    "category": "Tech",
     "tags": [
-      "360ライブ",
-      "カメラ",
-      "ライブ",
-      "LOD",
-      "背景"
+      "Mobile",
+      "Camera",
+      "Animation",
+      "Physics"
     ]
   },
   {
@@ -164,12 +164,12 @@
     ],
     "reviewState": "Triaged",
     "useState": "ToTry",
+    "category": "Tech",
     "tags": [
-      "Timeline",
-      "VolumeProfile",
-      "SubAsset",
-      "EditorTool",
-      "PostEffect"
+      "Unity",
+      "Editor",
+      "PostProcessing",
+      "C#"
     ]
   },
   {
@@ -183,9 +183,12 @@
     ],
     "reviewState": "Inbox",
     "useState": "Reference",
+    "category": "Idea",
     "tags": [
-      "QualiArts",
-      "未調査"
+      "Unity",
+      "Mesh",
+      "Animation",
+      "Camera"
     ]
   },
   {
@@ -199,9 +202,13 @@
     ],
     "reviewState": "Inbox",
     "useState": "Reference",
+    "category": "Tech",
     "tags": [
-      "QualiArts",
-      "未調査"
+      "Unity",
+      "Animation",
+      "Physics",
+      "C#",
+      "Optimization"
     ]
   },
   {
@@ -215,9 +222,13 @@
     ],
     "reviewState": "Inbox",
     "useState": "Reference",
+    "category": "Tech",
     "tags": [
-      "QualiArts",
-      "未調査"
+      "Unity",
+      "URP",
+      "Rendering",
+      "Mesh",
+      "C#"
     ]
   },
   {
@@ -231,12 +242,11 @@
     ],
     "reviewState": "Triaged",
     "useState": "ToTry",
+    "category": "Tech",
     "tags": [
-      "Cinemachine",
-      "OrbitalCamera",
-      "PhysicalCamera",
-      "焦点距離",
-      "着替え"
+      "Unity",
+      "Camera",
+      "C#"
     ]
   },
   {
@@ -250,9 +260,12 @@
     ],
     "reviewState": "Inbox",
     "useState": "Reference",
+    "category": "Idea",
     "tags": [
-      "QualiArts",
-      "未調査"
+      "Unity",
+      "Mobile",
+      "Editor",
+      "AssetManagement"
     ]
   },
   {
@@ -266,13 +279,12 @@
     ],
     "reviewState": "Triaged",
     "useState": "ToTry",
+    "category": "Tech",
     "tags": [
-      "画像比較",
-      "PSNR",
-      "Burst",
-      "Jobs",
-      "回帰テスト",
-      "ライブ"
+      "Unity",
+      "Texture",
+      "Optimization",
+      "C#"
     ]
   },
   {
@@ -286,11 +298,11 @@
     ],
     "reviewState": "Reviewed",
     "useState": "Reference",
+    "category": "Tech",
     "tags": [
-      "最適化",
-      "カリング",
-      "FrustumCulling",
-      "描画"
+      "Rendering",
+      "Culling",
+      "Optimization"
     ]
   },
   {
@@ -304,12 +316,13 @@
     ],
     "reviewState": "Reviewed",
     "useState": "Reference",
+    "category": "Idea",
     "tags": [
-      "最適化",
+      "Rendering",
+      "Optimization",
+      "Culling",
       "LOD",
-      "カリング",
-      "ライトベイク",
-      "フレーム予算"
+      "Lighting"
     ]
   },
   {
@@ -323,12 +336,11 @@
     ],
     "reviewState": "Triaged",
     "useState": "ToTry",
+    "category": "Tech",
     "tags": [
-      "管理ツール",
-      "運用",
-      "IDOLY PRIDE",
-      "Dashboard",
-      "品質管理"
+      "Mobile",
+      "UI",
+      "AssetManagement"
     ]
   },
   {
@@ -342,14 +354,13 @@
     ],
     "reviewState": "Reviewed",
     "useState": "Reference",
+    "category": "Tech",
     "tags": [
-      "RenderGraph",
+      "Unity",
       "URP",
-      "透明",
-      "Overdraw",
-      "Downscale",
-      "Switch",
-      "Blend"
+      "RenderGraph",
+      "Transparency",
+      "Optimization"
     ]
   },
   {
@@ -363,12 +374,12 @@
     ],
     "reviewState": "Triaged",
     "useState": "ToTry",
+    "category": "Tech",
     "tags": [
-      "Occlusion",
-      "Hi-Z",
-      "Depth Pyramid",
-      "AABB",
-      "GPU Culling"
+      "DirectX",
+      "Culling",
+      "ComputeShader",
+      "Optimization"
     ]
   },
   {
@@ -382,12 +393,11 @@
     ],
     "reviewState": "Triaged",
     "useState": "ToTry",
+    "category": "Tech",
     "tags": [
-      "VRS",
-      "Shading Rate",
-      "D3D12",
-      "Particle",
-      "VR",
+      "DirectX",
+      "Shader",
+      "ComputeShader",
       "Optimization"
     ]
   },
@@ -402,12 +412,11 @@
     ],
     "reviewState": "Reviewed",
     "useState": "Reference",
+    "category": "Tech",
     "tags": [
+      "Rendering",
       "Mesh",
-      "Vertex Buffer",
-      "Interleave",
-      "Triangle Strip",
-      "Draw Call"
+      "Optimization"
     ]
   },
   {
@@ -421,12 +430,11 @@
     ],
     "reviewState": "Reviewed",
     "useState": "Reference",
+    "category": "Tech",
     "tags": [
-      "Forward",
-      "Deferred",
-      "DrawCall",
-      "RenderPass",
-      "Rendering Pipeline"
+      "Rendering",
+      "Lighting",
+      "Transparency"
     ]
   },
   {
@@ -440,12 +448,13 @@
     ],
     "reviewState": "Triaged",
     "useState": "ToTry",
+    "category": "Tech",
     "tags": [
-      "Mesh Shader",
-      "Meshlet",
-      "GPU Culling",
-      "Primitive Culling",
-      "D3D12"
+      "DirectX",
+      "Shader",
+      "Mesh",
+      "Culling",
+      "Optimization"
     ]
   },
   {
@@ -459,13 +468,12 @@
     ],
     "reviewState": "Triaged",
     "useState": "ToTry",
+    "category": "Tech",
     "tags": [
-      "Meshlet",
-      "Octahedral",
-      "Diamond Encoding",
-      "Quantization",
-      "GraphicsBuffer",
-      "Switch"
+      "Mesh",
+      "Shader",
+      "Memory",
+      "Optimization"
     ]
   },
   {
@@ -479,13 +487,11 @@
     ],
     "reviewState": "Triaged",
     "useState": "ToTry",
+    "category": "Tech",
     "tags": [
-      "Meshlet",
+      "Mesh",
       "LOD",
-      "METIS",
-      "Graph Partitioning",
-      "Simplification",
-      "Mesh Tool"
+      "Optimization"
     ]
   },
   {
@@ -499,14 +505,12 @@
     ],
     "reviewState": "Reviewed",
     "useState": "Reference",
+    "category": "Tech",
     "tags": [
-      "TAA",
-      "MotionVector",
-      "VarianceClipping",
-      "CatmullRom",
-      "Halton",
-      "Jitter",
-      "Ghosting"
+      "Rendering",
+      "Shader",
+      "Anti-Aliasing",
+      "TAA"
     ]
   },
   {
@@ -520,12 +524,13 @@
     ],
     "reviewState": "Reviewed",
     "useState": "Reference",
+    "category": "Tech",
     "tags": [
-      "RockSolidShading",
-      "SpecularAA",
-      "NormalFiltering",
-      "Shimmering",
-      "Ubisoft"
+      "Rendering",
+      "Shader",
+      "Anti-Aliasing",
+      "Texture",
+      "Lighting"
     ]
   },
   {
@@ -539,13 +544,11 @@
     ],
     "reviewState": "Reviewed",
     "useState": "Reference",
+    "category": "Tech",
     "tags": [
-      "SpecularAA",
-      "GGX",
-      "Roughness",
-      "NormalVariance",
-      "SquareEnix",
-      "Shimmering"
+      "Rendering",
+      "Shader",
+      "Anti-Aliasing"
     ]
   },
   {
@@ -559,13 +562,12 @@
     ],
     "reviewState": "Reviewed",
     "useState": "Reference",
+    "category": "Tech",
     "tags": [
-      "TheOrder1886",
-      "Filtering",
-      "Reconstruction",
-      "TAA",
-      "CatmullRom",
-      "Mitchell"
+      "Rendering",
+      "Anti-Aliasing",
+      "PostProcessing",
+      "Lighting"
     ]
   },
   {
@@ -579,13 +581,12 @@
     ],
     "reviewState": "Reviewed",
     "useState": "Reference",
+    "category": "Tech",
     "tags": [
-      "TAA",
-      "Ghosting",
-      "Disocclusion",
-      "Reprojection",
-      "HistoryReject",
-      "Debug"
+      "Rendering",
+      "Shader",
+      "Anti-Aliasing",
+      "TAA"
     ]
   },
   {
@@ -599,14 +600,12 @@
     ],
     "reviewState": "Reviewed",
     "useState": "Reference",
+    "category": "Tech",
     "tags": [
-      "CAS",
-      "FidelityFX",
-      "Sharpening",
-      "TAA",
-      "STP",
-      "Compute",
-      "AMD"
+      "AMD",
+      "PostProcessing",
+      "Upscaling",
+      "TAA"
     ]
   },
   {
@@ -620,13 +619,13 @@
     ],
     "reviewState": "Reviewed",
     "useState": "Reference",
+    "category": "Tech",
     "tags": [
-      "CAS",
+      "AMD",
       "GitHub",
-      "HLSL",
-      "Compute",
-      "FidelityFX",
-      "Sharpen"
+      "ComputeShader",
+      "PostProcessing",
+      "Upscaling"
     ]
   },
   {
@@ -640,14 +639,13 @@
     ],
     "reviewState": "Reviewed",
     "useState": "Reference",
+    "category": "Tech",
     "tags": [
-      "FSR2",
-      "TemporalUpscaling",
-      "ReactiveMask",
-      "MotionVector",
-      "RCAS",
-      "Disocclusion",
-      "AMD"
+      "AMD",
+      "GitHub",
+      "Upscaling",
+      "Anti-Aliasing",
+      "ComputeShader"
     ]
   },
   {
@@ -693,15 +691,10 @@
     ],
     "reviewState": "Reviewed",
     "useState": "Reference",
+    "category": "Tech",
     "tags": [
-      "FFT",
-      "DFT",
-      "IFFT",
-      "Complex",
-      "CooleyTukey",
-      "Polynomial",
-      "Ocean",
-      "Convolution"
+      "Optimization",
+      "Performance"
     ]
   },
   {
@@ -715,16 +708,13 @@
     ],
     "reviewState": "Triaged",
     "useState": "ToTry",
+    "category": "Tech",
     "tags": [
       "Unity",
       "URP",
-      "FFT",
       "ComputeShader",
-      "GaussianBlur",
-      "ConvolutionBloom",
-      "LensFlare",
-      "HDR",
-      "RenderGraph"
+      "PostProcessing",
+      "Optimization"
     ]
   },
   {
@@ -738,16 +728,12 @@
     ],
     "reviewState": "Triaged",
     "useState": "ToTry",
+    "category": "Tech",
     "tags": [
-      "FFT Ocean",
-      "Tessendorf",
-      "Ocean",
+      "Unity",
       "ComputeShader",
-      "WaveSpectrum",
-      "Displacement",
-      "Normal",
-      "Foam",
-      "GeometryClipmaps"
+      "Shader",
+      "Rendering"
     ]
   },
   {
@@ -761,15 +747,13 @@
     ],
     "reviewState": "Reviewed",
     "useState": "Reference",
+    "category": "Tech",
     "tags": [
-      "Unity6",
-      "URP17",
+      "Unity",
+      "URP",
       "RenderGraph",
-      "RenderFeature",
-      "Multipass",
-      "Stencil",
-      "ShaderTagId",
-      "RendererList"
+      "Rendering",
+      "Shader"
     ]
   },
   {
@@ -783,13 +767,13 @@
     ],
     "reviewState": "Reviewed",
     "useState": "Reference",
+    "category": "Tech",
     "tags": [
+      "Unity",
+      "URP",
       "RenderGraph",
-      "RendererList",
-      "ShaderTagId",
-      "RenderStateBlock",
-      "PassData",
-      "URP17"
+      "Rendering",
+      "Shader"
     ]
   },
   {
@@ -803,14 +787,13 @@
     ],
     "reviewState": "Triaged",
     "useState": "ToTry",
+    "category": "Tech",
     "tags": [
-      "Transparent",
-      "DepthPrepass",
-      "Frontmost",
-      "Multipass",
+      "Unity",
+      "URP",
       "RenderGraph",
-      "Overdraw",
-      "InternalMesh"
+      "Rendering",
+      "Transparency"
     ]
   },
   {
@@ -850,12 +833,13 @@
     ],
     "reviewState": "Reviewed",
     "useState": "Reference",
+    "category": "Tech",
     "tags": [
-      "ECSGraphics",
-      "DOTSInstancing",
-      "RenderMeshArray",
-      "MaterialMeshInfo",
-      "SRPBatcher"
+      "Unity",
+      "ECS",
+      "URP",
+      "Rendering",
+      "Optimization"
     ]
   },
   {
@@ -869,13 +853,13 @@
     ],
     "reviewState": "Reviewed",
     "useState": "Reference",
+    "category": "Tech",
     "tags": [
+      "Unity",
       "ECS",
-      "Archetype",
-      "Chunk",
-      "Cache",
-      "IJobEntity",
-      "IEnableableComponent"
+      "Memory",
+      "Optimization",
+      "Performance"
     ]
   },
   {
@@ -889,12 +873,12 @@
     ],
     "reviewState": "Reviewed",
     "useState": "Reference",
+    "category": "Tech",
     "tags": [
-      "PureDOTS",
-      "EntitiesGraphics",
-      "ISystem",
-      "IJobEntity",
-      "BatchRendererGroup",
+      "Unity",
+      "ECS",
+      "Rendering",
+      "Optimization",
       "Culling"
     ]
   },
@@ -909,14 +893,13 @@
     ],
     "reviewState": "Reviewed",
     "useState": "Reference",
+    "category": "Idea",
     "tags": [
-      "Endfield",
-      "Unity改造",
+      "Unity",
       "ECS",
       "Rendering",
-      "DynamicShadow",
-      "Factory",
-      "HighPolygon"
+      "Optimization",
+      "Lighting"
     ]
   },
   {
@@ -930,15 +913,13 @@
     ],
     "reviewState": "Triaged",
     "useState": "ToTry",
+    "category": "Tech",
     "tags": [
-      "Endfield",
-      "CustomECS",
-      "SoA",
-      "C++Renderer",
-      "RenderGraph",
-      "ResourceAliasing",
-      "Culling",
-      "Batching"
+      "Unity",
+      "ECS",
+      "C++",
+      "Rendering",
+      "Optimization"
     ]
   },
   {
@@ -1153,10 +1134,11 @@
     ],
     "reviewState": "Inbox",
     "useState": "Reference",
+    "category": "Idea",
     "tags": [
-      "千葉大学",
-      "CG",
-      "研究"
+      "Rendering",
+      "Lighting",
+      "Optimization"
     ]
   },
   {
@@ -1170,11 +1152,13 @@
     ],
     "reviewState": "Inbox",
     "useState": "Reference",
+    "category": "Idea",
     "tags": [
       "Rendering",
-      "GraphicsPipeline",
-      "WebGL",
-      "Shader"
+      "Voxel",
+      "Mesh",
+      "RayTracing",
+      "MachineLearning"
     ]
   },
   {
@@ -1188,15 +1172,10 @@
     ],
     "reviewState": "Reviewed",
     "useState": "Reference",
+    "category": "Tech",
     "tags": [
       "Unity",
       "Lighting",
-      "GI",
-      "Lightmap",
-      "LightProbe",
-      "ReflectionProbe",
-      "ColorSpace",
-      "LWRP",
       "HDRP"
     ]
   },
@@ -1275,13 +1254,11 @@
     ],
     "reviewState": "Inbox",
     "useState": "Reference",
+    "category": "Tech",
     "tags": [
-      "SurfaceNets",
-      "Voxel",
       "Unity",
-      "C#",
-      "MeshSmoothing",
-      "Reddit"
+      "Voxel",
+      "Mesh"
     ]
   },
   {
@@ -1295,13 +1272,12 @@
     ],
     "reviewState": "Reviewed",
     "useState": "Reference",
+    "category": "Tech",
     "tags": [
-      "NaiveSurfaceNets",
       "Unity",
       "C#",
-      "NativeArray",
-      "MarchingCubes",
-      "VoxelMesh"
+      "Voxel",
+      "Mesh"
     ]
   },
   {
@@ -1315,13 +1291,11 @@
     ],
     "reviewState": "Reviewed",
     "useState": "Reference",
+    "category": "Tech",
     "tags": [
-      "SurfaceNets",
       "Godot",
-      "GDScript",
-      "SignedField",
-      "QuadMesh",
-      "DestructibleTerrain"
+      "Voxel",
+      "Mesh"
     ]
   },
   {
@@ -1335,13 +1309,13 @@
     ],
     "reviewState": "Reviewed",
     "useState": "Reference",
+    "category": "Tech",
     "tags": [
-      "VoxelLOD",
-      "SeamlessLOD",
-      "Octree",
-      "Geomorphing",
-      "Chunk",
-      "ComputeShader"
+      "Voxel",
+      "Mesh",
+      "LOD",
+      "ComputeShader",
+      "Culling"
     ]
   },
   {
@@ -1355,13 +1329,10 @@
     ],
     "reviewState": "Reviewed",
     "useState": "Reference",
+    "category": "Tech",
     "tags": [
-      "SurfaceNets",
-      "NaiveSurfaceNets",
-      "MarchingCubes",
-      "DualContouring",
-      "Isosurface",
-      "NonManifold"
+      "Voxel",
+      "Mesh"
     ]
   },
   {
@@ -1375,13 +1346,10 @@
     ],
     "reviewState": "Reviewed",
     "useState": "Reference",
+    "category": "Tech",
     "tags": [
-      "DualContouring",
-      "HermiteData",
-      "QEF",
-      "SharpFeatures",
-      "Octree",
-      "NonManifold"
+      "Voxel",
+      "Mesh"
     ]
   },
   {
@@ -1395,12 +1363,11 @@
     ],
     "reviewState": "Inbox",
     "useState": "Reference",
+    "category": "Tech",
     "tags": [
-      "SurfaceNets",
-      "VoxelGameDev",
-      "ProceduralTerrain",
-      "MeshGeneration",
-      "Reddit"
+      "Voxel",
+      "Mesh",
+      "Performance"
     ]
   },
   {
@@ -1414,13 +1381,12 @@
     ],
     "reviewState": "Reviewed",
     "useState": "Reference",
+    "category": "Tech",
     "tags": [
-      "SurfaceNets",
       "Unity",
       "C#",
-      "VoxelTerrain",
-      "MeshSmoothing",
-      "Shrinkage"
+      "Voxel",
+      "Mesh"
     ]
   },
   {
@@ -1434,13 +1400,13 @@
     ],
     "reviewState": "Reviewed",
     "useState": "Reference",
+    "category": "Tech",
     "tags": [
-      "ChunkedDownload",
-      "AssetManager",
-      "PrimaryAssetLabel",
-      "AssetAudit",
-      "OnDemandDownload",
-      "BattleBreakers"
+      "UnrealEngine",
+      "AssetManagement",
+      "Load",
+      "Build",
+      "Optimization"
     ]
   },
   {
@@ -1454,14 +1420,9 @@
     ],
     "reviewState": "Reviewed",
     "useState": "Reference",
+    "category": "Tech",
     "tags": [
-      "Git",
-      "VersionControl",
-      "GitInternals",
-      "Branching",
-      "Reset",
-      "TeamWorkflow",
-      "CI/CD"
+      "Git"
     ]
   },
   {
@@ -1475,16 +1436,8 @@
     ],
     "reviewState": "Reviewed",
     "useState": "Reference",
-    "tags": [
-      "InformationSecurity",
-      "CIA",
-      "OWASP",
-      "AccessControl",
-      "ZeroTrust",
-      "SecureDevelopment",
-      "AIDataLeak",
-      "Secrets"
-    ]
+    "category": "Tech",
+    "tags": []
   },
   {
     "id": "RES-20260730-012",
@@ -1497,15 +1450,11 @@
     ],
     "reviewState": "Reviewed",
     "useState": "Reference",
+    "category": "Tech",
     "tags": [
+      "AI",
       "MachineLearning",
-      "Inference",
-      "Training",
-      "Evaluation",
-      "MLOps",
-      "ModelOptimization",
-      "Deployment",
-      "Monitoring"
+      "Optimization"
     ]
   },
   {
@@ -1519,18 +1468,12 @@
     ],
     "reviewState": "Reviewed",
     "useState": "Reference",
+    "category": "Tech",
     "tags": [
+      "AI",
       "LLM",
-      "Transformer",
-      "Attention",
-      "Tokenization",
       "RAG",
-      "FunctionCalling",
-      "StructuredOutput",
-      "AIAgent",
-      "ReAct",
-      "HumanInTheLoop",
-      "LLMEvaluation"
+      "AIAgent"
     ]
   },
   {
@@ -1544,16 +1487,8 @@
     ],
     "reviewState": "Reviewed",
     "useState": "Reference",
-    "tags": [
-      "ProblemFraming",
-      "HypothesisBuilding",
-      "MECE",
-      "KPITree",
-      "DataAnalysis",
-      "DecisionMaking",
-      "GenerativeAI",
-      "Validation"
-    ]
+    "category": "Idea",
+    "tags": []
   },
   {
     "id": "RES-20260808-001",

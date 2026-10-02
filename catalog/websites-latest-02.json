@@ -11,6 +11,7 @@
     "publishedAt": "2021-09-18",
     "kind": "website",
     "contentType": "technical-article",
+    "category": "Tech",
     "domains": [
       "Graphics",
       "GameDevelopment"
@@ -28,7 +29,13 @@
     "useState": "Historical",
     "confidence": "Medium",
     "freshness": "Stale",
-    "tags": []
+    "tags": [
+      "Unity",
+      "Rendering",
+      "Optimization",
+      "Performance",
+      "Culling"
+    ]
   },
   {
     "id": "RES-20260904-002",
@@ -42,6 +49,7 @@
     "publishedAt": "2020-07-16",
     "kind": "website",
     "contentType": "technical-article",
+    "category": "Tech",
     "domains": [
       "Graphics",
       "GameDevelopment"
@@ -59,7 +67,13 @@
     "useState": "Historical",
     "confidence": "Medium",
     "freshness": "Stale",
-    "tags": []
+    "tags": [
+      "Unity",
+      "Mobile",
+      "Rendering",
+      "Optimization",
+      "Performance"
+    ]
   },
   {
     "id": "RES-20260904-003",
@@ -73,6 +87,7 @@
     "publishedAt": "2020-07-23",
     "kind": "website",
     "contentType": "technical-article",
+    "category": "Tech",
     "domains": [
       "GameDevelopment",
       "Programming"
@@ -90,7 +105,13 @@
     "useState": "Historical",
     "confidence": "Medium",
     "freshness": "Stale",
-    "tags": []
+    "tags": [
+      "Unity",
+      "Mobile",
+      "UI",
+      "Load",
+      "Optimization"
+    ]
   },
   {
     "id": "RES-20260904-004",
@@ -104,6 +125,7 @@
     "publishedAt": "2020-07-30",
     "kind": "website",
     "contentType": "technical-article",
+    "category": "Tech",
     "domains": [
       "Programming",
       "GameDevelopment"
@@ -121,7 +143,13 @@
     "useState": "Historical",
     "confidence": "Medium",
     "freshness": "Stale",
-    "tags": []
+    "tags": [
+      "Unity",
+      "Mobile",
+      "Memory",
+      "AssetManagement",
+      "Optimization"
+    ]
   },
   {
     "id": "RES-20260904-005",
@@ -135,6 +163,7 @@
     "publishedAt": "2020-09-13",
     "kind": "website",
     "contentType": "technical-article",
+    "category": "Tech",
     "domains": [
       "Programming",
       "Tools"
@@ -152,7 +181,12 @@
     "useState": "Historical",
     "confidence": "Medium",
     "freshness": "Stale",
-    "tags": []
+    "tags": [
+      "Unity",
+      "Memory",
+      "Performance",
+      "C#"
+    ]
   },
   {
     "id": "RES-20260904-006",
@@ -166,6 +200,7 @@
     "publishedAt": "2020-09-18",
     "kind": "website",
     "contentType": "technical-article",
+    "category": "Tech",
     "domains": [
       "Graphics",
       "GameDevelopment"
@@ -183,7 +218,13 @@
     "useState": "Historical",
     "confidence": "Medium",
     "freshness": "Stale",
-    "tags": []
+    "tags": [
+      "Unity",
+      "Rendering",
+      "Shader",
+      "UI",
+      "Physics"
+    ]
   },
   {
     "id": "RES-20260904-007",
@@ -197,6 +238,7 @@
     "publishedAt": "2020-09-18",
     "kind": "website",
     "contentType": "technical-article",
+    "category": "Idea",
     "domains": [
       "Tools",
       "GameDevelopment"
@@ -214,7 +256,10 @@
     "useState": "Historical",
     "confidence": "Medium",
     "freshness": "Stale",
-    "tags": []
+    "tags": [
+      "Unity",
+      "Performance"
+    ]
   },
   {
     "id": "RES-20260904-008",
@@ -228,6 +273,7 @@
     "publishedAt": "2020-09-18",
     "kind": "website",
     "contentType": "technical-article",
+    "category": "Tech",
     "domains": [
       "Programming",
       "GameDevelopment"
@@ -245,7 +291,13 @@
     "useState": "Historical",
     "confidence": "Medium",
     "freshness": "Stale",
-    "tags": []
+    "tags": [
+      "Unity",
+      "Mobile",
+      "Memory",
+      "AssetManagement",
+      "Optimization"
+    ]
   },
   {
     "id": "RES-20260904-009",
@@ -259,6 +311,7 @@
     "publishedAt": "2020-09-29",
     "kind": "website",
     "contentType": "technical-article",
+    "category": "Tech",
     "domains": [
       "Programming",
       "GameDevelopment"
@@ -276,7 +329,12 @@
     "useState": "Historical",
     "confidence": "Medium",
     "freshness": "Stale",
-    "tags": []
+    "tags": [
+      "Unity",
+      "Memory",
+      "AssetManagement",
+      "Optimization"
+    ]
   },
   {
     "id": "RES-20260904-010",
@@ -290,6 +348,7 @@
     "publishedAt": "2020-09-29",
     "kind": "website",
     "contentType": "technical-article",
+    "category": "Tech",
     "domains": [
       "Graphics",
       "GameDevelopment"
@@ -307,7 +366,13 @@
     "useState": "Historical",
     "confidence": "Medium",
     "freshness": "Stale",
-    "tags": []
+    "tags": [
+      "Unity",
+      "Rendering",
+      "Performance",
+      "Lighting",
+      "LOD"
+    ]
   },
   {
     "id": "RES-20260904-011",
@@ -321,6 +386,7 @@
     "publishedAt": "2020-07-09",
     "kind": "website",
     "contentType": "technical-article",
+    "category": "Tech",
     "domains": [
       "Graphics",
       "Tools"
@@ -338,7 +404,13 @@
     "useState": "Historical",
     "confidence": "Medium",
     "freshness": "Stale",
-    "tags": []
+    "tags": [
+      "Unity",
+      "Texture",
+      "Optimization",
+      "Editor",
+      "C#"
+    ]
   },
   {
     "id": "RES-20260904-012",
@@ -352,6 +424,7 @@
     "publishedAt": "2020-07-30",
     "kind": "website",
     "contentType": "technical-article",
+    "category": "Tech",
     "domains": [
       "GameDevelopment",
       "Programming"
@@ -369,6 +442,12 @@
     "useState": "Historical",
     "confidence": "Medium",
     "freshness": "Stale",
-    "tags": []
+    "tags": [
+      "Unity",
+      "Animation",
+      "Memory",
+      "Optimization",
+      "Editor"
+    ]
   }
 ]

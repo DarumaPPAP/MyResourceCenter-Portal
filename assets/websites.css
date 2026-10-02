@@ -1,7 +1,7 @@
 .website-intro{padding:10px 0 22px;border-bottom:1px solid var(--line)}
 .website-intro h1{margin:6px 0 7px;font-size:30px;line-height:1.2;font-weight:650;letter-spacing:-.025em}
 .website-intro p{margin:0;color:var(--muted);font-size:14px}
-.website-toolbar{grid-template-columns:minmax(220px,1.45fr) repeat(4,minmax(125px,1fr)) auto;align-items:stretch}
+.website-toolbar{grid-template-columns:minmax(220px,1.45fr) repeat(5,minmax(125px,1fr)) auto;align-items:stretch}
 .website-list{display:grid;border-top:1px solid var(--line)}
 .website-card{display:grid;grid-template-columns:112px minmax(0,1fr);gap:18px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line)}
 .site-icon-box{position:relative;width:112px;height:112px;display:grid;place-items:center;overflow:hidden;border:1px solid var(--line);background:var(--panel-soft);color:var(--muted)}
@@ -12,6 +12,7 @@
 .website-head{display:flex;align-items:center;justify-content:space-between;gap:16px}
 .site-line{min-width:0;display:flex;align-items:center;flex-wrap:wrap;gap:8px}
 .site-badge{display:inline-flex;max-width:min(420px,100%);padding:3px 7px;border:1px solid var(--line);background:var(--panel-soft);font-size:12px;font-weight:650;line-height:1.4;overflow-wrap:anywhere}
+.website-category{display:inline-flex;flex:0 0 auto;padding:3px 7px;border:1px solid var(--accent);color:var(--accent);font-size:11px;font-weight:700;line-height:1.4}
 .site-domain{color:var(--muted);font-size:12px;overflow-wrap:anywhere}
 .website-details{flex:0 0 auto;color:var(--accent);font-size:12px;text-decoration:none}
 .website-details:hover,.website-title a:hover{text-decoration:underline;text-underline-offset:3px}

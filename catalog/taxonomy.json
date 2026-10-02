@@ -1,5 +1,13 @@
 {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "2.0.0",
+  "categories": {
+    "Tech": {
+      "displayName": "Tech"
+    },
+    "Idea": {
+      "displayName": "Idea"
+    }
+  },
   "domains": {
     "Graphics": {
       "displayName": "Graphics"
@@ -30,110 +38,205 @@
     }
   },
   "tags": {
+    "Unity": {
+      "displayName": "Unity",
+      "aliases": []
+    },
+    "UnrealEngine": {
+      "displayName": "UnrealEngine",
+      "aliases": []
+    },
+    "Godot": {
+      "displayName": "Godot",
+      "aliases": []
+    },
+    "Mobile": {
+      "displayName": "Mobile",
+      "aliases": []
+    },
+    "URP": {
+      "displayName": "URP",
+      "aliases": []
+    },
+    "HDRP": {
+      "displayName": "HDRP",
+      "aliases": []
+    },
+    "DirectX": {
+      "displayName": "DirectX",
+      "aliases": []
+    },
+    "Vulkan": {
+      "displayName": "Vulkan",
+      "aliases": []
+    },
     "C#": {
       "displayName": "C#",
-      "domain": "Programming",
-      "aliases": [
-        "C Sharp"
-      ]
+      "aliases": []
     },
     "C++": {
       "displayName": "C++",
-      "domain": "Programming",
-      "aliases": [
-        "Cpp",
-        "C Plus Plus"
-      ]
+      "aliases": []
     },
-    "GPUDriven": {
-      "displayName": "GPU Driven",
-      "domain": "Graphics",
-      "aliases": [
-        "GPU Driven",
-        "GPU-Driven"
-      ]
-    },
-    "RayTracing": {
-      "displayName": "Ray Tracing",
-      "domain": "Graphics",
-      "aliases": [
-        "Ray Tracing"
-      ]
-    },
-    "RenderGraph": {
-      "displayName": "RenderGraph",
-      "domain": "Graphics",
-      "aliases": [
-        "Render Graph"
-      ]
+    "Rendering": {
+      "displayName": "Rendering",
+      "aliases": []
     },
     "Shader": {
       "displayName": "Shader",
-      "domain": "Graphics",
-      "aliases": [
-        "Shaders",
-        "シェーダ",
-        "シェーダー"
-      ]
+      "aliases": []
+    },
+    "ComputeShader": {
+      "displayName": "ComputeShader",
+      "aliases": []
+    },
+    "RenderGraph": {
+      "displayName": "RenderGraph",
+      "aliases": []
+    },
+    "Lighting": {
+      "displayName": "Lighting",
+      "aliases": []
+    },
+    "Anti-Aliasing": {
+      "displayName": "Anti-Aliasing",
+      "aliases": []
+    },
+    "TAA": {
+      "displayName": "TAA",
+      "aliases": []
+    },
+    "STP": {
+      "displayName": "STP",
+      "aliases": []
+    },
+    "Upscaling": {
+      "displayName": "Upscaling",
+      "aliases": []
+    },
+    "PostProcessing": {
+      "displayName": "PostProcessing",
+      "aliases": []
+    },
+    "Transparency": {
+      "displayName": "Transparency",
+      "aliases": []
+    },
+    "Texture": {
+      "displayName": "Texture",
+      "aliases": []
+    },
+    "Mesh": {
+      "displayName": "Mesh",
+      "aliases": []
+    },
+    "Voxel": {
+      "displayName": "Voxel",
+      "aliases": []
+    },
+    "Optimization": {
+      "displayName": "Optimization",
+      "aliases": []
+    },
+    "Performance": {
+      "displayName": "Performance",
+      "aliases": []
+    },
+    "Memory": {
+      "displayName": "Memory",
+      "aliases": []
+    },
+    "Culling": {
+      "displayName": "Culling",
+      "aliases": []
+    },
+    "LOD": {
+      "displayName": "LOD",
+      "aliases": []
     },
     "ECS": {
       "displayName": "ECS",
-      "domain": "Programming",
-      "aliases": [
-        "Entity Component System"
-      ]
+      "aliases": []
     },
-    "TAA": {
-      "displayName": "Temporal Anti-Aliasing",
-      "domain": "Graphics",
-      "aliases": [
-        "Temporal AA",
-        "Temporal Anti Aliasing"
-      ]
+    "AssetManagement": {
+      "displayName": "AssetManagement",
+      "aliases": []
     },
-    "VRS": {
-      "displayName": "Variable Rate Shading",
-      "domain": "Graphics",
-      "aliases": [
-        "Variable Rate Shading"
-      ]
+    "Load": {
+      "displayName": "Load",
+      "aliases": []
     },
-    "SurfaceNets": {
-      "displayName": "Surface Nets",
-      "domain": "Graphics",
-      "aliases": [
-        "Surface Nets"
-      ]
+    "Build": {
+      "displayName": "Build",
+      "aliases": []
     },
-    "DualContouring": {
-      "displayName": "Dual Contouring",
-      "domain": "Graphics",
-      "aliases": [
-        "Dual Contouring"
-      ]
+    "Editor": {
+      "displayName": "Editor",
+      "aliases": []
+    },
+    "Animation": {
+      "displayName": "Animation",
+      "aliases": []
+    },
+    "UI": {
+      "displayName": "UI",
+      "aliases": []
+    },
+    "Camera": {
+      "displayName": "Camera",
+      "aliases": []
+    },
+    "Audio": {
+      "displayName": "Audio",
+      "aliases": []
+    },
+    "AI": {
+      "displayName": "AI",
+      "aliases": []
     },
     "MachineLearning": {
-      "displayName": "Machine Learning",
-      "domain": "AI",
-      "aliases": [
-        "Machine Learning",
-        "ML"
-      ]
+      "displayName": "MachineLearning",
+      "aliases": []
     },
-    "AIAgent": {
-      "displayName": "AI Agent",
-      "domain": "AI",
-      "aliases": [
-        "AI Agent",
-        "AI Agents"
-      ]
+    "LLM": {
+      "displayName": "LLM",
+      "aliases": []
     },
     "RAG": {
       "displayName": "RAG",
-      "domain": "AI",
-      "aliases": [
-        "Retrieval Augmented Generation"
-      ]
+      "aliases": []
+    },
+    "RayTracing": {
+      "displayName": "RayTracing",
+      "aliases": []
+    },
+    "Particle": {
+      "displayName": "Particle",
+      "aliases": []
+    },
+    "AIAgent": {
+      "displayName": "AIAgent",
+      "aliases": []
+    },
+    "Git": {
+      "displayName": "Git",
+      "aliases": []
+    },
+    "GitHub": {
+      "displayName": "GitHub",
+      "aliases": []
+    },
+    "Physics": {
+      "displayName": "Physics",
+      "aliases": []
+    },
+    "AMD": {
+      "displayName": "AMD",
+      "aliases": []
+    },
+    "NVIDIA": {
+      "displayName": "NVIDIA",
+      "aliases": []
     }
   },
   "engines": {

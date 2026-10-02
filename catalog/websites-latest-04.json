@@ -8,6 +8,7 @@
     "publishedAt": "2026-09-04",
     "kind": "website",
     "contentType": "algorithm-lecture",
+    "category": "Tech",
     "domains": [
       "Programming"
     ],
@@ -22,7 +23,9 @@
     "useState": "Reference",
     "confidence": "High",
     "freshness": "Current",
-    "tags": []
+    "tags": [
+      "C++"
+    ]
   },
   {
     "id": "RES-20260904-026",
@@ -36,6 +39,7 @@
     "publishedAt": "2026-06-30",
     "kind": "website",
     "contentType": "technical-article",
+    "category": "Tech",
     "domains": [
       "AI",
       "Programming"
@@ -52,6 +56,9 @@
     "confidence": "High",
     "freshness": "Current",
     "tags": [
+      "AI",
+      "MachineLearning",
+      "LLM",
       "RAG"
     ]
   },
@@ -67,6 +74,7 @@
     "publishedAt": "2026-07-01",
     "kind": "website",
     "contentType": "event-report",
+    "category": "Idea",
     "domains": [
       "AI",
       "Programming"
@@ -82,7 +90,10 @@
     "useState": "Reference",
     "confidence": "High",
     "freshness": "Current",
-    "tags": []
+    "tags": [
+      "AI",
+      "LLM"
+    ]
   },
   {
     "id": "RES-20260904-028",
@@ -96,6 +107,7 @@
     "publishedAt": "2025-11-28",
     "kind": "website",
     "contentType": "technical-article",
+    "category": "Tech",
     "domains": [
       "Graphics",
       "GameDevelopment",
@@ -115,7 +127,13 @@
     "useState": "Reference",
     "confidence": "High",
     "freshness": "Current",
-    "tags": []
+    "tags": [
+      "Unity",
+      "URP",
+      "Rendering",
+      "UI",
+      "Optimization"
+    ]
   },
   {
     "id": "RES-20260907-001",
@@ -128,6 +146,7 @@
     ],
     "kind": "website",
     "contentType": "book-chapter",
+    "category": "Tech",
     "domains": [
       "Graphics",
       "GameDevelopment"
@@ -144,7 +163,11 @@
     "confidence": "High",
     "freshness": "Stale",
     "tags": [
-      "Shader"
+      "Rendering",
+      "Particle",
+      "Transparency",
+      "Shader",
+      "Optimization"
     ]
   },
   {
@@ -159,6 +182,7 @@
     "publishedAt": "2026-03-16",
     "kind": "website",
     "contentType": "technical-article",
+    "category": "Tech",
     "domains": [
       "Graphics",
       "Programming",
@@ -179,7 +203,11 @@
     "confidence": "High",
     "freshness": "Current",
     "tags": [
-      "Shader"
+      "Unity",
+      "URP",
+      "ComputeShader",
+      "Physics",
+      "LOD"
     ]
   },
   {
@@ -192,6 +220,7 @@
     "publishedAt": "2013-10-31",
     "kind": "website",
     "contentType": "technical-demo",
+    "category": "Tech",
     "domains": [
       "Graphics",
       "GameDevelopment"
@@ -208,8 +237,11 @@
     "confidence": "High",
     "freshness": "Stale",
     "tags": [
-      "Shader",
-      "RayTracing"
+      "DirectX",
+      "Rendering",
+      "Lighting",
+      "RayTracing",
+      "Shader"
     ]
   },
   {
@@ -219,6 +251,7 @@
     "canonicalUrl": "https://motion-reference.takayustudio.jp/index.html",
     "authors": [],
     "kind": "website",
+    "category": "Tech",
     "domains": [],
     "topics": [],
     "engines": [],
@@ -227,7 +260,10 @@
     "useState": "Reference",
     "confidence": "Unverified",
     "freshness": "Unknown",
-    "tags": []
+    "tags": [
+      "Animation",
+      "UI"
+    ]
   },
   {
     "id": "RES-20260924-002",
@@ -239,6 +275,7 @@
     "publishedAt": "2026-08-12",
     "kind": "website",
     "contentType": "technical-article",
+    "category": "Tech",
     "domains": [
       "Audio",
       "GameDevelopment"
@@ -257,7 +294,12 @@
     "useState": "Reference",
     "confidence": "Medium",
     "freshness": "Current",
-    "tags": []
+    "tags": [
+      "Unity",
+      "Audio",
+      "AssetManagement",
+      "Memory"
+    ]
   },
   {
     "id": "RES-20260928-001",
@@ -271,6 +313,7 @@
     "publishedAt": "2021-12-12",
     "kind": "website",
     "contentType": "technical-article",
+    "category": "Tech",
     "domains": [
       "Graphics",
       "GameDevelopment"
@@ -288,7 +331,10 @@
     "confidence": "Medium",
     "freshness": "Stale",
     "tags": [
-      "Shader"
+      "Rendering",
+      "Particle",
+      "Transparency",
+      "Optimization"
     ]
   },
   {
@@ -303,6 +349,7 @@
     "publishedAt": "2024-11-27",
     "kind": "website",
     "contentType": "technical-article",
+    "category": "Tech",
     "domains": [
       "Programming"
     ],
@@ -319,7 +366,9 @@
     "confidence": "High",
     "freshness": "Current",
     "tags": [
-      "C++"
+      "C++",
+      "Mesh",
+      "Memory"
     ]
   }
 ]
