@@ -116,6 +116,30 @@ for url in bad_urls:
     assert all('password' not in error and 'name@' not in error for error in errors), 'error leaks credentials'
 for url in ['https://example.test/a%20b?q=shader#GPU','http://localhost:8080/a','https://[::1]:8080/a', None]:
     errors=[];v.validate_public_url(errors, 'fixture.url', url);assert not errors, errors
+# Website safety/behavior gates must run even when the taxonomy page is valid.
+import contextlib, io
+from unittest.mock import patch
+original_read_text=Path.read_text
+def broken_website_assets(path,*args,**kwargs):
+    text=original_read_text(path,*args,**kwargs)
+    if path == v.ROOT / 'assets/websites.js':
+        for behavior in ('filterWebsites','sortWebsites','siteIconPath','bindSiteIconFallback'):
+            text=text.replace(behavior,'removedBehavior')
+    if path == v.ROOT / 'assets/websites.css':
+        text=text.replace('width:112px;height:112px','width:80px;height:40px')
+    if path == v.ROOT / 'websites.html':
+        text += '<img src="https://remote.example/icon.png">'
+    return text
+output=io.StringIO()
+with patch.object(Path,'read_text',broken_website_assets), contextlib.redirect_stdout(output):
+    try:
+        v.main()
+    except SystemExit:
+        pass
+for behavior in ('filterWebsites','sortWebsites','siteIconPath','bindSiteIconFallback'):
+    assert f'Websites page is missing {behavior} behavior' in output.getvalue(), behavior
+assert 'Websites page must use local square Site Icons' in output.getvalue()
+assert 'Websites page must not hotlink remote Site Icons' in output.getvalue()
 rows=v.load('document-presentation.json')
 resources=v.load('resources.json')+v.load('resources-06.json')+[v.project_resource(r) for r in v.load_latest_websites()]
 errors=[];v.validate_presentation(errors, rows, resources);assert not errors,errors
@@ -170,11 +194,11 @@ const facetConfig = {
   authors:[{key:'alice',displayName:'Alice'}]
 };
 const websiteRows = [
-  {id:'RES-1',title:'Tech A Alice',canonicalUrl:'https://a.example/1',domains:['Graphics'],tags:['Unity','Shader'],authors:['Ａlice'],publishedAt:'2026-09-30'},
-  {id:'RES-2',title:'Tech A Bob',canonicalUrl:'https://a.example/2',tags:['Unity'],authors:['Bob'],publishedAt:'2026-09-28'},
-  {id:'RES-3',title:'QA A Alice',canonicalUrl:'https://a.example/3',tags:['QA'],authors:['Alice'],publishedAt:'2026-09-29'},
-  {id:'RES-4',title:'Tech B Alice',canonicalUrl:'https://b.example/4',tags:['Shader','Performance'],authors:['Alice','Bob'],publishedAt:'2026-09-27'},
-  {id:'RES-5',title:'Legacy B',canonicalUrl:'https://b.example/5',tags:[],authors:['Bob'],publishedAt:null}
+  {id:'RES-1',title:'Tech A Alice',category:'Tech',canonicalUrl:'https://a.example/1',domains:['Graphics'],tags:['Unity','Shader'],authors:['Ａlice'],publishedAt:'2026-09-30'},
+  {id:'RES-2',title:'Tech A Bob',category:'Tech',canonicalUrl:'https://a.example/2',tags:['Unity'],authors:['Bob'],publishedAt:'2026-09-28'},
+  {id:'RES-3',title:'Idea A Alice',category:'Idea',canonicalUrl:'https://a.example/3',tags:['AI'],authors:['Alice'],publishedAt:'2026-09-29'},
+  {id:'RES-4',title:'Tech B Alice',category:'Tech',canonicalUrl:'https://b.example/4',tags:['Shader','Performance'],authors:['Alice','Bob'],publishedAt:'2026-09-27'},
+  {id:'RES-5',title:'Idea B',category:'Idea',canonicalUrl:'https://b.example/5',tags:[],authors:['Bob'],publishedAt:null}
 ];
 assert.equal(W.normalizeAuthor(' Ａlice  '), 'alice');
 assert.equal(W.normalizeAuthor('ǰ'), 'j\u030c');
@@ -185,6 +209,9 @@ assert.equal(W.filterWebsites(websiteRows,{tag:'Unity',site:'a.example'},facetCo
 assert.equal(W.filterWebsites(websiteRows,{tag:'Shader',author:'alice'},facetConfig).length,2);
 assert.equal(W.filterWebsites(websiteRows,{site:'a.example',author:'alice'},facetConfig).length,2);
 assert.deepEqual(Array.from(W.filterWebsites(websiteRows,{tag:'Unity',site:'a.example',author:'alice'},facetConfig),row=>row.id),['RES-1']);
+assert.deepEqual(Array.from(W.filterWebsites(websiteRows,{category:'Tech',tag:'Unity',site:'a.example',author:'alice'},facetConfig),row=>row.id),['RES-1']);
+assert.deepEqual(Array.from(W.filterWebsites(websiteRows,{category:'Idea',tag:'AI',site:'a.example',author:'alice'},facetConfig),row=>row.id),['RES-3']);
+assert.deepEqual(Array.from(W.filterWebsites(websiteRows,{category:'Tech',tag:'AI'},facetConfig),row=>row.id),[]);
 assert.equal(W.filterWebsites(websiteRows,{site:'b.example'},facetConfig).length,0,'unapproved Site query values must not expose dedicated filter results');
 assert.equal(W.filterWebsites(websiteRows,{author:'bob'},facetConfig).length,0,'unapproved Author query values must not expose dedicated filter results');
 assert.deepEqual(Array.from(W.filterWebsites(websiteRows,{site:'__other__'},facetConfig),row=>row.id),['RES-4','RES-5']);
@@ -193,6 +220,8 @@ assert.equal(W.presentWebsites(websiteRows,facetConfig).find(row=>row.id==='RES-
 assert.deepEqual(Array.from(W.filterWebsites(websiteRows,{tag:'InventedTag'},facetConfig),row=>row.id),[]);
 const websiteCard = W.renderWebsiteCard({...websiteRows[0],publisher:'Example Site',contentType:'technical-article'}, C);
 assert.match(websiteCard,/Unity/); assert.match(websiteCard,/Shader/);
+assert.match(websiteCard,/website-category--tech/);
+assert.match(websiteCard,/>Tech<\/span>/);
 assert.doesNotMatch(websiteCard,/technical-article/,'contentType must not be rendered as Website classification');
 assert.deepEqual(Array.from(W.sortWebsites(websiteRows,'desc'),row=>row.id),['RES-1','RES-3','RES-2','RES-4','RES-5']);
 assert.deepEqual(Array.from(W.sortWebsites(websiteRows,'asc'),row=>row.id),['RES-4','RES-2','RES-3','RES-1','RES-5']);
@@ -202,4 +231,4 @@ assert.notEqual(W.siteIconPath({...websiteRows[0],canonicalUrl:'https://[a::b]/'
 assert.equal(W.siteIconPath({...websiteRows[0],canonicalUrl:'javascript:alert(1)'}),'');
 assert.deepEqual(Array.from(W.filterWebsites([{id:'RES-bad',title:'Bad authors',canonicalUrl:'https://bad.test',authors:'Alice'}],{author:'__other__'},facetConfig),row=>row.id),['RES-bad']);
 assert.deepEqual(Array.from(W.filterWebsites([{id:'RES-object-authors',title:'Object authors',canonicalUrl:'https://bad.test',authors:{name:'Alice'}}],{author:'__other__'},facetConfig),row=>row.id),['RES-object-authors']);
-console.log('OK: Website Tag/Site/Author AND filters, Other semantics, date ordering and safe local Site Icon paths');
+console.log('OK: Website Category/Tag/Site/Author AND filters, Other semantics, date ordering and safe local Site Icon paths');

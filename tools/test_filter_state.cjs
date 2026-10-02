@@ -43,10 +43,10 @@ assert.equal(controls[1].value, 'PDF');
 assert.equal(renders, 1);
 console.log('OK: filter URL restoration, Japanese text encoding, reset, focus, and history navigation');
 
-// The Website page persists all five controls, including Unicode Author values.
-const websiteControls = ['q','category','site','author','sort'].map(id => new Control(id, id === 'q' ? 'INPUT' : 'SELECT'));
+// The Website page persists all six controls, including Unicode Author values.
+const websiteControls = ['q','category','tag','site','author','sort'].map(id => new Control(id, id === 'q' ? 'INPUT' : 'SELECT'));
 const websiteClear = new Control('clear', 'BUTTON');
-let websiteUrl = new URL('https://example.test/websites.html?q=shader&category=technical-article&site=qiita.com&author=alice&sort=asc&keep=1');
+let websiteUrl = new URL('https://example.test/websites.html?q=shader&category=Tech&tag=Unity&site=qiita.com&author=alice&sort=asc&keep=1');
 const websiteLocation = {get href(){return websiteUrl.href;},get search(){return websiteUrl.search;}};
 const websiteWindowHandlers = {}, websiteHandlers = {};
 const websiteContext = {
@@ -58,16 +58,16 @@ const websiteContext = {
 vm.runInNewContext(fs.readFileSync(require('node:path').join(__dirname,'../assets/catalog.js'),'utf8'),websiteContext);
 websiteClear.addEventListener('click',()=>websiteControls.forEach(control=>{control.value='';}));
 websiteContext.window.MRCCatalog.bindFilterState(websiteControls,()=>{});
-assert.deepEqual(websiteControls.map(control=>control.value),['shader','technical-article','qiita.com','alice','asc']);
-websiteControls[3].value='佐藤 花子';websiteControls[3].emit('change');
+assert.deepEqual(websiteControls.map(control=>control.value),['shader','Tech','Unity','qiita.com','alice','asc']);
+websiteControls[4].value='佐藤 花子';websiteControls[4].emit('change');
 assert.equal(websiteUrl.searchParams.get('author'),'佐藤 花子');
 assert.equal(websiteUrl.searchParams.get('keep'),'1');
-websiteControls[4].value='desc';websiteControls[4].emit('change');
+websiteControls[5].value='desc';websiteControls[5].emit('change');
 assert.equal(websiteUrl.searchParams.get('sort'),'desc');
 websiteControls.forEach(control=>{control.value='';});websiteClear.click();
-for(const key of ['q','category','site','author','sort'])assert.equal(websiteUrl.searchParams.has(key),false);
+for(const key of ['q','category','tag','site','author','sort'])assert.equal(websiteUrl.searchParams.has(key),false);
 assert.equal(websiteUrl.searchParams.get('keep'),'1');
-websiteUrl=new URL('https://example.test/websites.html?q=GPU&category=qa-article&site=other&author=__other__&sort=asc');
+websiteUrl=new URL('https://example.test/websites.html?q=GPU&category=Idea&tag=AI&site=other&author=__other__&sort=asc');
 websiteWindowHandlers.popstate();
-assert.deepEqual(websiteControls.map(control=>control.value),['GPU','qa-article','other','__other__','asc']);
-console.log('OK: Website q/category/site/author/sort URL persistence, Unicode, reset and history restoration');
+assert.deepEqual(websiteControls.map(control=>control.value),['GPU','Idea','AI','other','__other__','asc']);
+console.log('OK: Website q/category/tag/site/author/sort URL persistence, Unicode, reset and history restoration');

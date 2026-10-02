@@ -11,6 +11,7 @@
     "publishedAt": "2026-08-14",
     "kind": "website",
     "contentType": "technical-article",
+    "category": "Tech",
     "domains": [
       "Audio",
       "GameDevelopment"
@@ -29,7 +30,13 @@
     "useState": "Reference",
     "confidence": "Medium",
     "freshness": "Current",
-    "tags": []
+    "tags": [
+      "Unity",
+      "Audio",
+      "Load",
+      "Memory",
+      "Optimization"
+    ]
   },
   {
     "id": "RES-20260901-001",
@@ -43,6 +50,7 @@
     "publishedAt": "2026-01-05",
     "kind": "website",
     "contentType": "technical-article",
+    "category": "Tech",
     "domains": [
       "Graphics",
       "GameDevelopment"
@@ -62,8 +70,11 @@
     "confidence": "High",
     "freshness": "Current",
     "tags": [
+      "Rendering",
       "Shader",
-      "TAA"
+      "TAA",
+      "Lighting",
+      "Texture"
     ]
   },
   {
@@ -78,6 +89,7 @@
     "publishedAt": "2026-01-05",
     "kind": "website",
     "contentType": "technical-article",
+    "category": "Tech",
     "domains": [
       "Graphics",
       "Programming",
@@ -98,7 +110,9 @@
     "confidence": "High",
     "freshness": "Current",
     "tags": [
-      "Shader"
+      "Physics",
+      "ComputeShader",
+      "Voxel"
     ]
   },
   {
@@ -113,6 +127,7 @@
     "publishedAt": "2026-01-05",
     "kind": "website",
     "contentType": "technical-article",
+    "category": "Tech",
     "domains": [
       "Graphics",
       "Programming",
@@ -133,7 +148,10 @@
     "confidence": "High",
     "freshness": "Current",
     "tags": [
-      "Shader"
+      "Physics",
+      "ComputeShader",
+      "Voxel",
+      "Rendering"
     ]
   },
   {
@@ -148,6 +166,7 @@
     "publishedAt": "2026-01-05",
     "kind": "website",
     "contentType": "technical-article",
+    "category": "Tech",
     "domains": [
       "Graphics",
       "Programming",
@@ -168,7 +187,10 @@
     "confidence": "High",
     "freshness": "Current",
     "tags": [
-      "Shader"
+      "ComputeShader",
+      "Optimization",
+      "Performance",
+      "Memory"
     ]
   },
   {
@@ -183,6 +205,7 @@
     "publishedAt": "2026-01-07",
     "kind": "website",
     "contentType": "technical-article",
+    "category": "Tech",
     "domains": [
       "Graphics",
       "Programming",
@@ -203,7 +226,11 @@
     "confidence": "High",
     "freshness": "Current",
     "tags": [
-      "Shader"
+      "ComputeShader",
+      "Rendering",
+      "Optimization",
+      "Performance",
+      "Memory"
     ]
   }
 ]
