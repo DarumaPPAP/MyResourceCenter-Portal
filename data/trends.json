@@ -1,7 +1,678 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-10-03T09:19:00+09:00",
+  "generatedAt": "2026-10-04T09:18:00+09:00",
   "days": [
+    {
+      "date": "2026-10-04",
+      "items": [
+        {
+          "id": "TREND-20261004-001",
+          "title": "Unity 6.3のメモリ解放：GC・Destroy・Disposeを使い分ける",
+          "url": "https://zenn.dev/gamedev_toollab/articles/950890b96bed32",
+          "source": "GameDev Tool Lab / Zenn",
+          "publishedAt": "2026-10-02T05:15:27Z",
+          "category": "Unity",
+          "type": "CASE",
+          "summary": "参照解除、Unity Object破棄、Native Resource解放、Asset Unloadを分離し、GC・Destroy・Disposeの適用条件を整理。",
+          "tags": [
+            "Unity6.3",
+            "Memory",
+            "GarbageCollection",
+            "Dispose",
+            "Optimization"
+          ],
+          "score": 99
+        },
+        {
+          "id": "TREND-20261004-002",
+          "title": "C#埋め込みHLSLの日本語CommentでShader末尾が消える原因",
+          "url": "https://zenn.dev/maruhana/articles/hlsl-japanese-comment-truncation",
+          "source": "Zenn",
+          "publishedAt": "2026-10-02T13:12:19Z",
+          "category": "Graphics",
+          "type": "CASE",
+          "summary": "HLSL Compilerではなく、C#側の文字列長計算がUTF-8 Byte数とずれて末尾を欠落させる不具合を切り分け。",
+          "tags": [
+            "C#",
+            "HLSL",
+            "UTF8",
+            "ShaderCompiler",
+            "Debugging"
+          ],
+          "score": 98
+        },
+        {
+          "id": "TREND-20261004-003",
+          "title": "Vulkan Compute Shader入門：BufferとMemory管理から理解",
+          "url": "https://qiita.com/YKVKDX12/items/ed66af663d457cbc241e",
+          "source": "Qiita",
+          "publishedAt": "2026-10-03T06:30:41+09:00",
+          "category": "Graphics",
+          "type": "CASE",
+          "summary": "VulkanのBuffer・Memory管理をC配列になぞらえ、Compute Shaderを使うGPGPU処理の基本構成を解説。",
+          "tags": [
+            "Vulkan",
+            "ComputeShader",
+            "GPGPU",
+            "Buffer",
+            "GPU"
+          ],
+          "score": 97
+        },
+        {
+          "id": "TREND-20261004-004",
+          "title": "GodotのTangent Spaceを方向・角度から復元",
+          "url": "https://zenn.dev/shumidegametuku/articles/c389c333be97fe",
+          "source": "Zenn",
+          "publishedAt": "2026-10-02T16:53:17Z",
+          "category": "Engine",
+          "type": "CASE",
+          "summary": "Godot Rendering ServerのSourceを追い、方向と角度からTangent、Bitangent、Normalを復元する実装を確認。",
+          "tags": [
+            "Godot",
+            "TangentSpace",
+            "Rendering",
+            "Normal",
+            "SourceReading"
+          ],
+          "score": 96
+        },
+        {
+          "id": "TREND-20261004-005",
+          "title": "C++20 TemplateでDI Containerを自作",
+          "url": "https://zenn.dev/munimaru62o/articles/39cfaf9ae98dba",
+          "source": "Zenn",
+          "publishedAt": "2026-10-02T09:40:54Z",
+          "category": "Programming",
+          "type": "CASE",
+          "summary": "Constructor依存を自動解決するDI ContainerをC++20のTemplate Metaprogrammingで組み立てる実装記録。",
+          "tags": [
+            "C++20",
+            "DependencyInjection",
+            "Template",
+            "Architecture",
+            "GameRuntime"
+          ],
+          "score": 95
+        },
+        {
+          "id": "TREND-20261004-006",
+          "title": "YOLO映像解析をWebGPUでBrowser実行",
+          "url": "https://zenn.dev/ckoshien/articles/cap-pose-lab-webgpu",
+          "source": "Zenn",
+          "publishedAt": "2026-10-02T03:52:03Z",
+          "category": "Graphics",
+          "type": "CASE",
+          "summary": "Client側WebGPUでYOLO映像解析を動かし、専用ServerやGPU環境なしで利用できるWeb Applicationを構築。",
+          "tags": [
+            "WebGPU",
+            "YOLO",
+            "ComputerVision",
+            "Browser",
+            "GPU"
+          ],
+          "score": 94
+        },
+        {
+          "id": "TREND-20261004-007",
+          "title": "IncusでUSB・GPU Passthroughを構成",
+          "url": "https://zenn.dev/vnochiv/articles/ed19f64fd3582d",
+          "source": "Zenn",
+          "publishedAt": "2026-10-03T10:08:52+09:00",
+          "category": "Tools",
+          "type": "CASE",
+          "summary": "Incus ContainerへUSB DeviceとGPUを渡す設定・確認手順をまとめ、GPU Workload用環境構築を検証。",
+          "tags": [
+            "Incus",
+            "GPUPassthrough",
+            "Container",
+            "Linux",
+            "Setup"
+          ],
+          "score": 93
+        },
+        {
+          "id": "TREND-20261004-008",
+          "title": "GPUなしPCから.blendをCloud RenderしてMP4化",
+          "url": "https://zenn.dev/renderjanction/articles/4101f8cad59786",
+          "source": "Zenn",
+          "publishedAt": "2026-10-02T14:00:44Z",
+          "category": "DCC",
+          "type": "CASE",
+          "summary": ".blendをCloud GPUへ送りMP4化する手順を試し、無料Betaで利用できる範囲と停止条件を記録。",
+          "tags": [
+            "Blender",
+            "CloudRendering",
+            "GPU",
+            "Video",
+            "Workflow"
+          ],
+          "score": 92
+        },
+        {
+          "id": "TREND-20261004-009",
+          "title": "Blender Nodeを素早く整列・切断する操作Memo",
+          "url": "https://painterpop.hatenadiary.com/entry/2026/10/02/222327",
+          "source": "painter / はてなブログ",
+          "publishedAt": "2026-10-02T13:23:27Z",
+          "category": "DCC",
+          "type": "CASE",
+          "summary": "複雑化したNode Graphの配線を伸ばす・切る・整列するShortcutを、具体的な操作手順として整理。",
+          "tags": [
+            "Blender",
+            "NodeEditor",
+            "Shortcut",
+            "Workflow",
+            "Tips"
+          ],
+          "score": 91
+        },
+        {
+          "id": "TREND-20261004-010",
+          "title": "KanjiVariants 1.0：IVS・JIS文字集合を扱う.NET Library",
+          "url": "https://qiita.com/k-kobayashi/items/007795c6869076549f0f",
+          "source": "Qiita",
+          "publishedAt": "2026-10-03T00:41:24+09:00",
+          "category": "Programming",
+          "type": "RELEASE",
+          "summary": "MJ縮退Mapによる異体字検索・置換、IVS、JIS収録判定、常用・人名用漢字情報を扱うNuGet Library。",
+          "tags": [
+            "C#",
+            ".NET",
+            "Unicode",
+            "IVS",
+            "NuGet"
+          ],
+          "score": 90
+        },
+        {
+          "id": "TREND-20261004-011",
+          "title": "7z.dllとC#/WPFで文字化けしにくい圧縮・解凍Appを開発",
+          "url": "https://qiita.com/hirodream44/items/553f6ca7b1d571ae74c6",
+          "source": "Qiita",
+          "publishedAt": "2026-10-02T17:51:42+09:00",
+          "category": "Programming",
+          "type": "CASE",
+          "summary": "7-Zipの7z.dllをC#/WPFから利用し、RAR5や文字Code問題へ対応してStore公開するまでの実装を共有。",
+          "tags": [
+            "C#",
+            "WPF",
+            "7Zip",
+            "Interop",
+            "Windows"
+          ],
+          "score": 89
+        },
+        {
+          "id": "TREND-20261004-012",
+          "title": "Unity操作でMCPがVibe Codingを補う理由を実例検証",
+          "url": "https://zenn.dev/dsgarage/articles/mcp-necessity-vs-vibe-coding",
+          "source": "デジタルガレージ / Zenn",
+          "publishedAt": "2026-10-02T00:50:29Z",
+          "category": "Tools",
+          "type": "CASE",
+          "summary": "C#生成だけでUnityを操作する際の失敗を基に、状態取得・実行結果確認をMCPで構造化する価値を検証。",
+          "tags": [
+            "Unity",
+            "MCP",
+            "Tooling",
+            "Automation",
+            "AIAgent"
+          ],
+          "score": 88
+        },
+        {
+          "id": "TREND-20261004-013",
+          "title": "Unity Scene遷移後だけ出る警告を初期化順から追跡",
+          "url": "https://note.com/momikadou/n/n1a10e568e6d4",
+          "source": "紅夏 / note",
+          "publishedAt": "2026-10-01T21:40:13+09:00",
+          "category": "Unity",
+          "type": "CASE",
+          "summary": "単体再生では出ずScene遷移時だけ大量発生する警告を、Objectの受渡しと初期化Timingから切り分けたDebug記録。",
+          "tags": [
+            "Unity",
+            "SceneManagement",
+            "Initialization",
+            "Warning",
+            "Debugging"
+          ],
+          "score": 87
+        },
+        {
+          "id": "TREND-20261004-014",
+          "title": "Unity旧Input APIとInput System切替時の例外を解消",
+          "url": "https://note.com/rosy_thyme1983/n/nb0590904a8a0",
+          "source": "note",
+          "publishedAt": "2026-10-01T20:32:11+09:00",
+          "category": "Unity",
+          "type": "CASE",
+          "summary": "Player SettingsをInput Systemへ切替後もUnityEngine.Inputを読むことで発生する例外と設定・Code修正を記録。",
+          "tags": [
+            "Unity",
+            "InputSystem",
+            "PlayerSettings",
+            "Exception",
+            "Debugging"
+          ],
+          "score": 86
+        },
+        {
+          "id": "TREND-20261004-015",
+          "title": "KeyroIME OpenCore：Windows日本語入力CoreをOSS公開",
+          "url": "https://qiita.com/KeyroIME/items/30c140aa79d3bd335841",
+          "source": "Qiita",
+          "publishedAt": "2026-10-01T19:28:21+09:00",
+          "category": "Programming",
+          "type": "RELEASE",
+          "summary": "Keyboard入力、TSF、辞書検索、候補順位を扱うWindows IME CoreをC++/Rust中心のOSSとして公開。",
+          "tags": [
+            "IME",
+            "Windows",
+            "C++",
+            "Rust",
+            "OpenSource"
+          ],
+          "score": 85
+        },
+        {
+          "id": "TREND-20261004-016",
+          "title": "AI Tool結果を先に圧縮しContext消費を削減",
+          "url": "https://qiita.com/axzxs2001/items/8aadc1cb9e2c060e2ef7",
+          "source": "Qiita",
+          "publishedAt": "2026-10-01T12:07:33+09:00",
+          "category": "AI",
+          "type": "CASE",
+          "summary": "Database検索や文書取得の長い返り値をToolResultCompactionStrategyで圧縮し、会話履歴を残しつつTokenを削減。",
+          "tags": [
+            "C#",
+            "Agent",
+            "ToolResult",
+            "Compaction",
+            "Token"
+          ],
+          "score": 84
+        },
+        {
+          "id": "TREND-20261004-017",
+          "title": "AI会話をSliding Windowで圧縮",
+          "url": "https://qiita.com/axzxs2001/items/31898ecebdb2d4e5b073",
+          "source": "Qiita",
+          "publishedAt": "2026-10-01T12:09:36+09:00",
+          "category": "AI",
+          "type": "CASE",
+          "summary": "対話TurnとTool呼出しで増えるContextへSliding Windowを適用し、保持範囲とToken上限を制御する実装。",
+          "tags": [
+            "C#",
+            "Agent",
+            "SlidingWindow",
+            "Context",
+            "Token"
+          ],
+          "score": 83
+        },
+        {
+          "id": "TREND-20261004-018",
+          "title": "bigint加算からstd::stringのMemory挙動を学ぶ",
+          "url": "https://qiita.com/kishistagram/items/474b6d168944233e4722",
+          "source": "Qiita",
+          "publishedAt": "2026-10-01T15:23:14+09:00",
+          "category": "Programming",
+          "type": "CASE",
+          "summary": "10進筆算の実装を通じ、iterator、insert、size/capacity、動的Memory、C文字列との差を確認。",
+          "tags": [
+            "C++",
+            "std::string",
+            "BigInteger",
+            "Memory",
+            "Iterator"
+          ],
+          "score": 82
+        },
+        {
+          "id": "TREND-20261004-019",
+          "title": "Win32でSmartphone風Toggle Checkboxを自作",
+          "url": "https://qiita.com/mamPol/items/03544e9707098c3cb8d2",
+          "source": "Qiita",
+          "publishedAt": "2026-09-30T22:19:27+09:00",
+          "category": "Programming",
+          "type": "CASE",
+          "summary": "Win32 APIでSmartphone風Switch UIを描画・操作するCustom Controlの構成とEvent処理を実装。",
+          "tags": [
+            "Win32",
+            "C++",
+            "CustomControl",
+            "UI",
+            "Windows"
+          ],
+          "score": 81
+        },
+        {
+          "id": "TREND-20261004-020",
+          "title": "36GB Macで235B MoEをIQ1_S・CPU Streaming実行",
+          "url": "https://zenn.dev/toripy/articles/mac-36gb-235b-moe-llm-cpu-streaming",
+          "source": "Zenn",
+          "publishedAt": "2026-09-30T20:38:13+09:00",
+          "category": "AI",
+          "type": "CASE",
+          "summary": "Memory 36GBのMacへ235B MoEをIQ1_S量子化とllama.cpp純CPU Streamingで載せた設定・制約を記録。",
+          "tags": [
+            "llama.cpp",
+            "MoE",
+            "Quantization",
+            "CPU",
+            "Memory"
+          ],
+          "score": 80
+        },
+        {
+          "id": "TREND-20261004-021",
+          "title": "Unity Dedicated Server Build SupportのVersion変遷",
+          "url": "https://unityletsgo.hatenablog.com/entry/2026/09/30/175730",
+          "source": "unityでいってみよう！",
+          "publishedAt": "2026-09-30T08:57:30Z",
+          "category": "Unity",
+          "type": "RESEARCH",
+          "summary": "Unity 2021.2以降のDedicated Server Build Support追加・名称変更・対象Platformの履歴をRelease情報から整理。",
+          "tags": [
+            "Unity",
+            "DedicatedServer",
+            "Build",
+            "VersionHistory",
+            "Multiplayer"
+          ],
+          "score": 79
+        },
+        {
+          "id": "TREND-20261004-022",
+          "title": "Photogrammetryの誤差伝播を数式で理解",
+          "url": "https://zenn.dev/s_hashida/articles/d570a97b2c2604",
+          "source": "Zenn",
+          "publishedAt": "2026-09-29T21:58:05Z",
+          "category": "DCC",
+          "type": "CASE",
+          "summary": "入力値の誤差が座標計算や3D再構築結果へどう伝播するかを、偏微分と分散の関係から解説。",
+          "tags": [
+            "Photogrammetry",
+            "ErrorPropagation",
+            "3DReconstruction",
+            "Math",
+            "Accuracy"
+          ],
+          "score": 78
+        },
+        {
+          "id": "TREND-20261004-023",
+          "title": "Benchmarkの改善値が測定揺らぎだった事例",
+          "url": "https://qiita.com/istb16/items/6eb4f3211786d56c3181",
+          "source": "Qiita",
+          "publishedAt": "2026-09-29T17:42:06+09:00",
+          "category": "Programming",
+          "type": "CASE",
+          "summary": "性能改善に見えた差を再測定し、実際はBenchmarkの揺らぎだったことを確認。比較条件と反復測定の注意を共有。",
+          "tags": [
+            "Benchmark",
+            "Performance",
+            "Measurement",
+            "Variance",
+            "Verification"
+          ],
+          "score": 77
+        },
+        {
+          "id": "TREND-20261004-024",
+          "title": "Linux wait4後のSlab滞留とtask_struct解放遅延を実証",
+          "url": "https://qiita.com/hanakata/items/8e7be44a2ca86696d6ae",
+          "source": "Qiita",
+          "publishedAt": "2026-09-29T10:46:11+09:00",
+          "category": "Programming",
+          "type": "RESEARCH",
+          "summary": "Process回収後もSlabにtask_structが残り、threads-maxを一時閉塞させる条件をKernel指標で追跡。",
+          "tags": [
+            "Linux",
+            "Kernel",
+            "wait4",
+            "Slab",
+            "Performance"
+          ],
+          "score": 76
+        },
+        {
+          "id": "TREND-20261004-025",
+          "title": "Azure FunctionsのQueue TriggerとHTTP Triggerを比較",
+          "url": "https://qiita.com/tyamashita1114/items/f6357c82690bafd22202",
+          "source": "Qiita",
+          "publishedAt": "2026-09-29T09:24:33+09:00",
+          "category": "Programming",
+          "type": "CASE",
+          "summary": "在庫補充処理を題材に、Queueの自動Retry・Poison QueueとHTTP同期実行の使い分けを実装で確認。",
+          "tags": [
+            "C#",
+            "AzureFunctions",
+            "Queue",
+            "Retry",
+            "Architecture"
+          ],
+          "score": 75
+        },
+        {
+          "id": "TREND-20261004-026",
+          "title": "AI生成形状を使いRaspberry Pi CaseをModeling",
+          "url": "https://zenn.dev/polygoro/articles/009-ai-raspberry-pi-case",
+          "source": "Zenn",
+          "publishedAt": "2026-09-29T07:57:30+09:00",
+          "category": "DCC",
+          "type": "CASE",
+          "summary": "Raspberry Pi Caseを題材に、AI Modeling出力を検証・修正して実用形状へ近づける制作工程を記録。",
+          "tags": [
+            "3DModeling",
+            "RaspberryPi",
+            "CAD",
+            "AI",
+            "Workflow"
+          ],
+          "score": 74
+        },
+        {
+          "id": "TREND-20261004-027",
+          "title": "ASP.NET Core Native AOTでWindows EXEを生成",
+          "url": "https://web-dev.hatenablog.com/entry/csharp/publish/asp-native-aot",
+          "source": "C#, Python, Web開発",
+          "publishedAt": "2026-09-28T15:00:00Z",
+          "category": "Programming",
+          "type": "CASE",
+          "summary": "ASP.NET Core Web APIをWindows x64向けNative AOTで発行し、必要なC++ Build ToolとProject設定を解説。",
+          "tags": [
+            "C#",
+            "ASP.NETCore",
+            "NativeAOT",
+            "Windows",
+            "Build"
+          ],
+          "score": 73
+        },
+        {
+          "id": "TREND-20261004-028",
+          "title": "C#/.NET 8でRaspberry Pi向けDual-pane Filerを開発",
+          "url": "https://qiita.com/neomi/items/3be92197f245f5097d55",
+          "source": "Qiita",
+          "publishedAt": "2026-09-28T22:02:32+09:00",
+          "category": "Programming",
+          "type": "CASE",
+          "summary": "Raspberry Pi上で動くNorton Commander風File ManagerをC#/.NET 8で設計・実装した記録。",
+          "tags": [
+            "C#",
+            ".NET8",
+            "RaspberryPi",
+            "TUI",
+            "FileManager"
+          ],
+          "score": 72
+        },
+        {
+          "id": "TREND-20261004-029",
+          "title": "Meta Quest 3向けVR開発の初期Setup",
+          "url": "https://note.com/connectwith/n/nf1097b8b7d02",
+          "source": "connect with / note",
+          "publishedAt": "2026-09-28T21:39:23+09:00",
+          "category": "Game",
+          "type": "CASE",
+          "summary": "Meta Quest 3でVR Applicationを動かすまでのDevice設定、開発環境、基本的な確認手順をまとめた入門。",
+          "tags": [
+            "MetaQuest3",
+            "VR",
+            "XR",
+            "Setup",
+            "GameDevelopment"
+          ],
+          "score": 71
+        },
+        {
+          "id": "TREND-20261004-030",
+          "title": "Blender・CAD・Web共有をAI対話だけで通す実験",
+          "url": "https://note.com/tk_ax/n/nda9810f82486",
+          "source": "小甲健 / note",
+          "publishedAt": "2026-09-28T21:27:48+09:00",
+          "category": "DCC",
+          "type": "CASE",
+          "summary": "間取り図を起点に、Blender Modeling、CAD化、Web共有までをAI対話で接続し、工程ごとの成立範囲を検証。",
+          "tags": [
+            "Blender",
+            "CAD",
+            "Automation",
+            "AI",
+            "Workflow"
+          ],
+          "score": 70
+        },
+        {
+          "id": "TREND-20261004-031",
+          "title": "Mac VulkanでGLFW WindowとVkSurfaceKHRを作成",
+          "url": "https://zenn.dev/nnnnnnn0090/articles/4a2445de33a7fe",
+          "source": "Zenn",
+          "publishedAt": "2026-09-28T12:10:53Z",
+          "category": "Graphics",
+          "type": "CASE",
+          "summary": "macOSのVulkan環境でGLFW Windowを作り、InstanceからVkSurfaceKHRを生成する手順を解説。",
+          "tags": [
+            "Vulkan",
+            "GLFW",
+            "VkSurfaceKHR",
+            "macOS",
+            "GraphicsAPI"
+          ],
+          "score": 69
+        },
+        {
+          "id": "TREND-20261004-032",
+          "title": "Vulkan Validation LayerでAPI Errorを検出",
+          "url": "https://zenn.dev/nnnnnnn0090/articles/a5c1496007f996",
+          "source": "Zenn",
+          "publishedAt": "2026-09-28T12:07:31Z",
+          "category": "Graphics",
+          "type": "CASE",
+          "summary": "macOS向けVulkan入門としてValidation LayerとDebug Messengerを有効化し、誤ったAPI利用を検出。",
+          "tags": [
+            "Vulkan",
+            "ValidationLayer",
+            "DebugMessenger",
+            "macOS",
+            "Debugging"
+          ],
+          "score": 68
+        },
+        {
+          "id": "TREND-20261004-033",
+          "title": "Pico 2向けPreemptive Multitask Kernelを自作",
+          "url": "https://zenn.dev/satoshi_yoneda/articles/pico2_tinykernel",
+          "source": "Zenn",
+          "publishedAt": "2026-09-28T06:01:02Z",
+          "category": "Programming",
+          "type": "CASE",
+          "summary": "RP2350向けTiny KernelでPreemptive Task切替と疎結合Pub/Subの基盤を実装し、低Level動作を解説。",
+          "tags": [
+            "RaspberryPiPico2",
+            "Kernel",
+            "Multitasking",
+            "Embedded",
+            "ARM"
+          ],
+          "score": 67
+        },
+        {
+          "id": "TREND-20261004-034",
+          "title": "Durable Entitiesを在庫予約・口座間送金で検証",
+          "url": "https://qiita.com/tyamashita1114/items/936c3c72dcb8f3e21a99",
+          "source": "Qiita",
+          "publishedAt": "2026-09-28T11:27:18+09:00",
+          "category": "Programming",
+          "type": "CASE",
+          "summary": ".NET IsolatedのDurable EntitiesでState管理と排他性を試し、在庫予約・送金で使う判断基準を整理。",
+          "tags": [
+            "C#",
+            "DurableFunctions",
+            "StateManagement",
+            "DistributedSystems",
+            "Azure"
+          ],
+          "score": 66
+        },
+        {
+          "id": "TREND-20261004-035",
+          "title": "Blender Quick SmokeとDynamic Paintで炎を制御",
+          "url": "https://note.com/acarcane/n/n168015f610a0",
+          "source": "アカルカネ / note",
+          "publishedAt": "2026-09-28T17:30:00+09:00",
+          "category": "DCC",
+          "type": "CASE",
+          "summary": "Dynamic Paintで描いたPatternに沿ってQuick Smokeの炎を発生させるSimulation準備と設定を解説。",
+          "tags": [
+            "Blender",
+            "QuickSmoke",
+            "DynamicPaint",
+            "Simulation",
+            "VFX"
+          ],
+          "score": 65
+        },
+        {
+          "id": "TREND-20261004-036",
+          "title": "Unity 2Dで焚き火とPotの沸騰Timerを実装",
+          "url": "https://pikinosuke.hatenablog.com/entry/2026/09/27/231838",
+          "source": "ぴきのすけの趣味自由形",
+          "publishedAt": "2026-09-27T14:18:38Z",
+          "category": "Unity",
+          "type": "CASE",
+          "summary": "焚き火上へPotを設置し、経過時間で湯が沸く状態遷移をPlayer・Bonfire・PotのScriptで実装。",
+          "tags": [
+            "Unity2D",
+            "C#",
+            "StateMachine",
+            "Timer",
+            "GameDevelopment"
+          ],
+          "score": 64
+        },
+        {
+          "id": "TREND-20261004-037",
+          "title": "VRChat UdonでInteractを転送するProxy Script",
+          "url": "https://zenn.dev/0xd/articles/vrc-udon-proxies",
+          "source": "Zenn",
+          "publishedAt": "2026-09-27T09:09:39Z",
+          "category": "Game",
+          "type": "CASE",
+          "summary": "VRChat WorldでPlayerのInteractを別Udon Behaviourへ転送するProxy Scriptと利用上の注意を解説。",
+          "tags": [
+            "VRChat",
+            "UdonSharp",
+            "Proxy",
+            "Unity",
+            "Interaction"
+          ],
+          "score": 63
+        }
+      ]
+    },
     {
       "date": "2026-10-03",
       "items": [
@@ -1184,300 +1855,7 @@
           "score": 67
         }
       ]
-    },
-    {
-      "date": "2026-10-01",
-      "items": [
-        {
-          "id": "TREND-20261001-001",
-          "title": "Unity 7はURPへ統合：Built-In廃止・HDRP非推奨化の移行計画",
-          "url": "https://discussions.unity.com/t/the-path-to-a-single-render-pipeline-in-unity-7/1737908",
-          "source": "Unity Official / Discussions",
-          "publishedAt": "2026-09-30T00:00:00Z",
-          "category": "Unity",
-          "type": "UPDATE",
-          "summary": "Unity 7.0でBuilt-Inを廃止しHDRPを非推奨化。6.7のProject Auditor移行Wizardを使い、URPへ先行移行する公式Roadmap。",
-          "tags": [
-            "Unity7",
-            "URP",
-            "HDRP",
-            "RenderPipeline",
-            "Migration"
-          ],
-          "score": 99
-        },
-        {
-          "id": "TREND-20261001-002",
-          "title": "Blender Today #290：Vulkan 1.1対応緩和・DLSS・Gaussian Splatting",
-          "url": "https://devtalk.blender.org/t/blender-today-live-290-gaussian-splatting-dlss-outliner-and-more/45863",
-          "source": "Blender Developer Forum",
-          "publishedAt": "2026-09-30T14:59:00Z",
-          "category": "DCC",
-          "type": "UPDATE",
-          "summary": "9月中の539 Commitを整理。Vulkan 1.1端末への要件緩和、Multi-Viewport任意化、Workbench BSL 5.3有効化などを確認できる。",
-          "tags": [
-            "Blender",
-            "Vulkan",
-            "DLSS",
-            "GaussianSplatting",
-            "Workbench"
-          ],
-          "score": 97
-        },
-        {
-          "id": "TREND-20261001-003",
-          "title": "Blender 5.3 Multi-Stage Compositing試作Addonを公開",
-          "url": "https://devtalk.blender.org/t/multi-stage-compositing-prototype-feedback/45865",
-          "source": "Blender Developer Forum",
-          "publishedAt": "2026-09-30T15:28:00Z",
-          "category": "DCC",
-          "type": "TOOL",
-          "summary": "Object・Material単位のCompositing Treeを合成するPoC。Depth順序、Cryptomatte輪郭、Instance処理など既知制約も明示。",
-          "tags": [
-            "Blender",
-            "Compositor",
-            "NPR",
-            "Cryptomatte",
-            "Addon"
-          ],
-          "score": 95
-        },
-        {
-          "id": "TREND-20261001-004",
-          "title": "Blender 5.3 AlphaをDGX SparkでARM64 Native Build：DLSS・OptiX動作",
-          "url": "https://devtalk.blender.org/t/successfully-building-blender-5-3-alpha-on-nvidia-dgx-spark-linux-arm64-with-native-dlss-optix/45857",
-          "source": "Blender Developer Forum",
-          "publishedAt": "2026-09-30T09:08:00Z",
-          "category": "DCC",
-          "type": "CASE",
-          "summary": "Ubuntu 24.04 aarch64/Grace Blackwell GB10でCUDA・OptiX・DLSSを有効化。LLVM整合のためOSLはCPU評価に限定したBuild記録。",
-          "tags": [
-            "Blender",
-            "ARM64",
-            "OptiX",
-            "DLSS",
-            "DGXSpark"
-          ],
-          "score": 93
-        },
-        {
-          "id": "TREND-20261001-005",
-          "title": "Unity 6.3 Upgrade後にHDRP Sparse Virtual Texturingが壊れる事例",
-          "url": "https://discussions.unity.com/t/svt-virtual-texturing-broken-after-project-upgrade/1738015",
-          "source": "Unity Discussions",
-          "publishedAt": "2026-09-30T19:00:00Z",
-          "category": "Unity",
-          "type": "CASE",
-          "summary": "6000.0から6000.3.25f1へ更新後、SVT有効でもVirtual Texturing無効例外と灰色Scene Viewが発生。新規Projectでは再現しない。",
-          "tags": [
-            "Unity",
-            "HDRP",
-            "VirtualTexturing",
-            "Upgrade",
-            "Bug"
-          ],
-          "score": 91
-        },
-        {
-          "id": "TREND-20261001-006",
-          "title": "Blender 5.3 VSE：Ripple Editing・HW Decode・OpenTimelineIOを最終化",
-          "url": "https://devtalk.blender.org/t/2026-09-29-sequencer-meeting/45849",
-          "source": "Blender Developer Forum",
-          "publishedAt": "2026-09-29T16:35:00Z",
-          "category": "DCC",
-          "type": "UPDATE",
-          "summary": "Ripple Editing、Hardware Decode、OTIO Import/Exportを最終化。HW Decodeは低BitrateやmacOSで遅い場合があり初期値OFF。",
-          "tags": [
-            "Blender",
-            "VSE",
-            "OpenTimelineIO",
-            "HardwareDecode",
-            "Video"
-          ],
-          "score": 89
-        },
-        {
-          "id": "TREND-20261001-007",
-          "title": "Unity 6.6 Content Directories：AssetBundleを粒度細かく置換",
-          "url": "https://unity.com/blog/content-directories-beyond-the-assetbundle",
-          "source": "Unity Technologies",
-          "publishedAt": "2026-09-22T00:00:00Z",
-          "category": "Unity",
-          "type": "NEW",
-          "summary": "Asset単位の非同期Load/Unloadと暗黙Dedupを導入。実例で増分Build 32分16秒→3分4秒、Player 4GB→2.88GB。",
-          "tags": [
-            "Unity",
-            "AssetBundle",
-            "Addressables",
-            "Loading",
-            "Performance"
-          ],
-          "score": 88
-        },
-        {
-          "id": "TREND-20261001-008",
-          "title": "H3VR2のStandalone VR設計：ECS・Burstで弾道Simulationを再構築",
-          "url": "https://unity.com/blog/rust-ltd-hot-dogs-horseshoes-hand-grenades-2",
-          "source": "Unity Technologies / RUST LTD",
-          "publishedAt": "2026-09-25T00:00:00Z",
-          "category": "Unity",
-          "type": "CASE",
-          "summary": "10年分の負債をPortせず半年かけて基盤を再設計。ECS/Burstで弾道・爆発・Agentを処理し、Quest 3のFrame Budgetへ適合。",
-          "tags": [
-            "Unity",
-            "ECS",
-            "Burst",
-            "VR",
-            "Physics",
-            "Optimization"
-          ],
-          "score": 87
-        },
-        {
-          "id": "TREND-20261001-009",
-          "title": "Scritchy ScratchyのPC・Mobile・Switch向け単一Project運用",
-          "url": "https://web-prd.hexagon.unity.com/blog/scaling-scritchy-scratchy-across-platforms",
-          "source": "Unity Technologies / Funday Games",
-          "publishedAt": "2026-09-28T00:00:00Z",
-          "category": "Game",
-          "type": "CASE",
-          "summary": "Platform別Branchを作らず条件Compileで単一Projectを維持。Profilerで粒子をGPU Instancing化し、低位Mobileでも約60fpsを狙う。",
-          "tags": [
-            "Unity",
-            "Mobile",
-            "Switch",
-            "Profiler",
-            "GPUInstancing"
-          ],
-          "score": 85
-        },
-        {
-          "id": "TREND-20261001-010",
-          "title": "Unity 6.6でMeta VR GlassesをOpenXR対応",
-          "url": "https://unity.com/blog/build-for-meta-vr-glasses-with-unity",
-          "source": "Unity Technologies",
-          "publishedAt": "2026-09-24T00:00:00Z",
-          "category": "Unity",
-          "type": "RELEASE",
-          "summary": "Quest既存ProjectをOpenXR基盤で移行可能。Eye Tracking、Quad Views、7.1.4音響に対応し、必要Package Versionも提示。",
-          "tags": [
-            "Unity",
-            "OpenXR",
-            "VR",
-            "EyeTracking",
-            "QuadViews"
-          ],
-          "score": 83
-        },
-        {
-          "id": "TREND-20261001-011",
-          "title": "Unity Simulation Pro Early Access：URDF・ROS 2・Headless Linuxを統合",
-          "url": "https://unity.com/blog/unity-simulation-pro-early-access",
-          "source": "Unity Technologies",
-          "publishedAt": "2026-09-22T00:00:00Z",
-          "category": "Unity",
-          "type": "RELEASE",
-          "summary": "Unity 6.3以降向けRobot Simulation Package。URDF Import、標準Sensor、ROS 2、Headless Linux Buildを公式Support。",
-          "tags": [
-            "Unity",
-            "Robotics",
-            "ROS2",
-            "URDF",
-            "Simulation"
-          ],
-          "score": 81
-        },
-        {
-          "id": "TREND-20261001-012",
-          "title": "NVIDIA DLSS 5：3D-Guided Neural RenderingとMega Geometry 2.0",
-          "url": "https://developer.nvidia.com/blog/whats-new-for-game-developers-dlss-5-with-3d-guided-neural-rendering-nvidia-ace-updates-and-new-rtx-kit-capabilities",
-          "source": "NVIDIA Technical Blog",
-          "publishedAt": "2026-09-22T00:00:00Z",
-          "category": "Graphics",
-          "type": "NEW",
-          "summary": "Engine FrameとMotion Vectorを固定基盤に1入力1出力でNeural Rendering。Semantic Maskと連続LOD Cluster Streamingも公開。",
-          "tags": [
-            "DLSS5",
-            "NeuralRendering",
-            "RTX",
-            "LOD",
-            "Rendering"
-          ],
-          "score": 80
-        },
-        {
-          "id": "TREND-20261001-013",
-          "title": "LANTERN：仕様駆動MutationでWebGPU CTSの隙間を検査",
-          "url": "https://arxiv.org/abs/2609.25520",
-          "source": "arXiv",
-          "publishedAt": "2026-09-22T00:32:46Z",
-          "category": "Research",
-          "type": "PAPER",
-          "summary": "WebIDLと仕様文から制約を抽出しCTSをMutation。ASan ChromiumでHeap Corruptionを含む再現可能な3件のBugを発見。",
-          "tags": [
-            "WebGPU",
-            "Fuzzing",
-            "Chromium",
-            "CTS",
-            "Security"
-          ],
-          "score": 78
-        },
-        {
-          "id": "TREND-20261001-014",
-          "title": "three.js r186：Retroreflective環境光とWatertight Triangle交差を追加",
-          "url": "https://github.com/mrdoob/three.js/releases/tag/r186",
-          "source": "three.js / GitHub Releases",
-          "publishedAt": "2026-09-24T14:35:00Z",
-          "category": "Graphics",
-          "type": "RELEASE",
-          "summary": "Retroreflective Materialの環境光、WatertightなRay-Triangle交差、Renderer resetStateなどを追加したWeb 3D更新。",
-          "tags": [
-            "three.js",
-            "WebGPU",
-            "WebGL",
-            "RayIntersection",
-            "Rendering"
-          ],
-          "score": 76
-        },
-        {
-          "id": "TREND-20261001-015",
-          "title": "dcc-mcp-blender 0.2.12：IES LightとglTF Vertex Split資料を追加",
-          "url": "https://github.com/dcc-mcp/dcc-mcp-blender/blob/main/CHANGELOG.md",
-          "source": "dcc-mcp / GitHub",
-          "publishedAt": "2026-09-28T00:00:00Z",
-          "category": "Tools",
-          "type": "RELEASE",
-          "summary": "Blender Lightへ実IES Photometric Profileを公開。glTF ExportのVertex Split意味論とAssembly失敗例Skillも追加。",
-          "tags": [
-            "Blender",
-            "MCP",
-            "IES",
-            "glTF",
-            "Tooling"
-          ],
-          "score": 74
-        },
-        {
-          "id": "TREND-20261001-016",
-          "title": "LLVM 23.1.2 Maintenance Release",
-          "url": "https://www.llvm.org/",
-          "source": "LLVM Project",
-          "publishedAt": "2026-09-22T00:00:00Z",
-          "category": "Programming",
-          "type": "RELEASE",
-          "summary": "LLVM 23系列の第2回Maintenance Release。Clang/LLVM Toolchain利用者向けに23.1.x安定系列の更新版を公開。",
-          "tags": [
-            "LLVM",
-            "Clang",
-            "Compiler",
-            "C++",
-            "Toolchain"
-          ],
-          "score": 72
-        }
-      ]
     }
   ]
 }
+
