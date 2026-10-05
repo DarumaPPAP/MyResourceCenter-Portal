@@ -157,7 +157,7 @@
   }
 
   // Persist only visible filter values; keep unrelated URL parameters intact.
-  function bindFilterState(controls, render) {
+  function bindFilterState(controls, render, {clearParams = []} = {}) {
     const restore = () => {
       const params = new URLSearchParams(location.search);
       controls.forEach(control => { control.value = params.get(control.id) || ''; });
@@ -168,6 +168,7 @@
         if (control.value) url.searchParams.set(control.id, control.value);
         else url.searchParams.delete(control.id);
       });
+      clearParams.forEach(name => url.searchParams.delete(name));
       history.replaceState(null, '', url);
     };
     restore();

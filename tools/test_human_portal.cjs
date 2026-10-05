@@ -44,17 +44,20 @@ assert.match(humanPortalSource, /C\.documentThumbnail\(doc\)/);
 assert.match(humanPortalSource, /C\.chips\(doc\.tags\.slice\(0,\s*6\)\)/);
 async function renderDocumentCard(doc) {
   const elements = new Map();
-  for (const id of ['q','category','format','tag','clear','list','count']) {
+  for (const id of ['q','category','format','tag','clear','list','count','result-meta','pagination']) {
     elements.set(id, {
       id,
-      tagName:id === 'q' ? 'INPUT' : id === 'clear' ? 'BUTTON' : 'SELECT',
+    tagName:id === 'q' ? 'INPUT' : id === 'clear' ? 'BUTTON' : id === 'pagination' ? 'NAV' : 'SELECT',
       value:'',
       innerHTML:'',
       textContent:'',
       options:[],
       listeners:{},
       addEventListener(type,listener) { this.listeners[type] = listener; },
-      appendChild(option) { this.options.push(option); }
+      appendChild(option) { this.options.push(option); },
+      contains() { return true; },
+      querySelector() { return null; },
+      scrollIntoView() {}
     });
   }
   let onReady;
@@ -71,7 +74,9 @@ async function renderDocumentCard(doc) {
     bindFilterState:(_controls,render) => render()
   };
   const context = {
-    location:{pathname:'/documents.html'},
+    location:{pathname:'/documents.html',href:'https://portal.test/documents.html'},
+    history:{replaceState(){}},
+    URL,URLSearchParams,
     document:{
       getElementById:id => elements.get(id),
       createElement:() => ({})
@@ -487,4 +492,156 @@ Promise.resolve().then(async()=>{
   assert.deepEqual(finalWindow.pageNumbers(),[1,8,9,10,11,12]);
   assert.equal(finalWindow.ellipsisCount(),1);
   console.log('OK: Website pagination slices, URL canonicalization, filter reset, history, accessibility and page windows');
+}).catch(error=>{console.error(error);process.exitCode=1;});
+
+const documentsPageSource=fs.readFileSync(path.join(__dirname,'../documents.html'),'utf8');
+const documentsStyles=fs.readFileSync(path.join(__dirname,'../assets/documents.css'),'utf8');
+assert.match(documentsPageSource,/<nav[^>]*id="pagination"[^>]*aria-label="ドキュメント一覧のページ"/);
+assert.match(documentsPageSource,/id="list"[^>]*aria-live="polite"[^>]*tabindex="-1"/);
+assert.match(documentsPageSource,/id="list"[^>]*><\/div>\s*<nav[^>]*id="pagination"/);
+assert.match(documentsStyles,/\.document-pagination[^\{]*\{[^}]*flex-wrap:\s*wrap/s);
+assert.match(documentsStyles,/\.document-page-link[^\{]*\{[^}]*min-width:\s*36px/s);
+assert.match(documentsStyles,/\.document-page-link:focus-visible/);
+
+function documentFixture(count) {
+  return Array.from({length:count},(_,index)=>({
+    resourceId:`RES-${String(index+1).padStart(3,'0')}`,
+    documentId:`DOC-${String(index+1).padStart(3,'0')}`,
+    title:`Document ${String(index+1).padStart(3,'0')}`,
+    sourceFormat:index%2?'PDF':'PPTX',
+    thumbnail:null,
+    engine:'General',
+    level:'implementation',
+    tags:index%2?['Shader']:['AI'],
+    domains:['Graphics'],
+    canonicalUrl:`https://drive.google.com/file/d/drive_${index+1}/view`
+  }));
+}
+
+async function createDocumentsPage(rows,href='https://portal.test/documents.html') {
+  const windowHandlers=Object.create(null),documentHandlers=Object.create(null),elements=new Map();
+  const makeElement=(id,tagName='DIV')=>{
+    const listeners=Object.create(null);
+    const element={id,tagName,value:'',textContent:'',hidden:false,options:[],listeners,
+      addEventListener(type,listener){(listeners[type] ||= []).push(listener);},
+      appendChild(child){this.options.push(child);},
+      emit(type,event={}){for(const listener of listeners[type] || [])listener(event);},
+      click(){this.emit('click',{target:this});},
+      focus(options){this.focused=true;this.focusOptions=options;},
+      contains(){return true;}
+    };
+    if(id==='list'){
+      element.focusCount=0;
+      element.querySelector=selector=>selector==='.document-title'?element.firstTitle:null;
+      Object.defineProperty(element,'innerHTML',{get(){return element._innerHTML || '';},set(value){
+        element._innerHTML=value;
+        element.firstTitle=value.includes('<article class="document-entry">')?{focus(options){element.focusCount+=1;element.lastFocusOptions=options;}}:null;
+      }});
+    }else if(id==='pagination')element.innerHTML='';
+    else if(id==='result-meta'){
+      element.scrollCount=0;
+      element.scrollIntoView=options=>{element.scrollCount+=1;element.lastScrollOptions=options;};
+    }
+    elements.set(id,element);return element;
+  };
+  for(const id of ['q','category','format','tag','clear','list','count','result-meta','pagination'])
+    makeElement(id,id==='q'?'INPUT':id==='clear'?'BUTTON':id==='count'?'SPAN':id==='pagination'?'NAV':'SELECT');
+  let currentUrl=new URL(href),cursor=0;
+  const entries=[currentUrl.href];let pushCount=0,replaceCount=0;
+  const history={
+    get length(){return entries.length;},
+    pushState(_state,_title,destination){currentUrl=new URL(destination,currentUrl);entries.splice(cursor+1);entries.push(currentUrl.href);cursor++;pushCount++;},
+    replaceState(_state,_title,destination){currentUrl=new URL(destination,currentUrl);entries[cursor]=currentUrl.href;replaceCount++;}
+  };
+  const location={get href(){return currentUrl.href;},get search(){return currentUrl.search;},get pathname(){return currentUrl.pathname;}};
+  const document={getElementById:id=>elements.get(id),createElement:()=>({value:'',textContent:''}),
+    addEventListener(type,listener){(documentHandlers[type] ||= []).push(listener);}};
+  const window={addEventListener(type,listener){(windowHandlers[type] ||= []).push(listener);}};
+  const context={URL,URLSearchParams,location,history,document,window,console,encodeURIComponent};
+  vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../assets/catalog.js'),'utf8'),context);
+  context.window.MRCCatalog.loadMany=async()=>({'document-presentation':rows,resources:[],taxonomy:{domains:{Graphics:{displayName:'Graphics'}},tags:{}}});
+  vm.runInNewContext(humanPortalSource,context);
+  await windowHandlers.DOMContentLoaded[0]();
+  return{
+    elements,history,location,get pushCount(){return pushCount;},get replaceCount(){return replaceCount;},
+    pageNumbers(){const markup=elements.get('pagination').innerHTML.match(/<ul class="document-pagination-list">([\s\S]*?)<\/ul>/)?.[1]||'';
+      return [...markup.matchAll(/<a\b(?=[^>]*class="[^"]*document-page-number[^"]*")[^>]*data-page="(\d+)"/g)].map(match=>Number(match[1]));},
+    clickPage(page,options={}){const event={button:0,altKey:false,ctrlKey:false,metaKey:false,shiftKey:false,...options,defaultPrevented:false,preventDefault(){this.defaultPrevented=true;}};
+      event.target={dataset:{page:String(page)},closest(selector){return selector==='a[data-page]'?this:null;}};elements.get('pagination').emit('click',event);return event;},
+    travel(direction){const target=cursor+direction;if(target<0||target>=entries.length)return;cursor=target;currentUrl=new URL(entries[cursor]);
+      for(const listener of windowHandlers.popstate||[])listener({});},
+    resetFromEmpty(){const event={target:{closest(selector){return selector==='[data-reset-filters]'?this:null;}}};
+      for(const listener of documentHandlers.click||[])listener(event);}
+  };
+}
+
+Promise.resolve().then(async()=>{
+  const rows45=documentFixture(45);
+  const page2=await createDocumentsPage(rows45,'https://portal.test/documents.html?page=2&keep=yes');
+  const list=page2.elements.get('list'),count=page2.elements.get('count'),nav=page2.elements.get('pagination');
+  assert.equal((list.innerHTML.match(/<article class="document-entry">/g)||[]).length,20);
+  assert.ok(list.innerHTML.includes('Document 021'));
+  assert.ok(!list.innerHTML.includes('Document 020'));
+  assert.equal(count.textContent,'21–40 件目 / 45 件（全 45 件）');
+  assert.deepEqual(page2.pageNumbers(),[1,2,3]);
+  assert.match(nav.innerHTML,/aria-current="page"/);
+  assert.match(nav.innerHTML,/aria-label="2ページ目"/);
+  assert.match(nav.innerHTML,/aria-label="前のページ"/);
+  assert.match(nav.innerHTML,/href="\/documents.html\?page=3&amp;keep=yes"/);
+  const page3Click=page2.clickPage(3);
+  assert.equal(page3Click.defaultPrevented,true);
+  assert.equal(page2.pushCount,1);
+  assert.equal(page2.location.search,'?page=3&keep=yes');
+  assert.equal((list.innerHTML.match(/<article class="document-entry">/g)||[]).length,5);
+  assert.ok(list.innerHTML.includes('Document 041'));
+  assert.equal(count.textContent,'41–45 件目 / 45 件（全 45 件）');
+  assert.equal(page2.elements.get('result-meta').scrollCount,1);
+  assert.equal(list.focusCount,1);
+  assert.equal(list.lastFocusOptions.preventScroll,true);
+  page2.travel(-1);
+  assert.equal(page2.location.search,'?page=2&keep=yes');
+  assert.ok(list.innerHTML.includes('Document 021'));
+  page2.travel(1);
+  assert.equal(page2.location.search,'?page=3&keep=yes');
+  assert.ok(list.innerHTML.includes('Document 041'));
+
+  const query=page2.elements.get('q');
+  query.value='Shader';query.emit('input');
+  assert.equal(new URL(page2.location.href).searchParams.get('q'),'Shader');
+  assert.equal(new URL(page2.location.href).searchParams.get('keep'),'yes');
+  assert.equal(new URL(page2.location.href).searchParams.has('page'),false);
+  assert.equal(nav.hidden,false);
+  assert.equal(count.textContent,'1–20 件目 / 22 件（全 45 件）');
+  assert.ok(list.innerHTML.includes('Document 002'),'filter is applied to the full catalog before pagination');
+  assert.ok(!list.innerHTML.includes('Document 003'));
+  const historyLength=page2.history.length;
+  page2.elements.get('clear').click();
+  assert.equal(page2.history.length,historyLength,'filter reset replaces history rather than adding an entry');
+  assert.equal(page2.location.search,'?keep=yes');
+  assert.equal(query.value,'');
+  assert.equal(count.textContent,'1–20 件目 / 45 件（全 45 件）');
+
+  for(const invalid of ['1','0','-1','1.5','abc']){
+    const repaired=await createDocumentsPage(rows45,`https://portal.test/documents.html?page=${encodeURIComponent(invalid)}&keep=yes`);
+    assert.equal(repaired.location.search,'?keep=yes',`invalid/page-one value ${invalid} is canonicalized`);
+    assert.equal((repaired.elements.get('list').innerHTML.match(/<article class="document-entry">/g)||[]).length,20);
+  }
+  const oversized=await createDocumentsPage(rows45,'https://portal.test/documents.html?page=999&keep=yes');
+  assert.equal(oversized.location.search,'?page=3&keep=yes');
+  assert.equal(oversized.elements.get('count').textContent,'41–45 件目 / 45 件（全 45 件）');
+  const noResults=await createDocumentsPage(rows45,'https://portal.test/documents.html?q=missing&page=2&keep=yes');
+  assert.equal(noResults.location.search,'?q=missing&keep=yes');
+  assert.equal(noResults.elements.get('count').textContent,'0 件 / 全 45 件');
+  assert.equal(noResults.elements.get('pagination').hidden,true);
+  noResults.resetFromEmpty();
+  assert.equal(noResults.elements.get('q').value,'');
+  assert.equal(noResults.location.search,'?keep=yes');
+  assert.equal(noResults.elements.get('pagination').hidden,false);
+
+  const pageOne=await createDocumentsPage(rows45,'https://portal.test/documents.html?page=1&keep=yes');
+  assert.equal(pageOne.location.search,'?keep=yes','page 1 is omitted from canonical URLs');
+  const onePage=await createDocumentsPage(rows45.slice(0,20),'https://portal.test/documents.html?page=2&keep=yes');
+  assert.equal(onePage.location.search,'?keep=yes');
+  assert.equal(onePage.elements.get('pagination').hidden,true);
+  console.log('OK: Documents pagination slices after filtering, canonical URLs, filter reset, history, empty state and accessibility');
 }).catch(error=>{console.error(error);process.exitCode=1;});

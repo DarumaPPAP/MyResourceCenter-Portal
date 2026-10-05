@@ -71,3 +71,29 @@ websiteUrl=new URL('https://example.test/websites.html?q=GPU&category=Idea&tag=A
 websiteWindowHandlers.popstate();
 assert.deepEqual(websiteControls.map(control=>control.value),['GPU','Idea','AI','other','__other__','asc']);
 console.log('OK: Website q/category/tag/site/author/sort URL persistence, Unicode, reset and history restoration');
+
+// Document filter edits reset only the page parameter while preserving unrelated URL state.
+const documentControls=['q','category','format','tag'].map(id=>new Control(id,id==='q'?'INPUT':'SELECT'));
+const documentClear=new Control('clear','BUTTON');
+let documentUrl=new URL('https://example.test/documents.html?q=shader&category=Graphics&format=PDF&tag=Shader&page=3&keep=1');
+const documentLocation={get href(){return documentUrl.href;},get search(){return documentUrl.search;}};
+const documentWindowHandlers={},documentHandlers={};
+const documentContext={
+  URL,URLSearchParams,location:documentLocation,
+  history:{replaceState(_,__,value){documentUrl=new URL(value);}},
+  document:{getElementById:id=>id==='clear'?documentClear:null,addEventListener:(type,fn)=>{documentHandlers[type]=fn;}},
+  window:{addEventListener:(type,fn)=>{documentWindowHandlers[type]=fn;}}
+};
+vm.runInNewContext(fs.readFileSync(require('node:path').join(__dirname,'../assets/catalog.js'),'utf8'),documentContext);
+documentClear.addEventListener('click',()=>documentControls.forEach(control=>{control.value='';}));
+documentContext.window.MRCCatalog.bindFilterState(documentControls,()=>{},{clearParams:['page']});
+assert.deepEqual(documentControls.map(control=>control.value),['shader','Graphics','PDF','Shader']);
+documentControls[0].value='Unity';documentControls[0].emit('input');
+assert.equal(documentUrl.searchParams.get('q'),'Unity');
+assert.equal(documentUrl.searchParams.has('page'),false);
+assert.equal(documentUrl.searchParams.get('keep'),'1');
+documentUrl=new URL('https://example.test/documents.html?q=Shader&page=2&keep=1');
+documentWindowHandlers.popstate();
+assert.deepEqual(documentControls.map(control=>control.value),['Shader','','','']);
+assert.equal(documentUrl.searchParams.get('page'),'2','Back/Forward restoration keeps the page URL for the page controller');
+console.log('OK: Document filter edits reset page state and Back/Forward restores filters without losing unrelated parameters');
