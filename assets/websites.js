@@ -293,7 +293,7 @@
       <div class="site-icon-box" aria-hidden="true"><span class="site-icon-fallback">${escape(initial)}</span>${icon ? `<img class="site-icon-image" src="${escape(icon)}" alt="" loading="lazy" decoding="async">` : ''}</div>
       <div class="website-info">
         <div class="website-head"><div class="site-line">${category}<span class="site-badge">${escape(publisher)}</span><span class="site-domain">${escape(host)}</span></div><a class="website-details" href="website.html?id=${encodeURIComponent(row.id)}">詳細</a></div>
-        <h2 class="website-title">${title}</h2>
+        <h2 class="website-title" tabindex="-1">${title}</h2>
         <div class="website-bottom"><div class="website-byline"><span>${escape(authors)}</span><time class="website-published-at">${escape(row.publishedAt || '—')}</time></div><div class="website-tags">${tagHtml}</div></div>
       </div>
     </article>`;
