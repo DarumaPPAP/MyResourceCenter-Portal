@@ -6,19 +6,18 @@ on:
     types: [completed]
 
 permissions:
-  contents: write
-  pull-requests: write
-  pages: write
-  id-token: write
+  contents: read
 
 jobs:
   merge-trend-update:
     if: >-
       github.event.workflow_run.conclusion == 'success' &&
       github.event.workflow_run.event == 'pull_request'
+    permissions:
+      actions: write
+      contents: write
+      pull-requests: write
     runs-on: ubuntu-latest
-    outputs:
-      should_deploy: ${{ steps.merge.outputs.should_deploy }}
     steps:
       - name: Verify Trend-only scope and merge validated head
         id: merge
@@ -30,7 +29,6 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          echo "should_deploy=false" >> "${GITHUB_OUTPUT}"
 
           if [[ -z "${PR_NUMBER:-}" ]]; then
             echo "No pull request is associated with the completed validation run."
@@ -94,35 +92,5 @@ jobs:
             exit 1
           fi
 
-          echo "should_deploy=true" >> "${GITHUB_OUTPUT}"
-          echo "Trend PR merged; Pages deploy will run in this workflow."
-
-  deploy-pages:
-    needs: merge-trend-update
-    if: needs.merge-trend-update.outputs.should_deploy == 'true'
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Checkout merged main
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          ref: main
-
-      - name: Validate Trend Radar dataset
-        run: python3 tools/validate_trends.py
-
-      - name: Setup Pages
-        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
-        with:
-          enablement: true
-
-      - name: Upload static site
-        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
-        with:
-          path: '.'
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
+          echo "Trend PR merged; dispatching the unified validate-and-deploy workflow."
+          gh workflow run validate-portal.yml --ref main

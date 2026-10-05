@@ -46,7 +46,7 @@ Homeは技術Environment SVGと現在のCatalog件数を表示。Websitesは画�
 
 https://darumappap.github.io/MyResourceCenter-Portal/
 
-`.github/workflows/deploy-pages.yml` から自動Deployします。
+`.github/workflows/validate-portal.yml` の全Validation成功後に自動Deployします。Trend更新の自動Merge後も同じWorkflowを起動します。
 
 ## Validation
 
@@ -57,6 +57,8 @@ python tools/validate_trends.py
 python tools/validate_trend_candidates.py
 node tools/test_filter_state.cjs
 node tools/test_human_portal.cjs
+node tools/test_home.cjs
+node tools/test_deploy_workflow.cjs
 ```
 
 Validatorは次を確認します。
