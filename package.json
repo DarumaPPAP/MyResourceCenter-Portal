@@ -1,0 +1,10 @@
+{
+  "name": "myresourcecenter-portal-checks",
+  "private": true,
+  "scripts": {
+    "test:browser-smoke": "node tools/browser_smoke.cjs"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1"
+  }
+}

@@ -2,7 +2,7 @@
 
 The static Portal uses `catalog/document-presentation.json` for Documents, document details and Home document counts. It contains one public presentation record per document Resource. The `resourceId` joins Collections and Relations; `documentId` identifies the stable derived thumbnail. The only permitted fields are `resourceId`, `documentId`, `title`, `sourceFormat`, `thumbnail`, `engine`, `level`, `tags`, `domains` and `canonicalUrl`. Raw Drive IDs, title provenance and folder topology are forbidden in this projection.
 
-Documents display the actual projected title and first-page thumbnail, format, engine and tags. The grid does not infer language, format or Domain from filenames or Tags. Search matches titles, engines, tags and Resource topics; Category uses only projected canonical `domains`. An empty `domains` array remains visible and searchable and can be selected as `未分類`; this UI label is not part of the canonical taxonomy. Category, Format and Tag filters combine with search. Filter state is restored from the URL and supports browser history and reset.
+Documents display the actual projected title and first-page thumbnail, format, engine and tags. The grid does not infer language, format or Domain from filenames or Tags. Search matches titles, engines, tags and Resource topics; Category uses only projected canonical `domains`. An empty `domains` array remains visible and searchable and can be selected as `未分類`; this UI label is not part of the canonical taxonomy. Category, Format and Tag filters combine with search. The Tag selector follows the canonical Taxonomy registry, including tags that currently return no Documents. Filter state is restored from the URL and supports browser history and reset.
 
 The Viewer helper accepts approved HTTPS Drive file URLs and native Google Docs/Slides canonical URLs, derives the file ID and routes to `viewer.html`. The Viewer loads Drive Preview and provides an Original link. It does not render PDF/PPTX at runtime or route to a GitHub Original mirror. Thumbnails use a fixed neutral container, `object-fit: contain`, lazy loading, and a text fallback for null thumbnails or failed image requests.
 
@@ -22,6 +22,8 @@ python tools/validate_trend_candidates.py
 node tools/test_filter_state.cjs
 node tools/test_human_portal.cjs
 ```
+
+The separate `Browser Smoke` workflow installs version-pinned Playwright and Chromium on GitHub-hosted Ubuntu runners. It exercises Home, Documents, Websites, Trend, Taxonomy and Viewer at mobile, tablet and desktop widths; it also checks filter/navigation flows, theme persistence, pagination, local Site Icon paths and the icon text fallback. It is not a dependency of the production deploy job.
 
 The presentation validator checks strict public fields, Resource/DOC/Original uniqueness, complete document Resource coverage, canonical URL consistency, supported formats, null fallback requirements, exact thumbnail paths and PNG signature, dimensions, chunk integrity and file existence. Public URLs also reject credentials, raw whitespace/control characters, backslashes, malformed parsing and invalid ports without echoing the offending URL. Existing 100-Original inventory, formats, count consistency, relation/Collection references, forbidden private-field scanning and no GitHub Original-mirror checks remain enforced. Public Original folder metadata is now explicitly rejected rather than required.
 

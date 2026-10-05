@@ -14,7 +14,7 @@ Improve the production deployment boundary and document discovery across `MyReso
 - Trend already loads `assets/portal.js`, `assets/site.css`, and uses the shared shell in the current Portal baseline. Phase 2 will fix the stale navigation, set the shared theme default, and align retention copy; it will not add a duplicate shell integration.
 - Initial domain inventory: 12 of 116 public document presentations had values and 104 were empty. After evidence review and MRC PR #111, 79 of those candidates have supported domains and 25 remain correctly unclassified as `domains: []`. MRC `main` now owns domains in `catalog/document-presentation.json`; Portal receives the allowlisted projection only. The registered domains remain `Graphics`, `Programming`, `AI`, `Tools`, `GameDevelopment`, `Audio`, `DCC`, `Research`, and `Security`.
 - Existing Website legacy metadata remains out of scope. The previously reported inventory gaps (publisher 1, authors 66, publishedAt 64, contentType 63) must remain explicit in the final status; this work will not invent or bulk-complete those facts.
-- PRs #85, #86 and #87 are merged in the Portal; MRC PRs #111 and #112 are merged. The canonical Domain and taxonomy-routing Portal changes are being delivered as the current change.
+- Portal PRs #85, #86, #87 and #88 are merged; MRC PRs #111 and #112 are merged. Phase 6 Browser Smoke feasibility is being validated in a separate Portal workflow and is not connected to production deployment.
 
 ## Invariants
 
@@ -60,7 +60,7 @@ Improve the production deployment boundary and document discovery across `MyReso
 2. In `assets/catalog.js`, consume `doc.domains` directly and remove tag-to-domain inference. Represent an empty array as UI-only “未分類” without adding it to taxonomy; unclassified documents stay visible and searchable.
 3. Extend `tools/validate_portal.py` to require document domains to be arrays, allow empty arrays, and require any values to be unique members of `taxonomy.domains`; do not apply this requirement to the separate legacy `catalog/documents.json` records.
 4. In `taxonomy.html`, route document domain links to `?category=...` and document tag links to `?tag=...`; keep Website and engine routes aligned with existing controls.
-5. Add exact route and domain-membership regression coverage. Update the stale test fixture that fabricates `taxonomy.tags[tag].domain`.
+5. Keep every canonical taxonomy Tag selectable on Documents so exact Tag routes remain restored even when the current Document set has no matches. Add exact route and domain-membership regression coverage. Update the stale test fixture that fabricates `taxonomy.tags[tag].domain`.
 
 **Acceptance:** Portal displays and filters only canonical domains from the public projection, never infers missing values, and keeps unclassified documents in list/search; its validator rejects non-canonical domains; taxonomy links use the exact supported filters.
 
@@ -77,8 +77,8 @@ Improve the production deployment boundary and document discovery across `MyReso
 ### PR 6 — Browser smoke-test feasibility
 
 1. After PRs 1–5 land, assess a small browser smoke suite on GitHub-hosted runners for the six pages and critical user paths in the source spec.
-2. First record installation/runtime stability and maintenance cost. Do not add an unstable browser install to the required production deploy gate.
-3. If stable, add browser smoke coverage as a separate check and document its scope; otherwise document the blocker and retain the existing deterministic tests.
+2. The Portal pins Playwright as one development-only NPM dependency and installs Chromium in a separate GitHub-hosted workflow. Local Chromium smoke passed across the six pages at 390, 768 and 1280 pixel widths; the separate workflow verifies runner installation and runtime stability.
+3. Keep this check separate from the required production deploy gate. The maintenance cost is the pinned Playwright dependency, Chromium download per runner, and the browser smoke script; no browser runtime is added to the shipped Portal.
 
 ## Verification
 

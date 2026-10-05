@@ -19,7 +19,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     if (page === 'documents.html') {
       const data = await C.loadMany('document-presentation','resources','taxonomy');
       const rows = C.presentDocuments(data['document-presentation'],C.byId(data.resources));
-      fill(el('category'),rows.flatMap(row=>row.categories)); fill(el('tag'),rows.flatMap(row=>row.tags));
+      fill(el('category'),rows.flatMap(row=>row.categories)); fill(el('tag'),Object.keys(data.taxonomy?.tags || {}));
       if (rows.some(row=>Array.isArray(row.domains) && row.domains.length === 0)) {
         const option = document.createElement('option');
         option.value = C.unclassifiedCategoryValue; option.textContent = '未分類';

@@ -573,7 +573,7 @@ async function createDocumentsPage(rows,href='https://portal.test/documents.html
   const window={addEventListener(type,listener){(windowHandlers[type] ||= []).push(listener);}};
   const context={URL,URLSearchParams,location,history,document,window,console,encodeURIComponent};
   vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../assets/catalog.js'),'utf8'),context);
-  context.window.MRCCatalog.loadMany=async()=>({'document-presentation':rows,resources:[],taxonomy:{domains:{Graphics:{displayName:'Graphics'}},tags:{}}});
+  context.window.MRCCatalog.loadMany=async()=>({'document-presentation':rows,resources:[],taxonomy:{domains:{Graphics:{displayName:'Graphics'}},tags:{Shader:{displayName:'Shader'},Unused:{displayName:'Unused'}}}});
   vm.runInNewContext(humanPortalSource,context);
   await windowHandlers.DOMContentLoaded[0]();
   return{
@@ -681,6 +681,9 @@ Promise.resolve().then(async()=>{
   const onePage=await createDocumentsPage(rows45.slice(0,20),'https://portal.test/documents.html?page=2&keep=yes');
   assert.equal(onePage.location.search,'?keep=yes');
   assert.equal(onePage.elements.get('pagination').hidden,true);
+  const canonicalTag=await createDocumentsPage(rows45,'https://portal.test/documents.html?tag=Unused');
+  assert.equal(canonicalTag.elements.get('tag').value,'Unused','canonical Taxonomy tags remain selectable even when no Document currently uses one');
+  assert.equal(canonicalTag.elements.get('count').textContent,'0 件 / 全 45 件');
   console.log('OK: Documents pagination slices after filtering, canonical URLs, filter reset, history, empty state and accessibility');
 
   const unclassifiedRows=[...rows45];
