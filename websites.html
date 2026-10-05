@@ -169,12 +169,15 @@
         filterControls.forEach(control => {
           control.addEventListener(control === controls.q ? 'input' : 'change', () => writePage(1,'replaceState'));
         });
-        C.bindFilterState(filterControls, render);
+        C.bindFilterState(filterControls, () => {
+          if (!controls.sort.value) controls.sort.value = 'desc';
+          render();
+        });
         filterControls.forEach(control => control.addEventListener(control === controls.q ? 'input' : 'change', () => render()));
         controls.clear.addEventListener('click', () => render());
         controls.pagination.addEventListener('click',event=>{
           const link=event.target.closest('a[data-page]');
-          if(!link || !controls.pagination.contains(link)) return;
+          if(!link || !controls.pagination.contains(link) || event.button !== 0 || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
           event.preventDefault();
           const page=Number(link.dataset.page);
           const current=Number(new URL(location.href).searchParams.get('page') || '1');

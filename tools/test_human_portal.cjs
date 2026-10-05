@@ -347,8 +347,8 @@ async function createWebsitePage(rows,href='https://portal.test/websites.html') 
       return [...listMarkup.matchAll(/<a\b(?=[^>]*class="[^"]*website-page-number[^"]*")[^>]*data-page="(\d+)"/g)].map(match=>Number(match[1]));
     },
     ellipsisCount(){return (elements.get('pagination').innerHTML.match(/website-page-ellipsis/g) || []).length;},
-    clickPage(page){
-      const event={defaultPrevented:false,preventDefault(){this.defaultPrevented=true;}};
+    clickPage(page,options={}){
+      const event={button:0,altKey:false,ctrlKey:false,metaKey:false,shiftKey:false,...options,defaultPrevented:false,preventDefault(){this.defaultPrevented=true;}};
       event.target={dataset:{page:String(page)},closest(selector){return selector==='a[data-page]'?this:null;}};
       elements.get('pagination').emit('click',event);
       return event;
@@ -399,16 +399,22 @@ Promise.resolve().then(async()=>{
   assert.equal(page2.pushCount,1,'clicking the current page must not add history');
   page2.travel(-1);
   assert.equal(page2.location.search,'?q=Article&page=2&keep=yes');
+  assert.equal(page2.elements.get('sort').value,'desc','Back restores the default sort selection when the URL omits sort');
   assert.ok(page2List.innerHTML.includes('Article 021'));
   page2.travel(1);
   assert.equal(page2.location.search,'?q=Article&page=3&keep=yes');
+  assert.equal(page2.elements.get('sort').value,'desc','Forward keeps the default sort selection when the URL omits sort');
   assert.ok(page2List.innerHTML.includes('Article 041'));
+  const modifiedClick=page2.clickPage(4,{ctrlKey:true});
+  assert.equal(modifiedClick.defaultPrevented,false,'modified page-link activation must keep native browser behavior');
+  assert.equal(page2.pushCount,1);
+  assert.equal(page2.location.search,'?q=Article&page=3&keep=yes');
   assert.equal(page2.elements.get('result-meta').scrollCount,3,'Back/Forward returns focus to the result area');
 
   const query=page2.elements.get('q');
   query.value='Article 0';
   query.emit('input');
-  assert.equal(page2.location.search,'?q=Article+0&keep=yes');
+  assert.equal(page2.location.search,'?q=Article+0&keep=yes&sort=desc');
   assert.equal(page2Nav.hidden,false);
   assert.equal(page2Count.textContent,'1–20 件目 / 45 件（全 45 件）');
   const pageTwoMarkup=page2Nav.innerHTML.match(/<a\b(?=[^>]*class="[^"]*website-page-number[^"]*")[^>]*data-page="2"[^>]*>/)?.[0] || '';
@@ -416,10 +422,11 @@ Promise.resolve().then(async()=>{
   const pageTwoUrl=new URL(pageTwoHref,'https://portal.test');
   assert.equal(pageTwoUrl.searchParams.get('q'),'Article 0','page links must use the latest filter URL');
   assert.equal(pageTwoUrl.searchParams.get('page'),'2');
+  assert.equal(pageTwoUrl.searchParams.get('sort'),'desc','page links must preserve the restored default sort');
 
   query.value='Article 001';
   query.emit('input');
-  assert.equal(page2.location.search,'?q=Article+001&keep=yes');
+  assert.equal(page2.location.search,'?q=Article+001&keep=yes&sort=desc');
   assert.equal(page2Nav.hidden,true);
   assert.equal(page2Count.textContent,'1–1 件目 / 1 件（全 45 件）');
   assert.ok(page2List.innerHTML.includes('Article 001'),'filter searches the full catalog, including rows outside page 3');
