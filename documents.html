@@ -32,8 +32,9 @@
         <select aria-label="ファイル形式" id="format"><option value="">形式すべて</option><option value="PDF">PDF</option><option value="PPTX">PPTX</option></select>
         <select aria-label="タグ" id="tag"><option value="">タグすべて</option></select><button id="clear" type="button">条件をリセット</button>
       </div>
-      <div class="result-meta"><span id="count" role="status" aria-live="polite">読み込み中…</span><span>タイトルを選ぶとプレビューを開きます</span></div>
-      <div class="document-library" id="list"></div>
+      <div class="result-meta" id="result-meta"><span id="count" role="status" aria-live="polite">読み込み中…</span><span>タイトルを選ぶとプレビューを開きます</span></div>
+      <div class="document-library" id="list" role="region" aria-label="検索結果" aria-live="polite" tabindex="-1"></div>
+      <nav id="pagination" class="document-pagination" aria-label="ドキュメント一覧のページ" hidden></nav>
     </div>
     <footer class="footer">MyResourceCenter Human Portal · Document Library</footer>
   </main>
