@@ -275,7 +275,7 @@
     const escape = catalog.escapeHtml;
     const host = row.siteKey || websiteHost(row) || '—';
     const publisher = typeof row.publisher === 'string' && row.publisher.trim() ? row.publisher.trim() : 'Site';
-    const initial = Array.from(publisher)[0] || 'W';
+    const fallbackIcon = '<svg class="site-icon-fallback-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3a15 15 0 0 1 0 18"></path><path d="M12 3a15 15 0 0 0 0 18"></path></svg>';
     const icon = siteIconPath(row);
     const source = catalog.safeExternalUrl(row.url || row.canonicalUrl || '');
     const title = source
@@ -290,7 +290,7 @@
     const tagHtml = tags.length ? catalog.chips(tags, 'website-tag') : '<span class="website-tag">—</span>';
     const category = ['Tech','Idea'].includes(row.category) ? `<span class="website-category website-category--${row.category.toLowerCase()}">${escape(row.category)}</span>` : '';
     return `<article class="website-card">
-      <div class="site-icon-box" aria-hidden="true"><span class="site-icon-fallback">${escape(initial)}</span>${icon ? `<img class="site-icon-image" src="${escape(icon)}" alt="" loading="lazy" decoding="async">` : ''}</div>
+      <div class="site-icon-box" aria-hidden="true"><span class="site-icon-fallback">${fallbackIcon}</span>${icon ? `<img class="site-icon-image" src="${escape(icon)}" alt="" loading="lazy" decoding="async">` : ''}</div>
       <div class="website-info">
         <div class="website-head"><div class="site-line">${category}<span class="site-badge">${escape(publisher)}</span><span class="site-domain">${escape(host)}</span></div><a class="website-details" href="website.html?id=${encodeURIComponent(row.id)}">詳細</a></div>
         <h2 class="website-title" tabindex="-1">${title}</h2>
