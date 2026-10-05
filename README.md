@@ -40,7 +40,7 @@ Private MyResourceCenterからPortalへの同期は、public projection + Valida
 
 Git LFS pointerやGitHub binary pathをPortalのCanonical Original URLとして使用しません。
 
-Homeは技術Environment SVGと現在のCatalog件数を表示。Websitesは画像なしの技術Directory、CollectionsはCategory / Title順のReading Path、TrendsはEditorial表示です。表示契約・検証方法は [Human Portal](docs/human-portal.md) を参照してください。
+Homeは技術Environment SVGと現在のCatalog件数を表示。WebsitesはSite IconとMetadataを使った技術記事Directoryで、Iconが利用できない場合は文字表示へFallbackします。CollectionsはCategory / Title順のReading Path、TrendsはEditorial表示です。表示契約・検証方法は [Human Portal](docs/human-portal.md) を参照してください。
 
 ## GitHub Pages
 

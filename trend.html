@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ja">
+<html lang="ja" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -7,6 +7,8 @@
   <title>Trend Radar · MyResourceCenter</title>
   <link rel="stylesheet" href="assets/site.css">
   <link rel="stylesheet" href="assets/trend.css">
+  <script defer src="assets/portal.js"></script>
+  <script defer src="assets/trend.js"></script>
 </head>
 <body class="trend-page">
   <div class="app-shell">
@@ -17,7 +19,6 @@
         <a href="documents.html"><span class="icon">▤</span>ドキュメント一覧</a>
         <a href="websites.html"><span class="icon">◎</span>Webサイト一覧</a>
         <a class="active" href="trend.html"><span class="icon">↗</span>Trend Radar</a>
-        <a href="index.html#tags"><span class="icon">#</span>タグから探す</a>
       </nav>
       <div class="sidebar-note">Trendは正式Knowledgeではありません。AIが毎日発見する短期Feedで、最大3日だけ保持します。</div>
     </aside>
@@ -64,14 +65,12 @@
           <div class="trend-empty">Trendを読み込み中...</div>
         </section>
 
-        <div class="trend-boundary">Trendは最大50件 / 日・最大3日。記事本文・画像は保存せず、正式Libraryへは自動登録しません。</div>
+        <div class="trend-boundary">Trendは最大100件 / 日・最大3日。記事本文・画像は保存せず、正式Libraryへは自動登録しません。</div>
       </main>
 
       <footer class="footer">Trend Radar · Daily discovery only, curated Knowledge remains separate.</footer>
     </div>
   </div>
 
-  <script src="assets/portal.js"></script>
-  <script src="assets/trend.js"></script>
 </body>
 </html>

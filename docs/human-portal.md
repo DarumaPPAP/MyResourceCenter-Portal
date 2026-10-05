@@ -8,7 +8,7 @@ The Viewer helper accepts approved HTTPS Drive file URLs and native Google Docs/
 
 Collections sort by category, then title. The list previews at most three explicitly ordered members, retains their catalog roles and shows `+N more`. The detail shows the full saved reading path. Empty Collections show `準備中 / Resources are being curated.` No Collection image assets are used.
 
-Home includes the locally authored `assets/technical-environment.svg` scene illustration, search, and counts computed from the catalogs actually loaded. Websites remain an image-free technical directory. Trends use editorial columns without changing article-body/image storage or short-lived discovery rules. All pages preserve responsive navigation, theme selection, focus indicators and keyboard search.
+Home includes the locally authored `assets/technical-environment.svg` scene illustration, search, and counts computed from the catalogs actually loaded. Websites use local Site Icons and metadata for a technical article directory; an unavailable icon falls back to text. Trends use editorial columns without changing article-body/image storage or short-lived discovery rules, with a limit of 100 items per day and three days of retention. All pages preserve responsive navigation, theme selection, focus indicators and keyboard search.
 
 ## Validation
 
