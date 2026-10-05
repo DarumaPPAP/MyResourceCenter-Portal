@@ -1,0 +1,42 @@
+name: Browser Smoke
+
+on:
+  pull_request:
+    paths:
+      - "*.html"
+      - "assets/**"
+      - "catalog/**"
+      - "data/**"
+      - "tools/browser_smoke.cjs"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/browser-smoke.yml"
+  push:
+    branches: [main]
+    paths:
+      - "*.html"
+      - "assets/**"
+      - "catalog/**"
+      - "data/**"
+      - "tools/browser_smoke.cjs"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/browser-smoke.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  browser-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:browser-smoke
