@@ -1,5 +1,6 @@
 (() => {
   const cache = new Map();
+  const UNCLASSIFIED_CATEGORY = '__unclassified__';
   const latestWebsiteShards = [
     'websites-latest-01',
     'websites-latest-02',
@@ -211,11 +212,11 @@
     }, true);
   }
 
-  function presentDocuments(rows, resourcesById, taxonomy = {}) {
+  function presentDocuments(rows, resourcesById) {
     return rows.map(doc => {
       const resource = resourcesById.get(doc.resourceId) || {};
       const topics = resource.topics || (resource.topic ? [resource.topic] : []);
-      const categories = [...new Set(Array.isArray(doc.domains) ? doc.domains : (doc.tags || []).map(tag => taxonomy.tags?.[tag]?.domain).filter(Boolean))];
+      const categories = [...new Set(Array.isArray(doc.domains) ? doc.domains : [])];
       return {...doc, topics, categories};
     });
   }
@@ -223,7 +224,8 @@
   function filterDocuments(rows, {q = '', category = '', format = '', tag = ''} = {}) {
     const term = q.trim().toLowerCase();
     return rows.filter(doc => (!term || [doc.title, doc.engine, ...(doc.tags || []), ...(doc.topics || [])].join(' ').toLowerCase().includes(term)) &&
-      (!category || doc.categories.includes(category)) && (!format || doc.sourceFormat === format) && (!tag || doc.tags.includes(tag)));
+      (!category || (category === UNCLASSIFIED_CATEGORY ? Array.isArray(doc.domains) && doc.domains.length === 0 : doc.categories.includes(category))) &&
+      (!format || doc.sourceFormat === format) && (!tag || doc.tags.includes(tag)));
   }
 
   function sortCollections(rows) {
@@ -239,6 +241,7 @@
     viewerHref, documentThumbnail, thumbnailFailed, bindThumbnailFallback,
     presentDocuments, filterDocuments, sortCollections, readingPreview,
     bindFilterState,
+    unclassifiedCategoryValue: UNCLASSIFIED_CATEGORY,
     load,
     loadMany,
     query,

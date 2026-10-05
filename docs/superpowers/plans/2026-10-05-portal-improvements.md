@@ -9,17 +9,18 @@ Improve the production deployment boundary and document discovery across `MyReso
 
 ## Current baseline and reconciliations
 
-- Portal `main` is at `a8890a8c5cec1f54306aae939e77cecf18a315f1`; MRC `main` is at `e841737c073683abfdfe2927ba0bbd3498bf1621`.
+- Starting handoff baseline: Portal `main` at `a8890a8c5cec1f54306aae939e77cecf18a315f1`; MRC `main` at `e841737c073683abfdfe2927ba0bbd3498bf1621`.
 - PR #84, Website pagination, is already merged. It is not an outstanding merge candidate.
 - Trend already loads `assets/portal.js`, `assets/site.css`, and uses the shared shell in the current Portal baseline. Phase 2 will fix the stale navigation, set the shared theme default, and align retention copy; it will not add a duplicate shell integration.
-- The 116 public document presentation rows currently have 12 non-empty domain arrays and 104 empty arrays. The registered domains are `Graphics`, `Programming`, `AI`, `Tools`, `GameDevelopment`, `Audio`, `DCC`, `Research`, and `Security`. MRC currently rebuilds presentation domains from `document-identities.json`, which conflicts with the requested presentation-level ownership and must be corrected.
+- Initial domain inventory: 12 of 116 public document presentations had values and 104 were empty. After evidence review and MRC PR #111, 79 of those candidates have supported domains and 25 remain correctly unclassified as `domains: []`. MRC `main` now owns domains in `catalog/document-presentation.json`; Portal receives the allowlisted projection only. The registered domains remain `Graphics`, `Programming`, `AI`, `Tools`, `GameDevelopment`, `Audio`, `DCC`, `Research`, and `Security`.
 - Existing Website legacy metadata remains out of scope. The previously reported inventory gaps (publisher 1, authors 66, publishedAt 64, contentType 63) must remain explicit in the final status; this work will not invent or bulk-complete those facts.
+- PRs #85, #86 and #87 are merged in the Portal; MRC PRs #111 and #112 are merged. The canonical Domain and taxonomy-routing Portal changes are being delivered as the current change.
 
 ## Invariants
 
 - Do not infer document domains in Portal. Canonical document domains come only from MRC `catalog/document-presentation.json` and must belong to MRC `catalog/taxonomy.json`.
 - Keep the current public projection allowlist and schema version unless implementation evidence shows a shape change is necessary. Do not expose private identity fields or read Drive Originals.
-- Do not change Website metadata, Trend scoring/data rules, viewer routing, collections/relations, backend behavior, or introduce server-side pagination.
+- Do not backfill legacy Website metadata or change Trend scoring/data rules, viewer routing, collections/relations or backend behavior. New Website registration requirements are handled separately; Category remains limited to the existing Tech/Idea taxonomy. Do not introduce server-side pagination.
 - Run each repository's required validators before proposing its PR. Keep production deploy impossible unless the complete Portal validation job succeeds.
 
 ## Implementation sequence
@@ -46,22 +47,22 @@ Improve the production deployment boundary and document discovery across `MyReso
 ### PR 3 — MRC canonical document domains
 
 1. Make `catalog/document-presentation.json` the sole authoritative owner of public document domains. Adjust `tools/build_knowledge_brain.py` so rebuilding does not overwrite presentation domains from the identity index; remove the identity/presentation equality assumption from `tools/validate_knowledge_brain.py` while retaining ID/title/resource integrity checks.
-2. Validate every `public-metadata-approved` presentation has a non-empty array of unique domain strings, each in `catalog/taxonomy.json`'s domain registry. Keep multiple domains valid and do not impose a new maximum.
+2. Validate every `public-metadata-approved` presentation has a `domains` array. Allow zero or more unique values; every present value must be in `catalog/taxonomy.json`'s domain registry. Keep multiple domains valid and do not impose a new maximum.
 3. Make public projection construction and public-boundary validation reject missing, malformed, duplicate, or unknown approved-document domains without widening `security/public-schema.json` or exposing identity data.
-4. Generate a reviewable candidate report for the 104 empty rows using only existing canonical catalog metadata (titles, topics, tags, engine, and available summaries). Candidate suggestions remain non-canonical until reviewed; do not access Drive Originals. Resolve uncertain rows with explicit human review before committing canonical values.
+4. Generate a reviewable audit for the 104 empty rows using existing canonical metadata and available source evidence; do not access Drive Originals. Do not infer from event names, filename-only clues, `CEDEC2026`, `General` engine, weak title associations, or Portal behavior. Set only sufficiently supported canonical values; retain `[]` whenever evidence is insufficient.
 5. Add fixture and regression tests in the knowledge-brain and projection/boundary test suites. Update the registration/governance contract to state presentation-level domain ownership.
 
-**Acceptance:** the MRC validators and safe public projection reject invalid domains; approved public presentations have reviewed, non-empty registered domains; projection fields remain allowlisted. Any candidate row that cannot be responsibly resolved is reported as a blocker rather than silently assigned.
+**Acceptance:** the MRC validators and safe public projection accept `domains: []` and reject missing/non-array, duplicate, or unknown values; supported values are registered canonical domains; unsupported rows stay `[]`; projection fields remain allowlisted.
 
 ### PR 4 — Portal canonical domains and taxonomy routing
 
 1. Sync the allowlisted MRC public projection to the Portal using the existing publish boundary.
-2. In `assets/catalog.js`, consume `doc.domains` directly and remove tag-to-domain inference.
-3. Extend `tools/validate_portal.py` to require non-empty, unique document domains present in `taxonomy.domains`; do not apply this requirement to the separate legacy `catalog/documents.json` records.
+2. In `assets/catalog.js`, consume `doc.domains` directly and remove tag-to-domain inference. Represent an empty array as UI-only “未分類” without adding it to taxonomy; unclassified documents stay visible and searchable.
+3. Extend `tools/validate_portal.py` to require document domains to be arrays, allow empty arrays, and require any values to be unique members of `taxonomy.domains`; do not apply this requirement to the separate legacy `catalog/documents.json` records.
 4. In `taxonomy.html`, route document domain links to `?category=...` and document tag links to `?tag=...`; keep Website and engine routes aligned with existing controls.
 5. Add exact route and domain-membership regression coverage. Update the stale test fixture that fabricates `taxonomy.tags[tag].domain`.
 
-**Acceptance:** Portal displays and filters only canonical domains from the public projection; its validator rejects non-canonical domains; taxonomy links use the exact supported filters.
+**Acceptance:** Portal displays and filters only canonical domains from the public projection, never infers missing values, and keeps unclassified documents in list/search; its validator rejects non-canonical domains; taxonomy links use the exact supported filters.
 
 ### PR 5 — Documents pagination
 
@@ -109,4 +110,8 @@ Run the focused tests for any changed workflow, taxonomy route, pagination state
 
 ## Open blocker and completion reporting
 
-The user clarified that this attached specification is an implementation request. Ambiguous document-domain candidates still require explicit review before canonical values are committed. The currently known Website legacy-metadata gaps are intentionally unchanged and must remain visible in the completion report.
+The user clarified that this attached specification is an implementation request and later amended Domain handling: unsupported candidates remain `domains: []`, which is valid. The currently known Website legacy-metadata gaps remain unresolved and must be visible in the completion report.
+
+## Direct Website requirement from the user
+
+After the attached Portal improvement phases, implement the separately stated Website registration/search requirements across MRC and Portal: publisher, authors, publishedAt, and existing contentType are required for new Websites; do not create new Categories; only Site/Author values with more than three items become approval candidates, and only explicitly approved values get dedicated filters, otherwise they use Other; Category/Site/Author filters combine with AND; sort by publishedAt ascending/descending; keep safe hostname-scoped local Site Icon caching and the square icon list UI; preserve Public Boundary and validators. Do not fabricate missing legacy facts. Report the current legacy gaps explicitly (publisher 1, authors 66, publishedAt 64, contentType 63) as a blocker until canonical metadata is reviewed.
