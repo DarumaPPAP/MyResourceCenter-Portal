@@ -32,8 +32,8 @@ window.addEventListener('DOMContentLoaded', async () => {
   const C = window.MRCCatalog;
   const search = document.getElementById('search');
   const roots = Object.fromEntries(['categories','tags','domains','engines'].map(id => [id,document.getElementById(id)]));
-  const nav = key => `<div class="relation-meta"><a class="tag accent" href="websites.html?q=${encodeURIComponent(key)}">Websites</a><a class="tag" href="documents.html?q=${encodeURIComponent(key)}">Documents</a></div>`;
-  const card = (key,entry) => `<div class="taxonomy-tag"><b>${C.escapeHtml(entry.displayName || key)}</b><small>${C.escapeHtml(key)}${(entry.aliases || []).length ? ` · alias: ${C.escapeHtml(entry.aliases.join(', '))}` : ''}</small>${nav(key)}</div>`;
+  const nav = (key,documentFilter='q') => `<div class="relation-meta"><a class="tag accent" href="websites.html?q=${encodeURIComponent(key)}">Websites</a><a class="tag" href="documents.html?${documentFilter}=${encodeURIComponent(key)}">Documents</a></div>`;
+  const card = (key,entry,documentFilter='q') => `<div class="taxonomy-tag"><b>${C.escapeHtml(entry.displayName || key)}</b><small>${C.escapeHtml(key)}${(entry.aliases || []).length ? ` · alias: ${C.escapeHtml(entry.aliases.join(', '))}` : ''}</small>${nav(key,documentFilter)}</div>`;
   try {
     const taxonomy = await C.load('taxonomy');
     const initial = C.query('q'); if (initial) search.value = initial;
@@ -44,8 +44,8 @@ window.addEventListener('DOMContentLoaded', async () => {
         const matches = Object.entries(registry).filter(([key,entry]) => !q || [key,entry.displayName,...(entry.aliases || [])].join(' ').toLowerCase().includes(q));
         roots[name].innerHTML = matches.map(([key,entry]) => {
           if (name === 'categories') return `<div class="taxonomy-tag"><b>${C.escapeHtml(entry.displayName || key)}</b><small>${C.escapeHtml(key)}</small><div class="relation-meta"><a class="tag accent" href="websites.html?category=${encodeURIComponent(key)}">Websites</a></div></div>`;
-          if (name === 'tags') return `<div class="taxonomy-tag"><b>${C.escapeHtml(entry.displayName || key)}</b><small>${C.escapeHtml(key)}</small><div class="relation-meta"><a class="tag accent" href="websites.html?tag=${encodeURIComponent(key)}">Websites</a><a class="tag" href="documents.html?q=${encodeURIComponent(key)}">Documents</a></div></div>`;
-          return card(key,entry);
+          if (name === 'tags') return `<div class="taxonomy-tag"><b>${C.escapeHtml(entry.displayName || key)}</b><small>${C.escapeHtml(key)}</small><div class="relation-meta"><a class="tag accent" href="websites.html?tag=${encodeURIComponent(key)}">Websites</a><a class="tag" href="documents.html?tag=${encodeURIComponent(key)}">Documents</a></div></div>`;
+          return card(key,entry,name === 'domains' ? 'category' : 'q');
         }).join('') || '<div class="detail-empty">条件に一致するTaxonomyはありません。</div>';
       }
     };

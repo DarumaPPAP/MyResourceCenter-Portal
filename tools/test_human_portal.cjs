@@ -17,7 +17,7 @@ assert.match(trendHtml, /最大100件\s*\/\s*日/, 'Trend documents the validate
 
 vm.runInNewContext(fs.readFileSync(path.join(__dirname, '../assets/catalog.js'), 'utf8'), context);
 const C = context.window.MRCCatalog;
-const doc = {resourceId:'RES-1', documentId:'DOC-ABC', title:'影 & 光', sourceFormat:'PDF', thumbnail:'assets/generated/documents/DOC-ABC.png', canonicalUrl:'https://drive.google.com/file/d/abc_123-/view', tags:['Shader'], engine:'Unity'};
+const doc = {resourceId:'RES-1', documentId:'DOC-ABC', title:'影 & 光', sourceFormat:'PDF', thumbnail:'assets/generated/documents/DOC-ABC.png', canonicalUrl:'https://drive.google.com/file/d/abc_123-/view', tags:['Shader'], domains:['Graphics'], engine:'Unity'};
 assert.equal(new URL(C.viewerHref(doc), 'https://example.test/').searchParams.get('id'), 'abc_123-');
 assert.equal(new URL(C.viewerHref(doc), 'https://example.test/').searchParams.get('title'), doc.title);
 for (const url of ['https://evil.test/file/d/abc/view','https://drive.google.com.evil.test/file/d/abc/view','javascript:alert(1)','https://drive.google.com/drive/folders/abc']) assert.equal(C.viewerHref({...doc,canonicalUrl:url}), '');
@@ -31,10 +31,15 @@ assert.doesNotMatch(C.documentThumbnail({...doc,thumbnail:'../../secret.png'}), 
 const image = { hidden:false, closest:()=>({classList:{add(v){assert.equal(v,'is-missing');}}}) };
 C.thumbnailFailed(image); assert.equal(image.hidden,true);
 const resources = new Map([['RES-1',{id:'RES-1',topics:['Lighting']}]]);
-const taxonomy = {tags:{Shader:{domain:'Graphics'}}};
-const docs = C.presentDocuments([doc],resources,taxonomy);
+const docs = C.presentDocuments([doc],resources);
 assert.deepEqual(Array.from(docs[0].categories), ['Graphics']);
 assert.equal(C.filterDocuments(docs,{q:'光',category:'Graphics',format:'PDF',tag:'Shader'}).length,1);
+const legacyMissingDomains=C.presentDocuments([{...doc,domains:undefined}],resources);
+assert.deepEqual(Array.from(legacyMissingDomains[0].categories),[],'Portal must not infer a Domain from tag taxonomy');
+assert.equal(C.filterDocuments(legacyMissingDomains,{q:'lighting'}).length,1,'documents without a Domain remain searchable');
+assert.equal(C.filterDocuments(legacyMissingDomains,{category:'Graphics'}).length,0);
+const unclassifiedDocs=C.presentDocuments([{...doc,domains:[]}],resources);
+assert.equal(C.filterDocuments(unclassifiedDocs,{category:'__unclassified__'}).length,1);
 for (const filters of [{q:'missing'},{category:'AI'},{format:'PPTX'},{tag:'RayTracing'}]) assert.equal(C.filterDocuments(docs,filters).length,0);
 assert.equal(C.filterDocuments(docs,{q:'lighting'}).length,1);
 const humanPortalSource = fs.readFileSync(path.join(__dirname, '../assets/human-portal.js'), 'utf8');
@@ -158,16 +163,23 @@ assert 'Websites page must use local square Site Icons' in output.getvalue()
 assert 'Websites page must not hotlink remote Site Icons' in output.getvalue()
 rows=v.load('document-presentation.json')
 resources=v.load('resources.json')+v.load('resources-06.json')+[v.project_resource(r) for r in v.load_latest_websites()]
-errors=[];v.validate_presentation(errors, rows, resources);assert not errors,errors
+taxonomy_domains=set(v.load('taxonomy.json')['domains'])
+errors=[];v.validate_presentation(errors, rows, resources, taxonomy_domains);assert not errors,errors
+for invalid_domains,message in ((['UnknownDomain'],'unknown canonical domain'),(['Graphics','Graphics'],'duplicate domain'),('Graphics','domains must be an array')):
+    modified=copy.deepcopy(rows);modified[0]['domains']=invalid_domains
+    errors=[];v.validate_presentation(errors,modified,resources,taxonomy_domains)
+    assert any(message in error for error in errors),(invalid_domains,errors)
+modified=copy.deepcopy(rows);modified[0]['domains']=[]
+errors=[];v.validate_presentation(errors,modified,resources,taxonomy_domains);assert not errors,errors
 cases=[({'driveId':'private'},'unexpected public fields'),({'thumbnail':'../../secret.png'},'invalid thumbnail asset path'),({'canonicalUrl':'https://drive.google.com.evil.test/file/d/abc/view'},'invalid/duplicate canonical'),({'sourceFormat':'EXE'},'invalid sourceFormat'),({'resourceId':'RES-MISSING'},'unresolved document Resource')]
 for fields,message in cases:
     modified=copy.deepcopy(rows);modified[0].update(fields)
-    errors=[];v.validate_presentation(errors,modified,resources)
+    errors=[];v.validate_presentation(errors,modified,resources,taxonomy_domains)
     assert any(message in error for error in errors),(fields,errors)
 modified=copy.deepcopy(rows);modified[1]['documentId']=modified[0]['documentId']
-errors=[];v.validate_presentation(errors,modified,resources);assert any('duplicate documentId' in error for error in errors)
+errors=[];v.validate_presentation(errors,modified,resources,taxonomy_domains);assert any('duplicate documentId' in error for error in errors)
 modified=copy.deepcopy(rows);modified[1]['sourceFormat']='UNKNOWN'
-errors=[];v.validate_presentation(errors,modified,resources);assert any('null thumbnail fallback' in error for error in errors)
+errors=[];v.validate_presentation(errors,modified,resources,taxonomy_domains);assert any('null thumbnail fallback' in error for error in errors)
 original_load=v.load
 for private in [{'canonicalRoot':{'id':'folder'}},{'sources':[{'folderId':'folder'}]},{'notes':['https://drive.google.com/drive/folders/private']}]:
     meta=original_load('original-documents.json');meta.update(private)
@@ -214,7 +226,8 @@ const websiteRows = [
   {id:'RES-2',title:'Tech A Bob',category:'Tech',canonicalUrl:'https://a.example/2',tags:['Unity'],authors:['Bob'],publishedAt:'2026-09-28'},
   {id:'RES-3',title:'Idea A Alice',category:'Idea',canonicalUrl:'https://a.example/3',tags:['AI'],authors:['Alice'],publishedAt:'2026-09-29'},
   {id:'RES-4',title:'Tech B Alice',category:'Tech',canonicalUrl:'https://b.example/4',tags:['Shader','Performance'],authors:['Alice','Bob'],publishedAt:'2026-09-27'},
-  {id:'RES-5',title:'Idea B',category:'Idea',canonicalUrl:'https://b.example/5',tags:[],authors:['Bob'],publishedAt:null}
+  {id:'RES-5',title:'Idea B',category:'Idea',canonicalUrl:'https://b.example/5',tags:[],authors:['Bob'],publishedAt:null},
+  {id:'RES-6',title:'Engine only',publisher:'Example',category:'Tech',canonicalUrl:'https://c.example/6',tags:[],authors:['Carol'],engines:['Unity'],publishedAt:'2026-09-26'}
 ];
 assert.equal(W.normalizeAuthor(' Ａlice  '), 'alice');
 assert.equal(W.normalizeAuthor('ǰ'), 'j\u030c');
@@ -227,11 +240,12 @@ assert.equal(W.filterWebsites(websiteRows,{site:'a.example',author:'alice'},face
 assert.deepEqual(Array.from(W.filterWebsites(websiteRows,{tag:'Unity',site:'a.example',author:'alice'},facetConfig),row=>row.id),['RES-1']);
 assert.deepEqual(Array.from(W.filterWebsites(websiteRows,{category:'Tech',tag:'Unity',site:'a.example',author:'alice'},facetConfig),row=>row.id),['RES-1']);
 assert.deepEqual(Array.from(W.filterWebsites(websiteRows,{category:'Idea',tag:'AI',site:'a.example',author:'alice'},facetConfig),row=>row.id),['RES-3']);
+assert.deepEqual(Array.from(W.filterWebsites(websiteRows,{q:'Unity'},facetConfig),row=>row.id),['RES-1','RES-2','RES-6'],'website search includes engine metadata');
 assert.deepEqual(Array.from(W.filterWebsites(websiteRows,{category:'Tech',tag:'AI'},facetConfig),row=>row.id),[]);
 assert.equal(W.filterWebsites(websiteRows,{site:'b.example'},facetConfig).length,0,'unapproved Site query values must not expose dedicated filter results');
 assert.equal(W.filterWebsites(websiteRows,{author:'bob'},facetConfig).length,0,'unapproved Author query values must not expose dedicated filter results');
-assert.deepEqual(Array.from(W.filterWebsites(websiteRows,{site:'__other__'},facetConfig),row=>row.id),['RES-4','RES-5']);
-assert.deepEqual(Array.from(W.filterWebsites(websiteRows,{author:'__other__'},facetConfig),row=>row.id),['RES-2','RES-5']);
+assert.deepEqual(Array.from(W.filterWebsites(websiteRows,{site:'__other__'},facetConfig),row=>row.id),['RES-4','RES-5','RES-6']);
+assert.deepEqual(Array.from(W.filterWebsites(websiteRows,{author:'__other__'},facetConfig),row=>row.id),['RES-2','RES-5','RES-6']);
 assert.equal(W.presentWebsites(websiteRows,facetConfig).find(row=>row.id==='RES-4').hasOtherAuthor,false,'an article with any approved Author must not also match Author Other');
 assert.deepEqual(Array.from(W.filterWebsites(websiteRows,{tag:'InventedTag'},facetConfig),row=>row.id),[]);
 const websiteCard = W.renderWebsiteCard({...websiteRows[0],publisher:'Example Site',contentType:'technical-article'}, C);
@@ -239,8 +253,8 @@ assert.match(websiteCard,/Unity/); assert.match(websiteCard,/Shader/);
 assert.match(websiteCard,/website-category--tech/);
 assert.match(websiteCard,/>Tech<\/span>/);
 assert.doesNotMatch(websiteCard,/technical-article/,'contentType must not be rendered as Website classification');
-assert.deepEqual(Array.from(W.sortWebsites(websiteRows,'desc'),row=>row.id),['RES-1','RES-3','RES-2','RES-4','RES-5']);
-assert.deepEqual(Array.from(W.sortWebsites(websiteRows,'asc'),row=>row.id),['RES-4','RES-2','RES-3','RES-1','RES-5']);
+assert.deepEqual(Array.from(W.sortWebsites(websiteRows,'desc'),row=>row.id),['RES-1','RES-3','RES-2','RES-4','RES-6','RES-5']);
+assert.deepEqual(Array.from(W.sortWebsites(websiteRows,'asc'),row=>row.id),['RES-6','RES-4','RES-2','RES-3','RES-1','RES-5']);
 assert.equal(W.siteIconPath(websiteRows[0]),'assets/generated/site-icons/a.example.png');
 assert.notEqual(W.siteIconPath({...websiteRows[0],canonicalUrl:'https://[2001:db8::1]/'}),W.siteIconPath({...websiteRows[0],canonicalUrl:'https://[200:1db8::1]/'}));
 assert.notEqual(W.siteIconPath({...websiteRows[0],canonicalUrl:'https://[a::b]/'}),W.siteIconPath({...websiteRows[0],canonicalUrl:'https://ip6-a--b/'}));
@@ -576,6 +590,30 @@ async function createDocumentsPage(rows,href='https://portal.test/documents.html
 }
 
 Promise.resolve().then(async()=>{
+  const taxonomyHtml=fs.readFileSync(path.join(__dirname,'../taxonomy.html'),'utf8');
+  const taxonomyScript=[...taxonomyHtml.matchAll(/<script>([\s\S]*?)<\/script>/g)].at(-1)?.[1];
+  assert.ok(taxonomyScript,'Taxonomy page has an inline rendering entry point');
+  const taxonomyRoots=Object.fromEntries(['categories','tags','domains','engines'].map(id=>[id,{innerHTML:''}]));
+  const taxonomySearch={value:'',addEventListener(){}};
+  const taxonomyClear={addEventListener(){}};
+  const taxonomyHandlers={};
+  const taxonomyContext={encodeURIComponent,console,window:{MRCCatalog:{
+    load:async()=>({categories:{Tech:{displayName:'Tech'}},tags:{Shader:{displayName:'Shader'}},domains:{Graphics:{displayName:'Graphics'}},engines:{Unity:{displayName:'Unity'}}}),
+    query:()=>'',escapeHtml:value=>String(value)
+  },addEventListener(type,handler){taxonomyHandlers[type]=handler;}},document:{
+    getElementById:id=>({search:taxonomySearch,clear:taxonomyClear,...taxonomyRoots}[id])
+  }};
+  vm.runInNewContext(taxonomyScript,taxonomyContext);
+  await taxonomyHandlers.DOMContentLoaded();
+  assert.match(taxonomyRoots.categories.innerHTML,/websites\.html\?category=Tech/);
+  assert.match(taxonomyRoots.tags.innerHTML,/websites\.html\?tag=Shader/);
+  assert.match(taxonomyRoots.tags.innerHTML,/documents\.html\?tag=Shader/);
+  assert.match(taxonomyRoots.domains.innerHTML,/websites\.html\?q=Graphics/);
+  assert.match(taxonomyRoots.domains.innerHTML,/documents\.html\?category=Graphics/);
+  assert.match(taxonomyRoots.engines.innerHTML,/websites\.html\?q=Unity/);
+  assert.match(taxonomyRoots.engines.innerHTML,/documents\.html\?q=Unity/);
+  console.log('OK: Taxonomy links use exact Website and Document Category/Tag/Engine routes');
+
   const rows45=documentFixture(45);
   const page2=await createDocumentsPage(rows45,'https://portal.test/documents.html?page=2&keep=yes');
   const list=page2.elements.get('list'),count=page2.elements.get('count'),nav=page2.elements.get('pagination');
@@ -644,4 +682,19 @@ Promise.resolve().then(async()=>{
   assert.equal(onePage.location.search,'?keep=yes');
   assert.equal(onePage.elements.get('pagination').hidden,true);
   console.log('OK: Documents pagination slices after filtering, canonical URLs, filter reset, history, empty state and accessibility');
+
+  const unclassifiedRows=[...rows45];
+  unclassifiedRows[1]={...unclassifiedRows[1],domains:[],tags:[]};
+  const unclassifiedPage=await createDocumentsPage(unclassifiedRows);
+  assert.ok(unclassifiedPage.elements.get('list').innerHTML.includes('Document 002'),'unclassified row stays in the unfiltered list');
+  assert.ok(unclassifiedPage.elements.get('category').options.some(option=>option.value==='__unclassified__'&&option.textContent==='未分類'));
+  const unclassifiedSearch=unclassifiedPage.elements.get('q');
+  unclassifiedSearch.value='Document 002';unclassifiedSearch.emit('input');
+  assert.ok(unclassifiedPage.elements.get('list').innerHTML.includes('Document 002'),'unclassified row remains searchable');
+  const unclassifiedFilter=await createDocumentsPage(unclassifiedRows);
+  const category=unclassifiedFilter.elements.get('category');category.value='__unclassified__';category.emit('change');
+  assert.equal((unclassifiedFilter.elements.get('list').innerHTML.match(/<article class="document-entry">/g)||[]).length,1);
+  assert.ok(unclassifiedFilter.elements.get('list').innerHTML.includes('Document 002'));
+  assert.equal(unclassifiedFilter.location.search,'?category=__unclassified__');
+  console.log('OK: Empty canonical Domains stay visible/searchable and the UI-only 未分類 filter selects them');
 }).catch(error=>{console.error(error);process.exitCode=1;});

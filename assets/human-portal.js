@@ -18,8 +18,13 @@ window.addEventListener('DOMContentLoaded', async () => {
   try {
     if (page === 'documents.html') {
       const data = await C.loadMany('document-presentation','resources','taxonomy');
-      const rows = C.presentDocuments(data['document-presentation'],C.byId(data.resources),data.taxonomy);
+      const rows = C.presentDocuments(data['document-presentation'],C.byId(data.resources));
       fill(el('category'),rows.flatMap(row=>row.categories)); fill(el('tag'),rows.flatMap(row=>row.tags));
+      if (rows.some(row=>Array.isArray(row.domains) && row.domains.length === 0)) {
+        const option = document.createElement('option');
+        option.value = C.unclassifiedCategoryValue; option.textContent = '未分類';
+        el('category').appendChild(option);
+      }
       fill(el('format'),rows.map(row=>row.sourceFormat).filter(format=>!['PDF','PPTX'].includes(format)));
       C.bindThumbnailFallback(el('list'));
       const controls = ['q','category','format','tag'].map(el);

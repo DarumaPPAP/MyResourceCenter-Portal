@@ -244,7 +244,7 @@
     const siteKey = selectedSite.startsWith('site:') ? selectedSite.slice(5) : selectedSite;
     const authorKey = selectedAuthor.startsWith('author:') ? selectedAuthor.slice(7) : selectedAuthor;
     return presented.filter(row => {
-      const searchText = [row.title, row.publisher, row.siteKey, ...(Array.isArray(row.authors) ? row.authors : []), ...(Array.isArray(row.domains) ? row.domains : []), ...(row.topics || []), ...(row.tags || [])]
+      const searchText = [row.title, row.publisher, row.siteKey, ...(Array.isArray(row.authors) ? row.authors : []), ...(Array.isArray(row.domains) ? row.domains : []), ...(row.topics || []), ...(row.tags || []), ...(Array.isArray(row.engines) ? row.engines : [])]
         .filter(Boolean).join(' ').toLocaleLowerCase();
       return (!term || searchText.includes(term)) &&
         (!filters.category || row.category === filters.category) &&

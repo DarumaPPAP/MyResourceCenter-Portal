@@ -415,7 +415,7 @@ def validate_png(errors: list[str], label: str, asset: Path) -> None:
         errors.append(f"{label}: {exc}")
 
 
-def validate_presentation(errors: list[str], rows: list[dict], resources: list[dict]) -> None:
+def validate_presentation(errors: list[str], rows: list[dict], resources: list[dict], taxonomy_domains: set[str]) -> None:
     resources_by_id = {row["id"]: row for row in resources}
     seen_res, seen_doc, seen_original = set(), set(), set()
     for index, row in enumerate(rows):
@@ -439,8 +439,15 @@ def validate_presentation(errors: list[str], rows: list[dict], resources: list[d
         if not isinstance(tags, list) or any(not isinstance(tag, str) or not tag.strip() for tag in tags):
             errors.append(f"{label}: tags must be public text labels")
         domains = row.get("domains")
-        if not isinstance(domains, list) or any(not isinstance(domain, str) or not domain.strip() for domain in domains):
-            errors.append(f"{label}: compatibility domains must be public text labels")
+        if not isinstance(domains, list):
+            errors.append(f"{label}: domains must be an array")
+        elif any(not isinstance(domain, str) or not domain.strip() for domain in domains):
+            errors.append(f"{label}: domains must contain only non-empty canonical domain strings")
+        else:
+            if len(domains) != len(set(domains)):
+                errors.append(f"{label}: duplicate domain")
+            if any(domain not in taxonomy_domains for domain in domains):
+                errors.append(f"{label}: unknown canonical domain")
         source_format = row.get("sourceFormat")
         if source_format not in SOURCE_FORMATS:
             errors.append(f"{label}: invalid sourceFormat")
@@ -611,7 +618,7 @@ def main() -> None:
             if member.get("role") not in COLLECTION_ROLES:
                 errors.append(f"{collection_id}: invalid role {member.get('role')}")
 
-    validate_presentation(errors, presentation, resources)
+    validate_presentation(errors, presentation, resources, set(taxonomy.get("domains", {})))
 
     document_html = (ROOT / "documents.html").read_text(encoding="utf-8")
     consumer = (ROOT / "assets/human-portal.js").read_text(encoding="utf-8")
