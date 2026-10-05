@@ -1,7 +1,587 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-10-04T09:18:00+09:00",
+  "generatedAt": "2026-10-05T09:15:00+09:00",
   "days": [
+    {
+      "date": "2026-10-05",
+      "items": [
+        {
+          "id": "TREND-20261005-001",
+          "title": "Cinemachine 2→3移行で効いた切り分け手順",
+          "url": "https://note.com/grandisdev/n/n6cbb334e5ea1",
+          "source": "note",
+          "publishedAt": "2026-10-03T17:07:44+09:00",
+          "category": "Unity",
+          "type": "CASE",
+          "summary": "Cinemachine 2から3への移行を、バックアップ、小規模環境、GPTとツールによる切り分けで安全に進めた実例。",
+          "tags": [
+            "Unity",
+            "Cinemachine",
+            "移行",
+            "トラブルシューティング"
+          ],
+          "score": 94
+        },
+        {
+          "id": "TREND-20261005-002",
+          "title": "UnityでC# 10以降のライブラリが動く仕組み",
+          "url": "https://zenn.dev/s4k1/articles/ba87c0ff3c1d47",
+          "source": "Zenn",
+          "publishedAt": "2026-10-03T06:05:15+00:00",
+          "category": "Unity",
+          "type": "NEW",
+          "summary": "ZLogger・R3・MemoryPackを例に、UnityのC#対応表と新しい言語機能を使うライブラリが共存できる理由を整理。",
+          "tags": [
+            "Unity",
+            "C#",
+            "ZLogger",
+            "R3",
+            "MemoryPack"
+          ],
+          "score": 93
+        },
+        {
+          "id": "TREND-20261005-003",
+          "title": "Unity ARで実写をToonへ寄せる2種のShader実装",
+          "url": "https://qiita.com/dsgarage/items/89146950f23ff4d1733f",
+          "source": "Qiita",
+          "publishedAt": "2026-10-02T09:53:50+09:00",
+          "category": "Graphics",
+          "type": "CASE",
+          "summary": "ARKit背景のノイズやシャープネスに合わせ、World/ARモードで異なるURPシェーダーを実装して馴染ませる手法。",
+          "tags": [
+            "Unity",
+            "URP",
+            "Shader",
+            "ARKit",
+            "Toon"
+          ],
+          "score": 92
+        },
+        {
+          "id": "TREND-20261005-004",
+          "title": "UE5対戦ゲーム基盤をTerraformで構築",
+          "url": "https://qiita.com/EXPEVODEV/items/9559c6705a87248d7c0b",
+          "source": "Qiita",
+          "publishedAt": "2026-10-01T10:42:32+09:00",
+          "category": "Unreal",
+          "type": "CASE",
+          "summary": "最大10人・同接100人想定のUE5対戦TPSで、GameLift専用サーバーとSteamリッスンサーバーをTerraform化。",
+          "tags": [
+            "UE5",
+            "Terraform",
+            "AWS",
+            "GameLift",
+            "Multiplayer"
+          ],
+          "score": 91
+        },
+        {
+          "id": "TREND-20261005-005",
+          "title": "ゲーム向けアクター指向言語Mana 1.0の設計",
+          "url": "https://qiita.com/shun126/items/e5a9af6a9de79e3d49df",
+          "source": "Qiita",
+          "publishedAt": "2026-10-02T02:19:40+09:00",
+          "category": "Programming",
+          "type": "RELEASE",
+          "summary": "ActorとRoleでゲームの振る舞いを記述する自作言語Mana 1.0。C++実装とブラウザPlaygroundを公開。",
+          "tags": [
+            "C++",
+            "Game Development",
+            "Language Design",
+            "Compiler"
+          ],
+          "score": 90
+        },
+        {
+          "id": "TREND-20261005-006",
+          "title": "4GB GPUで8B学習をうたうSoupを実機検証",
+          "url": "https://zenn.dev/matsushima_a/articles/day-005-soup-layer-streaming-4gb-gpu",
+          "source": "Zenn",
+          "publishedAt": "2026-10-04T00:04:39+00:00",
+          "category": "AI",
+          "type": "CASE",
+          "summary": "RTX 5060 TiでLayer Streamingを検証。学習処理は動いた一方、出力アダプタが空になる失敗を確認した。",
+          "tags": [
+            "GPU",
+            "LLM",
+            "Fine-tuning",
+            "Layer Streaming",
+            "検証"
+          ],
+          "score": 89
+        },
+        {
+          "id": "TREND-20261005-007",
+          "title": "DockerでNVIDIA GPUを検出できないCDIエラー対処",
+          "url": "https://qiita.com/siruku6/items/566880187591b47ed83e",
+          "source": "Qiita",
+          "publishedAt": "2026-10-03T11:30:49+09:00",
+          "category": "Tools",
+          "type": "CASE",
+          "summary": "docker compose時の「no known GPU vendor found」を対象に、Ubuntu/NVIDIA環境での原因確認と復旧手順を整理。",
+          "tags": [
+            "Docker",
+            "NVIDIA",
+            "GPU",
+            "Ubuntu",
+            "CDI"
+          ],
+          "score": 88
+        },
+        {
+          "id": "TREND-20261005-008",
+          "title": "C#でasync voidを避ける理由とイベント例外",
+          "url": "https://qiita.com/k-shimaoka-dev/items/01f5567c1698d9311919",
+          "source": "Qiita",
+          "publishedAt": "2026-10-04T10:11:43+09:00",
+          "category": "Programming",
+          "type": "NEW",
+          "summary": "例外伝播や完了待機が難しいasync voidを、WPFイベントハンドラで許容する理由と安全な扱い方を解説。",
+          "tags": [
+            "C#",
+            "async",
+            "await",
+            "WPF",
+            "Exception"
+          ],
+          "score": 87
+        },
+        {
+          "id": "TREND-20261005-009",
+          "title": "C++20 Spaceship Operator入門",
+          "url": "https://zenn.dev/spacesolver/articles/cd4e8e6bb302e5",
+          "source": "Zenn",
+          "publishedAt": "2026-10-04T01:30:42+00:00",
+          "category": "Programming",
+          "type": "NEW",
+          "summary": "C++20の三方比較演算子<=>とstd::compare系の結果を使い、比較処理を簡潔に実装する基本を解説。",
+          "tags": [
+            "C++20",
+            "Spaceship Operator",
+            "Comparison"
+          ],
+          "score": 86
+        },
+        {
+          "id": "TREND-20261005-010",
+          "title": "UnityゲームのApp Store提出チェックリスト",
+          "url": "https://note.com/shiny_ixia682/n/n9af1fe8260cc",
+          "source": "note",
+          "publishedAt": "2026-10-03T17:55:15+09:00",
+          "category": "Unity",
+          "type": "CASE",
+          "summary": "AdMobと買い切り課金を含むUnity製iPhoneゲームを一発通過させた提出前確認、審査の詰まり、日程を整理。",
+          "tags": [
+            "Unity",
+            "iOS",
+            "App Store",
+            "AdMob",
+            "IAP"
+          ],
+          "score": 85
+        },
+        {
+          "id": "TREND-20261005-011",
+          "title": "UE5ぷちコン初参加の開発振り返り",
+          "url": "https://zenn.dev/rakio/articles/206c731008bbea",
+          "source": "Zenn",
+          "publishedAt": "2026-10-03T13:38:48+00:00",
+          "category": "Unreal",
+          "type": "CASE",
+          "summary": "UE5歴1.5年・UE内C++経験が少ない状態から作品を完成。制作工程と判断、初コンテストで得た反省点を共有。",
+          "tags": [
+            "UE5",
+            "Game Development",
+            "C++",
+            "Postmortem"
+          ],
+          "score": 84
+        },
+        {
+          "id": "TREND-20261005-012",
+          "title": "Ryzen AI Max+ 395でVulkan LLMを検証",
+          "url": "https://qiita.com/nabe2030/items/7cc3bd2c090946e55470",
+          "source": "Qiita",
+          "publishedAt": "2026-10-03T19:59:32+09:00",
+          "category": "AI",
+          "type": "CASE",
+          "summary": "EVO-X2上でQwen3.8-Flash-NextをVulkan実行。動作はしたが、長いコンテキストで不安定になる挙動を報告。",
+          "tags": [
+            "Vulkan",
+            "GPU",
+            "Local LLM",
+            "Ryzen AI",
+            "Benchmark"
+          ],
+          "score": 83
+        },
+        {
+          "id": "TREND-20261005-013",
+          "title": "128K Contextではメモリより待ち時間が壁",
+          "url": "https://qiita.com/istb16/items/b3fc166f6f7a7b22cbe0",
+          "source": "Qiita",
+          "publishedAt": "2026-10-03T14:18:09+09:00",
+          "category": "AI",
+          "type": "CASE",
+          "summary": "Qwen3.6-35B-A3Bを長文脈で測定し、128Kでは容量より処理待ちが実運用上の制約になる点を検証。",
+          "tags": [
+            "llama.cpp",
+            "Vulkan",
+            "LLM",
+            "Benchmark",
+            "Context"
+          ],
+          "score": 82
+        },
+        {
+          "id": "TREND-20261005-014",
+          "title": "GPU枯渇が正常動作に見える並列処理障害",
+          "url": "https://qiita.com/orca-forge/items/ac86b9720bdb93489542",
+          "source": "Qiita",
+          "publishedAt": "2026-10-02T09:13:33+09:00",
+          "category": "Tools",
+          "type": "CASE",
+          "summary": "12GB GPUを2つのAI処理が取り合い、ジョブが動いて見えたまま遅延。VRAM競合の観測と切り分けを共有。",
+          "tags": [
+            "GPU",
+            "VRAM",
+            "Troubleshooting",
+            "Parallel"
+          ],
+          "score": 81
+        },
+        {
+          "id": "TREND-20261005-015",
+          "title": "Claude×Blender MCPで5分リギング",
+          "url": "https://note.com/frontsoftworks/n/nf1438ff683ea",
+          "source": "note",
+          "publishedAt": "2026-09-27T20:11:09+09:00",
+          "category": "DCC",
+          "type": "CASE",
+          "summary": "Nomad Sculpt製の3頭身キャラをBlender MCP経由でリギングし、手振りまで自動化した制作工程を紹介。",
+          "tags": [
+            "Blender",
+            "Rigging",
+            "MCP",
+            "Automation",
+            "Character"
+          ],
+          "score": 80
+        },
+        {
+          "id": "TREND-20261005-016",
+          "title": "Win32文字セット設定の誤解を整理",
+          "url": "https://qiita.com/mamPol/items/84dcd890ff14cb2b1414",
+          "source": "Qiita",
+          "publishedAt": "2026-10-03T18:24:00+09:00",
+          "category": "Programming",
+          "type": "NEW",
+          "summary": "Visual StudioのUnicode/マルチバイト設定とUTF-8・UTF-16の関係を、Win32 APIの実挙動から整理。",
+          "tags": [
+            "Win32",
+            "C++",
+            "Unicode",
+            "Visual Studio"
+          ],
+          "score": 79
+        },
+        {
+          "id": "TREND-20261005-017",
+          "title": "C#のstring?とint?は何が違うか",
+          "url": "https://qiita.com/tainn_app_dev/items/b221a65dac05538c4812",
+          "source": "Qiita",
+          "publishedAt": "2026-10-03T19:56:27+09:00",
+          "category": "Programming",
+          "type": "NEW",
+          "summary": "string?はコンパイラ向け注釈、int?はNullable<T>という実行時型。同じ?に見えるNull許容の差を整理。",
+          "tags": [
+            "C#",
+            "Nullable",
+            "Compiler",
+            ".NET"
+          ],
+          "score": 78
+        },
+        {
+          "id": "TREND-20261005-018",
+          "title": "CancellationTokenの内部実装と他言語比較",
+          "url": "https://zenn.dev/poipoionigiri/articles/3826f7675d39fd",
+          "source": "Zenn",
+          "publishedAt": "2026-09-27T11:00:05+00:00",
+          "category": "Programming",
+          "type": "NEW",
+          "summary": "C#/.NETの協調的キャンセルを内部実装から掘り下げ、Python・Go・Rustの仕組みと比較した技術資料。",
+          "tags": [
+            "C#",
+            ".NET",
+            "CancellationToken",
+            "Concurrency"
+          ],
+          "score": 77
+        },
+        {
+          "id": "TREND-20261005-019",
+          "title": "USBだけでAndroidへHID入力するlibaoahid",
+          "url": "https://zenn.dev/nemarpuc/articles/23b031b0431f8f",
+          "source": "Zenn",
+          "publishedAt": "2026-09-29T12:43:50+00:00",
+          "category": "Programming",
+          "type": "TOOL",
+          "summary": "rootや端末アプリ不要で、PCからキーボード・マウス・ゲームパッド入力を送るC++20/C ABIライブラリ。",
+          "tags": [
+            "C++20",
+            "Android",
+            "USB",
+            "HID",
+            "C ABI"
+          ],
+          "score": 76
+        },
+        {
+          "id": "TREND-20261005-020",
+          "title": "Visual StudioでOpenGL CMake構成を見直す",
+          "url": "https://zenn.dev/satoshi061/articles/2726b19c277344",
+          "source": "Zenn",
+          "publishedAt": "2026-09-27T03:00:06+00:00",
+          "category": "Graphics",
+          "type": "NEW",
+          "summary": "C++/OpenGL製3DゲームのVisual Studioプロジェクトを、CMakeとvcpkgで再構成する実践手順。",
+          "tags": [
+            "OpenGL",
+            "C++",
+            "CMake",
+            "vcpkg",
+            "Visual Studio"
+          ],
+          "score": 75
+        },
+        {
+          "id": "TREND-20261005-021",
+          "title": "PyTorch LinearをCPU・GPU・FPGA・ASICで比較",
+          "url": "https://qiita.com/Y-Watanabe11/items/f0146a84d9adf49ebdcf",
+          "source": "Qiita",
+          "publishedAt": "2026-10-03T16:09:34+09:00",
+          "category": "Programming",
+          "type": "NEW",
+          "summary": "同じnn.Linearが各ハードウェアでどう実装・実行されるかを比較し、抽象APIと実体の違いを解説。",
+          "tags": [
+            "PyTorch",
+            "GPU",
+            "FPGA",
+            "ASIC",
+            "Linear"
+          ],
+          "score": 74
+        },
+        {
+          "id": "TREND-20261005-022",
+          "title": "省スペースPCへ2枚目のGPUを増設",
+          "url": "https://qiita.com/microphoton/items/043a3ed58b1e2923eeac",
+          "source": "Qiita",
+          "publishedAt": "2026-10-03T22:09:35+09:00",
+          "category": "Tools",
+          "type": "CASE",
+          "summary": "VRAM不足のローカルLLM環境で、既存2GB GPUに2枚目を追加。省スペース筐体での構成と検証を記録。",
+          "tags": [
+            "GPU",
+            "NVIDIA",
+            "Local LLM",
+            "Hardware"
+          ],
+          "score": 73
+        },
+        {
+          "id": "TREND-20261005-023",
+          "title": "Magnitudeのllama.cpp比2倍主張を16GB Macで検証",
+          "url": "https://zenn.dev/amu_lab/articles/magnitude-vs-llamacpp-16gb-mac-benchmark",
+          "source": "Zenn",
+          "publishedAt": "2026-10-03T18:17:05+09:00",
+          "category": "AI",
+          "type": "CASE",
+          "summary": "Magnitudeとllama.cppを16GB Macで比較し、公称とは逆の結果になった条件とベンチマークを整理。",
+          "tags": [
+            "llama.cpp",
+            "Magnitude",
+            "Mac",
+            "Benchmark",
+            "LLM"
+          ],
+          "score": 72
+        },
+        {
+          "id": "TREND-20261005-024",
+          "title": "短編小説を6ページ漫画へ仕上げる制作工程",
+          "url": "https://qiita.com/yuji_yasuhara/items/08ee1072f5038f4a12d0",
+          "source": "Qiita",
+          "publishedAt": "2026-10-04T10:36:26+09:00",
+          "category": "DCC",
+          "type": "CASE",
+          "summary": "約3,300字の短編を3日で6ページ26コマへ変換。BlenderとAIを含む具体的な漫画制作ワークフロー。",
+          "tags": [
+            "Blender",
+            "Manga",
+            "Workflow",
+            "AI"
+          ],
+          "score": 71
+        },
+        {
+          "id": "TREND-20261005-025",
+          "title": "Blender作品の完成度を上げる構図レシピ",
+          "url": "https://note.com/mikiniki_cg/n/n407afbb05c9c",
+          "source": "note",
+          "publishedAt": "2026-10-03T18:21:23+09:00",
+          "category": "DCC",
+          "type": "NEW",
+          "summary": "Blenderで制作した例を使い、作品を見直しながら適用できる構図の基本テクニックを解説。",
+          "tags": [
+            "Blender",
+            "Composition",
+            "Lighting",
+            "3D Art"
+          ],
+          "score": 70
+        },
+        {
+          "id": "TREND-20261005-026",
+          "title": "Blenderで光を放射する文字アニメーション",
+          "url": "https://note.com/shidou4737/n/nbf27c4b6fffa",
+          "source": "note",
+          "publishedAt": "2026-09-28T08:16:29+09:00",
+          "category": "DCC",
+          "type": "NEW",
+          "summary": "テキストを押出し・リメッシュ・分離し、パーティクルとShader Nodesで発光文字を作る工程。",
+          "tags": [
+            "Blender",
+            "Particles",
+            "Shader Nodes",
+            "Animation"
+          ],
+          "score": 69
+        },
+        {
+          "id": "TREND-20261005-027",
+          "title": "3Dモデリングで揃える資料の考え方",
+          "url": "https://note.com/ktwg31/n/n669518964366",
+          "source": "note",
+          "publishedAt": "2026-09-29T20:51:27+09:00",
+          "category": "DCC",
+          "type": "NEW",
+          "summary": "三面図に加え、正面・斜め顔・背面・横顔など、キャラクターモデリングに必要な参照資料を実務目線で整理。",
+          "tags": [
+            "Blender",
+            "Modeling",
+            "Reference",
+            "Character"
+          ],
+          "score": 68
+        },
+        {
+          "id": "TREND-20261005-028",
+          "title": "自作CPUで動くOSに機能を追加",
+          "url": "https://qiita.com/tt_and_tk/items/524d8e20703872de86ab",
+          "source": "Qiita",
+          "publishedAt": "2026-10-02T20:55:39+09:00",
+          "category": "Engine",
+          "type": "CASE",
+          "summary": "自作CPU・ISA・言語・ファイルシステム上で、実行ファイルをRAMへ読み込む基盤からOS機能を拡張。",
+          "tags": [
+            "C++",
+            "OS Development",
+            "SystemVerilog",
+            "CPU"
+          ],
+          "score": 67
+        },
+        {
+          "id": "TREND-20261005-029",
+          "title": "C# MutexでWindowsアプリの二重起動を防ぐ",
+          "url": "https://qiita.com/YoshijiGates/items/b3f9b1f7c9e055775526",
+          "source": "Qiita",
+          "publishedAt": "2026-09-27T18:08:37+09:00",
+          "category": "Programming",
+          "type": "NEW",
+          "summary": "Visual Studio 2022と.NET 9のWindows FormsでMutexを使い、二重起動を防ぐ実装と注意点を解説。",
+          "tags": [
+            "C#",
+            ".NET 9",
+            "Windows Forms",
+            "Mutex"
+          ],
+          "score": 66
+        },
+        {
+          "id": "TREND-20261005-030",
+          "title": "操作記録から手順書を作る.NETアプリ開発",
+          "url": "https://qiita.com/LocalManualMaker/items/0ba1e3b91c46636e63dc",
+          "source": "Qiita",
+          "publishedAt": "2026-09-28T21:11:17+09:00",
+          "category": "Programming",
+          "type": "CASE",
+          "summary": "Windows操作を記録して画像付き手順書を生成するアプリの構成、AI併用開発、Store公開時の難所を共有。",
+          "tags": [
+            ".NET",
+            "Windows",
+            "Desktop App",
+            "Automation"
+          ],
+          "score": 65
+        },
+        {
+          "id": "TREND-20261005-031",
+          "title": "C#で利用可能なCOMポート番号を取得",
+          "url": "https://qiita.com/ohisama@github/items/19d365e9624006927773",
+          "source": "Qiita",
+          "publishedAt": "2026-10-04T04:13:06+09:00",
+          "category": "Programming",
+          "type": "NEW",
+          "summary": "cscでビルドする小さなC#例として、SerialPortから利用可能なCOMポート番号を列挙する方法を検証。",
+          "tags": [
+            "C#",
+            "SerialPort",
+            "COM",
+            "Windows"
+          ],
+          "score": 64
+        },
+        {
+          "id": "TREND-20261005-032",
+          "title": "Win32文字コードの基礎を整理",
+          "url": "https://qiita.com/mamPol/items/cb5aaeddb7c35ed28ec5",
+          "source": "Qiita",
+          "publishedAt": "2026-10-02T19:38:26+09:00",
+          "category": "Programming",
+          "type": "NEW",
+          "summary": "Unicode、UTF-8/16/32、Shift_JIS、CP932の違いを、Windowsプログラミングで迷いやすい点から整理。",
+          "tags": [
+            "Win32",
+            "C++",
+            "Unicode",
+            "Encoding"
+          ],
+          "score": 63
+        },
+        {
+          "id": "TREND-20261005-033",
+          "title": "C/C++からDLLを利用する実装手順",
+          "url": "https://qiita.com/n31nh/items/75edef2ad47e76344046",
+          "source": "Qiita",
+          "publishedAt": "2026-09-28T15:54:23+09:00",
+          "category": "Programming",
+          "type": "NEW",
+          "summary": "WindowsとLinuxで作成したC/C++ライブラリを呼び出す一連の手順を、既存シリーズの続編として整理。",
+          "tags": [
+            "C",
+            "C++",
+            "DLL",
+            "Windows",
+            "Linux"
+          ],
+          "score": 62
+        }
+      ]
+    },
     {
       "date": "2026-10-04",
       "items": [
@@ -1253,609 +1833,6 @@
           "score": 64
         }
       ]
-    },
-    {
-      "date": "2026-10-02",
-      "items": [
-        {
-          "id": "TREND-20261002-001",
-          "title": "RenderGraphでモバイルGPUのメモリ帯域を削減：SoCから実機計測まで",
-          "url": "https://zenn.dev/applibot_tech/articles/rendergraph-memory-bandwidth",
-          "source": "アプリボット / Zenn",
-          "publishedAt": "2026-09-30T02:30:40Z",
-          "category": "Unity",
-          "type": "CASE",
-          "summary": "Unity 6 URPのRenderGraphでメモリ帯域を減らす仕組みを、SoCの階層、実装、RenderGraph Viewerと実機Profiler確認まで解説。",
-          "tags": [
-            "Unity6",
-            "URP",
-            "RenderGraph",
-            "MobileGPU",
-            "MemoryBandwidth"
-          ],
-          "score": 99
-        },
-        {
-          "id": "TREND-20261002-002",
-          "title": "UE5 Shader最適化：Material・Custom HLSL・Global Shader/RDGの判断基準",
-          "url": "https://zenn.dev/gamedev_toollab/articles/fe512bd30def27",
-          "source": "GameDev Tool Lab / Zenn",
-          "publishedAt": "2026-09-30T06:01:26Z",
-          "category": "Unreal",
-          "type": "CASE",
-          "summary": "UE 5.8.2/DX12/SM6でGPU時間、Permutation、PSO Hitchを分離。計測からMaterial、HLSL、RDGを選ぶ実践指針。",
-          "tags": [
-            "UE5",
-            "Shader",
-            "HLSL",
-            "RDG",
-            "PSO",
-            "Optimization"
-          ],
-          "score": 98
-        },
-        {
-          "id": "TREND-20261002-003",
-          "title": "Cocos2d-x製ゲーム3本を旧コードのままUE5.8へ移行",
-          "url": "https://zenn.dev/kiarina/articles/2026-10-01-cocos2dx-to-unreal",
-          "source": "kiarina / Zenn",
-          "publishedAt": "2026-10-01T00:00:00+09:00",
-          "category": "Game",
-          "type": "CASE",
-          "summary": "約19万行級のC++/Luaを互換RuntimeでUE5.8へ移植。描画・端末・音・HTTP・Native境界とASan/UBSan検証を解説。",
-          "tags": [
-            "UnrealEngine",
-            "Cocos2d-x",
-            "C++",
-            "Lua",
-            "Migration",
-            "Testing"
-          ],
-          "score": 97
-        },
-        {
-          "id": "TREND-20261002-004",
-          "title": "3Dキャラクターを指定領域へ自動Frameするカメラ位置計算",
-          "url": "https://zenn.dev/reality_tech/articles/camera-auto-framing-algorithm",
-          "source": "REALITY Tech / Zenn",
-          "publishedAt": "2026-09-30T09:00:07Z",
-          "category": "Graphics",
-          "type": "CASE",
-          "summary": "画角と向きを固定し、Mesh全頂点の投影位置からCamera位置を求める。PoseやAnimationへ追従するAuto Framing手法。",
-          "tags": [
-            "Unity",
-            "Camera",
-            "AutoFraming",
-            "3DCG",
-            "Math"
-          ],
-          "score": 96
-        },
-        {
-          "id": "TREND-20261002-005",
-          "title": "DirectX 11/HLSLで草原をVertex Shader描画",
-          "url": "https://qiita.com/tsukino_/items/cdf6289d963d460757c6",
-          "source": "Qiita",
-          "publishedAt": "2026-10-01T01:07:42+09:00",
-          "category": "Graphics",
-          "type": "CASE",
-          "summary": "自作Engineのコードで、草1本ごとのCPU側Dataを持たず、Vertex Shaderで配置と風揺れを生成する草原描画を解説。",
-          "tags": [
-            "DirectX11",
-            "HLSL",
-            "VertexShader",
-            "Grass",
-            "GameDevelopment"
-          ],
-          "score": 95
-        },
-        {
-          "id": "TREND-20261002-006",
-          "title": "Unityでfloat4 TextureをByte列として扱う方法",
-          "url": "https://qiita.com/yuri_tsukimi/items/0c77fb3d532682da45bd",
-          "source": "Qiita",
-          "publishedAt": "2026-09-30T21:26:24+09:00",
-          "category": "Unity",
-          "type": "CASE",
-          "summary": "Render TextureやCustom Render Textureへ任意Dataを埋め込むため、float4のBit表現をHLSLでByte列として扱う方法。",
-          "tags": [
-            "Unity",
-            "HLSL",
-            "RenderTexture",
-            "GPU",
-            "BitPacking"
-          ],
-          "score": 94
-        },
-        {
-          "id": "TREND-20261002-007",
-          "title": "Unity 6.6 WebGPU標準Supportを実機検証",
-          "url": "https://note.com/borndigital_tech/n/n38e5baf931e7",
-          "source": "ボーンデジタル / note",
-          "publishedAt": "2026-09-28T12:00:00+09:00",
-          "category": "Unity",
-          "type": "CASE",
-          "summary": "Unity 6.6で実験段階を脱したWebGPU Backendを検証。WebGLでは難しかったCompute Shaderなど最新GPU機能の利用を確認。",
-          "tags": [
-            "Unity6.6",
-            "WebGPU",
-            "ComputeShader",
-            "Browser",
-            "Rendering"
-          ],
-          "score": 93
-        },
-        {
-          "id": "TREND-20261002-008",
-          "title": "UE5.8公式Learning：MetaHuman Mocap・AnimGen・Chaos",
-          "url": "https://www.unrealengine.com/learning/septembers-epic-learning-content-metahumans-physics-animation-and-more",
-          "source": "Epic Games",
-          "publishedAt": "2026-09-30T00:00:00Z",
-          "category": "Unreal",
-          "type": "UPDATE",
-          "summary": "映像からのMarkerless MetaHuman Mocap、Editor内で学習・実行するAnimGen、ChaosやAnimationの公式Tutorialを集約。",
-          "tags": [
-            "UnrealEngine5.8",
-            "MetaHuman",
-            "AnimGen",
-            "Chaos",
-            "Animation"
-          ],
-          "score": 92
-        },
-        {
-          "id": "TREND-20261002-009",
-          "title": "UE5 Runtimeで外部VRMとKawaiiPhysics設定を再現",
-          "url": "https://zenn.dev/yoo0n0/articles/2edca202706a55",
-          "source": "Zenn",
-          "publishedAt": "2026-09-27T10:37:09Z",
-          "category": "Unreal",
-          "type": "TOOL",
-          "summary": "Package後も任意VRMへ差替え、専用GUIの揺れ物設定をKawaiiPhysicsのABP Nodeへ再現するRuntime仕組みを実装。",
-          "tags": [
-            "UE5",
-            "VRM",
-            "KawaiiPhysics",
-            "Runtime",
-            "Animation"
-          ],
-          "score": 91
-        },
-        {
-          "id": "TREND-20261002-010",
-          "title": "UE5 UObjectのGC・参照管理・Memory Leakを整理",
-          "url": "https://zenn.dev/gamedev_toollab/articles/a6ca36c6436025",
-          "source": "GameDev Tool Lab / Zenn",
-          "publishedAt": "2026-09-28T00:53:16Z",
-          "category": "Unreal",
-          "type": "CASE",
-          "summary": "UPROPERTYを外した参照のGC回収Crashと、不要参照が残るLeakを対比。所有・観測・生存延長の観点で参照管理を整理。",
-          "tags": [
-            "UE5",
-            "UObject",
-            "GarbageCollection",
-            "MemoryLeak",
-            "C++"
-          ],
-          "score": 90
-        },
-        {
-          "id": "TREND-20261002-011",
-          "title": "Unreal C++のUObject Test CodeをBuild.csで条件Compile",
-          "url": "https://qiita.com/Naotsun/items/abf97a81966617c50a25",
-          "source": "Qiita",
-          "publishedAt": "2026-09-29T16:12:38+09:00",
-          "category": "Unreal",
-          "type": "CASE",
-          "summary": "UHT対象UCLASS/USTRUCTは単純な#ifで切れない問題を、Build.csでTest用Directoryごと除外・追加する方法で解決。",
-          "tags": [
-            "UnrealC++",
-            "UHT",
-            "Build.cs",
-            "AutomationTest",
-            "Plugin"
-          ],
-          "score": 89
-        },
-        {
-          "id": "TREND-20261002-012",
-          "title": "DirectX 11/HLSLでShadow Mapを実装",
-          "url": "https://qiita.com/tsukino_/items/d1839a99b6eaf4310a21",
-          "source": "Qiita",
-          "publishedAt": "2026-09-30T13:54:53+09:00",
-          "category": "Graphics",
-          "type": "CASE",
-          "summary": "自作Engineの動作Codeを使い、Light視点のDepth生成からScene描画時の比較までShadow Mappingの実装手順を解説。",
-          "tags": [
-            "DirectX11",
-            "HLSL",
-            "ShadowMap",
-            "Rendering",
-            "GameDevelopment"
-          ],
-          "score": 88
-        },
-        {
-          "id": "TREND-20261002-013",
-          "title": "GPU流体解析XLBへNVIDIA Warpを導入",
-          "url": "https://qiita.com/ShibataRyoichi/items/799557395a6d75ed7acd",
-          "source": "Qiita",
-          "publishedAt": "2026-09-30T12:24:57+09:00",
-          "category": "Graphics",
-          "type": "CASE",
-          "summary": "WSL2 Ubuntu 24.04でGPU LBM Library XLBへNVIDIA Warpを導入。2D/3D、BGK/KBC Modelの動作確認手順を共有。",
-          "tags": [
-            "XLB",
-            "NVIDIAWarp",
-            "GPU",
-            "FluidSimulation",
-            "WSL2"
-          ],
-          "score": 87
-        },
-        {
-          "id": "TREND-20261002-014",
-          "title": "Raspberry Pi 5へVulkanを導入しGPU認識を確認",
-          "url": "https://qiita.com/y-vectorfield/items/82858e972e2b60c00599",
-          "source": "Qiita",
-          "publishedAt": "2026-09-30T23:19:21+09:00",
-          "category": "Graphics",
-          "type": "CASE",
-          "summary": "Raspberry Pi 5へVulkan環境を構築し、DriverとGPUが正常認識されるまでのInstall・確認手順をまとめた環境構築Memo。",
-          "tags": [
-            "RaspberryPi5",
-            "Vulkan",
-            "GPU",
-            "Linux",
-            "Setup"
-          ],
-          "score": 86
-        },
-        {
-          "id": "TREND-20261002-015",
-          "title": "Unityで変更箇所に関係するTestだけを自動選択",
-          "url": "https://zenn.dev/tokoharusame/articles/df4cc1e96279a8",
-          "source": "Zenn",
-          "publishedAt": "2026-09-26T12:16:48Z",
-          "category": "Unity",
-          "type": "CASE",
-          "summary": "月1000件規模のIssue対応を想定し、Unity ProjectのCode変更から影響Testを選び、全件実行Costを抑えるTest基盤を紹介。",
-          "tags": [
-            "Unity",
-            "Testing",
-            "Automation",
-            "CI",
-            "DependencyAnalysis"
-          ],
-          "score": 85
-        },
-        {
-          "id": "TREND-20261002-016",
-          "title": "Blender SimulationでCamera Intrinsicを理解",
-          "url": "https://qiita.com/KamikawaTakato/items/a37106cf25c46c6d3a71",
-          "source": "Qiita",
-          "publishedAt": "2026-09-28T22:36:48+09:00",
-          "category": "DCC",
-          "type": "CASE",
-          "summary": "Blender/Python実験で3D Camera座標をPixel座標へ変換するIntrinsic行列を確認。Computer Vision用Camera理解に有用。",
-          "tags": [
-            "Blender",
-            "Camera",
-            "Intrinsic",
-            "ComputerVision",
-            "Python"
-          ],
-          "score": 84
-        },
-        {
-          "id": "TREND-20261002-017",
-          "title": "Unity 6.7 EntityIdTile：Tilemap JobsとBurstへ対応",
-          "url": "https://qiita.com/RyotaMurohoshi/items/eae7a0015e83c43cf06d",
-          "source": "Qiita",
-          "publishedAt": "2026-09-27T21:14:26+09:00",
-          "category": "Unity",
-          "type": "NEW",
-          "summary": "Unity 6000.7.0b2で追加されるEntityIdTile/Baseを解説。Tilemap JobsとBurstから扱える2D Tile機能。",
-          "tags": [
-            "Unity6.7",
-            "Tilemap",
-            "EntityIdTile",
-            "Burst",
-            "Unity2D"
-          ],
-          "score": 83
-        },
-        {
-          "id": "TREND-20261002-018",
-          "title": "Unity Editor自律操作を止めるDialogへの対策",
-          "url": "https://zenn.dev/tokoharusame/articles/356bd829f57624",
-          "source": "Zenn",
-          "publishedAt": "2026-09-28T05:20:04Z",
-          "category": "Unity",
-          "type": "CASE",
-          "summary": "AI AgentによるUnity Editor自律操作がModal Dialogで停止する問題を整理し、無人実行を継続させるDialog対策を実装。",
-          "tags": [
-            "Unity",
-            "EditorAutomation",
-            "AIAgent",
-            "Dialog",
-            "Tooling"
-          ],
-          "score": 82
-        },
-        {
-          "id": "TREND-20261002-019",
-          "title": "Claude CodeからUnity Editorを操作：MCP 2種の使い分け",
-          "url": "https://qiita.com/shunchobi/items/2ed71a67c31c55b90a5c",
-          "source": "Qiita",
-          "publishedAt": "2026-09-29T10:38:41+09:00",
-          "category": "Unity",
-          "type": "CASE",
-          "summary": "Mobile Card Game開発でUnity Editor操作をAIへ委譲。2種類のMCP設定、uGUI操作、実運用で詰まった点を共有。",
-          "tags": [
-            "Unity",
-            "MCP",
-            "ClaudeCode",
-            "uGUI",
-            "MobileGame"
-          ],
-          "score": 81
-        },
-        {
-          "id": "TREND-20261002-020",
-          "title": "ROS 2 HumbleとUnityでLiDAR点群をRealtime描画",
-          "url": "https://qiita.com/hatt_takumi/items/7c729fb9fe0158750b94",
-          "source": "Qiita",
-          "publishedAt": "2026-09-29T16:51:13+09:00",
-          "category": "Unity",
-          "type": "CASE",
-          "summary": "Windows 11/WSL2、ROS 2 Humble、Unity 6000.3.11f1でLakiBeam1のPoint CloudをRealtime描画する連携手順。",
-          "tags": [
-            "Unity",
-            "ROS2",
-            "LiDAR",
-            "PointCloud",
-            "WSL2"
-          ],
-          "score": 80
-        },
-        {
-          "id": "TREND-20261002-021",
-          "title": "3DGSをRealityScanでPhotogrammetry再構築",
-          "url": "https://qiita.com/tech-tsumiki/items/0dee2ddb6fd26d1db7c5",
-          "source": "Qiita",
-          "publishedAt": "2026-09-28T18:53:03+09:00",
-          "category": "DCC",
-          "type": "CASE",
-          "summary": "XGRIDS LCCの3D Gaussian SplattingをRealityScanで再構築。Unity 6 URP、8GB GPU環境と撮影・検証条件を明示。",
-          "tags": [
-            "3DGS",
-            "GaussianSplatting",
-            "RealityScan",
-            "Photogrammetry",
-            "Unity"
-          ],
-          "score": 79
-        },
-        {
-          "id": "TREND-20261002-022",
-          "title": "DirectX RaytracingでAssimp Modelを描画：Vertex/Index Buffer",
-          "url": "https://qiita.com/YKVKDX12/items/3c2fcb4debfb9b4dec64",
-          "source": "Qiita",
-          "publishedAt": "2026-09-27T14:05:20+09:00",
-          "category": "Graphics",
-          "type": "CASE",
-          "summary": "DXR SampleとRepositoryを公開し、Assimpで読んだModelのVertex/Index BufferをRay Tracing描画へ接続する実装。",
-          "tags": [
-            "DirectXRaytracing",
-            "DXR",
-            "Assimp",
-            "VertexBuffer",
-            "3DCG"
-          ],
-          "score": 78
-        },
-        {
-          "id": "TREND-20261002-023",
-          "title": "PLATEAUとBlenderで起伏付き道路・歩道を再現",
-          "url": "https://qiita.com/mac-ky/items/78680a5812becacbc422",
-          "source": "Qiita",
-          "publishedAt": "2026-09-27T10:07:11+09:00",
-          "category": "DCC",
-          "type": "CASE",
-          "summary": "平面画像では表現できない地形の起伏と歩道の盛り上がりを、PLATEAU DataとBlenderを使って再現する制作手順。",
-          "tags": [
-            "PLATEAU",
-            "Blender",
-            "Unity",
-            "Terrain",
-            "Simulation"
-          ],
-          "score": 77
-        },
-        {
-          "id": "TREND-20261002-024",
-          "title": "PythonからC++ DLLを利用する実装Memo",
-          "url": "https://qiita.com/n31nh/items/d7cb36c67a6c5897830c",
-          "source": "Qiita",
-          "publishedAt": "2026-09-28T16:03:43+09:00",
-          "category": "Programming",
-          "type": "CASE",
-          "summary": "Linux共有LibraryとWindows DLLの両系統を踏まえ、PythonからC++ Libraryを呼ぶBuild・ABI接続手順を整理。",
-          "tags": [
-            "Python",
-            "C++",
-            "DLL",
-            "FFI",
-            "CrossPlatform"
-          ],
-          "score": 76
-        },
-        {
-          "id": "TREND-20261002-025",
-          "title": "RustがABIを固定しない理由をC++史から検証",
-          "url": "https://zenn.dev/z001_001/articles/202609-rust-abi-cpp-history",
-          "source": "Zenn",
-          "publishedAt": "2026-09-29T23:53:51Z",
-          "category": "Programming",
-          "type": "RESEARCH",
-          "summary": "C++ ABI互換維持の経緯と一次資料を辿り、RustがStable ABIを持たない設計判断と実験中のcrABIの背景を整理。",
-          "tags": [
-            "Rust",
-            "C++",
-            "ABI",
-            "crABI",
-            "Compiler"
-          ],
-          "score": 75
-        },
-        {
-          "id": "TREND-20261002-026",
-          "title": "Qt Smart Pointerを所有権から選ぶ",
-          "url": "https://zenn.dev/sugitakenji/articles/b14d1eda5823fd",
-          "source": "Zenn",
-          "publishedAt": "2026-09-30T01:38:05Z",
-          "category": "Programming",
-          "type": "CASE",
-          "summary": "QObject親子関係と衝突しないよう、破棄担当と寿命延長の要否からQPointer、QSharedPointer等を選ぶ実装指針。",
-          "tags": [
-            "Qt6",
-            "C++",
-            "SmartPointer",
-            "Ownership",
-            "QObject"
-          ],
-          "score": 74
-        },
-        {
-          "id": "TREND-20261002-027",
-          "title": "libaoahid：PCからAndroidへUSB HID入力を送るC ABI Library",
-          "url": "https://qiita.com/nemarpuc/items/c21ece24051eb15e1de1",
-          "source": "Qiita",
-          "publishedAt": "2026-09-29T21:55:20+09:00",
-          "category": "Tools",
-          "type": "TOOL",
-          "summary": "root/App不要でKeyboard、Mouse、Gamepad、Multi-TouchをUSB送信。C++20実装をStable C ABIで公開。",
-          "tags": [
-            "Android",
-            "USB",
-            "HID",
-            "C++20",
-            "CABI",
-            "Gamepad"
-          ],
-          "score": 73
-        },
-        {
-          "id": "TREND-20261002-028",
-          "title": "C# usingのDispose時機を例外・宣言・GCで実験",
-          "url": "https://qiita.com/tainn_app_dev/items/8cb801e84ef5d2488c77",
-          "source": "Qiita",
-          "publishedAt": "2026-09-27T19:28:40+09:00",
-          "category": "Programming",
-          "type": "CASE",
-          "summary": "using内で例外が出た場合、using宣言のScope終了時、Dispose忘れをGCが補うかの3条件をConsole Codeで検証。",
-          "tags": [
-            "CSharp",
-            "Dispose",
-            "using",
-            "GC",
-            "Exception"
-          ],
-          "score": 72
-        },
-        {
-          "id": "TREND-20261002-029",
-          "title": "LINQ Whereの遅延実行と参照Captureを内部実装から追う",
-          "url": "https://qiita.com/tainn_app_dev/items/12b99384a9d31b5c34ff",
-          "source": "Qiita",
-          "publishedAt": "2026-09-27T16:51:30+09:00",
-          "category": "Programming",
-          "type": "CASE",
-          "summary": "Where生成後に元Listを変更・再代入した場合の結果を比較し、Deferred Executionと参照Copyの挙動をCodeで確認。",
-          "tags": [
-            "CSharp",
-            "LINQ",
-            "DeferredExecution",
-            "Reference",
-            "DotNet"
-          ],
-          "score": 71
-        },
-        {
-          "id": "TREND-20261002-030",
-          "title": "ゲームの型をEngineから分離するC# Roguelite設計",
-          "url": "https://qiita.com/NOAH_412/items/dca977537cb44f82182f",
-          "source": "Qiita",
-          "publishedAt": "2026-09-29T00:33:28+09:00",
-          "category": "Game",
-          "type": "CASE",
-          "summary": "Dungeon、Card、Pinball、Poker型を単一Engineで動かすRinneを題材に、Game固有RuleをCoreから分離する設計を解説。",
-          "tags": [
-            "CSharp",
-            "DotNet",
-            "GameEngine",
-            "Architecture",
-            "Roguelite"
-          ],
-          "score": 70
-        },
-        {
-          "id": "TREND-20261002-031",
-          "title": "特定Dataだけ落ちるC++ Bug：0件戻り値の未確認",
-          "url": "https://qiita.com/fe1ix/items/023310f1983813b7c715",
-          "source": "Qiita",
-          "publishedAt": "2026-10-01T08:27:13+09:00",
-          "category": "Programming",
-          "type": "CASE",
-          "summary": "特定DataでのみCrashする不具合を追跡し、0件を返し得る関数の結果を呼出側が未確認だった原因と防止策を整理。",
-          "tags": [
-            "C++",
-            "Debugging",
-            "Crash",
-            "ErrorHandling",
-            "Quality"
-          ],
-          "score": 69
-        },
-        {
-          "id": "TREND-20261002-032",
-          "title": "Unity GameCI v6へGitHub Actions Buildを更新",
-          "url": "https://qiita.com/broken55/items/a7139f8be5bd9c003f31",
-          "source": "Qiita",
-          "publishedAt": "2026-09-25T12:09:44+09:00",
-          "category": "Tools",
-          "type": "UPDATE",
-          "summary": "2026年9月のunity-builder v6.0.0に合わせ、Unity Cloud Build Workflowの設定変更点と移行手順を解説。",
-          "tags": [
-            "Unity",
-            "GameCI",
-            "GitHubActions",
-            "CI",
-            "CloudBuild"
-          ],
-          "score": 68
-        },
-        {
-          "id": "TREND-20261002-033",
-          "title": "Blender制作の目視指摘をPixel検査へ変換",
-          "url": "https://note.com/inaka_ai_bocchi/n/n448947c739a0",
-          "source": "note",
-          "publishedAt": "2026-09-30T19:42:47+09:00",
-          "category": "DCC",
-          "type": "CASE",
-          "summary": "Blender・Inkscape・ffmpeg製縦Reelで6回の目視修正中2件を自動検査化。4.2pxのズレなど人と機械のQA分担を記録。",
-          "tags": [
-            "Blender",
-            "ffmpeg",
-            "QualityAssurance",
-            "Automation",
-            "Workflow"
-          ],
-          "score": 67
-        }
-      ]
     }
   ]
 }
-
