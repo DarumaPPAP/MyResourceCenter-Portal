@@ -27,6 +27,7 @@ assert.match(C.documentThumbnail(doc), /loading="lazy"/);
 assert.match(C.documentThumbnail({...doc,thumbnail:'assets/generated/documents/DOC-ABC.webp'}), /DOC-ABC\.webp/);
 assert.doesNotMatch(C.documentThumbnail({...doc,thumbnail:'assets/generated/documents/DOC-ABC.jpg'}), /<img/);
 assert.match(C.documentThumbnail({...doc,thumbnail:null,sourceFormat:'PPTX'}), /PPTX/);
+assert.match(C.documentThumbnail({...doc,thumbnail:null,sourceFormat:'PPTX'}), /thumbnail-fallback-icon/);
 assert.doesNotMatch(C.documentThumbnail({...doc,thumbnail:'../../secret.png'}), /<img/);
 const image = { hidden:false, closest:()=>({classList:{add(v){assert.equal(v,'is-missing');}}}) };
 C.thumbnailFailed(image); assert.equal(image.hidden,true);
@@ -251,6 +252,7 @@ assert.deepEqual(Array.from(W.filterWebsites(websiteRows,{tag:'InventedTag'},fac
 const websiteCard = W.renderWebsiteCard({...websiteRows[0],publisher:'Example Site',contentType:'technical-article'}, C);
 assert.match(websiteCard,/Unity/); assert.match(websiteCard,/Shader/);
 assert.match(websiteCard,/website-category--tech/);
+assert.match(websiteCard,/site-icon-fallback-icon/);
 assert.match(websiteCard,/>Tech<\/span>/);
 assert.doesNotMatch(websiteCard,/technical-article/,'contentType must not be rendered as Website classification');
 assert.deepEqual(Array.from(W.sortWebsites(websiteRows,'desc'),row=>row.id),['RES-1','RES-3','RES-2','RES-4','RES-6','RES-5']);
