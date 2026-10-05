@@ -232,3 +232,248 @@ assert.equal(W.siteIconPath({...websiteRows[0],canonicalUrl:'javascript:alert(1)
 assert.deepEqual(Array.from(W.filterWebsites([{id:'RES-bad',title:'Bad authors',canonicalUrl:'https://bad.test',authors:'Alice'}],{author:'__other__'},facetConfig),row=>row.id),['RES-bad']);
 assert.deepEqual(Array.from(W.filterWebsites([{id:'RES-object-authors',title:'Object authors',canonicalUrl:'https://bad.test',authors:{name:'Alice'}}],{author:'__other__'},facetConfig),row=>row.id),['RES-object-authors']);
 console.log('OK: Website Category/Tag/Site/Author AND filters, Other semantics, date ordering and safe local Site Icon paths');
+
+// Website Pagination is exercised through the real page script and catalog URL-state binder.
+const websitePageSource = fs.readFileSync(path.join(__dirname, '../websites.html'), 'utf8');
+const websiteStyles = fs.readFileSync(path.join(__dirname, '../assets/websites.css'), 'utf8');
+assert.match(websitePageSource, /<nav[^>]*id="pagination"[^>]*aria-label="Webサイト一覧のページ"/);
+assert.match(websitePageSource, /id="result-meta"[^>]*class="result-meta"|class="result-meta"[^>]*id="result-meta"/);
+assert.match(websitePageSource, /id="list"[^>]*><\/div>\s*<nav[^>]*id="pagination"/);
+assert.match(websiteStyles, /\.website-pagination[^\{]*\{[^}]*flex-wrap:\s*wrap/s);
+assert.match(websiteStyles, /\.website-page-link[^\{]*\{[^}]*min-width:\s*36px/s);
+assert.match(websiteStyles, /\.website-page-link:focus-visible/);
+
+function websiteFixture(count) {
+  return Array.from({length:count},(_,index)=>({
+    id:`RES-${String(index+1).padStart(3,'0')}`,
+    title:`Article ${String(index+1).padStart(3,'0')}`,
+    category:'Tech',
+    publisher:'Example Site',
+    canonicalUrl:`https://example.test/${index+1}`,
+    authors:['Ada'],
+    tags:['Shader'],
+    publishedAt:'2026-10-01'
+  }));
+}
+
+async function createWebsitePage(rows,href='https://portal.test/websites.html') {
+  const windowHandlers = Object.create(null);
+  const documentHandlers = Object.create(null);
+  const elements = new Map();
+  const makeElement = (id,tagName='DIV') => {
+    const listeners = Object.create(null);
+    const element = {
+      id,tagName,value:'',textContent:'',hidden:false,options:[],listeners,
+      addEventListener(type,listener) { (listeners[type] ||= []).push(listener); },
+      appendChild(child) { this.options.push(child); },
+      emit(type,event={}) { for(const listener of listeners[type] || []) listener(event); },
+      click() { this.emit('click',{target:this}); },
+      focus(options) { this.focused=true;this.focusOptions=options; },
+      contains() { return true; }
+    };
+    if(id==='list') {
+      element.firstTitle=null;
+      element.focusCount=0;
+      element.querySelector=selector=>selector==='.website-title'?element.firstTitle:null;
+      Object.defineProperty(element,'innerHTML',{
+        get(){return element._innerHTML || '';},
+        set(value){
+          element._innerHTML=value;
+          const hasCard=value.includes('<article class="website-card">');
+          element.firstTitle=hasCard?{focus(options){element.focusCount+=1;element.lastFocusOptions=options;}}:null;
+        }
+      });
+    } else if(id==='pagination') {
+      element.innerHTML='';
+    } else if(id==='result-meta') {
+      element.scrollCount=0;
+      element.scrollIntoView=options=>{element.scrollCount+=1;element.lastScrollOptions=options;};
+    }
+    elements.set(id,element);
+    return element;
+  };
+  for(const id of ['q','category','tag','site','author','sort','clear','list','count','pagination','result-meta']) {
+    makeElement(id,id==='q'?'INPUT':id==='clear'?'BUTTON':id==='pagination'?'NAV':id==='count'?'SPAN':'SELECT');
+  }
+  let currentUrl=new URL(href);
+  let state=null;
+  let cursor=0;
+  const entries=[currentUrl.href];
+  let pushCount=0;
+  let replaceCount=0;
+  const history={
+    get state(){return state;},
+    get length(){return entries.length;},
+    pushState(nextState,_title,destination){
+      currentUrl=new URL(destination,currentUrl);
+      entries.splice(cursor+1);
+      entries.push(currentUrl.href);
+      cursor+=1;
+      state=nextState;
+      pushCount+=1;
+    },
+    replaceState(nextState,_title,destination){
+      currentUrl=new URL(destination,currentUrl);
+      entries[cursor]=currentUrl.href;
+      state=nextState;
+      replaceCount+=1;
+    }
+  };
+  const location={get href(){return currentUrl.href;},get search(){return currentUrl.search;}};
+  const document={
+    getElementById:id=>elements.get(id),
+    createElement:()=>({value:'',textContent:''}),
+    addEventListener(type,listener){(documentHandlers[type] ||= []).push(listener);}
+  };
+  const window={
+    addEventListener(type,listener){(windowHandlers[type] ||= []).push(listener);}
+  };
+  const context={URL,URLSearchParams,location,history,document,window,console,encodeURIComponent};
+  vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../assets/catalog.js'),'utf8'),context);
+  context.window.MRCCatalog.loadMany=async()=>({
+    websites:rows,
+    'website-facets':{sites:[],authors:[]},
+    taxonomy:{categories:{Tech:{displayName:'Tech'}},tags:{Shader:{displayName:'Shader'}}}
+  });
+  vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../assets/websites.js'),'utf8'),context);
+  const inlineScript=websitePageSource.match(/<script>([\s\S]*?)<\/script>/)?.[1];
+  assert.ok(inlineScript,'Website page must keep an inline presentation entry point');
+  vm.runInNewContext(inlineScript,context);
+  await windowHandlers.DOMContentLoaded[0]();
+  return {
+    elements,history,location,
+    pageNumbers(){
+      const listMarkup=elements.get('pagination').innerHTML.match(/<ul class="website-pagination-list">([\s\S]*?)<\/ul>/)?.[1] || '';
+      return [...listMarkup.matchAll(/<a\b(?=[^>]*class="[^"]*website-page-number[^"]*")[^>]*data-page="(\d+)"/g)].map(match=>Number(match[1]));
+    },
+    ellipsisCount(){return (elements.get('pagination').innerHTML.match(/website-page-ellipsis/g) || []).length;},
+    clickPage(page,options={}){
+      const event={button:0,altKey:false,ctrlKey:false,metaKey:false,shiftKey:false,...options,defaultPrevented:false,preventDefault(){this.defaultPrevented=true;}};
+      event.target={dataset:{page:String(page)},closest(selector){return selector==='a[data-page]'?this:null;}};
+      elements.get('pagination').emit('click',event);
+      return event;
+    },
+    travel(direction){
+      const target=cursor+direction;
+      if(target<0 || target>=entries.length) return;
+      cursor=target;
+      currentUrl=new URL(entries[cursor]);
+      for(const listener of windowHandlers.popstate || []) listener({state});
+    },
+    resetFromEmpty(){
+      const event={target:{closest(selector){return selector==='[data-reset-filters]'?this:null;}}};
+      for(const listener of documentHandlers.click || []) listener(event);
+    },
+    get pushCount(){return pushCount;},
+    get replaceCount(){return replaceCount;}
+  };
+}
+
+Promise.resolve().then(async()=>{
+  const rows45=websiteFixture(45);
+  const page2=await createWebsitePage(rows45,'https://portal.test/websites.html?q=Article&page=2&keep=yes');
+  const page2List=page2.elements.get('list'),page2Count=page2.elements.get('count'),page2Nav=page2.elements.get('pagination');
+  assert.equal((page2List.innerHTML.match(/<article class="website-card">/g)||[]).length,20);
+  assert.ok(page2List.innerHTML.includes('Article 021'));
+  assert.ok(!page2List.innerHTML.includes('Article 020'));
+  assert.equal(page2Count.textContent,'21–40 件目 / 45 件（全 45 件）');
+  assert.equal(page2Nav.hidden,false);
+  assert.deepEqual(page2.pageNumbers(),[1,2,3]);
+  assert.match(page2Nav.innerHTML,/aria-current="page"/);
+  assert.match(page2Nav.innerHTML,/aria-label="2ページ目"/);
+  assert.match(page2Nav.innerHTML,/aria-label="前のページ"/);
+  assert.match(page2Nav.innerHTML,/href="\/websites.html\?q=Article&amp;page=3&amp;keep=yes"/);
+  const page3Click=page2.clickPage(3);
+  assert.equal(page3Click.defaultPrevented,true);
+  assert.equal(page2.pushCount,1);
+  assert.equal(page2.location.search,'?q=Article&page=3&keep=yes');
+  assert.equal((page2List.innerHTML.match(/<article class="website-card">/g)||[]).length,5);
+  assert.ok(page2List.innerHTML.includes('Article 041'));
+  assert.ok(page2List.innerHTML.includes('Article 045'));
+  assert.equal(page2Count.textContent,'41–45 件目 / 45 件（全 45 件）');
+  assert.match(page2Nav.innerHTML,/aria-disabled="true">次へ/);
+  assert.equal(page2.elements.get('result-meta').scrollCount,1);
+  assert.equal(page2List.focusCount,1);
+  assert.equal(page2List.lastFocusOptions.preventScroll,true);
+  page2.clickPage(3);
+  assert.equal(page2.pushCount,1,'clicking the current page must not add history');
+  page2.travel(-1);
+  assert.equal(page2.location.search,'?q=Article&page=2&keep=yes');
+  assert.equal(page2.elements.get('sort').value,'desc','Back restores the default sort selection when the URL omits sort');
+  assert.ok(page2List.innerHTML.includes('Article 021'));
+  page2.travel(1);
+  assert.equal(page2.location.search,'?q=Article&page=3&keep=yes');
+  assert.equal(page2.elements.get('sort').value,'desc','Forward keeps the default sort selection when the URL omits sort');
+  assert.ok(page2List.innerHTML.includes('Article 041'));
+  const modifiedClick=page2.clickPage(4,{ctrlKey:true});
+  assert.equal(modifiedClick.defaultPrevented,false,'modified page-link activation must keep native browser behavior');
+  assert.equal(page2.pushCount,1);
+  assert.equal(page2.location.search,'?q=Article&page=3&keep=yes');
+  assert.equal(page2.elements.get('result-meta').scrollCount,3,'Back/Forward returns focus to the result area');
+
+  const query=page2.elements.get('q');
+  query.value='Article 0';
+  query.emit('input');
+  assert.equal(page2.location.search,'?q=Article+0&keep=yes&sort=desc');
+  assert.equal(page2Nav.hidden,false);
+  assert.equal(page2Count.textContent,'1–20 件目 / 45 件（全 45 件）');
+  const pageTwoMarkup=page2Nav.innerHTML.match(/<a\b(?=[^>]*class="[^"]*website-page-number[^"]*")[^>]*data-page="2"[^>]*>/)?.[0] || '';
+  const pageTwoHref=pageTwoMarkup.match(/href="([^"]+)"/)?.[1]?.replace(/&amp;/g,'&') || '';
+  const pageTwoUrl=new URL(pageTwoHref,'https://portal.test');
+  assert.equal(pageTwoUrl.searchParams.get('q'),'Article 0','page links must use the latest filter URL');
+  assert.equal(pageTwoUrl.searchParams.get('page'),'2');
+  assert.equal(pageTwoUrl.searchParams.get('sort'),'desc','page links must preserve the restored default sort');
+
+  query.value='Article 001';
+  query.emit('input');
+  assert.equal(page2.location.search,'?q=Article+001&keep=yes&sort=desc');
+  assert.equal(page2Nav.hidden,true);
+  assert.equal(page2Count.textContent,'1–1 件目 / 1 件（全 45 件）');
+  assert.ok(page2List.innerHTML.includes('Article 001'),'filter searches the full catalog, including rows outside page 3');
+  const historyLength=page2.history.length;
+  page2.elements.get('clear').click();
+  assert.equal(page2.history.length,historyLength,'filter and clear changes replace state instead of adding history');
+  assert.equal(page2.location.search,'?keep=yes&sort=desc');
+  assert.equal(page2Count.textContent,'1–20 件目 / 45 件');
+  assert.equal((page2List.innerHTML.match(/<article class="website-card">/g)||[]).length,20);
+
+  for(const invalid of ['1','0','-1','1.5','abc']) {
+    const invalidPage=await createWebsitePage(rows45,`https://portal.test/websites.html?page=${encodeURIComponent(invalid)}&keep=yes`);
+    assert.equal(invalidPage.location.search,'?keep=yes',`invalid/page-one value ${invalid} must canonicalize to page 1`);
+    assert.equal((invalidPage.elements.get('list').innerHTML.match(/<article class="website-card">/g)||[]).length,20);
+    assert.equal(invalidPage.elements.get('pagination').hidden,false);
+    assert.match(invalidPage.elements.get('pagination').innerHTML,/aria-disabled="true">前へ/);
+  }
+  const oversized=await createWebsitePage(rows45,'https://portal.test/websites.html?page=999&keep=yes');
+  assert.equal(oversized.location.search,'?page=3&keep=yes');
+  assert.equal((oversized.elements.get('list').innerHTML.match(/<article class="website-card">/g)||[]).length,5);
+  assert.equal(oversized.elements.get('count').textContent,'41–45 件目 / 45 件');
+  assert.match(oversized.elements.get('pagination').innerHTML,/aria-disabled="true">次へ/);
+
+  const onePage=await createWebsitePage(rows45.slice(0,20),'https://portal.test/websites.html?page=2&keep=yes');
+  assert.equal(onePage.location.search,'?keep=yes');
+  assert.equal(onePage.elements.get('pagination').hidden,true);
+  const noResults=await createWebsitePage(rows45,'https://portal.test/websites.html?q=missing&page=2&keep=yes');
+  assert.equal(noResults.location.search,'?q=missing&keep=yes');
+  assert.equal(noResults.elements.get('pagination').hidden,true);
+  assert.equal(noResults.elements.get('count').textContent,'0 件 / 全 45 件');
+  noResults.resetFromEmpty();
+  assert.equal(noResults.elements.get('q').value,'');
+  assert.equal(noResults.location.search,'?keep=yes&sort=desc');
+  assert.equal(noResults.elements.get('pagination').hidden,false);
+
+  const sevenPages=await createWebsitePage(websiteFixture(140),'https://portal.test/websites.html?page=4');
+  assert.deepEqual(sevenPages.pageNumbers(),[1,2,3,4,5,6,7]);
+  assert.equal(sevenPages.ellipsisCount(),0);
+  const twelvePages=websiteFixture(240);
+  const firstWindow=await createWebsitePage(twelvePages,'https://portal.test/websites.html?page=1');
+  assert.deepEqual(firstWindow.pageNumbers(),[1,2,3,4,5,12]);
+  assert.equal(firstWindow.ellipsisCount(),1);
+  const middleWindow=await createWebsitePage(twelvePages,'https://portal.test/websites.html?page=6');
+  assert.deepEqual(middleWindow.pageNumbers(),[1,5,6,7,12]);
+  assert.equal(middleWindow.ellipsisCount(),2);
+  const finalWindow=await createWebsitePage(twelvePages,'https://portal.test/websites.html?page=10');
+  assert.deepEqual(finalWindow.pageNumbers(),[1,8,9,10,11,12]);
+  assert.equal(finalWindow.ellipsisCount(),1);
+  console.log('OK: Website pagination slices, URL canonicalization, filter reset, history, accessibility and page windows');
+}).catch(error=>{console.error(error);process.exitCode=1;});

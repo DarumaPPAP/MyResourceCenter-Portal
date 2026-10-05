@@ -40,8 +40,9 @@
           <select aria-label="公開日順" id="sort"><option value="desc">公開日：新しい順</option><option value="asc">公開日：古い順</option></select>
           <button id="clear" type="button">条件をリセット</button>
         </div>
-        <div class="result-meta"><span id="count" role="status" aria-live="polite">読み込み中…</span><span>記事タイトルは新しいタブで開きます</span></div>
+        <div class="result-meta" id="result-meta"><span id="count" role="status" aria-live="polite">読み込み中…</span><span>記事タイトルは新しいタブで開きます</span></div>
         <div class="website-list" id="list" aria-live="polite"></div>
+        <nav id="pagination" class="website-pagination" aria-label="Webサイト一覧のページ" hidden></nav>
       </div>
       <footer class="footer">MyResourceCenter · Technical Directory</footer>
     </main>
@@ -50,10 +51,63 @@
     window.addEventListener('DOMContentLoaded', async () => {
       const C = window.MRCCatalog;
       const W = window.MRCWebsites;
-      const controls = Object.fromEntries(['q', 'category', 'tag', 'site', 'author', 'sort', 'clear', 'list', 'count'].map(id => [id, document.getElementById(id)]));
+      const PAGE_SIZE = 20;
+      const controls = Object.fromEntries(['q', 'category', 'tag', 'site', 'author', 'sort', 'clear', 'list', 'count', 'result-meta', 'pagination'].map(id => [id.replace(/-([a-z])/g,(_,letter)=>letter.toUpperCase()), document.getElementById(id)]));
       W.bindSiteIconFallback(controls.list);
       let rows = [];
       let facets = {sites: [], authors: []};
+      const writePage = (page, method) => {
+        const url = new URL(location.href);
+        if (page > 1) url.searchParams.set('page', String(page));
+        else url.searchParams.delete('page');
+        if (url.href !== location.href) history[method](null, '', url);
+      };
+      const resolvePage = totalPages => {
+        const url = new URL(location.href);
+        const raw = url.searchParams.get('page');
+        let requested = 1;
+        if (raw !== null && /^\d+$/.test(raw)) {
+          const parsed = Number(raw);
+          if (Number.isSafeInteger(parsed) && parsed > 0) requested = parsed;
+        }
+        const page = Math.min(requested, Math.max(totalPages, 1));
+        const canonical = page > 1 ? String(page) : null;
+        if (raw !== canonical) writePage(page, 'replaceState');
+        return page;
+      };
+      const pageNumbers = (totalPages, page) => {
+        if (totalPages <= 7) return Array.from({length:totalPages},(_,index)=>index+1);
+        if (page <= 4) return [1,2,3,4,5,'…',totalPages];
+        if (page >= totalPages - 3) return [1,'…',totalPages-4,totalPages-3,totalPages-2,totalPages-1,totalPages];
+        return [1,'…',page-1,page,page+1,'…',totalPages];
+      };
+      const pageHref = page => {
+        const url = new URL(location.href);
+        if (page > 1) url.searchParams.set('page', String(page));
+        else url.searchParams.delete('page');
+        return `${url.pathname}${url.search}${url.hash}`;
+      };
+      const renderPagination = (page, totalPages) => {
+        if (totalPages <= 1) {
+          controls.pagination.hidden = true;
+          controls.pagination.innerHTML = '';
+          return;
+        }
+        const escape = C.escapeHtml;
+        const pageLink = (target, label, current=false) => `<a class="website-page-link website-page-number${current?' website-page-current':''}" href="${escape(pageHref(target))}" data-page="${target}" aria-label="${target}ページ目"${current?' aria-current="page"':''}>${label}</a>`;
+        const edgeLink = (target, label, disabled, ariaLabel) => disabled
+          ? `<span class="website-page-link website-page-disabled" aria-disabled="true">${label}</span>`
+          : `<a class="website-page-link" href="${escape(pageHref(target))}" data-page="${target}" aria-label="${ariaLabel}">${label}</a>`;
+        const numbers = pageNumbers(totalPages,page).map(item => item === '…'
+          ? '<li><span class="website-page-ellipsis" aria-hidden="true">…</span></li>'
+          : `<li>${pageLink(item,item,item===page)}</li>`).join('');
+        controls.pagination.innerHTML = `<ul class="website-pagination-list"><li>${edgeLink(page-1,'前へ',page===1,'前のページ')}</li>${numbers}<li>${edgeLink(page+1,'次へ',page===totalPages,'次のページ')}</li></ul>`;
+        controls.pagination.hidden = false;
+      };
+      const focusResults = () => {
+        controls.resultMeta.scrollIntoView({block:'start'});
+        controls.list.querySelector('.website-title')?.focus({preventScroll:true});
+      };
       const addOptions = (control, values) => {
         for (const item of values) {
           const option = document.createElement('option');
@@ -62,7 +116,7 @@
           control.appendChild(option);
         }
       };
-      const render = () => {
+      const render = ({focus=false}={}) => {
         const filtered = W.filterWebsites(rows, {
           q: controls.q.value,
           category: controls.category.value,
@@ -71,9 +125,20 @@
           author: controls.author.value
         }, facets);
         const sorted = W.sortWebsites(filtered, controls.sort.value || 'desc');
-        controls.count.textContent = `${sorted.length} 件 / 全 ${rows.length} 件`;
-        controls.list.innerHTML = sorted.map(row => W.renderWebsiteCard(row, C)).join('') ||
+        const totalResults = sorted.length;
+        const totalPages = Math.ceil(totalResults / PAGE_SIZE);
+        const page = resolvePage(totalPages);
+        const start = totalResults ? (page - 1) * PAGE_SIZE : 0;
+        const end = Math.min(start + PAGE_SIZE, totalResults);
+        const visibleRows = sorted.slice(start,end);
+        const hasFilters = [controls.q,controls.category,controls.tag,controls.site,controls.author].some(control=>String(control.value || '').trim());
+        controls.count.textContent = totalResults === 0
+          ? `0 件 / 全 ${rows.length} 件`
+          : `${start+1}–${end} 件目 / ${totalResults} 件${hasFilters?`（全 ${rows.length} 件）`:''}`;
+        controls.list.innerHTML = visibleRows.map(row => W.renderWebsiteCard(row, C)).join('') ||
           '<div class="empty">条件に一致する記事がありません。条件を短くするか、リセットしてください。<br><button type="button" class="icon-button" data-reset-filters>条件をリセット</button></div>';
+        renderPagination(page,totalPages);
+        if (focus) focusResults();
       };
       try {
         const loaded = await C.loadMany('websites', 'website-facets', 'taxonomy');
@@ -98,12 +163,29 @@
           controls.site.value = '';
           controls.author.value = '';
           controls.sort.value = 'desc';
+          writePage(1,'replaceState');
+        });
+        const filterControls = [controls.q, controls.category, controls.tag, controls.site, controls.author, controls.sort];
+        filterControls.forEach(control => {
+          control.addEventListener(control === controls.q ? 'input' : 'change', () => writePage(1,'replaceState'));
+        });
+        C.bindFilterState(filterControls, () => {
+          if (!controls.sort.value) controls.sort.value = 'desc';
           render();
         });
-        [controls.q, controls.category, controls.tag, controls.site, controls.author, controls.sort].forEach(control => {
-          control.addEventListener(control === controls.q ? 'input' : 'change', render);
+        filterControls.forEach(control => control.addEventListener(control === controls.q ? 'input' : 'change', () => render()));
+        controls.clear.addEventListener('click', () => render());
+        controls.pagination.addEventListener('click',event=>{
+          const link=event.target.closest('a[data-page]');
+          if(!link || !controls.pagination.contains(link) || event.button !== 0 || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+          event.preventDefault();
+          const page=Number(link.dataset.page);
+          const current=Number(new URL(location.href).searchParams.get('page') || '1');
+          if(!Number.isSafeInteger(page) || page<1 || page===current) return;
+          writePage(page,'pushState');
+          render({focus:true});
         });
-        C.bindFilterState([controls.q, controls.category, controls.tag, controls.site, controls.author, controls.sort], render);
+        window.addEventListener('popstate',focusResults);
         if (!controls.sort.value) controls.sort.value = 'desc';
         render();
       } catch (error) {
