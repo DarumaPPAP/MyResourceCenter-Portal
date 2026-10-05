@@ -4,6 +4,17 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 const context = { URL, URLSearchParams, window: {} };
+
+const trendHtml = fs.readFileSync(path.join(__dirname, '../trend.html'), 'utf8');
+const portalShell = fs.readFileSync(path.join(__dirname, '../assets/portal.js'), 'utf8');
+assert.match(trendHtml, /<html lang="ja" data-theme="light">/, 'Trend starts with the shared light theme default');
+assert.match(trendHtml, /<script defer src="assets\/portal\.js"><\/script>/, 'Trend loads the shared shell script');
+assert.match(trendHtml, /data-theme-toggle/, 'Trend exposes the shared theme toggle');
+assert.match(portalShell, /document\.addEventListener\('click'/, 'the shared shell handles document-level controls');
+assert.match(portalShell, /href: 'taxonomy\.html'/, 'the shared shell supplies taxonomy navigation');
+assert.doesNotMatch(trendHtml, /index\.html#tags/, 'Trend has no stale Home fragment navigation');
+assert.match(trendHtml, /最大100件\s*\/\s*日/, 'Trend documents the validated 100-items-per-day limit');
+
 vm.runInNewContext(fs.readFileSync(path.join(__dirname, '../assets/catalog.js'), 'utf8'), context);
 const C = context.window.MRCCatalog;
 const doc = {resourceId:'RES-1', documentId:'DOC-ABC', title:'影 & 光', sourceFormat:'PDF', thumbnail:'assets/generated/documents/DOC-ABC.png', canonicalUrl:'https://drive.google.com/file/d/abc_123-/view', tags:['Shader'], engine:'Unity'};
