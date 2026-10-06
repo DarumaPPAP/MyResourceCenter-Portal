@@ -195,7 +195,8 @@
   }
 
   function documentThumbnail(doc) {
-    const fallback = `<span class="thumbnail-fallback">${escapeHtml(doc.sourceFormat || 'DOCUMENT')}<small>プレビューなし</small></span>`;
+    const fallbackIcon = '<svg class="thumbnail-fallback-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2.75h8l4 4v14.5H6z"></path><path d="M14 2.75v4h4"></path><path d="M9 12h6"></path><path d="M9 16h6"></path></svg>';
+    const fallback = `<span class="thumbnail-fallback">${fallbackIcon}<strong>${escapeHtml(doc.sourceFormat || 'DOCUMENT')}</strong><small>プレビューなし</small></span>`;
     const valid = /^assets\/generated\/documents\/DOC-[A-Za-z0-9_-]+\.(?:png|webp)$/.test(doc.thumbnail || '');
     return `<div class="document-thumbnail${valid ? '' : ' is-missing'}">${valid ? `<img src="${escapeHtml(doc.thumbnail)}" alt="" loading="lazy" decoding="async">` : ''}${fallback}</div>`;
   }

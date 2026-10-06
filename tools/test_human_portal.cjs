@@ -27,6 +27,7 @@ assert.match(C.documentThumbnail(doc), /loading="lazy"/);
 assert.match(C.documentThumbnail({...doc,thumbnail:'assets/generated/documents/DOC-ABC.webp'}), /DOC-ABC\.webp/);
 assert.doesNotMatch(C.documentThumbnail({...doc,thumbnail:'assets/generated/documents/DOC-ABC.jpg'}), /<img/);
 assert.match(C.documentThumbnail({...doc,thumbnail:null,sourceFormat:'PPTX'}), /PPTX/);
+assert.match(C.documentThumbnail({...doc,thumbnail:null,sourceFormat:'PPTX'}), /thumbnail-fallback-icon/);
 assert.doesNotMatch(C.documentThumbnail({...doc,thumbnail:'../../secret.png'}), /<img/);
 const image = { hidden:false, closest:()=>({classList:{add(v){assert.equal(v,'is-missing');}}}) };
 C.thumbnailFailed(image); assert.equal(image.hidden,true);
@@ -144,10 +145,10 @@ original_read_text=Path.read_text
 def broken_website_assets(path,*args,**kwargs):
     text=original_read_text(path,*args,**kwargs)
     if path == v.ROOT / 'assets/websites.js':
-        for behavior in ('filterWebsites','sortWebsites','siteIconPath','bindSiteIconFallback'):
+        for behavior in ('filterWebsites','sortWebsites','siteIconPath','linkPreviewPath','bindWebsiteMediaFallback'):
             text=text.replace(behavior,'removedBehavior')
     if path == v.ROOT / 'assets/websites.css':
-        text=text.replace('width:112px;height:112px','width:80px;height:40px')
+        text=text.replace('object-fit:cover','object-fit:contain').replace('aspect-ratio:1.91/1','aspect-ratio:1/1')
     if path == v.ROOT / 'websites.html':
         text += '<img src="https://remote.example/icon.png">'
     return text
@@ -157,10 +158,10 @@ with patch.object(Path,'read_text',broken_website_assets), contextlib.redirect_s
         v.main()
     except SystemExit:
         pass
-for behavior in ('filterWebsites','sortWebsites','siteIconPath','bindSiteIconFallback'):
+for behavior in ('filterWebsites','sortWebsites','siteIconPath','linkPreviewPath','bindWebsiteMediaFallback'):
     assert f'Websites page is missing {behavior} behavior' in output.getvalue(), behavior
-assert 'Websites page must use local square Site Icons' in output.getvalue()
-assert 'Websites page must not hotlink remote Site Icons' in output.getvalue()
+assert 'Websites page must use local OGP Link Previews with Site Icon fallback' in output.getvalue()
+assert 'Websites page must not hotlink remote Website presentation images' in output.getvalue()
 rows=v.load('document-presentation.json')
 resources=v.load('resources.json')+v.load('resources-06.json')+[v.project_resource(r) for r in v.load_latest_websites()]
 taxonomy_domains=set(v.load('taxonomy.json')['domains'])
@@ -210,7 +211,12 @@ errors=[];v.validate_website_facets(errors,{'schemaVersion':'1.0.0','sites':[{'k
 with tempfile.TemporaryDirectory() as tmp:
     root=Path(tmp);icon=root/'assets/generated/site-icons/site.test.png';icon.parent.mkdir(parents=True);icon.write_bytes(b'not a PNG')
     errors=[];v.validate_site_icons(errors,root,facet_rows);assert any('invalid Site Icon' in error for error in errors),errors
-print('OK: public validator rejects private fields/topology, invalid mappings, unsafe URLs/paths, unsupported thumbnails and malformed PNGs')
+with tempfile.TemporaryDirectory() as tmp:
+    root=Path(tmp);preview=root/'assets/generated/link-previews/RES-0.webp';preview.parent.mkdir(parents=True);preview.write_bytes(b'not a WebP')
+    preview_rows=[{'id':'RES-0','previewImage':'assets/generated/link-previews/RES-0.webp'}]
+    errors=[];v.validate_link_previews(errors,root,preview_rows);assert any('Link Preview' in error for error in errors),errors
+    errors=[];v.validate_link_previews(errors,root,[{'id':'RES-0','previewImage':'../../secret.webp'}]);assert any('stable Resource-ID' in error for error in errors),errors
+print('OK: public validator rejects private fields/topology, invalid mappings, unsafe URLs/paths and malformed presentation assets')
 `], {cwd:path.join(__dirname,'..'),stdio:'inherit'});
 
 // Website filtering and presentation are pure helpers shared by the page and tests.
@@ -233,6 +239,9 @@ assert.equal(W.normalizeAuthor(' Ａlice  '), 'alice');
 assert.equal(W.normalizeAuthor('ǰ'), 'j\u030c');
 assert.equal(W.websiteHost('https://faß.de/article'), 'xn--fa-hia.de');
 assert.equal(W.siteIconPath({canonicalUrl:'https://faß.de/article'}), 'assets/generated/site-icons/xn--fa-hia.de.png');
+assert.equal(W.linkPreviewPath({id:'RES-1',previewImage:'assets/generated/link-previews/RES-1.webp'}),'assets/generated/link-previews/RES-1.webp');
+assert.equal(W.linkPreviewPath({id:'RES-1',previewImage:'https://remote.example/card.png'}),'');
+assert.equal(W.linkPreviewPath({id:'RES-1',previewImage:'assets/generated/link-previews/RES-2.webp'}),'');
 assert.deepEqual(Array.from(W.filterWebsites(websiteRows,{q:'graphics'},facetConfig),row=>row.id),['RES-1']);
 assert.equal(W.filterWebsites(websiteRows,{tag:'Unity',site:'a.example'},facetConfig).length,2);
 assert.equal(W.filterWebsites(websiteRows,{tag:'Shader',author:'alice'},facetConfig).length,2);
@@ -248,9 +257,14 @@ assert.deepEqual(Array.from(W.filterWebsites(websiteRows,{site:'__other__'},face
 assert.deepEqual(Array.from(W.filterWebsites(websiteRows,{author:'__other__'},facetConfig),row=>row.id),['RES-2','RES-5','RES-6']);
 assert.equal(W.presentWebsites(websiteRows,facetConfig).find(row=>row.id==='RES-4').hasOtherAuthor,false,'an article with any approved Author must not also match Author Other');
 assert.deepEqual(Array.from(W.filterWebsites(websiteRows,{tag:'InventedTag'},facetConfig),row=>row.id),[]);
-const websiteCard = W.renderWebsiteCard({...websiteRows[0],publisher:'Example Site',contentType:'technical-article'}, C);
+const websiteCard = W.renderWebsiteCard({...websiteRows[0],publisher:'Example Site',contentType:'technical-article',summary:'A short article summary.',previewImage:'assets/generated/link-previews/RES-1.webp'}, C);
 assert.match(websiteCard,/Unity/); assert.match(websiteCard,/Shader/);
 assert.match(websiteCard,/website-category--tech/);
+assert.match(websiteCard,/website-card-link/);
+assert.match(websiteCard,/website-preview-image/);
+assert.match(websiteCard,/assets\/generated\/link-previews\/RES-1\.webp/);
+assert.match(websiteCard,/site-icon-fallback-icon/);
+assert.match(websiteCard,/A short article summary\./);
 assert.match(websiteCard,/>Tech<\/span>/);
 assert.doesNotMatch(websiteCard,/technical-article/,'contentType must not be rendered as Website classification');
 assert.deepEqual(Array.from(W.sortWebsites(websiteRows,'desc'),row=>row.id),['RES-1','RES-3','RES-2','RES-4','RES-6','RES-5']);
@@ -261,7 +275,7 @@ assert.notEqual(W.siteIconPath({...websiteRows[0],canonicalUrl:'https://[a::b]/'
 assert.equal(W.siteIconPath({...websiteRows[0],canonicalUrl:'javascript:alert(1)'}),'');
 assert.deepEqual(Array.from(W.filterWebsites([{id:'RES-bad',title:'Bad authors',canonicalUrl:'https://bad.test',authors:'Alice'}],{author:'__other__'},facetConfig),row=>row.id),['RES-bad']);
 assert.deepEqual(Array.from(W.filterWebsites([{id:'RES-object-authors',title:'Object authors',canonicalUrl:'https://bad.test',authors:{name:'Alice'}}],{author:'__other__'},facetConfig),row=>row.id),['RES-object-authors']);
-console.log('OK: Website Category/Tag/Site/Author AND filters, Other semantics, date ordering and safe local Site Icon paths');
+console.log('OK: Website Category/Tag/Site/Author filters, ordering and safe local OGP/Site Icon presentation paths');
 
 // Website Pagination is exercised through the real page script and catalog URL-state binder.
 const websitePageSource = fs.readFileSync(path.join(__dirname, '../websites.html'), 'utf8');

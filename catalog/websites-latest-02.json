@@ -35,7 +35,8 @@
       "Optimization",
       "Performance",
       "Culling"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260904-001.webp"
   },
   {
     "id": "RES-20260904-002",
@@ -73,7 +74,8 @@
       "Rendering",
       "Optimization",
       "Performance"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260904-002.webp"
   },
   {
     "id": "RES-20260904-003",
@@ -111,7 +113,8 @@
       "UI",
       "Load",
       "Optimization"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260904-003.webp"
   },
   {
     "id": "RES-20260904-004",
@@ -149,7 +152,8 @@
       "Memory",
       "AssetManagement",
       "Optimization"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260904-004.webp"
   },
   {
     "id": "RES-20260904-005",
@@ -186,7 +190,8 @@
       "Memory",
       "Performance",
       "C#"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260904-005.webp"
   },
   {
     "id": "RES-20260904-006",
@@ -224,7 +229,8 @@
       "Shader",
       "UI",
       "Physics"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260904-006.webp"
   },
   {
     "id": "RES-20260904-007",
@@ -259,7 +265,8 @@
     "tags": [
       "Unity",
       "Performance"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260904-007.webp"
   },
   {
     "id": "RES-20260904-008",
@@ -297,7 +304,8 @@
       "Memory",
       "AssetManagement",
       "Optimization"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260904-008.webp"
   },
   {
     "id": "RES-20260904-009",
@@ -334,7 +342,8 @@
       "Memory",
       "AssetManagement",
       "Optimization"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260904-009.webp"
   },
   {
     "id": "RES-20260904-010",
@@ -372,7 +381,8 @@
       "Performance",
       "Lighting",
       "LOD"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260904-010.webp"
   },
   {
     "id": "RES-20260904-011",
@@ -410,7 +420,8 @@
       "Optimization",
       "Editor",
       "C#"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260904-011.webp"
   },
   {
     "id": "RES-20260904-012",
@@ -448,6 +459,7 @@
       "Memory",
       "Optimization",
       "Editor"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260904-012.webp"
   }
 ]

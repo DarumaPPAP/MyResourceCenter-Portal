@@ -7,6 +7,7 @@ import re
 import struct
 import unicodedata
 import zlib
+from PIL import Image, UnidentifiedImageError
 try:
     from thumbnail_artifact import stable_thumbnail_path,validate_thumbnail_asset,no_symlink_path
 except ModuleNotFoundError:
@@ -52,7 +53,7 @@ FORBIDDEN_KEYS = {
 }
 FORBIDDEN_DRIVE_FOLDER_FRAGMENT = "drive.google.com/drive/folders/"
 RESOURCE_FIELDS = {"id", "title", "url", "canonicalUrl", "kind", "topic", "topics", "reviewState", "useState", "category", "tags"}
-WEBSITE_FIELDS = {"id", "title", "url", "canonicalUrl", "publisher", "authors", "publishedAt", "kind", "contentType", "category", "domains", "topics", "engines", "languages", "summary", "reviewState", "useState", "confidence", "freshness", "tags"}
+WEBSITE_FIELDS = {"id", "title", "url", "canonicalUrl", "publisher", "authors", "publishedAt", "kind", "contentType", "category", "domains", "topics", "engines", "languages", "summary", "previewImage", "reviewState", "useState", "confidence", "freshness", "tags"}
 DOCUMENT_FIELDS = {"id", "title", "sourceFormat", "level", "engine", "tags", "domains"}
 RELATION_FIELDS = {"from", "to", "relation"}
 COLLECTION_FIELDS = {"id", "title", "description", "topics", "resources", "category"}
@@ -279,6 +280,63 @@ def validate_site_icons(errors: list[str], root: Path, websites: list[dict]) -> 
         if relative not in expected:
             errors.append(f"unreferenced Site Icon asset: {relative}")
         validate_site_icon_file(errors, f"Site Icon {relative}", asset, root)
+
+
+def link_preview_path_from_resource_id(resource_id: str) -> str:
+    if not isinstance(resource_id, str) or not re.fullmatch(r"RES-[A-Za-z0-9][A-Za-z0-9_-]{0,127}", resource_id):
+        return ""
+    return f"assets/generated/link-previews/{resource_id}.webp"
+
+
+def validate_link_preview_file(errors: list[str], label: str, asset: Path, root: Path) -> None:
+    if not no_symlink_path(asset, root) or not asset.is_file():
+        errors.append(f"{label}: invalid Link Preview path or symlink")
+        return
+    if asset.suffix.lower() != ".webp" or asset.stat().st_size > 1024 * 1024:
+        errors.append(f"{label}: Link Preview must be a WebP up to 1 MiB")
+        return
+    if not validate_thumbnail_asset(asset):
+        errors.append(f"{label}: invalid bounded Link Preview WebP")
+        return
+    try:
+        with Image.open(asset) as image:
+            if image.format != "WEBP" or not (1 <= image.width <= 1200 and 1 <= image.height <= 630):
+                errors.append(f"{label}: Link Preview dimensions outside 1..1200 × 1..630")
+    except (OSError, ValueError, UnidentifiedImageError, Image.DecompressionBombError):
+        errors.append(f"{label}: unreadable Link Preview WebP")
+
+
+def validate_link_previews(errors: list[str], root: Path, websites: list[dict]) -> None:
+    expected = set()
+    for index, row in enumerate(websites):
+        preview = row.get("previewImage")
+        if preview is None:
+            continue
+        stable = link_preview_path_from_resource_id(row.get("id"))
+        if not stable or preview != stable:
+            errors.append(f"websites[{index}].previewImage must use the stable Resource-ID Link Preview path")
+            continue
+        expected.add(preview)
+        validate_link_preview_file(errors, f"Link Preview {preview}", root / preview, root)
+    preview_root = root / "assets/generated/link-previews"
+    if preview_root.is_symlink():
+        errors.append("Link Preview directory cannot be a symlink")
+        return
+    if not preview_root.exists():
+        return
+    for asset in preview_root.rglob("*"):
+        if asset.is_dir() and not asset.is_symlink():
+            continue
+        try:
+            relative = asset.relative_to(root).as_posix()
+        except ValueError:
+            errors.append("Link Preview path escapes the Portal")
+            continue
+        if relative not in expected:
+            errors.append(f"unreferenced Link Preview asset: {relative}")
+        if relative in expected:
+            continue
+        validate_link_preview_file(errors, f"Link Preview {relative}", asset, root)
 
 
 def drive_id(url: str) -> str:
@@ -511,8 +569,8 @@ def main() -> None:
     collections = load("collections.json")
     original_total = validate_originals(errors)
 
-    if manifest.get("schemaVersion") != "1.4.0":
-        errors.append("manifest schemaVersion must be 1.4.0")
+    if manifest.get("schemaVersion") not in {"1.4.0", "1.5.0"}:
+        errors.append("manifest schemaVersion must be 1.4.0 or 1.5.0")
     if not SHA_RE.fullmatch(str(manifest.get("sourceCommit", ""))):
         errors.append("manifest sourceCommit must be a 40-character SHA")
 
@@ -575,6 +633,7 @@ def main() -> None:
             errors.append(f"{row.get('id')}: Website/Resource Category or Tag mismatch")
     validate_website_facets(errors, website_facets, websites)
     validate_site_icons(errors, ROOT, websites)
+    validate_link_previews(errors, ROOT, websites)
     for index, row in enumerate(knowledge_documents):
         validate_fields(errors, f"documents[{index}]", row, DOCUMENT_FIELDS)
     validate_fields(errors, "taxonomy", taxonomy, TAXONOMY_FIELDS)
@@ -670,13 +729,18 @@ def main() -> None:
             errors.append("Website cards and details must identify Category")
         if "category" not in (ROOT / "assets/catalog.js").read_text(encoding="utf-8"):
             errors.append("Website Resource projections must preserve Category")
-        for contract in ("filterWebsites", "sortWebsites", "siteIconPath", "bindSiteIconFallback"):
+        for contract in ("filterWebsites", "sortWebsites", "siteIconPath", "linkPreviewPath", "bindWebsiteMediaFallback"):
             if contract not in website_js:
                 errors.append(f"Websites page is missing {contract} behavior")
-        if "assets/generated/site-icons/" not in website_js or "width:112px;height:112px" not in website_css:
-            errors.append("Websites page must use local square Site Icons")
+        if (
+            "assets/generated/link-previews/" not in website_js
+            or "assets/generated/site-icons/" not in website_js
+            or "object-fit:cover" not in website_css
+            or "aspect-ratio:1.91/1" not in website_css
+        ):
+            errors.append("Websites page must use local OGP Link Previews with Site Icon fallback")
         if re.search(r'<img[^>]+src=["\']https?://', website_html, re.IGNORECASE):
-            errors.append("Websites page must not hotlink remote Site Icons")
+            errors.append("Websites page must not hotlink remote Website presentation images")
 
     taxonomy_html = (ROOT / "taxonomy.html").read_text(encoding="utf-8")
     if 'id="tags"' not in taxonomy_html or "entry.domain" in taxonomy_html:

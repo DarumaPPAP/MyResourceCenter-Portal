@@ -35,7 +35,8 @@
       "Memory",
       "Optimization",
       "Lighting"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260904-013.webp"
   },
   {
     "id": "RES-20260904-014",
@@ -73,7 +74,8 @@
       "UI",
       "Performance",
       "Memory"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260904-014.webp"
   },
   {
     "id": "RES-20260904-015",
@@ -111,7 +113,8 @@
       "AssetManagement",
       "Build",
       "Optimization"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260904-015.webp"
   },
   {
     "id": "RES-20260904-016",
@@ -146,7 +149,8 @@
     "tags": [
       "Unity",
       "Performance"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260904-016.webp"
   },
   {
     "id": "RES-20260904-017",
@@ -184,7 +188,8 @@
       "Particle",
       "Performance",
       "AssetManagement"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260904-017.webp"
   },
   {
     "id": "RES-20260904-018",
@@ -222,7 +227,8 @@
       "UI",
       "Animation",
       "Culling"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260904-018.webp"
   },
   {
     "id": "RES-20260904-019",
@@ -260,7 +266,8 @@
       "Load",
       "Texture",
       "Optimization"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260904-019.webp"
   },
   {
     "id": "RES-20260904-020",
@@ -298,7 +305,8 @@
       "Load",
       "Memory",
       "Performance"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260904-020.webp"
   },
   {
     "id": "RES-20260904-021",
@@ -336,7 +344,8 @@
       "Memory",
       "Shader",
       "Performance"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260904-021.webp"
   },
   {
     "id": "RES-20260904-022",
@@ -374,7 +383,8 @@
       "Load",
       "Memory",
       "Lighting"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260904-022.webp"
   },
   {
     "id": "RES-20260904-023",
@@ -412,7 +422,8 @@
       "Memory",
       "Shader",
       "Rendering"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260904-023.webp"
   },
   {
     "id": "RES-20260904-024",
@@ -450,6 +461,7 @@
       "AssetManagement",
       "UI",
       "Rendering"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260904-024.webp"
   }
 ]

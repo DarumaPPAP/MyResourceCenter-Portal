@@ -40,7 +40,7 @@
           <select aria-label="公開日順" id="sort"><option value="desc">公開日：新しい順</option><option value="asc">公開日：古い順</option></select>
           <button id="clear" type="button">条件をリセット</button>
         </div>
-        <div class="result-meta" id="result-meta"><span id="count" role="status" aria-live="polite">読み込み中…</span><span>記事タイトルは新しいタブで開きます</span></div>
+        <div class="result-meta" id="result-meta"><span id="count" role="status" aria-live="polite">読み込み中…</span><span>カードをクリックすると元記事を新しいタブで開きます</span></div>
         <div class="website-list" id="list" aria-live="polite"></div>
         <nav id="pagination" class="website-pagination" aria-label="Webサイト一覧のページ" hidden></nav>
       </div>
@@ -53,7 +53,7 @@
       const W = window.MRCWebsites;
       const PAGE_SIZE = 20;
       const controls = Object.fromEntries(['q', 'category', 'tag', 'site', 'author', 'sort', 'clear', 'list', 'count', 'result-meta', 'pagination'].map(id => [id.replace(/-([a-z])/g,(_,letter)=>letter.toUpperCase()), document.getElementById(id)]));
-      W.bindSiteIconFallback(controls.list);
+      W.bindWebsiteMediaFallback(controls.list);
       let rows = [];
       let facets = {sites: [], authors: []};
       const writePage = (page, method) => {

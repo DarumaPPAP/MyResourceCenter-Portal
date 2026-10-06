@@ -20,7 +20,8 @@
       "STP",
       "Upscaling",
       "RenderGraph"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260714-001.webp"
   },
   {
     "id": "RES-20260714-002",
@@ -43,7 +44,8 @@
       "URP",
       "Lighting",
       "Optimization"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260714-002.webp"
   },
   {
     "id": "RES-20260714-003",
@@ -66,7 +68,8 @@
       "Rendering",
       "PostProcessing",
       "Anti-Aliasing"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260714-003.webp"
   },
   {
     "id": "RES-20260714-004",
@@ -86,7 +89,8 @@
     "tags": [
       "Unity",
       "Lighting"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260714-004.webp"
   },
   {
     "id": "RES-20260714-005",
@@ -109,7 +113,8 @@
       "Texture",
       "Lighting",
       "Animation"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260714-005.webp"
   },
   {
     "id": "RES-20260714-006",
@@ -132,7 +137,8 @@
       "Mesh",
       "Animation",
       "C#"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260714-006.webp"
   },
   {
     "id": "RES-20260714-007",
@@ -153,7 +159,8 @@
       "Mobile",
       "Animation",
       "Camera"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260714-007.webp"
   },
   {
     "id": "RES-20260714-008",
@@ -175,7 +182,8 @@
       "Camera",
       "Animation",
       "Physics"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260714-008.webp"
   },
   {
     "id": "RES-20260714-009",
@@ -197,7 +205,8 @@
       "Editor",
       "PostProcessing",
       "C#"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260714-009.webp"
   },
   {
     "id": "RES-20260714-010",
@@ -219,7 +228,8 @@
       "Mesh",
       "Animation",
       "Camera"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260714-010.webp"
   },
   {
     "id": "RES-20260714-011",
@@ -242,7 +252,8 @@
       "Physics",
       "C#",
       "Optimization"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260714-011.webp"
   },
   {
     "id": "RES-20260714-012",
@@ -265,7 +276,8 @@
       "Rendering",
       "Mesh",
       "C#"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260714-012.webp"
   },
   {
     "id": "RES-20260714-013",
@@ -286,7 +298,8 @@
       "Unity",
       "Camera",
       "C#"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260714-013.webp"
   },
   {
     "id": "RES-20260714-014",
@@ -308,7 +321,8 @@
       "Mobile",
       "Editor",
       "AssetManagement"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260714-014.webp"
   },
   {
     "id": "RES-20260714-015",
@@ -330,7 +344,8 @@
       "Texture",
       "Optimization",
       "C#"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260714-015.webp"
   },
   {
     "id": "RES-20260714-016",
@@ -351,7 +366,8 @@
       "Rendering",
       "Culling",
       "Optimization"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260714-016.webp"
   },
   {
     "id": "RES-20260714-017",
@@ -374,7 +390,8 @@
       "Culling",
       "LOD",
       "Lighting"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260714-017.webp"
   },
   {
     "id": "RES-20260714-018",
@@ -395,7 +412,8 @@
       "Mobile",
       "UI",
       "AssetManagement"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260714-018.webp"
   },
   {
     "id": "RES-20260715-001",
@@ -418,7 +436,8 @@
       "RenderGraph",
       "Transparency",
       "Optimization"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260715-001.webp"
   },
   {
     "id": "RES-20260715-002",
@@ -440,7 +459,8 @@
       "Culling",
       "ComputeShader",
       "Optimization"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260715-002.webp"
   },
   {
     "id": "RES-20260715-003",
@@ -462,7 +482,8 @@
       "Shader",
       "ComputeShader",
       "Optimization"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260715-003.webp"
   },
   {
     "id": "RES-20260715-004",
@@ -504,7 +525,8 @@
       "Rendering",
       "Lighting",
       "Transparency"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260715-005.webp"
   },
   {
     "id": "RES-20260715-006",
@@ -680,7 +702,8 @@
       "Shader",
       "Anti-Aliasing",
       "TAA"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260716-005.webp"
   },
   {
     "id": "RES-20260716-006",
@@ -702,7 +725,8 @@
       "PostProcessing",
       "Upscaling",
       "TAA"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260716-006.webp"
   },
   {
     "id": "RES-20260716-007",
@@ -725,7 +749,8 @@
       "ComputeShader",
       "PostProcessing",
       "Upscaling"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260716-007.webp"
   },
   {
     "id": "RES-20260716-008",
@@ -748,7 +773,8 @@
       "Upscaling",
       "Anti-Aliasing",
       "ComputeShader"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260716-008.webp"
   },
   {
     "id": "RES-20260717-001",
@@ -768,7 +794,8 @@
     "tags": [
       "Optimization",
       "Performance"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260717-001.webp"
   },
   {
     "id": "RES-20260717-002",
@@ -791,7 +818,8 @@
       "ComputeShader",
       "PostProcessing",
       "Optimization"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260717-002.webp"
   },
   {
     "id": "RES-20260717-003",
@@ -813,7 +841,8 @@
       "ComputeShader",
       "Shader",
       "Rendering"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260717-003.webp"
   },
   {
     "id": "RES-20260717-004",
@@ -905,7 +934,8 @@
       "URP",
       "Rendering",
       "Optimization"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260723-001.webp"
   },
   {
     "id": "RES-20260723-002",
@@ -928,7 +958,8 @@
       "Memory",
       "Optimization",
       "Performance"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260723-002.webp"
   },
   {
     "id": "RES-20260723-003",
@@ -951,7 +982,8 @@
       "Rendering",
       "Optimization",
       "Culling"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260723-003.webp"
   },
   {
     "id": "RES-20260724-001",
@@ -974,7 +1006,8 @@
       "Rendering",
       "Optimization",
       "Lighting"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260724-001.webp"
   },
   {
     "id": "RES-20260724-002",
@@ -997,7 +1030,8 @@
       "C++",
       "Rendering",
       "Optimization"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260724-002.webp"
   },
   {
     "id": "RES-20260724-017",
@@ -1018,7 +1052,8 @@
       "Rendering",
       "Lighting",
       "Optimization"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260724-017.webp"
   },
   {
     "id": "RES-20260724-018",
@@ -1041,7 +1076,8 @@
       "Mesh",
       "RayTracing",
       "MachineLearning"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260724-018.webp"
   },
   {
     "id": "RES-20260724-019",
@@ -1105,7 +1141,8 @@
       "C#",
       "Voxel",
       "Mesh"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260730-002.webp"
   },
   {
     "id": "RES-20260730-003",
@@ -1169,7 +1206,8 @@
     "tags": [
       "Voxel",
       "Mesh"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260730-005.webp"
   },
   {
     "id": "RES-20260730-006",
@@ -1274,7 +1312,8 @@
     "freshness": "Unknown",
     "tags": [
       "Git"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260730-010.webp"
   },
   {
     "id": "RES-20260730-011",
@@ -1291,7 +1330,8 @@
     "useState": "Reference",
     "confidence": "Unverified",
     "freshness": "Unknown",
-    "tags": []
+    "tags": [],
+    "previewImage": "assets/generated/link-previews/RES-20260730-011.webp"
   },
   {
     "id": "RES-20260730-012",
@@ -1312,7 +1352,8 @@
       "AI",
       "MachineLearning",
       "Optimization"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260730-012.webp"
   },
   {
     "id": "RES-20260730-013",
@@ -1334,7 +1375,8 @@
       "LLM",
       "RAG",
       "AIAgent"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260730-013.webp"
   },
   {
     "id": "RES-20260730-014",
@@ -1351,6 +1393,7 @@
     "useState": "Reference",
     "confidence": "Unverified",
     "freshness": "Unknown",
-    "tags": []
+    "tags": [],
+    "previewImage": "assets/generated/link-previews/RES-20260730-014.webp"
   }
 ]

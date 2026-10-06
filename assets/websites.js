@@ -216,6 +216,14 @@
     return `assets/generated/site-icons/${safeHost}.png`;
   }
 
+  function linkPreviewPath(row) {
+    const id = typeof row?.id === 'string' ? row.id : '';
+    const value = typeof row?.previewImage === 'string' ? row.previewImage : '';
+    if (!/^RES-[A-Za-z0-9][A-Za-z0-9_-]{0,127}$/.test(id)) return '';
+    const expected = `assets/generated/link-previews/${id}.webp`;
+    return value === expected ? expected : '';
+  }
+
   function presentWebsites(rows, facetConfig = {}) {
     const approvedSites = new Set((facetConfig.sites || []).map(facet => facet.key));
     const approvedAuthors = new Set((facetConfig.authors || []).map(facet => facet.key));
@@ -275,12 +283,14 @@
     const escape = catalog.escapeHtml;
     const host = row.siteKey || websiteHost(row) || '—';
     const publisher = typeof row.publisher === 'string' && row.publisher.trim() ? row.publisher.trim() : 'Site';
-    const initial = Array.from(publisher)[0] || 'W';
+    const fallbackIcon = '<svg class="site-icon-fallback-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3a15 15 0 0 1 0 18"></path><path d="M12 3a15 15 0 0 0 0 18"></path></svg>';
     const icon = siteIconPath(row);
+    const preview = linkPreviewPath(row);
     const source = catalog.safeExternalUrl(row.url || row.canonicalUrl || '');
-    const title = source
-      ? `<a href="${escape(source)}" target="_blank" rel="noopener noreferrer">${escape(row.title || 'Untitled')}</a>`
-      : `<span>${escape(row.title || 'Untitled')}</span>`;
+    const displayTitle = row.title || 'Untitled';
+    const cardLink = source
+      ? `<a class="website-card-link" href="${escape(source)}" target="_blank" rel="noopener noreferrer" aria-label="${escape(`元記事を開く: ${displayTitle}`)}"></a>`
+      : '';
     const authors = Array.isArray(row.authors) && row.authors.length
       ? row.authors.filter(value => typeof value === 'string' && value.trim()).join(' / ')
       : '—';
@@ -289,18 +299,30 @@
       : [];
     const tagHtml = tags.length ? catalog.chips(tags, 'website-tag') : '<span class="website-tag">—</span>';
     const category = ['Tech','Idea'].includes(row.category) ? `<span class="website-category website-category--${row.category.toLowerCase()}">${escape(row.category)}</span>` : '';
-    return `<article class="website-card">
-      <div class="site-icon-box" aria-hidden="true"><span class="site-icon-fallback">${escape(initial)}</span>${icon ? `<img class="site-icon-image" src="${escape(icon)}" alt="" loading="lazy" decoding="async">` : ''}</div>
+    const summary = typeof row.summary === 'string' && row.summary.trim()
+      ? `<p class="website-summary">${escape(row.summary.trim())}</p>`
+      : '';
+    const fallback = `<div class="website-preview-fallback"><div class="site-icon-box" aria-hidden="true"><span class="site-icon-fallback">${fallbackIcon}</span>${icon ? `<img class="site-icon-image" src="${escape(icon)}" alt="" loading="lazy" decoding="async">` : ''}</div></div>`;
+    const media = `<div class="website-preview" aria-hidden="true">${fallback}${preview ? `<img class="website-preview-image" src="${escape(preview)}" alt="" loading="lazy" decoding="async">` : ''}</div>`;
+    return `<article class="website-card${source ? '' : ' is-disabled'}">
+      ${cardLink}
+      ${media}
       <div class="website-info">
         <div class="website-head"><div class="site-line">${category}<span class="site-badge">${escape(publisher)}</span><span class="site-domain">${escape(host)}</span></div><a class="website-details" href="website.html?id=${encodeURIComponent(row.id)}">詳細</a></div>
-        <h2 class="website-title" tabindex="-1">${title}</h2>
+        <h2 class="website-title" tabindex="-1">${escape(displayTitle)}</h2>
+        ${summary}
         <div class="website-bottom"><div class="website-byline"><span>${escape(authors)}</span><time class="website-published-at">${escape(row.publishedAt || '—')}</time></div><div class="website-tags">${tagHtml}</div></div>
       </div>
     </article>`;
   }
 
-  function bindSiteIconFallback(root) {
+  function bindWebsiteMediaFallback(root) {
     root.addEventListener('error', event => {
+      if (event.target.matches('.website-preview-image')) {
+        event.target.hidden = true;
+        event.target.closest('.website-preview')?.classList.add('is-missing-preview');
+        return;
+      }
       if (!event.target.matches('.site-icon-image')) return;
       event.target.hidden = true;
       event.target.closest('.site-icon-box')?.classList.add('is-missing');
@@ -315,7 +337,9 @@
     filterWebsites,
     sortWebsites,
     siteIconPath,
+    linkPreviewPath,
     renderWebsiteCard,
-    bindSiteIconFallback
+    bindWebsiteMediaFallback,
+    bindSiteIconFallback: bindWebsiteMediaFallback
   };
 })();
