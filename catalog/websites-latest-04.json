@@ -25,7 +25,8 @@
     "freshness": "Current",
     "tags": [
       "C++"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260904-025.webp"
   },
   {
     "id": "RES-20260904-026",
@@ -60,7 +61,8 @@
       "MachineLearning",
       "LLM",
       "RAG"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260904-026.webp"
   },
   {
     "id": "RES-20260904-027",
@@ -93,7 +95,8 @@
     "tags": [
       "AI",
       "LLM"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260904-027.webp"
   },
   {
     "id": "RES-20260904-028",
@@ -133,7 +136,8 @@
       "Rendering",
       "UI",
       "Optimization"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260904-028.webp"
   },
   {
     "id": "RES-20260907-001",
@@ -168,7 +172,8 @@
       "Transparency",
       "Shader",
       "Optimization"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260907-001.webp"
   },
   {
     "id": "RES-20260908-001",
@@ -208,7 +213,8 @@
       "ComputeShader",
       "Physics",
       "LOD"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260908-001.webp"
   },
   {
     "id": "RES-20260908-002",
@@ -263,7 +269,8 @@
     "tags": [
       "Animation",
       "UI"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260924-001.webp"
   },
   {
     "id": "RES-20260924-002",
@@ -299,7 +306,8 @@
       "Audio",
       "AssetManagement",
       "Memory"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260924-002.webp"
   },
   {
     "id": "RES-20260928-001",
@@ -335,7 +343,8 @@
       "Particle",
       "Transparency",
       "Optimization"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260928-001.webp"
   },
   {
     "id": "RES-20260928-002",
@@ -369,6 +378,7 @@
       "C++",
       "Mesh",
       "Memory"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260928-002.webp"
   }
 ]

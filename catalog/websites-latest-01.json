@@ -36,7 +36,8 @@
       "Load",
       "Memory",
       "Optimization"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260818-001.webp"
   },
   {
     "id": "RES-20260901-001",
@@ -75,7 +76,8 @@
       "TAA",
       "Lighting",
       "Texture"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260901-001.webp"
   },
   {
     "id": "RES-20260901-002",
@@ -113,7 +115,8 @@
       "Physics",
       "ComputeShader",
       "Voxel"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260901-002.webp"
   },
   {
     "id": "RES-20260901-003",
@@ -152,7 +155,8 @@
       "ComputeShader",
       "Voxel",
       "Rendering"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260901-003.webp"
   },
   {
     "id": "RES-20260901-004",
@@ -191,7 +195,8 @@
       "Optimization",
       "Performance",
       "Memory"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260901-004.webp"
   },
   {
     "id": "RES-20260901-005",
@@ -231,6 +236,7 @@
       "Optimization",
       "Performance",
       "Memory"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20260901-005.webp"
   }
 ]
