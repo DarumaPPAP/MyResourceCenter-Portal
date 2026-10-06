@@ -1,7 +1,568 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-10-05T09:15:00+09:00",
+  "generatedAt": "2026-10-06T09:48:00+09:00",
   "days": [
+    {
+      "date": "2026-10-06",
+      "items": [
+        {
+          "id": "TREND-20261006-001",
+          "title": "Shaderlyn：大規模Shader開発向け静的解析",
+          "url": "https://zenn.dev/omojip/articles/253bcbf23c444b",
+          "source": "Zenn",
+          "publishedAt": "2026-10-04T01:34:44+00:00",
+          "category": "Graphics",
+          "type": "TOOL",
+          "summary": "実機依存バグや性能アンチパターンを規約頼みでなく検出。プリプロセッサ分岐を含むShader解析基盤を解説。",
+          "tags": [
+            "Shader",
+            "Static Analysis",
+            "HLSL",
+            "Optimization"
+          ],
+          "score": 95
+        },
+        {
+          "id": "TREND-20261006-002",
+          "title": "C++変数リネームで帳票値がずれた原因",
+          "url": "https://qiita.com/fe1ix/items/5fe2cbcfdab927003586",
+          "source": "Qiita",
+          "publishedAt": "2026-10-05T09:01:16+09:00",
+          "category": "Programming",
+          "type": "CASE",
+          "summary": "C4457シャドウイング警告の機械的修正で挙動が変化。リファクタリング時のデータ依存と確認不足を追った失敗例。",
+          "tags": [
+            "C++",
+            "Refactoring",
+            "Debug",
+            "C4457"
+          ],
+          "score": 93
+        },
+        {
+          "id": "TREND-20261006-003",
+          "title": ".NET Runtimeをコンテナ内でビルドする",
+          "url": "https://zenn.dev/prozolic/articles/617fa9127c0229",
+          "source": "Zenn",
+          "publishedAt": "2026-10-04T22:30:05+00:00",
+          "category": "Programming",
+          "type": "NEW",
+          "summary": "依存導入や環境差で難しいdotnet/runtimeのローカルビルドを、コンテナ化して再現しやすくする手順。",
+          "tags": [
+            ".NET",
+            "Runtime",
+            "Container",
+            "Build"
+          ],
+          "score": 92
+        },
+        {
+          "id": "TREND-20261006-004",
+          "title": "PLATEAU東京をUE5.8へSDKなしで統合",
+          "url": "https://zenn.dev/kiarina/articles/2026-10-04-plateau-paintable-tokyo",
+          "source": "Zenn",
+          "publishedAt": "2026-10-04T10:13:20+00:00",
+          "category": "Unreal",
+          "type": "CASE",
+          "summary": "CityGMLをnusamaiでOBJへ変換し、静的MeshとしてUE5.8へ投入。公式SDK非依存の都市データPipelineを構築。",
+          "tags": [
+            "UE5.8",
+            "PLATEAU",
+            "CityGML",
+            "OBJ",
+            "Pipeline"
+          ],
+          "score": 91
+        },
+        {
+          "id": "TREND-20261006-005",
+          "title": "フォトグラメトリの誤差共分散行列",
+          "url": "https://zenn.dev/s_hashida/articles/095a23f585b10c",
+          "source": "Zenn",
+          "publishedAt": "2026-10-04T22:01:05+00:00",
+          "category": "Research",
+          "type": "RESEARCH",
+          "summary": "Jacobianによる誤差伝播から、複数入力の相関を共分散行列で扱う考え方をフォトグラメトリ向けに整理。",
+          "tags": [
+            "Photogrammetry",
+            "Covariance",
+            "Jacobian",
+            "Error Propagation"
+          ],
+          "score": 90
+        },
+        {
+          "id": "TREND-20261006-006",
+          "title": "GPU JobをAgentへ任せる完了条件",
+          "url": "https://zenn.dev/zackchew/articles/6a4f1a01d846e5",
+          "source": "Zenn",
+          "publishedAt": "2026-10-04T14:53:57+00:00",
+          "category": "Tools",
+          "type": "CASE",
+          "summary": "成果物回収とVast.ai Instance停止までを完了条件に含め、処理成功だけで終わらせないGPU Job運用を整理。",
+          "tags": [
+            "GPU",
+            "Vast.ai",
+            "Agent",
+            "CLI",
+            "Operations"
+          ],
+          "score": 89
+        },
+        {
+          "id": "TREND-20261006-007",
+          "title": "Smalltalk処理系のAArch64 Fiber切替",
+          "url": "https://qiita.com/silentmalachite/items/3c98377977def4657313",
+          "source": "Qiita",
+          "publishedAt": "2026-10-04T17:48:47+09:00",
+          "category": "Programming",
+          "type": "CASE",
+          "summary": "Apple Silicon向けSmalltalk処理系Aoで、協調SchedulerのFiber切替をAArch64 Assemblyで実装した記録。",
+          "tags": [
+            "C++",
+            "AArch64",
+            "Smalltalk",
+            "Scheduler",
+            "Fiber"
+          ],
+          "score": 88
+        },
+        {
+          "id": "TREND-20261006-008",
+          "title": "VRCast：Unity AvatarをVRChatなしでOBS出力",
+          "url": "https://zenn.dev/coffin299/articles/14d38fc9acf298",
+          "source": "Zenn",
+          "publishedAt": "2026-10-04T05:42:00+00:00",
+          "category": "Tools",
+          "type": "RELEASE",
+          "summary": "Unity/VCC側でAvatarを変換し、元ProjectやVRChatを起動せずTrackingとOBS出力を行うWindows App。",
+          "tags": [
+            "Unity",
+            "VRChat",
+            "OBS",
+            "Avatar",
+            "Tracking"
+          ],
+          "score": 87
+        },
+        {
+          "id": "TREND-20261006-009",
+          "title": "UE/C++経験者がUnity 6.3とC#を学ぶ要点",
+          "url": "https://zenn.dev/myakuru/articles/fd16a8b3b4c582",
+          "source": "Zenn",
+          "publishedAt": "2026-10-04T16:43:53+00:00",
+          "category": "Unity",
+          "type": "NEW",
+          "summary": "UE5/C++経験者がUnity 6.3 LTSへ移る際、言語差とUnity固有APIに絞って短時間で確認した学習記録。",
+          "tags": [
+            "Unity 6.3",
+            "C#",
+            "C++",
+            "Unreal Engine"
+          ],
+          "score": 86
+        },
+        {
+          "id": "TREND-20261006-010",
+          "title": "Pico 2向けtinykernelのPub/Sub設計",
+          "url": "https://zenn.dev/satoshi_yoneda/articles/embedded_cpp",
+          "source": "Zenn",
+          "publishedAt": "2026-10-04T03:44:43+00:00",
+          "category": "Engine",
+          "type": "TOOL",
+          "summary": "独自Multitask Kernel上でPub/Sub Messagingを使い、Sensor処理をObject指向で構成するC++実装例。",
+          "tags": [
+            "C++",
+            "Pico 2",
+            "Kernel",
+            "PubSub",
+            "Embedded"
+          ],
+          "score": 85
+        },
+        {
+          "id": "TREND-20261006-011",
+          "title": "Win32のUTF-8/UTF-16変換API実践",
+          "url": "https://qiita.com/mamPol/items/b9d0ec60237686e1d821",
+          "source": "Qiita",
+          "publishedAt": "2026-10-04T12:15:48+09:00",
+          "category": "Programming",
+          "type": "NEW",
+          "summary": "MultiByteToWideCharとWideCharToMultiByteを使い、UTF-8とUTF-16を安全に相互変換する手順。",
+          "tags": [
+            "Win32",
+            "C++",
+            "Unicode",
+            "UTF-8",
+            "UTF-16"
+          ],
+          "score": 84
+        },
+        {
+          "id": "TREND-20261006-012",
+          "title": "0.8B判断Modelの並列Throughput実測",
+          "url": "https://zenn.dev/null_teck/articles/jeff-08b-vs-kev-08b-decision-models",
+          "source": "Zenn",
+          "publishedAt": "2026-10-04T03:09:48+00:00",
+          "category": "AI",
+          "type": "CASE",
+          "summary": "Jeffは単発15.7ms、Concurrency 4で68.82行/秒。KevとのLatency・全4,994行走査を比較。",
+          "tags": [
+            "LLM",
+            "Benchmark",
+            "Latency",
+            "Throughput",
+            "GPU"
+          ],
+          "score": 83
+        },
+        {
+          "id": "TREND-20261006-013",
+          "title": "天球を内側から見る射影とDrag方向",
+          "url": "https://zenn.dev/kodomo_news/articles/185-ground-view-stereographic-projection",
+          "source": "Zenn",
+          "publishedAt": "2026-10-04T13:52:00+00:00",
+          "category": "Graphics",
+          "type": "CASE",
+          "summary": "外側視点の右Vector・Drag式・Camera姿勢を地上視点へ流用すると反転する理由と修正方法を解説。",
+          "tags": [
+            "Projection",
+            "Camera",
+            "Canvas 2D",
+            "Math"
+          ],
+          "score": 82
+        },
+        {
+          "id": "TREND-20261006-014",
+          "title": "2モデルにBlender 3DCGを作らせて比較",
+          "url": "https://zenn.dev/morinokenjin/articles/opus-sonnet-55-blender",
+          "source": "Zenn",
+          "publishedAt": "2026-10-04T03:26:52+00:00",
+          "category": "DCC",
+          "type": "CASE",
+          "summary": "BlenderをPython操作し、静物・機械式時計・Animationを同条件で制作。画像とCodeで結果を比較。",
+          "tags": [
+            "Blender",
+            "Python",
+            "3DCG",
+            "Automation",
+            "Benchmark"
+          ],
+          "score": 81
+        },
+        {
+          "id": "TREND-20261006-015",
+          "title": "Unityで自己Bestを保存しResult表示",
+          "url": "https://qiita.com/_daisuke0802/items/dc2bfdc1f2862b4b9ae3",
+          "source": "Qiita",
+          "publishedAt": "2026-10-05T11:08:36+09:00",
+          "category": "Unity",
+          "type": "NEW",
+          "summary": "無限Runnerの走破距離を保存し、自己Best更新判定とResult画面への表示をC#で追加する実装。",
+          "tags": [
+            "Unity",
+            "C#",
+            "Save Data",
+            "UI",
+            "Game Development"
+          ],
+          "score": 80
+        },
+        {
+          "id": "TREND-20261006-016",
+          "title": "BlenderをSandbox風に操作するPython Script",
+          "url": "https://qiita.com/aijyu/items/7cf5016db5e15d7e2b6c",
+          "source": "Qiita",
+          "publishedAt": "2026-10-04T19:46:38+09:00",
+          "category": "DCC",
+          "type": "TOOL",
+          "summary": "WASD移動、Mouse視点、照準、Block設置・削除をBlender上へ追加する操作Modeの試作。",
+          "tags": [
+            "Blender",
+            "Python",
+            "WASD",
+            "Tool"
+          ],
+          "score": 79
+        },
+        {
+          "id": "TREND-20261006-017",
+          "title": "CMakeでgRPC C++をBuild・Install",
+          "url": "https://qiita.com/Yujiro3/items/1666428c7665593fbcfd",
+          "source": "Qiita",
+          "publishedAt": "2026-10-05T07:37:52+09:00",
+          "category": "Programming",
+          "type": "NEW",
+          "summary": "abseil-cppとprotobufを含むgRPC C++環境を、CMakeが通る構成でBuild・Installする手順。",
+          "tags": [
+            "C++",
+            "gRPC",
+            "CMake",
+            "protobuf",
+            "abseil"
+          ],
+          "score": 78
+        },
+        {
+          "id": "TREND-20261006-018",
+          "title": "C# Windows Formsを単一EXE化",
+          "url": "https://qiita.com/YoshijiGates/items/176f6755cb398ad3532a",
+          "source": "Qiita",
+          "publishedAt": "2026-10-04T20:05:12+09:00",
+          "category": "Programming",
+          "type": "NEW",
+          "summary": "Visual Studio 2022・.NET 9で、DLLやJSONを含むWindows Forms Appを単一EXEとして発行する設定。",
+          "tags": [
+            "C#",
+            ".NET 9",
+            "Windows Forms",
+            "Single File"
+          ],
+          "score": 77
+        },
+        {
+          "id": "TREND-20261006-019",
+          "title": "Windowsでx86-64 Assembly環境を構築",
+          "url": "https://zenn.dev/newstylejava/articles/8bb8ffec45ca6c",
+          "source": "Zenn",
+          "publishedAt": "2026-10-04T10:08:34+00:00",
+          "category": "Programming",
+          "type": "NEW",
+          "summary": "AssemblerとLinkerを用意し、Hello Worldからcpuidなど高級言語だけでは扱いにくい命令まで確認。",
+          "tags": [
+            "Assembly",
+            "x86-64",
+            "Windows",
+            "cpuid"
+          ],
+          "score": 76
+        },
+        {
+          "id": "TREND-20261006-020",
+          "title": ".NET 10＋BlazorのPortable Media Server",
+          "url": "https://qiita.com/nPonta/items/823411b4a2671876eb68",
+          "source": "Qiita",
+          "publishedAt": "2026-10-04T19:04:25+09:00",
+          "category": "Programming",
+          "type": "CASE",
+          "summary": "Docker不要でZIP解凍から起動できる漫画・動画Serverを.NET 10とBlazor Serverで構築。",
+          "tags": [
+            ".NET 10",
+            "Blazor Server",
+            "C#",
+            "Media Server"
+          ],
+          "score": 75
+        },
+        {
+          "id": "TREND-20261006-021",
+          "title": "日本語言語AoiのMVP検証と完了評価",
+          "url": "https://qiita.com/mylifewithviolin/items/de68617a710940b0fb23",
+          "source": "Qiita",
+          "publishedAt": "2026-10-04T18:47:02+09:00",
+          "category": "Programming",
+          "type": "CASE",
+          "summary": "仕様駆動で実装した日本語Programming Language Aoiの最小構成を、検証Phaseの完了条件に沿って評価。",
+          "tags": [
+            "C#",
+            "Language Design",
+            "Compiler",
+            "Specification"
+          ],
+          "score": 74
+        },
+        {
+          "id": "TREND-20261006-022",
+          "title": "C# Reactive Extensionsの基本整理",
+          "url": "https://qiita.com/Tenere/items/3b949a824be942a45a03",
+          "source": "Qiita",
+          "publishedAt": "2026-10-04T17:46:16+09:00",
+          "category": "Programming",
+          "type": "NEW",
+          "summary": "発生回数や時刻が不定なEventをObservableとして扱い、状態変化へ反応するRxの基本を整理。",
+          "tags": [
+            "C#",
+            "Reactive Extensions",
+            "Rx",
+            "Observable"
+          ],
+          "score": 73
+        },
+        {
+          "id": "TREND-20261006-023",
+          "title": "Unity MapのSpawn地点と移動先指定を実装",
+          "url": "https://note.com/horizonnotes_108/n/ndd2fd775f197",
+          "source": "note",
+          "publishedAt": "2026-10-04T22:10:18+09:00",
+          "category": "Unity",
+          "type": "CASE",
+          "summary": "手入力IDを避け、赤・青・緑・黄の色分けGateで初期位置とMap移動先をEditor上から指定。",
+          "tags": [
+            "Unity",
+            "Level Design",
+            "Spawn",
+            "Editor Tool"
+          ],
+          "score": 72
+        },
+        {
+          "id": "TREND-20261006-024",
+          "title": "Blender主要Modifierの用途と作例一覧",
+          "url": "https://note.com/avaron_san_/n/n3bcf37ed617c",
+          "source": "note",
+          "publishedAt": "2026-10-04T21:00:22+09:00",
+          "category": "DCC",
+          "type": "NEW",
+          "summary": "よく使うModifierを機能・できること・具体例で一覧化し、Modeling中の選択を素早くする実用メモ。",
+          "tags": [
+            "Blender",
+            "Modifier",
+            "Modeling",
+            "Workflow"
+          ],
+          "score": 71
+        },
+        {
+          "id": "TREND-20261006-025",
+          "title": "Blender MotionとUE5 Niagaraの制作記録",
+          "url": "https://note.com/vast_zephyr5455/n/n9740d90030a8",
+          "source": "note",
+          "publishedAt": "2026-10-04T17:38:31+09:00",
+          "category": "DCC",
+          "type": "CASE",
+          "summary": "MonsterのAttack・Damage・Death Motionを制作し、UE5 Niagaraで魔法Effectへ取り組んだ進捗記録。",
+          "tags": [
+            "Blender",
+            "UE5",
+            "Niagara",
+            "Animation",
+            "VFX"
+          ],
+          "score": 70
+        },
+        {
+          "id": "TREND-20261006-026",
+          "title": "Blender衣装Weightを保つ着せ替えWorkflow",
+          "url": "https://misha-litmus.hatenablog.com/entry/2026/10/05/075940",
+          "source": "misha-litmus.hatenablog.com",
+          "publishedAt": "2026-10-04T22:59:40+00:00",
+          "category": "DCC",
+          "type": "NEW",
+          "summary": "衣装差し替え時に既存WeightとVertex Groupを活用し、Unity Export前のObject整理・Weight修正をまとめたメモ。",
+          "tags": [
+            "Blender",
+            "Rigging",
+            "Weight",
+            "Unity",
+            "Workflow"
+          ],
+          "score": 69
+        },
+        {
+          "id": "TREND-20261006-027",
+          "title": "3D表示のInfrastructure監視Toolを試作",
+          "url": "https://zenn.dev/owlworldlab/articles/7d80cbdf936c01",
+          "source": "Zenn",
+          "publishedAt": "2026-10-04T07:41:57+00:00",
+          "category": "Tools",
+          "type": "CASE",
+          "summary": "既存監視UIを3D空間へ置き換え、状態を視覚的に把握する個人開発Toolの構成と試行を紹介。",
+          "tags": [
+            "3D",
+            "Monitoring",
+            "Visualization",
+            "Tool"
+          ],
+          "score": 68
+        },
+        {
+          "id": "TREND-20261006-028",
+          "title": "BlenderでMiniature Room小物をModeling",
+          "url": "https://note.com/rikorikkorkrk/n/nc92e66fe20a9",
+          "source": "note",
+          "publishedAt": "2026-10-04T15:18:19+09:00",
+          "category": "DCC",
+          "type": "CASE",
+          "summary": "箱庭Illustrationを基に、ジョウロと壁掛けDry FlowerをModelingし、部屋の密度を上げる制作工程。",
+          "tags": [
+            "Blender",
+            "Modeling",
+            "Miniature",
+            "Props"
+          ],
+          "score": 67
+        },
+        {
+          "id": "TREND-20261006-029",
+          "title": "3DCG TextureとMaterialの基礎整理",
+          "url": "https://qiita.com/aijyu/items/48df8ec9b7213fd98caf",
+          "source": "Qiita",
+          "publishedAt": "2026-10-05T07:46:29+09:00",
+          "category": "DCC",
+          "type": "NEW",
+          "summary": "Image Texture、Principled BSDF、Base Colorなど、Materialを構成するTexture接続の基本を整理。",
+          "tags": [
+            "3DCG",
+            "Texture",
+            "Material",
+            "Principled BSDF"
+          ],
+          "score": 66
+        },
+        {
+          "id": "TREND-20261006-030",
+          "title": "画像生成で見るGPU性能とVRAM選び",
+          "url": "https://qiita.com/naritomo08/items/83f54a6b311f04908886",
+          "source": "Qiita",
+          "publishedAt": "2026-10-03T19:34:50+09:00",
+          "category": "AI",
+          "type": "NEW",
+          "summary": "演算性能、VRAM容量・帯域、CUDA Core、Tensor Coreが生成速度や扱える条件へ与える影響を整理。",
+          "tags": [
+            "GPU",
+            "VRAM",
+            "Stable Diffusion",
+            "Benchmark"
+          ],
+          "score": 65
+        },
+        {
+          "id": "TREND-20261006-031",
+          "title": "KokoroNe AI Desktop v0.2.0",
+          "url": "https://zenn.dev/kunamao/articles/d401b315552851",
+          "source": "Zenn",
+          "publishedAt": "2026-10-04T21:00:07+00:00",
+          "category": "Tools",
+          "type": "RELEASE",
+          "summary": "Windows向けLocal AI AssistantへCoding ModeとOpenRouter以外のProvider対応を追加したα版。",
+          "tags": [
+            "Windows",
+            "Local AI",
+            "Coding",
+            "Desktop App"
+          ],
+          "score": 64
+        },
+        {
+          "id": "TREND-20261006-032",
+          "title": "DiffusionGemmaでAlert分類をGPU実行",
+          "url": "https://zenn.dev/mahiguch/articles/diffusion-gemma-jev",
+          "source": "Zenn",
+          "publishedAt": "2026-10-05T01:00:08+09:00",
+          "category": "AI",
+          "type": "CASE",
+          "summary": "DiffusionGemmaを判断ModelとしてCloud Run GPUへ載せ、Alert分類に使う構成を検証。",
+          "tags": [
+            "DiffusionGemma",
+            "Cloud Run",
+            "GPU",
+            "Classification"
+          ],
+          "score": 63
+        }
+      ]
+    },
     {
       "date": "2026-10-05",
       "items": [
@@ -1250,587 +1811,6 @@
             "Interaction"
           ],
           "score": 63
-        }
-      ]
-    },
-    {
-      "date": "2026-10-03",
-      "items": [
-        {
-          "id": "TREND-20261003-002",
-          "title": "AR合成で実写をToonへ寄せる2種のShader設計",
-          "url": "https://zenn.dev/dsgarage/articles/ar-composite-real-to-toon",
-          "source": "デジタルガレージ / Zenn",
-          "publishedAt": "2026-10-02T00:50:28Z",
-          "category": "Graphics",
-          "type": "CASE",
-          "summary": "World表示とAR合成で異なる見え方を比較し、実写側をToon調へ寄せるShader構成と設計判断を解説。",
-          "tags": [
-            "AR",
-            "ToonShader",
-            "Shader",
-            "Rendering",
-            "Unity"
-          ],
-          "score": 98
-        },
-        {
-          "id": "TREND-20261003-003",
-          "title": "Gears of War: E-DayのUE5制作：Lumen・Nanite・MegaLights",
-          "url": "https://www.unrealengine.com/developer-interviews/gears-of-war-e-day-sees-a-return-to-dark-survival-horror-roots-with-ue5",
-          "source": "Epic Games",
-          "publishedAt": "2026-10-01T00:00:00Z",
-          "category": "Unreal",
-          "type": "CASE",
-          "summary": "The CoalitionがLumen、Nanite、World Partition、MegaLights、Animationを用いたUE5制作工程を紹介。",
-          "tags": [
-            "UE5",
-            "Lumen",
-            "Nanite",
-            "MegaLights",
-            "WorldPartition"
-          ],
-          "score": 97
-        },
-        {
-          "id": "TREND-20261003-004",
-          "title": "Unity 2D RPGの台本1000行をVOICEVOXで自動音声化",
-          "url": "https://a1026302.hatenablog.com/entry/2026/10/02/090710",
-          "source": "ものづくりのブログ",
-          "publishedAt": "2026-10-02T00:07:10Z",
-          "category": "Unity",
-          "type": "CASE",
-          "summary": "59人・約1000行の台本をBuildごとに抽出し、VOICEVOX生成音声をUnityで自動再生する仕組みをCode付きで解説。",
-          "tags": [
-            "Unity",
-            "VOICEVOX",
-            "Python",
-            "Audio",
-            "Automation"
-          ],
-          "score": 96
-        },
-        {
-          "id": "TREND-20261003-005",
-          "title": "ゲーム向けActor指向Script言語Mana 1.0の設計",
-          "url": "https://zenn.dev/elderlyengineer/articles/943e923717adad",
-          "source": "Zenn",
-          "publishedAt": "2026-10-01T23:30:05Z",
-          "category": "Programming",
-          "type": "RELEASE",
-          "summary": "ActorとActionに役割を分け、相互に行動を依頼してGame進行を組み立てる自作言語。Browser Playgroundも公開。",
-          "tags": [
-            "LanguageDesign",
-            "GameDevelopment",
-            "Compiler",
-            "ActorModel",
-            "C++"
-          ],
-          "score": 95
-        },
-        {
-          "id": "TREND-20261003-006",
-          "title": "ChatGPT WorkでBlender 100機能を実操作検証",
-          "url": "https://note.com/rhustudio/n/ne9ab722881d0",
-          "source": "RHU / note",
-          "publishedAt": "2026-10-01T19:55:47+09:00",
-          "category": "DCC",
-          "type": "CASE",
-          "summary": "BlenderのModeling、Material、Rig、Animationなど100操作を実行し、AIへ任せやすい作業と限界を検証。",
-          "tags": [
-            "Blender",
-            "Automation",
-            "Workflow",
-            "AI",
-            "DCC"
-          ],
-          "score": 94
-        },
-        {
-          "id": "TREND-20261003-007",
-          "title": "UnityからGodotへ移植するAR開発で検証Toolを先に作る",
-          "url": "https://note.com/spoke_official/n/n8d2a607d6f01",
-          "source": "株式会社スポーク / note",
-          "publishedAt": "2026-10-01T15:27:25+09:00",
-          "category": "Game",
-          "type": "CASE",
-          "summary": "Unity版AR機能をGodotへ移す過程で、挙動差を切り分ける検証用Toolから構築した開発記録。",
-          "tags": [
-            "Unity",
-            "Godot",
-            "AR",
-            "Migration",
-            "Tooling"
-          ],
-          "score": 93
-        },
-        {
-          "id": "TREND-20261003-008",
-          "title": "C++ ProjectをTypst Pluginとして組み込む",
-          "url": "https://zenn.dev/typstfan/articles/0dc37c35cf98d9",
-          "source": "Zenn",
-          "publishedAt": "2026-10-01T15:00:26+09:00",
-          "category": "Programming",
-          "type": "CASE",
-          "summary": "既存C++ ProjectをTypst Pluginから利用するためのBuild、Interface、組み込み手順を整理。",
-          "tags": [
-            "C++",
-            "Typst",
-            "Plugin",
-            "Interop",
-            "Build"
-          ],
-          "score": 92
-        },
-        {
-          "id": "TREND-20261003-009",
-          "title": "OllamaはVRAM不足で13.8倍低速：Docker連携の落とし穴",
-          "url": "https://zenn.dev/chiaki_ai_lab/articles/ollama-vram-16gb-nodejs-pitfalls",
-          "source": "Zenn",
-          "publishedAt": "2026-10-01T02:29:42Z",
-          "category": "AI",
-          "type": "CASE",
-          "summary": "RTX 5060 Ti 16GBで、ModelがVRAMに収まらない場合の13.8倍低速化とDocker・Node.js連携の失敗例を実測。",
-          "tags": [
-            "Ollama",
-            "VRAM",
-            "GPU",
-            "Docker",
-            "Node.js"
-          ],
-          "score": 91
-        },
-        {
-          "id": "TREND-20261003-011",
-          "title": "GPUなしMini PCでAI Coding Agent 14本を実測",
-          "url": "https://zenn.dev/cuculhart/articles/4fdcb13c60c5fe",
-          "source": "Zenn",
-          "publishedAt": "2026-09-30T23:13:54+09:00",
-          "category": "Tools",
-          "type": "CASE",
-          "summary": "無料・BYOKのCoding Agent 14種を同一のGPUなしMini PCで測定し、導入性と実用上の差を比較。",
-          "tags": [
-            "CodingAgent",
-            "Benchmark",
-            "LocalDevelopment",
-            "BYOK",
-            "Tooling"
-          ],
-          "score": 89
-        },
-        {
-          "id": "TREND-20261003-013",
-          "title": "Unity開発の前処理をLocal LLMへ移してToken節約",
-          "url": "https://qiita.com/EitaroSeta/items/9a797a85a1fdada73ef2",
-          "source": "Qiita",
-          "publishedAt": "2026-09-30T18:09:50+09:00",
-          "category": "Unity",
-          "type": "CASE",
-          "summary": "Unity MCP開発でLocal LLMをCoding担当ではなく前処理Agentへ配置し、Cloud Modelの作業量削減を検証。",
-          "tags": [
-            "Unity",
-            "LocalLLM",
-            "MCP",
-            "Agent",
-            "Optimization"
-          ],
-          "score": 87
-        },
-        {
-          "id": "TREND-20261003-014",
-          "title": "AI生成GPU Kernelの高速化を検証：5倍値のTest不備",
-          "url": "https://qiita.com/okssusucha/items/71e623e83688a950e614",
-          "source": "Qiita",
-          "publishedAt": "2026-09-30T09:10:41+09:00",
-          "category": "AI",
-          "type": "RESEARCH",
-          "summary": "AI生成GPU Codeの約3倍高速化と、5倍を示した候補のTest不備を整理。Benchmark検証の重要性を示す。",
-          "tags": [
-            "GPU",
-            "CUDA",
-            "Kernel",
-            "Benchmark",
-            "Verification"
-          ],
-          "score": 86
-        },
-        {
-          "id": "TREND-20261003-015",
-          "title": "AIとBlenderでGame用Character素体を作る工程記録",
-          "url": "https://zenn.dev/yy7613/articles/c150ef962ccc1f",
-          "source": "Zenn",
-          "publishedAt": "2026-09-29T14:29:19Z",
-          "category": "DCC",
-          "type": "CASE",
-          "summary": "生成AIを補助に使い、BlenderでGame向けCharacter素体を作る試行錯誤と制作工程を記録。",
-          "tags": [
-            "Blender",
-            "CharacterModeling",
-            "GameAsset",
-            "AI",
-            "Workflow"
-          ],
-          "score": 85
-        },
-        {
-          "id": "TREND-20261003-016",
-          "title": "Tripo AI製3D ModelをBlenderで検査・修正",
-          "url": "https://note.com/picos_aicreator/n/n7b41c7399bee",
-          "source": "picos / note",
-          "publishedAt": "2026-09-29T23:01:33+09:00",
-          "category": "DCC",
-          "type": "CASE",
-          "summary": "生成3D ModelをBlenderへ読み込み、Topology、Material、形状など実利用前の確認・修正Pointを解説。",
-          "tags": [
-            "Blender",
-            "TripoAI",
-            "3DModel",
-            "Topology",
-            "AssetPipeline"
-          ],
-          "score": 84
-        },
-        {
-          "id": "TREND-20261003-017",
-          "title": "RTX 5070×2で27B 3値LLM運用：PCIe x4とWSL2が壁",
-          "url": "https://qiita.com/nakanokensetsu/items/ecc183fae033565af7cb",
-          "source": "Qiita",
-          "publishedAt": "2026-09-29T17:53:00+09:00",
-          "category": "AI",
-          "type": "CASE",
-          "summary": "Ternary 27BをvLLM TP=2で運用し、Dual GPU構成のPCIe x4帯域とWSL2通信がBottleneckになる条件を共有。",
-          "tags": [
-            "vLLM",
-            "MultiGPU",
-            "RTX5070",
-            "WSL2",
-            "Performance"
-          ],
-          "score": 83
-        },
-        {
-          "id": "TREND-20261003-018",
-          "title": "whisper.cppとllama.cppを同梱し日本語字幕をRealtime生成",
-          "url": "https://zenn.dev/koedana/articles/4b482238da4265",
-          "source": "Zenn",
-          "publishedAt": "2026-09-29T22:25:25+09:00",
-          "category": "Programming",
-          "type": "CASE",
-          "summary": "Desktop Appへwhisper.cppとllama.cppを同梱し、日本語音声へ再生に追従する字幕を付ける実装を解説。",
-          "tags": [
-            "C++",
-            "whisper.cpp",
-            "llama.cpp",
-            "SpeechToText",
-            "DesktopApp"
-          ],
-          "score": 82
-        },
-        {
-          "id": "TREND-20261003-020",
-          "title": "GPUなしCeleronでVoiceStudioを測定：初期設定では完走せず",
-          "url": "https://zenn.dev/mskbhd/articles/lab-848-voicestudio",
-          "source": "Zenn",
-          "publishedAt": "2026-09-29T10:23:08+09:00",
-          "category": "AI",
-          "type": "CASE",
-          "summary": "GPUなしCeleron環境でVoice Clone処理を実測し、出荷時設定では完走しない失敗条件と負荷を記録。",
-          "tags": [
-            "VoiceStudio",
-            "CPU",
-            "Benchmark",
-            "VoiceClone",
-            "FailureCase"
-          ],
-          "score": 80
-        },
-        {
-          "id": "TREND-20261003-021",
-          "title": "Unity無限RunnerのSkybox・海・雲海をHLSLで構築",
-          "url": "https://qiita.com/_daisuke0802/items/3229d41c9fcd1c210028",
-          "source": "Qiita",
-          "publishedAt": "2026-09-29T07:59:16+09:00",
-          "category": "Unity",
-          "type": "CASE",
-          "summary": "Skybox調整とPlaneによる海・雲海を追加し、空中Courseの遠景を構成するUnity/HLSL制作手順。",
-          "tags": [
-            "Unity",
-            "HLSL",
-            "Skybox",
-            "EnvironmentArt",
-            "GameDevelopment"
-          ],
-          "score": 79
-        },
-        {
-          "id": "TREND-20261003-022",
-          "title": "Mind8の中間Code C RuntimeをC#へ移植",
-          "url": "https://qiita.com/mylifewithviolin/items/70c386cb0aee7b3c016c",
-          "source": "Qiita",
-          "publishedAt": "2026-09-28T23:03:09+09:00",
-          "category": "Programming",
-          "type": "CASE",
-          "summary": "日本語Programming言語Mind8の中間Code RuntimeをCからC#へ移す方針と、GitHub Copilotへの引継ぎを記録。",
-          "tags": [
-            "C#",
-            "C",
-            "Runtime",
-            "LanguageImplementation",
-            "Migration"
-          ],
-          "score": 78
-        },
-        {
-          "id": "TREND-20261003-023",
-          "title": "Mac Vulkan入門：GPU選択からVkDevice作成まで",
-          "url": "https://zenn.dev/nnnnnnn0090/articles/b0554f6b5db23c",
-          "source": "Zenn",
-          "publishedAt": "2026-09-28T12:12:29Z",
-          "category": "Graphics",
-          "type": "CASE",
-          "summary": "macOSのVulkan環境でPhysical Deviceを列挙・選択し、Queue Family確認からVkDevice作成まで実装。",
-          "tags": [
-            "Vulkan",
-            "macOS",
-            "VkDevice",
-            "GPU",
-            "GraphicsAPI"
-          ],
-          "score": 77
-        },
-        {
-          "id": "TREND-20261003-024",
-          "title": "UnityのScriptableObjectで推理Boardと複数Endingを管理",
-          "url": "https://note.com/karanobu/n/na5c17f9ca32e",
-          "source": "辛島信芳 / note",
-          "publishedAt": "2026-09-28T20:14:43+09:00",
-          "category": "Unity",
-          "type": "CASE",
-          "summary": "ScriptableObject、C# event、PlayerPrefsを組み合わせ、推理Board・周回・複数Endingを実装。",
-          "tags": [
-            "Unity",
-            "ScriptableObject",
-            "CSharpEvent",
-            "PlayerPrefs",
-            "GameDesign"
-          ],
-          "score": 76
-        },
-        {
-          "id": "TREND-20261003-025",
-          "title": "Ryzen AIのllama.cppをVulkanで7倍高速化",
-          "url": "https://qiita.com/istb16/items/ac7a9b9cbc103f447a16",
-          "source": "Qiita",
-          "publishedAt": "2026-09-28T17:41:32+09:00",
-          "category": "AI",
-          "type": "CASE",
-          "summary": "Ryzen AI PCでllama.cppのVulkan Backendを有効化し、Qwen推論をCPU実行比で約7倍高速化した手順。",
-          "tags": [
-            "llama.cpp",
-            "Vulkan",
-            "RyzenAI",
-            "LocalLLM",
-            "Performance"
-          ],
-          "score": 75
-        },
-        {
-          "id": "TREND-20261003-026",
-          "title": "安価GPUの学習遅延を計測：実際はGPU飽和が原因",
-          "url": "https://zenn.dev/takeru/articles/ahiru-gpu-not-saturated",
-          "source": "Zenn",
-          "publishedAt": "2026-09-27T21:00:05Z",
-          "category": "Programming",
-          "type": "CASE",
-          "summary": "学習が遅い原因をPython処理と決めつけず計測し、GPUが飽和していた事実から改善方針を見直す検証例。",
-          "tags": [
-            "GPU",
-            "Profiling",
-            "MachineLearning",
-            "Bottleneck",
-            "Benchmark"
-          ],
-          "score": 74
-        },
-        {
-          "id": "TREND-20261003-027",
-          "title": "OpenAPIからMCP Serverを生成する.NET CLI「McpSense」",
-          "url": "https://qiita.com/pierusan2010/items/8b018653275155039245",
-          "source": "Qiita",
-          "publishedAt": "2026-09-27T21:35:20+09:00",
-          "category": "Tools",
-          "type": "TOOL",
-          "summary": "任意のOpenAPI定義を読み取り、MCP Serverとして公開する.NET製CLIの設計と利用方法を紹介。",
-          "tags": [
-            "MCP",
-            "OpenAPI",
-            ".NET",
-            "CLI",
-            "Tooling"
-          ],
-          "score": 73
-        },
-        {
-          "id": "TREND-20261003-028",
-          "title": "MagicOnionでFsBulletML2をUnity・Godotから利用",
-          "url": "https://zenn.dev/zecl/articles/4c33881b221006",
-          "source": "Zenn",
-          "publishedAt": "2026-09-27T12:03:06Z",
-          "category": "Game",
-          "type": "CASE",
-          "summary": "弾幕EngineをServer側で動かし、UnityとGodotはMagicOnion経由の座標を描画する構成を実装。",
-          "tags": [
-            "MagicOnion",
-            "Unity",
-            "Godot",
-            "BulletML",
-            "Networking"
-          ],
-          "score": 72
-        },
-        {
-          "id": "TREND-20261003-029",
-          "title": "gpt-live-1をGame・Webへ組み込むRealtime会話設計",
-          "url": "https://zenn.dev/biwacoder/articles/95b8679f8bc34a",
-          "source": "Zenn",
-          "publishedAt": "2026-09-27T10:51:10Z",
-          "category": "AI",
-          "type": "CASE",
-          "summary": "Python、Unity、WebGL、MCPを対象に、Realtime音声会話をApplicationへ組み込む構成と実装Pointを整理。",
-          "tags": [
-            "RealtimeAPI",
-            "Unity",
-            "WebGL",
-            "MCP",
-            "Voice"
-          ],
-          "score": 71
-        },
-        {
-          "id": "TREND-20261003-030",
-          "title": "XLBへNeonを導入しMulti-resolution GPU LBMを解析",
-          "url": "https://qiita.com/ShibataRyoichi/items/89c1a88ecca33413e287",
-          "source": "Qiita",
-          "publishedAt": "2026-09-27T14:15:09+09:00",
-          "category": "Graphics",
-          "type": "CASE",
-          "summary": "GPU流体解析Library XLBへNeonを導入し、Multi-resolution例題の設定と計算結果を分析。",
-          "tags": [
-            "XLB",
-            "LBM",
-            "GPU",
-            "FluidSimulation",
-            "Neon"
-          ],
-          "score": 70
-        },
-        {
-          "id": "TREND-20261003-031",
-          "title": "glTFとUSDZをWeb 3D・AR用途で比較",
-          "url": "https://note.com/regal_marten5720/n/n55dec3fcb531",
-          "source": "note",
-          "publishedAt": "2026-09-26T20:01:23+09:00",
-          "category": "DCC",
-          "type": "CASE",
-          "summary": "glTFとUSDZの構造・対応機能・表示環境を比較し、Web 3DとAR配信でのFormat選択基準を整理。",
-          "tags": [
-            "glTF",
-            "USDZ",
-            "Web3D",
-            "AR",
-            "3DFormat"
-          ],
-          "score": 69
-        },
-        {
-          "id": "TREND-20261003-032",
-          "title": "UE5でAWS GameLiftとSteamの対戦Serverを構築",
-          "url": "https://qiita.com/EXPEVODEV/items/67c04dd5b995336858df",
-          "source": "Qiita",
-          "publishedAt": "2026-09-26T02:14:39+09:00",
-          "category": "Unreal",
-          "type": "CASE",
-          "summary": "UE5の対戦GameへAWS GameLiftとSteamを接続し、Server Build、Session、Scaling構成を解説。",
-          "tags": [
-            "UE5",
-            "AWSGameLift",
-            "Steam",
-            "Multiplayer",
-            "DedicatedServer"
-          ],
-          "score": 68
-        },
-        {
-          "id": "TREND-20261003-033",
-          "title": "CUDA MPSでRTX 4090上にvLLMを2 Instance配置",
-          "url": "https://zenn.dev/tosshi/articles/f4f81e1c20106d",
-          "source": "Zenn",
-          "publishedAt": "2026-09-25T15:46:00Z",
-          "category": "AI",
-          "type": "CASE",
-          "summary": "CUDA MPSを使って1枚のRTX 4090へvLLMを2つ載せ、GPU共有時の設定と運用上の注意を検証。",
-          "tags": [
-            "CUDA",
-            "MPS",
-            "vLLM",
-            "RTX4090",
-            "GPUSharing"
-          ],
-          "score": 67
-        },
-        {
-          "id": "TREND-20261003-034",
-          "title": "RustとC++をCXX・Cargo・CMake・Pinで接続",
-          "url": "https://zenn.dev/tasuku/articles/d983362f4c8117",
-          "source": "Zenn",
-          "publishedAt": "2026-09-25T14:18:42Z",
-          "category": "Programming",
-          "type": "CASE",
-          "summary": "Rust/C++ InteropをCXX、Cargo、CMakeで構成し、Memory安全性に関わるPinの扱いまでHands-onで確認。",
-          "tags": [
-            "Rust",
-            "C++",
-            "CXX",
-            "CMake",
-            "Interop"
-          ],
-          "score": 66
-        },
-        {
-          "id": "TREND-20261003-035",
-          "title": "Unity Compute ShaderでStable Fluidsを実装",
-          "url": "https://zenn.dev/haharman/articles/310d80dc737c2b",
-          "source": "Zenn",
-          "publishedAt": "2026-09-25T14:03:38Z",
-          "category": "Unity",
-          "type": "CASE",
-          "summary": "Stable Fluidsの移流・拡散・圧力投影をUnity Compute Shaderで実装し、GPU上の流体計算を図解。",
-          "tags": [
-            "Unity",
-            "ComputeShader",
-            "StableFluids",
-            "GPU",
-            "Simulation"
-          ],
-          "score": 65
-        },
-        {
-          "id": "TREND-20261003-036",
-          "title": "DirectX 11/HLSLでRim Lightingを実装",
-          "url": "https://qiita.com/tsukino_/items/e34d4fcf8a9ee0a7d861",
-          "source": "Qiita",
-          "publishedAt": "2026-09-25T12:16:14+09:00",
-          "category": "Graphics",
-          "type": "CASE",
-          "summary": "視線と法線の内積から輪郭を抽出し、自作DirectX 11 EngineへRim Lightを追加するHLSL実装。",
-          "tags": [
-            "DirectX11",
-            "HLSL",
-            "RimLighting",
-            "Shader",
-            "Rendering"
-          ],
-          "score": 64
         }
       ]
     }
