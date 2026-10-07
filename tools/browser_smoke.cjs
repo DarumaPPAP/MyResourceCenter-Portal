@@ -51,6 +51,7 @@ async function main() {
     const context = await browser.newContext({viewport:{width:1280,height:900}});
     await context.route('**/assets/generated/site-icons/**',route=>route.abort());
     await context.route('https://drive.google.com/**',route=>route.abort());
+    await context.route('https://docs.google.com/**',route=>route.abort());
     const page = await context.newPage();
     const pageErrors = [];
     const failedLocalResponses = [];
@@ -145,6 +146,17 @@ async function main() {
 
     await openPage(page,origin,'viewer.html?id=drive_smoke&format=PDF&title=Browser%20Smoke');
     assert.ok(await page.locator('.viewer-frame').count(),'Viewer route renders its frame');
+    assert.equal(await page.locator('#viewer-frame').getAttribute('src'),'https://drive.google.com/file/d/drive_smoke/preview','PDF/PPTX Viewer uses Drive preview');
+    assert.equal(await page.locator('#viewer-drive-link').getAttribute('href'),'https://drive.google.com/file/d/drive_smoke/view','PDF/PPTX original link uses Drive');
+
+    await openPage(page,origin,'viewer.html?id=native_doc&format=GOOGLE_DOC&title=Native%20Doc');
+    assert.equal(await page.locator('#viewer-frame').getAttribute('src'),'https://docs.google.com/document/d/native_doc/preview','Google Docs Viewer uses native preview');
+    assert.equal(await page.locator('#viewer-drive-link').getAttribute('href'),'https://docs.google.com/document/d/native_doc/edit','Google Docs original link stays native');
+
+    await openPage(page,origin,'viewer.html?id=native_slides&format=GOOGLE_SLIDES&title=Native%20Slides');
+    assert.equal(await page.locator('#viewer-frame').getAttribute('src'),'https://docs.google.com/presentation/d/native_slides/preview','Google Slides Viewer uses native preview');
+    assert.equal(await page.locator('#viewer-drive-link').getAttribute('href'),'https://docs.google.com/presentation/d/native_slides/edit','Google Slides original link stays native');
+
     assert.deepEqual(pageErrors,[],'Portal pages should not throw browser JavaScript errors');
     assert.deepEqual(failedLocalResponses,[],'Portal pages should not have missing local assets');
     await context.close();
