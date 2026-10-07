@@ -1,17 +1,5 @@
 [
   {
-    "resourceId": "RES-20260724-012",
-    "documentId": "DOC-2D9D63E2D3B3",
-    "title": "『龍が如く』シリーズ20周年 超ハイペースでタイトルをリリースし続けるエンジニアチームの秘密",
-    "sourceFormat": "UNKNOWN",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [],
-    "domains": [],
-    "canonicalUrl": "https://drive.google.com/file/d/10IuJqaUNjtcVHONb66e2leHyb3a2UkZv/view",
-    "thumbnail": null
-  },
-  {
     "resourceId": "RES-DOC-9EDDB022345B",
     "documentId": "DOC-6CE36A9C2BA7",
     "title": "AVBOIT_SIG2025_MDROBOT-final",
@@ -122,32 +110,6 @@
     "canonicalUrl": "https://drive.google.com/file/d/12bsaVMrX9VUd9WtEKYp93162wCvGP4RT/view"
   },
   {
-    "resourceId": "RES-20260724-014",
-    "documentId": "DOC-69E349CD6012",
-    "title": "学生・若手必見！テクニカルアーティスト大全",
-    "sourceFormat": "UNKNOWN",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [],
-    "domains": [],
-    "canonicalUrl": "https://drive.google.com/file/d/131nCmLyqyOLKTcntqW-hy1ftysMv3MHh/view",
-    "thumbnail": null
-  },
-  {
-    "resourceId": "RES-20260724-004",
-    "documentId": "DOC-CC8BEEEB0CF4",
-    "title": "自分流 MMORPG ロードナインでの先行適用事例から学ぶ Unity の CoreCLR 移行",
-    "sourceFormat": "UNKNOWN",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [],
-    "domains": [
-      "Programming"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/13EBcExB-Vi3K8Nmcu4Mj6m0TvtR2i2MG/view",
-    "thumbnail": null
-  },
-  {
     "resourceId": "RES-20260812-037",
     "documentId": "DOC-AF0E226E0351",
     "title": "『モンスターストライク』 の運営に伴走する！",
@@ -240,21 +202,6 @@
     "thumbnail": null
   },
   {
-    "resourceId": "RES-20260724-013",
-    "documentId": "DOC-C33889A9793E",
-    "title": "なぜ勉強会だけでは浸透しないのか―数百人規模の組織でコーディングエージェントを当たり前にした戦略とその結果―",
-    "sourceFormat": "GOOGLE_SLIDES",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [],
-    "domains": [
-      "AI",
-      "Tools"
-    ],
-    "canonicalUrl": "https://docs.google.com/presentation/d/16IYHBd0PoJJnN21JPx8RuwlhG3iomGHp/edit",
-    "thumbnail": null
-  },
-  {
     "resourceId": "RES-20260812-033",
     "documentId": "DOC-8E223BFD4F8E",
     "title": "大量のデータから「いい感じに」抽選する時 系列バケット式抽選法",
@@ -267,20 +214,6 @@
     ],
     "domains": [],
     "canonicalUrl": "https://drive.google.com/file/d/16YCdrP1NAUyg_EWqol3deC41VaHkhsop/view"
-  },
-  {
-    "resourceId": "RES-20260724-008",
-    "documentId": "DOC-B3DAD52B1A88",
-    "title": "グラフィックス基盤によるVAT活用 ─『使える技術』として組織に届ける",
-    "sourceFormat": "UNKNOWN",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [],
-    "domains": [
-      "Graphics"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/16av5icVtUG7XF3-SfM39aFeryfwEh3G9/view",
-    "thumbnail": null
   },
   {
     "resourceId": "RES-20260812-052",
@@ -347,18 +280,6 @@
     ],
     "domains": [],
     "canonicalUrl": "https://drive.google.com/file/d/187oCS2D4G1QCmurWFwAgJCSb010ZzKRw/view"
-  },
-  {
-    "resourceId": "RES-20260724-009",
-    "documentId": "DOC-8B90A3BDD17D",
-    "title": "Cinemachineを活用した魅力的なカメラワークを実現するための技術",
-    "sourceFormat": "UNKNOWN",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [],
-    "domains": [],
-    "canonicalUrl": "https://drive.google.com/file/d/18Fj-tyOjoie39IXprJsSVwW6Ip2aHjPX/view",
-    "thumbnail": null
   },
   {
     "resourceId": "RES-DOC-BAE0A54B76FF",
@@ -634,20 +555,6 @@
     "canonicalUrl": "https://drive.google.com/file/d/1GtPxX1jI6lriw4WUnVnuxkzEgURFD8Wg/view"
   },
   {
-    "resourceId": "RES-20260724-005",
-    "documentId": "DOC-5D22B2F7933A",
-    "title": "使いやすいエフェクト素材の効率的な制作とライブラリ化",
-    "sourceFormat": "UNKNOWN",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [],
-    "domains": [
-      "DCC"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/1GuaNUJBB893aE_fiUBrm7c2RKJMtdyhJ/view",
-    "thumbnail": null
-  },
-  {
     "resourceId": "RES-20260812-025",
     "documentId": "DOC-484BFE4C155C",
     "title": "CEDEC2026_Mori_Bike_提出用_前半",
@@ -688,35 +595,6 @@
     "tags": [],
     "domains": [],
     "canonicalUrl": "https://drive.google.com/file/d/1Nayeo5jyIdX6JEYzcRTOS3XYxE7Mrwr6/view",
-    "thumbnail": null
-  },
-  {
-    "resourceId": "RES-20260724-010",
-    "documentId": "DOC-BBED475AFAE2",
-    "title": "モバイルゲーム開発におけるエージェント技術活用への試行錯誤",
-    "sourceFormat": "UNKNOWN",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [],
-    "domains": [
-      "AI",
-      "GameDevelopment"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/1O8QvY6EN5URKT7gt23lNsHYnwh1KQyjo/view",
-    "thumbnail": null
-  },
-  {
-    "resourceId": "RES-20260724-016",
-    "documentId": "DOC-DF596829D485",
-    "title": "縦でも横でもない第3のインタラクティブ音楽―同一MIDIによる調性感情リアルタイム制御―",
-    "sourceFormat": "GOOGLE_SLIDES",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [],
-    "domains": [
-      "Audio"
-    ],
-    "canonicalUrl": "https://docs.google.com/presentation/d/1OEjiWOW4HaDS2W3V3RpBSV6WVQbrVXeZ/edit",
     "thumbnail": null
   },
   {
@@ -855,35 +733,6 @@
       "Programming"
     ],
     "canonicalUrl": "https://drive.google.com/file/d/1RdlRIiCoKuImu8ierV1CvdIPcdfVQz6b/view"
-  },
-  {
-    "resourceId": "RES-20260724-011",
-    "documentId": "DOC-69C0C10F5565",
-    "title": "ダンジョン飯の音響",
-    "sourceFormat": "UNKNOWN",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [],
-    "domains": [
-      "Audio"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/1RniwBLUF1F3jogD5qZf0OUC_k7K5yGrj/view",
-    "thumbnail": null
-  },
-  {
-    "resourceId": "RES-20260724-007",
-    "documentId": "DOC-4AB9F2DB5265",
-    "title": "Perforce P4とAIをつなぐ―エンジニアもデザイナーも使えるAI連携機能の今とこれから―",
-    "sourceFormat": "UNKNOWN",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [],
-    "domains": [
-      "AI",
-      "Tools"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/1S_PtoYRY4QGukgjAlDow4F0hOQYr2fLx/view",
-    "thumbnail": null
   },
   {
     "resourceId": "RES-20260812-023",
@@ -1372,36 +1221,6 @@
     "canonicalUrl": "https://drive.google.com/file/d/1i1FK7Ig1EzsaNEIl1vlLyiTF-k33dC_t/view"
   },
   {
-    "resourceId": "RES-20260724-015",
-    "documentId": "DOC-42BBDCFDF6B5",
-    "title": "『派手さと遊びやすさ！』～俯瞰型バトルで挑んだVFXアーティストの工夫～",
-    "sourceFormat": "UNKNOWN",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [],
-    "domains": [
-      "Graphics",
-      "GameDevelopment"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/1iFchQtPcphKhr0cjYAWOUCulV_he8ctj/view",
-    "thumbnail": null
-  },
-  {
-    "resourceId": "RES-20260724-006",
-    "documentId": "DOC-C34DCF2D6BA7",
-    "title": "Pokémon TCG Pocket の安定したバトル実装を支えるカードロジック基盤設計",
-    "sourceFormat": "UNKNOWN",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [],
-    "domains": [
-      "Programming",
-      "GameDevelopment"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/1iG8hFJwSVs28JGZ820FhABfwheJwE_AJ/view",
-    "thumbnail": null
-  },
-  {
     "resourceId": "RES-20260812-038",
     "documentId": "DOC-12D46B399AE4",
     "title": "モニター色管理による制作環境の効率化/ ColorEdge初のOLEDモデル登場！",
@@ -1511,20 +1330,6 @@
     "tags": [],
     "domains": [],
     "canonicalUrl": "https://drive.google.com/file/d/1lcp3SKZN2BYUdS5mWmKeBkVK9JDj2OXf/view",
-    "thumbnail": null
-  },
-  {
-    "resourceId": "RES-20260724-003",
-    "documentId": "DOC-E271E7E24CD8",
-    "title": "Autodesk Flow Studio 徹底解説 ～ゲーム制作とAI活用～",
-    "sourceFormat": "UNKNOWN",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [],
-    "domains": [
-      "DCC"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/1mpBBMCRT7qn8g739xQZHgb3Qjo8tqEGY/view",
     "thumbnail": null
   },
   {
@@ -1881,29 +1686,6 @@
       "GameDevelopment"
     ],
     "canonicalUrl": "https://drive.google.com/file/d/1vbtIa3I4mv2L98E6PC6EJ-oK6Uq3IHE5/view"
-  },
-  {
-    "resourceId": "RES-20260729-001",
-    "documentId": "DOC-D0D33C4C4D6D",
-    "title": "Unity AI Knowledge Product・Execution Profile・Safe Tool分離 Decision",
-    "sourceFormat": "GOOGLE_DOC",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [
-      "KnowledgeProduct",
-      "TaskContract",
-      "ExecutionProfile",
-      "GenericPlanning",
-      "PersonalFullControl",
-      "TeamSafeImport",
-      "TAA",
-      "ProjectContext"
-    ],
-    "domains": [
-      "Graphics"
-    ],
-    "canonicalUrl": "https://docs.google.com/document/d/1wKuhXLAFhJcynM1lgyPkuaG2HNwJT91Btolu-4Te3B4/edit",
-    "thumbnail": null
   },
   {
     "resourceId": "RES-20260812-008",
