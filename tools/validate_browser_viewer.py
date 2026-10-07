@@ -40,9 +40,15 @@ def main() -> None:
     if "viewer-frame" not in viewer or "viewer.js" not in viewer:
         errors.append("viewer.html must include the Viewer iframe and viewer.js")
     if "drive.google.com/file/d/" not in viewer_js or "/preview" not in viewer_js:
-        errors.append("Viewer must use Google Drive /preview routing")
-    if "docs.google.com/presentation" in viewer_js:
-        errors.append("Viewer must not use Google Slides edit routing")
+        errors.append("Viewer must use Google Drive /preview routing for file Originals")
+    for token in (
+        "format === 'GOOGLE_DOC'",
+        "docs.google.com/document/d/",
+        "format === 'GOOGLE_SLIDES'",
+        "docs.google.com/presentation/d/",
+    ):
+        if token not in viewer_js:
+            errors.append(f"Viewer must preserve native Google document routing: {token}")
     if "requestFullscreen" not in viewer_js:
         errors.append("Viewer must support Full Screen")
 
