@@ -23,10 +23,21 @@
     return;
   }
 
-  const previewUrl = `https://drive.google.com/file/d/${encodeURIComponent(fileId)}/preview`;
-  const originalUrl = `https://drive.google.com/file/d/${encodeURIComponent(fileId)}/view`;
+  const encodedId = encodeURIComponent(fileId);
+  let previewUrl;
+  let originalUrl;
+  if (format === 'GOOGLE_DOC') {
+    previewUrl = `https://docs.google.com/document/d/${encodedId}/preview`;
+    originalUrl = `https://docs.google.com/document/d/${encodedId}/edit`;
+  } else if (format === 'GOOGLE_SLIDES') {
+    previewUrl = `https://docs.google.com/presentation/d/${encodedId}/preview`;
+    originalUrl = `https://docs.google.com/presentation/d/${encodedId}/edit`;
+  } else {
+    previewUrl = `https://drive.google.com/file/d/${encodedId}/preview`;
+    originalUrl = `https://drive.google.com/file/d/${encodedId}/view`;
+  }
 
-  metaElement.textContent = `${format || 'DOCUMENT'} · Google Drive Preview`;
+  metaElement.textContent = `${format || 'DOCUMENT'} · Google Preview`;
   driveLink.href = originalUrl;
   frame.src = previewUrl;
 
