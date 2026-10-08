@@ -1,0 +1,44 @@
+[
+  {
+    "id": "RES-20260716-007",
+    "kind": "repository",
+    "title": "FidelityFX-CAS GitHub Repository",
+    "url": "https://github.com/GPUOpen-Effects/FidelityFX-CAS",
+    "canonicalUrl": "https://github.com/GPUOpen-Effects/FidelityFX-CAS",
+    "tags": [
+      "AMD",
+      "GitHub",
+      "ComputeShader",
+      "PostProcessing",
+      "Upscaling"
+    ],
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "topics": [
+      "CAS / HLSL / Compute Shader / Integration"
+    ]
+  },
+  {
+    "id": "RES-20260716-008",
+    "kind": "repository",
+    "title": "FidelityFX Super Resolution 2 (FSR2) GitHub Repository",
+    "url": "https://github.com/GPUOpen-Effects/FidelityFX-FSR2",
+    "canonicalUrl": "https://github.com/GPUOpen-Effects/FidelityFX-FSR2",
+    "tags": [
+      "AMD",
+      "GitHub",
+      "Upscaling",
+      "Anti-Aliasing",
+      "ComputeShader"
+    ],
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "topics": [
+      "FSR2 / Temporal Upscaling / Reactive Mask / Motion Vector / RCAS"
+    ]
+  }
+]

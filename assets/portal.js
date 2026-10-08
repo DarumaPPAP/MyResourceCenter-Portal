@@ -25,7 +25,7 @@
     const submit = () => {
       const value = globalSearch.value.trim();
       const requested = document.querySelector('[data-search-target]')?.value;
-      const target = requested === 'websites.html' ? requested : 'documents.html';
+      const target = ['websites.html','repositories.html'].includes(requested) ? requested : 'documents.html';
       location.href = value ? `${target}?q=${encodeURIComponent(value)}` : target;
     };
     globalSearch.addEventListener('keydown', event => {
@@ -43,6 +43,7 @@
   });
 
   const items = [
+    { href: 'repositories.html', label: 'リポジトリ', icon: '⌘' },
     { href: 'collections.html', label: 'コレクション', icon: '◫' },
     { href: 'taxonomy.html', label: '分野・タグ', icon: '#' },
     { href: 'trend.html', label: 'トレンド', icon: '↗' }
@@ -68,7 +69,7 @@
     });
   });
 
-  const activePage = ({ 'document.html': 'documents.html', 'website.html': 'websites.html', 'collection.html': 'collections.html' })[current] || current;
+  const activePage = ({ 'document.html': 'documents.html', 'website.html': 'websites.html', 'repository.html': 'repositories.html', 'collection.html': 'collections.html' })[current] || current;
   document.querySelectorAll('.side-nav, .mobile-nav').forEach(nav => {
     nav.setAttribute('aria-label', nav.classList.contains('side-nav') ? 'メインナビゲーション' : 'モバイルナビゲーション');
     nav.querySelectorAll('a').forEach(link => {

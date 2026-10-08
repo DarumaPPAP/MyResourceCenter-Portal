@@ -76,3 +76,11 @@ Validatorは次を確認します。
 ## Trend Radar
 
 `trend.html` はゲーム開発・Graphics・AI・Engine・Tools・Researchの短期Discovery Feedです。正式Knowledgeとは分離し、最大3日・1日最大100件の運用を維持します。
+
+## Repositories
+
+`repositories.html` lists implementation references from the derived, allowlisted public `catalog/repositories.json`. The canonical source remains MyResourceCenter resources shards; Portal never edits repository metadata. Search matches title, URL-derived owner/name, topics, tags and any source-confirmed public summary. Tag and keyword filters persist in the URL, with reset and 20-result pagination. Cards open GitHub in a new tab; separate detail links route to `repository.html?id=RES-*`. Inline local code glyphs replace Website OGP imagery.
+
+Repository details show only published metadata, canonical Collection membership and explicit Relations. Shared routing covers document/website/repository; Home search and desktop/mobile nav include implementation repositories. Both themes, keyboard focus, 44px mobile controls and wrapping identities are preserved. No README, source tree, file viewer, volatile GitHub facts or additional Home feature section is included.
+
+Validation: `node tools/test_repositories.cjs` and `npm run test:browser-smoke`, alongside the existing full Portal validation commands. Public Repository fields are independently allowlisted and validated; summary is not added to the shared Document projection.

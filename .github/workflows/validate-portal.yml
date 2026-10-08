@@ -32,6 +32,7 @@ jobs:
         run: python tools/validate_trend_candidates.py
       - name: Test filter state and Human Portal presentation
         run: |
+          node tools/test_repositories.cjs
           node tools/test_filter_state.cjs
           node tools/test_human_portal.cjs
           node tools/test_home.cjs

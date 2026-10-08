@@ -127,7 +127,8 @@
   function resourceHref(resource, websiteIds = new Set()) {
     if (!resource) return '';
     if (resource.kind === 'document') return `document.html?id=${encodeURIComponent(resource.id)}`;
-    if (websiteIds.has(resource.id)) return `website.html?id=${encodeURIComponent(resource.id)}`;
+    if (resource.kind === 'repository') return `repository.html?id=${encodeURIComponent(resource.id)}`;
+    if (resource.kind === 'website' || websiteIds.has(resource.id)) return `website.html?id=${encodeURIComponent(resource.id)}`;
     return safeExternalUrl(resource.url || resource.canonicalUrl || '');
   }
 

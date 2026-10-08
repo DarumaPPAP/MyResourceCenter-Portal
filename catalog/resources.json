@@ -613,13 +613,12 @@
     "title": "FidelityFX-CAS GitHub Repository",
     "url": "https://github.com/GPUOpen-Effects/FidelityFX-CAS",
     "canonicalUrl": "https://github.com/GPUOpen-Effects/FidelityFX-CAS",
-    "kind": "website",
+    "kind": "repository",
     "topics": [
       "CAS / HLSL / Compute Shader / Integration"
     ],
     "reviewState": "Reviewed",
     "useState": "Reference",
-    "category": "Tech",
     "tags": [
       "AMD",
       "GitHub",
@@ -633,13 +632,12 @@
     "title": "FidelityFX Super Resolution 2 (FSR2) GitHub Repository",
     "url": "https://github.com/GPUOpen-Effects/FidelityFX-FSR2",
     "canonicalUrl": "https://github.com/GPUOpen-Effects/FidelityFX-FSR2",
-    "kind": "website",
+    "kind": "repository",
     "topics": [
       "FSR2 / Temporal Upscaling / Reactive Mask / Motion Vector / RCAS"
     ],
     "reviewState": "Reviewed",
     "useState": "Reference",
-    "category": "Tech",
     "tags": [
       "AMD",
       "GitHub",

@@ -1,15 +1,16 @@
 {
-  "schemaVersion": "1.5.0",
-  "sourceCommit": "ee227ad1a0c59fe95729175317018abff9099a3c",
-  "generatedAt": "2026-10-08T06:29:40.858221+00:00",
+  "schemaVersion": "1.6.0",
+  "sourceCommit": "55d4a4d65f5301d7519a206daaaa34cff38ca420",
+  "generatedAt": "2026-10-08T13:24:13.649809+00:00",
   "counts": {
     "resources": 205,
-    "websites": 103,
+    "websites": 101,
     "website-facets": 7,
     "documents": 100,
     "taxonomy": 64,
     "relations": 23,
     "collections": 12,
-    "document-presentation": 102
+    "document-presentation": 102,
+    "repositories": 2
   }
 }

@@ -729,54 +729,6 @@
     "previewImage": "assets/generated/link-previews/RES-20260716-006.webp"
   },
   {
-    "id": "RES-20260716-007",
-    "title": "FidelityFX-CAS GitHub Repository",
-    "url": "https://github.com/GPUOpen-Effects/FidelityFX-CAS",
-    "canonicalUrl": "https://github.com/GPUOpen-Effects/FidelityFX-CAS",
-    "publisher": "AMD GPUOpen-Effects",
-    "kind": "website",
-    "category": "Tech",
-    "topics": [
-      "CAS / HLSL / Compute Shader / Integration"
-    ],
-    "reviewState": "Reviewed",
-    "useState": "Reference",
-    "confidence": "Unverified",
-    "freshness": "Unknown",
-    "tags": [
-      "AMD",
-      "GitHub",
-      "ComputeShader",
-      "PostProcessing",
-      "Upscaling"
-    ],
-    "previewImage": "assets/generated/link-previews/RES-20260716-007.webp"
-  },
-  {
-    "id": "RES-20260716-008",
-    "title": "FidelityFX Super Resolution 2 (FSR2) GitHub Repository",
-    "url": "https://github.com/GPUOpen-Effects/FidelityFX-FSR2",
-    "canonicalUrl": "https://github.com/GPUOpen-Effects/FidelityFX-FSR2",
-    "publisher": "AMD GPUOpen-Effects",
-    "kind": "website",
-    "category": "Tech",
-    "topics": [
-      "FSR2 / Temporal Upscaling / Reactive Mask / Motion Vector / RCAS"
-    ],
-    "reviewState": "Reviewed",
-    "useState": "Reference",
-    "confidence": "Unverified",
-    "freshness": "Unknown",
-    "tags": [
-      "AMD",
-      "GitHub",
-      "Upscaling",
-      "Anti-Aliasing",
-      "ComputeShader"
-    ],
-    "previewImage": "assets/generated/link-previews/RES-20260716-008.webp"
-  },
-  {
     "id": "RES-20260717-001",
     "title": "FFT（高速フーリエ変換）を完全に理解する話",
     "url": "https://qiita.com/ageprocpp/items/0d63d4ed80de4a35fe79",
