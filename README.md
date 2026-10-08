@@ -31,7 +31,7 @@ Private MyResourceCenterからPortalへの同期は、public projection + Valida
 
 `documents.html` は公開Document Presentationを横断表示します。Thumbnail / 実Title優先で、Search・Category・Format・Tagsから探し、Portal Viewer → Google Drive Originalへ進めます。
 
-- 101 Document Presentations（66件の実Original Page 1 Thumbnail + 明示Fallback）
+- 102 Document Presentations（66件の実Original Page 1 Thumbnail + 明示Fallback）
 - Legacy inventory: 100 Original Documents
 - PDF: 79
 - PPTX: 21

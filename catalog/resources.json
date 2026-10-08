@@ -923,6 +923,21 @@
     ]
   },
   {
+    "id": "RES-20260724-009",
+    "title": "Cinemachineを活用した 魅力的なカメラワークを実現するための技術 〜 IDOLY PRIDE 360°ライブでの活用例 〜",
+    "url": "https://drive.google.com/file/d/17DkvOg7oeO9etzmNqKpleJqwwcDEYEbG/view",
+    "canonicalUrl": "https://drive.google.com/file/d/17DkvOg7oeO9etzmNqKpleJqwwcDEYEbG/view",
+    "kind": "document",
+    "topic": "Cinemachine / 360° Live",
+    "topics": [
+      "Cinemachine",
+      "360° Live"
+    ],
+    "reviewState": "Triaged",
+    "useState": "ToTry",
+    "tags": []
+  },
+  {
     "id": "RES-20260724-017",
     "title": "千葉大学 CG関連研究ニュース（詳細取得待ち）",
     "url": "https://www.chiba-u.ac.jp/news/research-collab/cg.html",
@@ -1482,32 +1497,76 @@
     ]
   },
   {
-    "id": "RES-DOC-9EDDB022345B",
-    "title": "AVBOIT_SIG2025_MDROBOT-final",
-    "url": "https://drive.google.com/file/d/10sUfQ6bC9Xba1PAnoTZEpdRlait8lFUk/view",
-    "canonicalUrl": "https://drive.google.com/file/d/10sUfQ6bC9Xba1PAnoTZEpdRlait8lFUk/view",
+    "id": "RES-20260815-003",
+    "title": "Ray tracing the world of Assassin's Creed Shadows",
+    "url": "https://drive.google.com/file/d/1UvRLS-vA9eTU_EQ2n7rVMd5JfrrGZ9QL/view",
+    "canonicalUrl": "https://drive.google.com/file/d/1UvRLS-vA9eTU_EQ2n7rVMd5JfrrGZ9QL/view",
     "kind": "document",
     "topics": [],
     "reviewState": "Triaged",
     "useState": "Reference",
     "tags": [
-      "Transparency",
-      "OIT",
-      "AVBOIT",
-      "Voxel",
-      "Blending"
+      "RayTracing",
+      "RTGI",
+      "GPUDriven",
+      "SceneDescription",
+      "PlatformScalability",
+      "Ubisoft"
     ]
   },
   {
-    "id": "RES-DOC-B6C93E39E138",
-    "title": "Unity 6 で生産性を高めるためのヒント",
-    "url": "https://drive.google.com/file/d/14ALhRhcdxI062VEnnjz7okljePHN3xt_/view",
-    "canonicalUrl": "https://drive.google.com/file/d/14ALhRhcdxI062VEnnjz7okljePHN3xt_/view",
+    "id": "RES-20260816-004",
+    "title": "Advances_2024_Caldera_Atvi_new_template",
+    "url": "https://drive.google.com/file/d/1jiChGgro-bgeh398mF5V-vRUIheKanZP/view",
+    "canonicalUrl": "https://drive.google.com/file/d/1jiChGgro-bgeh398mF5V-vRUIheKanZP/view",
     "kind": "document",
     "topics": [],
     "reviewState": "Triaged",
     "useState": "Reference",
-    "tags": []
+    "tags": [
+      "OpenUSD",
+      "Dataset",
+      "Warzone",
+      "SceneGraph",
+      "AssetPipeline",
+      "PlayerData",
+      "Validation"
+    ]
+  },
+  {
+    "id": "RES-20260816-005",
+    "title": "Advances_SIGGRAPH_2024_Neural_LightGrid - 29.07",
+    "url": "https://drive.google.com/file/d/1nMUHUxJDiHzFET5cQwUanW4652DuL9zU/view",
+    "canonicalUrl": "https://drive.google.com/file/d/1nMUHUxJDiHzFET5cQwUanW4652DuL9zU/view",
+    "kind": "document",
+    "topics": [],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "tags": [
+      "MachineLearning",
+      "NeuralLighting",
+      "LightGrid",
+      "PrecomputedLighting",
+      "ProbeWeighting"
+    ]
+  },
+  {
+    "id": "RES-20260816-006",
+    "title": "Advances_SIGGRAPH_2024_VisibilityVRS-SIGGRAPH_Advances_2024",
+    "url": "https://drive.google.com/file/d/1ERe4e4zE-U79lv8QPPV1VxbJXxDJOi37/view",
+    "canonicalUrl": "https://drive.google.com/file/d/1ERe4e4zE-U79lv8QPPV1VxbJXxDJOi37/view",
+    "kind": "document",
+    "topics": [],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "tags": [
+      "VisibilityBuffer",
+      "VRS",
+      "WaveIntrinsics",
+      "QuadUtilization",
+      "GPUOptimization",
+      "AlanWake2"
+    ]
   },
   {
     "id": "RES-20260816-007",
@@ -1531,141 +1590,6 @@
     ]
   },
   {
-    "id": "RES-DOC-332BF1D3788A",
-    "title": "アーティストのための2Dゲームアート、アニメーション、ライティング（Unity 6.3 LTS版）",
-    "url": "https://drive.google.com/file/d/14pIpD5Q738S6IrPOT9f6FJgd2J512HU1/view",
-    "canonicalUrl": "https://drive.google.com/file/d/14pIpD5Q738S6IrPOT9f6FJgd2J512HU1/view",
-    "kind": "document",
-    "topics": [],
-    "reviewState": "Triaged",
-    "useState": "Reference",
-    "tags": []
-  },
-  {
-    "id": "RES-DOC-BAE0A54B76FF",
-    "title": "プロジェクト整理と バージョン管理の ベストプラクティス",
-    "url": "https://drive.google.com/file/d/18L53H2nsO4aBDqqO7VWJWFBDaZPaHYRx/view",
-    "canonicalUrl": "https://drive.google.com/file/d/18L53H2nsO4aBDqqO7VWJWFBDaZPaHYRx/view",
-    "kind": "document",
-    "topics": [],
-    "reviewState": "Triaged",
-    "useState": "Reference",
-    "tags": []
-  },
-  {
-    "id": "RES-20260816-006",
-    "title": "Advances_SIGGRAPH_2024_VisibilityVRS-SIGGRAPH_Advances_2024",
-    "url": "https://drive.google.com/file/d/1ERe4e4zE-U79lv8QPPV1VxbJXxDJOi37/view",
-    "canonicalUrl": "https://drive.google.com/file/d/1ERe4e4zE-U79lv8QPPV1VxbJXxDJOi37/view",
-    "kind": "document",
-    "topics": [],
-    "reviewState": "Triaged",
-    "useState": "Reference",
-    "tags": [
-      "VisibilityBuffer",
-      "VRS",
-      "WaveIntrinsics",
-      "QuadUtilization",
-      "GPUOptimization",
-      "AlanWake2"
-    ]
-  },
-  {
-    "id": "RES-DOC-9CA90BB066DA",
-    "title": "Strand Hair in IJGC - Final Slides (Post-Conference)",
-    "url": "https://drive.google.com/file/d/1EcWb7hDcGdfLmeooDze7yFad3KvTzKKz/view",
-    "canonicalUrl": "https://drive.google.com/file/d/1EcWb7hDcGdfLmeooDze7yFad3KvTzKKz/view",
-    "kind": "document",
-    "topics": [],
-    "reviewState": "Triaged",
-    "useState": "Reference",
-    "tags": [
-      "Hair",
-      "Fur",
-      "SoftwareRasterization",
-      "VisibilityBuffer",
-      "Marschner",
-      "LOD",
-      "AsyncCompute",
-      "IndianaJones"
-    ]
-  },
-  {
-    "id": "RES-DOC-ADA0E774AA34",
-    "title": "Unity で仮想現実体験と複合現実体験を作成",
-    "url": "https://drive.google.com/file/d/1Nayeo5jyIdX6JEYzcRTOS3XYxE7Mrwr6/view",
-    "canonicalUrl": "https://drive.google.com/file/d/1Nayeo5jyIdX6JEYzcRTOS3XYxE7Mrwr6/view",
-    "kind": "document",
-    "topics": [],
-    "reviewState": "Triaged",
-    "useState": "Reference",
-    "tags": []
-  },
-  {
-    "id": "RES-20260816-012",
-    "title": "Frostbite PB and unified volumetrics",
-    "url": "https://drive.google.com/file/d/1OkbS7E0wkly1drrra9afwBK1Zco8bT_k/view",
-    "canonicalUrl": "https://drive.google.com/file/d/1OkbS7E0wkly1drrra9afwBK1Zco8bT_k/view",
-    "kind": "document",
-    "topics": [],
-    "reviewState": "Triaged",
-    "useState": "Reference",
-    "tags": [
-      "Volumetric",
-      "Froxel",
-      "VBuffer",
-      "ParticipatingMedia",
-      "TemporalIntegration",
-      "VolumetricShadow",
-      "Performance",
-      "Frostbite"
-    ]
-  },
-  {
-    "id": "RES-DOC-7668EF4637C8",
-    "title": "上級 Unity クリエイター 向けのユニバーサルレンダー パイプライン（URP）",
-    "url": "https://drive.google.com/file/d/1Pv-J64AcO4Mqg-5DSe-4AnV_hedXEPcL/view",
-    "canonicalUrl": "https://drive.google.com/file/d/1Pv-J64AcO4Mqg-5DSe-4AnV_hedXEPcL/view",
-    "kind": "document",
-    "topics": [],
-    "reviewState": "Triaged",
-    "useState": "Reference",
-    "tags": []
-  },
-  {
-    "id": "RES-DOC-A767C1CB32DC",
-    "title": "Unity の 上級開発者向け Data-Oriented",
-    "url": "https://drive.google.com/file/d/1Q408uAQyHsqslMrb6w9OvYoTzDhlcJbq/view",
-    "canonicalUrl": "https://drive.google.com/file/d/1Q408uAQyHsqslMrb6w9OvYoTzDhlcJbq/view",
-    "kind": "document",
-    "topics": [],
-    "reviewState": "Triaged",
-    "useState": "Reference",
-    "tags": []
-  },
-  {
-    "id": "RES-DOC-4B7300DA10FA",
-    "title": "Unity によるコンソール と PC 向けゲームの パフォーマンス最適化",
-    "url": "https://drive.google.com/file/d/1QJjOJeDpBVqyoNDxT9P3CTICjQl9fiml/view",
-    "canonicalUrl": "https://drive.google.com/file/d/1QJjOJeDpBVqyoNDxT9P3CTICjQl9fiml/view",
-    "kind": "document",
-    "topics": [],
-    "reviewState": "Triaged",
-    "useState": "Reference",
-    "tags": []
-  },
-  {
-    "id": "RES-DOC-123930B56625",
-    "title": "Unity 上級開発者向け UI Toolkit",
-    "url": "https://drive.google.com/file/d/1RdlRIiCoKuImu8ierV1CvdIPcdfVQz6b/view",
-    "canonicalUrl": "https://drive.google.com/file/d/1RdlRIiCoKuImu8ierV1CvdIPcdfVQz6b/view",
-    "kind": "document",
-    "topics": [],
-    "reviewState": "Triaged",
-    "useState": "Reference",
-    "tags": []
-  },
-  {
     "id": "RES-20260816-008",
     "title": "Apers_Advances-s2024_Shipping-Dynamic-GI",
     "url": "https://drive.google.com/file/d/1Tox5QnuDzWDQ1Q_PVVeZSEbTv-satADk/view",
@@ -1682,57 +1606,6 @@
       "DynamicGI",
       "Production"
     ]
-  },
-  {
-    "id": "RES-20260815-003",
-    "title": "Ray tracing the world of Assassin's Creed Shadows",
-    "url": "https://drive.google.com/file/d/1UvRLS-vA9eTU_EQ2n7rVMd5JfrrGZ9QL/view",
-    "canonicalUrl": "https://drive.google.com/file/d/1UvRLS-vA9eTU_EQ2n7rVMd5JfrrGZ9QL/view",
-    "kind": "document",
-    "topics": [],
-    "reviewState": "Triaged",
-    "useState": "Reference",
-    "tags": [
-      "RayTracing",
-      "RTGI",
-      "GPUDriven",
-      "SceneDescription",
-      "PlatformScalability",
-      "Ubisoft"
-    ]
-  },
-  {
-    "id": "RES-DOC-748284CE92A0",
-    "title": "Unity ゲームの プロファイリングに 関する決定版ガイド",
-    "url": "https://drive.google.com/file/d/1Z02pwqgEjymi8PvctJVQdUBLKC2F7-3S/view",
-    "canonicalUrl": "https://drive.google.com/file/d/1Z02pwqgEjymi8PvctJVQdUBLKC2F7-3S/view",
-    "kind": "document",
-    "topics": [],
-    "reviewState": "Triaged",
-    "useState": "Reference",
-    "tags": []
-  },
-  {
-    "id": "RES-DOC-7E71346B1CFB",
-    "title": "Unity における モバイル、XR、ウェブの パフォーマンス最適化",
-    "url": "https://drive.google.com/file/d/1Zx9_V8at8JvSwuy2buE0X9q0NpYXJV9a/view",
-    "canonicalUrl": "https://drive.google.com/file/d/1Zx9_V8at8JvSwuy2buE0X9q0NpYXJV9a/view",
-    "kind": "document",
-    "topics": [],
-    "reviewState": "Triaged",
-    "useState": "Reference",
-    "tags": []
-  },
-  {
-    "id": "RES-DOC-E6B44FC249EA",
-    "title": "上級 Unity クリエイター 向けのユニバーサル",
-    "url": "https://drive.google.com/file/d/1bEGgkdhZe1vvV4fZUUoPY2UdWSREriZf/view",
-    "canonicalUrl": "https://drive.google.com/file/d/1bEGgkdhZe1vvV4fZUUoPY2UdWSREriZf/view",
-    "kind": "document",
-    "topics": [],
-    "reviewState": "Triaged",
-    "useState": "Reference",
-    "tags": []
   },
   {
     "id": "RES-20260816-010",
@@ -1755,10 +1628,68 @@
     ]
   },
   {
-    "id": "RES-DOC-F7C247F992F1",
-    "title": "ユニバーサルレンダーパイプライン(URP)で人気のシェーダーやビジュアルエフェクトを作成 ー Unity 6 版",
-    "url": "https://drive.google.com/file/d/1cA1T5_wAejmWzrMmX83YsFxoCZGJKxKD/view",
-    "canonicalUrl": "https://drive.google.com/file/d/1cA1T5_wAejmWzrMmX83YsFxoCZGJKxKD/view",
+    "id": "RES-20260816-012",
+    "title": "Frostbite PB and unified volumetrics",
+    "url": "https://drive.google.com/file/d/1OkbS7E0wkly1drrra9afwBK1Zco8bT_k/view",
+    "canonicalUrl": "https://drive.google.com/file/d/1OkbS7E0wkly1drrra9afwBK1Zco8bT_k/view",
+    "kind": "document",
+    "topics": [],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "tags": [
+      "Volumetric",
+      "Froxel",
+      "VBuffer",
+      "ParticipatingMedia",
+      "TemporalIntegration",
+      "VolumetricShadow",
+      "Performance",
+      "Frostbite"
+    ]
+  },
+  {
+    "id": "RES-20260816-013",
+    "title": "ORCA Siggraph r3.4_ Advances",
+    "url": "https://drive.google.com/file/d/1olyBBMv7ioCNT0VayTXI48rbunSXM1jx/view",
+    "canonicalUrl": "https://drive.google.com/file/d/1olyBBMv7ioCNT0VayTXI48rbunSXM1jx/view",
+    "kind": "document",
+    "topics": [],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "tags": [
+      "PathTracing",
+      "ORCA",
+      "RadianceCache",
+      "GPUHashMap",
+      "VoxelHierarchy",
+      "EASeed"
+    ]
+  },
+  {
+    "id": "RES-20260816-014",
+    "title": "SIGGRAPH Advances 2024 - Hemispheres Presentation Notes",
+    "url": "https://drive.google.com/file/d/1sy6vys_8cikTUBdBwZe-q5hQtHdL_suw/view",
+    "canonicalUrl": "https://drive.google.com/file/d/1sy6vys_8cikTUBdBwZe-q5hQtHdL_suw/view",
+    "kind": "document",
+    "topics": [],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "tags": [
+      "Lighting",
+      "DirectionalLightmap",
+      "IrradZ",
+      "HHD",
+      "HLSH",
+      "SphericalHarmonics",
+      "AmbientOcclusion",
+      "CallOfDuty"
+    ]
+  },
+  {
+    "id": "RES-DOC-123930B56625",
+    "title": "Unity 上級開発者向け UI Toolkit",
+    "url": "https://drive.google.com/file/d/1RdlRIiCoKuImu8ierV1CvdIPcdfVQz6b/view",
+    "canonicalUrl": "https://drive.google.com/file/d/1RdlRIiCoKuImu8ierV1CvdIPcdfVQz6b/view",
     "kind": "document",
     "topics": [],
     "reviewState": "Triaged",
@@ -1785,10 +1716,10 @@
     ]
   },
   {
-    "id": "RES-DOC-69452853F0A4",
-    "title": "デザインパターンとSOLIDでコードをレベルアップ",
-    "url": "https://drive.google.com/file/d/1jEI4NGOjoWdQkVLSE5qm0LPzzGlUazXK/view",
-    "canonicalUrl": "https://drive.google.com/file/d/1jEI4NGOjoWdQkVLSE5qm0LPzzGlUazXK/view",
+    "id": "RES-DOC-332BF1D3788A",
+    "title": "アーティストのための2Dゲームアート、アニメーション、ライティング（Unity 6.3 LTS版）",
+    "url": "https://drive.google.com/file/d/14pIpD5Q738S6IrPOT9f6FJgd2J512HU1/view",
+    "canonicalUrl": "https://drive.google.com/file/d/14pIpD5Q738S6IrPOT9f6FJgd2J512HU1/view",
     "kind": "document",
     "topics": [],
     "reviewState": "Triaged",
@@ -1796,23 +1727,15 @@
     "tags": []
   },
   {
-    "id": "RES-20260816-004",
-    "title": "Advances_2024_Caldera_Atvi_new_template",
-    "url": "https://drive.google.com/file/d/1jiChGgro-bgeh398mF5V-vRUIheKanZP/view",
-    "canonicalUrl": "https://drive.google.com/file/d/1jiChGgro-bgeh398mF5V-vRUIheKanZP/view",
+    "id": "RES-DOC-4B7300DA10FA",
+    "title": "Unity によるコンソール と PC 向けゲームの パフォーマンス最適化",
+    "url": "https://drive.google.com/file/d/1QJjOJeDpBVqyoNDxT9P3CTICjQl9fiml/view",
+    "canonicalUrl": "https://drive.google.com/file/d/1QJjOJeDpBVqyoNDxT9P3CTICjQl9fiml/view",
     "kind": "document",
     "topics": [],
     "reviewState": "Triaged",
     "useState": "Reference",
-    "tags": [
-      "OpenUSD",
-      "Dataset",
-      "Warzone",
-      "SceneGraph",
-      "AssetPipeline",
-      "PlayerData",
-      "Validation"
-    ]
+    "tags": []
   },
   {
     "id": "RES-DOC-4BA156E9649A",
@@ -1826,27 +1749,10 @@
     "tags": []
   },
   {
-    "id": "RES-20260816-005",
-    "title": "Advances_SIGGRAPH_2024_Neural_LightGrid - 29.07",
-    "url": "https://drive.google.com/file/d/1nMUHUxJDiHzFET5cQwUanW4652DuL9zU/view",
-    "canonicalUrl": "https://drive.google.com/file/d/1nMUHUxJDiHzFET5cQwUanW4652DuL9zU/view",
-    "kind": "document",
-    "topics": [],
-    "reviewState": "Triaged",
-    "useState": "Reference",
-    "tags": [
-      "MachineLearning",
-      "NeuralLighting",
-      "LightGrid",
-      "PrecomputedLighting",
-      "ProbeWeighting"
-    ]
-  },
-  {
-    "id": "RES-DOC-F560B515B11B",
-    "title": "ゲームレベルデザイン入門",
-    "url": "https://drive.google.com/file/d/1nkwA9st3pDcksVAXp8mRyt_KT8tEWuh3/view",
-    "canonicalUrl": "https://drive.google.com/file/d/1nkwA9st3pDcksVAXp8mRyt_KT8tEWuh3/view",
+    "id": "RES-DOC-50EF16C14390",
+    "title": "ScriptableObject を使って Unity でモジュラーゲーム アーキテクチャを作成する",
+    "url": "https://drive.google.com/file/d/1zWe6stYRQYi6lPQkgisIZBz4oUa2RZUN/view",
+    "canonicalUrl": "https://drive.google.com/file/d/1zWe6stYRQYi6lPQkgisIZBz4oUa2RZUN/view",
     "kind": "document",
     "topics": [],
     "reviewState": "Triaged",
@@ -1854,10 +1760,63 @@
     "tags": []
   },
   {
-    "id": "RES-DOC-A2C2E1C83AB0",
-    "title": "シェーダーと視覚エフェクトのレシピ",
-    "url": "https://drive.google.com/file/d/1oMm180MhasY8ZiVhBDtQgumzjziwIZ7l/view",
-    "canonicalUrl": "https://drive.google.com/file/d/1oMm180MhasY8ZiVhBDtQgumzjziwIZ7l/view",
+    "id": "RES-DOC-5E758CD2CEDD",
+    "title": "s2025_stb_lighting_v1.1",
+    "url": "https://drive.google.com/file/d/1rpyyQc8HvaX5lStFa-YefposJjGO4xU0/view",
+    "canonicalUrl": "https://drive.google.com/file/d/1rpyyQc8HvaX5lStFa-YefposJjGO4xU0/view",
+    "kind": "document",
+    "topics": [],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "tags": [
+      "Lighting",
+      "MobileGPU",
+      "TileBasedRendering",
+      "StochasticSampling",
+      "SRS",
+      "Shadow",
+      "TAA",
+      "HypeHype"
+    ]
+  },
+  {
+    "id": "RES-DOC-69452853F0A4",
+    "title": "デザインパターンとSOLIDでコードをレベルアップ",
+    "url": "https://drive.google.com/file/d/1jEI4NGOjoWdQkVLSE5qm0LPzzGlUazXK/view",
+    "canonicalUrl": "https://drive.google.com/file/d/1jEI4NGOjoWdQkVLSE5qm0LPzzGlUazXK/view",
+    "kind": "document",
+    "topics": [],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "tags": []
+  },
+  {
+    "id": "RES-DOC-748284CE92A0",
+    "title": "Unity ゲームの プロファイリングに 関する決定版ガイド",
+    "url": "https://drive.google.com/file/d/1Z02pwqgEjymi8PvctJVQdUBLKC2F7-3S/view",
+    "canonicalUrl": "https://drive.google.com/file/d/1Z02pwqgEjymi8PvctJVQdUBLKC2F7-3S/view",
+    "kind": "document",
+    "topics": [],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "tags": []
+  },
+  {
+    "id": "RES-DOC-7668EF4637C8",
+    "title": "上級 Unity クリエイター 向けのユニバーサルレンダー パイプライン（URP）",
+    "url": "https://drive.google.com/file/d/1Pv-J64AcO4Mqg-5DSe-4AnV_hedXEPcL/view",
+    "canonicalUrl": "https://drive.google.com/file/d/1Pv-J64AcO4Mqg-5DSe-4AnV_hedXEPcL/view",
+    "kind": "document",
+    "topics": [],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "tags": []
+  },
+  {
+    "id": "RES-DOC-7E71346B1CFB",
+    "title": "Unity における モバイル、XR、ウェブの パフォーマンス最適化",
+    "url": "https://drive.google.com/file/d/1Zx9_V8at8JvSwuy2buE0X9q0NpYXJV9a/view",
+    "canonicalUrl": "https://drive.google.com/file/d/1Zx9_V8at8JvSwuy2buE0X9q0NpYXJV9a/view",
     "kind": "document",
     "topics": [],
     "reviewState": "Triaged",
@@ -1883,42 +1842,96 @@
     ]
   },
   {
-    "id": "RES-20260816-013",
-    "title": "ORCA Siggraph r3.4_ Advances",
-    "url": "https://drive.google.com/file/d/1olyBBMv7ioCNT0VayTXI48rbunSXM1jx/view",
-    "canonicalUrl": "https://drive.google.com/file/d/1olyBBMv7ioCNT0VayTXI48rbunSXM1jx/view",
+    "id": "RES-DOC-9CA90BB066DA",
+    "title": "Strand Hair in IJGC - Final Slides (Post-Conference)",
+    "url": "https://drive.google.com/file/d/1EcWb7hDcGdfLmeooDze7yFad3KvTzKKz/view",
+    "canonicalUrl": "https://drive.google.com/file/d/1EcWb7hDcGdfLmeooDze7yFad3KvTzKKz/view",
     "kind": "document",
     "topics": [],
     "reviewState": "Triaged",
     "useState": "Reference",
     "tags": [
-      "PathTracing",
-      "ORCA",
-      "RadianceCache",
-      "GPUHashMap",
-      "VoxelHierarchy",
-      "EASeed"
+      "Hair",
+      "Fur",
+      "SoftwareRasterization",
+      "VisibilityBuffer",
+      "Marschner",
+      "LOD",
+      "AsyncCompute",
+      "IndianaJones"
     ]
   },
   {
-    "id": "RES-DOC-FED96F58F884",
-    "title": "sss-siggraph-2025-advances-published",
-    "url": "https://drive.google.com/file/d/1rYjv2_KuwqYUyqVdO9EdtxO7OTTOxybs/view",
-    "canonicalUrl": "https://drive.google.com/file/d/1rYjv2_KuwqYUyqVdO9EdtxO7OTTOxybs/view",
+    "id": "RES-DOC-9EDDB022345B",
+    "title": "AVBOIT_SIG2025_MDROBOT-final",
+    "url": "https://drive.google.com/file/d/10sUfQ6bC9Xba1PAnoTZEpdRlait8lFUk/view",
+    "canonicalUrl": "https://drive.google.com/file/d/10sUfQ6bC9Xba1PAnoTZEpdRlait8lFUk/view",
     "kind": "document",
     "topics": [],
     "reviewState": "Triaged",
     "useState": "Reference",
     "tags": [
-      "SSS",
-      "SubsurfaceScattering",
-      "ReSTIR",
-      "PathTracing",
-      "Diffusion",
-      "BSSRDF",
-      "RayTracing",
-      "CharacterRendering"
+      "Transparency",
+      "OIT",
+      "AVBOIT",
+      "Voxel",
+      "Blending"
     ]
+  },
+  {
+    "id": "RES-DOC-A2C2E1C83AB0",
+    "title": "シェーダーと視覚エフェクトのレシピ",
+    "url": "https://drive.google.com/file/d/1oMm180MhasY8ZiVhBDtQgumzjziwIZ7l/view",
+    "canonicalUrl": "https://drive.google.com/file/d/1oMm180MhasY8ZiVhBDtQgumzjziwIZ7l/view",
+    "kind": "document",
+    "topics": [],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "tags": []
+  },
+  {
+    "id": "RES-DOC-A767C1CB32DC",
+    "title": "Unity の 上級開発者向け Data-Oriented",
+    "url": "https://drive.google.com/file/d/1Q408uAQyHsqslMrb6w9OvYoTzDhlcJbq/view",
+    "canonicalUrl": "https://drive.google.com/file/d/1Q408uAQyHsqslMrb6w9OvYoTzDhlcJbq/view",
+    "kind": "document",
+    "topics": [],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "tags": []
+  },
+  {
+    "id": "RES-DOC-ADA0E774AA34",
+    "title": "Unity で仮想現実体験と複合現実体験を作成",
+    "url": "https://drive.google.com/file/d/1Nayeo5jyIdX6JEYzcRTOS3XYxE7Mrwr6/view",
+    "canonicalUrl": "https://drive.google.com/file/d/1Nayeo5jyIdX6JEYzcRTOS3XYxE7Mrwr6/view",
+    "kind": "document",
+    "topics": [],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "tags": []
+  },
+  {
+    "id": "RES-DOC-B6C93E39E138",
+    "title": "Unity 6 で生産性を高めるためのヒント",
+    "url": "https://drive.google.com/file/d/14ALhRhcdxI062VEnnjz7okljePHN3xt_/view",
+    "canonicalUrl": "https://drive.google.com/file/d/14ALhRhcdxI062VEnnjz7okljePHN3xt_/view",
+    "kind": "document",
+    "topics": [],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "tags": []
+  },
+  {
+    "id": "RES-DOC-BAE0A54B76FF",
+    "title": "プロジェクト整理と バージョン管理の ベストプラクティス",
+    "url": "https://drive.google.com/file/d/18L53H2nsO4aBDqqO7VWJWFBDaZPaHYRx/view",
+    "canonicalUrl": "https://drive.google.com/file/d/18L53H2nsO4aBDqqO7VWJWFBDaZPaHYRx/view",
+    "kind": "document",
+    "topics": [],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "tags": []
   },
   {
     "id": "RES-DOC-E32D3A630AB0",
@@ -1940,44 +1953,15 @@
     ]
   },
   {
-    "id": "RES-DOC-5E758CD2CEDD",
-    "title": "s2025_stb_lighting_v1.1",
-    "url": "https://drive.google.com/file/d/1rpyyQc8HvaX5lStFa-YefposJjGO4xU0/view",
-    "canonicalUrl": "https://drive.google.com/file/d/1rpyyQc8HvaX5lStFa-YefposJjGO4xU0/view",
+    "id": "RES-DOC-E6B44FC249EA",
+    "title": "上級 Unity クリエイター 向けのユニバーサル",
+    "url": "https://drive.google.com/file/d/1bEGgkdhZe1vvV4fZUUoPY2UdWSREriZf/view",
+    "canonicalUrl": "https://drive.google.com/file/d/1bEGgkdhZe1vvV4fZUUoPY2UdWSREriZf/view",
     "kind": "document",
     "topics": [],
     "reviewState": "Triaged",
     "useState": "Reference",
-    "tags": [
-      "Lighting",
-      "MobileGPU",
-      "TileBasedRendering",
-      "StochasticSampling",
-      "SRS",
-      "Shadow",
-      "TAA",
-      "HypeHype"
-    ]
-  },
-  {
-    "id": "RES-20260816-014",
-    "title": "SIGGRAPH Advances 2024 - Hemispheres Presentation Notes",
-    "url": "https://drive.google.com/file/d/1sy6vys_8cikTUBdBwZe-q5hQtHdL_suw/view",
-    "canonicalUrl": "https://drive.google.com/file/d/1sy6vys_8cikTUBdBwZe-q5hQtHdL_suw/view",
-    "kind": "document",
-    "topics": [],
-    "reviewState": "Triaged",
-    "useState": "Reference",
-    "tags": [
-      "Lighting",
-      "DirectionalLightmap",
-      "IrradZ",
-      "HHD",
-      "HLSH",
-      "SphericalHarmonics",
-      "AmbientOcclusion",
-      "CallOfDuty"
-    ]
+    "tags": []
   },
   {
     "id": "RES-DOC-F3655BB00705",
@@ -1991,14 +1975,45 @@
     "tags": []
   },
   {
-    "id": "RES-DOC-50EF16C14390",
-    "title": "ScriptableObject を使って Unity でモジュラーゲーム アーキテクチャを作成する",
-    "url": "https://drive.google.com/file/d/1zWe6stYRQYi6lPQkgisIZBz4oUa2RZUN/view",
-    "canonicalUrl": "https://drive.google.com/file/d/1zWe6stYRQYi6lPQkgisIZBz4oUa2RZUN/view",
+    "id": "RES-DOC-F560B515B11B",
+    "title": "ゲームレベルデザイン入門",
+    "url": "https://drive.google.com/file/d/1nkwA9st3pDcksVAXp8mRyt_KT8tEWuh3/view",
+    "canonicalUrl": "https://drive.google.com/file/d/1nkwA9st3pDcksVAXp8mRyt_KT8tEWuh3/view",
     "kind": "document",
     "topics": [],
     "reviewState": "Triaged",
     "useState": "Reference",
     "tags": []
+  },
+  {
+    "id": "RES-DOC-F7C247F992F1",
+    "title": "ユニバーサルレンダーパイプライン(URP)で人気のシェーダーやビジュアルエフェクトを作成 ー Unity 6 版",
+    "url": "https://drive.google.com/file/d/1cA1T5_wAejmWzrMmX83YsFxoCZGJKxKD/view",
+    "canonicalUrl": "https://drive.google.com/file/d/1cA1T5_wAejmWzrMmX83YsFxoCZGJKxKD/view",
+    "kind": "document",
+    "topics": [],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "tags": []
+  },
+  {
+    "id": "RES-DOC-FED96F58F884",
+    "title": "sss-siggraph-2025-advances-published",
+    "url": "https://drive.google.com/file/d/1rYjv2_KuwqYUyqVdO9EdtxO7OTTOxybs/view",
+    "canonicalUrl": "https://drive.google.com/file/d/1rYjv2_KuwqYUyqVdO9EdtxO7OTTOxybs/view",
+    "kind": "document",
+    "topics": [],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "tags": [
+      "SSS",
+      "SubsurfaceScattering",
+      "ReSTIR",
+      "PathTracing",
+      "Diffusion",
+      "BSSRDF",
+      "RayTracing",
+      "CharacterRendering"
+    ]
   }
 ]
