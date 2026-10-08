@@ -36,11 +36,11 @@ RESOURCE_FIELD_ORDER = (
 )
 
 REQUIRED_PAGES = {
-    "index.html", "documents.html", "document.html", "websites.html", "website.html",
+    "index.html", "documents.html", "document.html", "websites.html", "website.html", "repositories.html", "repository.html",
     "collections.html", "collection.html", "taxonomy.html",
 }
 REQUIRED_CATALOG = {
-    "manifest.json", "resources.json", "resources-06.json", "websites.json",
+    "repositories.json", "manifest.json", "resources.json", "resources-06.json", "websites.json",
     "documents.json", "document-presentation.json", "website-facets.json", "original-documents.json", *BASE_ORIGINAL_SHARDS, "taxonomy.json",
     "relations.json", "collections.json",
 } | LATEST_WEBSITE_SHARDS
@@ -53,6 +53,7 @@ FORBIDDEN_KEYS = {
 }
 FORBIDDEN_DRIVE_FOLDER_FRAGMENT = "drive.google.com/drive/folders/"
 RESOURCE_FIELDS = {"id", "title", "url", "canonicalUrl", "kind", "topic", "topics", "reviewState", "useState", "category", "tags"}
+REPOSITORY_FIELDS = {"id", "kind", "title", "url", "canonicalUrl", "tags", "topics", "summary", "reviewState", "useState", "confidence", "freshness"}
 WEBSITE_FIELDS = {"id", "title", "url", "canonicalUrl", "publisher", "authors", "publishedAt", "kind", "contentType", "category", "domains", "topics", "engines", "languages", "summary", "previewImage", "reviewState", "useState", "confidence", "freshness", "tags"}
 DOCUMENT_FIELDS = {"id", "title", "sourceFormat", "level", "engine", "tags", "domains"}
 RELATION_FIELDS = {"from", "to", "relation"}
@@ -560,6 +561,7 @@ def main() -> None:
     manifest = load("manifest.json")
     latest_websites = load_latest_websites()
     resources = load("resources.json") + load("resources-06.json") + [project_resource(row) for row in latest_websites]
+    repositories = load("repositories.json")
     websites = load("websites.json") + latest_websites
     website_facets = load("website-facets.json")
     knowledge_documents = load("documents.json")
@@ -569,12 +571,13 @@ def main() -> None:
     collections = load("collections.json")
     original_total = validate_originals(errors)
 
-    if manifest.get("schemaVersion") not in {"1.4.0", "1.5.0"}:
-        errors.append("manifest schemaVersion must be 1.4.0 or 1.5.0")
+    if manifest.get("schemaVersion") not in {"1.4.0", "1.5.0", "1.6.0"}:
+        errors.append("manifest schemaVersion must be 1.4.0, 1.5.0 or 1.6.0")
     if not SHA_RE.fullmatch(str(manifest.get("sourceCommit", ""))):
         errors.append("manifest sourceCommit must be a 40-character SHA")
 
     expected_counts = {
+        "repositories": len(repositories),
         "resources": len(resources),
         "websites": len(websites),
         "documents": original_total,
@@ -588,6 +591,7 @@ def main() -> None:
         errors.append(f"manifest counts mismatch: {manifest.get('counts')} != {expected_counts}")
 
     for name, data in {
+        "repositories": repositories,
         "resources": resources,
         "websites": websites,
         "documents": knowledge_documents,
@@ -615,8 +619,33 @@ def main() -> None:
 
     for index, row in enumerate(resources):
         validate_fields(errors, f"resources[{index}]", row, RESOURCE_FIELDS)
+        if row.get('kind') not in {'website','document','repository'}: errors.append('unknown Resource kind')
         validate_public_url(errors, f"resources[{index}].url", row.get("url"))
         validate_public_url(errors, f"resources[{index}].canonicalUrl", row.get("canonicalUrl"))
+    repository_ids = set()
+    for index, row in enumerate(repositories):
+        label=f'repositories[{index}]'
+        validate_fields(errors,label,row,REPOSITORY_FIELDS)
+        required=REPOSITORY_FIELDS-{'summary','topics'}
+        if not required <= set(row): errors.append(f'{label}: required Repository fields missing')
+        if row.get('id') in repository_ids: errors.append(f'{label}: duplicate Repository ID')
+        repository_ids.add(row.get('id'))
+        resource=next((candidate for candidate in resources if candidate.get('id')==row.get('id')),None)
+        if not resource or resource.get('kind')!='repository': errors.append(f'{label}: unresolved Repository Resource')
+        elif any(resource.get(key)!=row.get(key) for key in ('title','kind','url','canonicalUrl','tags','topics','reviewState','useState')):
+            errors.append(f'{label}: Repository/Resource mismatch')
+        for field in ('url','canonicalUrl'):
+            value=row.get(field,'')
+            validate_public_url(errors,f'{label}.{field}',value)
+            match=re.fullmatch(r'https://github\.com/([A-Za-z0-9](?:[A-Za-z0-9-]{0,37}[A-Za-z0-9])?)/([A-Za-z0-9_.-]{1,100})',value) if isinstance(value,str) else None
+            if not match or '--' in match[1] or match[2] in {'.','..'} or match[2].endswith('.git'):
+                errors.append(f'{label}: expected canonical GitHub root URL')
+        if row.get('url')!=row.get('canonicalUrl'): errors.append(f'{label}: Repository URL mismatch')
+        tags=row.get('tags')
+        if not isinstance(tags,list) or any(not isinstance(t,str) or t not in taxonomy.get('tags',{}) for t in tags): errors.append(f'{label}: canonical tags required')
+        elif len(tags)!=len(set(tags)): errors.append(f'{label}: duplicate tags')
+    if repository_ids!={row.get('id') for row in resources if row.get('kind')=='repository'}:
+        errors.append('Repository projection coverage mismatch')
     for index, row in enumerate(websites):
         validate_fields(errors, f"websites[{index}]", row, WEBSITE_FIELDS)
         validate_public_url(errors, f"websites[{index}].url", row.get("url"))

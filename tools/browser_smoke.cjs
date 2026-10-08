@@ -63,7 +63,7 @@ async function main() {
     });
 
     const pages = [
-      'index.html','documents.html','websites.html','trend.html','taxonomy.html',
+      'index.html','documents.html','websites.html','repositories.html','repository.html?id=RES-20260716-007','trend.html','taxonomy.html',
       'viewer.html?id=drive_smoke&format=PDF&title=Browser%20Smoke'
     ];
     for (const width of [390,768,1280]) {
@@ -119,6 +119,39 @@ async function main() {
     await page.waitForURL('**/websites.html?q=Unity');
     await page.locator('.website-card').first().waitFor();
 
+    await openPage(page,origin,'repositories.html');
+    await page.locator('.repository-card').first().waitFor();
+    assert.equal(await page.locator('.repository-card').count(),2);
+    assert.equal(await page.locator('.side-nav a[href="repositories.html"]').getAttribute('aria-current'),'page');
+    await page.locator('#q').fill('FidelityFX-CAS');
+    assert.equal(await page.locator('.repository-card').count(),1);
+    await page.locator('#tag').selectOption('AMD');
+    await page.waitForFunction(()=>new URL(location.href).searchParams.get('tag')==='AMD');
+    await page.locator('#q').fill('no-match');
+    assert.equal(await page.locator('.repository-card').count(),0);
+    await page.locator('[data-reset-filters]').click();
+    assert.equal(await page.locator('.repository-card').count(),2);
+    assert.equal(await page.locator('.repository-card-link').first().getAttribute('target'),'_blank');
+    await page.locator('.repository-details').first().click();
+    await page.waitForURL('**/repository.html?id=RES-20260716-007');
+    await page.locator('h1').waitFor();
+    assert.match(await page.locator('h1').textContent(),/CAS/);
+    assert.equal(await page.locator('.side-nav a[aria-current="page"]').getAttribute('href'),'repositories.html');
+    assert.equal(await page.locator('a[href^="collection.html?id="]').count(),0,'CAS has no canonical collection membership');
+    await openPage(page,origin,'repository.html?id=RES-20260716-008');
+    await page.locator('a[href="collection.html?id=COL-TEMPORAL-RENDERING"]').waitFor();
+    await page.locator('a[href="collection.html?id=COL-TEMPORAL-RENDERING"]').click();
+    await page.locator('a[href="repository.html?id=RES-20260716-008"]').waitFor();
+    await page.locator('a[href="repository.html?id=RES-20260716-008"]').click();
+    await page.locator('h1').waitFor();
+    assert.ok(await page.locator('.detail-side a[href^="website.html?id="]').count());
+    await openPage(page,origin,'index.html');
+    await page.locator('[data-search-target]').selectOption('repositories.html');
+    await page.locator('[data-global-search]').fill('FidelityFX-CAS');
+    await page.locator('[data-global-search]').press('Enter');
+    await page.waitForURL('**/repositories.html?q=FidelityFX-CAS');
+    assert.equal(await page.locator('.repository-card').count(),1);
+
     await openPage(page,origin,'taxonomy.html');
     await page.locator('#domains a[href="documents.html?category=Graphics"]').click();
     await page.waitForURL('**/documents.html?category=Graphics');
@@ -157,10 +190,37 @@ async function main() {
     assert.equal(await page.locator('#viewer-frame').getAttribute('src'),'https://docs.google.com/presentation/d/native_slides/preview','Google Slides Viewer uses native preview');
     assert.equal(await page.locator('#viewer-drive-link').getAttribute('href'),'https://docs.google.com/presentation/d/native_slides/edit','Google Slides original link stays native');
 
+    // Exercise pagination/history with a public projection fixture, without adding seed data.
+    const sample=JSON.parse(fs.readFileSync(path.join(ROOT,'catalog/repositories.json'),'utf8'))[0];
+    const fixture=Array.from({length:45},(_,i)=>({...sample,id:`RES-FIXTURE-${i}`,title:`Reference ${i}`}));
+    await context.route('**/catalog/repositories.json',route=>route.fulfill({json:fixture}));
+    await openPage(page,origin,'repositories.html?keep=1&page=2');
+    assert.equal(await page.locator('.repository-card').count(),20);
+    assert.match(await page.locator('#list').textContent(),/Reference 20/);
+    await page.locator('#pagination a[data-page="3"]').first().click();
+    assert.equal(await page.locator('.repository-card').count(),5);
+    await page.goBack();
+    assert.match(await page.locator('#list').textContent(),/Reference 20/);
+    await page.locator('#q').fill('Reference 44');
+    assert.equal(await page.locator('.repository-card').count(),1);
+    assert.equal(new URL(page.url()).searchParams.get('page'),null);
+    assert.equal(new URL(page.url()).searchParams.get('keep'),'1');
+    await page.locator('#clear').click();
+    assert.equal(await page.locator('.repository-card').count(),20);
+    await context.unroute('**/catalog/repositories.json');
+    await openPage(page,origin,'repositories.html');
+    await page.setViewportSize({width:1280,height:900});
+    if(process.env.PORTAL_SCREENSHOT_DIR) {
+      fs.mkdirSync(process.env.PORTAL_SCREENSHOT_DIR,{recursive:true});
+      await page.screenshot({path:path.join(process.env.PORTAL_SCREENSHOT_DIR,'repositories-desktop.png'),fullPage:true});
+    }
+    await page.setViewportSize({width:390,height:844});
+    if(process.env.PORTAL_SCREENSHOT_DIR) await page.screenshot({path:path.join(process.env.PORTAL_SCREENSHOT_DIR,'repositories-mobile.png'),fullPage:true});
+
     assert.deepEqual(pageErrors,[],'Portal pages should not throw browser JavaScript errors');
     assert.deepEqual(failedLocalResponses,[],'Portal pages should not have missing local assets');
     await context.close();
-    process.stdout.write('OK: six Portal pages at mobile/tablet/desktop; filters, pagination, taxonomy, theme, Viewer and local icon fallback\n');
+    process.stdout.write('OK: Portal pages at mobile/tablet/desktop; filters, pagination, taxonomy, theme, Viewer and local icon fallback\n');
   } finally {
     if (browser) await browser.close();
     await new Promise(resolve=>server.close(resolve));
