@@ -90,7 +90,7 @@ async function main() {
       await openPage(page,origin,selectedHref);
       for (const selector of ['.side-nav','.mobile-nav']) {
         const actual = await page.locator(`${selector} a`).evaluateAll(links =>
-          links.map(link => [link.getAttribute('href'),link.textContent.trim()]));
+          links.map(link => [link.getAttribute('href'),link.lastChild.textContent.trim()]));
         assert.deepEqual(actual,expectedNavigation,`${selectedHref}: ${selector} navigation should match Home`);
         assert.equal(await page.locator(`${selector} a[aria-current="page"]`).getAttribute('href'),selectedHref);
       }
