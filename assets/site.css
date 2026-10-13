@@ -43,3 +43,7 @@
 .document-meta{font-size:12px}.detail-actions a{text-decoration:none}.detail-actions .primary-button{display:inline-flex;align-items:center}
 body{overflow-wrap:break-word}button,a,input,select{touch-action:manipulation}
 @media(max-width:820px){.website-row{grid-template-columns:1fr}.website-states{padding:0}.hero-copy{padding:12px 0}.hero h1{font-size:28px}.two-col{gap:24px}}
+
+/* サイドバーの文字アイコンとリポジトリSVGの配置を揃える。 */
+.side-nav .icon{display:inline-flex;flex:0 0 18px;align-items:center;justify-content:center}
+.side-nav .icon svg{display:block;width:16px;height:16px}
