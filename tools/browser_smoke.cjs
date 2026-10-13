@@ -75,6 +75,30 @@ async function main() {
       }
     }
 
+    // Home / Trendを含む各画面でナビゲーション構成が変わらないことを確認する。
+    const expectedNavigation = [
+      ['index.html','ホーム'],
+      ['documents.html','ドキュメント'],
+      ['websites.html','Webサイト'],
+      ['repositories.html','リポジトリ'],
+      ['collections.html','コレクション'],
+      ['taxonomy.html','分野・タグ'],
+      ['trend.html','トレンド']
+    ];
+    let homeSidebarNote = '';
+    for (const selectedHref of ['index.html','documents.html','websites.html','repositories.html','collections.html','taxonomy.html','trend.html']) {
+      await openPage(page,origin,selectedHref);
+      for (const selector of ['.side-nav','.mobile-nav']) {
+        const actual = await page.locator(`${selector} a`).evaluateAll(links =>
+          links.map(link => [link.getAttribute('href'),link.textContent.trim()]));
+        assert.deepEqual(actual,expectedNavigation,`${selectedHref}: ${selector} navigation should match Home`);
+        assert.equal(await page.locator(`${selector} a[aria-current="page"]`).getAttribute('href'),selectedHref);
+      }
+      assert.equal(await page.locator('.side-nav a[href="repositories.html"] .icon svg').count(),1,'Repository has one SVG icon');
+      if (selectedHref === 'index.html') homeSidebarNote = await page.locator('.sidebar-note').textContent();
+      if (selectedHref === 'trend.html') assert.equal(await page.locator('.sidebar-note').textContent(),homeSidebarNote,'Trend sidebar note matches Home');
+    }
+
     await openPage(page,origin,'documents.html');
     await page.locator('.document-entry').first().waitFor();
     assert.ok(await page.locator('.document-entry').count() <= 20,'Documents renders at most 20 cards');
