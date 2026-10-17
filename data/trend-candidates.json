@@ -1,7 +1,3741 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": null,
+  "generatedAt": "2026-10-17T10:28:47+09:00",
   "lookbackDays": 7,
-  "candidates": [],
-  "diagnostics": []
+  "candidates": [
+    {
+      "title": "Geometry Nodesのシミュレーションゾーンは、ゾーンより前を変えても結果が変わらない",
+      "url": "https://zenn.dev/eight_blog/articles/4d51eb2265258a",
+      "source": "Zenn",
+      "publishedAt": "2026-10-17T00:52:06+00:00",
+      "matchedKeywords": [
+        "Blender",
+        "CG"
+      ],
+      "tags": [],
+      "snippet": "Blender の Geometry Nodes で、重い処理（地形の侵食）をリピートゾーンからシミュレーションゾーンに移したときに、気づきにくい落とし穴にはまったのでまとめます。 結論を先に書くと、次の2点です。 シミュレーションゾーンは、ゾーンより前（上流）の設定を変えても、最初のコマから再生し直すまで結果が変わりません。エラーも警告も出ません 1コマ目から処理が1回進むので、リピートゾーンの「N回」とそろえるなら、Nコマで止めます（N＋1コマではありません） 確認した環",
+      "discoveredVia": "zenn-latest-api:title-match|zenn-topic-feed:3dcg|zenn-topic-feed:geometrynodes",
+      "needsDateVerification": false
+    },
+    {
+      "title": "同じ庭を14の目で見る: 紫外線・熱・こだま・複眼をシェーダーの「パス」で描き分ける",
+      "url": "https://zenn.dev/sishiya/articles/animal-senses-shader-passes",
+      "source": "Zenn",
+      "publishedAt": "2026-10-17T00:34:11+00:00",
+      "matchedKeywords": [
+        "Shader"
+      ],
+      "tags": [],
+      "snippet": "同じ庭を、カラス・マムシ・コウモリ・ハエ・ミツバチ・イヌ・ネコ・シャコなどの感覚に切りかえて、一人称で歩けるページを作りました。人には見えない紫外線・熱・こだま・偏光・近赤外線は、人に見える色に「置きかえて」見せます。Three.js を使い、シェーダーは自前です。 https://sishiya.github.io/manabi-lab/animal-senses/ この記事では、1つの庭からいろいろな感覚の絵を作るしくみを書きます。 ! 見え方は研究をもとにした推定で、目",
+      "discoveredVia": "zenn-topic-feed:glsl",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Embedding Gemma 2 を C# から使用してマルチモーダル対応の検索アプリを作る",
+      "url": "https://zenn.dev/sora_kumo/articles/embedding-gemma-2-onnx",
+      "source": "Zenn",
+      "publishedAt": "2026-10-16T23:38:58+00:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [],
+      "snippet": "画像・PDF・動画・テキストを「自然言語」や「画像」で横断検索できるデスクトップアプリを、完全ローカルで作りました。埋め込みモデルには Google DeepMind の EmbeddingGemma 2 の ONNX 版を使い、C#（WinUI 3）から ONNX Runtime + DirectML で直接動かしています。 「モデルを ONNX で動かす」だけなら公式のサンプルで済みますが、実際に作ってみると、前処理の移植、GPU（DirectML）で動かないグラフ、思っ",
+      "discoveredVia": "zenn-latest-api:title-match|zenn-topic-feed:dotnet",
+      "needsDateVerification": false
+    },
+    {
+      "title": "【.NET】シフト演算子のシフト数の挙動",
+      "url": "https://zenn.dev/prozolic/articles/e1e0429c1bec2a",
+      "source": "Zenn",
+      "publishedAt": "2026-10-16T23:00:05+00:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [],
+      "snippet": "はじめに 直近で、.NET 10にて、特定の2のべき乗（2^-25と2^-958）のdoubleでのラウンドトリップができなくなった（doubleを文字列に変換しそれを再びdoubleにパースしたら一致しなくなった）という Issue が上がっていました。 https://github.com/dotnet/runtime/issues/135582 この動作自体は、.NET 11 RC1 ではすでに修正済み[1]で、このIssueを受けて.NET 10へバックポートもすでに",
+      "discoveredVia": "zenn-latest-api:title-match|zenn-topic-feed:csharp|zenn-topic-feed:dotnet",
+      "needsDateVerification": false
+    },
+    {
+      "title": "日本語プログラミング言語あおい（Aoi）最小セットの完了評価フェーズ（ステップ２）～再検証と設計課題抽出～",
+      "url": "https://qiita.com/mylifewithviolin/items/27f136adef5e0aff86e2",
+      "source": "Qiita",
+      "publishedAt": "2026-10-17T07:47:35+09:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [
+        "aoi",
+        "日本語プログラミング言語",
+        "自作言語",
+        "GitHubCopilot",
+        "C#"
+      ],
+      "snippet": "# はじめに 日本語プログラミング言語あおい（Aoi）の実装[言語仕様](https://qiita.com/mylifewithviolin/items/d819663f478aa2caf77b)を生成AIに読み込ませて仕様駆動開発を展開しており、本記事は実装完了した「最小セット（MVP）」[^1]の完了評価フェーズのステップ２になります。 日本語プログラミング言語あおい（Aoi）という自作言語の企画趣旨は[こちらの記事]( https://qiita.com/mylife",
+      "discoveredVia": "qiita-tag-api:C#",
+      "needsDateVerification": false
+    },
+    {
+      "title": "C++で碁をたしなむAIを構築(1) - 暇さえあればアルゴリズムいじり",
+      "url": "https://yoshishinnze.hatenablog.com/entry/2026/10/17/043000",
+      "source": "yoshishinnze.hatenablog.com",
+      "publishedAt": "2026-10-16T19:30:00+00:00",
+      "matchedKeywords": [
+        "C++"
+      ],
+      "tags": [],
+      "snippet": "目次 強化学習の練習をいつもやっているPythonではなく、C++で実装してみたいと思いました。 今回はその一回目として碁をC++で実装するについて扱います。 🎵 BGMを再生する C++で碁の実装 以下、前回の Win32 API GUI 版囲碁（9路盤） のコードを、囲碁のルールと完全に対応させながら、構造と実装手順を解説いたします。 1. プロジェクト作成（Visual Studio 2022） Step 1: 新規プロジェクト 「新しいプロジェクトの作成」 → 「空の",
+      "discoveredVia": "hatena-keyword:C++",
+      "needsDateVerification": false
+    },
+    {
+      "title": "アプデ！承認欲求育成ライフ",
+      "url": "https://qiita.com/lemonIN/items/eef74d85ae96fa44aa25",
+      "source": "Qiita",
+      "publishedAt": "2026-10-17T03:14:00+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "Unity",
+        "ゲーム開発",
+        "AI"
+      ],
+      "snippet": "## 企画概要 現代社会で誰もが抱える「承認欲求」を擬人化し、スマホアプリとして育成するユニークな放置＆シミュレーションゲームです。プレイヤーは自分の心の中に住む「承認欲求ちゃん」を、架空のSNS活動を通じて成長させたり、時にはクールダウンさせたりします。過剰な承認欲求の末路や、健全な自己肯定感の育み方を、シュールかつコミカルに体験できるバズ狙いの企画です。 ## ゲームシステム 1. **SNS活動シミュレーション**: * ゲーム内のSNSで「投稿」を行います。「おしゃれ",
+      "discoveredVia": "qiita-tag-api:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "記録：今日講義した内容",
+      "url": "https://zenn.dev/wanihyeong/articles/7d9cabb037deff",
+      "source": "Zenn",
+      "publishedAt": "2026-10-16T16:21:36+00:00",
+      "matchedKeywords": [
+        "C#",
+        "Unity"
+      ],
+      "tags": [],
+      "snippet": "はじめに 今日チームに共有した内容をかい摘んでまとめました。 一つ一つの詳細はいつかちゃんと書くかもしれません。 ここに書かれているプログラムは瞼をこすりながら完全手打ちしたものになりますので、タイプミスや構文の間違いがあるかもしれません。ご了承ください。 私も学習中の身です。 本記事の内容はあくまで参考程度にし、真偽のほどは自分でお確かめ頂けると嬉しいです。 class 設計図とか書類のフォーマットみたいなもの new 設計図や書類のフォーマットに則って実際にデータを作成す",
+      "discoveredVia": "zenn-topic-feed:csharp|zenn-topic-feed:unity6",
+      "needsDateVerification": false
+    },
+    {
+      "title": "blender material 【床材】｜ksougo",
+      "url": "https://note.com/ksougo_/n/n8bac5bb4d727",
+      "source": "note",
+      "publishedAt": "2026-10-16T23:18:27+09:00",
+      "matchedKeywords": [
+        "Blender"
+      ],
+      "tags": [
+        "Blender"
+      ],
+      "snippet": "blender 5.0.1 適当なので参考程度に",
+      "discoveredVia": "note-hashtag-new:Blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "FishNetとプレイヤー",
+      "url": "https://qiita.com/KNTy1018/items/e72702831fcb050c9968",
+      "source": "Qiita",
+      "publishedAt": "2026-10-16T23:11:57+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "FishNet",
+        "Unity",
+        "マルチプレイ"
+      ],
+      "snippet": "チーム開発でマルチプレイゲームを作る中で、 `FishNet` を用いることになりました 各プレイヤーで操作するキャラクターが違うことはマルチプレイゲームではよくあることですが、 `FishNet` ではどうやって操作主を決めているのかを検証したため、その結果をまとめていきます `FishNet` を用いるため、Unityを用いたゲーム開発であることを前提に進めていきます # プレイヤーオブジェクト まずは操作するプレイヤーオブジェクトについて説明します `FishNet` ",
+      "discoveredVia": "qiita-tag-api:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "15日目（Phase 4続き）：思考チップの作成の準備 - nennokiのブログ",
+      "url": "https://nennoki.hatenablog.com/entry/2026/10/16/230754",
+      "source": "nennoki.hatenablog.com",
+      "publishedAt": "2026-10-16T14:07:54+00:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [],
+      "snippet": "今日は自機の思考ロジックを決めるためのチップを作ります。 ……嘘です。また準備回です。 まずは思考ロジックの組み方について、たたき台をAIに出してもらって、そこから自分で考えつつ、AIと壁打ちする感じで進めていきます。 初心者でもとっつきやすい＆こだわりだしたらキリがないシステムにしたい 初心者向けと上級者向けでシステムを分ける 初心者向け：思考チップをカテゴリごとに優先度順に並べるだけ 上級者向け：初心者向け＋条件付き（IF-THEN）のチップを配置可能 いざ作成！の前にシ",
+      "discoveredVia": "hatena-keyword:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "カセットテープにデジタルデータを記録してみた ～そんなアプリを本気で作ってみた「音多」（Onta）～",
+      "url": "https://qiita.com/satotaka0409/items/6d6ec00b2963415776bc",
+      "source": "Qiita",
+      "publishedAt": "2026-10-16T23:03:41+09:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [
+        "C#",
+        "信号処理",
+        "OFDM",
+        "誤り訂正"
+      ],
+      "snippet": "# カセットテープを USB メモリにする ― OFDM・QAM・ターボ符号で作った「音多」（Onta） ## はじめに 50 年ほど前のパソコン黎明期、プログラムやデータはカセットテープに「音」として保存していました。カンサスシティスタンダード（KCS）などの規格があり、ゲームもカセットテープで売られていた時代です。 当時の転送速度は 600 ボー、およそ 60 バイト/秒。1 MB を記録するのに約 4.6 時間かかり、テープに少し傷があるだけで読めなくなりました。 **",
+      "discoveredVia": "qiita-tag-api:C#",
+      "needsDateVerification": false
+    },
+    {
+      "title": "自作Unity UIライブラリ「Kumiko」の内部設計を解説！状態管理とGateの仕組み",
+      "url": "https://zenn.dev/sorane/articles/cb454ee1f72202",
+      "source": "Zenn",
+      "publishedAt": "2026-10-16T13:34:00+00:00",
+      "matchedKeywords": [
+        "C#",
+        "Unity"
+      ],
+      "tags": [],
+      "snippet": "はじめに こんにちは、空音です！ 普段はUnityやUnreal Engineを使ってゲーム開発をしている学生です。 前回の記事では、Unity（uGUI）向けに開発した自作UIライブラリ「Kumiko（組子）」を紹介しました！ https://zenn.dev/sorane/articles/bd4d521c584a04 今回はその第二弾として、Kumikoの内部設計や実装について、もう少し詳しく紹介していきたいと思います！ Kumikoは、ゲームパッド・マウス＆キーボード",
+      "discoveredVia": "zenn-latest-api:title-match|zenn-topic-feed:csharp|zenn-topic-feed:unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Gemini 4 Argon+CursorにBlenderを使って動画作成してもらった感じ、SonnetとHaikuの間くらい？",
+      "url": "https://zenn.dev/ryuuri/articles/b5180b99c32fa5",
+      "source": "Zenn",
+      "publishedAt": "2026-10-16T12:05:38+00:00",
+      "matchedKeywords": [
+        "Blender"
+      ],
+      "tags": [],
+      "snippet": "感想 ざっくり、Haiku 5.5 よりはかなり良いです。ただ、Sonnet 5.5よりは不自然な感じですね。 どちらかというと、Sonnet 5.5に近い感じです。 質感なんかは、Sonnet 5.5より良いところもあるかもしません。 カメラワーク Gemini 4 Argonも悪くはないですが、ウォークスルーしない感じがイマイチ ただし、Sonnet 5.5 はカメラの振り回しかた好みじゃないですね 同点くらいでしょうか 玄関 Gemini 4 Argonはコートが破綻し",
+      "discoveredVia": "zenn-latest-api:title-match|zenn-topic-feed:blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Blenderを知らない人がClaudeに作らせた、職歴がVHSテープで積んである3Dのホームページ。AIに何ができるか聞かれたら、この部屋を開け｜ナギ@AIの推し活",
+      "url": "https://note.com/tamelog/n/n69b3b00be8a2",
+      "source": "note",
+      "publishedAt": "2026-10-16T20:30:26+09:00",
+      "matchedKeywords": [
+        "Blender"
+      ],
+      "tags": [
+        "Blender"
+      ],
+      "snippet": "窓の外は、雨の夜のベルリン。 手前に木の机がある。ブラウン管のテレビと、その下のビデオデッキ。積まれたVHSテープ。電気スタンド、観葉植物、コーヒー、電話。テレビには持ち主の名前が映っている。 これは、ある人のホームページのトップ画面だ。 「AIって結局、何ができるの」と聞かれたら、私はもう説明しない。発表資料も、性能の比較表も送らない。この部屋のURLを送る。 3Dを作るソフトの Blender を知らない人が、頭の中にしかなかった部屋を、そのままウェブに置いた。コードは読",
+      "discoveredVia": "note-hashtag-new:Blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "ダンジョン経営法｜ケー｜ゲーム開発して宣伝するやつ",
+      "url": "https://note.com/kei_game_devlog/n/nb926f0dc2966",
+      "source": "note",
+      "publishedAt": "2026-10-16T18:58:35+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "Unity"
+      ],
+      "snippet": "今日から、自分が作っているダンジョン経営ゲームの中の法律「ダンジョン経営法」を紹介していきます！ 初日は第一章の総則、第一条と第二条です。 第一条（目的） ざっくり言うと、「安全面配慮しろよ？怪しいことすんなよ？健全な経営しろよ？」という条文です。 つまり経営者(プレイヤー)は、自分が儲けるだけじゃなくて、冒険者とモンスターのことも考えないといけないです！ なぜならそれをしないと、冒険者間での評判が悪くなる、モンスターが暴走する等が起き、まわりまわって経営成績が悪くなるからで",
+      "discoveredVia": "note-hashtag-new:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "半角数字を全角数字に変換して遊ぶ。(1桁)",
+      "url": "https://qiita.com/caa45040/items/5c32554ee94e09f3caef",
+      "source": "Qiita",
+      "publishedAt": "2026-10-16T18:54:38+09:00",
+      "matchedKeywords": [
+        "C++"
+      ],
+      "tags": [
+        "Arduino",
+        "C++",
+        "アルゴリズム",
+        "XIAO-ESP32-C6"
+      ],
+      "snippet": "```c++ #include using namespace std; int main(void){ // Your code here! int a = 8; char *num_conv_0_9[] = { \"０\", \"１\", \"２\", \"３\", \"４\", \"５\", \"６\", \"７\", \"８\", \"９\" }; printf(num_conv_0_9[a]); } ``` ``` ８ ```",
+      "discoveredVia": "qiita-tag-api:C++",
+      "needsDateVerification": false
+    },
+    {
+      "title": "ターミナルで遊べるボンバーマン風対戦ゲーム「BombConsole」をつくりました",
+      "url": "https://zenn.dev/ux_xu/articles/bombconsole-terminal-bomberman",
+      "source": "Zenn",
+      "publishedAt": "2026-10-16T08:29:32+00:00",
+      "matchedKeywords": [
+        "C++"
+      ],
+      "tags": [],
+      "snippet": "ターミナルの中で対戦できるボンバーマン風のゲームを作りました。 https://github.com/u17220/BombConsole サーバは C++、クライアントは Python 3 の標準ライブラリだけで書いた 1 ファイルです。遊ぶ人はそのファイルを取ってきて python3 で起動するだけで、何もインストールしなくて済みます。 まずは 1 人で、Bot 2 体を相手に試せます(g++ と make が必要です)。ロビーで r を押すと始まります。 git clo",
+      "discoveredVia": "zenn-topic-feed:cpp",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Windowsのロック画面に3Dキャラを出す【C++のお勉強】",
+      "url": "https://zenn.dev/nmiura_thakaz/articles/9e44cc56a0955d",
+      "source": "Zenn",
+      "publishedAt": "2026-10-16T07:45:56+00:00",
+      "matchedKeywords": [
+        "C++",
+        "Shader"
+      ],
+      "tags": [],
+      "snippet": "前回、ログイン画面でもキー一発で画面構成を戻せるツール(DisplayRescue)をv1.0.0として公開した。 ログイン画面でも画面構成を戻せるツールを作る【C++のお勉強】 その続き。v1.1.0でロック画面に3Dのキャラクタが出るようになった。画面を戻すツールにキャラクタは要らないが、作ってみたくなったので作った。 やりたいこと ロック画面(ロック画像とパスワード欄の両方)にVRMの3Dキャラクタを出して動かす ログイン画面で動くSYSTEMのプログラムなので極力安全",
+      "discoveredVia": "zenn-latest-api:title-match|zenn-topic-feed:cpp|zenn-topic-feed:directx",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Claude Code（Opus）が、blenderで立体作って動画も撮ってくれました…(@_@)｜池田暁子 いけだきょうこ",
+      "url": "https://note.com/ikekyo/n/nced6be39b6bc",
+      "source": "note",
+      "publishedAt": "2026-10-16T15:07:54+09:00",
+      "matchedKeywords": [
+        "Blender"
+      ],
+      "tags": [
+        "Blender"
+      ],
+      "snippet": "タイトルの通りです。 【ご注意！】私がプログラミング等の素人なことに加えて、日々新しいことがどんどん出てきますから、このマガジンに書かれていることは正しいとは限りません！！！ なんかふわっとした記録、という前提でご覧いただけたらと思います。ごめんなさい！！ こんな動画です。私 blender の使い方知らないのに……(@_@) Claude Code（Opus）が、blenderで立体作って動画も撮ってくれました…(@_@) 私は言葉での短い指示を、今Opusに数えてもらった",
+      "discoveredVia": "note-hashtag-new:Blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Atcoder解いてみた AtCoder Beginner Contest C - Path Graph?",
+      "url": "https://qiita.com/2yuu/items/24aaaa6526573aaeeef6",
+      "source": "Qiita",
+      "publishedAt": "2026-10-16T15:00:51+09:00",
+      "matchedKeywords": [
+        "C++"
+      ],
+      "tags": [
+        "AtCoder",
+        "C++"
+      ],
+      "snippet": "# AtCoder Beginner Contest C - Path Graph? 問題は[こちら](https://atcoder.jp/contests/abc287/tasks/abc287_c) # 回答 UnionFind or BFS/DFS 以下のコードはUnionFind ```C++ #include #include #include #include #include #include #include #include #include #inclu",
+      "discoveredVia": "qiita-tag-api:C++",
+      "needsDateVerification": false
+    },
+    {
+      "title": "AIで本格SRPGを1から作る「Der」#3 ── キャラ3案からUnityトゥーンまで",
+      "url": "https://zenn.dev/gamedev_toollab/articles/cb4776e71a0c68",
+      "source": "Zenn",
+      "publishedAt": "2026-10-16T05:41:47+00:00",
+      "matchedKeywords": [
+        "Blender",
+        "Unity"
+      ],
+      "tags": [],
+      "snippet": "今回は1キャラクターがゲーム内3Dになるまでを追う Derでは、本制作へ入る前にキャラクター制作の流れを固めています。 今回は主人公を例に、 最低条件 → ChatGPT Proで設定 → イラスト草案3案 → 人間が1案選定 → CodexでADV・4面図 → Tripoでパーツ別3D化 → Blenderで統合 → Unityでトゥーン表示 までを、実際の画像とともに追います。 途中では形状、パーツ位置、テクスチャなど細かな調整も行っていますが、記事では最終的な制作フロー",
+      "discoveredVia": "zenn-latest-api:title-match|zenn-topic-feed:blender|zenn-topic-feed:unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Atcoder解いてみた AtCoder Beginner Contest C - Standings",
+      "url": "https://qiita.com/2yuu/items/cd041081735a34af9044",
+      "source": "Qiita",
+      "publishedAt": "2026-10-16T13:50:39+09:00",
+      "matchedKeywords": [
+        "C++"
+      ],
+      "tags": [
+        "AtCoder",
+        "C++"
+      ],
+      "snippet": "# AtCoder Beginner Contest C - Standings 問題は[こちら](https://atcoder.jp/contests/abc308/tasks/abc308_c) # 回答 浮動小数演算による誤差を発生させずに評価値を比較する方法の学習 ソート時のカスタム関数の書き方の学習 ```C++ #include #include #include #include #include #include #include #include #inc",
+      "discoveredVia": "qiita-tag-api:C++",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Claude Codeで育てた開発ルールをCodexに引き継いだ。移したものと、移さなかったもの",
+      "url": "https://zenn.dev/ytksato/articles/2636dc64bbd00f",
+      "source": "Zenn",
+      "publishedAt": "2026-10-16T04:43:53+00:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [],
+      "snippet": "Dotsを使うようになって、開発の主軸をClaude CodeからCodexに移しました。 それまでは各スレッドを開いて、作業が終わったか、止まっていないか、別の担当に結果を渡す必要があるかを確認していました。Dotsとのやり取りにまとめられたのが、自分にとっては乗り換える理由になりました。 ただ、Claude Codeでは開発ルールやレビュー用のスキルを積み上げていたので、それはCodexでも使いたかった。 そこで、AIに元のルールを調べてもらい、今も必要なものを選んで引き",
+      "discoveredVia": "zenn-topic-feed:dots",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Rust 1.99.1公開、FFIのbool戻り値問題が修正されました",
+      "url": "https://qiita.com/DwarfM42/items/4a7929f8912ae9aaca77",
+      "source": "Qiita",
+      "publishedAt": "2026-10-16T13:43:49+09:00",
+      "matchedKeywords": [
+        "C++"
+      ],
+      "tags": [
+        "Rust",
+        "バグ修正",
+        "ffi",
+        "LLVM",
+        "コンパイラ"
+      ],
+      "snippet": "2026年10月15日、Rust 1.99.1がリリースされました。 以前、[Rust 1.99.0でFFIのbool戻り値が誤コンパイルされる問題が報告された](https://qiita.com/DwarfM42/items/8cfc155812f0e84d7183) という記事を書きました。 あの問題、今回の1.99.1で修正されたようです。 [Announcing Rust 1.99.1（公式）](https://blog.rust-lang.org/2026/10/",
+      "discoveredVia": "qiita-tag-api:LLVM",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Claude Code(Opus5.5)に3頭身キャラをBlenderとUnityで制作のTIPS",
+      "url": "https://zenn.dev/kawauchi_lab/articles/9901baf3166198",
+      "source": "Zenn",
+      "publishedAt": "2026-10-16T03:20:14+00:00",
+      "matchedKeywords": [
+        "Blender",
+        "CG",
+        "Unity"
+      ],
+      "tags": [],
+      "snippet": "目次 何をやったか 「完成です」と出てきたもの 指が直らない 「これは何のポーズ？」 数値でチェックするようにした 止めた14回 人が用意したもの・決めたこと やってみて 1. 何をやったか Claude Code に、3頭身のちびキャラを作ってもらいました。Blender でモデリングして、Unity でポーズを付けてレンダリングするところまでです。私がやったのは、ざっくりした要件と、見た目の判断と、指摘です。 最後は手を振るポーズまでできました。ただ、そこまでに Unit",
+      "discoveredVia": "zenn-latest-api:title-match|zenn-topic-feed:3dcg|zenn-topic-feed:blender|zenn-topic-feed:unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "プリザンター内部で動くSQL文を調べてみる[第7回：時系列チャート編]",
+      "url": "https://qiita.com/pmc-ko/items/586f4e3291caa3a0f791",
+      "source": "Qiita",
+      "publishedAt": "2026-10-16T12:11:45+09:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [
+        "プリザンター",
+        "Pleasanter",
+        "SQL",
+        "ソースコードリーディング",
+        "C#"
+      ],
+      "snippet": "## はじめに 第 6 回 ではバーンダウンチャートの現在 + 履歴 UNION クエリを解説しました。 本記事（第 7 回）では **時系列チャート（TimeSeries）** の SQL を解説します。横軸（HorizontalAxis）の設定によって SQL パターンが切り替わる点が特徴です。 :::note info バージョン 1.5.9.0 を対象にしています ::: | 回 | タイトル | |:--|:--| | 第 1 回 | アーキテクチャ編 ── SQL",
+      "discoveredVia": "qiita-tag-api:C#",
+      "needsDateVerification": false
+    },
+    {
+      "title": "C#コードを使用してPowerPointドキュメント内のスライドの順序を変更する方法",
+      "url": "https://qiita.com/chancychan/items/44eebbeacd2f64b27a52",
+      "source": "Qiita",
+      "publishedAt": "2026-10-16T11:22:50+09:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [
+        "C#",
+        "PowerPoint"
+      ],
+      "snippet": "PowerPointプレゼンテーションのスライド順序を調整すると、内容の流れを整理し、関連する情報をまとめたり、重要なスライドを適切な位置に移動したりできます。こうした調整によって、プレゼンテーション全体の構成が分かりやすくなり、聞き手に伝わりやすい資料を作成できます。 この記事では、C#を使用してPowerPointドキュメント内のスライドの順序をプログラムで変更する方法を紹介します。 ## 開発環境の準備 .NETプロジェクトでPowerPointファイルを操作するには、",
+      "discoveredVia": "qiita-tag-api:C#",
+      "needsDateVerification": false
+    },
+    {
+      "title": "C# で PDF をストリーム経由で読み込み・保存する",
+      "url": "https://qiita.com/YaHey/items/9bbd300e783035e0f56e",
+      "source": "Qiita",
+      "publishedAt": "2026-10-16T10:44:26+09:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [
+        "C#",
+        "PDF",
+        "自動化",
+        "プログラミング"
+      ],
+      "snippet": "PDF の生成や加工を行う際、必ずしもディスク上にファイルを作成する必要はありません。Web API のレスポンスとして PDF を返す場合や、データベースの BLOB に保存する場合、あるいはコンテナ環境で一時ファイルを極力減らしたい場合など、ストリームを介した処理が適している場面があります。本記事では、C# で PDF をストリームに保存する方法と、ストリームから読み込む方法を扱います。 ## 前提とする環境 - .NET Framework または .NET Core ",
+      "discoveredVia": "qiita-tag-api:C#",
+      "needsDateVerification": false
+    },
+    {
+      "title": "TP/DPマルチGPUサービング実測記録: Runpod A100 4枚で3つの構成を比較",
+      "url": "https://zenn.dev/hyeonjae/articles/llm-tp-dp-serving-lab-ja",
+      "source": "Zenn",
+      "publishedAt": "2026-10-16T01:18:18+00:00",
+      "matchedKeywords": [
+        "CG"
+      ],
+      "tags": [],
+      "snippet": "GPUを4枚積んだ単一ノードで、vLLMサービングを TP=4、TP=2 × DP=2、DP=4 の3構成で立ち上げ、速度を比べた記録である。当初はTP=8まで比べる予定だった。しかしRunpodでは8枚の在庫がなかなか見つからず、価格も安くない。現状は4枚が上限なので、同じ4枚の中でTPとDPの比重だけを変える形に組み直した。 先に結果を書いておく。GPU 1枚に収まるモデル(Qwen3-8B/14B)では DP=4 が最も速く、Qwen3-8Bではスループットが TP=4",
+      "discoveredVia": "zenn-latest-api:title-match|zenn-topic-feed:gpu",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Gemini 4 Argonが「寺院を自分で建てた」日に考える、マインクラフトのワールド制作とIT・DX人材の新しい頼み方｜タカコーホールディングス株式会社",
+      "url": "https://note.com/tkk_tech/n/n4996073adc90",
+      "source": "note",
+      "publishedAt": "2026-10-16T10:03:48+09:00",
+      "matchedKeywords": [
+        "Blender"
+      ],
+      "tags": [
+        "Blender"
+      ],
+      "snippet": "「AIがここまでできるなら、もう外に頼まなくてもいいのでは？」 この数日、そう感じた方は多いのではないでしょうか。 日本時間の2026年10月14日、Googleの新しいAIモデル「Gemini 4 Argon（ジェミニ・フォー・アルゴン）」の一般提供が始まりました。noteの急上昇ワードにも入り、使ってみた感想や性能比較の記事が次々に上がっています。 なかでも私たちが目を止めたのは、Googleが公開したデモのひとつです。AIが3D制作ソフトのBlender（ブレンダー）を",
+      "discoveredVia": "note-hashtag-new:Blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Trivyをお手軽に導入できるか調べた話",
+      "url": "https://zenn.dev/sitio1/articles/5261292709f7c4",
+      "source": "Zenn",
+      "publishedAt": "2026-10-16T01:00:05+00:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [],
+      "snippet": "はじめに 以前の調査で、コードの静的解析ツールSonarQubeを検証しました（詳細は別記事にまとめています）。今回の調査はそもそも「大がかりな契約や商談を挟まず、手軽に採用できるか」を前提にしており、SonarQubeはバグ・コードスメル検出こそ無料で十分実用的だったものの、セキュリティ脆弱性の検出は有償プランかつ料金体系も一筋縄ではいかず、この前提に合わなかったためいったん棚上げにしました。本記事で使用したAIコーディングアシスタントはAnthropic社のClaudeで",
+      "discoveredVia": "zenn-topic-feed:dotnet",
+      "needsDateVerification": false
+    },
+    {
+      "title": "ConcurrentEnumerable でどうにかし隊",
+      "url": "https://zenn.dev/sator_imaging/articles/4abac5bd4a02f8",
+      "source": "Zenn",
+      "publishedAt": "2026-10-16T00:45:48+00:00",
+      "matchedKeywords": [
+        "C#",
+        "Unity"
+      ],
+      "tags": [],
+      "snippet": "Parallel.ForEachAsync や Channel<T> で 複数ファイルを並列処理 ファイルごとの処理は複数の結果を返す を行う場合のパフォーマンスを考えます。 静かに壊れます まず Parallel から。 並列処理で List<T> を使うと「静かにデータが壊れます」が起きます。 var result = new List<string>(); await Parallel.ForEachAsync(filePaths, new ParallelOption",
+      "discoveredVia": "zenn-topic-feed:csharp|zenn-topic-feed:dotnet|zenn-topic-feed:unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "口から入って消化管を3Dで進む: 管の合流部の穴をシェーダーであける（Three.js）",
+      "url": "https://zenn.dev/sishiya/articles/body-dive-tube-shader-junction",
+      "source": "Zenn",
+      "publishedAt": "2026-10-15T23:58:45+00:00",
+      "matchedKeywords": [
+        "Shader"
+      ],
+      "tags": [],
+      "snippet": "口や鼻から入って、食べ物やカプセル内視鏡になって、のど・食道・胃・小腸・大腸や、気管・肺の中を3Dで進むページを作りました。進むあいだ、胃酸で色が変わったり、関門（括約筋）が開いたり閉じたりします。表示は Three.js で、管の描き方と体の中の計算は自前です。 https://sishiya.github.io/manabi-lab/body-dive/ この記事では、管をどう描いたか、いちばん苦労した「管と管がつながる所」、当たり判定、体の中の時間の進め方を書きます。 ",
+      "discoveredVia": "zenn-topic-feed:glsl",
+      "needsDateVerification": false
+    },
+    {
+      "title": ".NET と React で航空会社経営ゲームを個人開発した話",
+      "url": "https://zenn.dev/airlengend/articles/c93e0324402acf",
+      "source": "Zenn",
+      "publishedAt": "2026-10-15T23:00:05+00:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [],
+      "snippet": "ニュージーランドでソフトウェアエンジニアをしています。仕事の合間に、ブラウザで遊べるターン制の航空会社経営ゲーム Airline Legend を一人で作っています。 https://airlegendgame.com/ja/ この記事では、どんなゲームを作ったのか、どういう構成で動いているのかを紹介します。なお、日本語はネイティブではないので、AI の助けを借りて書いています。不自然な表現があったらすみません。 なぜ作ったのか 航空会社を経営するゲームを遊びたかったのですが",
+      "discoveredVia": "zenn-latest-api:title-match|zenn-topic-feed:dotnet",
+      "needsDateVerification": false
+    },
+    {
+      "title": "ホーム画面：異世界インサイド",
+      "url": "https://qiita.com/lemonIN/items/f4c7486b0f77d5ae4995",
+      "source": "Qiita",
+      "publishedAt": "2026-10-16T03:27:06+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "Unity",
+        "ゲーム開発",
+        "AI"
+      ],
+      "snippet": "# 『ホーム画面：異世界インサイド』 ## 企画概要 プレイヤーが目覚めると、そこはなぜか自身のスマートフォンの「ホーム画面」の奥深くでした。しかし、このホーム画面はいつもと違う。アプリアイコンは生きて脈打ち、壁紙は時折不気味な顔を覗かせ、通知は意味不明な言語であなたに何かを語りかけてきます。目的はただ一つ、このシュールで理不尽なスマホの世界から脱出することです。 ## ゲームシステム 典型的なポイント＆クリック式の脱出ゲームをベースとしますが、そのロジックは一切通用しません",
+      "discoveredVia": "qiita-tag-api:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "座標軸の変換コード",
+      "url": "https://qiita.com/yamada2121/items/e7419f151560c35f93af",
+      "source": "Qiita",
+      "publishedAt": "2026-10-16T02:06:28+09:00",
+      "matchedKeywords": [
+        "C++"
+      ],
+      "tags": [
+        "C++",
+        "Python"
+      ],
+      "snippet": "```cpp /****************************************************************************** * File Name : coord_transform.cpp * Description : Implementation of Coordinate Transformations between * LLA, NED, ECEF, and J2000 ECI frames. **********",
+      "discoveredVia": "qiita-tag-api:C++",
+      "needsDateVerification": false
+    },
+    {
+      "title": "cscの作法 その643",
+      "url": "https://qiita.com/ohisama@github/items/6895335ad1f1df4ee742",
+      "source": "Qiita",
+      "publishedAt": "2026-10-16T01:50:28+09:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [
+        "C#",
+        "Windows",
+        "イベントログ",
+        "Security"
+      ],
+      "snippet": "# 概要 cscの作法、調べてみた。 Securityのイベントログをリアルタイム監視してみた。 # 環境 windows10 # 写真 ![image.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/18104/ac0ddd41-e01f-4a64-8e9c-0e800f75a685.png) # サンプルコード ```c#: using System; using System.Collec",
+      "discoveredVia": "qiita-tag-api:C#",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Mode開発⑨ カテゴリ分けとTextureサムネイルを追加",
+      "url": "https://qiita.com/aijyu/items/28e3229a089cd0c23bd5",
+      "source": "Qiita",
+      "publishedAt": "2026-10-16T01:13:25+09:00",
+      "matchedKeywords": [
+        "Blender"
+      ],
+      "tags": [
+        "Blender",
+        "3D"
+      ],
+      "snippet": "# Mode開発⑨ カテゴリ分けとTextureサムネイルを追加 前回までで、Sandbox Modeでは、 - Texture Folderの自動Scan - 自動採番 - Category Folderの階層化 - Hotbar - Inventory - Drag & Drop - Anti-Tiling まで実装しました。 ただし、Texture数が増えてくると、Inventoryの見た目に問題が出てきます。 例えば、 ```text asphalt_asphalt_",
+      "discoveredVia": "qiita-tag-api:Blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "AIと考えたオリジナルキャラを3Dアバター―にしてみた｜白湯",
+      "url": "https://note.com/sayu_creative/n/ne729a3288d35",
+      "source": "note",
+      "publishedAt": "2026-10-15T23:47:33+09:00",
+      "matchedKeywords": [
+        "Blender"
+      ],
+      "tags": [
+        "Blender"
+      ],
+      "snippet": "ここ数日、AIを使っていろいろな作品を作っている。今後、動画なども作っていくうえで、自分のオリジナルキャラクターがいると、いろいろな場面で活用できて便利なのではないかと思った。 そこで今回、AIを使ってオリジナルキャラクターを考え、3Dアバターにしてみることにした。 まずはChatGPTと壁打ちしながら、キャラクターの方向性を考えた。 いくつかの方向性を検討した結果、生まれたのが「LANTERN DOLL（ランタンドール）」というキャラクターだ。 大きな黒いフードに白い髪、赤",
+      "discoveredVia": "note-hashtag-new:Blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Python 3.15のJITを設計前提にしない理由",
+      "url": "https://zenn.dev/techstudiolab/articles/python315-jit-performance-deployment-decisions",
+      "source": "Zenn",
+      "publishedAt": "2026-10-15T23:14:36+09:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [],
+      "snippet": "",
+      "discoveredVia": "zenn-latest-api:title-match",
+      "needsDateVerification": false
+    },
+    {
+      "title": "14日目（Phase 4続き）：何かを作るたびに何かが壊れる - nennokiのブログ",
+      "url": "https://nennoki.hatenablog.com/entry/2026/10/15/230724",
+      "source": "nennoki.hatenablog.com",
+      "publishedAt": "2026-10-15T14:07:24+00:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [],
+      "snippet": "さて、早いもので、気づいたら開発開始から2週間が経過しました。結構進んでいると見るか、AIを使っている割に遅いと見るか、どっちでしょう。 私は遅いと思っています。 変にこだわってGoogle系のAIしか使っていないのと、変にこだわってゲームの中身を詰めているからですね。個人開発かつ思いつきで始めた趣味なので、好きにやりたいと思います。 出撃できない！ ミッション選択時のシーンロード方式の採用（今更 ホロマップに障害物が表示されない！ 勝手に色々なオブジェクト形式が追加されてい",
+      "discoveredVia": "hatena-keyword:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "【番外編】初心者がblender初心者が10日間頑張ってみる ｜みお",
+      "url": "https://note.com/0dare_kano0/n/n11db8037598e",
+      "source": "note",
+      "publishedAt": "2026-10-15T22:58:27+09:00",
+      "matchedKeywords": [
+        "Blender"
+      ],
+      "tags": [
+        "Blender"
+      ],
+      "snippet": "これはblender初心者が作りたいものを作れるようになるまでの記録です 今日は2次試験の対策に追われ、blenderに触れられませんでした なので昔の作品を少しだけ振り返ります 雪の結晶 2日 レンダリングが上手くいかなかったのでスクショです ライティングも何もかも苦労しました どうしても作ってみたくて作ったのがはじまりでしたが、楽しく続けられていてよかったなと思います フォロワーさんも増え、素敵な作品を作る方々ばかりで早く私も同じようにつくれるようになりたいと日々感じてお",
+      "discoveredVia": "note-hashtag-new:Blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "【Blender4.3】ボーンの影響範囲を修正する｜いぬ",
+      "url": "https://note.com/mosainu/n/nba37ae24af52",
+      "source": "note",
+      "publishedAt": "2026-10-15T22:52:27+09:00",
+      "matchedKeywords": [
+        "Blender"
+      ],
+      "tags": [
+        "Blender"
+      ],
+      "snippet": "またしてもろれたうんを作っています。 （手元のたうんも何故か若干黄ばんでるし）（この前の案件温泉旅行だったし）お風呂に入れたかったので、作ってたたうんからアクセサリー系のパーツを外して、ついでに目を閉じさせてみて、可動域を増やすために骨を入れなおす過程で躓いたのでメモ。 モデリングと全然関係ないけど、ダーリンメランコリー最高すぎるが。 今週知りました。二か月前の私は一体何してたんですか！？ 「ねっ」えぐううううい！！ 課題と原因 【問題】 骨を動かすと動いてほしくない、ひげ？",
+      "discoveredVia": "note-hashtag-new:Blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Windowsでgit worktreeを切るたびのフルビルドを短くした（ccache + MSVC）",
+      "url": "https://zenn.dev/bestat/articles/windows-worktree-build-cache",
+      "source": "Zenn",
+      "publishedAt": "2026-10-15T22:18:34+09:00",
+      "matchedKeywords": [
+        "C++"
+      ],
+      "tags": [],
+      "snippet": "",
+      "discoveredVia": "zenn-latest-api:title-match",
+      "needsDateVerification": false
+    },
+    {
+      "title": "ゲーム開発経験ゼロの私が、ChatGPTとCodexでSteamを目指し始めた話｜ろしラボ",
+      "url": "https://note.com/rossy_laboratory/n/n1ecb08552697",
+      "source": "note",
+      "publishedAt": "2026-10-15T22:06:37+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "Unity"
+      ],
+      "snippet": "ONNEN開発記・第1話 実は今、ゲームを作っています。 しかも、Steamで公開することを目標にした、PC向けのアクションゲームです。 タイトルは、 『ONNEN: UNDYING VENGEANCE』 主人公は、約300年前に命を落とし、怨霊となった女性「YOMI（ヨミ）」。 最初は弱い怨霊ですが、人間を襲って怨念を蓄積し、さまざまな怪異能力を獲得しながら成長していきます。 ここまで読むと、 「ゲーム開発をしている人なんだな」 と思われるかもしれません。 でも、実は違いま",
+      "discoveredVia": "note-hashtag-new:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Unity制作だいぶ進みました[体験版リリースしました！]｜こもりん",
+      "url": "https://note.com/indoor_goblin2/n/n3bc29fca9215",
+      "source": "note",
+      "publishedAt": "2026-10-15T21:40:58+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "Unity"
+      ],
+      "snippet": "二人の主人公で遊ぶRPGを作っています。体験版を公開しました 制作しているアクションRPG『デュオリクロス - Duo Re:Cross』の体験版を、itch.ioで公開しました。Steamはストア開設中なのでまだ時間かかりそうです。 今回は開発の経緯を長く書くというより、どんなゲームを作っているのか、どんなところを大事にしているのかを少し紹介したいと思います。ゲームを作っている方にも、気軽に読んでもらえたらうれしいです。 ■ 同じ世界を、二人の主人公で歩く このゲームには、",
+      "discoveredVia": "note-hashtag-new:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Gemini4のチャットでイラストから３Dモデルを作ってみる｜ゆりしー@AIであそぶ",
+      "url": "https://note.com/ulyssesx00/n/n2e19b74dfa2e",
+      "source": "note",
+      "publishedAt": "2026-10-15T20:53:20+09:00",
+      "matchedKeywords": [
+        "Blender"
+      ],
+      "tags": [
+        "Blender"
+      ],
+      "snippet": "Gemini4でArgonが来てたのでイラストから３Dモデルが作れるか実験しました。 イラストはこちらミッドジャーニー製 プロンプト このイラストから３Dモデル制作をBlender 5.２で実行できるPythonスクリプトを作成してください。 テーマは「豪華な貴族の部屋の3Dモデル」です。 - テーブル、ベッド暖炉、カーテン、などを配置 - マテリアル、照明、カメラを設定 - Blender標準APIのみ使用 - すべてのオブジェクトをスクリプトで生成 - GLB形式でエクス",
+      "discoveredVia": "note-hashtag-new:Blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "24GB GPUで長文コンテキストを測るためのローカルLLMベンチマーク設計",
+      "url": "https://zenn.dev/skrtk98/articles/local-llm-24gb-benchmark",
+      "source": "Zenn",
+      "publishedAt": "2026-10-15T20:41:03+09:00",
+      "matchedKeywords": [
+        "CG"
+      ],
+      "tags": [],
+      "snippet": "",
+      "discoveredVia": "zenn-latest-api:title-match",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Unity 2022.3 で Android アプリを作るための環境構築・初期設定まとめ",
+      "url": "https://qiita.com/haru452/items/29d97099a3358ee62c54",
+      "source": "Qiita",
+      "publishedAt": "2026-10-15T19:52:08+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "Unity",
+        "アプリ開発初心者",
+        "アプリ開発",
+        "Android",
+        "Unity入門"
+      ],
+      "snippet": "## はじめに UnityでAndroid向けのアプリ（ゲーム）を作り始めるとき、最初の環境構築と設定が難しくて困ることがあったりします。（私がそうでした。この記事は自分の備忘録の役割もあります。） この記事では、**Unity Hubのインストールから、Android実機でアプリを動かすまで**に必要なセッティングを、**Unity 2022.3 LTS** を使ってまとめます。 ::: note warn この記事はUnityでのプログラムについては述べません。環境構築ま",
+      "discoveredVia": "qiita-tag-api:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "RAMディスクでWindowsを高速化するアプリを作って困ったこと",
+      "url": "https://zenn.dev/da39nbv3/articles/1dcacffdcee69b",
+      "source": "Zenn",
+      "publishedAt": "2026-10-15T10:39:25+00:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [],
+      "snippet": "はじめに RAMディスクを作って、ブラウザや一時フォルダのキャッシュをそこへ逃がす常駐アプリを作りました。RAMDash といいます。 RAMディスクを作るアプリなのに、アプリが立ち上がるまでRAMディスクがありません。 当たり前の話ですが、「起動直後の空白期間」をどう扱うかを、設計の項目として立てるはめになりました。 この記事は、RAMDash を作る中で困ったことを、コードつきでまとめたものです。 いちばん困ったのは、Windows にログオンしてから RAMDash が",
+      "discoveredVia": "zenn-topic-feed:csharp|zenn-topic-feed:dotnet",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Claude CodeとBlenderとUnityでゲーム制作ハーネスを設計する話 その1｜Koushirou Works",
+      "url": "https://note.com/koushirouworks/n/nb9b7006ec48b",
+      "source": "note",
+      "publishedAt": "2026-10-15T17:50:22+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "Unity"
+      ],
+      "snippet": "PenguinSlideというゲームを、まずAndroid向けに作っている。いまの課題は、見た目、滑る動き、ASMRとして気持ちよく聞ける音の質だ。AIに修正を頼んでも、改善を確かめる手順が曖昧だと、やり取りとトークン消費だけが増えてしまう。 そこで、Claude Code、Blender、Unityをつなぐ制作手順を考えている。ここでいう「ハーネス」は、生成や編集の指示、受け渡すファイル、確認方法、失敗時の止め方をまとめた仕組みのこと。この文章は、その調査と設計の公開メモだ",
+      "discoveredVia": "note-hashtag-new:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "C# を使用して PDF ページに線、矩形、曲線を描画する",
+      "url": "https://qiita.com/rafluctua/items/e0674170c347252aa209",
+      "source": "Qiita",
+      "publishedAt": "2026-10-15T17:23:44+09:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [
+        "C#",
+        "PDF",
+        ".NET"
+      ],
+      "snippet": "PDF に図形を描画することは、レポート、図面、データ可視化ドキュメントを生成する際によくある要件です。この記事では、[Free Spire.PDF for .NET](https://www.e-iceblue.com/Introduce/free-pdf-component.html) を例に、C# で線、矩形、楕円、多角形、カスタムパスを描画する方法を紹介し、座標系や透明度の設定などの重要な詳細について説明します。 ## 環境準備 Visual Studio で NuG",
+      "discoveredVia": "qiita-tag-api:.NET|qiita-tag-api:C#",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Civil 3DのDynamoで.NET API",
+      "url": "https://qiita.com/Dhichisutto/items/538a44ba2e5e3ed66344",
+      "source": "Qiita",
+      "publishedAt": "2026-10-15T16:38:19+09:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [
+        "Civil3D",
+        "Dynamo",
+        ".NET"
+      ],
+      "snippet": "## この文書 Autodesk社の土木設計用CADである，Civil 3Dのユーザー向けです。残念ながらAutoCADユーザーは対象ではありません。当方はRevitユーザーではなく，Revitユーザーにとって有用かどうかはわかりません。 Civil 3Dに付属するDynamoに含まれるPython ScriptノードでAutoCAD / Civil 3D用.NET APIを利用したコードを書くためのガイドです。 ## はじめに AutoCADははじめ，AutoLISPという",
+      "discoveredVia": "qiita-tag-api:.NET",
+      "needsDateVerification": false
+    },
+    {
+      "title": "RTX 2060 6GB で Strata + Qwen3.6 35B-A3B を試した。125Bよりは早いが、まだ実用的ではない。",
+      "url": "https://zenn.dev/remuno/articles/strata-rtx2060-qwen36-35b-a3b",
+      "source": "Zenn",
+      "publishedAt": "2026-10-15T07:06:39+00:00",
+      "matchedKeywords": [
+        "CG"
+      ],
+      "tags": [],
+      "snippet": "! 2026年10月中旬時点の情報です。Strata は v0.1.44.1、モデルは Qwen3.6 35B-A3B(UD-Q4_K_XL)。 Flash-Next(125B)を試した前回までの記事: https://zenn.dev/remuno/articles/strata-rtx2060-qwen38-flash-next-q3 読了時間の目安は約 13 分(約 7,500 文字)です。 はじめに これまで、RTX 2060 6GB + RAM 64GB で、Str",
+      "discoveredVia": "zenn-topic-feed:gpu",
+      "needsDateVerification": false
+    },
+    {
+      "title": "ColosoでBlenderアニメーションを学ぶなら？目的別に選びたいおすすめ講座7選｜maru",
+      "url": "https://note.com/right_oxalis8790/n/n060bec68bfba",
+      "source": "note",
+      "publishedAt": "2026-10-15T15:54:44+09:00",
+      "matchedKeywords": [
+        "Blender"
+      ],
+      "tags": [
+        "Blender"
+      ],
+      "snippet": "※この記事はPRを含みます。 Blenderでアニメーションを作れるようになりたいと思ってColosoを見てみると、思った以上に講座の種類が多く、「結局どれを選べばいいの？」と迷いやすいです。 ひとことでBlenderアニメーションといっても、3Dキャラクターを自然に動かす講座もあれば、セルルック、Grease Pencil、MV制作、2Dと3Dを組み合わせたアクション表現まで方向性はさまざまです。 そこで今回は、Colosoで公開されているBlender関連講座の中から、ア",
+      "discoveredVia": "note-hashtag-new:Blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "C#で複数のPDFを結合する方法",
+      "url": "https://zenn.dev/techcode/articles/a65da06083bd84",
+      "source": "Zenn",
+      "publishedAt": "2026-10-15T06:49:33+00:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [],
+      "snippet": "複数の PDF ファイルを 1 つにまとめる作業は、報告書の統合、関連資料のアーカイブ、印刷用ドキュメントの準備など、さまざまな場面で必要になります。たとえば、部門ごとに作成された月次レポートを 1 つのファイルに統合したり、契約書本体と別紙を結合して配布用の文書を作成したりするケースです。 本記事では、.NET 向けの PDF ライブラリを用いて、C# で複数の PDF ファイルを結合する方法を整理します。ファイルパスを指定する基本的な方法から、特定ページの選択的な結合、メ",
+      "discoveredVia": "zenn-latest-api:title-match|zenn-topic-feed:csharp",
+      "needsDateVerification": false
+    },
+    {
+      "title": "C# で PDF/A を作成し画像にハイパーリンクを挿入する",
+      "url": "https://qiita.com/YaHey/items/53efda97fa7c071ccbaa",
+      "source": "Qiita",
+      "publishedAt": "2026-10-15T15:47:49+09:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [
+        "C#",
+        "PDF",
+        "自動化",
+        "プログラミング"
+      ],
+      "snippet": "PDF/A は、長期保存を目的として ISO 標準化された PDF のサブセットです。電子文書のアーカイブでは、作成時の外観を将来にわたって再現できることが求められる場面があります。本記事では、C# で PDF/A ファイルを作成し、その中に配置した画像へハイパーリンクを付与する手順を扱います。 ## 前提とする環境 - .NET Framework または .NET Core / .NET 5 以降 - PDF ファイルの読み書きを行うライブラリが利用可能であること 本記事",
+      "discoveredVia": "qiita-tag-api:C#",
+      "needsDateVerification": false
+    },
+    {
+      "title": "【C#】Optionsパターンと設定読み込みの落とし穴まとめ【実務向け】",
+      "url": "https://qiita.com/polnareff/items/26465e12e0f48caf3f9a",
+      "source": "Qiita",
+      "publishedAt": "2026-10-15T15:30:10+09:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [
+        "C#",
+        "ASP.NET_Core",
+        "Options",
+        "構成管理"
+      ],
+      "snippet": "## はじめに ASP.NET Coreでは、設定値を`IOptions `で型付きオブジェクトとして受け取るOptionsパターンが標準的な方法です。ただし、設定の変更が反映されるタイミングや、キー名の誤りが無言で無視される挙動を知らないと、「設定を変えたのに反映されない」「本番だけ値が空になる」といった不具合につながります。本記事では、Optionsパターンと設定読み込みで実務上よく遭遇する3つの落とし穴を扱います。 ## 前提知識 / 用語整理 - **`IOption",
+      "discoveredVia": "qiita-tag-api:C#",
+      "needsDateVerification": false
+    },
+    {
+      "title": "はじめまして、こんにちは。｜Nemusubi（ねむすび）",
+      "url": "https://note.com/nemusubi/n/n0dc6e36e2dc0",
+      "source": "note",
+      "publishedAt": "2026-10-15T15:13:36+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "Unity"
+      ],
+      "snippet": "Nemusubi（ねむすび）と申します。 前職は全く違う仕事をしていたのですが、その仕事を辞めて、現在はゲーム開発のために3Dモデリングとイラストを日々制作しております。 その中で、うまい下手はさておき、 制作過程、成長過程を世間にさらけ出してアウトプットしていく場を設けることにしてみました。 私は、最初の一歩をなかなか踏み出すことができない性格なのですが、こんな私でも、続けていれば、いつか夢は叶うんだということを多くの方に見ていただけるような場所にできればと思っています。 ",
+      "discoveredVia": "note-hashtag-new:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Unity 7 Alpha への移行で BadImageFormatException が発生した場合の回避策",
+      "url": "https://zenn.dev/piteki/articles/piteki-unity-7-badimageformatexception",
+      "source": "Zenn",
+      "publishedAt": "2026-10-15T05:16:01+00:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [],
+      "snippet": "Unity 6.6 で開発していたプロジェクトを Unity 7 Alpha にアップグレードしたところ、Editor 起動中に BadImageFormatException が発生してクラッシュしました。 調査の結果、Unity AI Assistant パッケージを一度削除し、新しいバージョンをインストールすることで起動できたので、検証結果を残しておきます。 追記（2026/10/15） 関連する既知不具合 UUM-156142 は Unity 7000.0.0a9 で",
+      "discoveredVia": "zenn-latest-api:title-match|zenn-topic-feed:unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "# PowerShellで大量のUnityプロジェクトを検索・重複整理・容量チェックしてみた",
+      "url": "https://qiita.com/maees/items/26d458b301db759003ed",
+      "source": "Qiita",
+      "publishedAt": "2026-10-15T13:54:56+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "PowerShell",
+        "Unity",
+        "Windows",
+        "自動化",
+        "ファイル操作"
+      ],
+      "snippet": "古いPCから新しいPCへ移行するため、過去に作ったUnityプロジェクトをGitHubへ退避することにした。 ただ、PCの中を確認すると、Unityプロジェクトがいろいろなフォルダに散らばっていた。 さらに、 ```text 同じ作品の古いバージョン コピーしたプロジェクト テスト用プロジェクト 容量の大きいプロジェクト ``` なども混ざっている。 1件ずつエクスプローラーで確認するのは大変だったので、PowerShellを使って、 ```text Unityプロジェクトを",
+      "discoveredVia": "qiita-tag-api:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "proxmoxの非特権LXC内でGPU(Nvidia)を認識させる備忘録",
+      "url": "https://qiita.com/rewolfiluac/items/dbfed6465f2bd84d19df",
+      "source": "Qiita",
+      "publishedAt": "2026-10-15T13:03:14+09:00",
+      "matchedKeywords": [
+        "CG"
+      ],
+      "tags": [
+        "proxmox",
+        "NVIDIA",
+        "GPU"
+      ],
+      "snippet": "proxmoxバージョンを上げてインストールしなおしたので、備忘録として追加。 旧バージョンは[こちら](https://qiita.com/rewolfiluac/items/df57872d92b9afa5a836) # 前提条件 - proxmox: 9.2.21 - LXC: Ubuntu 26.04 ※事前作成しておく - GPU: RTX4090 # モチベーション - 複数の非特権LXCでGPUを共有したい - VMにGPUパススルーする方法では、vGPUを使わ",
+      "discoveredVia": "qiita-tag-api:GPU",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Gemini 4 Argonで何ができる？寺院の3D制作と、Pro・Ultraの利用条件を調べてみた｜とにかく楽してAI化",
+      "url": "https://note.com/toniraku_ai/n/n61fee130a104",
+      "source": "note",
+      "publishedAt": "2026-10-15T13:02:06+09:00",
+      "matchedKeywords": [
+        "Blender"
+      ],
+      "tags": [
+        "Blender"
+      ],
+      "snippet": "Gemini 4 Argonの発表で気になったのは、AIが寺院の3Dシーンを作ったという報告でした。 Googleは2026年10月13日、Gemini 4 Argonの提供拡大を発表しました。コードを書いたり、画像や動画を読み取ったりできるAIです。この記事では公式の制作例と利用条件を調べました。自分でArgonを動かした実験ではありません。 お寺の3D制作はGoogleが公開した例 GoogleはArgonが3D制作ソフト「Blender」で寺院の建物、植栽、照明を作った",
+      "discoveredVia": "note-hashtag-new:Blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "自分用の服薬記録アプリを作っていたら、気圧グラフまで付いた話",
+      "url": "https://zenn.dev/mitsukida/articles/3dcbb89436b349",
+      "source": "Zenn",
+      "publishedAt": "2026-10-15T03:56:06+00:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [],
+      "snippet": "はじめに 自分が欲しいものを作っていたら、いつの間にか気圧グラフまで付いていた。 現在、OneLog（ワンログ）というAndroidアプリをGoogle Playで公開している。 もともとは、自分の服薬回数を記録するために作り始めたアプリだった。 ところが、記録を集計できるようにし、AIに記録を渡せるようにし、スマートフォンの気圧センサーを試しているうちに、少しずつ機能が増えていった。 最初から、服薬記録と気圧を組み合わせようと思っていたわけではない。 自分が必要だと思った機",
+      "discoveredVia": "zenn-topic-feed:csharp",
+      "needsDateVerification": false
+    },
+    {
+      "title": "HPC用に、研究室で買えるGPUマシンがない",
+      "url": "https://qiita.com/takaokotani/items/5d52ca320881e16751b0",
+      "source": "Qiita",
+      "publishedAt": "2026-10-15T12:54:52+09:00",
+      "matchedKeywords": [
+        "CG"
+      ],
+      "tags": [
+        "GPU",
+        "5090",
+        "AIforScience",
+        "HPC"
+      ],
+      "snippet": "数値計算、HPCにGPU使いましょう、という業界もある。AIがリファクタリングして実装をかなり手伝ってくれる。人間がコードをいじらなくてもGPU化もできるようになってきた。 そういうときに何を買ったらいいのか。以下に表をAIに作ってもらった。たいていGEMMで間に合うから。 今更、旧世代のものを買いたくないと思うなら、5090の次はB200になる。 B200となると、NVL72(72枚の一体運用）でないと意味がうすい。 これがたぶんなんやかんやで10億円＋運用コスト。研究室で",
+      "discoveredVia": "qiita-tag-api:GPU",
+      "needsDateVerification": false
+    },
+    {
+      "title": "自分のアイデアがゲームやWEBサイトに！卒業研究がスタート！｜長岡公務員・情報ビジネス専門学校",
+      "url": "https://note.com/njc_nsg/n/n5315b913cf3a",
+      "source": "note",
+      "publishedAt": "2026-10-15T12:00:00+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "Unity"
+      ],
+      "snippet": "AI・情報システム科2年生の卒業研究が、いよいよスタートしました💻 卒業研究では、自分の「作ってみたい！」をカタチにできるのが大きな魅力✨ 例えば、 ✅Unityを使った2D・3Dゲームの制作 ✅オリジナルのショップWEBサイトづくり など、学生たちは自分の興味に合わせて作品づくりに挑戦しています！ 「こんなゲームがあったら面白そう！」 「こんなWEBサイトを作ってみたい！」 そんなアイデアを、これまで学んできたプログラミングやデザインの知識を活かして、少しずつカタチにしてい",
+      "discoveredVia": "note-hashtag-new:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "【LocalLLM】Claude Codeの代わりになる？精度・同時人数・費用を検証",
+      "url": "https://zenn.dev/solvio/articles/6d374a9224327a",
+      "source": "Zenn",
+      "publishedAt": "2026-10-15T02:56:38+00:00",
+      "matchedKeywords": [
+        "CG"
+      ],
+      "tags": [],
+      "snippet": "はじめに 今や、Claude Codeは開発の現場に欠かせないツールになりつつあります。 一方で、「社内のコードや資料を社外のサービスに送れない」「利用者が増えたときの費用が読めない」という理由で踏み切れずにいる方も多いと感じています。 そうした組織でよく挙がるのが、公開されているAIモデルを社内のGPUサーバーで動かすLocalLLMという案ではないでしょうか。 そこで今回はデータセンター向けのGPUであるNVIDIA B200を1枚借りて、業務で使う前提で次の3点を検証し",
+      "discoveredVia": "zenn-topic-feed:gpu",
+      "needsDateVerification": false
+    },
+    {
+      "title": "dequeの使い方まとめ（個人用）",
+      "url": "https://qiita.com/watacco_suya/items/780ec4ffbe481780aa20",
+      "source": "Qiita",
+      "publishedAt": "2026-10-15T11:46:11+09:00",
+      "matchedKeywords": [
+        "C++"
+      ],
+      "tags": [
+        "C++"
+      ],
+      "snippet": "PythonからC++への移行に伴い、自分用にまとめた記事です - Pythonの `collections.deque` のように、前後から要素を追加・取り出したいときは、C++でも `deque` が使える - C++の `deque` の基本操作を、Pythonとの対応や実行例と合わせたまとめ ## dequeとは **先頭と末尾の両方から、要素を効率よく追加・削除できる入れ物** 例えば、中身が `10, 20, 30` → 先頭の `10` も末尾の `30` も取",
+      "discoveredVia": "qiita-tag-api:C++",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Steam販売への道①｜とんかつ",
+      "url": "https://note.com/vast_frog6834/n/n6c1dc4e11685",
+      "source": "note",
+      "publishedAt": "2026-10-15T10:22:01+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "Unity"
+      ],
+      "snippet": "こんにちは！ 以前、 『STEEL SOULS: TACTICAL LINK』をSteamで販売してみたい！ という記事を書きました。 あれから少しずつですが、ちゃんと進めています！ ゲーム本編そのものはすでに完成しているので、現在は 「作る段階」から「販売できる状態にする段階」 へ移っています。 Windows版を作りました！ まず、Unity上で動いているだけでは販売できないので、 実際にWindows向けのゲームとしてビルドしました。 さらに、 アップロード → ダウン",
+      "discoveredVia": "note-hashtag-new:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Gemini 4 Argon、結局何がすごい？Google公式を含む海外活用事例20選｜大川智也｜AIエージェント実装・AX",
+      "url": "https://note.com/calm_mango562/n/n412b9f250bb7",
+      "source": "note",
+      "publishedAt": "2026-10-15T09:05:33+09:00",
+      "matchedKeywords": [
+        "Blender"
+      ],
+      "tags": [
+        "Blender"
+      ],
+      "snippet": "自宅の机の写真が、車で走れるレースゲームになっています。 Gemini 4 Argon is here!!! I can't wait to see what people build with it, and I have so much to say/post/share but to start: I used Argon to turn pictures of my home office desk into a playable racing game with B",
+      "discoveredVia": "note-hashtag-new:Blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "cscの作法 その642",
+      "url": "https://qiita.com/ohisama@github/items/16d2e60fec44f1daab9b",
+      "source": "Qiita",
+      "publishedAt": "2026-10-15T06:05:21+09:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [
+        "C#",
+        "Windows",
+        "イベントログ",
+        "Security"
+      ],
+      "snippet": "# 概要 cscの作法、調べてみた。 Securityのイベントログを検索してみた。 # サンプルコード ```c#: using System; using System.Collections.Generic; using System.Diagnostics.Eventing.Reader; class Program { static void Main() { int[] targetEventIds = new int[] { 4624, 4625, 4672, ",
+      "discoveredVia": "qiita-tag-api:C#",
+      "needsDateVerification": false
+    },
+    {
+      "title": "【ローカルLLM】Intel系GPU×XeStrataでQwen3.8-Flash-Nextを動かす（WSL2 + Intel Arc Pro B70）",
+      "url": "https://qiita.com/h-nabata/items/2446e016df04e8349982",
+      "source": "Qiita",
+      "publishedAt": "2026-10-15T03:55:35+09:00",
+      "matchedKeywords": [
+        "CG"
+      ],
+      "tags": [
+        "ローカルLLM",
+        "Qwen3.8-Flash-Next",
+        "Qwen3.8",
+        "strata",
+        "GPU"
+      ],
+      "snippet": "# はじめに ― Strataによる環境変化 ローカルAIが普及しVRAM容量が正義となった昨今、NVIDIA系GPUを安価に入手するのは困難を極める。NVIDIA系GPUの主な利点はCUDAエコシステムが利用できることにあるが、ここ最近「[**Strata**](https://github.com/Niko1221/Strata)」（ストラータ）という新しいLLM用ランタイムが[Niko Veit氏](https://github.com/Niko1221)（[X](ht",
+      "discoveredVia": "qiita-tag-api:GPU",
+      "needsDateVerification": false
+    },
+    {
+      "title": "忘れ物アドベンチャー：持ち主のもとへ帰りたい一心で！",
+      "url": "https://qiita.com/lemonIN/items/38bab8094d6584d5a6f1",
+      "source": "Qiita",
+      "publishedAt": "2026-10-15T03:45:53+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "Unity",
+        "ゲーム開発",
+        "AI"
+      ],
+      "snippet": "# 忘れ物アドベンチャー：持ち主のもとへ帰りたい一心で！ ## 企画概要 プレイヤーは、とある「忘れ物」となって、持ち主の元へ帰ることを目指す2Dアクションゲームです。落とし物センターに届けられたあなたは、持ち主の記憶をたどりながら、様々な障害や敵を乗り越え、長い旅に出ます。見慣れた日常の風景が、忘れ物にとっては壮大な冒険の舞台となります。 ## ゲームシステム ### 1. 主人公選択と特性 ゲーム開始時に、プレイヤーは「片方の手袋」「古い鍵」「お気に入りのヘアピン」など、",
+      "discoveredVia": "qiita-tag-api:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Zennに記事を公開しようと思ったら、MindManagerでChatGPTとブレインストーミングするMCPサーバーを作っていた件【前編】",
+      "url": "https://zenn.dev/ab_ten/articles/mm6mcp-dev-story-part1-4e00b26f1f46",
+      "source": "Zenn",
+      "publishedAt": "2026-10-14T17:48:22+00:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [],
+      "snippet": "前書き Zennに技術記事を書いてみようと思い、まずはGitHub連携で記事を管理するツールを作ろうとしました。 その仕様をMindManager 6で整理してChatGPTと相談していたところ、マインドマップの内容を毎回手作業で共有するのが面倒になってきました。 そこでMindManager 6をChatGPTから直接参照できるMCPサーバーを作ることにしました。この記事は、そこに至る経緯と、実際に接続できるまでの記録です。 なお、この記事自体もChatGPTとの共同作業で",
+      "discoveredVia": "zenn-topic-feed:csharp",
+      "needsDateVerification": false
+    },
+    {
+      "title": "RTX 5070＋V100で大きなMoEを動かす：StrataとV100単体27Bを実測で比べてみた",
+      "url": "https://zenn.dev/lube8163/articles/87856ef9fffd66",
+      "source": "Zenn",
+      "publishedAt": "2026-10-14T17:45:19+00:00",
+      "matchedKeywords": [
+        "CG"
+      ],
+      "tags": [],
+      "snippet": "! 本記事はAI（Codex）の補助を受けて執筆しています。環境構築、再現スクリプトの作成、実機計測にもAIを利用しました。本文の計測値は実際に取得したログに基づいています。 はじめに 手元のPCには、RTX 5070（12GB）とTesla V100（32GB）が入っています。普段はV100に27BのLLMを載せ、5070をほかの用途に使う構成です。 今回は、この2枚を組み合わせて、1枚のGPUには収まらない大きなMoEモデルをStrataで動かせるかを試しました。対象はQ",
+      "discoveredVia": "zenn-topic-feed:gpu",
+      "needsDateVerification": false
+    },
+    {
+      "title": "ブラウザで、回るブラックホールのまわりの光をたどる（WebGL2・ライブラリなし）",
+      "url": "https://zenn.dev/sishiya/articles/blackhole-kerr-raytracing-webgl2",
+      "source": "Zenn",
+      "publishedAt": "2026-10-14T14:42:27+00:00",
+      "matchedKeywords": [
+        "Shader"
+      ],
+      "tags": [],
+      "snippet": "映画『インターステラー』のブラックホールは、平らな円盤が穴の上にも下にも回りこんで見えます。あれは演出ではなく、重力で光が曲がった結果です。 それを確かめるために、回るブラックホール（カー時空）のまわりの光を1本ずつ計算して描くページをブラウザで作りました。WebGL2 を直接書いていて、ライブラリは使っていません。 https://sishiya.github.io/manabi-lab/black-hole/ 画面の点をクリックすると、そこに届いた光がどこから来たかを、横",
+      "discoveredVia": "zenn-topic-feed:glsl",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Claude×Blenderの短編映画2本：作業はほぼ任せた、ただし手ぶらではない｜たぬ｜生成AIを使い倒す人",
+      "url": "https://note.com/tank_ai/n/n5e208c49c4d4",
+      "source": "note",
+      "publishedAt": "2026-10-14T23:30:00+09:00",
+      "matchedKeywords": [
+        "Blender"
+      ],
+      "tags": [
+        "Blender"
+      ],
+      "snippet": "Claudeに、Blenderで短編映画を2本作ってもらいました。夕暮れから雨の夜まで近未来の街を歩く3分41秒の『残照 / AFTERGLOW』と、自撮りに失敗し続ける約60秒のコメディ『IMG 0042』です。街も、主役のClawdも、音楽も、Claudeがコードで組み立てています（2作目の方が面白いので、2→1の順に以下に貼ります）。 📹３作目：https://youtu.be/1OtQEhDNmOw （10月15日&nbsp;0:00公開予定） 本記事ではまとめ以外で",
+      "discoveredVia": "note-hashtag-new:Blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "13日目（Phase 4続き）：AIによりステージビルダー実装＆高低差のあるステージでの挙動確認 - nennokiのブログ",
+      "url": "https://nennoki.hatenablog.com/entry/2026/10/14/230930",
+      "source": "nennoki.hatenablog.com",
+      "publishedAt": "2026-10-14T14:09:30+00:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [],
+      "snippet": "さて、ようやくPhase 4の残りの作業を行う下準備が整ってきました。 今回は検証用のステージを作って、検証まで進みました。 ただ、検証するにもプログラムの修正が沢山あって検証どころではなかったです。。武装の検証はまた明日以降ですね。 ステージは何とか自分で作りたい Hey Gemini！ド素人でも直感的にステージを作れるようにして！ モデル集め：Unity Asset Store、Fab とりあえず検証用ステージはAI任せで デバッグ用にマニュアル操作モードを追加 いざ検証",
+      "discoveredVia": "hatena-keyword:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "【超入門】AI時代だからこそ知っておきたいプログラミングの基礎の基礎（Python・C言語・C#）",
+      "url": "https://qiita.com/Ozaki_Ryu_/items/9321c630954efc869a76",
+      "source": "Qiita",
+      "publishedAt": "2026-10-14T22:44:45+09:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [
+        "初心者",
+        "Python",
+        "C",
+        "C#",
+        "プログラミング"
+      ],
+      "snippet": "## はじめに AIに頼めばコードが出てくる時代になりました。でも「出てきたコードが何をしているのか分からない」「エラーが出たらお手上げ」という人も多いはずです。 この記事は、プログラミング未経験の人が **最低限の基礎** をつかむための、初歩の初歩をまとめたものです。もともと友達向けに書いたので、専門用語はなるべく噛み砕いています。 「また同じような入門記事か」「n番煎じでは？」と思われるかもしれませんが、友達のためにまとめたものを、せっかくなので公開しています。ご愛嬌と",
+      "discoveredVia": "qiita-tag-api:C#",
+      "needsDateVerification": false
+    },
+    {
+      "title": "500万円のGPUで、会話に使えたのは3B分だった",
+      "url": "https://zenn.dev/orca_forge/articles/h100-only-3b-for-conversation",
+      "source": "Zenn",
+      "publishedAt": "2026-10-14T13:01:30+00:00",
+      "matchedKeywords": [
+        "CG"
+      ],
+      "tags": [],
+      "snippet": "📝 この記事は forge.workstyle.tech に掲載した記事の転載です。 80GBあれば大きなモデルで会話できると思っていました。実際は3B分しか動かせませんでした。しかも声なしで。 モデル全体は35Bです。けれど、1語ごとに使う重みは3B分。ここにたどり着くまで、私は「メモリに入るか」と「会話として使えるか」を同じ問題として考えていました。 使っているGPUはH100で、VRAMは80GBです。値段は約500万円。これだけあれば、大きなモデルを動かして会話できる",
+      "discoveredVia": "zenn-latest-api:title-match|zenn-topic-feed:gpu",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Win32は死なズ。 #5 Windowsのサービスを作る その１",
+      "url": "https://qiita.com/mamPol/items/6d98fb485df0796b4a8d",
+      "source": "Qiita",
+      "publishedAt": "2026-10-14T21:54:09+09:00",
+      "matchedKeywords": [
+        "C++"
+      ],
+      "tags": [
+        "Win32API",
+        "C++",
+        "サービス"
+      ],
+      "snippet": "# はじめに Windowsには見えないですがたくさんのプログラムがバックグラウンドで動作しています。そのバックグラウンドで動作しているプログラムの代表が **Windowsサービスプログラム** です。 ですが、意外とサービスプログラミングについての資料は少なくて、いざ作ってみようとすると結構苦戦します。 「Win32は死なズ。」今回はWindowsサービスの作り方を書いてみようかと思います。 :::note 今回はWindows UNICODE プログラム（つまりUTF-",
+      "discoveredVia": "qiita-tag-api:C++",
+      "needsDateVerification": false
+    },
+    {
+      "title": "動画生成AIを使わずClaude CodeとCodexで人形劇アニメをつくった仕組み",
+      "url": "https://qiita.com/koji-yamauchi/items/c38c435db25a5a5129e7",
+      "source": "Qiita",
+      "publishedAt": "2026-10-14T21:13:29+09:00",
+      "matchedKeywords": [
+        "Blender"
+      ],
+      "tags": [
+        "Python",
+        "Blender",
+        "ClaudeCode",
+        "codex",
+        "Gemini"
+      ],
+      "snippet": "## 人形劇風アニメーションをつくりました 「[シコウスル森のなかま](https://youtube.com/playlist?list=PLXkvx8y3F9Fs)」という、7〜9分ほどの人形劇アニメを7話つくりました。 こもれび谷という森で、ウサギさん、タヌキくん、キツネくん、リスさん、アナグマくん、岩長老が、冬支度、屋根の葺き替えといった仕事をしながら、ちょっとした失敗をしたり、気づきを得たりするお話です。 題材は、社会人やソフトウェアエンジニアの仕事・学習・組織の悩",
+      "discoveredVia": "qiita-tag-api:Blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "dots使ってみたレポ",
+      "url": "https://zenn.dev/izumi_ren/articles/0a37a2ffedacf0",
+      "source": "Zenn",
+      "publishedAt": "2026-10-14T12:11:05+00:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [],
+      "snippet": "背景 話題のdotsを使ってみたので、感想を書きます！ 使用用途は個人開発です。 プランを上げる 元々はPlusで使用していましたが、Proじゃないとdotsは使えないとのことで、Pro100にしました。 家計には痛手ですが、致し方ありません。 しかし、緊急事態発生。dotsを使用できません。 GPTに聞きまくるも、いまいち要領を得ず。 どうもProだから全員使えるということでもなく、待つ必要があるみたい。（2026年10月上旬時点） 名前をつける しばらく待ってアプリを起動",
+      "discoveredVia": "zenn-latest-api:title-match|zenn-topic-feed:dots",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Grok4.7+CursorにBlenderを使って動画作成してもらった感じ、Haikuと同程度くらい？",
+      "url": "https://zenn.dev/ryuuri/articles/055af596bd6c87",
+      "source": "Zenn",
+      "publishedAt": "2026-10-14T11:13:47+00:00",
+      "matchedKeywords": [
+        "Blender"
+      ],
+      "tags": [],
+      "snippet": "感想 ざっくり、Haiku 5.5 と同程度、Sonnet 5.5よりはかなり不自然な感じです。 カメラワーク うーん、Haikuもイマイチですが、Grokはヒドイ感じですね 玄関 Haikuは靴が良く分からない形になっています コートは、Haikuの方がマシですね Grok 4.7は廊下の途中に変な箱がおいてあり、また、良く分からない枠が床の上にあります Haikuは玄関の外が見えていないんですが、Grokは玄関の外が画像になっていて、高階層の窓からの景色のような画像が貼ら",
+      "discoveredVia": "zenn-latest-api:title-match|zenn-topic-feed:blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "ターミナルでClaudeイカを踊らせた｜Ghostty + tmuxで遊んでいたら何でもできた",
+      "url": "https://zenn.dev/kki2ne/articles/tmux-ghostty-shader-effects-2026",
+      "source": "Zenn",
+      "publishedAt": "2026-10-14T10:52:59+00:00",
+      "matchedKeywords": [
+        "Shader"
+      ],
+      "tags": [],
+      "snippet": "これ、ターミナルの中なんです。 Claude Codeが処理している間、tmuxのpaneの左上でClaudeイカが歩き回ります。Claude Codeを3つ動かしていれば3匹。足踏みしたり、跳ねたり、きょろきょろしたり。 役には立ちません。でも見ていると楽しいんですよね。 GhosttyとtmuxをClaude Codeといじっていたら、一日でここまで来ました。ほかにも、非アクティブなpaneをぼかしたり、popupをアプリのモーダルみたいにしたり、git pushで花火を",
+      "discoveredVia": "zenn-topic-feed:shader",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Unity向けの自作ライブラリ Kumiko(組子) を公開しました！！",
+      "url": "https://zenn.dev/sorane/articles/bd4d521c584a04",
+      "source": "Zenn",
+      "publishedAt": "2026-10-14T10:25:25+00:00",
+      "matchedKeywords": [
+        "C#",
+        "Unity"
+      ],
+      "tags": [],
+      "snippet": "はじめに こんにちは、空音です！ 普段はUnityやUnreal Engineを使ってゲーム開発をしている学生です。 今回、Unity（uGUI）向けに開発した自作UIライブラリ 「Kumiko（組子）」v1.0.0 をGitHubで公開しました！ https://github.com/SoraneDev/Kumiko Kumikoは、ゲームパッド・マウス＆キーボード・タッチ操作に対応したUIインタラクションライブラリです。 機能ごとにコンポーネントを分離し、必要なものを組み",
+      "discoveredVia": "zenn-latest-api:title-match|zenn-topic-feed:csharp|zenn-topic-feed:unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "【応答速度25μs】C++未経験がAIとWebサーバーをフルスクラッチする話 (2)",
+      "url": "https://zenn.dev/kizutaku/articles/f99ef022e97edf",
+      "source": "Zenn",
+      "publishedAt": "2026-10-14T09:48:05+00:00",
+      "matchedKeywords": [
+        "C++"
+      ],
+      "tags": [],
+      "snippet": "登場人物 私（kizutaku） 逃げ癖のついたダメ中年SE（自虐）。 徳島県出身、徳島県在住。 Web・オープン系一筋のため C++ の開発経験はゼロ。 阿波おどりの喧騒を避けて自宅に引きこもっていたら、AIにそそのかされて自作Webサーバー開発の渦中に放り込まれる。 🚀 開発中のプロダクト：Solomon's Daemon (solomond) GitHub: https://github.com/kizutaku/solomond 概要: 組込み機器や閉域LAN向けに特",
+      "discoveredVia": "zenn-latest-api:title-match|zenn-topic-feed:cpp",
+      "needsDateVerification": false
+    },
+    {
+      "title": "C#コードを使用してWordの空白行を削除する",
+      "url": "https://qiita.com/chancychan/items/bc0babac6dc9ad776a6c",
+      "source": "Qiita",
+      "publishedAt": "2026-10-14T18:21:03+09:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [
+        "C#",
+        "Word"
+      ],
+      "snippet": "インターネット上のコンテンツをWord文書にコピーすると、段落の間に空白行が多く含まれることがあります。空白行が多いと、文書が長くなるだけでなく、読みやすさにも影響します。この記事では、C#を使用して、既存のWord文書から空白行（空の段落）をプログラムで削除する方法を紹介します。 ## 必要なライブラリの準備 作業を始める前に、関連するライブラリのDLLファイルを.NETプロジェクトに参照として追加する必要があります。DLLファイルは、公式ダウンロードページから取得するか、",
+      "discoveredVia": "qiita-tag-api:C#",
+      "needsDateVerification": false
+    },
+    {
+      "title": "VS Codeで始めるCeedling Unity CMockの単体テスト",
+      "url": "https://qiita.com/shuichi-takatsu/items/405ee110491656451a84",
+      "source": "Qiita",
+      "publishedAt": "2026-10-14T17:56:34+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "C",
+        "ceedling",
+        "Unity",
+        "CMock",
+        "VSCode"
+      ],
+      "snippet": "## はじめに C言語のHello Worldを使い、テスト計画、テスト仕様、テスト設計、実装、実施を一通り体験します。サンプルは固定の `Hello, World!` を出力するだけです。 **本文のコードを、指定したファイル名で保存して動かせます。** 環境はWindows x64とVS Codeを想定し、Dockerは使いません。Ruby・GCC・Ceedlingはプロジェクト内に配置します。 | ツール | 役割 | |---|---| | Ceedling | テス",
+      "discoveredVia": "qiita-tag-api:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "AIは現在より1000倍賢くなる可能性があるのか",
+      "url": "https://qiita.com/uni928/items/ca080a6df5731627666f",
+      "source": "Qiita",
+      "publishedAt": "2026-10-14T17:49:17+09:00",
+      "matchedKeywords": [
+        "CG"
+      ],
+      "tags": [
+        "AI",
+        "生成AI",
+        "LLM",
+        "GPU",
+        "機械学習"
+      ],
+      "snippet": "今回も思いつきですが、恐らくこれに関しては有名な話ばかりだと思います。 ~~1000Contributionsを祝う記事です~~ --- AIの発展には、CPUやGPUなどの計算資源の価格上昇が制約になるという意見があります。 しかし、個人的には、AIが現在より1000倍ほど賢くなる可能性も十分にあると考えています。 もちろん、「1000倍賢い」の定義は難しいため、ここではAIの性能や仕事をこなす能力が大幅に向上する可能性について考えます。 ## AIの発展を後押しする3つの",
+      "discoveredVia": "qiita-tag-api:GPU",
+      "needsDateVerification": false
+    },
+    {
+      "title": "就活用DirectX12アクションゲーム作成 第三十三回",
+      "url": "https://zenn.dev/seisei89628/articles/cd976e4c7d78c7",
+      "source": "Zenn",
+      "publishedAt": "2026-10-14T06:06:40+00:00",
+      "matchedKeywords": [
+        "C#",
+        "C++"
+      ],
+      "tags": [],
+      "snippet": "※筆者は初学者なので、間違ったことを書いていれば教えてくれると助かります。 はじめに 前回は、C++側の基盤とC#側のゲーム層を分け、ゲーム側から描画、物理、音声を扱えるようにしました。 今回はプレイヤーの操作と戦闘を作りました。歩く・走る・攻撃する・回避する・ジャンプする・やられる、という一通りの動きを作り、練習用の敵と戦って、決着がついたら再戦できるところまで進めています。アニメーション、表情、カメラ、画面効果も、行動に合わせて動くようにしました。 機能が増えてくると、1",
+      "discoveredVia": "zenn-topic-feed:cpp|zenn-topic-feed:csharp",
+      "needsDateVerification": false
+    },
+    {
+      "title": "AIに修正させたUnityのPrefabをレビューしたくて、差分ビューアを作った",
+      "url": "https://qiita.com/OnederAppli/items/310b81f3d3010c5f5ad9",
+      "source": "Qiita",
+      "publishedAt": "2026-10-14T13:43:48+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "Unity",
+        "Git",
+        "UnityEditor",
+        "AI"
+      ],
+      "snippet": "UnityのPrefabの差分を、Hierarchy・Scene・Inspectorで確認できるエディター拡張「Prefab Diff Viewer」を作りました。 [Prefab Diff Viewer（BOOTH）](https://onederappli.booth.pm/items/8967082) ![Prefab Diff Viewerの全体画面](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/",
+      "discoveredVia": "qiita-tag-api:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "C# で PDF のバージョンを変更する方法",
+      "url": "https://zenn.dev/techcode/articles/1ed0e3d9426db1",
+      "source": "Zenn",
+      "publishedAt": "2026-10-14T02:36:33+00:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [],
+      "snippet": "PDF ファイルには仕様に基づいた「バージョン番号」が存在します。バージョンによって利用可能な機能が異なるため、特定のプラットフォームへのアップロードや既存システムとの互換性確保を目的として、バージョン番号を変更したい場面があります。本記事では、C# から PDF のバージョン番号を操作する手順を扱います。 前提とする環境 .NET Framework または .NET Core / .NET 5 以降 PDF ファイルの読み書きを行うライブラリが利用可能であること 本記事で",
+      "discoveredVia": "zenn-latest-api:title-match|zenn-topic-feed:csharp",
+      "needsDateVerification": false
+    },
+    {
+      "title": "序章：今度はClaudeとショートアニメを作り始めました ― AIと作るクリスマスのショートアニメ｜若尾泰之",
+      "url": "https://note.com/yass2222/n/nb3b9fa5e5d86",
+      "source": "note",
+      "publishedAt": "2026-10-14T11:34:06+09:00",
+      "matchedKeywords": [
+        "Blender"
+      ],
+      "tags": [
+        "Blender"
+      ],
+      "snippet": "前回は、子どもがBlenderで遊びながら学べるアドオンをClaude（Cowork）と一緒に作った話を書きました。今回からは、同じようにClaudeと組んで作り始めたショートアニメの話を、連載で書いていこうと思います。 この回は序章として、どんなアニメで、どう作っているのかをざっとまとめておきます。細かい話は次回から1つずつ書いていきます。先に言っておくと、アドオンのときと同じで、一発でうまくいったことはほとんどありません。やり直しの話のほうがずっと多くなると思います。 ど",
+      "discoveredVia": "note-hashtag-new:Blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "MiniMax H3はColabで使っていい？ 地域制限とGPUの所在地を確認した",
+      "url": "https://zenn.dev/toki_mwc/articles/minimax-h3-colab-license",
+      "source": "Zenn",
+      "publishedAt": "2026-10-14T11:17:16+09:00",
+      "matchedKeywords": [
+        "CG"
+      ],
+      "tags": [],
+      "snippet": "",
+      "discoveredVia": "zenn-latest-api:title-match",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Unity 6.3の入力設計入門：Input System・UI・ポーズ・リバインドの実践",
+      "url": "https://zenn.dev/gamedev_toollab/articles/761211b826ae6e",
+      "source": "Zenn",
+      "publishedAt": "2026-10-14T02:14:04+00:00",
+      "matchedKeywords": [
+        "C#",
+        "Unity"
+      ],
+      "tags": [],
+      "snippet": "ゲームの入力処理は、キーを押した瞬間を取得できれば完成、というわけではありません。 メニューを開いたクリックでキャラクターが攻撃する。ポーズから戻ると勝手にジャンプする。マウスとゲームパッドでカメラの操作感が違う。キー設定を保存したのに、次回起動すると元に戻る。 こうした問題を防ぐには、入力を取得する仕組みと、その入力をゲームが受け付ける条件を分けて設計することが重要です。 この記事では、Unity 6.3で新規開発するゲームを想定し、Input Systemの導入から、物理",
+      "discoveredVia": "zenn-latest-api:title-match|zenn-topic-feed:csharp|zenn-topic-feed:unity|zenn-topic-feed:unity6",
+      "needsDateVerification": false
+    },
+    {
+      "title": "C# で PDF のバージョンを変更する方法",
+      "url": "https://qiita.com/YaHey/items/19eb59221aee45e3981b",
+      "source": "Qiita",
+      "publishedAt": "2026-10-14T10:30:50+09:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [
+        "C#",
+        "PDF",
+        "プログラミング",
+        "自動化"
+      ],
+      "snippet": "PDF ファイルには仕様に基づいた「バージョン番号」が存在します。バージョンによって利用可能な機能が異なるため、特定のプラットフォームへのアップロードや既存システムとの互換性確保を目的として、バージョン番号を変更したい場面があります。本記事では、C# から PDF のバージョン番号を操作する手順を扱います。 ## 前提とする環境 - .NET Framework または .NET Core / .NET 5 以降 - PDF ファイルの読み書きを行うライブラリが利用可能である",
+      "discoveredVia": "qiita-tag-api:C#",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Unityで立体物の衣装が変わるプロジェクションマッピングを試作した",
+      "url": "https://zenn.dev/m_tk/articles/e39b61a8136a29",
+      "source": "Zenn",
+      "publishedAt": "2026-10-14T01:20:24+00:00",
+      "matchedKeywords": [
+        "Blender",
+        "Unity"
+      ],
+      "tags": [],
+      "snippet": "はじめに Unityを用いてマネキン曲面への3Dプロジェクションマッピングを試作しました。 着手のきっかけは『CGWORLD』2025年11月号に掲載された「大カプコン展」の事例です。 春麗の等身大立像に映像を投影し、ワイヤーフレームから衣装へと見た目が変わっていく展示が紹介されていました。 掲載記事ではTouchDesignerやHoudini、Blenderを組み合わせた制作・上映の仕組みが解説されています。 この仕組みを自分なりに理解するため、身近なマネキンとプロジェク",
+      "discoveredVia": "zenn-latest-api:title-match|zenn-topic-feed:blender|zenn-topic-feed:unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "【C#】文字列処理でハマりやすい落とし穴とパフォーマンス改善Tips【実務向け】",
+      "url": "https://qiita.com/polnareff/items/9ed6c7326e823bd580f8",
+      "source": "Qiita",
+      "publishedAt": "2026-10-14T10:11:45+09:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [
+        "C#",
+        "文字列処理",
+        "正規表現",
+        "文字コード"
+      ],
+      "snippet": "## はじめに 文字列処理は日常的に書くコードだからこそ、非効率な書き方や環境依存の挙動が見過ごされやすい領域です。ループ内の文字列連結や正規表現の書き方は、データ量が少ない開発環境では問題にならず、本番の大量データで処理時間やメモリ使用量として顕在化します。また、`Shift_JIS`のような文字コードは.NETのバージョンによって既定の扱いが異なり、移行時に突然例外になることがあります。本記事では、実務でよく遭遇する3つの落とし穴を扱います。 ## 前提知識 / 用語整理",
+      "discoveredVia": "qiita-tag-api:C#",
+      "needsDateVerification": false
+    },
+    {
+      "title": "OSSとは？無料ソフトとの違いと在宅制作での活用法｜ひですけ｜在宅ワーク実践ラボ",
+      "url": "https://note.com/hidesuke_worklab/n/n9eeeaedc4372",
+      "source": "note",
+      "publishedAt": "2026-10-14T10:04:05+09:00",
+      "matchedKeywords": [
+        "Blender"
+      ],
+      "tags": [
+        "Blender"
+      ],
+      "snippet": "OSSとは何かを初心者向けに解説。無料ソフトとの違い、メリット・デメリット、WordPress・GIMP・Blenderの活用例、商用利用前に確認したいライセンスや安全性の基本を紹介します。 「便利な制作ツールを使いたいけれど、毎月の利用料はできるだけ抑えたい……」 在宅ワークでWeb制作や画像編集、ブログ運営などに取り組んでいると、ソフトウェアの費用が気になることはありませんか？ そんなときに知っておきたいのが、OSS（オープンソースソフトウェア）です。 OSSを知ると、制",
+      "discoveredVia": "note-hashtag-new:Blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Inflearnが自動で字幕を生成するまで（AI/インフラ編）",
+      "url": "https://qiita.com/inflab_official/items/9f8c02b3f07c20f8fa26",
+      "source": "Qiita",
+      "publishedAt": "2026-10-14T09:56:43+09:00",
+      "matchedKeywords": [
+        "CG"
+      ],
+      "tags": [
+        "AI",
+        "AWS",
+        "GPU",
+        "devops",
+        "whisper"
+      ],
+      "snippet": ":::note info この記事は2023年10月31日に執筆されたものです。 ::: こんにちは。InflabのDevOpsエンジニア、SunBです。 2023年9月、Inflearnに字幕とスクリプトの機能が追加されました。皆さん、活用されていますか？ 今回追加された字幕機能は、動画の音声データをもとに自動で字幕を生成する部分と、生成された字幕を受講画面に表示する部分の、大きく2つに分けられます。 今日は、このうち私が実装を担当した字幕生成について、どのような技術をもと",
+      "discoveredVia": "qiita-tag-api:GPU",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Unityそろそろ｜濱岡龍弘（亀岡たわ太）",
+      "url": "https://note.com/kameokatawata/n/na31d3d9471db",
+      "source": "note",
+      "publishedAt": "2026-10-14T09:45:57+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "Unity"
+      ],
+      "snippet": "Unityそろそろ作りたい。 8月くらいから音沙汰無い。 今青の本で赤いブロック作ってぶつかる反応まで出来た。 次は敵を作る。 でもそこまでが長かった。 次は上手くいくか分からない。 この出来栄えは見納めかもしれない。 その前に漫画だ！！ 漫画も出来てない！！ ボカスカストリートという漫画を描いてはいるもののまだ完成しない。 困ったものだ。 今エロ絵のトレースに挑戦している。 コミックワンで会おう。",
+      "discoveredVia": "note-hashtag-new:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "動かすと崩れる3DモデルをAIと直す：原因分析から修正までの試行錯誤",
+      "url": "https://zenn.dev/yoshitetsu/articles/kurara-3d-motion-repair",
+      "source": "Zenn",
+      "publishedAt": "2026-10-13T22:21:12+00:00",
+      "matchedKeywords": [
+        "Blender"
+      ],
+      "tags": [],
+      "snippet": "3Dモデルは、静止画できれいに見えていても、動かすとさまざまな問題が現れます。 腕を曲げると袖口が黒く割れ、ダンスで頭を振るとこめかみの髪が一瞬消える。まばたきや表情だけでなく、全身を動かすようになってからも、次々と問題が見つかりました。 AITuber「くらら」の制作では、こうした問題の調査と修正をCodexとClaude Codeに任せながら、実際に動かして検証する作業を繰り返しました。 特に意識したのは、見た目の症状を直すだけでなく、なぜその問題が起きているのかを調べて",
+      "discoveredVia": "zenn-topic-feed:blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "AITuberの顔を原画に近づける：AIと閉ループで3Dモデルを調整した話",
+      "url": "https://zenn.dev/yoshitetsu/articles/kurara-3d-face-closed-loop",
+      "source": "Zenn",
+      "publishedAt": "2026-10-13T22:21:11+00:00",
+      "matchedKeywords": [
+        "Blender"
+      ],
+      "tags": [],
+      "snippet": "完成したVRMモデルの全身。生成したステージ背景に重ねました。 AITuber「くらら」の3Dモデルを制作する中で、特に苦労したのが顔と表情の再現です。 口の形や鼻との距離など、原画と見比べながら何度も修正していましたが、目視での調整には限界がありました。 原画と3Dモデルの差を数値化し、計測と修正を自動で繰り返す仕組みをCodexに作ってもらいました。 この処理で、顔パーツの位置に関する誤差は、通常顔で 3.392%から1.332%、笑顔では 4.155%から1.401% ",
+      "discoveredVia": "zenn-topic-feed:blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Mode開発③ modelを1メッシュ化",
+      "url": "https://qiita.com/aijyu/items/60b9309b5dfb3da072f8",
+      "source": "Qiita",
+      "publishedAt": "2026-10-14T06:03:14+09:00",
+      "matchedKeywords": [
+        "Blender"
+      ],
+      "tags": [
+        "3D",
+        "Blender"
+      ],
+      "snippet": "# Blender Sandbox Mode開発③ ブロックを1メッシュ化して内部面を自動除去する 前回までで、Blender上にSandbox Modeを作り、 - WASD移動 - マウス視点 - 中央照準 - Raycast - 左クリックで削除 - 右クリックでブロック設置 - ブロック種類切り替え - Poly HavenのPBRテクスチャ適用 まで実装しました。 今回は、配置したブロックをそのままUnityへ持っていくのではなく、**出力用に1つのメッシュへ最適化",
+      "discoveredVia": "qiita-tag-api:Blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "思考バブル - 頭の中を整理する脳内パズル",
+      "url": "https://qiita.com/lemonIN/items/eeadd7b00ff4962f3bbe",
+      "source": "Qiita",
+      "publishedAt": "2026-10-14T05:17:56+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "Unity",
+        "ゲーム開発",
+        "AI"
+      ],
+      "snippet": "# 思考バブル - 頭の中を整理する脳内パズル ## はじめに 現代社会で生きる私たちは、常に多くの情報やタスク、そして雑念に囲まれています。「頭の中がごちゃごちゃして集中できない…」そんな誰もが共感する悩みを、ユニークなパズルゲームとして昇華させました。本作は、あなたの「思考」をバブルに見立てて操作し、頭の中をスッキリ整理整頓する、新感覚の脳内パズルゲームです。 ## ゲーム概要 * **ジャンル**: パズル * **プラットフォーム**: スマートフォン (iOS/An",
+      "discoveredVia": "qiita-tag-api:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "cscの作法 その641",
+      "url": "https://qiita.com/ohisama@github/items/77ffbf528b6f6e1f956e",
+      "source": "Qiita",
+      "publishedAt": "2026-10-14T04:21:24+09:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [
+        "C#",
+        "Windows",
+        "イベントログ",
+        "KP41"
+      ],
+      "snippet": "# 概要 cscの作法、調べてみた。 KP41 (Event ID 41) のイベントログを検索してみた。 # 環境 windows10 # サンプルコード ```c#: using System; using System.Collections.Generic; using System.Diagnostics.Eventing.Reader; class Program { static void Main() { string logName = \"System\"; ",
+      "discoveredVia": "qiita-tag-api:C#",
+      "needsDateVerification": false
+    },
+    {
+      "title": "月10万円で組織が使えるLLM基盤をどこまで作れるか（3）使える性能を考える",
+      "url": "https://zenn.dev/covanew/articles/3bcc245f1f33ee",
+      "source": "Zenn",
+      "publishedAt": "2026-10-13T16:18:38+00:00",
+      "matchedKeywords": [
+        "CG"
+      ],
+      "tags": [],
+      "snippet": "予算に収まる構成を、性能面から確かめる 前回は、5人程度のチームを想定し、事務作業と開発作業の利用量を置いて、月10万円で検討できる構成を探しました。 GPUを購入・レンタルする構成は候補に残りましたが、必要な利用量を処理できるかは未確認です。月間の処理量が収まることと、3〜5人が日常的に使えることも、同じではありません。1人なら快適でも、複数人のリクエストが重なると待ち時間が長くなる可能性があります。 今回は、その違いを確かめるための性能試験を設計します。測定結果を示す回で",
+      "discoveredVia": "zenn-topic-feed:gpu",
+      "needsDateVerification": false
+    },
+    {
+      "title": "ブラウザで4次元を描くまで — 太い線とネオンの芯、そして「数珠」の正体",
+      "url": "https://zenn.dev/urabexon/articles/thick-neon-lines-with-shared-strips",
+      "source": "Zenn",
+      "publishedAt": "2026-10-13T15:57:15+00:00",
+      "matchedKeywords": [
+        "Shader"
+      ],
+      "tags": [],
+      "snippet": "前回は、4 次元の図形を画面に出す 4 行の話だった。今回はその辺を「光る管」として描く話。 WebGL にも WebGPU にも「太い線」は存在しない。線の太さは 1 px 固定で、太く描きたければ自分で細長い板を作って並べるしかない。 線幅 1 px。GPU がそのまま引く線はこれに近い 同じ図形を 4 px の板で描いたもの NTH でこの板をどう作ったかと、途中で踏んだ「線が数珠になる」問題の切り分けを書く。 辺ごとの板から、頂点を共有するリボンへ 最初の実装は素直に",
+      "discoveredVia": "zenn-topic-feed:glsl|zenn-topic-feed:shader|zenn-topic-feed:webgpu",
+      "needsDateVerification": false
+    },
+    {
+      "title": "新しいプログラミング言語「Quidra」を開発しています ― Maximum Meaning Per Tokenという設計思想",
+      "url": "https://zenn.dev/kobajon/articles/b2d61ca017b934",
+      "source": "Zenn",
+      "publishedAt": "2026-10-13T15:32:26+00:00",
+      "matchedKeywords": [
+        "C++"
+      ],
+      "tags": [],
+      "snippet": "はじめに 新しいプログラミング言語 Quidra（クイドラ） をオープンソースで開発しています。 公式サイト：https://quidra-lang.com GitHub：https://github.com/quidra-lang/quidra Playground：https://quidra-lang.github.io/playground/ Quidraは、Maximum Meaning Per Token（MMPT） を設計理念とする、静的型付け・ネイティブコンパ",
+      "discoveredVia": "zenn-topic-feed:cpp|zenn-topic-feed:llvm",
+      "needsDateVerification": false
+    },
+    {
+      "title": "AI漫画の背景が毎回変わる問題を何とかしたい。自作ツール『Manga Blendy』無料ベータ版公開！｜さくら",
+      "url": "https://note.com/hip_salvia7789/n/ne8b4ae8b88ae",
+      "source": "note",
+      "publishedAt": "2026-10-13T23:30:06+09:00",
+      "matchedKeywords": [
+        "Blender"
+      ],
+      "tags": [
+        "Blender"
+      ],
+      "snippet": "AIで漫画を作っていると、どうしても困ることがあります。 同じ部屋のはずなのに、別のコマでは窓の数が変わっている。机の位置が違う。家具が消えている。 1枚の絵としてはきれいなのに、漫画として連続させるとおかしくなる。 私も、ジャンプルーキーで公開している合気道漫画『かぐら』を制作する中で、この問題に何度も悩まされました。 そこで考えたのが、 「一度作った背景を、違う角度からでも繰り返し使えるようにしたい」 ということ。 そのために自作したツールが、今回紹介する Manga B",
+      "discoveredVia": "note-hashtag-new:Blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "ライセンス不明のOSSは記事にできなかったが、GPU側の「動かない」はsglangへの小さなパッチで越えられた",
+      "url": "https://zenn.dev/matsushima_a/articles/day-014-tokenrouter-blackwell-sglang-patch",
+      "source": "Zenn",
+      "publishedAt": "2026-10-13T22:04:53+09:00",
+      "matchedKeywords": [
+        "CG"
+      ],
+      "tags": [],
+      "snippet": "",
+      "discoveredVia": "zenn-latest-api:title-match",
+      "needsDateVerification": false
+    },
+    {
+      "title": "月10万円で組織が使えるLLM基盤をどこまで作れるか（2）10万円で組める構成を探す",
+      "url": "https://zenn.dev/covanew/articles/de05e6343bb04a",
+      "source": "Zenn",
+      "publishedAt": "2026-10-13T12:55:06+00:00",
+      "matchedKeywords": [
+        "CG"
+      ],
+      "tags": [],
+      "snippet": "今回は、利用量を置いて構成を探す 前回は、月10万円を上限として、組織で使えるLLM基盤をどこまで作れるかという問いを置きました。 今回は、5人程度のチームを想定し、事務作業と開発作業の利用量を仮定します。その条件で、自前運用、GPUクラウド、マネージド推論、LLMサービスの四つを費用面から比較します。 この段階で確認するのは、予算内で検討できる構成です。GPUを確保できることと、そのGPUで必要な処理量や応答速度を満たせることは分けて考えます。性能の実測は次回以降に行います",
+      "discoveredVia": "zenn-topic-feed:gpu",
+      "needsDateVerification": false
+    },
+    {
+      "title": "12日目（Phase 4続き）：戦闘画面の改修、パーツ群の追加 - nennokiのブログ",
+      "url": "https://nennoki.hatenablog.com/entry/2026/10/13/215111",
+      "source": "nennoki.hatenablog.com",
+      "publishedAt": "2026-10-13T12:51:11+00:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [],
+      "snippet": "本日も少しばかりの更新です。 せっかく育休取っているのだから、ちゃんとかわいい我が子を見ましょうと反省しました。 制作のほうですが、色々気になって、中々Phase 4の中身ができないですね…開発スケジュール管理的にはよくないことはわかっているのですが、まあ一人だしと思って色々やってしまっています。 コア体験に関わる部分以外は削るのが正解でしょうね。気をつけていきたいと思います。 各機体の視界の改修（レーダーで捕捉した敵のワイヤーフレーム表示） 当たり判定の適正化 パーツのパラ",
+      "discoveredVia": "hatena-keyword:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "【Blender学習記録 Day 2】均一オフセットで調子に乗った僕を、鈍器本とGeminiちゃんが同時に殴ってくる本棚作成｜不知火 三角",
+      "url": "https://note.com/misumi_shiranui/n/n02efd20dd4ae",
+      "source": "note",
+      "publishedAt": "2026-10-13T21:13:21+09:00",
+      "matchedKeywords": [
+        "Blender"
+      ],
+      "tags": [
+        "Blender"
+      ],
+      "snippet": "こんにちは、不知火 三角（しらぬい みすみ）と申します。 40代無職、血液型はA型。 サボり癖のある自分を監視するため、Blenderでの3Dモデリング学習記録をnoteに書き残しています。 書籍によると、どうやら本日は「本棚」を作るそうです。 それが3Dモデリングの基本なのかどうかも、僕にはまだ分かっていませんが……。 目次 ループカットと押し出しの罠：Alt+Eと均一オフセットの挙動に苦戦 まずは本棚の上にある「本」の部分から作成していきました。 書籍の指示通り、Ctrl",
+      "discoveredVia": "note-hashtag-new:Blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "個人開発ゲーム｜惑星同士が「タイマン」する契約システムをUnity版へ -Mother Planets-｜jyori",
+      "url": "https://note.com/jyori/n/n92657092c720",
+      "source": "note",
+      "publishedAt": "2026-10-13T20:01:58+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "Unity"
+      ],
+      "snippet": "前回は大型災害「隕石レイド」の演出を追加し、次はいよいよMother Planetsの目玉要素でもある「契約システム」を作るところまで進みました。 今回はその続きです。まずはTwitchとの接続を後回しにして、ゲーム内部だけで「3公転耐久」と「タイマン契約」が最後まで成立するところまで作りました。 3公転生き残れば報酬 3公転耐久は、その名前の通り契約した惑星が3周公転するまで生き残れば成功です。 公転進捗がリングのメーターに対応している 契約中は惑星の周囲に3分割された進捗",
+      "discoveredVia": "note-hashtag-new:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Muse Glimmer 30BをRTX 4070で動かす：2bitで全層GPU、思考の強さ、DFlash、-nglの落とし穴",
+      "url": "https://zenn.dev/localai_lab/articles/52000a4d691ea5",
+      "source": "Zenn",
+      "publishedAt": "2026-10-13T19:09:11+09:00",
+      "matchedKeywords": [
+        "CG"
+      ],
+      "tags": [],
+      "snippet": "",
+      "discoveredVia": "zenn-latest-api:title-match",
+      "needsDateVerification": false
+    },
+    {
+      "title": "プリザンター1.5.9.0の追加機能を詳しくみてみる",
+      "url": "https://qiita.com/pmc-ko/items/aa7f0c980c677568516b",
+      "source": "Qiita",
+      "publishedAt": "2026-10-13T18:21:35+09:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [
+        "プリザンター",
+        "Pleasanter",
+        "C#",
+        "API",
+        "Security"
+      ],
+      "snippet": "## はじめに プリザンターの 1.5.9.0 がリリースされました。前回の「[プリザンター1.5.8.0の追加機能を詳しくみてみる](https://qiita.com/pmc-ko/items/ad9ebbd013f214b900ff)」では「外部の ID 基盤と AI 基盤につなぐ回」と書きましたが、今回は**運用まわりの使い勝手と守りを固める回**という印象です。 権限の見える化、API キーの IP 制限、キューへの一括削除の追加、履歴の差分比較と、管理者や運用担当",
+      "discoveredVia": "qiita-tag-api:C#",
+      "needsDateVerification": false
+    },
+    {
+      "title": "商品の 3D から AI に商品動画を作らせる：5 秒だいたい 60 円、GPU は使った分だけ",
+      "url": "https://zenn.dev/renderjanction/articles/d87c55fb28f8bd",
+      "source": "Zenn",
+      "publishedAt": "2026-10-13T09:04:34+00:00",
+      "matchedKeywords": [
+        "Blender",
+        "CG"
+      ],
+      "tags": [],
+      "snippet": "JANCTION Render（AI から呼べる Blender のクラウド描画）に、商品動画の機能 Product Video を足しました。商品の 3D（.glb・.fbx・.obj・.usdz）を渡すと、テロップと締めの画面つきの短い動画、360 度の回転動画、商品画像 4 方向のどれかを返します。 10/13 に自社の GPU で測った数字です（Khronos のサンプル 3D、CC0）。5 秒の動画（1920x1080）は GPU 約 220 秒で、GPU が空いて",
+      "discoveredVia": "zenn-latest-api:title-match|zenn-topic-feed:3dcg|zenn-topic-feed:blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "背景・人物・会話表示をAIとUnityで作る｜異世界のんびり鍛冶屋 #05｜M's Factory",
+      "url": "https://note.com/msfactory0622/n/n5d74d7ac4441",
+      "source": "note",
+      "publishedAt": "2026-10-13T17:34:39+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "Unity"
+      ],
+      "snippet": "前回は、「異世界のんびり鍛冶屋」のTOP画面から、言語選択、利用規約への同意を経て、物語が始まるまでを紹介しました。 今回は、その先にあるプロローグです。 背景が表示され、人物が登場し、会話が始まる。 ゲームの入口から、プレイヤーが物語に入っていく部分を、実際の画面とともに紹介します。 1. 鍛冶場から、異世界の街並みへ TOP画面では、鍛冶場を背景にゲームのタイトルを表示しています。 そこからプロローグに進むと、舞台は異世界の街並みに変わります。 ゲームのタイトルを見ていた",
+      "discoveredVia": "note-hashtag-new:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "はじめてのQt Creator：空のウィジェットを起動するまで",
+      "url": "https://zenn.dev/sugitakenji/articles/f2a7f367a3ea70",
+      "source": "Zenn",
+      "publishedAt": "2026-10-13T08:09:11+00:00",
+      "matchedKeywords": [
+        "C++"
+      ],
+      "tags": [],
+      "snippet": "Qt Creatorで最初のウィジェットアプリケーションを作ると、クラス名、基底クラス、ビルドシステム、キットなど、いくつもの選択が出てきます。意味が分からないまま進めると、プロジェクトができても、どのファイルから手を付ければよいか迷います。 今回は、空のウィンドウを起動し、フォームとC++コードの関係をつかむところまでを目標にします。画面の部品配置や動作の実装は、その土台ができてから進めます。 SRAの技術記事「はじめての Qt Creator - ウィジェットアプリケーシ",
+      "discoveredVia": "zenn-topic-feed:cpp",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Blenderでかっこいい動画を作ろうとしたら、難しすぎた話｜みう",
+      "url": "https://note.com/miu_notes/n/nca3f7d64d361",
+      "source": "note",
+      "publishedAt": "2026-10-13T17:03:50+09:00",
+      "matchedKeywords": [
+        "Blender"
+      ],
+      "tags": [
+        "Blender"
+      ],
+      "snippet": "今日もnoteのネタがなくって……😹 何かないかな〜と思いながら、今日はBlenderでかっこいい動画を作ってみようと思いました。 参考にしたのは、17分ほどのチュートリアル動画。 魔法陣がくるくる動くような、かっこいいエフェクトを作る動画です。 仕事前と昼休みを使って、さっそく挑戦してみました。 🌀 ノードにジオメトリに、ぐるぐる…… ところが、この動画、説明がほとんどなくて、英語なんです。 画面を見ながら、同じようにノードをつないでいくのですが……。 ノードって何だっけ？",
+      "discoveredVia": "note-hashtag-new:Blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "【Meta Horizon Link】UnityでMeta Quest 3にPlayモードのVR画面が表示されないときの対処法",
+      "url": "https://qiita.com/shoshokichikichi/items/45ece74b53c5c15692f2",
+      "source": "Qiita",
+      "publishedAt": "2026-10-13T15:58:31+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "MetaQuest",
+        "Unity",
+        "VR",
+        "OpenXR"
+      ],
+      "snippet": "## はじめに Meta Quest 3向けのVRアプリをUnityで開発しているとき、Meta Horizon LinkでPCと接続できているにもかかわらず、UnityのPlayボタンを押してもVR空間が表示されず、PCのデスクトップ画面内でGameビューが再生されるだけ、という問題に遭遇しました。 今回は、この問題を解決できたので、Meta Horizon LinkでUnityのPlayモードでVRを実行する方法、実際に行った対処についてまとめます。 同じような症状で悩ん",
+      "discoveredVia": "qiita-tag-api:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "マイクロマウス「発散値」のソフトウェア紹介",
+      "url": "https://qiita.com/akiaki96/items/6498b00ca979ef92b548",
+      "source": "Qiita",
+      "publishedAt": "2026-10-13T15:49:57+09:00",
+      "matchedKeywords": [
+        "C++"
+      ],
+      "tags": [
+        "ロボット",
+        "マイクロマウス",
+        "STM32",
+        "F4",
+        "C++"
+      ],
+      "snippet": "## まずはお気持ち(tl;dr) こんにちは ~~(こんばんは)~~ WMMCのakiaki96です． 今回の(2026年度の)東北地区大会では，AIによるバイブコーディングをテーマに開発を行いました． その結果~~圧倒的な~~開発時間の短縮と引き換えに，私の認知が限界に達したので解説記事を出してみました． AIによって記事も開発 ~~(執筆)~~ したので，もし不正確なことを言っていたらごめんなさい．誠に申し訳ございます． 私は「,.」で文章を書く派の人間なのに対して，A",
+      "discoveredVia": "qiita-tag-api:C++",
+      "needsDateVerification": false
+    },
+    {
+      "title": "採掘ゲームをUnityで作るなら？おすすめ採掘表現アセット3選｜洞窟・地形掘削と鉱石素材【AssetStore】｜ハヤデビのゲーム工房@note出張",
+      "url": "https://note.com/hayadebi_slime/n/n68390d6b17a8",
+      "source": "note",
+      "publishedAt": "2026-10-13T15:25:35+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "Unity"
+      ],
+      "snippet": "はじめに Unityで「掘る」ゲームを作ってみたいと思っている方、多いですよね。 地面を削って坑道を伸ばしたり、掘り出した鉱石を製錬して道具に変えたりと、採掘まわりの表現は考え始めるとなかなか奥が深いものです。 ただ、いざ手をつけようとすると、地形にリアルタイムで穴を開ける仕組みを自作するのはハードルが高く、鉱石やツール、坑道のオブジェクトをひとつずつモデリングして回るのもかなりの手間になるでしょう。 そこで今回は、 採掘表現づくりに役立つおすすめアセットを3つご紹介します。",
+      "discoveredVia": "note-hashtag-new:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Unreal EngineでClaude Codeにゲームを作らせる頼み方は、ふだんの開発にも使えそう｜Takahiro Sakashita",
+      "url": "https://note.com/micnote/n/n94b899e2f4f7",
+      "source": "note",
+      "publishedAt": "2026-10-13T15:06:55+09:00",
+      "matchedKeywords": [
+        "Unreal"
+      ],
+      "tags": [
+        "Unreal"
+      ],
+      "snippet": "Unreal Engine 5.8から、Epic公式のMCPプラグインでClaude Codeがエディタの中を直接操作できるようになりました。 ブループリントを1つも手で組まずに遊べるゲームを作る進め方が、投稿で紹介されています。 いや、マジでClaude Code × Unreal Engineやばいな。pic.twitter.com/AaQQp3JBam 最初に動画見た瞬間、「ゲーム作りもついにここまで来たか」ってなったわ。 海外の開発者が、ブループリントを1つも手で組ま",
+      "discoveredVia": "note-hashtag-new:Unreal",
+      "needsDateVerification": false
+    },
+    {
+      "title": "C# 開発者が知っておきたい Excel 自動化の 8 つのタスク",
+      "url": "https://qiita.com/Codingll/items/14090d55a8b28b73b9cd",
+      "source": "Qiita",
+      "publishedAt": "2026-10-13T15:01:50+09:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [
+        "C#",
+        "Excel",
+        "プログラミング",
+        "自動化"
+      ],
+      "snippet": "![C# 開発者が知っておきたい Excel 自動化の 8 つのタスク](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4427014/d4fed5de-0f03-4a29-9eca-5df686f6c6c0.png) Excel ファイルは、レポート、請求書、データのエクスポート、設定シートなど、さまざまな業務ワークフローで利用されています。C# 開発者であれば、Excel ファイルをプログラムから生",
+      "discoveredVia": "qiita-tag-api:C#",
+      "needsDateVerification": false
+    },
+    {
+      "title": "【Unity初心者向け】Particle System基礎編②｜雪をふわふわ降らせよう｜ファイブボックス",
+      "url": "https://note.com/unity_fivebox/n/n418367904839",
+      "source": "note",
+      "publishedAt": "2026-10-13T14:49:40+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "Unity"
+      ],
+      "snippet": "前回は、Particle Systemを使って雨を降らせました。 今回は、白い雪がゆっくりと、ふわふわ揺れながら降るエフェクトを作ります。 ParticleSystemの使い方 基礎編 雨を降らせる 雪をふわふわ降らせる 蛍のような光を漂わせる 炎を立ち上らせる 煙・湯気を広げる 噴水を作る レーザーを作る 落ち葉を舞わせる 粒子を地面で跳ね返す ヒット・血しぶきを出す 雨と雪は、どちらも上から下へ落ちます。しかし、粒の形や落下速度、揺れ方を変えると、まったく違う雰囲気になり",
+      "discoveredVia": "note-hashtag-new:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Unityで無限ランナーを作る：第24回 PC入力対応とWebビルド【最終回】",
+      "url": "https://qiita.com/_daisuke0802/items/912fbd3eabd567f88f00",
+      "source": "Qiita",
+      "publishedAt": "2026-10-13T14:33:20+09:00",
+      "matchedKeywords": [
+        "C#",
+        "Unity"
+      ],
+      "tags": [
+        "Unity",
+        "ゲーム制作",
+        "個人開発",
+        "C#"
+      ],
+      "snippet": "# 1. はじめに 前回は、ゲームの走破距離の自己ベストを保存し、リザルト画面に表示する処理を実装しました。 今回は、いよいよ本連載の最終回です。 完成したゲームをPCでも快適に操作できるように、マウスとキーボードによる方向転換入力を追加します。 これに伴い、これまでのTap入力に直接依存していた処理を見直し、入力デバイスの違いを吸収する`TurnInputManager`を導入します。 最後に、UnityのBuild Profilesを使用してWeb向けにビルドし、itch",
+      "discoveredVia": "qiita-tag-api:C#|qiita-tag-api:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Windows PowerShell で C++ コンパイルする一番簡単な方法",
+      "url": "https://zenn.dev/dibalh/articles/7fbfc097981463",
+      "source": "Zenn",
+      "publishedAt": "2026-10-13T05:19:56+00:00",
+      "matchedKeywords": [
+        "C++"
+      ],
+      "tags": [],
+      "snippet": "はじめに Windows PowerShell で C++ コンパイルしようとしてつまずいたことはないですか？ 私はあります。ネットを彷徨いました。 やりたいのはコレだけ！ C++ のファイルを作る main.cpp #include <iostream> int main() { std::cout << \"Hello, World!\" << std::endl; return 0; } PowerShell から c++（g++）コマンドでコンパイル＆実行。 > c++ ",
+      "discoveredVia": "zenn-latest-api:title-match|zenn-topic-feed:cpp",
+      "needsDateVerification": false
+    },
+    {
+      "title": "MirrorにEOSTransportを導入する際の手順",
+      "url": "https://zenn.dev/izszzz/articles/ac055527fc3f7e",
+      "source": "Zenn",
+      "publishedAt": "2026-10-13T05:09:27+00:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [],
+      "snippet": "注意 2026/10に書いています。 Mirrorやcsの変更によって手順を踏んでもうまくいかない可能性があります。 手順 Mirror TransportsにアクセスしてEpic - Epic Online Servicesの項目を探してリンク先に飛ぶ。 GithubのCodeボタンからDownload Zipを選ぶ。 ※README.mdのInstallationの項目からインストールすると古いバージョンがインストールされてしまう README.mdのInstallati",
+      "discoveredVia": "zenn-topic-feed:unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "壊せるだけじゃ足りなかった。3D格闘アクションで、破壊を戦闘に組み込むまで",
+      "url": "https://zenn.dev/project_arca/articles/1a02b823b4dc68",
+      "source": "Zenn",
+      "publishedAt": "2026-10-13T03:58:57+00:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [],
+      "snippet": "新しく3D格闘アクションゲームを作っています 普段は「裂けた世界のアルカ（ProjectArca）」という3Dゲームを個人開発していますが、実はそれとは別に、もう一つゲームを作り始めています。 今度は、スピード感と派手な破壊演出を重視した3D格闘アクションゲームです。 目指しているのは、漫画の格闘シーンのような戦闘です。 強烈な打撃で相手が吹き飛び、壁に激突する。衝撃波や真空波が走り、周囲の建物や地形が壊れる。さらに吹き飛ばした相手を追撃する。 そんな迫力のある戦闘を、実際に",
+      "discoveredVia": "zenn-topic-feed:unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "ステージにこだわりがなかったので、購入アセットの適用をAIに丸投げしたら「これでいいじゃん」になった（Cursor × Unity）",
+      "url": "https://qiita.com/yasuharusmooth/items/37243e504ba194781211",
+      "source": "Qiita",
+      "publishedAt": "2026-10-13T11:59:02+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "Unity",
+        "cursor",
+        "生成AI",
+        "ゲーム開発",
+        "個人開発"
+      ],
+      "snippet": "# ステージには、強いこだわりがなかった 私はゲームのプログラムが書けません。Cursor（AI）に日本語で指示して、Unity で3Dアクションゲームを作っています。 これまでのステージは、灰色の床と壁だけの仮のものでした。ステージは「それっぽく」なっていれば良く、強いこだわりはありませんでした。 ビフォー・アフターは動画で見てもらうのが早いです。 https://youtu.be/zpy21yIFqiY # AIに丸投げしたプロンプト そこで、購入したステージアセットを渡",
+      "discoveredVia": "qiita-tag-api:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "名作RTSを現代環境へ！Total Annihilation再構築「Nanolathe」",
+      "url": "https://zenn.dev/ament3/articles/ai-digest-2026-10-12-0104",
+      "source": "Zenn",
+      "publishedAt": "2026-10-13T02:55:11+00:00",
+      "matchedKeywords": [
+        "C++",
+        "Shader"
+      ],
+      "tags": [],
+      "snippet": "1997年にリリースされ、3D RTS（リアルタイムストラテジー）の金字塔として知られる名作ゲーム『Total Annihilation（トータル・アニヒレーション）』。 この伝説的ゲームを現代のコンピュータ環境やWeb環境に対応させるべく、オープンソースでエンジンを完全再構築するプロジェクト 「Nanolathe」 がHacker News等で大きな注目を集めています。 今回は、Nanolatheの概要と、なぜレトロゲームのモダン再構築プロジェクトが現代のエンジニアにとって",
+      "discoveredVia": "zenn-topic-feed:cpp|zenn-topic-feed:webgpu",
+      "needsDateVerification": false
+    },
+    {
+      "title": "良いテストを書き、良いテストを見分ける ─『単体テストの考え方/使い方』のエッセンス",
+      "url": "https://zenn.dev/nexta_/articles/unit-testing-principles-essence",
+      "source": "Zenn",
+      "publishedAt": "2026-10-13T02:30:05+00:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [],
+      "snippet": "はじめに 株式会社ネクスタの tetsu.k です。 生産管理SaaS「スマートF」の開発に携わっており、受注・発注・出荷・見積などのドメインを担当するチームに所属しています。 ネクスタでは、事業の拡大とともにアプリケーションが複雑になっていくなかで、より速く、より良い価値を届け続けるために、「品質」に力を入れています。 品質を支える手段の一つが、単体テストです。 いまはAIに頼めば、テストを数秒で何十本も書いてくれます。 では、テストを増やせば品質は上がるのでしょうか。 結",
+      "discoveredVia": "zenn-topic-feed:csharp",
+      "needsDateVerification": false
+    },
+    {
+      "title": "なぜ、私はAIエージェントを使うのに向かない人間なのか？",
+      "url": "https://zenn.dev/pdfractal/articles/a7733b3a34d275",
+      "source": "Zenn",
+      "publishedAt": "2026-10-13T02:19:29+00:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [],
+      "snippet": "はじめに 私は日常的に生成AIを利用しており、仕事でも私生活でもAIとの壁打ちに多くの時間を費やしています。AIの進歩には強い関心があり、最近のGPT-6 Astraの登場によって、これまでのAI観が大きく揺らぐ経験もしました。それほどAIを積極的に利用しているにもかかわらず、Grok Botやdotsのような自律型AIエージェントには、どうしても魅力を感じられません。身近には、こうしたAIエージェントを大変気に入っている知人がいますが、何がそれほど嬉しいのか、私にはなかなか",
+      "discoveredVia": "zenn-topic-feed:dots",
+      "needsDateVerification": false
+    },
+    {
+      "title": "【Blender】スザンヌさんで幾何学アート - 日々是好日～every day is a good day～",
+      "url": "https://everydayisagoodday.hatenadiary.com/entry/2026/10/13/110516",
+      "source": "everydayisagoodday.hatenadiary.com",
+      "publishedAt": "2026-10-13T02:05:16+00:00",
+      "matchedKeywords": [
+        "Blender",
+        "Unity"
+      ],
+      "tags": [],
+      "snippet": "こんなもの作ってみました 幾何学アートと言っていいのか？ 要するに円形に配置されたスザンヌさんがぐるぐる回る動画です 他にも応用できそうなので 基本部分をメモしておきます まずはスザンヌさんを円形に配置する部分 円形に配置できたら回転 外側に行くほど回転速度が速くなるように設定しています 回転方向及び速度はグループ入力から設定 X軸回転 Y軸回転 Z軸回転 円配置と回転部分をグループ化してリピート処理 回転方向は正方向と逆方向が交互になるようにしました マテリアルは以下のよう",
+      "discoveredVia": "hatena-keyword:Blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "C# で PDF の文書プロパティを設定・取得する",
+      "url": "https://qiita.com/YaHey/items/4ee07946c8e6f7342465",
+      "source": "Qiita",
+      "publishedAt": "2026-10-13T11:01:31+09:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [
+        "C#",
+        "PDF",
+        "プログラミング",
+        "自動化"
+      ],
+      "snippet": "PDF ファイルには本文とは別に、タイトル・作成者・キーワードといったメタデータが埋め込まれています。これらの「文書プロパティ」は、大量のファイルを管理する際の検索性や整理性に影響します。本記事では、C# から PDF のプロパティを操作する方法を扱います。 ## 対象とする読者と環境 - C# の基本文法を理解している開発者 - PDF のメタデータをプログラムから扱う必要がある方 - .NET Framework または .NET Core / .NET 5 以降の環境 ",
+      "discoveredVia": "qiita-tag-api:C#",
+      "needsDateVerification": false
+    },
+    {
+      "title": "C# で PDF の文書プロパティを設定・取得する",
+      "url": "https://zenn.dev/techcode/articles/b99804fe1ff380",
+      "source": "Zenn",
+      "publishedAt": "2026-10-13T11:00:48+09:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [],
+      "snippet": "",
+      "discoveredVia": "zenn-latest-api:title-match",
+      "needsDateVerification": false
+    },
+    {
+      "title": "第3話｜UnityとUnreal Engineをダウンロードしてみた。なぜ2つも必要なのか？｜ゲーム作りはじめおじさん",
+      "url": "https://note.com/dandy_dog8477/n/n1d963c66b1c0",
+      "source": "note",
+      "publishedAt": "2026-10-13T09:58:33+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "Unity"
+      ],
+      "snippet": "ゲーム制作を始めると宣言してから、ここまで情報収集ばかり。 売れているインディーゲームを調べたり、どんなゲームなら自分にも作れそうか考えたり。 気づけば、ゲーム制作を始めると言いながら、ゲームを一本も作っていない。 まあ、当然だ。 そもそも作るための道具すら持っていなかったのだから。 ということで、ようやくゲーム制作の第一歩。 UnityとUnreal Engineをダウンロードしてみた。 なぜ2つも？ 今回はその理由について書いてみようと思う。 そもそもゲームエンジンって何",
+      "discoveredVia": "note-hashtag-new:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "500万円のGPUで、会話に使えたのは3B分だった",
+      "url": "https://qiita.com/orca-forge/items/e4a2770b8e5e582b98d8",
+      "source": "Qiita",
+      "publishedAt": "2026-10-13T08:35:52+09:00",
+      "matchedKeywords": [
+        "CG"
+      ],
+      "tags": [
+        "GPU",
+        "LLM",
+        "MoE",
+        "音声対話",
+        "AIアバター"
+      ],
+      "snippet": "> 📝 この記事は [forge.workstyle.tech](https://forge.workstyle.tech/blog/h100-only-3b-for-conversation/?utm_source=qiita&utm_medium=crosspost&utm_campaign=h100-only-3b-for-conversation) に掲載した記事の転載です。 80GBあれば大きなモデルで会話できると思っていました。実際は3B分しか動かせませんでした。",
+      "discoveredVia": "qiita-tag-api:GPU",
+      "needsDateVerification": false
+    },
+    {
+      "title": "2026年10月12日 今日のQiitaトレンド記事をポッドキャストで聴こう！",
+      "url": "https://qiita.com/ennagara128/items/498bea2b628011cc6bfe",
+      "source": "Qiita",
+      "publishedAt": "2026-10-13T07:34:51+09:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [
+        "Security",
+        "AI",
+        "C#",
+        "LLM",
+        "Webアプリケーション"
+      ],
+      "snippet": "前日夜の最新トレンド記事のAIポッドキャストを毎日朝7時に更新しています。 通勤中などにながら聴きしよう！ （Qiita投稿は通勤には間に合わないと思われますが） フィードバックとか助かりますのでください ↓こちらから 出典 判断特化型GraphRAGをJevを使って構築してみた（ベクトル未使用） https://qiita.com/kikuziro/items/6191b5ad83520d181f38?utm_campaign=popular_items&utm_mediu",
+      "discoveredVia": "qiita-tag-api:C#",
+      "needsDateVerification": false
+    },
+    {
+      "title": "常駐LLMと画像・動画生成でGPUを譲り合う仕組み — Strata × ComfyUI × Hermes",
+      "url": "https://zenn.dev/ioridev/articles/gpu-yield-strata-comfyui-hermes",
+      "source": "Zenn",
+      "publishedAt": "2026-10-12T22:34:19+00:00",
+      "matchedKeywords": [
+        "CG"
+      ],
+      "tags": [],
+      "snippet": "ローカルLLMを常駐させたまま、エージェントに画像や動画の生成もさせたかった。でも LLM が GPU をほぼ占有しているので、ComfyUI と同時には載らない。 そこで GPU を「譲り合う」ラッパーを挟んだ。ポイントは、ツールを実行している間、LLM は結果を待っているだけで何もしていないこと。生成コマンドを実行している間だけ LLM を降ろして、終わったら戻せば会話は途切れない。 ! 全部ローカルで動かしている。ラッパーと設定は Claude Code に頼んで作って",
+      "discoveredVia": "zenn-topic-feed:gpu",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Qt 6.8 製 Bitmessage クライアント ynotbit の設計: 鍵を持たないリレーと暗号化メールボックス",
+      "url": "https://qiita.com/yshurik/items/3a9946152387dfe5bc08",
+      "source": "Qiita",
+      "publishedAt": "2026-10-13T07:22:15+09:00",
+      "matchedKeywords": [
+        "C++"
+      ],
+      "tags": [
+        "Bitmessage",
+        "Qt",
+        "C++",
+        "暗号",
+        "OSS"
+      ],
+      "snippet": "## はじめに [ynotbit](https://github.com/yshurik/ynotbit) は、Bitmessage 用のデスクトップクライアントです。[notbit](https://github.com/bpeel/notbit) をベースにしていて、UI は Qt 6.8 の Widgets で書いています（QML や Qt Quick は使っていません）。0.7.0 を公開したので、設計の要点をまとめます。 Bitmessage は、中央サーバーを持た",
+      "discoveredVia": "qiita-tag-api:C++",
+      "needsDateVerification": false
+    },
+    {
+      "title": "満員電車デッドロック",
+      "url": "https://qiita.com/lemonIN/items/ec11123cf7131a6ab4f8",
+      "source": "Qiita",
+      "publishedAt": "2026-10-13T07:11:04+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "Unity",
+        "ゲーム開発",
+        "AI"
+      ],
+      "snippet": "# 満員電車デッドロック ## ゲーム概要 朝の通勤ラッシュ、あなたはいつものように満員電車に揺られている。しかし、降りるべき駅に到着しても、なぜかドアが開かない。車掌のアナウンスも要領を得ず、周囲の乗客たちは皆、どこか不気味なほど無関心だ。この「満員電車」は、もはや日常風景の一部ではない。あなたは、この謎の空間に閉じ込められたことに気づく。終点を目指すか、それともここから脱出するか。究極の選択を迫られる、新感覚の脱出ゲームです。 ## ゲームプレイ プレイヤーの目的は、この",
+      "discoveredVia": "qiita-tag-api:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "PrivacyDataCoin (PDC) のフルノードを立てて XMRig (rx/arq) で CPU マイニングするまで",
+      "url": "https://qiita.com/PrivacyDataCoin/items/203fa2885f3ce450d4e8",
+      "source": "Qiita",
+      "publishedAt": "2026-10-13T05:13:00+09:00",
+      "matchedKeywords": [
+        "C++"
+      ],
+      "tags": [
+        "PrivacyDataCoin",
+        "ブロックチェーン",
+        "xmrig",
+        "Linux",
+        "C++"
+      ],
+      "snippet": "## はじめに PrivacyDataCoin (PDC) は、Zano 系コードベースのハイブリッド PoW + PoS チェーンです。この記事では、Linux 上でノードを動かし、ウォレットを作り、XMRig で CPU マイニングするまでの手順をまとめます。数値はすべて公式ドキュメント (v2.4.2) とソースの `src/currency_core/currency_config.h` によるものです。 ## 主なパラメータ | 項目 | 値 | |---|---|",
+      "discoveredVia": "qiita-tag-api:C++",
+      "needsDateVerification": false
+    },
+    {
+      "title": "ブラウザで4次元を描くまで — 回転と立体射影",
+      "url": "https://zenn.dev/urabexon/articles/stereographic-projection-4d-browser",
+      "source": "Zenn",
+      "publishedAt": "2026-10-12T16:04:52+00:00",
+      "matchedKeywords": [
+        "Shader"
+      ],
+      "tags": [],
+      "snippet": "4 次元の図形を、ブラウザの中でぐにゃぐにゃ回して眺めるアプリを作った。 https://nth-blue.vercel.app/ 120 胞体。1200 本の辺でできた籠が、ゆっくり裏返り続ける 何が起きているのか まず見てほしいのはこれ。同じ超立方体を、設定を 1 つ変えて撮った 2 枚だ。 ランプを遠くに置いたとき。教科書で見る「立方体の中に立方体」 ランプを近づけたとき。内側にあった小さな立方体が膨らんで、画面の外へ抜けていく 3 次元の立方体をどう回しても、内側の面",
+      "discoveredVia": "zenn-topic-feed:shader|zenn-topic-feed:webgpu",
+      "needsDateVerification": false
+    },
+    {
+      "title": "ソフトウェア2Dコンポジタにオクルージョンカリングを入れた話：隠れるピクセルは描かない",
+      "url": "https://qiita.com/albertn/items/ede1d68b10a1155e2955",
+      "source": "Qiita",
+      "publishedAt": "2026-10-13T00:55:50+09:00",
+      "matchedKeywords": [
+        "C++"
+      ],
+      "tags": [
+        "C++",
+        "2D",
+        "ゲームエンジン",
+        "最適化",
+        "レンダリング"
+      ],
+      "snippet": "自作の2D/3Dゲームエンジン Lantern のソフトウェアレンダラに、ささやかな隠面消去を入れました。やったことは単純です：後に描かれる不透明な矩形に完全に覆われるピクセルは、先に描かない。大した話ではないのですが、バイト単位で正しさを保ちながらやるのは思ったより気を使う作業だったので、記録として残します。 ## 背景：2D描画のコストはオーバードロー Lantern の2D描画はペインター法です。描画順に上から重ねていく。ということは、後に不透明なものが描かれる領域では",
+      "discoveredVia": "qiita-tag-api:C++",
+      "needsDateVerification": false
+    },
+    {
+      "title": "【Blender】今からBlenderを始めるなら、4.5 LTSと5.2 LTS、どちらを選ぶ？｜LittleSilky｜3D・Web・AIの制作室",
+      "url": "https://note.com/littlesilky/n/n7fa0c050530a",
+      "source": "note",
+      "publishedAt": "2026-10-12T23:51:25+09:00",
+      "matchedKeywords": [
+        "Blender"
+      ],
+      "tags": [
+        "Blender"
+      ],
+      "snippet": "「Blenderを触ってみたいけれど、どのバージョンを入れればいいんだろう？」 ダウンロードしようとして、数字の違いで手が止まってしまうこともあると思います。調べているうちに「初心者はLTSがいい」と出てきて、今度はそのLTSが二つある。ちょっと迷いますよね。 今回は、Blender 4.5 LTSと5.2 LTSの違いを、これから始める方向けに整理してみます。 先に私の考えをお伝えすると、使っているパソコンが対応していて、使いたいアドオンなどの指定がなければ、今から始めるな",
+      "discoveredVia": "note-hashtag-new:Blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "C/C++で自分がよく使うコードサンプル",
+      "url": "https://qiita.com/zelda_navy/items/0a66ca7782aeccd28944",
+      "source": "Qiita",
+      "publishedAt": "2026-10-12T23:37:23+09:00",
+      "matchedKeywords": [
+        "C++"
+      ],
+      "tags": [
+        "C++"
+      ],
+      "snippet": "## はじめに 最近、C/C++の開発も始まってきた、こちらも過去のコードをあさったり、WEBで検索かけたりと、よく使うけど何度も調べているコードがたくさんあるので、自分なりにまとめておいた。 ## サンプルコード ログ出力ライブラリ - 標準出力、ログファイルの切り替えができる（Init関数） - ログファイルは追記、上書きモードが選択できる（Init関数） - ログ出力なしも指定可能（LogLevel::None を指定する） - ログ出力レベルが選択できる（SetLog",
+      "discoveredVia": "qiita-tag-api:C++",
+      "needsDateVerification": false
+    },
+    {
+      "title": "11日目（Phase 4続き）：オペレーター画面の改修、設定画面の追加 - nennokiのブログ",
+      "url": "https://nennoki.hatenablog.com/entry/2026/10/12/225114",
+      "source": "nennoki.hatenablog.com",
+      "publishedAt": "2026-10-12T13:51:14+00:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [],
+      "snippet": "11日目となった本日は、ミッションエリアの作成…ではなく、戦闘画面の改修からやっていくことにしました。 ただ、本日はワンオペかつ不機嫌な日だったので、ほぼ進んでいません。むしろ今まで普通に4時間くらいは平気で作業していたと思うので、だいぶ妻に負担をかけてたなと思います……。 戦闘画面の改修（オペレート用マップ） オペレート用マップの改修（索敵範囲の表示） 設定画面の開発 戦闘画面の改修（オペレート用マップ） なぜそういう方向になったかというと、色々テストしているときに敵機が見",
+      "discoveredVia": "hatena-keyword:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "[Python/C++] 安全なプロセス終了(signal)",
+      "url": "https://zenn.dev/taiyaki_sec9/articles/safety_signal",
+      "source": "Zenn",
+      "publishedAt": "2026-10-12T12:38:50+00:00",
+      "matchedKeywords": [
+        "C++"
+      ],
+      "tags": [],
+      "snippet": "📌 概要 ⚠️ 課題 プログラムの実行中に Ctrl+C を押すと，通常は処理が中断される．しかし，プログラムによっては，モータの停止やソケットの切断など，アプリケーション固有の終了処理が実行されない可能性がある． 特にロボットの制御では，プログラムが終了してもモータが動き続けるといった危険な状態につながるおそれがある． 💡 結論 Pythonの signal モジュールやC++の std::signal() を利用すると，Ctrl+C による割り込みを検知し，終了処理を実行",
+      "discoveredVia": "zenn-topic-feed:cpp",
+      "needsDateVerification": false
+    },
+    {
+      "title": "MOTORED APES 短編 製作記01｜綿製タオル Mensei Towel",
+      "url": "https://note.com/towel_roborevo/n/n20f71242693b",
+      "source": "note",
+      "publishedAt": "2026-10-12T21:32:42+09:00",
+      "matchedKeywords": [
+        "Blender"
+      ],
+      "tags": [
+        "Blender"
+      ],
+      "snippet": "Twitter（X）では長くて書けないので、noteで製作記を書こうかと。 今、MOTORED APES（モータードエイプス）本編を離れて短編を作りんぐ。 そのお話の一部分。 ■登場メカとキャラクター このお話の主役メカ ノーティフロッグ 短編に出てくる敵 犯人 犯人の逃走車 下記は、今作ろうとしているシーン。 ■シーン 逃走車内 C1） 犯人：運転している → 何かに気付き、目線をルームミラーへ C2）ルームミラーアップ ミラーに映るノーティフロッグ C3）驚いた表情で振り",
+      "discoveredVia": "note-hashtag-new:Blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "C#で既に起動しているアプリケーションを前面に表示する",
+      "url": "https://qiita.com/YoshijiGates/items/a82b948cc8decbd4e752",
+      "source": "Qiita",
+      "publishedAt": "2026-10-12T21:03:06+09:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [
+        "C#",
+        ".NET",
+        "Windows",
+        "WindowsForm"
+      ],
+      "snippet": "# 1. はじめに * Windows Forms アプリケーションで既にに起動中の場合、前面に表示する # 2. 開発環境 * Visual Studio 2022 * .NET 9.0 * Windows Forms * Windows 11 # 3. ソースコード ```CSharp:Program.cs using System.Diagnostics; using System.Runtime.InteropServices; namespace WinFormsA",
+      "discoveredVia": "qiita-tag-api:.NET|qiita-tag-api:C#",
+      "needsDateVerification": false
+    },
+    {
+      "title": "【続編】RTX 2060 6GB で 125B LLM (Strata) を IQ3_XXS で動かしてみた。日本語は崩れないが返答に5分",
+      "url": "https://zenn.dev/remuno/articles/strata-rtx2060-qwen38-flash-next-q3",
+      "source": "Zenn",
+      "publishedAt": "2026-10-12T11:14:09+00:00",
+      "matchedKeywords": [
+        "CG"
+      ],
+      "tags": [],
+      "snippet": "! 2026年10月中旬時点の情報です。Strata は v0.1.42、モデルは IQ3_XXS。 前回記事: https://zenn.dev/remuno/articles/strata-rtx2060-qwen38-flash-next-q2 読了時間の目安は約 11 分(約 7,000 文字)です。 はじめに 前回、RTX 2060 6GB + RAM 64GB で Strata を動かして、結論は「動くけど使い物にならない」でした。 使い物にならない一番の理由は、",
+      "discoveredVia": "zenn-topic-feed:gpu",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Unityの操作不能やSafe Modeを防ぐために。開発中に気を付けたいスクリプト管理の落とし穴｜Shobontechnology",
+      "url": "https://note.com/shobontechnology/n/na583be62cb6f",
+      "source": "note",
+      "publishedAt": "2026-10-12T20:10:14+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "Unity"
+      ],
+      "snippet": "Unityでゲームやアプリを制作していると、突然入力を受け付けなくなったり、Safe Modeに入ってしまったりすることはありませんか？ 私も以前はこうしたトラブルに悩まされましたが、開発時のちょっとした注意と、ある対策によって、同じ問題に遭遇することが大幅に減りました。 今回紹介するのは、Unityでの制作中に発生する、ある問題への対処法です。 ※紹介するツールは以前から使用していますが、Unityエディターのバージョンによっては正常に動作しない場合があります。あらかじめご",
+      "discoveredVia": "note-hashtag-new:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "3行日記最終日(2026.10.12) BlenderやROBLOXと戯れて独身時代に戻ったかのような三連休でした｜こびと",
+      "url": "https://note.com/coamin/n/n586f30517b00",
+      "source": "note",
+      "publishedAt": "2026-10-12T20:09:19+09:00",
+      "matchedKeywords": [
+        "Blender"
+      ],
+      "tags": [
+        "Blender"
+      ],
+      "snippet": "三連休最終日。この数日、就寝が午前様続きだったので今日はさっさと寝ます。 ① 今日もROBLOXをひたすらメンテ。昨晩、不具合を見つけて結局自分がデバッグ。生成AIが進んだといえども最終は自分を思い知る。 ② ゲーム空間ではなく、アクセサリで儲けてやろうとBlenderで取り込むも、どちらも技術がなく、エラー頻発。アクセサリ販売、道遠し。 ③ 鬼嫁が不在なのをいいことに、晩酌で飲み過ぎる。健康診断も近いのに。。明日から（←しないやつの常套句）減酒しよう といった感じで三連休、",
+      "discoveredVia": "note-hashtag-new:Blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Blenderで「ダムッティちゃん」アバター制作 2週目の記録｜まつ毛・目・仮の色塗り｜MET",
+      "url": "https://note.com/easy_finch7665/n/n3fe6df3398aa",
+      "source": "note",
+      "publishedAt": "2026-10-12T18:55:37+09:00",
+      "matchedKeywords": [
+        "Blender"
+      ],
+      "tags": [
+        "Blender"
+      ],
+      "snippet": "どうも、開発担当のattaytobacです！ ダムッティちゃんアバター制作の2週目です。 前回は顔のモデリングをしましたが、今回は まつ毛のモデリング 目（瞳・ハイライト）の追加 仮の色塗り まで進めることができました。 1. 今回の作業内容 今回行った作業はこちらです。 まつ毛のモデリング 目（瞳とハイライト）の追加 テクスチャペイントによる仮の色塗り 少しずつですが、キャラクターらしさが出てきました。 2. 参考にしたもの 今回の制作では、以下を参考に進めました。 〇 C",
+      "discoveredVia": "note-hashtag-new:Blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "# Codexと家計簿Webアプリを作った記録｜C#経験2年・React未経験",
+      "url": "https://qiita.com/Gude008/items/eaf50a19f1aa93fd883c",
+      "source": "Qiita",
+      "publishedAt": "2026-10-12T18:21:42+09:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [
+        "codex",
+        "C#",
+        "React"
+      ],
+      "snippet": "## 目的 C#の経験は約2年ありますが、Reactは未経験です。 今回は、Codexを実際に触って使い方を学ぶために、個人用の家計簿アプリの作成を依頼しました。指示の出し方や、生成されたコードの確認、動作検証までの進め方を試すことが目的です ## 作ったもの **My Budget App**という、月ごとの収支を確認できるWebアプリです。 - 収入・支出の登録、一覧、編集、削除 - 月別の収入・支出・収支の集計 - カテゴリ別の支出内訳 - SQLiteへの保存、スマー",
+      "discoveredVia": "qiita-tag-api:C#",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Blender日記その12｜チャレンジ企画開始してから3週間｜Earth.MarlinTuna",
+      "url": "https://note.com/earth_marlintuna/n/n3e811f85150e",
+      "source": "note",
+      "publishedAt": "2026-10-12T18:00:00+09:00",
+      "matchedKeywords": [
+        "Blender"
+      ],
+      "tags": [
+        "Blender"
+      ],
+      "snippet": "こんにちは、Earth.MarlinTunaです。 今回もチャレンジ企画で制作したものを紹介しようと思います。 100個の3Dモデルチャレンジ 先週はあんまり調子が良くなくて、休む日もあました。 それでも、5作も作りました。 7作目｜折りたためないパイプ椅子 Blender｜100個の3Dモデルチャレンジ｜7/100 7作目は『折りたためないパイプ椅子』です。#b3d #3DCG 📝制作メモ 今回は『折りたためないパイプ椅子』を作りました。… pic.twitter.com/",
+      "discoveredVia": "note-hashtag-new:Blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "JEV-27B-VL を 4×RTX 4090 でデプロイして、画像入りの System 1 判定をローカルで回してみた",
+      "url": "https://qiita.com/engchina/items/02f5574c856d1ea784c1",
+      "source": "Qiita",
+      "publishedAt": "2026-10-12T17:58:28+09:00",
+      "matchedKeywords": [
+        "CG"
+      ],
+      "tags": [
+        "vLLM",
+        "AI",
+        "LLM",
+        "GPU",
+        "Jev"
+      ],
+      "snippet": "![image.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3932781/31a44cba-5622-421d-baad-2242a353f5e0.png) ## 初めに 最近、27B クラスのマルチモーダルモデルはローカルでも動かせるようになってきました。 ただ、普通の VLM とは違った使い方ができるモデルもあります。 「回答を生成する」のではなく、**「選択肢ごとの確率を 1 フォワ",
+      "discoveredVia": "qiita-tag-api:GPU",
+      "needsDateVerification": false
+    },
+    {
+      "title": "UIを1個動かしただけで重くなる？uGUIのリビルドをProfilerで確かめる(Unity)",
+      "url": "https://zenn.dev/daikichi228/articles/9c4e730b0d68b1",
+      "source": "Zenn",
+      "publishedAt": "2026-10-12T08:49:25+00:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [],
+      "snippet": "はじめに 「UIのアイコンを1つだけアニメーションしているのにすべてのアイコンをアニメーションしているかのように重い...」 そんな経験はないでしょうか こちらの原因の候補の一つとしてuGUIの リビルド があげられます uGUIではCanvasの中のどれか1つが変化するとそのCanvas全体の描画データがまとめ直されます。動かしているのが数個でも同じCanvasに静止したUIが大量にあれば、毎フレームその全部をまとめ直すことになります。 この記事では実際にリビルドで重くなる",
+      "discoveredVia": "zenn-topic-feed:unity|zenn-topic-feed:unity6",
+      "needsDateVerification": false
+    },
+    {
+      "title": "オリキャラの3Dモデルのループモーションを楽に作る (Tripo3d + Opus 5.5 + MiniMax H3 + blender)｜異世界♪吟遊詩人ギルド",
+      "url": "https://note.com/ultracrab/n/n1bff0051e321",
+      "source": "note",
+      "publishedAt": "2026-10-12T17:22:38+09:00",
+      "matchedKeywords": [
+        "Blender"
+      ],
+      "tags": [
+        "Blender"
+      ],
+      "snippet": "オリキャラのリファレンスシート（三面図的なもの）から、3D モデルを作ってにしてループモーションを付ける方法についてのメモです。 この方法なら、人間だけでなく動物や魔獣みたいな、どうやってリギングやモーションつけたらいいか素人にはよくわからない生物とかでも、ぐりぐり動かせます。 下記のXのポストが元になってます。とても参考になりました！ GPT画像→Tripo3D→Opus5.5での各足へのボーン入れ、セグメンテーションとカラーリング→H3による動作リファレンス映像作成→Op",
+      "discoveredVia": "note-hashtag-new:Blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Unity で「話した英語を AI が添削してくれる」英語日記アプリを作った その１",
+      "url": "https://qiita.com/haru452/items/8656d7d15db5d20c7b41",
+      "source": "Qiita",
+      "publishedAt": "2026-10-12T17:20:48+09:00",
+      "matchedKeywords": [
+        "C#",
+        "Unity"
+      ],
+      "tags": [
+        "Unity",
+        "C#",
+        "gemini,",
+        "Supabase,",
+        "CloudflareWorkers"
+      ],
+      "snippet": "## はじめに こんにちは。大学４年生の @haru452 です。 以前、ベトナムでインターンシップに参加し、そこで **Stitch や AI を活用したアプリ開発**を学びました。このインターンシップがきっかけで、アプリ開発にすっかりはまり、今回は自分のためのアプリを一から作ってみました。 毎日英語の勉強をしているのですが、スピーキングの練習では「早めにアドバイスやフィードバックをもらえたほうが、スキルが早く伸びる」という話を聞き、話した英語にすぐアドバイスがもらえるアプ",
+      "discoveredVia": "qiita-tag-api:C#|qiita-tag-api:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "中国製オープンウェイトモデルに、自社サービスの脆弱性を探させた",
+      "url": "https://zenn.dev/neurogica/articles/ef9ebaa4f3e9bd",
+      "source": "Zenn",
+      "publishedAt": "2026-10-12T07:24:43+00:00",
+      "matchedKeywords": [
+        "CG"
+      ],
+      "tags": [],
+      "snippet": "この記事は Neurogica Tech Blog の転載です。 国内の情報漏洩が相次いでいる。10月8日にはJPCERT/CCが注意喚起を出し、一般利用者向けのアプリだけでなく、管理・運用側のシステムも被害に遭っていると報告した。APIごとのアクセス制御や、外部に公開する必要のない管理機能の点検も求めている。JPCERT/CCの注意喚起 マクニカが事案対応やログ分析から報告しているのも、必要以上の情報を返すAPIや、認証・権限の不備を幅広く探す動きだ。マクニカの調査報告 私",
+      "discoveredVia": "zenn-topic-feed:gpu",
+      "needsDateVerification": false
+    },
+    {
+      "title": "【制作してみた】ChatGPTで描いたショットガンをMeshyで3D化。ゲーム素材が簡単に作れる時代｜みお@３Dモデル制作部",
+      "url": "https://note.com/saycheese22/n/na664b79ef508",
+      "source": "note",
+      "publishedAt": "2026-10-12T16:23:45+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "Unity"
+      ],
+      "snippet": "ゲームを作っていると、どうしても欲しくなるものがあります。 「自分の世界観にぴったり合った3Dモデル」 無料素材を探しても、微妙にデザインが違う。かといってBlenderで一から作るには、覚えることが多すぎる。 そんな悩みを解決したくて、今回はChatGPTとMeshyを組み合わせて、オリジナルのショットガンを制作してみました。 結果から言うと、これが想像以上に面白かったんです。 まずは完成イメージを見てほしい 今回ChatGPTでデザインしたのが、こちらの2種類です。 Co",
+      "discoveredVia": "note-hashtag-new:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "週刊ゲーム観測 #07｜Google×Unity提携「ゲーム開発の民主化」とUGC市場の次なる覇権争い｜Yuki Tatsuta｜タツタユウキ",
+      "url": "https://note.com/365bit/n/n5d8db38beb6d",
+      "source": "note",
+      "publishedAt": "2026-10-12T16:17:14+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "Unity"
+      ],
+      "snippet": "2026年10月5日（月）～10月11日（日）に話題を集めたゲーム関連トピックから、個人的に気になった5本をピックアップしました。 GoogleとUnityが新しいAIゲームプラットフォームで提携。コード不要でゲームを作れる「Playground」の試験運用版を米国で提供開始 GoogleとUnityが新しいAIゲームプラットフォームで提携。コード不要でゲームを作れる「Playground」の試験運用版を米国で提供開始 自然言語でプロンプトを入力するだけで、プレイ可能なゲーム",
+      "discoveredVia": "note-hashtag-new:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "【C++言語入門STL編】 第2回 文字列操作",
+      "url": "https://zenn.dev/yoshia/articles/cpp2-section2-string-operations-0bc4a0ca4858",
+      "source": "Zenn",
+      "publishedAt": "2026-10-12T07:01:08+00:00",
+      "matchedKeywords": [
+        "C++"
+      ],
+      "tags": [],
+      "snippet": "https://youtu.be/5nDF56Iw_Pg \\textcolor{pink}{四国めたん: }教師役ですわ \\textcolor{lime}{ずんだもん: }生徒役なのだ \\footnotesize \\textcolor{pink}{四国めたん:} こんにちは。四国めたんです \\footnotesize \\textcolor{lime}{ずんだもん:} ずんだもんなのだ。こんにちはなのだ \\footnotesize \\textcolor{pink}{四国めたん:",
+      "discoveredVia": "zenn-topic-feed:cpp",
+      "needsDateVerification": false
+    },
+    {
+      "title": "VRAM 2GBで画像生成してみる",
+      "url": "https://qiita.com/microphoton/items/9539128c872cdbc1f4a8",
+      "source": "Qiita",
+      "publishedAt": "2026-10-12T15:59:31+09:00",
+      "matchedKeywords": [
+        "CG"
+      ],
+      "tags": [
+        "StableDiffusion",
+        "Python",
+        "GPU",
+        "NVIDIA"
+      ],
+      "snippet": "# はじめに Claude先生に質問したところ、VRAMが2GBでも**Stable Diffusion 1.5**なら何とか画像生成できるそうなのでトライしてみます。今さらStable Diffusionを使うのかと言われそうですが、今までは筆者のPCのVRAMが少なすぎるので完全に諦めていたのです。 なおStable Diffusion 1.5は、推奨するPythonのバージョンが「**3.10.6**」になるのですが、筆者の環境には下図のとおり「3.12.10」が導入済",
+      "discoveredVia": "qiita-tag-api:GPU",
+      "needsDateVerification": false
+    },
+    {
+      "title": "【C#】Nullable参照型を有効にしてもNullReferenceExceptionが出る落とし穴【実務向け】",
+      "url": "https://qiita.com/polnareff/items/29c5f6e46ec91737090a",
+      "source": "Qiita",
+      "publishedAt": "2026-10-12T15:44:35+09:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [
+        "C#",
+        "Nullable参照型",
+        "NullReferenceException",
+        "静的解析"
+      ],
+      "snippet": "## はじめに Nullable参照型(NRT)を有効にしても、実行時にnullが入らなくなるわけではありません。NRTはコンパイラが「nullの可能性」を静的に追跡して警告を出す仕組みで、型の保証そのものを変えるものではないためです。JSONのデシリアライズやDBからのマッピングなど、コンパイラの追跡が及ばない経路からnullが流入し、警告ゼロのまま本番で`NullReferenceException`が発生するケースは珍しくありません。本記事では、NRT導入後にハマりやす",
+      "discoveredVia": "qiita-tag-api:C#",
+      "needsDateVerification": false
+    },
+    {
+      "title": "利用者が上げた 3D モデルを、GPU なしのアプリで商品写真にする 40 行（アップロード → 固定価格の注文 → webhook）",
+      "url": "https://zenn.dev/renderjanction/articles/f0ddbc52b9081f",
+      "source": "Zenn",
+      "publishedAt": "2026-10-12T06:34:24+00:00",
+      "matchedKeywords": [
+        "Blender"
+      ],
+      "tags": [],
+      "snippet": "公式: https://render.janction.jp 結論から書くと、利用者が 3D モデルを上げるアプリに GPU は要りません。ファイルを描画 API に送り、走る前に値段の分かる商品写真を注文し、できあがったら webhook を 1 回受け取るだけです。JANCTION Render は、プログラムや AI エージェントが HTTP API か MCP サーバーとして呼べる、Blender のクラウド GPU レンダーファームです。Khronos の見本 Wa",
+      "discoveredVia": "zenn-topic-feed:blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "簡単なゲームを作るはずが、気づいたら沼に片足どころか全身浸かっていた｜しおり",
+      "url": "https://note.com/brainy_quoll4409/n/n06700331baf6",
+      "source": "note",
+      "publishedAt": "2026-10-12T15:06:02+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "Unity"
+      ],
+      "snippet": "こんにちは！ 今日はゲームを作っていて思ったこと、 分からなかったこと、知ったことを 色々まとめてみようと思います。 今作っている「ちょんまげゲーム（仮）」。 最初はブラウザでサクッと動く 簡単なゲームを作るつもりでした。 AIに画像とMVP（最小限の機能を持った試作品）を作ってもらって。 ここまではよかった。 試作品もまぁまぁ楽しめたし。 ところが、何度目かの修正のときに 「これ、そんなに面白くないな」って思ってしまって。 ゲームを作っている人ならこの瞬間の気持ち、 分かっ",
+      "discoveredVia": "note-hashtag-new:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Turn Simple Grid into Electric Shock Cage VFX | Unreal Engine 5 Niagara Tutorial",
+      "url": "https://qiita.com/RealTimeVFX/items/12a86fe56fc65f71cc1b",
+      "source": "Qiita",
+      "publishedAt": "2026-10-12T14:18:55+09:00",
+      "matchedKeywords": [
+        "Unreal"
+      ],
+      "tags": [
+        "ue5"
+      ],
+      "snippet": "⚡ Turn Simple Grid into Electric Shock Cage VFX | Unreal Engine 5 Niagara Tutorial In this tutorial, learn step-by-step how to transform a basic grid into an energetic electric shock cage visual effect using Unreal Engine 5 and Niagara! We'",
+      "discoveredVia": "qiita-tag-api:UE5",
+      "needsDateVerification": false
+    },
+    {
+      "title": "パソコン素人がAIだけで3D雑学チャンネルを作った話｜第0回 はじめに｜たんたん",
+      "url": "https://note.com/tantan_kiroku/n/n7343aba95846",
+      "source": "note",
+      "publishedAt": "2026-10-12T14:09:43+09:00",
+      "matchedKeywords": [
+        "Blender"
+      ],
+      "tags": [
+        "Blender"
+      ],
+      "snippet": "はじめまして。TikTok で雑学のショート動画を作っています。 最近、それを3Dアニメにしました。オリジナルのキャラクターが出てきて、30秒くらいで雑学を話す動画です。 こう書くと「3Dできる人なんだ」と思われそうなんですが、全然違います。パソコンのことは、ほぼ何もわかりません。 じゃあどうやって作ったのかというと、ほとんどAIに頼りました。その話をちゃんと残しておきたくて、noteを始めることにしました。 どれくらい素人なのか エンジニアではないです。プログラムも書いたこ",
+      "discoveredVia": "note-hashtag-new:Blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Route Engineちょい進化・座標エクスポート",
+      "url": "https://zenn.dev/vbaman/articles/f2643ca36054e6",
+      "source": "Zenn",
+      "publishedAt": "2026-10-12T04:27:24+00:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [],
+      "snippet": "Excel上でNPCの移動経路を組み立てる「Excel Route Engine」。 今回は、経路上の座標データを出力できるようにしました。 NPCの巡回経路をもとに座標を取り出し、イミディエイトウィンドウに表示します。 今回はNPCを1体に絞り、経路を黄色で塗って確認できるようにしています。 まだ仕上げの途中ですが、座標データを外部の環境で利用するための準備が、少しずつ整ってきました。 Excelで経路を組み立て、その結果を別の環境で動かす。 そんな使い方を試せるところまで",
+      "discoveredVia": "zenn-topic-feed:unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Qtのデバッグ手法を「何を調べたいか」から選ぶ",
+      "url": "https://zenn.dev/sugitakenji/articles/7f0db972428c9f",
+      "source": "Zenn",
+      "publishedAt": "2026-10-12T04:10:25+00:00",
+      "matchedKeywords": [
+        "C++"
+      ],
+      "tags": [],
+      "snippet": "Qtアプリケーションで問題が起きたとき、ブレークポイントを置くだけでは原因に届かないことがあります。ウィジェットの配置がおかしい、操作を繰り返すと落ちる、修正後に別の処理が壊れる。それぞれ、必要な観測が違います。 まず「何を確かめたいか」を決め、その問いに答えられる手法を選びます。 この記事はSRAの技術記事「Qtアプリケーション開発に使える！さまざまなデバッグ手法」（2023年1月27日掲載）を参考に、調査の入口を整理したものです。Qtのコード例はQt 6のC++を想定し、",
+      "discoveredVia": "zenn-topic-feed:cpp",
+      "needsDateVerification": false
+    },
+    {
+      "title": "教員がAIとつくるclusterワールド〜ゴッホの絵の中を歩けるようになるまで〜｜アフロッティ",
+      "url": "https://note.com/afrotty/n/ndbe722ee8c8b",
+      "source": "note",
+      "publishedAt": "2026-10-12T13:06:57+09:00",
+      "matchedKeywords": [
+        "Blender",
+        "Unity"
+      ],
+      "tags": [
+        "Unity"
+      ],
+      "snippet": "作成ワールドのリンク↓ フィンセント・ファン・ゴッホ 「夜のカフェテラス」 メタバースプラットフォーム cluster（クラスター） CC0の画像を用いて全てAIに任せたワールドです。CodexでChatGPTastra中が作成もらいました。ゴッホはMes cluster.mu ゴッホのの中を、実際に歩いてみたい。 黄色い灯りの下に立ち、道の奥へ進み、振り返る。絵の中では見えていない建物の横や、カフェの中にも入ってみたい。 今回の制作は、そんな空間をAIへの指示でつくるところ",
+      "discoveredVia": "note-hashtag-new:Blender|note-hashtag-new:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Vulkan Basic Programming Compute Shader Creating Compute Pipeline State Object 日本語",
+      "url": "https://qiita.com/YKVKDX12/items/631cf6ea1ccc9c8977de",
+      "source": "Qiita",
+      "publishedAt": "2026-10-12T11:54:17+09:00",
+      "matchedKeywords": [
+        "Shader"
+      ],
+      "tags": [
+        "Vulkan",
+        "Vulkan1.4",
+        "GPGPU",
+        "ComputeShader"
+      ],
+      "snippet": "# 前回の記事 https://qiita.com/YKVKDX12/items/a57e1215a49794724069 # コンピュートパイプライン? つまりはVulkan(CPU)側から入力データをもらったら、GPU側のシェーダーステージで ガコンガコン！と機械が動いてこねくり回された後、出力データとして結果が出てくる 工場のベルトコンベヤーと思えばよい。 ※実際のコンピュートパイプラインは以下の通りディスクリプタやPush Constantなど がVulkan1.4か",
+      "discoveredVia": "qiita-tag-api:Vulkan",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Python製トランスパイラー(tranp)でマテリアル関数(UE5)を作る #1",
+      "url": "https://qiita.com/rog-works/items/d60fa4f7a01d144f2784",
+      "source": "Qiita",
+      "publishedAt": "2026-10-12T11:44:41+09:00",
+      "matchedKeywords": [
+        "Shader",
+        "Unreal"
+      ],
+      "tags": [
+        "Python",
+        "ue5",
+        "Transpiler",
+        "Shader",
+        "Material"
+      ],
+      "snippet": "# 概要 tranpの紹介記事、第2弾です 今回はUnreal Engineのマテリアル関数を題材として、tranpの応用例を紹介していきます 前回の記事を前提にしているので、不明な点があればご一読お願いします # リンク - 前回: [Python製トランスパイラー(tranp)の紹介](https://qiita.com/rog-works/items/fa0e5499aac18fd94822) # 参考画像 以下は、所謂ディゾルブエフェクトです。全てtranpから作成し",
+      "discoveredVia": "qiita-tag-api:Shader|qiita-tag-api:UE5",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Python製トランスパイラー(tranp)でマテリアル関数(UE5)を作る #1",
+      "url": "https://zenn.dev/rog_works/articles/bc8c0ff0fef8d0",
+      "source": "Zenn",
+      "publishedAt": "2026-10-12T02:39:45+00:00",
+      "matchedKeywords": [
+        "Shader",
+        "Unreal"
+      ],
+      "tags": [],
+      "snippet": "概要 tranpの紹介記事、第2弾です 今回はUnreal Engineのマテリアル関数を題材として、tranpの応用例を紹介していきます 前回の記事を前提にしているので、不明な点があればご一読お願いします リンク 前回: Python製トランスパイラー(tranp)の紹介 参考画像 以下は、所謂ディゾルブエフェクトです。全てtranpから作成しています マテリアルパラメーターを変更すれば消失割合、グラデーションの色・範囲など調整可能です UI用のマテリアルなので2Dですが、",
+      "discoveredVia": "zenn-topic-feed:shader|zenn-topic-feed:ue5",
+      "needsDateVerification": false
+    },
+    {
+      "title": "C# で複数の PDF を結合する方法",
+      "url": "https://qiita.com/YaHey/items/7de44d4964336e31608d",
+      "source": "Qiita",
+      "publishedAt": "2026-10-12T11:35:51+09:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [
+        "C#",
+        "PDF",
+        "プログラミング",
+        "自動化"
+      ],
+      "snippet": "複数の PDF ファイルを 1 つにまとめる作業は、報告書の統合、関連資料のアーカイブ、印刷用ドキュメントの準備など、さまざまな場面で必要になります。たとえば、部門ごとに作成された月次レポートを 1 つのファイルに統合したり、契約書本体と別紙を結合して配布用の文書を作成したりするケースです。 本記事では、.NET 向けの PDF ライブラリを用いて、C# で複数の PDF ファイルを結合する方法を整理します。ファイルパスを指定する基本的な方法から、特定ページの選択的な結合、メ",
+      "discoveredVia": "qiita-tag-api:C#",
+      "needsDateVerification": false
+    },
+    {
+      "title": "async Taskなのに例外を捕まえられない？｜awaitし忘れとtry-catchの落とし穴",
+      "url": "https://qiita.com/k-shimaoka-dev/items/42fafa7cde23cd23c08b",
+      "source": "Qiita",
+      "publishedAt": "2026-10-12T11:11:46+09:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [
+        "C#",
+        "WPF",
+        "async",
+        "awite",
+        "例外処理"
+      ],
+      "snippet": "## はじめに [前回の記事](https://qiita.com/k-shimaoka-dev/items/01f5567c1698d9311919)では、`async void`を避けた方がいい理由について説明しました。 `async void`は、呼び出し元が処理の完了を待てず、例外も扱いにくいという問題があります。 そこで、非同期メソッドの戻り値を`Task`に変更します。 ```csharp private async Task LoadDataAsync() { ",
+      "discoveredVia": "qiita-tag-api:C#",
+      "needsDateVerification": false
+    },
+    {
+      "title": "パースの外注1枚1万円が、0円になった。建築の本6冊をAIの「知識カード」にして、図面を外に出さずに描かせる｜作山哲",
+      "url": "https://note.com/calm_eel39/n/n5dc68586e297",
+      "source": "note",
+      "publishedAt": "2026-10-12T09:51:43+09:00",
+      "matchedKeywords": [
+        "Blender"
+      ],
+      "tags": [
+        "Blender"
+      ],
+      "snippet": "本シリーズ「建築業界特化型AI業務自動化プログラム」第14話／全25話。 この記事だけで完結します。 前の話を読んでいなくても、そのまま試せる形で書いています。 シリーズの一覧はこちら：https://note.com/calm_eel39/m/m94f191dc864c こんな状態でした 今回は、図面から家の完成予想図（パース）を作るAIに、建築の知識を覚えさせた話です。 私の会社は住宅の第三者検査をしています。取引先の工務店・住宅会社に、商談用のパースを求められることがあ",
+      "discoveredVia": "note-hashtag-new:Blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "プログラミング素人がChatGPTにゲーム制作を任せてみた。【第1回】｜AIでゲームを作ろう会",
+      "url": "https://note.com/regal_impala995/n/n47e46a7d51b6",
+      "source": "note",
+      "publishedAt": "2026-10-12T08:07:50+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "Unity"
+      ],
+      "snippet": "「自分が本当に遊びたいゲームを、自分で作れたら面白いだろうな」 ゲーム好きなら、一度くらいそんなことを考えたことがあるんじゃないでしょうか。 自分もその一人です。 ただ、ゲーム制作なんてやったことがありません。プログラミングの知識もほとんどありません。 普通に考えたら、まずはプログラミングの勉強から始めるところでしょう。 でも、ふと思いました。 「今ならChatGPTに全部相談すれば、ゲームを作れるんじゃないか？」 最近のAIはプログラムまで書いてくれるらしい。 だったら、自",
+      "discoveredVia": "note-hashtag-new:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "フォトグラメトリ数学｜61：誤差楕円・誤差楕円体とは何か",
+      "url": "https://zenn.dev/s_hashida/articles/5f09a2aa940bd5",
+      "source": "Zenn",
+      "publishedAt": "2026-10-11T22:05:05+00:00",
+      "matchedKeywords": [
+        "CG"
+      ],
+      "tags": [],
+      "snippet": "はじめに 前回は、 分散とは何か 共分散とは何か 共分散行列とは何か 共分散はどのように伝播するのか Jacobianと共分散行列の関係 について説明しました。 その中で重要だったのが、 \\Sigma_y \\approx J \\Sigma_x J^T という関係です。 これは、 入力側の誤差のばらつきや相互関係が、Jacobianを通して出力側へどのように伝わるのか を表しています。 例えば、フォトグラメトリによって求められた3次元座標、 (X,Y,Z) について、 \\Sig",
+      "discoveredVia": "zenn-topic-feed:3dcg",
+      "needsDateVerification": false
+    },
+    {
+      "title": "cscの作法 その640",
+      "url": "https://qiita.com/ohisama@github/items/43fe4b51869a01eb77a5",
+      "source": "Qiita",
+      "publishedAt": "2026-10-12T06:59:54+09:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [
+        "C#",
+        "serial",
+        "ボーレイト"
+      ],
+      "snippet": "# 概要 cscの作法、調べてみた。 up/downキーでボーレートを変更する。ターミナル書いてみた。 # サンプルコード ```c#: using System; using System.IO.Ports; using System.Text; class ManualBaudSelector { private static readonly int[] BaudRates = new int[] { 4800, 9600, 19200, 38400, 57600, 1",
+      "discoveredVia": "qiita-tag-api:C#",
+      "needsDateVerification": false
+    },
+    {
+      "title": "読心リズム：心の声、聞いてる？",
+      "url": "https://qiita.com/lemonIN/items/b215f950263241d4924c",
+      "source": "Qiita",
+      "publishedAt": "2026-10-12T04:04:25+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "Unity",
+        "ゲーム開発",
+        "AI"
+      ],
+      "snippet": "## 企画概要：もし、他人の「心の声」が聞こえたら？ 突然、他人の「心の声」が聞こえるようになった主人公として、日常に溢れる本音の波を乗りこなす新感覚の「読心音ゲー」です。ブラウザ上で気軽にプレイでき、あなたの共感力とコミュ力（精神的な意味で！）が試されます。 ## ゲームシステム：心の声はノーツとして現れる！ プレイヤーは、周囲の人々から発せられる「心の声」をキャッチできる主人公。 画面上を流れてくるノーツは、職場の上司、学校の友人、SNSのフォロワーなど、様々な人々の内な",
+      "discoveredVia": "qiita-tag-api:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "【AtCoder】気づいたら青色になってた話",
+      "url": "https://qiita.com/knsr_awsd/items/ff5a70c3ee618718ebbf",
+      "source": "Qiita",
+      "publishedAt": "2026-10-12T02:53:59+09:00",
+      "matchedKeywords": [
+        "C++"
+      ],
+      "tags": [
+        "競プロ",
+        "C++",
+        "AtCoder"
+      ],
+      "snippet": "前回のやつと変わらないのでそれ見てください https://qiita.com/knsr_awsd/items/441d978784d564cf71c9",
+      "discoveredVia": "qiita-tag-api:C++",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Radeon で Whisper を動かす: whisper.cpp を Vulkan でビルドして、日本語の短い発話を 0.2 秒で文字にする",
+      "url": "https://qiita.com/pimogera/items/c1441696d4c9f3ce5632",
+      "source": "Qiita",
+      "publishedAt": "2026-10-12T02:03:59+09:00",
+      "matchedKeywords": [
+        "Shader"
+      ],
+      "tags": [
+        "whisper",
+        "whisper.cpp",
+        "Vulkan",
+        "radeon",
+        "音声認識"
+      ],
+      "snippet": "## この記事で分かること - NVIDIA ではないグラフィックボード（Radeon）で、Whisper を速く動かす方法 - Windows で whisper.cpp を Vulkan 向けにビルドする手順 - CPU と GPU、Whisper とほかのモデルを、同じ音声で比べた数字 - 店の名前のような固有名詞を合わせるには、手がかりの言葉（prompt）がほぼ必須だったこと 先に結論です。 | 方法 | 1発話あたりの時間 | 全文が合った数（32本中） | |-",
+      "discoveredVia": "qiita-tag-api:Vulkan",
+      "needsDateVerification": false
+    },
+    {
+      "title": "RTX 2060 6GB + RAM 64GB で Strata (Qwen3.8-Flash-Next 125B) は動くのか試してみた",
+      "url": "https://zenn.dev/remuno/articles/strata-rtx2060-qwen38-flash-next-q2",
+      "source": "Zenn",
+      "publishedAt": "2026-10-11T15:57:17+00:00",
+      "matchedKeywords": [
+        "CG"
+      ],
+      "tags": [],
+      "snippet": "! 読了時間: 約15分(約9,000字)。結論だけ知りたい人は、「先に結論」だけ読めば十分です。 この記事は、2026年10月上旬時点の情報です。検証は Strata v0.1.41(執筆時の最新は v0.1.42)、モデルは Qwen3.8-Flash-Next の Q2_0 で行いました。AI 関連は変化が速いので、最新版では結果が変わる可能性があります。 追記(2026-10-12): v0.1.42 でも測り直しました。結果はほぼ同じです。詳しくは、記事の終盤にある",
+      "discoveredVia": "zenn-topic-feed:gpu",
+      "needsDateVerification": false
+    },
+    {
+      "title": "ETW だけで、Windows PC の通信を見張る侵入検知を作っている話",
+      "url": "https://zenn.dev/hidemorilab/articles/2d548ce79dab90",
+      "source": "Zenn",
+      "publishedAt": "2026-10-11T15:43:52+00:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [],
+      "snippet": "Hidemori Lab（英守ラボ）です。中小企業と個人の PC 向けに、無料の侵入検知ソフト「乗っ取りレーダー」を作っています。この記事は、その中心にある「通信の観測」を、Windows 標準の ETW だけでどう実装したか、という開発記です。 なぜ「入られたあと」を見る道具が要るのか Windows Defender をはじめ、ウイルス対策ソフトはこの 20 年でとても良くなりました。それでも被害は減っていません。警察庁の集計では、2025 年のランサムウェア被害報告 2",
+      "discoveredVia": "zenn-topic-feed:csharp|zenn-topic-feed:dotnet",
+      "needsDateVerification": false
+    },
+    {
+      "title": "RenderTextureを用いた描画方法(Unity)",
+      "url": "https://zenn.dev/daikichi228/articles/4f8eba5ece5cce",
+      "source": "Zenn",
+      "publishedAt": "2026-10-11T15:05:32+00:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [],
+      "snippet": "はじめに 「キャラクターの3Dモデルを、UIの枠の中でくるくる回しながら表示したい」 「ミニマップを画面の隅に出したい」 こうした表現は RenderTexture という仕組みで実現できる この記事では「そもそもカメラとは何をしているのか」というところから理解しRenderTextureを用いて画面にオブジェクトを描画するところまで検証します 対象読者 RenderTexture という単語を初めて聞いた カメラコンポーネントは「とりあえずシーンに置いてあるもの」くらいの認",
+      "discoveredVia": "zenn-topic-feed:unity|zenn-topic-feed:unity6|zenn-topic-feed:urp",
+      "needsDateVerification": false
+    },
+    {
+      "title": "C++基本文法 チートシート",
+      "url": "https://qiita.com/AADNN/items/b814bd8b73fa2d5c2bfc",
+      "source": "Qiita",
+      "publishedAt": "2026-10-11T23:43:23+09:00",
+      "matchedKeywords": [
+        "C++"
+      ],
+      "tags": [
+        "C++",
+        "競プロ"
+      ],
+      "snippet": "~~~c++ #include using namespace std; #define ll long long #define ld long double #define rep(i, n) for (int i = 1; i > N; //出力 cout > A[i]; } //repマクロ（最初に書いてたコピペテンプレを使った場合、上の処理と同じ意味） rep(i, N){ cin >> A[i]; } //rez(rep zero)マクロ（使ってるの私だけ説） s",
+      "discoveredVia": "qiita-tag-api:C++",
+      "needsDateVerification": false
+    },
+    {
+      "title": "【Unity 6.6】Resources / Addressables / Content Directories の違いを整理する ― Unity 7 の展望まで",
+      "url": "https://qiita.com/matsu_r11/items/33a85a979b6a2cb99278",
+      "source": "Qiita",
+      "publishedAt": "2026-10-11T23:09:07+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "Unity",
+        "Unity6.6",
+        "ContentDirectories"
+      ],
+      "snippet": "## はじめに Unity 6.6 で、AssetBundle の後継となる Content Directories が登場しました。この記事では、アセットを実行時に読み込む方法を、配置方法と読み込みコードつきで比較します。AssetBundle を直接使う方法は、関係図と比較表で扱います。 1. Resources 2. Addressables（AssetBundle バックエンド） 3. Content Directories（コードから直接） これらは同じ階層に並ぶ選",
+      "discoveredVia": "qiita-tag-api:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "可読性に乏しい入緑記事",
+      "url": "https://qiita.com/Hysella/items/30e991df269677f2982c",
+      "source": "Qiita",
+      "publishedAt": "2026-10-11T23:05:27+09:00",
+      "matchedKeywords": [
+        "C++"
+      ],
+      "tags": [
+        "色変記事",
+        "AtCoder",
+        "可読性に乏しい",
+        "C++",
+        "入緑"
+      ],
+      "snippet": "# 入緑記事！ :::note warn 簡単に書いたもののため、厳密性が乏しいです。 ::: 2026(今年)の4月からatcoderを本格的に始めました。 半年かけて緑色になりました。 ## Hysellaの初期ステータス(4月) - プログラミングはscratchのみ(C++やPythonは当時全くできなかった) - 数学はできない(JMO Bランク) - なお数学以外もできない(偏差値40) 1日灰色diffでもいいから最低でも1問、平均して2問ぐらいは解いていました",
+      "discoveredVia": "qiita-tag-api:C++",
+      "needsDateVerification": false
+    },
+    {
+      "title": "10日目（Phase 4続き）：大型エネミー実装。あと重力を実装… - nennokiのブログ",
+      "url": "https://nennoki.hatenablog.com/entry/2026/10/11/225513",
+      "source": "nennoki.hatenablog.com",
+      "publishedAt": "2026-10-11T13:55:13+00:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [],
+      "snippet": "昨日に引き続き、Phase 4をやっていきます。 本日は日中家族で出かけていたのであまり進んでいません。 Phase 4の流れ Phase 4-3：キャンペーン進行の実装（第1章） Phase 4-6：地形利用・回避ロジックの実装（途中） Phase 4-8：新規兵装・思考チップの実装（途中） 重力を実装しました（？） -やり方色々、バグも色々 明日はステージ作成？ Phase 4の流れ ロードマップにおけるPhase 4の項目は以下のとおりです。 前回時点で完了したものは取",
+      "discoveredVia": "hatena-keyword:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "まずは環境構築を…ってゲームエンジンって何？〜ノー知識がゲームを作るログ【その2】〜｜まこプ@ちびギャルクリエイター",
+      "url": "https://note.com/makopu_pu/n/n14511aa975a0",
+      "source": "note",
+      "publishedAt": "2026-10-11T21:03:29+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "Unity"
+      ],
+      "snippet": "まぁ前回企画書のような何かが決まったので、ひとまず手を動かす。 ちゃっぴーちゃんいわく、まずは制作環境を選んで、環境構築してからプロトタイプを作りましょう!!って言われたんだけど、マジで宇宙語。 環境構築？Web制作だとローカル環境とかあるけどああいうこと？わからん。 プロトタイプって何？試作品てこと？わからん。 なんでとりあえず最初の一言 「まず何を決めるの？小学生にもわかるように説明して。」 わからんこと聞くにはこれ最強だと思う。 回答：まず、今の企画に合うゲームエンジン",
+      "discoveredVia": "note-hashtag-new:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "はじめましてのnote｜MinamiN",
+      "url": "https://note.com/minamin_lililab/n/n68d5537ce10e",
+      "source": "note",
+      "publishedAt": "2026-10-11T20:56:12+09:00",
+      "matchedKeywords": [
+        "Blender"
+      ],
+      "tags": [
+        "Blender"
+      ],
+      "snippet": "こんにちは、こんばんは。MinamiNです。 趣味でCubaseを触ったり、VRoidとBlenderで3D制作をしているサラリーマンです。 今年の5月にPCを買っていろいろと遊んでいます。 最近、自分のPC内でLLMを常駐させることができました。 今、流行りのローカルAIですね。AIと話してみたり、調べ物をしてもらったり。 仕事では使いこなせていませんが、ローカルAIでできること、できないこと。 それを自分なりにどう実現できるかを日々試しています。 このnoteには、ローカ",
+      "discoveredVia": "note-hashtag-new:Blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "【DirectX11】【HLSL】頂点シェーダーだけで空中に舞う火の粉を描こう!【TsukinoEngine】",
+      "url": "https://qiita.com/tsukino_/items/330ac8c6ec3908e38b96",
+      "source": "Qiita",
+      "publishedAt": "2026-10-11T20:27:37+09:00",
+      "matchedKeywords": [
+        "Shader"
+      ],
+      "tags": [
+        "DirectX11",
+        "HLSL",
+        "Shader",
+        "particle",
+        "gamedev"
+      ],
+      "snippet": "3Dアクションのフィールドを作っていると、キャラクターと地面の間の空間が**空っぽ**のままになりがちです。 何も浮かんでいない空間は奥行きが分かりにくく、**空気がそこにある感じ**が出ません。 そこで空中に火の粉や塵を漂わせると、手前と奥で粒の大きさや流れる速さが違って見え、それだけで空間に厚みが生まれます。 しかし、空間全体を埋めるには**何千粒**という数が必要になります。 1粒ごとに位置や速度をバッファへ持たせると、CPUで毎フレーム更新する必要があり、カメラが遠く",
+      "discoveredVia": "qiita-tag-api:HLSL|qiita-tag-api:Shader",
+      "needsDateVerification": false
+    },
+    {
+      "title": "イラストを1枚読み込むだけで、その形に開く花火を作った【Houdini / VEX】",
+      "url": "https://qiita.com/Ozaki_Ryu_/items/128f74d937df777a7248",
+      "source": "Qiita",
+      "publishedAt": "2026-10-11T20:20:02+09:00",
+      "matchedKeywords": [
+        "CG",
+        "Houdini"
+      ],
+      "tags": [
+        "HOUDINI",
+        "VEX",
+        "CG",
+        "3DCG",
+        "画像処理"
+      ],
+      "snippet": "![00_ペンギン花火.gif](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/4515087/8da8adc6-cfbf-48be-93f7-8c37f9cd139b.gif) イラスト画像を1枚読み込むと、その**線と色の場所に星が並び、キャラクターの形に開く花火**になる仕組みを Houdini で作りました。 この記事では、下のペンギンのイラストを例に、作り方を順番に紹介します。 ![01_元の",
+      "discoveredVia": "qiita-tag-api:3DCG|qiita-tag-api:Houdini",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Unity4.3からUnity6へ──ケータイの時代から続いていた、気づけば長いゲーム開発の旅｜Ozzy",
+      "url": "https://note.com/super_jacana8664/n/ndee4aff6b690",
+      "source": "note",
+      "publishedAt": "2026-10-11T19:06:53+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "Unity"
+      ],
+      "snippet": "ゲームを作りたい気持ちは、小学3年生でPCで麻雀ゲームやったあたりからあった。 でも当時の自分にとって、 ゲーム＝携帯ゲーム機（DSやPSP等）&nbsp;というのが完全に当たり前やった。 ケータイはあくまで 電話 メール 着メロ 待ち受け画像 この4つが主役で、 「ケータイでゲームをする」という発想すらなかった。 ガラケーのJavaアプリもあったけど、 動きはカクカクで、 電池はすぐ切れて、 容量はすぐいっぱいになって、 「これでゲームをする」という感覚はほぼゼロ。 だから",
+      "discoveredVia": "note-hashtag-new:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Unity UI編 #13 InputFieldのUIの使い方を理解する - 蒼水家技術録",
+      "url": "https://atelier-aomi.hatenablog.com/entry/2026/10/11/180002",
+      "source": "atelier-aomi.hatenablog.com",
+      "publishedAt": "2026-10-11T09:00:02+00:00",
+      "matchedKeywords": [
+        "Blender",
+        "C#",
+        "CG",
+        "Shader",
+        "Unity"
+      ],
+      "tags": [],
+      "snippet": "今回はInputFieldのUIを配置して文字入力周りの挙動を理解することを目的とします。 InputFieldは基本的にはImage（画像UI）とTextMeshProの組み合わせで構成されます。 一番親のInputFieldで入力欄の画像UIとInputFieldを定義しています。 子にあるPlaceHolderとTextがありますが、PlaceHolderは入力前の「Enter Text...」を表示するためのテキストUIで、Textが実際にユーザーが入力したときに使用",
+      "discoveredVia": "hatena-keyword:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Unity ShaderGraph備忘録 part7- ポスプロのアウトライン実装",
+      "url": "https://zenn.dev/zn_ryg12/articles/shader-note-20261011",
+      "source": "Zenn",
+      "publishedAt": "2026-10-11T08:38:36+00:00",
+      "matchedKeywords": [
+        "Shader",
+        "Unity"
+      ],
+      "tags": [],
+      "snippet": "前回に続いてセルルックシェーダーに関わるアウトライン・輪郭線についてです。 ※この記事の作例には「ユニティちゃん」を使用しています © Unity Technologies Japan/UCL アウトラインの実装方法 今回使うユニティちゃんの素の状態 アウトラインを描画するには、大きく分けて背面法と画面のデプスを用いたエッジ検出の2通りがあります 背面法 モデルを複製して一回り大きくし、メッシュの裏側だけを塗りつぶして描画する方法。 キャラクター系で王道的な実装です。 ポスト",
+      "discoveredVia": "zenn-topic-feed:shader|zenn-topic-feed:shadergraph|zenn-topic-feed:unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "【10月5日公開】ROCm 10.1のGPU直結I/Oを分解。16MiBの中継バッファが残る条件と、今すぐ試す3手順",
+      "url": "https://qiita.com/emi_ndk/items/c89943efa1f663ab434f",
+      "source": "Qiita",
+      "publishedAt": "2026-10-11T16:07:06+09:00",
+      "matchedKeywords": [
+        "CG"
+      ],
+      "tags": [
+        "AI",
+        "GPU",
+        "ROCm",
+        "Linux",
+        "ストレージ"
+      ],
+      "snippet": "**AMD GPUでモデルやチェックポイントを読み込んでいるなら、そのデータがホストRAMを通っていないか、一度確かめてほしい。** ROCm 10.1では、ストレージからGPUメモリへ直接データを送る経路が非同期I/Oにも広がった。AMDが10月5日に出した[技術解説](https://rocm.blogs.amd.com/ecosystems-and-partners/rocm-10.1-blog/README.html)の主役は、演算器にデータを届ける仕組みだ。 - H",
+      "discoveredVia": "qiita-tag-api:GPU",
+      "needsDateVerification": false
+    },
+    {
+      "title": "自作ゲームエンジンを作ると、何が手に入るのか？｜Trend Insights",
+      "url": "https://note.com/trend_insights/n/nb6a232080366",
+      "source": "note",
+      "publishedAt": "2026-10-11T13:48:38+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "Unity"
+      ],
+      "snippet": "📢 AI生成コンテンツ: この記事は Claude (Anthropic) で生成し、Qwen2.5 (ローカルLLM) で校正を行いました。内容の正確性については独自にご確認ください。 結論：自作ゲームエンジンの開発は「技術的負債ゼロ」のコア知識を与え、エンジニアとしての市場価値を根本から底上げする。 この記事を読むと： - 自作エンジン開発で具体的に何が学べるか、技術スタック別に理解できる - Unity/Unreal Engine依存からいつ・どう脱するかの判断基準が得",
+      "discoveredVia": "note-hashtag-new:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "初学者向けOpenGL開発17 -C++で作成したゲームをitch.ioで配布する-",
+      "url": "https://zenn.dev/satoshi061/articles/4d7e6f5293b7a4",
+      "source": "Zenn",
+      "publishedAt": "2026-10-11T03:00:05+00:00",
+      "matchedKeywords": [
+        "C++"
+      ],
+      "tags": [],
+      "snippet": "はじめに こんにちは、らぐ丸です。C++とOpenGLを使って簡単な3Dシューティングゲームを作ってきましたが、折角作ったのに自分１人で遊んでいても勿体ないかなと思います（今回筆者が作ったのはただの試作品なのでそれで充分ですが...）。そんな時は配布用のパッケージを作って他の人でもパソコンさえあれば遊んでもらえるようにしましょう。筆者がWindows環境でVisual Studioを使って開発（詳しくは前回の記事を参照）しているのもありWindowsでしか遊べませんが、なるべ",
+      "discoveredVia": "zenn-topic-feed:cpp",
+      "needsDateVerification": false
+    },
+    {
+      "title": "業者のシステムは1行も触れない。それでも機能は足せる──「中継」パターンの設計原則",
+      "url": "https://qiita.com/koreangyoseishoshi/items/1e0f25a9d15cb92af6e3",
+      "source": "Qiita",
+      "publishedAt": "2026-10-11T12:00:01+09:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [
+        "設計",
+        "Windows",
+        "シリアル通信",
+        "レガシーシステム",
+        "C#"
+      ],
+      "snippet": "※この記事は [Zennの記事](https://zenn.dev/kimshoshi/articles/relay-pattern-legacy-system) からの転載です。 --- 業務の現場には、**中身に手を入れられないシステム**がたくさんあります。業者の製品なので改修できず、頼めば費用も時間もかかります。 それでも「この条件のときだけ、ついでにこれをしてほしい」という要望は出てきます。この記事では、既存システムには一切手を入れずに機能を足す**「中継」パターン",
+      "discoveredVia": "qiita-tag-api:C#",
+      "needsDateVerification": false
+    },
+    {
+      "title": "業者のシステムは1行も触れない。それでも機能は足せる──「中継」パターンの設計原則",
+      "url": "https://zenn.dev/kimshoshi/articles/relay-pattern-legacy-system",
+      "source": "Zenn",
+      "publishedAt": "2026-10-11T02:46:14+00:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [],
+      "snippet": "業務の現場には、中身に手を入れられないシステムがたくさんあります。業者の製品なので改修できず、頼めば費用も時間もかかります。 それでも「この条件のときだけ、ついでにこれをしてほしい」という要望は出てきます。この記事では、既存システムには一切手を入れずに機能を足す**「中継」パターン**を、私が作っている外来受付の仕組み（現在は試験運用中）を例に整理します。 やりたかったこと 外来の受付機は、患者さんが診察券のバーコードを読ませると、受付システムに受付が入る仕組みです。 「カウ",
+      "discoveredVia": "zenn-topic-feed:csharp",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Vulkan Basic programming compute shader 3 ディスクリプタ",
+      "url": "https://qiita.com/YKVKDX12/items/a57e1215a49794724069",
+      "source": "Qiita",
+      "publishedAt": "2026-10-11T11:24:38+09:00",
+      "matchedKeywords": [
+        "Shader"
+      ],
+      "tags": [
+        "Vulkan1.4",
+        "Vulkan",
+        "GPGPU",
+        "ComputeShader"
+      ],
+      "snippet": "# 前回の記事 https://qiita.com/YKVKDX12/items/6505409c9461367953c1 ディスクリプタはシェーダー側にあるGPUリソースの搬入口と思って良い。 この搬入口がスロットである ディスクリプタはディスクリプタセットレイアウトという構造体のインスタンスを作成し、 アプリ側でそのスロット番号、搬入されるリソースの型、ディスクリプタの数、送り込むシェーダーのステージを指定する ```.cpp //Creates a descriptor",
+      "discoveredVia": "qiita-tag-api:Vulkan",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Span をなんとかし隊",
+      "url": "https://zenn.dev/sator_imaging/articles/dcd7e2919eb308",
+      "source": "Zenn",
+      "publishedAt": "2026-10-11T01:26:23+00:00",
+      "matchedKeywords": [
+        "C#",
+        "Unity"
+      ],
+      "tags": [],
+      "snippet": "小さいサイズはスタックを使って大きいサイズには ArrayPool を使う処理、綺麗に書ける糖衣構文を求めてたどり着いたのが以下の形。 var buffer = size <= 128 ? stackalloc byte[size] : default; using var _ = ImmediateBuffer<byte>.Using(size, ref buffer); スコープ問題 真の理想はコチラ。using var _ = も消したい。 // out でスパン取得し",
+      "discoveredVia": "zenn-topic-feed:csharp|zenn-topic-feed:dotnet|zenn-topic-feed:unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Blender+Opus5.5でホラーゲームの待合室ができた話 AIに「この画像みたいな待合室作ってー」と頼んだら…｜奇妙映像ライブラリー",
+      "url": "https://note.com/horror_40daisuki/n/n25a0568e643e",
+      "source": "note",
+      "publishedAt": "2026-10-11T09:37:25+09:00",
+      "matchedKeywords": [
+        "Blender"
+      ],
+      "tags": [
+        "Blender"
+      ],
+      "snippet": "Xで気になったポストがあって Claude Opus 5.5への指示でBlenderで雰囲気あるコインランドリーの3DCGを作成しました。 Blenderを手動で操作することなく、すべてプロンプトだけで構築してみました。 基本的な制作の流れはリプで⬇️ pic.twitter.com/92IzAxmZRh — ハヤシモン｜AI × 個人開発 (@hayashimon1) October 10, 2026 Claude Opus 5.5とBlenderで作られたようだったので ",
+      "discoveredVia": "note-hashtag-new:Blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "聴こうよAIゲーム制作の悲鳴｜からし山まよ江",
+      "url": "https://note.com/mayoe_karashi/n/ncd279167af67",
+      "source": "note",
+      "publishedAt": "2026-10-11T09:36:05+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "Unity"
+      ],
+      "snippet": "オレAI、作る。オマエニンゲン、儲かる。 AIでいろんなことができる！ …的な話題が、ずーっとトレンド！ note歩いているとそんな気がします。 憧れますよね〜。正直。 AIがトレンド、はnoteだけの話ではありません。 たとえば「個人でゲームを作る」。 私も趣味でゲームを作ってます。 広告なし無料のミニゲームです。 個人制作で有料ゲームを作って売れるのは、一握りの実力者…。 そんなイメージが私にありました。 しかし。 我が界隈（主語デカ）にも 「AIならなんでもできる！」 ",
+      "discoveredVia": "note-hashtag-new:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "ゲーム会社で働いたあと、家でもゲームを作り続けられる理由｜Mk｜ゲーム開発メモ",
+      "url": "https://note.com/mk_dev/n/nb9cfc00d9f5b",
+      "source": "note",
+      "publishedAt": "2026-10-11T09:29:53+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "Unity"
+      ],
+      "snippet": "仕事でゲーム開発をしている、と話すと、 たまに思われることがあります。 「仕事でもゲームを作っているのに、家でも作るの？」 確かに、改めて考えると少し不思議です。 昼間はゲーム会社で働く。 一日コードを書く。 不具合を調べる。 仕様について考える。 仕事が終わって家に帰る。 そしてまたPCを開いて、Unityを起動する。 同じ「ゲーム開発」を一日中やっているようにも見えます。 自分でも、 「よく家でもやってるな」 と思うことがあります。 でも今のところ、個人ゲーム開発をやめた",
+      "discoveredVia": "note-hashtag-new:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "ローカルLLMにBlenderで遊ばせたい。MCP接続、初めの一歩｜地方SE",
+      "url": "https://note.com/light_moraea8936/n/n73af3a9f1b82",
+      "source": "note",
+      "publishedAt": "2026-10-11T09:15:30+09:00",
+      "matchedKeywords": [
+        "Blender"
+      ],
+      "tags": [
+        "Blender"
+      ],
+      "snippet": "ローカルLLMで、何か面白いことができないだろうか。 最近、そんなことを考えています。 これまでWeb検索やファイル操作など、MCPを使ってローカルLLMから外部の機能を利用する実験をしてきました。 そこで、ふと思ったのです。 （Blenderを操作させたら、面白いんじゃないか？） 例えば、自然言語で指示を出したら、3D空間の中でオブジェクトを動かしてくれる。あるいは、簡単なシーンを組み立ててくれる。 そんなことができたら、ちょっと楽しそうです。 もちろん、最初から複雑な3D",
+      "discoveredVia": "note-hashtag-new:Blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "仕様書のない業務システムをLLMで棚卸しする境界",
+      "url": "https://zenn.dev/techstudiolab/articles/legacy-system-llm-inventory-boundary",
+      "source": "Zenn",
+      "publishedAt": "2026-10-11T00:14:22+00:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [],
+      "snippet": "仕様書のない業務システムを棚卸しするとき、LLMにシステム全体を渡して仕様を生成する方法は選びません。私なら、機械的に取得できる事実を先に固定し、LLMにはその事実から仮説を作るところまでしか任せません。 FileMaker、古い.NET、PHPでは取得できる構造情報が違います。それでも移行前の棚卸しで必要なのは、同じ形式へ無理に変換することではありません。「その記述の根拠を元ファイルまで逆引きできるか」を共通ルールにします。 推論の前に証拠を固定する 仕様書がないシステムで",
+      "discoveredVia": "zenn-topic-feed:dotnet",
+      "needsDateVerification": false
+    },
+    {
+      "title": "深夜絶対安全コンビニ・アポカリプス",
+      "url": "https://qiita.com/lemonIN/items/3867c678628515144d1b",
+      "source": "Qiita",
+      "publishedAt": "2026-10-11T03:44:38+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "Unity",
+        "ゲーム開発",
+        "AI"
+      ],
+      "snippet": "# 深夜絶対安全コンビニ・アポカリプス ## はじめに 「え、世界が滅亡？ でも、僕のシフトはまだ終わってないんですけど…」 そんな理不尽な状況で生き残りをかける、新感覚サバイバルゲーム企画をご提案します。舞台は、突如として終末世界と化した深夜のコンビニ。あなたは唯一の店員として、店の「運営」と「防衛」を同時にこなす究極のブラックバイトに挑みます。 ## ゲーム概要 プレイヤーは、とある深夜、バイト中に異変に巻き込まれます。店を出れば異形が徘徊する地獄、しかし店内はなぜか「安",
+      "discoveredVia": "qiita-tag-api:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "C#とF#でシフト計算システムのバックエンド側を作ってみた",
+      "url": "https://qiita.com/tasuku_nekozawa/items/c3e17ed534798eb9751a",
+      "source": "Qiita",
+      "publishedAt": "2026-10-11T00:49:31+09:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [
+        "C#",
+        "F#",
+        "数理最適化",
+        "アーキテクチャ",
+        "WebAPI"
+      ],
+      "snippet": "## 初めに フロントエンド側のお話は[コチラの記事](https://qiita.com/tasuku_nekozawa/items/51e184ac78e3df14bc45)をご覧ください. F#で数理最適化をやるにあたり, 何かしらを作ってみようということで, シフトスケジューリングシステムを作ってみました. 今回の記事では, バックエンド側として, C#のWebAPIフレームワークによるAPIの部分と, 簡単なコアモジュールなどについて解説します. F#ユーザのみなら",
+      "discoveredVia": "qiita-tag-api:C#",
+      "needsDateVerification": false
+    },
+    {
+      "title": "CPUとGPUはどうやって連携しているのか？ ― メーカーが違っても動く仕組みとグラフィックスAPIの全体像",
+      "url": "https://qiita.com/fujimoooon/items/49a646d99fc73dd992bb",
+      "source": "Qiita",
+      "publishedAt": "2026-10-11T00:39:52+09:00",
+      "matchedKeywords": [
+        "CG",
+        "Shader"
+      ],
+      "tags": [
+        "GPU",
+        "Vulkan",
+        "CUDA",
+        "egpu",
+        "グラフィックス"
+      ],
+      "snippet": "# はじめに 「外付けGPU（eGPU）をつなぐと、CPUがタスクを自動でGPUに振り分けてくれる」と思っていませんか？ 実はそうではありません。本記事では次の疑問を順に解きほぐします。 - CPUとGPUはどうやってやり取りしているのか - Intel と NVIDIA、Apple と NVIDIA のように**メーカーが違っても**なぜ連携できるのか（あるいはできないのか） - GPUを足せば**必ず速くなる**のか - よく聞く **Vulkan** とは何で、ほかにど",
+      "discoveredVia": "qiita-tag-api:GPU|qiita-tag-api:Vulkan",
+      "needsDateVerification": false
+    },
+    {
+      "title": "錆びついた回路、ただいま強制稼働中｜柿葉",
+      "url": "https://note.com/kakiha2022/n/n664e4b5b4a66",
+      "source": "note",
+      "publishedAt": "2026-10-10T23:53:45+09:00",
+      "matchedKeywords": [
+        "Blender"
+      ],
+      "tags": [
+        "Blender"
+      ],
+      "snippet": "ここ数日、noteが読めていません。 記事も書けていません。 だってまた、楽しいことを見つけちゃったのですよ。 5日前、taiinさんが公開したデスクトップマスコット『着ぐるみちゃん30』の記事にくぎ付けになりました。 動くようすを見ているだけで癒されます。 さっそく自宅PCに入れ、Discordでボイスチャットをしながら自慢しました。 相手は、マインクラフト（マイクラ）を一緒に遊んでいる、私より1世代（1.5世代？）ぐらい若い女性です。 彼女の発想力は私とはずいぶん違ってい",
+      "discoveredVia": "note-hashtag-new:Blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "今週のゲーム業界ニュース5選｜「ゲームを作るAI」がいよいよ現実になってきた｜せぶん",
+      "url": "https://note.com/gamenoteazabudai/n/n6281e8b954f2",
+      "source": "note",
+      "publishedAt": "2026-10-10T21:59:23+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "Unity"
+      ],
+      "snippet": "今週のゲーム業界ニュース5選｜「ゲームを作るAI」がいよいよ現実になってきた 今週は、 AIとゲーム開発 というテーマでニュースを5本選びました。 少し前までは、 「AIで画像を作る」 「AIで文章を書く」 といった話が中心だったと思います。 でも最近は、 ゲームそのものを作る。 ゲームエンジンにAIを組み込む。 アニメーション制作をAIで支援する。 デバッグや制作工程を効率化する。 といった、 ゲーム開発そのものの中にAIが入ってくる動き がかなり増えてきました。 一方で、",
+      "discoveredVia": "note-hashtag-new:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "AtCoder Beginner Contest 478",
+      "url": "https://qiita.com/RubyLrving/items/51c7009caf523982da05",
+      "source": "Qiita",
+      "publishedAt": "2026-10-10T20:56:18+09:00",
+      "matchedKeywords": [
+        "C++"
+      ],
+      "tags": [
+        "C++",
+        "AtCoder"
+      ],
+      "snippet": "## A - Grapes [問題文](https://atcoder.jp/contests/abc478/tasks/abc478_a) 除算と余りの問題です。 ```C++:C++ #include #define rep(i,n) for(int i=0; i ; template inline bool chmax(T& a, T b){ if(a inline bool chmin(T& a, T b){ if(a>b){ a=b; return 1; } ret",
+      "discoveredVia": "qiita-tag-api:C++",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Unityを久しぶりに開いて仰天(残りの二割の一部だゾ。)｜橘 温室(たちばな おんしつ)",
+      "url": "https://note.com/oh_orangette/n/n3fc7cdab0858",
+      "source": "note",
+      "publishedAt": "2026-10-10T20:39:39+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "Unity"
+      ],
+      "snippet": "私、ちょっと前にUnityをやったんですよ。 ちょっと前にね。 Unityの本買って、本のとおりにダウンロードして、本の言うように入力してルーレットを作りました。 参考にした本。 「Unityの教科書」 北村愛実(SBクリエイティブ出版) 読んだことがある人なら、「あれね」ってなる、Unityの本ですね。 わかりやすいですよ。 ダウンロードの仕方も丁寧に書いてありました。 覚えている限りの流れがこちら。 1日目 検索エンジンで、Unityと検索。 トップにUnityでてくる。",
+      "discoveredVia": "note-hashtag-new:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "9日目（Phase 4）：利用枠復活！に伴いコーディング再開 - nennokiのブログ",
+      "url": "https://nennoki.hatenablog.com/entry/2026/10/10/203850",
+      "source": "nennoki.hatenablog.com",
+      "publishedAt": "2026-10-10T11:38:50+00:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [],
+      "snippet": "無事に利用枠の制限が解放されましたので、コーディングを再開しました。 待っている間にシナリオも考えられたので、結果的には良かったと思います。 ではPhase 4から、始めていきます！ Phase 4の流れ Phase 4-0：事前準備 兵装パラメータの設定 武器の部位別装備 出撃機体のON/OFF ミッションセレクターの実装 オペレーターによる索敵機能の実装 Phase 4-1：戦闘の計算式の実装（装甲減算モデル） Phase 4-2：障害物の実装（破壊可能、破壊不可） Ph",
+      "discoveredVia": "hatena-keyword:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "NVIDIA粗利率75%の真実——原価6,400ドルが4万ドルに化ける理由",
+      "url": "https://qiita.com/kinamocchi_tech/items/ebd8185b57a76838e2cb",
+      "source": "Qiita",
+      "publishedAt": "2026-10-10T20:19:20+09:00",
+      "matchedKeywords": [
+        "CG"
+      ],
+      "tags": [
+        "AI",
+        "NVIDIA",
+        "CUDA",
+        "GPU",
+        "VOICEVOX"
+      ],
+      "snippet": "![NVIDIA粗利率75%の真実——原価6,400ドルが4万ドルに化ける理由｜グラレコ要約](https://pub-2687e67855c941a0a1a9e1ad51ffc967.r2.dev/images/V241/V241_graphreco.png) :::message 📺 この記事は YouTube チャンネル **きなこもっちーのテック深掘り** の動画解説記事です。 ▶️ 動画はこちら → [NVIDIA粗利率75%の真実——原価6,400ドルが4万ドルに",
+      "discoveredVia": "qiita-tag-api:GPU",
+      "needsDateVerification": false
+    },
+    {
+      "title": "３行日記-高河ゆん｜高河ゆん",
+      "url": "https://note.com/kouga_yun/n/nfbc282ad2a01",
+      "source": "note",
+      "publishedAt": "2026-10-10T20:01:13+09:00",
+      "matchedKeywords": [
+        "Blender"
+      ],
+      "tags": [
+        "Blender"
+      ],
+      "snippet": "お久しぶりにBlender進捗。 あきらめてませんよお！",
+      "discoveredVia": "note-hashtag-new:Blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "AIに製品を作らせたら、テストのテストを作り始めたので憲法を書き換えた｜TOTE",
+      "url": "https://note.com/totetoteuse/n/n1258825e87b3",
+      "source": "note",
+      "publishedAt": "2026-10-10T18:27:46+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "Unity"
+      ],
+      "snippet": "――ChatGPTにAGENTS.mdを書き直させたら、AIがようやく前へ進み始めた話。 序章 お前は一体、何を作っているんだ テスト。 テスト。 テスト。 テスト。 またテスト。 お前はテストが好きなのか。 好きなのかもしれない。 好きなのだろう。 むしろ愛しているのだろう。 愛しているからこそ、テストをする。 テストを愛しているからこそ、テストをテストする。 テストをテストするテストが正しいかどうかを確かめるため、さらにテストを―― いや、待て。 僕はそんなものを作れと言",
+      "discoveredVia": "note-hashtag-new:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Atcoder解いてみた AtCoder Beginner Contest C - Invisible Hand",
+      "url": "https://qiita.com/2yuu/items/18f92a1c140207bf1f1c",
+      "source": "Qiita",
+      "publishedAt": "2026-10-10T18:26:05+09:00",
+      "matchedKeywords": [
+        "C++"
+      ],
+      "tags": [
+        "AtCoder",
+        "C++"
+      ],
+      "snippet": "# AtCoder Beginner Contest C - Invisible Hand 問題は[こちら](https://atcoder.jp/contests/abc312/tasks/abc312_c) # 回答 解の候補が有効か無効かどうかの単調性に着目して、解の二分探索を行う ```C++ #include #include #include #include #include #include #include #include #include #includ",
+      "discoveredVia": "qiita-tag-api:C++",
+      "needsDateVerification": false
+    },
+    {
+      "title": "魔法で石像を砕く ゲーム開発編のゴールと進め方｜ゼロフス",
+      "url": "https://note.com/zfs/n/ndf65b8bf450a",
+      "source": "note",
+      "publishedAt": "2026-10-10T18:01:57+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "Unity"
+      ],
+      "snippet": "人が手から炎や氷を放ち、石像を砕く。ゲーム開発編は、このシーンを作ることをゴールに、ゲームエンジンでの試行錯誤を記録していく連載です。 この記事は「ゲーム開発編」の第1回です。 ここから連載が始まります。 目指す景色 最終ゴールは、手から放った炎や氷が石像に当たり、砕け散るシーンです。 言葉にすると一瞬の出来事ですが、ここには意外と多くの要素が詰まっています。キャラクターを思い通りに動かす仕組み、魔法が飛んでいく軌道や光の表現、そして石像が壊れる瞬間の砕け方。どれも別々に作り",
+      "discoveredVia": "note-hashtag-new:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "3DCG制作日記（第71回）ショート動画3本目『ひとくちあじみ』振り返り｜okara3d",
+      "url": "https://note.com/okara3d/n/n698d1e50e624",
+      "source": "note",
+      "publishedAt": "2026-10-10T16:33:39+09:00",
+      "matchedKeywords": [
+        "Blender"
+      ],
+      "tags": [
+        "Blender"
+      ],
+      "snippet": "オリジナル3DCGアニメーション「ぬいさん」3本目、タイトル『ひとくち味見』をアップしました。 食いしん坊のクマタローのショートです。 よければ見てやってくださるとうれしいです。 というわけで、今回はショート3本目の振り返りの記事になります。 よろしくお願いいたします。 今回の作品の振り返り 使用アプリケーション Unreal Engine 5.7 Blender 4.5 Substance 3D Painter 2024（買い切り版） Adobe Premire（ロゴ追加の",
+      "discoveredVia": "note-hashtag-new:Blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "d1-3Bをローカルで動かし設備点検記録48件を再測定 — クラウドに出せないデータの選別に使えるか",
+      "url": "https://zenn.dev/jodycraft/articles/d1-3b-local-equipment-inspection",
+      "source": "Zenn",
+      "publishedAt": "2026-10-10T07:32:19+00:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [],
+      "snippet": "! 📋 この記事の前提 連載の続編です。前回の Jevとd1を設備点検記録48件で実測比較 の計測（10月3日）から4日後、d1がオープンウェイト化されたので、同じ48件で「ローカル実行」を試した記録です。前回の最後に予告した「C#から呼ぶ」も、この記事で回収します 製造業のDX担当・生産技術・AI導入を検討している開発者向けです 視点は「検査データをクラウドに出せない工場」——設備点検記録の一次選別を、手元のPCだけで回せるか、です 数字は自分の実測（2026年10月10日",
+      "discoveredVia": "zenn-topic-feed:csharp",
+      "needsDateVerification": false
+    },
+    {
+      "title": "【C++】AtCoderで使いたいranges機能たち",
+      "url": "https://zenn.dev/gixim/articles/efa8518188d88f",
+      "source": "Zenn",
+      "publishedAt": "2026-10-10T06:51:06+00:00",
+      "matchedKeywords": [
+        "C++"
+      ],
+      "tags": [],
+      "snippet": "はじめに AtCoderはC++23に対応していて、rangesライブラリの機能が使えます。 今回はAtCoderをはじめとした競技プログラミングで使いたいrangesの機能をピックアップしてみようと思います。 N番煎じかもしれませんが、自分用まとめも兼ねてということで。 ライブラリの全機能はこちらを参照してください。 https://en.cppreference.com/cpp/header/ranges 環境 環境は以下の通りです。 WSL2 / Ubuntu 26.0",
+      "discoveredVia": "zenn-topic-feed:cpp",
+      "needsDateVerification": false
+    },
+    {
+      "title": "VRAM 2GBのGPUでVLMを使って画像認識を試してみる",
+      "url": "https://qiita.com/microphoton/items/def9341608a1fc725be8",
+      "source": "Qiita",
+      "publishedAt": "2026-10-10T13:53:51+09:00",
+      "matchedKeywords": [
+        "CG"
+      ],
+      "tags": [
+        "vlm",
+        "ollama",
+        "LLM",
+        "GPU",
+        "Qwen"
+      ],
+      "snippet": "# はじめに 今回は画像認識用に「Qwen3」の2bのVLMを使います。検証環境のスペック的に、これ以外の選択肢は見当たらず。 # 検証環境 例によってPCの構成は以下の通りです。Ivy Bridgeおじさん代表として頑張ります。 - グラフィックボード: NVIDIA GeForce GT 1030 GDDR5 **2GB** - メモリ: 16GB DDR3 - CPU: Core i7-3770 - OS: Windows 11 Pro 24H2 - Ollama: 0",
+      "discoveredVia": "qiita-tag-api:GPU",
+      "needsDateVerification": false
+    },
+    {
+      "title": "【Unity基礎 第52回】乱数で毎回ちがうゲームに：Random.Range で、再生するたびコインの場所を変える（所要15分）｜toriboy",
+      "url": "https://note.com/toriboy_games/n/nceab15275689",
+      "source": "note",
+      "publishedAt": "2026-10-10T13:41:18+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "Unity"
+      ],
+      "snippet": "今回から第5部です。第51回の「コイン集めコース」に、制限時間やゲームオーバーを少しずつ足して、「始まって終わる」本物のゲームにしていきます。 最初に足すのは 乱数（らんすう）です。今のコースは、何回遊んでもコインが同じ場所にあります。Random.Range（ランダム・レンジ）を使うと、再生するたびにちがう場所にコインが出て、何回でも遊べるゲームに近づきます。 ▼完成イメージ（再生するたびに、10枚のコインの場所が変わる） 🎯 この回のゴール Random.Range で、",
+      "discoveredVia": "note-hashtag-new:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "Satori GCをMSBuild SDKとして公開しました！",
+      "url": "https://qiita.com/hez2010/items/7334840a4e96851f5a0b",
+      "source": "Qiita",
+      "publishedAt": "2026-10-10T13:20:27+09:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [
+        "C#",
+        ".NET",
+        "ガーベージコレクション",
+        ".NETCore"
+      ],
+      "snippet": "## はじめに Satori GCは、高スループット、短い停止時間と低リソース消費を特徴とするGCですが、手元やプロジェクトでも手軽に使いたかったため、今回導入用のSDKとして公開しました。 ## 導入方法 プロジェクトファイル（`.csproj` など）に以下の ` ` 要素を1行追加します。 ### .NET 10 の場合 ```xml ``` ### .NET 11 の場合 ```xml ``` 注意：Satori GCの開発に合わせてバージョンも更新していく予定です。",
+      "discoveredVia": "qiita-tag-api:.NET|qiita-tag-api:C#",
+      "needsDateVerification": false
+    },
+    {
+      "title": "PyTorchを使い、流体力学計算をRTX 4090で実行する",
+      "url": "https://zenn.dev/minosys/articles/32d56caa7384f0",
+      "source": "Zenn",
+      "publishedAt": "2026-10-10T04:08:01+00:00",
+      "matchedKeywords": [
+        "CG"
+      ],
+      "tags": [],
+      "snippet": "はじめに PyTorchというと機械学習のイメージが強いですが、Tensor演算とGPU対応を備えた数値計算ライブラリとしても利用できます。 そこで本記事では、古典的な流体計算である2次元キャビティ問題をPyTorchで実装し、CPU版、GPU版、Triton版の実装方法と実測時間を紹介します。 RTX 4090 は FP32 に比べて FP64 の演算性能が低いGPUですが、手元のPCで数値計算を実行できるのは便利です。今回は torch.float64 を使った計算で、ど",
+      "discoveredVia": "zenn-topic-feed:gpu",
+      "needsDateVerification": false
+    },
+    {
+      "title": "cc-sddでAIに仕様駆動開発してもらう",
+      "url": "https://qiita.com/hiro949/items/b4b37140b03533ef0193",
+      "source": "Qiita",
+      "publishedAt": "2026-10-10T11:10:49+09:00",
+      "matchedKeywords": [
+        "Unity"
+      ],
+      "tags": [
+        "ClaudeCode",
+        "SKILLS",
+        "Unity",
+        "ハーネスエンジニアリング"
+      ],
+      "snippet": "# 背景 Claude codeを使ってUnityにゲームを作ってもらおうとしていたのですが、簡単なのはまだしもちょっと複雑になると(それでも簡単なレベルの範囲内ですが)、以下のような問題が出てきました。 https://qiita.com/hiro949/items/2373f170bd0690f62fa1 - claude codeの利用制限に引っかかって(料金が高い無制限プランを使っていないので…)、途中で中断されてしまう - 翌日再開したときに、現状の把握のためにcl",
+      "discoveredVia": "qiita-tag-api:Unity",
+      "needsDateVerification": false
+    },
+    {
+      "title": "C# で PDF の空白ページを検出して削除する方法",
+      "url": "https://qiita.com/YaHey/items/50bf23dcb985b4468a68",
+      "source": "Qiita",
+      "publishedAt": "2026-10-10T11:09:07+09:00",
+      "matchedKeywords": [
+        "C#"
+      ],
+      "tags": [
+        "C#",
+        "PDF",
+        "プログラミング",
+        "自動化"
+      ],
+      "snippet": "PDF ファイルの中に意図せず空白ページが含まれていることは珍しくありません。スキャン時の不具合、印刷設定のミス、あるいはドキュメント生成処理の副産物として、不要な空白ページが混入することがあります。これらのページは閲覧体験を損なうだけでなく、印刷時の紙の無駄やファイルサイズの増大にもつながります。 本記事では、.NET 向けの PDF ライブラリを用いて、C# で PDF から空白ページを検出して削除する方法を整理します。単純な空白ページの検出に加え、見た目は空白だが実際に",
+      "discoveredVia": "qiita-tag-api:C#",
+      "needsDateVerification": false
+    },
+    {
+      "title": "テンキーも中ボタンも無い MacBook で Blender 4.5 を使うときのショートカットのコツ",
+      "url": "https://zenn.dev/panda_studio/articles/22b8f54d58c587",
+      "source": "Zenn",
+      "publishedAt": "2026-10-10T02:05:03+00:00",
+      "matchedKeywords": [
+        "Blender",
+        "CG"
+      ],
+      "tags": [],
+      "snippet": "結論 ! Mac の Blender は、⌃（control）を使うショートカットに ⌘（command）版を自動で足しています。Windows 向けの解説の Ctrl+S は、Mac では ⌘S で動きます。ただし ⌃Space（エリアを最大化）や ⌃M（ミラー）など、⌘ 版が無いものが 41 件あります。 JIS 配列の Mac では ` と = が Blender に届きません。 3D ビューで視点を選ぶビューのパイメニュー（`）や ⌘=（ズームイン）が押せないので、メ",
+      "discoveredVia": "zenn-topic-feed:3dcg|zenn-topic-feed:blender",
+      "needsDateVerification": false
+    },
+    {
+      "title": "UniVRM10でUniGLTF.Utilsの参照エラーが出るときの対処方法",
+      "url": "https://qiita.com/cyffon/items/68f5d3380609b1feb8a7",
+      "source": "Qiita",
+      "publishedAt": "2026-10-10T10:37:35+09:00",
+      "matchedKeywords": [
+        "C#",
+        "Unity"
+      ],
+      "tags": [
+        "UniVRM",
+        "Unity",
+        "C#"
+      ],
+      "snippet": "```c# Vrm10Instance instance = await Vrm10.LoadPathAsync(path); ``` ここの`Vrm10.LoadPathAsync`部分に、以下のようなエラーが出ました。 ```text CS0012, 型 'IAwaitCaller' は、参照されていないアセンブリに定義されています。アセンブリ 'UniGLTF.Utils, Version=0.0.0.0, Culture=neutral, PublicKeyToken",
+      "discoveredVia": "qiita-tag-api:C#|qiita-tag-api:Unity",
+      "needsDateVerification": false
+    }
+  ],
+  "diagnostics": [
+    {
+      "source": "Zenn",
+      "status": "ok",
+      "targets": 30,
+      "failures": 0,
+      "items": 135,
+      "coverage": "official-topic-rss+latest-title-fallback",
+      "apiFallbackFailures": 0
+    },
+    {
+      "source": "Qiita",
+      "status": "ok",
+      "targets": 20,
+      "failures": 0,
+      "items": 98,
+      "coverage": "official-api-tag-newest"
+    },
+    {
+      "source": "Hatena",
+      "status": "ok",
+      "targets": 10,
+      "failures": 0,
+      "items": 10,
+      "coverage": "known-feeds+keyword-page-best-effort"
+    },
+    {
+      "source": "note-hashtag",
+      "status": "ok",
+      "targets": 14,
+      "failures": 0,
+      "items": 61,
+      "coverage": "public-hashtag-new-pages"
+    }
+  ]
 }
