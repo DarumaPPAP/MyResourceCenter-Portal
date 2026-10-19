@@ -43,7 +43,7 @@ assert.equal(fs.existsSync(path.join(root, '.github/workflows/deploy-pages.yml')
   'the former independently-triggered deploy workflow is removed');
 assert.doesNotMatch(trendWorkflow, /pages: write|id-token: write|actions\/(?:configure-pages|upload-pages-artifact|deploy-pages)@/,
   'the Trend auto-merge workflow cannot deploy directly');
-assert.match(trendWorkflow, /gh workflow run validate-portal\.yml --ref main/,
+assert.match(trendWorkflow, /gh workflow run validate-portal\.yml --ref main --repo "\$\{REPO\}"/,
   'successful Trend auto-merges dispatch the unified validation workflow');
 assert.match(fs.readFileSync(path.join(root, 'README.md'), 'utf8'),
   /`\.github\/workflows\/validate-portal\.yml`/,
