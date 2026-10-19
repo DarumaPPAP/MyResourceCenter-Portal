@@ -40,5 +40,73 @@
     "topics": [
       "FSR2 / Temporal Upscaling / Reactive Mask / Motion Vector / RCAS"
     ]
+  },
+  {
+    "id": "RES-REPO-F78E2D564EFC",
+    "kind": "repository",
+    "title": "REDox",
+    "url": "https://github.com/CAPCOM-TD-OSS/REDox",
+    "canonicalUrl": "https://github.com/CAPCOM-TD-OSS/REDox",
+    "tags": [
+      "C#"
+    ],
+    "reviewState": "Inbox",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "topics": [
+      "Token-based structured data engine for .NET / CAPCOM REX"
+    ]
+  },
+  {
+    "id": "RES-REPO-C31B830990E6",
+    "kind": "repository",
+    "title": "instant-rdv-ue",
+    "url": "https://github.com/nagakagachi/instant-rdv-ue",
+    "canonicalUrl": "https://github.com/nagakagachi/instant-rdv-ue",
+    "tags": [
+      "UnrealEngine"
+    ],
+    "reviewState": "Inbox",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "topics": [
+      "Raster-derived voxel plugin for Unreal Engine"
+    ]
+  },
+  {
+    "id": "RES-REPO-E276B632A9B9",
+    "kind": "repository",
+    "title": "DxTimingCaptureLibrary",
+    "url": "https://github.com/microsoft/dxtimingcapturelibrary",
+    "canonicalUrl": "https://github.com/microsoft/dxtimingcapturelibrary",
+    "tags": [
+      "DirectX"
+    ],
+    "reviewState": "Inbox",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "topics": [
+      "DirectX timing capture library"
+    ]
+  },
+  {
+    "id": "RES-REPO-A209D5DC0C35",
+    "kind": "repository",
+    "title": "math",
+    "url": "https://github.com/openai/math",
+    "canonicalUrl": "https://github.com/openai/math",
+    "tags": [
+      "AI"
+    ],
+    "reviewState": "Inbox",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "topics": [
+      "OpenAI math repository"
+    ]
   }
 ]
