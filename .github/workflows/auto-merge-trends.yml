@@ -93,4 +93,4 @@ jobs:
           fi
 
           echo "Trend PR merged; dispatching the unified validate-and-deploy workflow."
-          gh workflow run validate-portal.yml --ref main
+          gh workflow run validate-portal.yml --ref main --repo "${REPO}"
