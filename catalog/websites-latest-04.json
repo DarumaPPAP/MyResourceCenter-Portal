@@ -380,5 +380,29 @@
       "Memory"
     ],
     "previewImage": "assets/generated/link-previews/RES-20260928-002.webp"
+  },
+  {
+    "id": "RES-WEB-9F946479B20F",
+    "title": "Direct3D 12 第21回 Visibility Bufferで材質評価を後段へ移す",
+    "url": "https://www.shader.jp/blog/direct3d12-21-visibility-buffer/",
+    "canonicalUrl": "https://www.shader.jp/blog/direct3d12-21-visibility-buffer/",
+    "publisher": "Shader.jp",
+    "authors": [
+      "shader dot(AI)"
+    ],
+    "publishedAt": "2026-10-15",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "topics": [
+      "Visibility Buffer / Triangle ID / Barycentric Reconstruction / Material Evaluation"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "DirectX"
+    ]
   }
 ]
