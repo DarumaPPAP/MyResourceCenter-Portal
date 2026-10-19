@@ -84,3 +84,17 @@ Validatorは次を確認します。
 Repository details show only published metadata, canonical Collection membership and explicit Relations. Shared routing covers document/website/repository; Home search and desktop/mobile nav include implementation repositories. Both themes, keyboard focus, 44px mobile controls and wrapping identities are preserved. No README, source tree, file viewer, volatile GitHub facts or additional Home feature section is included.
 
 Validation: `node tools/test_repositories.cjs` and `npm run test:browser-smoke`, alongside the existing full Portal validation commands. Public Repository fields are independently allowlisted and validated; summary is not added to the shared Document projection.
+
+## Resource Center public catalog sync
+
+This repository consumes only the validated `MyResourceCenter` allowlist-only public projection. The source repository owns the metadata and safe generated assets; `tools/sync_public_projection.py` is a deterministic compatibility adapter for the Portal's current `resources-06.json` / `websites-latest-*.json` shard layout. The adaptor updates existing public metadata, adds and removes public resources, copies only validated generated assets, and updates `manifest.sourceCommit` **only when public data or assets change**.
+
+To reproduce or review a sync, generate and validate the projection in the private source checkout, then run:
+
+```bash
+python tools/sync_public_projection.py --projection /path/to/public-catalog
+python tools/test_sync_public_projection.py
+python tools/validate_portal.py
+```
+
+The `sync/mrc-public-catalog` PR is created/updated by the Resource Center's post-validation workflow when its dedicated GitHub App credential has been configured. Portal PR validation runs before any merge, and the existing `validate-portal.yml` deploys only after a successful `main` validation. No automatic PR merging is enabled. New Canonical Original inventory changes intentionally fail sync until the separate Drive original inventory is reviewed and migrated.

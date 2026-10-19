@@ -238,5 +238,230 @@
       "Memory"
     ],
     "previewImage": "assets/generated/link-previews/RES-20260901-005.webp"
+  },
+  {
+    "id": "RES-WEB-ED2325489B10",
+    "title": "グラフィックスとAI、その先を探る。",
+    "url": "https://www.shader.jp/#articles",
+    "canonicalUrl": "https://www.shader.jp/",
+    "publisher": "Shader.jp",
+    "authors": [
+      "masafumi"
+    ],
+    "publishedAt": "2026-10-03",
+    "kind": "website",
+    "contentType": "technical-article-index",
+    "category": "Tech",
+    "domains": [
+      "Graphics",
+      "Programming",
+      "AI"
+    ],
+    "topics": [
+      "Direct3D 12 / Vulkan / Shader / C++ Graphics Samples / Rendering / AI"
+    ],
+    "languages": [
+      "ja"
+    ],
+    "summary": "Direct3D 12とVulkanの比較可能なC++サンプル、Shader・PBR・IBL・Shadow・HDR・Compute、およびAI関連の技術記事と制作記録を掲載するサイト。",
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Medium",
+    "freshness": "Current",
+    "tags": [
+      "DirectX",
+      "Vulkan",
+      "Rendering",
+      "Shader",
+      "AI"
+    ]
+  },
+  {
+    "id": "RES-WEB-BB68795658CE",
+    "title": "大量の音声データの中から音声認識で“聞くべき音声”を見つける、音声検収ツールの開発",
+    "url": "https://techblog.sega.jp/entry/sound-20261013",
+    "canonicalUrl": "https://techblog.sega.jp/entry/sound-20261013",
+    "publisher": "SEGA TECH Blog",
+    "authors": [
+      "塚越 晋"
+    ],
+    "publishedAt": "2026-10-13",
+    "kind": "website",
+    "contentType": "production-tool-case",
+    "category": "Tech",
+    "domains": [
+      "Audio",
+      "GameDevelopment",
+      "Tools",
+      "AI"
+    ],
+    "topics": [
+      "Speech Recognition / Voice Asset Quality Assurance / Script Matching / Kana and Pinyin Normalization / Levenshtein Distance / Human Review"
+    ],
+    "languages": [
+      "ja"
+    ],
+    "summary": "数千～数万件の収録音声を対象に、Excel台本と音声ファイルを突合し、音声認識と文字列類似度から人が優先して確認すべき音声を抽出する検収支援ツールの開発事例。",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "confidence": "High",
+    "freshness": "Current",
+    "tags": [
+      "Audio",
+      "AI",
+      "Editor",
+      "AssetManagement"
+    ]
+  },
+  {
+    "id": "RES-WEB-843F3ED759B5",
+    "title": "『PSO2 ニュージェネシス』におけるトゥーン表示対応について",
+    "url": "https://techblog.sega.jp/entry/ngs_toon_techblog2023",
+    "canonicalUrl": "https://techblog.sega.jp/entry/ngs_toon_techblog2023",
+    "publisher": "SEGA TECH Blog",
+    "authors": [
+      "西濱 高志"
+    ],
+    "publishedAt": "2023-08-10",
+    "kind": "website",
+    "contentType": "production-rendering-case",
+    "category": "Tech",
+    "domains": [
+      "Graphics",
+      "GameDevelopment"
+    ],
+    "topics": [
+      "PSO2 NGS / Deferred and Forward Rendering / Toon Diffuse / Toon Specular / GBuffer / Outline Extraction / Transparent Alpha Mask / Face Normal Adjustment"
+    ],
+    "languages": [
+      "ja"
+    ],
+    "summary": "既存の非トゥーン前提データを維持しつつ、NGSでDeferred/Forward経路へ多段階Diffuse・Specularと輪郭抽出を追加した実装事例。顔法線とラフネス調整、半透明Outlineへの対処も解説。",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "confidence": "High",
+    "freshness": "Unknown",
+    "tags": [
+      "Rendering",
+      "Shader",
+      "Lighting",
+      "Transparency"
+    ]
+  },
+  {
+    "id": "RES-WEB-B56A00AAFF7D",
+    "title": "『PSO2ニュージェネシス』における雪原の跡付け表現について",
+    "url": "https://techblog.sega.jp/entry/ngs_snowfield_techblog2024",
+    "canonicalUrl": "https://techblog.sega.jp/entry/ngs_snowfield_techblog2024",
+    "publisher": "SEGA TECH Blog",
+    "authors": [
+      "釘田"
+    ],
+    "publishedAt": "2024-03-28",
+    "kind": "website",
+    "contentType": "production-rendering-case",
+    "category": "Tech",
+    "domains": [
+      "Graphics",
+      "GameDevelopment"
+    ],
+    "topics": [
+      "Snow Deformation / Bottom-up Depth Capture / Trace Texture / Tessellation / Surface Normal and AO Fallback / Front-Back Object Depth / Cached Decals"
+    ],
+    "languages": [
+      "ja"
+    ],
+    "summary": "NGSの雪原の足跡・設置オブジェクト跡を、地形・キャラクター・オブジェクトの深度と軌跡テクスチャ、フィルタ、テッセレーションで実現した事例。",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "confidence": "High",
+    "freshness": "Unknown",
+    "tags": [
+      "Rendering",
+      "Shader",
+      "Texture",
+      "Optimization"
+    ]
+  },
+  {
+    "id": "RES-WEB-4312B3A9AD4B",
+    "title": "What in The Graphics are Primitives?!",
+    "url": "https://www.3denginerd.com/blog/what-are-graphics-primitives",
+    "canonicalUrl": "https://www.3denginerd.com/blog/what-are-graphics-primitives",
+    "publisher": "3D ENGINERD.",
+    "authors": [
+      "Sajid Hossain"
+    ],
+    "publishedAt": "2025-04-01",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "topics": [
+      "Graphics Primitives / Vertex Processing / Rasterization"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Mesh"
+    ]
+  },
+  {
+    "id": "RES-WEB-6AACB9BD9AC2",
+    "title": "Practical Tips for Implementing Subsurface Scattering in a Ray Tracer",
+    "url": "https://agraphicsguynotes.com/posts/practical_tips_for_implementing_subsurface_scattering_in_a_ray_tracer/",
+    "canonicalUrl": "https://agraphicsguynotes.com/posts/practical_tips_for_implementing_subsurface_scattering_in_a_ray_tracer/",
+    "publisher": "A Graphics Guy's Note",
+    "authors": [
+      "Jiayin Cao"
+    ],
+    "publishedAt": "2020-11-13",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "topics": [
+      "BSSRDF / PBRT / Subsurface Scattering Sampling Robustness"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": []
+  },
+  {
+    "id": "RES-WEB-536E7979AA74",
+    "title": "MH:W | GPU Particle - モンスターハンター:ワールドにおけるGPU Particleの実装",
+    "url": "https://www.docswell.com/s/CAPCOM_RandD/Z7DPJK-2022-07-15-133910",
+    "canonicalUrl": "https://www.docswell.com/s/CAPCOM_RandD/Z7DPJK-2022-07-15-133910",
+    "publisher": "カプコン技研",
+    "authors": [
+      "米山 哲平"
+    ],
+    "publishedAt": "2022-07-15",
+    "kind": "website",
+    "contentType": "presentation-slide",
+    "category": "Tech",
+    "domains": [
+      "Graphics",
+      "GameDevelopment"
+    ],
+    "topics": [
+      "MH:W GPU Particle / Compute Shader particle simulation / Emitter batching / Bitonic Sort / GPU indirect draw arguments / Async Compute / Buffer compaction"
+    ],
+    "engines": [],
+    "languages": [
+      "ja"
+    ],
+    "summary": "カプコン『モンスターハンター：ワールド』のGPU Particle実装事例。エミッター一括更新、Particle Header/Emitter Range、Bitonic Sort、Compute Shaderの段階的処理、Indirect Draw引数生成、非同期Computeによる処理隠蔽、GPUバッファの整理とデバッグ・性能上の注意点を解説する。",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "confidence": "High",
+    "freshness": "Stale",
+    "tags": [
+      "Rendering",
+      "Particle",
+      "Optimization"
+    ]
   }
 ]

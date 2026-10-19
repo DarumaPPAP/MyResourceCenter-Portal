@@ -2013,5 +2013,65 @@
       "RayTracing",
       "CharacterRendering"
     ]
+  },
+  {
+    "id": "RES-REPO-F78E2D564EFC",
+    "title": "REDox",
+    "url": "https://github.com/CAPCOM-TD-OSS/REDox",
+    "canonicalUrl": "https://github.com/CAPCOM-TD-OSS/REDox",
+    "kind": "repository",
+    "topics": [
+      "Token-based structured data engine for .NET / CAPCOM REX"
+    ],
+    "reviewState": "Inbox",
+    "useState": "Reference",
+    "tags": [
+      "C#"
+    ]
+  },
+  {
+    "id": "RES-REPO-C31B830990E6",
+    "title": "instant-rdv-ue",
+    "url": "https://github.com/nagakagachi/instant-rdv-ue",
+    "canonicalUrl": "https://github.com/nagakagachi/instant-rdv-ue",
+    "kind": "repository",
+    "topics": [
+      "Raster-derived voxel plugin for Unreal Engine"
+    ],
+    "reviewState": "Inbox",
+    "useState": "Reference",
+    "tags": [
+      "UnrealEngine"
+    ]
+  },
+  {
+    "id": "RES-REPO-E276B632A9B9",
+    "title": "DxTimingCaptureLibrary",
+    "url": "https://github.com/microsoft/dxtimingcapturelibrary",
+    "canonicalUrl": "https://github.com/microsoft/dxtimingcapturelibrary",
+    "kind": "repository",
+    "topics": [
+      "DirectX timing capture library"
+    ],
+    "reviewState": "Inbox",
+    "useState": "Reference",
+    "tags": [
+      "DirectX"
+    ]
+  },
+  {
+    "id": "RES-REPO-A209D5DC0C35",
+    "title": "math",
+    "url": "https://github.com/openai/math",
+    "canonicalUrl": "https://github.com/openai/math",
+    "kind": "repository",
+    "topics": [
+      "OpenAI math repository"
+    ],
+    "reviewState": "Inbox",
+    "useState": "Reference",
+    "tags": [
+      "AI"
+    ]
   }
 ]

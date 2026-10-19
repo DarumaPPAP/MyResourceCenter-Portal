@@ -143,9 +143,10 @@ async function main() {
     await page.waitForURL('**/websites.html?q=Unity');
     await page.locator('.website-card').first().waitFor();
 
+    const expectedRepositoryCount = JSON.parse(fs.readFileSync(path.join(ROOT,'catalog/repositories.json'),'utf8')).length;
     await openPage(page,origin,'repositories.html');
     await page.locator('.repository-card').first().waitFor();
-    assert.equal(await page.locator('.repository-card').count(),2);
+    assert.equal(await page.locator('.repository-card').count(),expectedRepositoryCount);
     assert.equal(await page.locator('.side-nav a[href="repositories.html"]').getAttribute('aria-current'),'page');
     await page.locator('#q').fill('FidelityFX-CAS');
     assert.equal(await page.locator('.repository-card').count(),1);
@@ -154,7 +155,7 @@ async function main() {
     await page.locator('#q').fill('no-match');
     assert.equal(await page.locator('.repository-card').count(),0);
     await page.locator('[data-reset-filters]').click();
-    assert.equal(await page.locator('.repository-card').count(),2);
+    assert.equal(await page.locator('.repository-card').count(),expectedRepositoryCount);
     assert.equal(await page.locator('.repository-card-link').first().getAttribute('target'),'_blank');
     await page.locator('.repository-details').first().click();
     await page.waitForURL('**/repository.html?id=RES-20260716-007');

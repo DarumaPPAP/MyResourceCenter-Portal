@@ -461,5 +461,42 @@
       "Editor"
     ],
     "previewImage": "assets/generated/link-previews/RES-20260904-012.webp"
+  },
+  {
+    "id": "RES-WEB-FEB14BD6991C",
+    "title": "GPUスキニングの基礎と比較：LBS・DQSとVertex・Compute・Mesh Shader",
+    "url": "https://www.shader.jp/blog/graphics-samples-gpu-skinning/",
+    "canonicalUrl": "https://www.shader.jp/blog/graphics-samples-gpu-skinning/",
+    "publisher": "Shader.jp",
+    "authors": [
+      "shader dot(AI)"
+    ],
+    "publishedAt": "2026-10-16",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "domains": [
+      "Graphics",
+      "GameDevelopment"
+    ],
+    "topics": [
+      "GPU Skinning / Linear Blend Skinning / Dual Quaternion Skinning / Vertex Shader / Compute Cache / Mesh Shader / Direct3D 12 / Vulkan"
+    ],
+    "engines": [],
+    "languages": [
+      "ja"
+    ],
+    "summary": "LBS・DQSの変形特性と、Vertex・Compute Cache・Mesh Shaderでスキニングを行う場合のパス間再利用、メモリ、同期、可視性、および性能比較を解説する技術記事。",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "confidence": "High",
+    "freshness": "Current",
+    "tags": [
+      "Rendering",
+      "Animation",
+      "ComputeShader",
+      "Performance",
+      "Shader"
+    ]
   }
 ]
