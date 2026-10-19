@@ -80,8 +80,16 @@ def sync(projection: Path, portal: Path) -> bool:
         expected = manifest.get("counts", {}).get(key)
         if isinstance(rows, list) and expected != len(rows):
             raise ValueError(f"{key}: public manifest count mismatch")
-    if manifest["counts"].get("documents") != read_json(catalog / "original-documents.json")["counts"]["total"]:
+    # Source projection "documents" is the 28-row legacy metadata index.
+    # Portal manifest "documents" is the 100-file Original inventory. These
+    # are distinct contracts; never replace the latter with the former.
+    original_total = read_json(catalog / "original-documents.json")["counts"]["total"]
+    old_documents = read_json(catalog / "documents.json")
+    old_presentation = read_json(catalog / "document-presentation.json")
+    if {row["id"] for row in incoming["documents"]} != {row["id"] for row in old_documents}:
         raise ValueError("Original inventory requires a separate reviewed migration")
+    if {row["resourceId"] for row in incoming["document-presentation"]} != {row["resourceId"] for row in old_presentation}:
+        raise ValueError("Document presentation inventory requires a separate reviewed migration")
 
     old_base = [row["id"] for row in read_json(catalog / "resources.json")]
     old_supplemental = [row["id"] for row in read_json(catalog / "resources-06.json")]
@@ -150,6 +158,7 @@ def sync(projection: Path, portal: Path) -> bool:
     write_json(catalog / "manifest.json", {
         **manifest,
         "generatedAt": datetime.now(timezone.utc).isoformat(),
+        "counts": {**manifest["counts"], "documents": original_total},
     })
     print(f"SYNCED: public projection from {manifest['sourceCommit']} ({manifest['counts']})")
     return True
