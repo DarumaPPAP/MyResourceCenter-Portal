@@ -35,7 +35,9 @@ class ProjectionSyncTests(unittest.TestCase):
         save(self.portal / "catalog" / "websites.json", [])
         for index, name in enumerate(LATEST_WEBSITE_SHARDS):
             save(self.portal / "catalog" / name, [self.old_web] if index == 0 else [])
-        save(self.portal / "catalog" / "original-documents.json", {"counts": {"total": 0}})
+        save(self.portal / "catalog" / "original-documents.json", {"counts": {"total": 100}})
+        save(self.portal / "catalog" / "documents.json", [])
+        save(self.portal / "catalog" / "document-presentation.json", [])
         save(self.portal / "catalog" / "manifest.json", {"sourceCommit": "a" * 40})
         self.rows = {
             "resources": [self.old_doc, self.old_web, self.new_web, self.new_repo],
@@ -70,6 +72,7 @@ class ProjectionSyncTests(unittest.TestCase):
                for x in json.loads((catalog / name).read_text())]
         self.assertEqual(set(ids), {"RES-WEB-1", "RES-WEB-2"})
         self.assertTrue((self.portal / "assets/generated/file.txt").is_file())
+        self.assertEqual(json.loads((catalog / "manifest.json").read_text())["counts"]["documents"], 100)
         manifest = (catalog / "manifest.json").read_bytes()
         self.assertFalse(sync(self.projection, self.portal))
         self.assertEqual((catalog / "manifest.json").read_bytes(), manifest)
@@ -88,6 +91,12 @@ class ProjectionSyncTests(unittest.TestCase):
         self.rows["documents"] = [{"id": "DOC-N"}]
         self.refresh_source()
         with self.assertRaisesRegex(ValueError, "Original inventory"):
+            sync(self.projection, self.portal)
+
+    def test_rejects_unmigrated_new_document_presentation(self):
+        self.rows["document-presentation"] = [{"resourceId": "RES-DOC-NEW"}]
+        self.refresh_source()
+        with self.assertRaisesRegex(ValueError, "presentation inventory"):
             sync(self.projection, self.portal)
 
     def test_rejects_uncovered_public_website(self):
