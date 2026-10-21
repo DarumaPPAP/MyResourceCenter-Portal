@@ -3,7 +3,7 @@
   "sourceCommit": "eb9649b54151afa82c32319f5eb110e105ec4f1a",
   "generatedAt": "2026-10-19T05:49:14.368Z",
   "counts": {
-    "resources": 218,
+    "resources": 219,
     "websites": 110,
     "website-facets": 7,
     "documents": 100,
@@ -11,6 +11,6 @@
     "relations": 23,
     "collections": 12,
     "document-presentation": 102,
-    "repositories": 6
+    "repositories": 7
   }
 }
