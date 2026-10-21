@@ -2089,8 +2089,6 @@
       "Unity 6 / AudioSource pooling / ScriptableObject Audio Cue / 3D audio distance culling / fade / concurrency control"
     ],
     "reviewState": "Inbox",
-    "useState": "Reference",
-    "confidence": "Unverified",
-    "freshness": "Unknown"
+    "useState": "Reference"
   }
 ]
