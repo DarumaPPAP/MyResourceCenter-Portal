@@ -404,5 +404,130 @@
     "tags": [
       "DirectX"
     ]
+  },
+  {
+    "id": "RES-20261019-002",
+    "title": "DirectXの話 第190回：Work Graph 事始め その1",
+    "url": "https://sites.google.com/site/monshonosuana/directx%E3%81%AE%E8%A9%B1/directx%E3%81%AE%E8%A9%B1-%E7%AC%AC190%E5%9B%9E",
+    "canonicalUrl": "https://sites.google.com/site/monshonosuana/directx%E3%81%AE%E8%A9%B1/directx%E3%81%AE%E8%A9%B1-%E7%AC%AC190%E5%9B%9E",
+    "publisher": "もんしょの巣穴",
+    "authors": [
+      "もんしょ"
+    ],
+    "publishedAt": "2023-12-20",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "domains": [
+      "Graphics",
+      "GameDevelopment"
+    ],
+    "topics": [
+      "Direct3D 12 / Work Graph / GPU Driven Dispatch / ExecuteIndirect / Shader Model 6.8"
+    ],
+    "engines": [],
+    "languages": [
+      "ja"
+    ],
+    "summary": "Direct3D 12 Work Graphの基本概念と、当時のプレビューAPIを使う初期化・コンパイル手順を解説する。記載の対応状況は2023年12月時点。",
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Medium",
+    "freshness": "Aging",
+    "tags": [
+      "DirectX",
+      "ComputeShader",
+      "Rendering"
+    ]
+  },
+  {
+    "id": "RES-20261019-006",
+    "title": "【CEDEC2018】最新タイトルのグラフィックス最適化事例",
+    "url": "https://www.docswell.com/s/CAPCOM_RandD/ZXYVJG-cedec2018",
+    "canonicalUrl": "https://www.docswell.com/s/CAPCOM_RandD/ZXYVJG-cedec2018",
+    "publisher": "カプコン技研",
+    "authors": [
+      "三嶋 仁"
+    ],
+    "publishedAt": "2024-01-17",
+    "kind": "website",
+    "contentType": "conference-slides",
+    "category": "Tech",
+    "domains": [
+      "Graphics",
+      "GameDevelopment"
+    ],
+    "topics": [
+      "RE ENGINE / AABB SIMD Optimization / Frustum Culling / ExecuteIndirect / GPU Occlusion Culling"
+    ],
+    "engines": [],
+    "languages": [
+      "ja"
+    ],
+    "summary": "CEDEC 2018のカプコン講演。SIMDでのAABB・視錐台カリング処理と、Indirect Draw・オクルージョンカリングなどの実装事例を紹介する。",
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Medium",
+    "freshness": "Stale",
+    "tags": [
+      "Rendering",
+      "Optimization",
+      "Culling",
+      "Performance"
+    ]
+  },
+  {
+    "id": "RES-20261019-010",
+    "title": "Test05 — Reversed ZとDepth Buffer",
+    "url": "https://nagakagachi.github.io/lab/webgpu/introduction/test05/",
+    "canonicalUrl": "https://nagakagachi.github.io/lab/webgpu/introduction/test05/",
+    "publisher": "nagakagachi",
+    "authors": [
+      "nagakagachi"
+    ],
+    "publishedAt": "2026-10-17",
+    "kind": "website",
+    "contentType": "interactive-demo",
+    "category": "Tech",
+    "domains": [],
+    "topics": [],
+    "engines": [],
+    "languages": [],
+    "summary": "WebGPUのReversed Zを2つのCubeとDepth Bufferで検証するTypeScriptの学習デモ。depth32float、greater深度比較、Depth可視化、WGSLのコードと操作手順を公開している。",
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Medium",
+    "freshness": "Current",
+    "tags": []
+  },
+  {
+    "id": "RES-20261027-004",
+    "title": "テストコードの設計について考える",
+    "url": "https://zenn.dev/ikemo/articles/test-code-design",
+    "canonicalUrl": "https://zenn.dev/ikemo/articles/test-code-design",
+    "publisher": "Zenn",
+    "authors": [
+      "Hideki Ikemoto"
+    ],
+    "publishedAt": "2022-01-08",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "domains": [
+      "Programming"
+    ],
+    "topics": [
+      "Software Test Design / Logic Tests / Mistake-proofing / Boundary Values / Unit Test Scope / Mutation Testing"
+    ],
+    "engines": [],
+    "languages": [
+      "ja"
+    ],
+    "summary": "機能テストの設計で「ロジック検証」と「ポカヨケ」を分けて考え、何をどの粒度でテストするか、境界値設計、テストの目的を考察する。",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "confidence": "High",
+    "freshness": "Aging",
+    "tags": []
   }
 ]
