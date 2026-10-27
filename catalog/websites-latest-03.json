@@ -463,5 +463,149 @@
       "Rendering"
     ],
     "previewImage": "assets/generated/link-previews/RES-20260904-024.webp"
+  },
+  {
+    "id": "RES-20261019-001",
+    "title": "GPU駆動レンダリングへの取り組み",
+    "url": "https://www.docswell.com/s/CAPCOM_RandD/Z2GP4Z-2022-07-15-121419",
+    "canonicalUrl": "https://www.docswell.com/s/CAPCOM_RandD/Z2GP4Z-2022-07-15-121419",
+    "publisher": "カプコン技研",
+    "authors": [
+      "三嶋 仁",
+      "清水 昭尋"
+    ],
+    "publishedAt": "2022-07-15",
+    "kind": "website",
+    "contentType": "conference-slides",
+    "category": "Tech",
+    "domains": [
+      "Graphics",
+      "GameDevelopment"
+    ],
+    "topics": [
+      "RE ENGINE / GPU Driven Rendering / Indirect Drawing / GPU Culling / Parallel Render Commands"
+    ],
+    "engines": [],
+    "languages": [
+      "ja"
+    ],
+    "summary": "GCC 2016のカプコン講演。中間描画コマンド、メッシュレンダラ、GPU駆動によるカリング・描画指示を説明する。",
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Medium",
+    "freshness": "Stale",
+    "tags": [
+      "Rendering",
+      "Optimization",
+      "Culling",
+      "DirectX"
+    ]
+  },
+  {
+    "id": "RES-20261019-005",
+    "title": "Vulkan 発展編05 GPU Driven Rendering：ComputeとIndirectで描画量を決める",
+    "url": "https://www.shader.jp/blog/vulkan-advanced05-gpu-driven-rendering/",
+    "canonicalUrl": "https://www.shader.jp/blog/vulkan-advanced05-gpu-driven-rendering/",
+    "publisher": "Shader.jp",
+    "authors": [
+      "shader dot(AI)"
+    ],
+    "publishedAt": "2026-10-14",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "domains": [
+      "Graphics",
+      "GameDevelopment"
+    ],
+    "topics": [
+      "Vulkan / GPU Driven Rendering / Compute Shader / Meshlet Culling / Indirect Mesh Shader Dispatch"
+    ],
+    "engines": [],
+    "languages": [
+      "ja"
+    ],
+    "summary": "可視MeshletリストとIndirect起動引数をComputeで生成し、可視数のCPU readbackを挟まずGPU側で描画量を制御するVulkan実装と検証手順。",
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Medium",
+    "freshness": "Current",
+    "tags": [
+      "Vulkan",
+      "Rendering",
+      "ComputeShader",
+      "Culling"
+    ]
+  },
+  {
+    "id": "RES-20261019-009",
+    "title": "DirectXの話 第182回：Visibility Buffer",
+    "url": "https://sites.google.com/site/monshonosuana/directx%E3%81%AE%E8%A9%B1/directx%E3%81%AE%E8%A9%B1-%E7%AC%AC182%E5%9B%9E",
+    "canonicalUrl": "https://sites.google.com/site/monshonosuana/directx%E3%81%AE%E8%A9%B1/directx%E3%81%AE%E8%A9%B1-%E7%AC%AC182%E5%9B%9E",
+    "publisher": "もんしょの巣穴",
+    "authors": [
+      "もんしょ"
+    ],
+    "publishedAt": "2023-02-19",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "domains": [
+      "Graphics",
+      "GameDevelopment"
+    ],
+    "topics": [
+      "Direct3D 12 / Visibility Buffer / Material Classification / Deferred Texture / Tile-Based Indirect Draw"
+    ],
+    "engines": [],
+    "languages": [
+      "ja"
+    ],
+    "summary": "32-bit Visibility BufferへのDraw・Polygon IDの格納、タイル単位の材質分類、間接描画の実装方針と制約を解説する。",
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Medium",
+    "freshness": "Aging",
+    "tags": [
+      "DirectX",
+      "Rendering",
+      "Shader",
+      "Optimization"
+    ]
+  },
+  {
+    "id": "RES-20261027-003",
+    "title": "AI前提でE2Eテストを設計し直した話",
+    "url": "https://zenn.dev/asuene/articles/e2e-test-ai-driven-management",
+    "canonicalUrl": "https://zenn.dev/asuene/articles/e2e-test-ai-driven-management",
+    "publisher": "アスエネテックブログ",
+    "authors": [
+      "田代 豊"
+    ],
+    "publishedAt": "2026-07-28",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "domains": [
+      "Programming",
+      "AI",
+      "Tools"
+    ],
+    "topics": [
+      "AI Coding Agent / E2E Test / Gherkin / YAML Test Case Management / Test ID / Human AI Review"
+    ],
+    "engines": [],
+    "languages": [
+      "ja"
+    ],
+    "summary": "AIコーディングエージェントを前提にE2Eテスト作成と更新を設計し、Gherkin形式のYAMLテストケース管理、テストID、仕様レビューと生成コードレビューの役割分担を紹介する。",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "confidence": "High",
+    "freshness": "Current",
+    "tags": [
+      "AI",
+      "AIAgent"
+    ]
   }
 ]
