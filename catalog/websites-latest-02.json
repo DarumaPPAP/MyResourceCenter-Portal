@@ -498,5 +498,112 @@
       "Performance",
       "Shader"
     ]
+  },
+  {
+    "id": "RES-20261019-004",
+    "title": "GPU レンダリングを最適化する",
+    "url": "https://developer.android.com/develop/xr/unity/performance/gpu-rendering?hl=ja",
+    "canonicalUrl": "https://developer.android.com/develop/xr/unity/performance/gpu-rendering?hl=ja",
+    "publisher": "Android Developers",
+    "authors": [
+      "Android Developers"
+    ],
+    "publishedAt": "2026-05-19",
+    "kind": "website",
+    "contentType": "official-documentation",
+    "category": "Tech",
+    "domains": [
+      "Graphics",
+      "GameDevelopment"
+    ],
+    "topics": [
+      "Android XR / Unity / GPU Resident Drawer / GPU Occlusion Culling / URP Forward+ / Vulkan Buffer Discards"
+    ],
+    "engines": [
+      "Unity"
+    ],
+    "languages": [
+      "ja"
+    ],
+    "summary": "Android XR向けUnityアプリのGPU最適化ガイド。GPU Resident Drawer、GPU Occlusion Culling、VulkanのBuffer Discardsなど、対象環境に依存する設定を説明する。",
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Medium",
+    "freshness": "Current",
+    "tags": [
+      "Unity",
+      "URP",
+      "Mobile",
+      "Culling",
+      "Optimization"
+    ]
+  },
+  {
+    "id": "RES-20261019-008",
+    "title": "レンダリングはまだ進化しているか？",
+    "url": "https://www.docswell.com/s/CAPCOM_RandD/ZRXJP2-RE2023",
+    "canonicalUrl": "https://www.docswell.com/s/CAPCOM_RandD/ZRXJP2-RE2023",
+    "publisher": "カプコン技研",
+    "authors": [
+      "カプコン技研"
+    ],
+    "publishedAt": "2023-11-27",
+    "kind": "website",
+    "contentType": "conference-slides",
+    "category": "Tech",
+    "domains": [
+      "Graphics",
+      "GameDevelopment"
+    ],
+    "topics": [
+      "RE ENGINE / Rendering Evolution / Game Graphics / RE:2023"
+    ],
+    "engines": [],
+    "languages": [
+      "ja"
+    ],
+    "summary": "カプコンのRE:2023公開講演資料。レンダリング技術の進展をテーマにしたスライド。",
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Medium",
+    "freshness": "Aging",
+    "tags": [
+      "Rendering",
+      "Shader",
+      "Optimization"
+    ]
+  },
+  {
+    "id": "RES-20261027-002",
+    "title": "自動テストの肥大化とどう向き合うか",
+    "url": "https://zenn.dev/frontendflat/articles/automated-test-size-tradeoff",
+    "canonicalUrl": "https://zenn.dev/frontendflat/articles/automated-test-size-tradeoff",
+    "publisher": "株式会社FLAT テックブログ",
+    "authors": [
+      "山村 祐貴"
+    ],
+    "publishedAt": "2026-07-06",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "domains": [
+      "Programming",
+      "Tools"
+    ],
+    "topics": [
+      "Automated Testing / Small Medium Large Tests / Test Size / CI Execution Time / Test Reliability / Trade-off"
+    ],
+    "engines": [],
+    "languages": [
+      "ja"
+    ],
+    "summary": "自動テストの肥大化を実行時間と変更への安心感から捉え、Small/Medium/Largeのサイズ分類、テスト粒度と忠実性のトレードオフ、AIへのテスト戦略の伝え方を考察する。",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "confidence": "High",
+    "freshness": "Current",
+    "tags": [
+      "Build"
+    ]
   }
 ]
