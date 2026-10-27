@@ -463,5 +463,134 @@
       "Particle",
       "Optimization"
     ]
+  },
+  {
+    "id": "RES-20261019-003",
+    "title": "GPUレンダリング： 3Dグラフィックスのス新しい戦略",
+    "url": "https://garagefarm.net/jp-blog/gpu-rendering-a-comprehensive-guide-for-2025",
+    "canonicalUrl": "https://garagefarm.net/jp-blog/gpu-rendering-a-comprehensive-guide-for-2025",
+    "publisher": "GarageFarm.NET",
+    "authors": [
+      "GarageFarm.NET"
+    ],
+    "publishedAt": "2025-08-22",
+    "kind": "website",
+    "contentType": "overview-article",
+    "category": "Tech",
+    "domains": [
+      "DCC"
+    ],
+    "topics": [
+      "GPU Rendering / Offline Rendering / 3D DCC / Render Farm / CPU versus GPU"
+    ],
+    "engines": [],
+    "languages": [
+      "ja"
+    ],
+    "summary": "GPUによる3D制作・オフラインレンダリングを中心に、DCC、VRAM、CPUとの役割分担や運用条件を概説する。ゲームのリアルタイムGPU Driven Renderingとは別領域。",
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Medium",
+    "freshness": "Current",
+    "tags": [
+      "Rendering",
+      "Performance"
+    ]
+  },
+  {
+    "id": "RES-20261019-007",
+    "title": "Vulkan 第21回 Visibility Bufferで材質評価を後段へ移す",
+    "url": "https://www.shader.jp/blog/vulkan-21-visibility-buffer/",
+    "canonicalUrl": "https://www.shader.jp/blog/vulkan-21-visibility-buffer/",
+    "publisher": "Shader.jp",
+    "authors": [
+      "shader dot(AI)"
+    ],
+    "publishedAt": "2026-10-15",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "domains": [
+      "Graphics",
+      "GameDevelopment"
+    ],
+    "topics": [
+      "Vulkan / Visibility Buffer / Deferred Material Evaluation / Material Classification / Tiled Lighting"
+    ],
+    "engines": [],
+    "languages": [
+      "ja"
+    ],
+    "summary": "Vulkanで複数G-bufferを三角形IDとDepthに置き換え、Computeで頂点属性・UV勾配を復元して後段のPBR材質評価を行う実装例。",
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Medium",
+    "freshness": "Current",
+    "tags": [
+      "Vulkan",
+      "Rendering",
+      "Shader",
+      "ComputeShader"
+    ]
+  },
+  {
+    "id": "RES-20261027-001",
+    "title": "巨人に学ぶテストコードアンチパターン",
+    "url": "https://zenn.dev/rakuten_tech/articles/test_review_best_practices_ja",
+    "canonicalUrl": "https://zenn.dev/rakuten_tech/articles/test_review_best_practices_ja",
+    "publisher": "Rakuten Volunteers Tech Blog",
+    "authors": [
+      "日暮 立"
+    ],
+    "publishedAt": "2025-08-29",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "domains": [
+      "Programming"
+    ],
+    "topics": [
+      "Test Code / DAMP / DRY / Readability / Narrow Assertions / Over-mocking / Test Naming"
+    ],
+    "engines": [],
+    "languages": [
+      "ja"
+    ],
+    "summary": "テストコードでの過度なDRY適用、条件分岐を持つテスト、過剰なMock、曖昧なテスト名をアンチパターンとして扱い、読みやすく原因を特定しやすいテストの書き方をJava・Spockの例で説明する。",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "confidence": "High",
+    "freshness": "Current",
+    "tags": []
+  },
+  {
+    "id": "RES-20261027-005",
+    "title": "テストの抜け漏れを防ぐ「コードカバレッジ」6つの種類と基準",
+    "url": "https://service.valtes.co.jp/s-test/blog/code-coverage_vol79/",
+    "canonicalUrl": "https://service.valtes.co.jp/s-test/blog/code-coverage_vol79/",
+    "publisher": "VALTES",
+    "authors": [
+      "VALTES"
+    ],
+    "publishedAt": "2026-02-17",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "domains": [
+      "Programming"
+    ],
+    "topics": [
+      "Code Coverage / Statement Coverage / Branch Coverage / Condition Coverage / MC-DC / Test Metrics"
+    ],
+    "engines": [],
+    "languages": [
+      "ja"
+    ],
+    "summary": "コードカバレッジの意味と種類を説明し、網羅率を高めてもテスト設計・期待値の正しさやバグ不在が保証されるわけではないことを解説する。",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "confidence": "High",
+    "freshness": "Current",
+    "tags": []
   }
 ]
