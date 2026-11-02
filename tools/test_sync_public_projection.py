@@ -8,6 +8,8 @@ import unittest
 from pathlib import Path
 
 from sync_public_projection import sync, CATALOGS, LATEST_WEBSITE_SHARDS
+from validate_portal import validate_site_icons
+from PIL import Image
 
 
 def save(path: Path, value):
@@ -98,6 +100,22 @@ class ProjectionSyncTests(unittest.TestCase):
         self.refresh_source()
         with self.assertRaisesRegex(ValueError, "presentation inventory"):
             sync(self.projection, self.portal)
+
+    def test_site_icon_validator_requires_every_public_host(self):
+        websites = [{"id": "RES-X", "url": "https://example.com/guide"}]
+        errors = []
+        validate_site_icons(errors, self.portal, websites)
+        self.assertTrue(any("missing Site Icon" in error for error in errors), errors)
+        path = self.portal / "assets/generated/site-icons/example.com.png"
+        path.parent.mkdir(parents=True)
+        Image.new("RGBA", (48, 48), (25, 80, 150, 255)).save(path)
+        errors = []
+        validate_site_icons(errors, self.portal, websites)
+        self.assertEqual(errors, [])
+        path.write_bytes(b"broken")
+        errors = []
+        validate_site_icons(errors, self.portal, websites)
+        self.assertTrue(any("invalid Site Icon" in error for error in errors), errors)
 
     def test_rejects_uncovered_public_website(self):
         self.rows["resources"] = [self.old_doc, self.old_web, self.new_repo]
