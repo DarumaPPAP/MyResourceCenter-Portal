@@ -269,7 +269,10 @@ def validate_site_icons(errors: list[str], root: Path, websites: list[dict]) -> 
         errors.append("Site Icon directory cannot be a symlink")
         return
     if not icon_root.exists():
+        errors.extend(f"missing Site Icon: {name}" for name in sorted(expected))
         return
+    present = {asset.relative_to(root).as_posix() for asset in icon_root.rglob("*") if asset.is_file()}
+    errors.extend(f"missing Site Icon: {name}" for name in sorted(expected - present))
     for asset in icon_root.rglob("*"):
         if asset.is_dir() and not asset.is_symlink():
             continue
