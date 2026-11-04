@@ -592,5 +592,112 @@
     "confidence": "High",
     "freshness": "Current",
     "tags": []
+  },
+  {
+    "id": "RES-WEB-81A6B0341D04",
+    "title": "インライン・レイトレーシングをDeferredの影・反射・多数光源へ接続する",
+    "url": "https://www.shader.jp/blog/graphics-samples-inline-raytracing/",
+    "canonicalUrl": "https://www.shader.jp/blog/graphics-samples-inline-raytracing/",
+    "publisher": "Shader.jp",
+    "authors": [
+      "shader dot(AI)"
+    ],
+    "publishedAt": "2026-10-18",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "domains": [
+      "Graphics"
+    ],
+    "topics": [
+      "RayQuery / Inline Ray Tracing / Deferred / Shadow / Reflection / BVH Synchronization"
+    ],
+    "engines": [],
+    "languages": [
+      "ja"
+    ],
+    "summary": "RayQueryの探索とヒット先材質の復元を分離し、Deferredの影・反射・多数光源へ統合。DXR/Vulkanの実装と比較条件を紹介。",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "confidence": "Medium",
+    "freshness": "Current",
+    "tags": [
+      "DirectX",
+      "Vulkan",
+      "Rendering",
+      "RayTracing",
+      "Shader"
+    ]
+  },
+  {
+    "id": "RES-WEB-B1DE3E6C3189",
+    "title": "Direct3D 12 発展編17 Tiled照明へ点光源のレイによる影を加える",
+    "url": "https://www.shader.jp/blog/direct3d12-advanced17-mesh-shader-tiled-inline-shadows/",
+    "canonicalUrl": "https://www.shader.jp/blog/direct3d12-advanced17-mesh-shader-tiled-inline-shadows/",
+    "publisher": "Shader.jp",
+    "authors": [
+      "shader dot(AI)"
+    ],
+    "publishedAt": "2026-10-18",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "domains": [
+      "Graphics"
+    ],
+    "topics": [
+      "Tiled Deferred / Mesh Shader / RayQuery / Point Light Shadow / Light Culling"
+    ],
+    "engines": [],
+    "languages": [
+      "ja"
+    ],
+    "summary": "Mesh Shader＋Tiled Deferredに点光源のRayQuery影を追加。Light ID順で影対象を固定しAll/Tiledの同条件比較を可能にする。",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "confidence": "Medium",
+    "freshness": "Current",
+    "tags": [
+      "DirectX",
+      "Rendering",
+      "RayTracing",
+      "Lighting"
+    ]
+  },
+  {
+    "id": "RES-WEB-DDA7F22AC58B",
+    "title": "PIX 2610.28 - the biggest release of 2026",
+    "url": "https://devblogs.microsoft.com/pix/pix-2610-28/",
+    "canonicalUrl": "https://devblogs.microsoft.com/pix/pix-2610-28/",
+    "publisher": "Microsoft PIX",
+    "authors": [
+      "Austin Kinross"
+    ],
+    "publishedAt": "2026-10-28",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "domains": [
+      "Graphics",
+      "Tools"
+    ],
+    "topics": [
+      "PIX / DirectX 12 / Shader Explorer / GPU Capture / Dump Files / Agility SDK"
+    ],
+    "engines": [],
+    "languages": [
+      "en"
+    ],
+    "summary": "Agility SDK 620/721に対応しShader Explorer、DirectX Dump Files、Capture解析・Shader命令プロファイル機能を拡充。",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "confidence": "High",
+    "freshness": "Current",
+    "tags": [
+      "DirectX",
+      "Shader",
+      "Rendering",
+      "Performance"
+    ]
   }
 ]

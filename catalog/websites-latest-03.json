@@ -607,5 +607,146 @@
       "AI",
       "AIAgent"
     ]
+  },
+  {
+    "id": "RES-WEB-FD7BF4CB8B60",
+    "title": "Vulkan 発展編10 Mesh ShaderでスキニングとShadowを描画する",
+    "url": "https://www.shader.jp/blog/vulkan-advanced10-mesh-shader-skinning/",
+    "canonicalUrl": "https://www.shader.jp/blog/vulkan-advanced10-mesh-shader-skinning/",
+    "publisher": "Shader.jp",
+    "authors": [
+      "shader dot(AI)"
+    ],
+    "publishedAt": "2026-10-15",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "domains": [
+      "Graphics"
+    ],
+    "topics": [
+      "Vulkan / Mesh Shader / Task Shader / Skinning / Dynamic Meshlet Bounds / Shadow"
+    ],
+    "engines": [],
+    "languages": [
+      "ja"
+    ],
+    "summary": "Meshlet単位でボーン変形を実行し、Task Shaderでカメラとライトの可視性を別判定。動く手足に対応した境界を更新する。",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "confidence": "Medium",
+    "freshness": "Current",
+    "tags": [
+      "Vulkan",
+      "Rendering",
+      "Shader",
+      "Animation",
+      "Culling"
+    ]
+  },
+  {
+    "id": "RES-WEB-B1565AF36742",
+    "title": "Direct3D 12 発展編15 Mesh ShaderとRT PipelineでSceneを共有する",
+    "url": "https://www.shader.jp/blog/direct3d12-advanced15-bindless-hybrid/",
+    "canonicalUrl": "https://www.shader.jp/blog/direct3d12-advanced15-bindless-hybrid/",
+    "publisher": "Shader.jp",
+    "authors": [
+      "shader dot(AI)"
+    ],
+    "publishedAt": "2026-10-18",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "domains": [
+      "Graphics"
+    ],
+    "topics": [
+      "D3D12 / Bindless / Mesh Shader / RT Pipeline / SBT / Hybrid Rendering"
+    ],
+    "engines": [],
+    "languages": [
+      "ja"
+    ],
+    "summary": "Mesh ShaderでG-bufferを生成しRT Pipelineの影・反射と共通Geometry/Materialを参照。BindlessモードとGPU Drivenの組合せを比較。",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "confidence": "Medium",
+    "freshness": "Current",
+    "tags": [
+      "DirectX",
+      "Rendering",
+      "Shader",
+      "RayTracing"
+    ]
+  },
+  {
+    "id": "RES-WEB-F88B83531B79",
+    "title": "Vulkan 第26回 DeferredへRayQueryの太陽の影を加える",
+    "url": "https://www.shader.jp/blog/vulkan-26-inline-raytracing-shadows/",
+    "canonicalUrl": "https://www.shader.jp/blog/vulkan-26-inline-raytracing-shadows/",
+    "publisher": "Shader.jp",
+    "authors": [
+      "shader dot(AI)"
+    ],
+    "publishedAt": "2026-10-18",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "domains": [
+      "Graphics"
+    ],
+    "topics": [
+      "Vulkan / RayQuery / Deferred Lighting / Shadow Map / Acceleration Structure"
+    ],
+    "engines": [],
+    "languages": [
+      "ja"
+    ],
+    "summary": "Vulkan Compute DeferredにRayQueryのDirectional Shadowを追加し、Shadow Mapと切替比較できる実装。",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "confidence": "Medium",
+    "freshness": "Current",
+    "tags": [
+      "Vulkan",
+      "Rendering",
+      "RayTracing",
+      "Lighting"
+    ]
+  },
+  {
+    "id": "RES-WEB-C78600EDD4DB",
+    "title": "Embedding Gemma 2 を C# から使用してマルチモーダル対応の検索アプリを作る",
+    "url": "https://zenn.dev/sora_kumo/articles/embedding-gemma-2-onnx",
+    "canonicalUrl": "https://zenn.dev/sora_kumo/articles/embedding-gemma-2-onnx",
+    "publisher": "Zenn",
+    "authors": [
+      "sora_kumo"
+    ],
+    "publishedAt": "2026-10-17",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "domains": [
+      "Programming",
+      "AI"
+    ],
+    "topics": [
+      "EmbeddingGemma 2 / ONNX Runtime / DirectML / WinUI3 / SQLite / Multimodal Search"
+    ],
+    "engines": [],
+    "languages": [
+      "ja"
+    ],
+    "summary": "C#＋ONNX Runtime/DirectMLで画像・PDF・動画・テキスト横断検索。967画像のIndexを822→155秒に短縮した実測付き。",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "confidence": "Medium",
+    "freshness": "Current",
+    "tags": [
+      "C#",
+      "MachineLearning",
+      "RAG"
+    ]
   }
 ]
