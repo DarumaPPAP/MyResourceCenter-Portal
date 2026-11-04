@@ -605,5 +605,146 @@
     "tags": [
       "Build"
     ]
+  },
+  {
+    "id": "RES-WEB-650952303513",
+    "title": "バインドレスをマテリアルからMesh Shader・レイトレーシングへ広げる",
+    "url": "https://www.shader.jp/blog/graphics-samples-bindless/",
+    "canonicalUrl": "https://www.shader.jp/blog/graphics-samples-bindless/",
+    "publisher": "Shader.jp",
+    "authors": [
+      "shader dot(AI)"
+    ],
+    "publishedAt": "2026-10-18",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "domains": [
+      "Graphics"
+    ],
+    "topics": [
+      "Bindless Descriptor / GPU Driven / D3D12 / Vulkan / Mesh Shader / Ray Tracing"
+    ],
+    "engines": [],
+    "languages": [
+      "ja"
+    ],
+    "summary": "Descriptor参照とGPU Driven描画命令集約を分離し、D3D12/Vulkanの実装と46条件×5反復の比較を提示。",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "confidence": "Medium",
+    "freshness": "Current",
+    "tags": [
+      "DirectX",
+      "Vulkan",
+      "Rendering",
+      "Shader"
+    ]
+  },
+  {
+    "id": "RES-WEB-551C3B566AAE",
+    "title": "Direct3D 12 発展編05 GPU Driven Rendering：ComputeとIndirectで描画量を決める",
+    "url": "https://www.shader.jp/blog/direct3d12-advanced05-gpu-driven-rendering/",
+    "canonicalUrl": "https://www.shader.jp/blog/direct3d12-advanced05-gpu-driven-rendering/",
+    "publisher": "Shader.jp",
+    "authors": [
+      "shader dot(AI)"
+    ],
+    "publishedAt": "2026-10-14",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "domains": [
+      "Graphics"
+    ],
+    "topics": [
+      "D3D12 / GPU Driven / Meshlet / ExecuteIndirect / Compute Culling / Barrier"
+    ],
+    "engines": [],
+    "languages": [
+      "ja"
+    ],
+    "summary": "Computeで可視MeshletとIndirect引数を生成し、CPU ReadbackなしにExecuteIndirectからMesh Shaderを起動する実装を示す。",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "confidence": "Medium",
+    "freshness": "Current",
+    "tags": [
+      "DirectX",
+      "ComputeShader",
+      "Rendering",
+      "Culling"
+    ]
+  },
+  {
+    "id": "RES-WEB-5A24C95C95B8",
+    "title": "Vulkan 発展編11 Mesh ShaderでDQSと動的カリングを実装する",
+    "url": "https://www.shader.jp/blog/vulkan-advanced11-dual-quaternion-mesh-skinning/",
+    "canonicalUrl": "https://www.shader.jp/blog/vulkan-advanced11-dual-quaternion-mesh-skinning/",
+    "publisher": "Shader.jp",
+    "authors": [
+      "shader dot(AI)"
+    ],
+    "publishedAt": "2026-10-16",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "domains": [
+      "Graphics"
+    ],
+    "topics": [
+      "Vulkan / DQS / Mesh Shader / Task Shader / Conservative Meshlet Bounds / Debug DXC"
+    ],
+    "engines": [],
+    "languages": [
+      "ja"
+    ],
+    "summary": "Mesh ShaderでDQSを直接実行しTask ShaderでActor×Meshletの保守境界を使う。Debug環境のSPIR-V出力差も検証。",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "confidence": "Medium",
+    "freshness": "Current",
+    "tags": [
+      "Vulkan",
+      "Shader",
+      "Animation",
+      "Culling"
+    ]
+  },
+  {
+    "id": "RES-WEB-CC0E0FB19BFD",
+    "title": "UniRx, VContainer応用：Subjectを使ったEventBusと疎結合の重要性",
+    "url": "https://zenn.dev/wanihyeong/articles/d3fca0bd61cae5",
+    "canonicalUrl": "https://zenn.dev/wanihyeong/articles/d3fca0bd61cae5",
+    "publisher": "Zenn",
+    "authors": [
+      "wanihyeong"
+    ],
+    "publishedAt": "2026-10-19",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "domains": [
+      "Programming",
+      "GameDevelopment"
+    ],
+    "topics": [
+      "Unity / UniRx / Subject / EventBus / VContainer / UniTask / IDisposable"
+    ],
+    "engines": [
+      "Unity"
+    ],
+    "languages": [
+      "ja"
+    ],
+    "summary": "UniRxのSubjectとVContainerによるEventBusを実装例で解説し、通知側と購読側の依存を分離する。",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "confidence": "Medium",
+    "freshness": "Current",
+    "tags": [
+      "Unity",
+      "C#"
+    ]
   }
 ]

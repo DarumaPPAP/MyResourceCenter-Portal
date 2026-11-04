@@ -529,5 +529,112 @@
     "confidence": "High",
     "freshness": "Aging",
     "tags": []
+  },
+  {
+    "id": "RES-WEB-BD05F98D31D7",
+    "title": "glTFローダーをスキニングへ拡張する：ノード・ボーン・ウェイト・アニメーション",
+    "url": "https://www.shader.jp/blog/graphics-samples-gltf-skinning-loader/",
+    "canonicalUrl": "https://www.shader.jp/blog/graphics-samples-gltf-skinning-loader/",
+    "publisher": "Shader.jp",
+    "authors": [
+      "shader dot(AI)"
+    ],
+    "publishedAt": "2026-10-15",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "domains": [
+      "Graphics",
+      "DCC"
+    ],
+    "topics": [
+      "glTF / JOINTS_0 / Skin / Inverse Bind / TRS / Animation / C++ Loader"
+    ],
+    "engines": [],
+    "languages": [
+      "ja"
+    ],
+    "summary": "LoadGltfSkinnedを追加し、Accessorのstride・Node/SkinのIndex・TRS補間・逆バインド・CPU検証からGPU転送まで実装。",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "confidence": "Medium",
+    "freshness": "Current",
+    "tags": [
+      "C++",
+      "Mesh",
+      "Animation",
+      "AssetManagement"
+    ]
+  },
+  {
+    "id": "RES-WEB-0ECD9A081677",
+    "title": "Direct3D 12 第25回 DQSをComputeでキャッシュしShadowと共有する",
+    "url": "https://www.shader.jp/blog/direct3d12-25-dual-quaternion-compute-cache/",
+    "canonicalUrl": "https://www.shader.jp/blog/direct3d12-25-dual-quaternion-compute-cache/",
+    "publisher": "Shader.jp",
+    "authors": [
+      "shader dot(AI)"
+    ],
+    "publishedAt": "2026-10-16",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "domains": [
+      "Graphics"
+    ],
+    "topics": [
+      "DQS / Compute Skinning Cache / HLSL / Shadow Reuse / GPU Buffer Barrier"
+    ],
+    "engines": [],
+    "languages": [
+      "ja"
+    ],
+    "summary": "ComputeでDQS変形後の位置・法線・接線を48 B/頂点で保存し、ShadowとColorの頂点入力に再利用する。",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "confidence": "Medium",
+    "freshness": "Current",
+    "tags": [
+      "DirectX",
+      "ComputeShader",
+      "Animation",
+      "Performance"
+    ]
+  },
+  {
+    "id": "RES-WEB-DF6A10337ED3",
+    "title": "三面図からスキニング用ロボットへ：CodexとBlenderによるアセット制作",
+    "url": "https://www.shader.jp/blog/silver-robot-blender-codex/",
+    "canonicalUrl": "https://www.shader.jp/blog/silver-robot-blender-codex/",
+    "publisher": "Shader.jp",
+    "authors": [
+      "shader dot(AI)"
+    ],
+    "publishedAt": "2026-10-17",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "domains": [
+      "DCC",
+      "Graphics"
+    ],
+    "topics": [
+      "Blender Python / Codex / Procedural Modeling / 53-bone Rig / glTF / Retarget"
+    ],
+    "engines": [],
+    "languages": [
+      "ja"
+    ],
+    "summary": "三面図からBlender Pythonでメッシュと53本の骨を生成し、ウェイトと人型モーションを調整してglTFを出力・変形検証する。",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "confidence": "Medium",
+    "freshness": "Current",
+    "tags": [
+      "Mesh",
+      "Animation",
+      "AIAgent",
+      "AI"
+    ]
   }
 ]
