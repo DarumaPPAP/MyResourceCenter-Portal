@@ -748,5 +748,44 @@
       "MachineLearning",
       "RAG"
     ]
+  },
+  {
+    "id": "RES-WEB-184314A053A8",
+    "title": "『NTE: Neverness to Everness』はどうやってオープンワールドをモバイルで動かしているのか。最適化テクニックを開発者が語る〖Unreal Fest Tokyo 2026〗",
+    "url": "https://gamemakers.jp/article/2026_11_06_149665/",
+    "canonicalUrl": "https://gamemakers.jp/article/2026_11_06_149665/",
+    "publisher": "ゲームメーカーズ",
+    "authors": [
+      "神谷 優斗"
+    ],
+    "publishedAt": "2026-11-06",
+    "kind": "website",
+    "contentType": "conference-report",
+    "category": "Tech",
+    "domains": [
+      "Graphics",
+      "GameDevelopment"
+    ],
+    "topics": [
+      "World Partition / FastGeo / Mass Entity / NPC Actor promotion / Triple buffering / Depth Prepass / Vulkan subpass / CSM / Layer Shadow Map"
+    ],
+    "engines": [
+      "Unreal"
+    ],
+    "languages": [
+      "ja"
+    ],
+    "summary": "都市型オープンワールド『NTE』のPC・モバイル最適化事例。World Partition先行ロード、Mass EntityとActorの段階的切替、トリプルバッファ、描画経路と影更新の負荷制御を紹介。",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "confidence": "Medium",
+    "freshness": "Current",
+    "tags": [
+      "UnrealEngine",
+      "Mobile",
+      "Optimization",
+      "ECS",
+      "Rendering"
+    ]
   }
 ]
