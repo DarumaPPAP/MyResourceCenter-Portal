@@ -699,5 +699,40 @@
       "Rendering",
       "Performance"
     ]
+  },
+  {
+    "id": "RES-WEB-22E7B1EF5DC0",
+    "title": "Learn Verse",
+    "url": "https://magnusenebakk-epic.github.io/learn-verse/",
+    "canonicalUrl": "https://magnusenebakk-epic.github.io/learn-verse/",
+    "publisher": "Magnus Enebakk (GitHub Pages)",
+    "authors": [
+      "Magnus Enebakk"
+    ],
+    "publishedAt": "2026-10-19",
+    "kind": "website",
+    "contentType": "learning-resource-index",
+    "category": "Tech",
+    "domains": [
+      "Programming",
+      "GameDevelopment"
+    ],
+    "topics": [
+      "Verse / UEFN / Scene Graph / Epic official documentation / Verse API reference"
+    ],
+    "engines": [
+      "Unreal"
+    ],
+    "languages": [
+      "en"
+    ],
+    "summary": "Verse言語、UEFNでのプログラミング、Scene Graph、API参照、公式ガイド、コミュニティへの学習リンク集。",
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Medium",
+    "freshness": "Current",
+    "tags": [
+      "UnrealEngine"
+    ]
   }
 ]

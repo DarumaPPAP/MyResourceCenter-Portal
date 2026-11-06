@@ -636,5 +636,40 @@
       "AIAgent",
       "AI"
     ]
+  },
+  {
+    "id": "RES-WEB-C6F79BAAF290",
+    "title": "[번역] 버추얼 텍스처 간단히 살펴보기",
+    "url": "https://techartnomad.tistory.com/927",
+    "canonicalUrl": "https://techartnomad.tistory.com/927",
+    "publisher": "TECHARTNOMAD | MAZELINE.TECH",
+    "authors": [
+      "jplee（翻訳、原著：李兵）"
+    ],
+    "publishedAt": "2026-11-06",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "domains": [
+      "Graphics"
+    ],
+    "topics": [
+      "Virtual Texturing / MegaTexture / Clipmap / Quadtree page mapping / Page Table / Texture streaming"
+    ],
+    "engines": [],
+    "languages": [
+      "ko"
+    ],
+    "summary": "Virtual Texturingの歴史、タイル単位の物理テクスチャ管理、クアッドツリーとページテーブルによるアドレス変換、Mip Fallbackを整理した韓国語翻訳記事。",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "confidence": "Medium",
+    "freshness": "Current",
+    "tags": [
+      "Rendering",
+      "Texture",
+      "Memory",
+      "Optimization"
+    ]
   }
 ]
