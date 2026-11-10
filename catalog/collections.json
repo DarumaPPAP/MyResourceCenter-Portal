@@ -71,6 +71,26 @@
       {
         "id": "RES-WEB-FEB14BD6991C",
         "role": "overview"
+      },
+      {
+        "id": "RES-WEB-551C3B566AAE",
+        "role": "overview"
+      },
+      {
+        "id": "RES-WEB-5A24C95C95B8",
+        "role": "implementation"
+      },
+      {
+        "id": "RES-WEB-650952303513",
+        "role": "overview"
+      },
+      {
+        "id": "RES-WEB-B1565AF36742",
+        "role": "overview"
+      },
+      {
+        "id": "RES-WEB-FD7BF4CB8B60",
+        "role": "overview"
       }
     ],
     "category": "Rendering"
@@ -306,6 +326,10 @@
       {
         "id": "RES-20260724-002",
         "role": "production-case"
+      },
+      {
+        "id": "RES-WEB-81A6B0341D04",
+        "role": "overview"
       }
     ],
     "category": "Rendering"

@@ -727,5 +727,43 @@
       "Lighting",
       "RayTracing"
     ]
+  },
+  {
+    "id": "RES-WEB-44EC3BEB529B",
+    "title": "エンジン改造なしでアニメ調キャラクターを魅力的に。『モンギル：STAR DIVE』のTAが語る、アニメ表現マテリアル制作法〖Unreal Fest Tokyo 2026〗",
+    "url": "https://gamemakers.jp/article/2026_11_05_149525/",
+    "canonicalUrl": "https://gamemakers.jp/article/2026_11_05_149525/",
+    "publisher": "ゲームメーカーズ",
+    "authors": [
+      "神谷 優斗"
+    ],
+    "publishedAt": "2026-11-05",
+    "kind": "website",
+    "contentType": "conference-report",
+    "category": "Tech",
+    "domains": [
+      "Graphics",
+      "GameDevelopment"
+    ],
+    "topics": [
+      "Anime character rendering / Anisotropic specular / BumpOffset / World Position Offset / DDX DDY / Laplacian outline / G-Buffer"
+    ],
+    "engines": [
+      "Unreal"
+    ],
+    "languages": [
+      "ja"
+    ],
+    "summary": "『モンギル：STAR DIVE』のUE5アニメ調表現を講演レポート。髪と瞳の疑似表現、WPOによる眉、テクスチャのチャンネル再利用、ラプラシアンフィルタによる輪郭線を紹介。",
+    "reviewState": "Reviewed",
+    "useState": "Reference",
+    "confidence": "Medium",
+    "freshness": "Current",
+    "tags": [
+      "UnrealEngine",
+      "Rendering",
+      "Shader",
+      "PostProcessing"
+    ]
   }
 ]
