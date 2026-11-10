@@ -748,5 +748,68 @@
       "MachineLearning",
       "RAG"
     ]
+  },
+  {
+    "id": "RES-20261110-004",
+    "title": "ゆるゆるシェーダー交流会 #2 発表スライド",
+    "url": "https://shivaduke28.github.io/yuruyuru-shader-meetup/",
+    "canonicalUrl": "https://shivaduke28.github.io/yuruyuru-shader-meetup/",
+    "publisher": "shivaduke28 (GitHub Pages)",
+    "authors": [
+      "shivaduke28"
+    ],
+    "publishedAt": "2026-11-07",
+    "kind": "website",
+    "contentType": "conference-slides",
+    "category": "Tech",
+    "domains": [
+      "Graphics"
+    ],
+    "topics": [],
+    "engines": [],
+    "languages": [],
+    "reviewState": "Inbox",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Shader",
+      "Rendering"
+    ]
+  },
+  {
+    "id": "RES-20261110-008",
+    "title": "Neural Shaders, Explained With Clouds",
+    "url": "https://charlesgrassi.dev/blog/neural-volumetric-clouds/",
+    "canonicalUrl": "https://charlesgrassi.dev/blog/neural-volumetric-clouds/",
+    "publisher": "Charles Grassi",
+    "authors": [
+      "Charles Grassi"
+    ],
+    "publishedAt": "2026-08-19",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "domains": [
+      "Graphics"
+    ],
+    "topics": [],
+    "engines": [
+      "Unity"
+    ],
+    "languages": [
+      "en"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Medium",
+    "freshness": "Unknown",
+    "tags": [
+      "Unity",
+      "URP",
+      "Shader",
+      "MachineLearning",
+      "Rendering"
+    ]
   }
 ]
