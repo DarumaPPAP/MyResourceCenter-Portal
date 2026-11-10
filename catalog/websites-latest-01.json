@@ -311,7 +311,8 @@
       "AI",
       "Editor",
       "AssetManagement"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-BB68795658CE.webp"
   },
   {
     "id": "RES-WEB-843F3ED759B5",
@@ -346,7 +347,8 @@
       "Shader",
       "Lighting",
       "Transparency"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-843F3ED759B5.webp"
   },
   {
     "id": "RES-WEB-B56A00AAFF7D",
@@ -381,7 +383,8 @@
       "Shader",
       "Texture",
       "Optimization"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-B56A00AAFF7D.webp"
   },
   {
     "id": "RES-WEB-4312B3A9AD4B",
@@ -405,7 +408,8 @@
     "freshness": "Unknown",
     "tags": [
       "Mesh"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-4312B3A9AD4B.webp"
   },
   {
     "id": "RES-WEB-6AACB9BD9AC2",
@@ -427,7 +431,8 @@
     "useState": "Reference",
     "confidence": "Unverified",
     "freshness": "Unknown",
-    "tags": []
+    "tags": [],
+    "previewImage": "assets/generated/link-previews/RES-WEB-6AACB9BD9AC2.webp"
   },
   {
     "id": "RES-WEB-536E7979AA74",
@@ -462,7 +467,8 @@
       "Rendering",
       "Particle",
       "Optimization"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-536E7979AA74.webp"
   },
   {
     "id": "RES-20261019-003",
@@ -531,7 +537,8 @@
       "Rendering",
       "Shader",
       "ComputeShader"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20261019-007.webp"
   },
   {
     "id": "RES-20261027-001",
@@ -561,7 +568,8 @@
     "useState": "Reference",
     "confidence": "High",
     "freshness": "Current",
-    "tags": []
+    "tags": [],
+    "previewImage": "assets/generated/link-previews/RES-20261027-001.webp"
   },
   {
     "id": "RES-20261027-005",
@@ -627,7 +635,8 @@
       "Rendering",
       "RayTracing",
       "Shader"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-81A6B0341D04.webp"
   },
   {
     "id": "RES-WEB-B1DE3E6C3189",
@@ -662,7 +671,8 @@
       "Rendering",
       "RayTracing",
       "Lighting"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-B1DE3E6C3189.webp"
   },
   {
     "id": "RES-WEB-DDA7F22AC58B",
@@ -698,7 +708,8 @@
       "Shader",
       "Rendering",
       "Performance"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-DDA7F22AC58B.webp"
   },
   {
     "id": "RES-20261110-002",
@@ -729,7 +740,8 @@
       "RayTracing",
       "Rendering",
       "Optimization"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20261110-002.webp"
   },
   {
     "id": "RES-20261110-006",
@@ -763,7 +775,8 @@
       "Lighting",
       "Rendering",
       "Optimization"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20261110-006.webp"
   },
   {
     "id": "RES-20261110-010",
@@ -834,6 +847,7 @@
       "Optimization",
       "ECS",
       "Rendering"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-184314A053A8.webp"
   }
 ]
