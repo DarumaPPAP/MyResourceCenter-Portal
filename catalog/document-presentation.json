@@ -1,5 +1,21 @@
 [
   {
+    "resourceId": "RES-20260812-022",
+    "documentId": "DOC-F043AC1AEC3B",
+    "title": "Unity 3D&2D グラフィックス 最新情報",
+    "sourceFormat": "PDF",
+    "thumbnail": "assets/generated/documents/DOC-F043AC1AEC3B.webp",
+    "engine": "General",
+    "level": "unknown",
+    "tags": [
+      "CEDEC2026"
+    ],
+    "domains": [
+      "Graphics"
+    ],
+    "canonicalUrl": "https://drive.google.com/file/d/1_3gsAzvuwRCVYoFBeM27Zy9hSW6aP22d/view"
+  },
+  {
     "resourceId": "RES-DOC-9EDDB022345B",
     "documentId": "DOC-6CE36A9C2BA7",
     "title": "AVBOIT_SIG2025_MDROBOT-final",
@@ -61,6 +77,23 @@
     "thumbnail": null
   },
   {
+    "resourceId": "RES-20260812-013",
+    "documentId": "DOC-A9DA92FBFC45",
+    "title": "「壊れないテスト」から 「10分で作り直せるテスト」へ",
+    "sourceFormat": "PDF",
+    "thumbnail": "assets/generated/documents/DOC-A9DA92FBFC45.webp",
+    "engine": "General",
+    "level": "unknown",
+    "tags": [
+      "CEDEC2026"
+    ],
+    "domains": [
+      "AI",
+      "Tools"
+    ],
+    "canonicalUrl": "https://drive.google.com/file/d/12bsaVMrX9VUd9WtEKYp93162wCvGP4RT/view"
+  },
+  {
     "resourceId": "RES-20260812-024",
     "documentId": "DOC-0F6D8FCB3F66",
     "title": "「SOL-AVES」とゲームで実践した 描画最適化事例",
@@ -93,23 +126,6 @@
     "canonicalUrl": "https://drive.google.com/file/d/12XC7oTvPkVmWpykGZI_Hn-EZZFvcOIBf/view"
   },
   {
-    "resourceId": "RES-20260812-013",
-    "documentId": "DOC-A9DA92FBFC45",
-    "title": "「壊れないテスト」から 「10分で作り直せるテスト」へ",
-    "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-A9DA92FBFC45.webp",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [
-      "CEDEC2026"
-    ],
-    "domains": [
-      "AI",
-      "Tools"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/12bsaVMrX9VUd9WtEKYp93162wCvGP4RT/view"
-  },
-  {
     "resourceId": "RES-20260812-037",
     "documentId": "DOC-AF0E226E0351",
     "title": "『モンスターストライク』 の運営に伴走する！",
@@ -138,34 +154,6 @@
     "thumbnail": null
   },
   {
-    "resourceId": "RES-20260812-032",
-    "documentId": "DOC-4671F3D83DFA",
-    "title": "CEDEC2026_ムービーカットシーンデザイナーの集い～正解のない制作現場での戦い方を共に考える～完成版",
-    "sourceFormat": "PPTX",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [
-      "CEDEC2026"
-    ],
-    "domains": [],
-    "canonicalUrl": "https://drive.google.com/file/d/14H8ECh-O866I5cARXLfWZfikDimyAS1F/view",
-    "thumbnail": null
-  },
-  {
-    "resourceId": "RES-20260812-007",
-    "documentId": "DOC-9188F51A6099",
-    "title": "GPGPU × クロスシミュレーション：物理初心者でも「リッチな布表現」を自在に操る！独自の構築アプローチとUE5での最適化の実践",
-    "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-9188F51A6099.webp",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [
-      "CEDEC2026"
-    ],
-    "domains": [],
-    "canonicalUrl": "https://drive.google.com/file/d/14T_tNrdLaMUYXHRW8OepFA-cbAxSqvQw/view"
-  },
-  {
     "resourceId": "RES-20260816-007",
     "documentId": "DOC-B169DDB37E0D",
     "title": "AlexanderMueller_Smolder_Siggraph26",
@@ -190,6 +178,20 @@
     "thumbnail": null
   },
   {
+    "resourceId": "RES-20260812-032",
+    "documentId": "DOC-4671F3D83DFA",
+    "title": "CEDEC2026_ムービーカットシーンデザイナーの集い～正解のない制作現場での戦い方を共に考える～完成版",
+    "sourceFormat": "PPTX",
+    "engine": "General",
+    "level": "unknown",
+    "tags": [
+      "CEDEC2026"
+    ],
+    "domains": [],
+    "canonicalUrl": "https://drive.google.com/file/d/14H8ECh-O866I5cARXLfWZfikDimyAS1F/view",
+    "thumbnail": null
+  },
+  {
     "resourceId": "RES-DOC-332BF1D3788A",
     "documentId": "DOC-117EE7FFCE78",
     "title": "アーティストのための2Dゲームアート、アニメーション、ライティング（Unity 6.3 LTS版）",
@@ -202,18 +204,18 @@
     "thumbnail": null
   },
   {
-    "resourceId": "RES-20260812-033",
-    "documentId": "DOC-8E223BFD4F8E",
-    "title": "大量のデータから「いい感じに」抽選する時 系列バケット式抽選法",
+    "resourceId": "RES-20260812-007",
+    "documentId": "DOC-9188F51A6099",
+    "title": "GPGPU × クロスシミュレーション：物理初心者でも「リッチな布表現」を自在に操る！独自の構築アプローチとUE5での最適化の実践",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-8E223BFD4F8E.webp",
+    "thumbnail": "assets/generated/documents/DOC-9188F51A6099.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
       "CEDEC2026"
     ],
     "domains": [],
-    "canonicalUrl": "https://drive.google.com/file/d/16YCdrP1NAUyg_EWqol3deC41VaHkhsop/view"
+    "canonicalUrl": "https://drive.google.com/file/d/14T_tNrdLaMUYXHRW8OepFA-cbAxSqvQw/view"
   },
   {
     "resourceId": "RES-20260812-052",
@@ -233,6 +235,20 @@
     "canonicalUrl": "https://drive.google.com/file/d/16wnioqm_60l4h2QwXe0luS11tapMct_p/view"
   },
   {
+    "resourceId": "RES-20260812-033",
+    "documentId": "DOC-8E223BFD4F8E",
+    "title": "大量のデータから「いい感じに」抽選する時 系列バケット式抽選法",
+    "sourceFormat": "PDF",
+    "thumbnail": "assets/generated/documents/DOC-8E223BFD4F8E.webp",
+    "engine": "General",
+    "level": "unknown",
+    "tags": [
+      "CEDEC2026"
+    ],
+    "domains": [],
+    "canonicalUrl": "https://drive.google.com/file/d/16YCdrP1NAUyg_EWqol3deC41VaHkhsop/view"
+  },
+  {
     "resourceId": "RES-20260812-046",
     "documentId": "DOC-CF0062C8C7DF",
     "title": "20年続く社内勉強会 ALM (All Layer Meeting) の運用哲学",
@@ -245,6 +261,20 @@
     ],
     "domains": [],
     "canonicalUrl": "https://drive.google.com/file/d/17-yrGrVPJOjvxko_4l1rP3qxOM5KLPRg/view"
+  },
+  {
+    "resourceId": "RES-20260724-009",
+    "documentId": "DOC-8B90A3BDD17D",
+    "title": "Cinemachineを活用した 魅力的なカメラワークを実現するための技術 〜 IDOLY PRIDE 360°ライブでの活用例 〜",
+    "sourceFormat": "PDF",
+    "engine": "Unity",
+    "level": "unknown",
+    "tags": [],
+    "domains": [
+      "GameDevelopment"
+    ],
+    "canonicalUrl": "https://drive.google.com/file/d/17DkvOg7oeO9etzmNqKpleJqwwcDEYEbG/view",
+    "thumbnail": null
   },
   {
     "resourceId": "RES-20260808-004",
@@ -311,635 +341,6 @@
     "canonicalUrl": "https://drive.google.com/file/d/19JfTQGZd3vbohqRKnwKv5LNn9BtyAKfJ/view"
   },
   {
-    "resourceId": "RES-20260812-054",
-    "documentId": "DOC-CD051D1D541F",
-    "title": "『モンスターハンターストーリーズ３』QAQCを変革する自律型マルチAIエージェント ～課題予測から修正提案までを完結させる「先回り」のデバッグ手法～",
-    "sourceFormat": "PDF",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [
-      "CEDEC2026"
-    ],
-    "domains": [
-      "AI",
-      "Programming"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/1B-ZjqYDk7U7m1zkpTTpYTes01SnEiA0w/view",
-    "thumbnail": null
-  },
-  {
-    "resourceId": "RES-20260808-007",
-    "documentId": "DOC-197D9EECCD46",
-    "title": "Relinkを拡張せよ _GRANBLUE FANTASY Relink_Endless Ragnarokの開発速度と品質を守るCI運用",
-    "sourceFormat": "PDF",
-    "engine": "Jenkins / Datadog / Cygames console pipeline",
-    "level": "production / CI quality",
-    "tags": [
-      "CI",
-      "Datadog",
-      "StaticAnalysis",
-      "SnapshotQA",
-      "CD",
-      "Jenkins",
-      "VisualRegression"
-    ],
-    "domains": [
-      "Programming",
-      "Tools"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/1CRGQj2V5SKozAcQ0raotcmG5c3FSm8Sr/view",
-    "thumbnail": null
-  },
-  {
-    "resourceId": "RES-20260812-048",
-    "documentId": "DOC-4E1DF6E0C0B7",
-    "title": "「集める」のではなく、データが「勝手に集まる」世界へ。定点観測から始まる「令和」のパフォーマンス改善ライフ_CEDiL用",
-    "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-4E1DF6E0C0B7.webp",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [
-      "CEDEC2026"
-    ],
-    "domains": [],
-    "canonicalUrl": "https://drive.google.com/file/d/1CwsHvlKO86aDHQh2QqZEGIf1jdH3uyt6/view"
-  },
-  {
-    "resourceId": "RES-20260716-009",
-    "documentId": "DOC-FD9778E67484",
-    "title": "Frostbite PB and unified volumetrics",
-    "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-FD9778E67484.webp",
-    "engine": "Frostbite",
-    "level": "production / implementation",
-    "tags": [
-      "Frostbite",
-      "Froxel",
-      "Volumetric Fog",
-      "Temporal",
-      "Scattering",
-      "Transmittance",
-      "Volumetric Shadow",
-      "Particle Voxelization",
-      "Volumetric",
-      "ParticipatingMedia",
-      "TemporalIntegration",
-      "VolumetricShadow",
-      "ParticleVoxelization",
-      "SIGGRAPH"
-    ],
-    "domains": [
-      "Graphics"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/1E2HT57uLj3v6Fghj2_4odWqII3uIOJWB/view?usp=drivesdk"
-  },
-  {
-    "resourceId": "RES-20260812-034",
-    "documentId": "DOC-0203D066FBA3",
-    "title": "CEDEC2026_game_engine",
-    "sourceFormat": "PPTX",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [
-      "CEDEC2026"
-    ],
-    "domains": [
-      "Programming"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/1EI-NZzaPy1LNZIMUgZFYCi3MIHWJd7nV/view",
-    "thumbnail": null
-  },
-  {
-    "resourceId": "RES-20260816-006",
-    "documentId": "DOC-5298706AD10C",
-    "title": "Advances_SIGGRAPH_2024_VisibilityVRS-SIGGRAPH_Advances_2024",
-    "sourceFormat": "PPTX",
-    "engine": "Northlight / Alan Wake 2",
-    "level": "implementation / optimization",
-    "tags": [
-      "VisibilityBuffer",
-      "VRS",
-      "WaveIntrinsics",
-      "QuadUtilization",
-      "GPUOptimization",
-      "AlanWake2"
-    ],
-    "domains": [
-      "Graphics"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/1ERe4e4zE-U79lv8QPPV1VxbJXxDJOi37/view",
-    "thumbnail": null
-  },
-  {
-    "resourceId": "RES-DOC-9CA90BB066DA",
-    "documentId": "DOC-E10B437D456F",
-    "title": "Strand Hair in IJGC - Final Slides (Post-Conference)",
-    "sourceFormat": "PPTX",
-    "engine": "MOTOR / idTech-derived",
-    "level": "production / implementation",
-    "tags": [
-      "Hair",
-      "Fur",
-      "SoftwareRasterization",
-      "VisibilityBuffer",
-      "Marschner",
-      "LOD",
-      "AsyncCompute",
-      "IndianaJones"
-    ],
-    "domains": [
-      "Graphics"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/1EcWb7hDcGdfLmeooDze7yFad3KvTzKKz/view",
-    "thumbnail": null
-  },
-  {
-    "resourceId": "RES-20260812-041",
-    "documentId": "DOC-C7108261D3AE",
-    "title": "Build System in the Autonomous Agents Era",
-    "sourceFormat": "PPTX",
-    "thumbnail": "assets/generated/documents/DOC-C7108261D3AE.webp",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [
-      "CEDEC2026"
-    ],
-    "domains": [
-      "AI",
-      "Programming"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/1EjDPNwlzQTuIx6GwEIabRH5q3z77AtGc/view"
-  },
-  {
-    "resourceId": "RES-20260812-043",
-    "documentId": "DOC-CD657D6B7C2A",
-    "title": "CEDEC2026_『モンスターハンターストーリーズ3』 におけるアニメ調レンダリングを徹底解剖！",
-    "sourceFormat": "PPTX",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [
-      "CEDEC2026"
-    ],
-    "domains": [
-      "Graphics",
-      "GameDevelopment"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/1Exs8DZWIN3wlGiGtCK3TtU0CDCo2UrW8/view",
-    "thumbnail": null
-  },
-  {
-    "resourceId": "RES-20260726-001",
-    "documentId": "DOC-927F89DA3F32",
-    "title": "学園アイドルマスターにおけるモバイルの性能を限 界まで引き出すレンダリングパイプライン",
-    "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-927F89DA3F32.webp",
-    "engine": "Unity / custom mobile pipeline",
-    "level": "production / optimization",
-    "tags": [
-      "学マス",
-      "QualiArts",
-      "CEDEC2024",
-      "MobileRendering",
-      "TileBasedDeferred",
-      "Memoryless",
-      "RenderGraph",
-      "HybridRendering",
-      "DepthID",
-      "HiZSSR",
-      "PlanarReflection",
-      "PBRDecal",
-      "DownscaleTransparent",
-      "TAA",
-      "FSR",
-      "DecalLight",
-      "Unity",
-      "SSR",
-      "CEDEC"
-    ],
-    "domains": [
-      "Graphics"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/1Fex6eoFhMVWsnmfaMkqSw3KTysZl1Xft/view"
-  },
-  {
-    "resourceId": "RES-20260812-045",
-    "documentId": "DOC-6C59AC1C182B",
-    "title": "レベル職人に依存しない！ ギミックを活かした パズルゲームのレベル自動生成",
-    "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-6C59AC1C182B.webp",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [
-      "CEDEC2026"
-    ],
-    "domains": [
-      "GameDevelopment",
-      "Programming"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/1Gc_Mw-S-UPiEqmOVL5KgU7plnGVfYFpK/view"
-  },
-  {
-    "resourceId": "RES-20260812-002",
-    "documentId": "DOC-7B8E0467124E",
-    "title": "WwiseとUnrealによる Wwise Acoustics活用法",
-    "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-7B8E0467124E.webp",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [
-      "CEDEC2026"
-    ],
-    "domains": [
-      "Audio"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/1GtPxX1jI6lriw4WUnVnuxkzEgURFD8Wg/view"
-  },
-  {
-    "resourceId": "RES-20260812-025",
-    "documentId": "DOC-484BFE4C155C",
-    "title": "CEDEC2026_Mori_Bike_提出用_前半",
-    "sourceFormat": "PPTX",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [
-      "CEDEC2026"
-    ],
-    "domains": [
-      "GameDevelopment",
-      "Programming"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/1MW1xyfZMHH94TSffUtr7VZU55fmqTfgK/view",
-    "thumbnail": null
-  },
-  {
-    "resourceId": "RES-20260812-005",
-    "documentId": "DOC-D0409B1035CF",
-    "title": "CEDEC_Forza_Horizon_6_copy",
-    "sourceFormat": "PDF",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [
-      "CEDEC2026"
-    ],
-    "domains": [],
-    "canonicalUrl": "https://drive.google.com/file/d/1MaCTeCC7YrN4W9ZbYWi88RoJaBZK3fat/view",
-    "thumbnail": null
-  },
-  {
-    "resourceId": "RES-DOC-ADA0E774AA34",
-    "documentId": "DOC-F9711E6E808E",
-    "title": "Unity で仮想現実体験と複合現実体験を作成",
-    "sourceFormat": "PDF",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [],
-    "domains": [],
-    "canonicalUrl": "https://drive.google.com/file/d/1Nayeo5jyIdX6JEYzcRTOS3XYxE7Mrwr6/view",
-    "thumbnail": null
-  },
-  {
-    "resourceId": "RES-20260816-012",
-    "documentId": "DOC-A8BE92FD5EEA",
-    "title": "Frostbite PB and unified volumetrics",
-    "sourceFormat": "PPTX",
-    "engine": "Frostbite",
-    "level": "foundation / implementation",
-    "tags": [
-      "Volumetric",
-      "Froxel",
-      "VBuffer",
-      "ParticipatingMedia",
-      "TemporalIntegration",
-      "VolumetricShadow",
-      "Performance",
-      "Frostbite"
-    ],
-    "domains": [
-      "Graphics"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/1OkbS7E0wkly1drrra9afwBK1Zco8bT_k/view",
-    "thumbnail": null
-  },
-  {
-    "resourceId": "RES-DOC-7668EF4637C8",
-    "documentId": "DOC-F66F28B3B1C5",
-    "title": "上級 Unity クリエイター 向けのユニバーサルレンダー パイプライン（URP）",
-    "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-F66F28B3B1C5.webp",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [],
-    "domains": [
-      "Graphics"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/1Pv-J64AcO4Mqg-5DSe-4AnV_hedXEPcL/view"
-  },
-  {
-    "resourceId": "RES-DOC-A767C1CB32DC",
-    "documentId": "DOC-CF0263275870",
-    "title": "Unity の 上級開発者向け Data-Oriented",
-    "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-CF0263275870.webp",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [],
-    "domains": [
-      "Programming"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/1Q408uAQyHsqslMrb6w9OvYoTzDhlcJbq/view"
-  },
-  {
-    "resourceId": "RES-DOC-4B7300DA10FA",
-    "documentId": "DOC-5169D10CAD0D",
-    "title": "Unity によるコンソール と PC 向けゲームの パフォーマンス最適化",
-    "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-5169D10CAD0D.webp",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [],
-    "domains": [
-      "Programming",
-      "GameDevelopment"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/1QJjOJeDpBVqyoNDxT9P3CTICjQl9fiml/view"
-  },
-  {
-    "resourceId": "RES-20260722-001",
-    "documentId": "DOC-4C4C83CCBC9A",
-    "title": "Unity Surface Cache GI - Getting Started",
-    "sourceFormat": "GOOGLE_DOC",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [
-      "SurfaceCacheGI",
-      "DynamicGI",
-      "URP",
-      "RayTracing",
-      "ComputeShader",
-      "BVH",
-      "TemporalFiltering",
-      "VRAM"
-    ],
-    "domains": [
-      "Graphics"
-    ],
-    "canonicalUrl": "https://docs.google.com/document/d/1QkYO3IF4G9kWV5swcOP4R3C1U3mkujeTONJcP2ECPzw/edit?pli=1&tab=t.0",
-    "thumbnail": null
-  },
-  {
-    "resourceId": "RES-20260812-026",
-    "documentId": "DOC-06FDEB38F46F",
-    "title": "CEDEC2026_Mori_Bullet_提出用_後半",
-    "sourceFormat": "PPTX",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [
-      "CEDEC2026"
-    ],
-    "domains": [
-      "GameDevelopment",
-      "Programming"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/1Qwi3KM9tMrS5l6UTV2hxq-2bdKZ_I65D/view",
-    "thumbnail": null
-  },
-  {
-    "resourceId": "RES-20260812-050",
-    "documentId": "DOC-8B551939E308",
-    "title": "GS2-Studio の紹介",
-    "sourceFormat": "PPTX",
-    "thumbnail": "assets/generated/documents/DOC-8B551939E308.webp",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [
-      "CEDEC2026"
-    ],
-    "domains": [
-      "Programming"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/1Rb5W0y2ugXeDr1Kw4MpN3lybaxz0TXYr/view"
-  },
-  {
-    "resourceId": "RES-DOC-123930B56625",
-    "documentId": "DOC-4F27073C8F02",
-    "title": "Unity 上級開発者向け UI Toolkit",
-    "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-4F27073C8F02.webp",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [],
-    "domains": [
-      "Tools",
-      "Programming"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/1RdlRIiCoKuImu8ierV1CvdIPcdfVQz6b/view"
-  },
-  {
-    "resourceId": "RES-20260812-023",
-    "documentId": "DOC-135CA74564B6",
-    "title": "ゲームオーディオ実装の現在と未来は？ サウンドミドルウェアは何を支え、 どこへ向かうのか",
-    "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-135CA74564B6.webp",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [
-      "CEDEC2026"
-    ],
-    "domains": [
-      "Audio"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/1TXKCSCTh-6rkG8SvKVOvU_ZskMeCAknO/view"
-  },
-  {
-    "resourceId": "RES-20260816-008",
-    "documentId": "DOC-8F36629A52C4",
-    "title": "Apers_Advances-s2024_Shipping-Dynamic-GI",
-    "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-8F36629A52C4.webp",
-    "engine": "Frostbite",
-    "level": "production / implementation",
-    "tags": [
-      "GI",
-      "Surfels",
-      "GIBS",
-      "Frostbite",
-      "DynamicGI",
-      "Production"
-    ],
-    "domains": [
-      "Graphics"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/1Tox5QnuDzWDQ1Q_PVVeZSEbTv-satADk/view"
-  },
-  {
-    "resourceId": "RES-20260812-010",
-    "documentId": "DOC-12776F73CFB8",
-    "title": "CEDEC2026_フルスクラッチ3D生成AI_荒木",
-    "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-12776F73CFB8.webp",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [
-      "CEDEC2026"
-    ],
-    "domains": [
-      "AI"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/1UqayIPQgbmoPavJoSoLTGo--LjU5gUXR/view"
-  },
-  {
-    "resourceId": "RES-20260815-003",
-    "documentId": "DOC-C29B55EBE666",
-    "title": "Ray tracing the world of Assassin's Creed Shadows",
-    "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-C29B55EBE666.webp",
-    "engine": "Anvil / Assassin’s Creed Shadows",
-    "level": "production / implementation",
-    "tags": [
-      "RayTracing",
-      "RTGI",
-      "GPUDriven",
-      "SceneDescription",
-      "PlatformScalability",
-      "Ubisoft"
-    ],
-    "domains": [
-      "Graphics"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/1UvRLS-vA9eTU_EQ2n7rVMd5JfrrGZ9QL/view"
-  },
-  {
-    "resourceId": "RES-20260812-028",
-    "documentId": "DOC-27BF0A330306",
-    "title": "Pokémon TCG Pocketのバトルを⽀える 強化学習AI技術",
-    "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-27BF0A330306.webp",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [
-      "CEDEC2026"
-    ],
-    "domains": [
-      "AI",
-      "GameDevelopment"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/1V8gITXlLssvbEAZHd-uKJbxI6Fj-b8SV/view"
-  },
-  {
-    "resourceId": "RES-20260812-035",
-    "documentId": "DOC-CBBFD96145CE",
-    "title": "『モンスターハンターストーリーズ３』 共に闘うキャラの個性：RPGバトルAIにおける機械学習と従来手法の融合",
-    "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-CBBFD96145CE.webp",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [
-      "CEDEC2026"
-    ],
-    "domains": [
-      "AI",
-      "GameDevelopment"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/1WVkQmKsAjFjz7uvpBC3t8DOK4cMSQEIZ/view"
-  },
-  {
-    "resourceId": "RES-20260812-014",
-    "documentId": "DOC-8803597D996E",
-    "title": "【UE5×RIGDOCKS】自社専用システム『RIGDRED』を構築!~SKYSQUAREから始まる次世代の音響ワークフロー~",
-    "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-8803597D996E.webp",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [
-      "CEDEC2026"
-    ],
-    "domains": [
-      "Audio",
-      "Tools"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/1XE6T6wEKI5xGPzBqr1WVQ3Qn8CTezTBU/view"
-  },
-  {
-    "resourceId": "RES-20260812-027",
-    "documentId": "DOC-1BA723D58541",
-    "title": "『LIVING with LIVLIES』運用を支える技術",
-    "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-1BA723D58541.webp",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [
-      "CEDEC2026"
-    ],
-    "domains": [],
-    "canonicalUrl": "https://drive.google.com/file/d/1Y-R-DwBYPMKwS9C820yJ70hj8_VaX6N0/view"
-  },
-  {
-    "resourceId": "RES-20260808-008",
-    "documentId": "DOC-C94962EB3D53",
-    "title": "GRANBLUE FANTASY Relink_Endless Ragnarokのバトル制作事例",
-    "sourceFormat": "PDF",
-    "engine": "GRANBLUE FANTASY: Relink - Endless Ragnarok",
-    "level": "game design / production",
-    "tags": [
-      "CombatDesign",
-      "CompanionAI",
-      "AssistMode",
-      "Iteration",
-      "BehaviorTree",
-      "FSM",
-      "Relink"
-    ],
-    "domains": [
-      "GameDevelopment"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/1Yr-Eww1FacrbXGqnKhGpUaXDeHjs9YO0/view",
-    "thumbnail": null
-  },
-  {
-    "resourceId": "RES-DOC-748284CE92A0",
-    "documentId": "DOC-326300CB503C",
-    "title": "Unity ゲームの プロファイリングに 関する決定版ガイド",
-    "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-326300CB503C.webp",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [],
-    "domains": [
-      "Programming"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/1Z02pwqgEjymi8PvctJVQdUBLKC2F7-3S/view"
-  },
-  {
-    "resourceId": "RES-DOC-7E71346B1CFB",
-    "documentId": "DOC-1DD0E8CAF7D6",
-    "title": "Unity における モバイル、XR、ウェブの パフォーマンス最適化",
-    "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-1DD0E8CAF7D6.webp",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [],
-    "domains": [
-      "Programming"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/1Zx9_V8at8JvSwuy2buE0X9q0NpYXJV9a/view"
-  },
-  {
-    "resourceId": "RES-20260812-022",
-    "documentId": "DOC-F043AC1AEC3B",
-    "title": "Unity 3D&2D グラフィックス 最新情報",
-    "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-F043AC1AEC3B.webp",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [
-      "CEDEC2026"
-    ],
-    "domains": [
-      "Graphics"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/1_3gsAzvuwRCVYoFBeM27Zy9hSW6aP22d/view"
-  },
-  {
     "resourceId": "RES-20260812-011",
     "documentId": "DOC-DB6CD7F0387F",
     "title": "120fps達成の道",
@@ -969,6 +370,23 @@
       "Tools"
     ],
     "canonicalUrl": "https://drive.google.com/file/d/1awwUC_Nd2jP9ZgDmoFcJ1_7uWIHmxz7k/view"
+  },
+  {
+    "resourceId": "RES-20260812-054",
+    "documentId": "DOC-CD051D1D541F",
+    "title": "『モンスターハンターストーリーズ３』QAQCを変革する自律型マルチAIエージェント ～課題予測から修正提案までを完結させる「先回り」のデバッグ手法～",
+    "sourceFormat": "PDF",
+    "engine": "General",
+    "level": "unknown",
+    "tags": [
+      "CEDEC2026"
+    ],
+    "domains": [
+      "AI",
+      "Programming"
+    ],
+    "canonicalUrl": "https://drive.google.com/file/d/1B-ZjqYDk7U7m1zkpTTpYTes01SnEiA0w/view",
+    "thumbnail": null
   },
   {
     "resourceId": "RES-20260812-015",
@@ -1070,6 +488,43 @@
     "thumbnail": null
   },
   {
+    "resourceId": "RES-20260808-007",
+    "documentId": "DOC-197D9EECCD46",
+    "title": "Relinkを拡張せよ _GRANBLUE FANTASY Relink_Endless Ragnarokの開発速度と品質を守るCI運用",
+    "sourceFormat": "PDF",
+    "engine": "Jenkins / Datadog / Cygames console pipeline",
+    "level": "production / CI quality",
+    "tags": [
+      "CI",
+      "Datadog",
+      "StaticAnalysis",
+      "SnapshotQA",
+      "CD",
+      "Jenkins",
+      "VisualRegression"
+    ],
+    "domains": [
+      "Programming",
+      "Tools"
+    ],
+    "canonicalUrl": "https://drive.google.com/file/d/1CRGQj2V5SKozAcQ0raotcmG5c3FSm8Sr/view",
+    "thumbnail": null
+  },
+  {
+    "resourceId": "RES-20260812-048",
+    "documentId": "DOC-4E1DF6E0C0B7",
+    "title": "「集める」のではなく、データが「勝手に集まる」世界へ。定点観測から始まる「令和」のパフォーマンス改善ライフ_CEDiL用",
+    "sourceFormat": "PDF",
+    "thumbnail": "assets/generated/documents/DOC-4E1DF6E0C0B7.webp",
+    "engine": "General",
+    "level": "unknown",
+    "tags": [
+      "CEDEC2026"
+    ],
+    "domains": [],
+    "canonicalUrl": "https://drive.google.com/file/d/1CwsHvlKO86aDHQh2QqZEGIf1jdH3uyt6/view"
+  },
+  {
     "resourceId": "RES-20260808-001",
     "documentId": "DOC-33076D59B43A",
     "title": "コードレビュー支援ツール開発から学ぶ",
@@ -1092,23 +547,6 @@
       "Programming"
     ],
     "canonicalUrl": "https://drive.google.com/file/d/1dCKTpbDYHrv9LipzJI7trBFUEXdw2Ysf/view"
-  },
-  {
-    "resourceId": "RES-20260812-039",
-    "documentId": "DOC-325BB7666462",
-    "title": "PRAGMATA Making Diana",
-    "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-325BB7666462.webp",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [
-      "CEDEC2026"
-    ],
-    "domains": [
-      "DCC",
-      "Graphics"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/1dPb3E3lj8-IIYNNQlMM_K6RRy_Ryz_xo/view"
   },
   {
     "resourceId": "RES-20260808-003",
@@ -1134,6 +572,23 @@
     "canonicalUrl": "https://drive.google.com/file/d/1dol8fBmky7IAbUy1YwsM-xfbMwExPUMI/view"
   },
   {
+    "resourceId": "RES-20260812-039",
+    "documentId": "DOC-325BB7666462",
+    "title": "PRAGMATA Making Diana",
+    "sourceFormat": "PDF",
+    "thumbnail": "assets/generated/documents/DOC-325BB7666462.webp",
+    "engine": "General",
+    "level": "unknown",
+    "tags": [
+      "CEDEC2026"
+    ],
+    "domains": [
+      "DCC",
+      "Graphics"
+    ],
+    "canonicalUrl": "https://drive.google.com/file/d/1dPb3E3lj8-IIYNNQlMM_K6RRy_Ryz_xo/view"
+  },
+  {
     "resourceId": "RES-20260812-051",
     "documentId": "DOC-C79302ACFB9B",
     "title": "世界創造謎解きアドベンチャーゲーム 「カミとミコ」開発における CMSとFigma活用",
@@ -1149,6 +604,163 @@
       "GameDevelopment"
     ],
     "canonicalUrl": "https://drive.google.com/file/d/1dsJvLZ2s9nNg5tkC6XUqxcG_6_Nerxju/view"
+  },
+  {
+    "resourceId": "RES-20260716-009",
+    "documentId": "DOC-FD9778E67484",
+    "title": "Frostbite PB and unified volumetrics",
+    "sourceFormat": "PDF",
+    "thumbnail": "assets/generated/documents/DOC-FD9778E67484.webp",
+    "engine": "Frostbite",
+    "level": "production / implementation",
+    "tags": [
+      "Frostbite",
+      "Froxel",
+      "Volumetric Fog",
+      "Temporal",
+      "Scattering",
+      "Transmittance",
+      "Volumetric Shadow",
+      "Particle Voxelization",
+      "Volumetric",
+      "ParticipatingMedia",
+      "TemporalIntegration",
+      "VolumetricShadow",
+      "ParticleVoxelization",
+      "SIGGRAPH"
+    ],
+    "domains": [
+      "Graphics"
+    ],
+    "canonicalUrl": "https://drive.google.com/file/d/1E2HT57uLj3v6Fghj2_4odWqII3uIOJWB/view?usp=drivesdk"
+  },
+  {
+    "resourceId": "RES-DOC-9CA90BB066DA",
+    "documentId": "DOC-E10B437D456F",
+    "title": "Strand Hair in IJGC - Final Slides (Post-Conference)",
+    "sourceFormat": "PPTX",
+    "engine": "MOTOR / idTech-derived",
+    "level": "production / implementation",
+    "tags": [
+      "Hair",
+      "Fur",
+      "SoftwareRasterization",
+      "VisibilityBuffer",
+      "Marschner",
+      "LOD",
+      "AsyncCompute",
+      "IndianaJones"
+    ],
+    "domains": [
+      "Graphics"
+    ],
+    "canonicalUrl": "https://drive.google.com/file/d/1EcWb7hDcGdfLmeooDze7yFad3KvTzKKz/view",
+    "thumbnail": null
+  },
+  {
+    "resourceId": "RES-20260812-034",
+    "documentId": "DOC-0203D066FBA3",
+    "title": "CEDEC2026_game_engine",
+    "sourceFormat": "PPTX",
+    "engine": "General",
+    "level": "unknown",
+    "tags": [
+      "CEDEC2026"
+    ],
+    "domains": [
+      "Programming"
+    ],
+    "canonicalUrl": "https://drive.google.com/file/d/1EI-NZzaPy1LNZIMUgZFYCi3MIHWJd7nV/view",
+    "thumbnail": null
+  },
+  {
+    "resourceId": "RES-20260812-041",
+    "documentId": "DOC-C7108261D3AE",
+    "title": "Build System in the Autonomous Agents Era",
+    "sourceFormat": "PPTX",
+    "thumbnail": "assets/generated/documents/DOC-C7108261D3AE.webp",
+    "engine": "General",
+    "level": "unknown",
+    "tags": [
+      "CEDEC2026"
+    ],
+    "domains": [
+      "AI",
+      "Programming"
+    ],
+    "canonicalUrl": "https://drive.google.com/file/d/1EjDPNwlzQTuIx6GwEIabRH5q3z77AtGc/view"
+  },
+  {
+    "resourceId": "RES-20260816-006",
+    "documentId": "DOC-5298706AD10C",
+    "title": "Advances_SIGGRAPH_2024_VisibilityVRS-SIGGRAPH_Advances_2024",
+    "sourceFormat": "PPTX",
+    "engine": "Northlight / Alan Wake 2",
+    "level": "implementation / optimization",
+    "tags": [
+      "VisibilityBuffer",
+      "VRS",
+      "WaveIntrinsics",
+      "QuadUtilization",
+      "GPUOptimization",
+      "AlanWake2"
+    ],
+    "domains": [
+      "Graphics"
+    ],
+    "canonicalUrl": "https://drive.google.com/file/d/1ERe4e4zE-U79lv8QPPV1VxbJXxDJOi37/view",
+    "thumbnail": null
+  },
+  {
+    "resourceId": "RES-20260812-043",
+    "documentId": "DOC-CD657D6B7C2A",
+    "title": "CEDEC2026_『モンスターハンターストーリーズ3』 におけるアニメ調レンダリングを徹底解剖！",
+    "sourceFormat": "PPTX",
+    "engine": "General",
+    "level": "unknown",
+    "tags": [
+      "CEDEC2026"
+    ],
+    "domains": [
+      "Graphics",
+      "GameDevelopment"
+    ],
+    "canonicalUrl": "https://drive.google.com/file/d/1Exs8DZWIN3wlGiGtCK3TtU0CDCo2UrW8/view",
+    "thumbnail": null
+  },
+  {
+    "resourceId": "RES-20260726-001",
+    "documentId": "DOC-927F89DA3F32",
+    "title": "学園アイドルマスターにおけるモバイルの性能を限 界まで引き出すレンダリングパイプライン",
+    "sourceFormat": "PDF",
+    "thumbnail": "assets/generated/documents/DOC-927F89DA3F32.webp",
+    "engine": "Unity / custom mobile pipeline",
+    "level": "production / optimization",
+    "tags": [
+      "学マス",
+      "QualiArts",
+      "CEDEC2024",
+      "MobileRendering",
+      "TileBasedDeferred",
+      "Memoryless",
+      "RenderGraph",
+      "HybridRendering",
+      "DepthID",
+      "HiZSSR",
+      "PlanarReflection",
+      "PBRDecal",
+      "DownscaleTransparent",
+      "TAA",
+      "FSR",
+      "DecalLight",
+      "Unity",
+      "SSR",
+      "CEDEC"
+    ],
+    "domains": [
+      "Graphics"
+    ],
+    "canonicalUrl": "https://drive.google.com/file/d/1Fex6eoFhMVWsnmfaMkqSw3KTysZl1Xft/view"
   },
   {
     "resourceId": "RES-20260808-002",
@@ -1173,6 +785,23 @@
     "canonicalUrl": "https://drive.google.com/file/d/1g-VSA86GwGztXt8If9EQqstzJuNpEoia/view"
   },
   {
+    "resourceId": "RES-20260812-045",
+    "documentId": "DOC-6C59AC1C182B",
+    "title": "レベル職人に依存しない！ ギミックを活かした パズルゲームのレベル自動生成",
+    "sourceFormat": "PDF",
+    "thumbnail": "assets/generated/documents/DOC-6C59AC1C182B.webp",
+    "engine": "General",
+    "level": "unknown",
+    "tags": [
+      "CEDEC2026"
+    ],
+    "domains": [
+      "GameDevelopment",
+      "Programming"
+    ],
+    "canonicalUrl": "https://drive.google.com/file/d/1Gc_Mw-S-UPiEqmOVL5KgU7plnGVfYFpK/view"
+  },
+  {
     "resourceId": "RES-20260812-031",
     "documentId": "DOC-4957D092E818",
     "title": "CEDEC2026_HEXADRIVE_Ritaro_WarterColorToon",
@@ -1185,6 +814,22 @@
     ],
     "domains": [],
     "canonicalUrl": "https://drive.google.com/file/d/1gFN8l2A4BNnbgUU3oKv_oZxaQUMDFXLo/view"
+  },
+  {
+    "resourceId": "RES-20260812-002",
+    "documentId": "DOC-7B8E0467124E",
+    "title": "WwiseとUnrealによる Wwise Acoustics活用法",
+    "sourceFormat": "PDF",
+    "thumbnail": "assets/generated/documents/DOC-7B8E0467124E.webp",
+    "engine": "General",
+    "level": "unknown",
+    "tags": [
+      "CEDEC2026"
+    ],
+    "domains": [
+      "Audio"
+    ],
+    "canonicalUrl": "https://drive.google.com/file/d/1GtPxX1jI6lriw4WUnVnuxkzEgURFD8Wg/view"
   },
   {
     "resourceId": "RES-20260812-030",
@@ -1333,6 +978,20 @@
     "thumbnail": null
   },
   {
+    "resourceId": "RES-20260812-005",
+    "documentId": "DOC-D0409B1035CF",
+    "title": "CEDEC_Forza_Horizon_6_copy",
+    "sourceFormat": "PDF",
+    "engine": "General",
+    "level": "unknown",
+    "tags": [
+      "CEDEC2026"
+    ],
+    "domains": [],
+    "canonicalUrl": "https://drive.google.com/file/d/1MaCTeCC7YrN4W9ZbYWi88RoJaBZK3fat/view",
+    "thumbnail": null
+  },
+  {
     "resourceId": "RES-20260808-005",
     "documentId": "DOC-0B6DF850F0FB",
     "title": "グラフィックスエンジニアのための ニューラルシェーディング入門",
@@ -1373,6 +1032,49 @@
     "canonicalUrl": "https://drive.google.com/file/d/1ms7jwDrHNh4pFYrXvE6foZvz665AI8Ci/view"
   },
   {
+    "resourceId": "RES-20260812-025",
+    "documentId": "DOC-484BFE4C155C",
+    "title": "CEDEC2026_Mori_Bike_提出用_前半",
+    "sourceFormat": "PPTX",
+    "engine": "General",
+    "level": "unknown",
+    "tags": [
+      "CEDEC2026"
+    ],
+    "domains": [
+      "GameDevelopment",
+      "Programming"
+    ],
+    "canonicalUrl": "https://drive.google.com/file/d/1MW1xyfZMHH94TSffUtr7VZU55fmqTfgK/view",
+    "thumbnail": null
+  },
+  {
+    "resourceId": "RES-DOC-ADA0E774AA34",
+    "documentId": "DOC-F9711E6E808E",
+    "title": "Unity で仮想現実体験と複合現実体験を作成",
+    "sourceFormat": "PDF",
+    "engine": "General",
+    "level": "unknown",
+    "tags": [],
+    "domains": [],
+    "canonicalUrl": "https://drive.google.com/file/d/1Nayeo5jyIdX6JEYzcRTOS3XYxE7Mrwr6/view",
+    "thumbnail": null
+  },
+  {
+    "resourceId": "RES-DOC-F560B515B11B",
+    "documentId": "DOC-97BB7B7A38AA",
+    "title": "ゲームレベルデザイン入門",
+    "sourceFormat": "PDF",
+    "thumbnail": "assets/generated/documents/DOC-97BB7B7A38AA.webp",
+    "engine": "General",
+    "level": "unknown",
+    "tags": [],
+    "domains": [
+      "GameDevelopment"
+    ],
+    "canonicalUrl": "https://drive.google.com/file/d/1nkwA9st3pDcksVAXp8mRyt_KT8tEWuh3/view"
+  },
+  {
     "resourceId": "RES-20260816-005",
     "documentId": "DOC-39C21B4FE243",
     "title": "Advances_SIGGRAPH_2024_Neural_LightGrid - 29.07",
@@ -1393,20 +1095,6 @@
     "thumbnail": null
   },
   {
-    "resourceId": "RES-DOC-F560B515B11B",
-    "documentId": "DOC-97BB7B7A38AA",
-    "title": "ゲームレベルデザイン入門",
-    "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-97BB7B7A38AA.webp",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [],
-    "domains": [
-      "GameDevelopment"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/1nkwA9st3pDcksVAXp8mRyt_KT8tEWuh3/view"
-  },
-  {
     "resourceId": "RES-20260812-009",
     "documentId": "DOC-560082773489",
     "title": "Creativity in the age of AI - CEDEC - Fawzi Mesmar",
@@ -1420,35 +1108,6 @@
       "AI"
     ],
     "canonicalUrl": "https://drive.google.com/file/d/1o4ac9OZbTpmKnJG7WHGceGfTX6m3cBst/view",
-    "thumbnail": null
-  },
-  {
-    "resourceId": "RES-20260812-036",
-    "documentId": "DOC-37BD9A0D9109",
-    "title": "TB級アセット時代の開発基盤再構成: COWファイルシステム・コンテンツアドレス型差分配布・コンテナ技術 で実現するAIワークフロー",
-    "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-37BD9A0D9109.webp",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [
-      "CEDEC2026"
-    ],
-    "domains": [
-      "Programming",
-      "Tools"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/1oHnzMyLgRXhQd69bWqOyVbFL-2T9QaSQ/view"
-  },
-  {
-    "resourceId": "RES-DOC-A2C2E1C83AB0",
-    "documentId": "DOC-F0E997948D7D",
-    "title": "シェーダーと視覚エフェクトのレシピ",
-    "sourceFormat": "PDF",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [],
-    "domains": [],
-    "canonicalUrl": "https://drive.google.com/file/d/1oMm180MhasY8ZiVhBDtQgumzjziwIZ7l/view",
     "thumbnail": null
   },
   {
@@ -1473,6 +1132,46 @@
     "canonicalUrl": "https://drive.google.com/file/d/1obT-tA734X8LlgmAzc6bok_QvMUsKv-c/view"
   },
   {
+    "resourceId": "RES-20260812-036",
+    "documentId": "DOC-37BD9A0D9109",
+    "title": "TB級アセット時代の開発基盤再構成: COWファイルシステム・コンテンツアドレス型差分配布・コンテナ技術 で実現するAIワークフロー",
+    "sourceFormat": "PDF",
+    "thumbnail": "assets/generated/documents/DOC-37BD9A0D9109.webp",
+    "engine": "General",
+    "level": "unknown",
+    "tags": [
+      "CEDEC2026"
+    ],
+    "domains": [
+      "Programming",
+      "Tools"
+    ],
+    "canonicalUrl": "https://drive.google.com/file/d/1oHnzMyLgRXhQd69bWqOyVbFL-2T9QaSQ/view"
+  },
+  {
+    "resourceId": "RES-20260816-012",
+    "documentId": "DOC-A8BE92FD5EEA",
+    "title": "Frostbite PB and unified volumetrics",
+    "sourceFormat": "PPTX",
+    "engine": "Frostbite",
+    "level": "foundation / implementation",
+    "tags": [
+      "Volumetric",
+      "Froxel",
+      "VBuffer",
+      "ParticipatingMedia",
+      "TemporalIntegration",
+      "VolumetricShadow",
+      "Performance",
+      "Frostbite"
+    ],
+    "domains": [
+      "Graphics"
+    ],
+    "canonicalUrl": "https://drive.google.com/file/d/1OkbS7E0wkly1drrra9afwBK1Zco8bT_k/view",
+    "thumbnail": null
+  },
+  {
     "resourceId": "RES-20260816-013",
     "documentId": "DOC-42A5A174297D",
     "title": "ORCA Siggraph r3.4_ Advances",
@@ -1494,6 +1193,18 @@
     "thumbnail": null
   },
   {
+    "resourceId": "RES-DOC-A2C2E1C83AB0",
+    "documentId": "DOC-F0E997948D7D",
+    "title": "シェーダーと視覚エフェクトのレシピ",
+    "sourceFormat": "PDF",
+    "engine": "General",
+    "level": "unknown",
+    "tags": [],
+    "domains": [],
+    "canonicalUrl": "https://drive.google.com/file/d/1oMm180MhasY8ZiVhBDtQgumzjziwIZ7l/view",
+    "thumbnail": null
+  },
+  {
     "resourceId": "RES-20260812-047",
     "documentId": "DOC-C7F01108E47C",
     "title": "ミアレシティがメガシンカ!? 『Pokémon LEGENDS Z-A』の描画技術",
@@ -1511,26 +1222,86 @@
     "canonicalUrl": "https://drive.google.com/file/d/1orsyVBEVxIxgSGwnscSMjXTFNjakatNO/view"
   },
   {
-    "resourceId": "RES-DOC-FED96F58F884",
-    "documentId": "DOC-E5027A739171",
-    "title": "sss-siggraph-2025-advances-published",
-    "sourceFormat": "PPTX",
-    "engine": "Omniverse RTX Renderer / NVIDIA RTX Character Rendering",
-    "level": "algorithm / implementation",
+    "resourceId": "RES-DOC-7668EF4637C8",
+    "documentId": "DOC-F66F28B3B1C5",
+    "title": "上級 Unity クリエイター 向けのユニバーサルレンダー パイプライン（URP）",
+    "sourceFormat": "PDF",
+    "thumbnail": "assets/generated/documents/DOC-F66F28B3B1C5.webp",
+    "engine": "General",
+    "level": "unknown",
+    "tags": [],
+    "domains": [
+      "Graphics"
+    ],
+    "canonicalUrl": "https://drive.google.com/file/d/1Pv-J64AcO4Mqg-5DSe-4AnV_hedXEPcL/view"
+  },
+  {
+    "resourceId": "RES-DOC-A767C1CB32DC",
+    "documentId": "DOC-CF0263275870",
+    "title": "Unity の 上級開発者向け Data-Oriented",
+    "sourceFormat": "PDF",
+    "thumbnail": "assets/generated/documents/DOC-CF0263275870.webp",
+    "engine": "General",
+    "level": "unknown",
+    "tags": [],
+    "domains": [
+      "Programming"
+    ],
+    "canonicalUrl": "https://drive.google.com/file/d/1Q408uAQyHsqslMrb6w9OvYoTzDhlcJbq/view"
+  },
+  {
+    "resourceId": "RES-DOC-4B7300DA10FA",
+    "documentId": "DOC-5169D10CAD0D",
+    "title": "Unity によるコンソール と PC 向けゲームの パフォーマンス最適化",
+    "sourceFormat": "PDF",
+    "thumbnail": "assets/generated/documents/DOC-5169D10CAD0D.webp",
+    "engine": "General",
+    "level": "unknown",
+    "tags": [],
+    "domains": [
+      "Programming",
+      "GameDevelopment"
+    ],
+    "canonicalUrl": "https://drive.google.com/file/d/1QJjOJeDpBVqyoNDxT9P3CTICjQl9fiml/view"
+  },
+  {
+    "resourceId": "RES-20260722-001",
+    "documentId": "DOC-4C4C83CCBC9A",
+    "title": "Unity Surface Cache GI - Getting Started",
+    "sourceFormat": "GOOGLE_DOC",
+    "engine": "General",
+    "level": "unknown",
     "tags": [
-      "SSS",
-      "SubsurfaceScattering",
-      "ReSTIR",
-      "PathTracing",
-      "Diffusion",
-      "BSSRDF",
+      "SurfaceCacheGI",
+      "DynamicGI",
+      "URP",
       "RayTracing",
-      "CharacterRendering"
+      "ComputeShader",
+      "BVH",
+      "TemporalFiltering",
+      "VRAM"
     ],
     "domains": [
       "Graphics"
     ],
-    "canonicalUrl": "https://drive.google.com/file/d/1rYjv2_KuwqYUyqVdO9EdtxO7OTTOxybs/view",
+    "canonicalUrl": "https://docs.google.com/document/d/1QkYO3IF4G9kWV5swcOP4R3C1U3mkujeTONJcP2ECPzw/edit?pli=1&tab=t.0",
+    "thumbnail": null
+  },
+  {
+    "resourceId": "RES-20260812-026",
+    "documentId": "DOC-06FDEB38F46F",
+    "title": "CEDEC2026_Mori_Bullet_提出用_後半",
+    "sourceFormat": "PPTX",
+    "engine": "General",
+    "level": "unknown",
+    "tags": [
+      "CEDEC2026"
+    ],
+    "domains": [
+      "GameDevelopment",
+      "Programming"
+    ],
+    "canonicalUrl": "https://drive.google.com/file/d/1Qwi3KM9tMrS5l6UTV2hxq-2bdKZ_I65D/view",
     "thumbnail": null
   },
   {
@@ -1556,6 +1327,37 @@
     "canonicalUrl": "https://drive.google.com/file/d/1ra0PbNCNcUl7xj2NKkwrQwbzN4BnzRrV/view"
   },
   {
+    "resourceId": "RES-20260812-050",
+    "documentId": "DOC-8B551939E308",
+    "title": "GS2-Studio の紹介",
+    "sourceFormat": "PPTX",
+    "thumbnail": "assets/generated/documents/DOC-8B551939E308.webp",
+    "engine": "General",
+    "level": "unknown",
+    "tags": [
+      "CEDEC2026"
+    ],
+    "domains": [
+      "Programming"
+    ],
+    "canonicalUrl": "https://drive.google.com/file/d/1Rb5W0y2ugXeDr1Kw4MpN3lybaxz0TXYr/view"
+  },
+  {
+    "resourceId": "RES-DOC-123930B56625",
+    "documentId": "DOC-4F27073C8F02",
+    "title": "Unity 上級開発者向け UI Toolkit",
+    "sourceFormat": "PDF",
+    "thumbnail": "assets/generated/documents/DOC-4F27073C8F02.webp",
+    "engine": "General",
+    "level": "unknown",
+    "tags": [],
+    "domains": [
+      "Tools",
+      "Programming"
+    ],
+    "canonicalUrl": "https://drive.google.com/file/d/1RdlRIiCoKuImu8ierV1CvdIPcdfVQz6b/view"
+  },
+  {
     "resourceId": "RES-DOC-5E758CD2CEDD",
     "documentId": "DOC-4E3F45D3C46F",
     "title": "s2025_stb_lighting_v1.1",
@@ -1576,6 +1378,29 @@
       "Graphics"
     ],
     "canonicalUrl": "https://drive.google.com/file/d/1rpyyQc8HvaX5lStFa-YefposJjGO4xU0/view",
+    "thumbnail": null
+  },
+  {
+    "resourceId": "RES-DOC-FED96F58F884",
+    "documentId": "DOC-E5027A739171",
+    "title": "sss-siggraph-2025-advances-published",
+    "sourceFormat": "PPTX",
+    "engine": "Omniverse RTX Renderer / NVIDIA RTX Character Rendering",
+    "level": "algorithm / implementation",
+    "tags": [
+      "SSS",
+      "SubsurfaceScattering",
+      "ReSTIR",
+      "PathTracing",
+      "Diffusion",
+      "BSSRDF",
+      "RayTracing",
+      "CharacterRendering"
+    ],
+    "domains": [
+      "Graphics"
+    ],
+    "canonicalUrl": "https://drive.google.com/file/d/1rYjv2_KuwqYUyqVdO9EdtxO7OTTOxybs/view",
     "thumbnail": null
   },
   {
@@ -1633,6 +1458,43 @@
     "canonicalUrl": "https://drive.google.com/file/d/1szfKfyl5pDaViOhGHo3HMXSzHMMZCkAc/view"
   },
   {
+    "resourceId": "RES-20260816-008",
+    "documentId": "DOC-8F36629A52C4",
+    "title": "Apers_Advances-s2024_Shipping-Dynamic-GI",
+    "sourceFormat": "PDF",
+    "thumbnail": "assets/generated/documents/DOC-8F36629A52C4.webp",
+    "engine": "Frostbite",
+    "level": "production / implementation",
+    "tags": [
+      "GI",
+      "Surfels",
+      "GIBS",
+      "Frostbite",
+      "DynamicGI",
+      "Production"
+    ],
+    "domains": [
+      "Graphics"
+    ],
+    "canonicalUrl": "https://drive.google.com/file/d/1Tox5QnuDzWDQ1Q_PVVeZSEbTv-satADk/view"
+  },
+  {
+    "resourceId": "RES-20260812-023",
+    "documentId": "DOC-135CA74564B6",
+    "title": "ゲームオーディオ実装の現在と未来は？ サウンドミドルウェアは何を支え、 どこへ向かうのか",
+    "sourceFormat": "PDF",
+    "thumbnail": "assets/generated/documents/DOC-135CA74564B6.webp",
+    "engine": "General",
+    "level": "unknown",
+    "tags": [
+      "CEDEC2026"
+    ],
+    "domains": [
+      "Audio"
+    ],
+    "canonicalUrl": "https://drive.google.com/file/d/1TXKCSCTh-6rkG8SvKVOvU_ZskMeCAknO/view"
+  },
+  {
     "resourceId": "RES-20260812-044",
     "documentId": "DOC-2B317B78B36A",
     "title": "AI Agent導⼊のラストマイル",
@@ -1647,6 +1509,77 @@
       "AI"
     ],
     "canonicalUrl": "https://drive.google.com/file/d/1uIWchYADc5p09gCRYiGKgcMyV64T3_it/view"
+  },
+  {
+    "resourceId": "RES-20260812-010",
+    "documentId": "DOC-12776F73CFB8",
+    "title": "CEDEC2026_フルスクラッチ3D生成AI_荒木",
+    "sourceFormat": "PDF",
+    "thumbnail": "assets/generated/documents/DOC-12776F73CFB8.webp",
+    "engine": "General",
+    "level": "unknown",
+    "tags": [
+      "CEDEC2026"
+    ],
+    "domains": [
+      "AI"
+    ],
+    "canonicalUrl": "https://drive.google.com/file/d/1UqayIPQgbmoPavJoSoLTGo--LjU5gUXR/view"
+  },
+  {
+    "resourceId": "RES-20260815-003",
+    "documentId": "DOC-C29B55EBE666",
+    "title": "Ray tracing the world of Assassin's Creed Shadows",
+    "sourceFormat": "PDF",
+    "thumbnail": "assets/generated/documents/DOC-C29B55EBE666.webp",
+    "engine": "Anvil / Assassin’s Creed Shadows",
+    "level": "production / implementation",
+    "tags": [
+      "RayTracing",
+      "RTGI",
+      "GPUDriven",
+      "SceneDescription",
+      "PlatformScalability",
+      "Ubisoft"
+    ],
+    "domains": [
+      "Graphics"
+    ],
+    "canonicalUrl": "https://drive.google.com/file/d/1UvRLS-vA9eTU_EQ2n7rVMd5JfrrGZ9QL/view"
+  },
+  {
+    "resourceId": "RES-20260812-028",
+    "documentId": "DOC-27BF0A330306",
+    "title": "Pokémon TCG Pocketのバトルを⽀える 強化学習AI技術",
+    "sourceFormat": "PDF",
+    "thumbnail": "assets/generated/documents/DOC-27BF0A330306.webp",
+    "engine": "General",
+    "level": "unknown",
+    "tags": [
+      "CEDEC2026"
+    ],
+    "domains": [
+      "AI",
+      "GameDevelopment"
+    ],
+    "canonicalUrl": "https://drive.google.com/file/d/1V8gITXlLssvbEAZHd-uKJbxI6Fj-b8SV/view"
+  },
+  {
+    "resourceId": "RES-20260812-029",
+    "documentId": "DOC-5C70FB2A7049",
+    "title": "UIの実装に強くなる！",
+    "sourceFormat": "PDF",
+    "thumbnail": "assets/generated/documents/DOC-5C70FB2A7049.webp",
+    "engine": "General",
+    "level": "unknown",
+    "tags": [
+      "CEDEC2026"
+    ],
+    "domains": [
+      "Programming",
+      "GameDevelopment"
+    ],
+    "canonicalUrl": "https://drive.google.com/file/d/1vbtIa3I4mv2L98E6PC6EJ-oK6Uq3IHE5/view"
   },
   {
     "resourceId": "RES-20260808-006",
@@ -1671,21 +1604,21 @@
     "thumbnail": null
   },
   {
-    "resourceId": "RES-20260812-029",
-    "documentId": "DOC-5C70FB2A7049",
-    "title": "UIの実装に強くなる！",
+    "resourceId": "RES-20260812-035",
+    "documentId": "DOC-CBBFD96145CE",
+    "title": "『モンスターハンターストーリーズ３』 共に闘うキャラの個性：RPGバトルAIにおける機械学習と従来手法の融合",
     "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-5C70FB2A7049.webp",
+    "thumbnail": "assets/generated/documents/DOC-CBBFD96145CE.webp",
     "engine": "General",
     "level": "unknown",
     "tags": [
       "CEDEC2026"
     ],
     "domains": [
-      "Programming",
+      "AI",
       "GameDevelopment"
     ],
-    "canonicalUrl": "https://drive.google.com/file/d/1vbtIa3I4mv2L98E6PC6EJ-oK6Uq3IHE5/view"
+    "canonicalUrl": "https://drive.google.com/file/d/1WVkQmKsAjFjz7uvpBC3t8DOK4cMSQEIZ/view"
   },
   {
     "resourceId": "RES-20260812-008",
@@ -1704,6 +1637,37 @@
     "thumbnail": null
   },
   {
+    "resourceId": "RES-20260812-014",
+    "documentId": "DOC-8803597D996E",
+    "title": "【UE5×RIGDOCKS】自社専用システム『RIGDRED』を構築!~SKYSQUAREから始まる次世代の音響ワークフロー~",
+    "sourceFormat": "PDF",
+    "thumbnail": "assets/generated/documents/DOC-8803597D996E.webp",
+    "engine": "General",
+    "level": "unknown",
+    "tags": [
+      "CEDEC2026"
+    ],
+    "domains": [
+      "Audio",
+      "Tools"
+    ],
+    "canonicalUrl": "https://drive.google.com/file/d/1XE6T6wEKI5xGPzBqr1WVQ3Qn8CTezTBU/view"
+  },
+  {
+    "resourceId": "RES-20260812-027",
+    "documentId": "DOC-1BA723D58541",
+    "title": "『LIVING with LIVLIES』運用を支える技術",
+    "sourceFormat": "PDF",
+    "thumbnail": "assets/generated/documents/DOC-1BA723D58541.webp",
+    "engine": "General",
+    "level": "unknown",
+    "tags": [
+      "CEDEC2026"
+    ],
+    "domains": [],
+    "canonicalUrl": "https://drive.google.com/file/d/1Y-R-DwBYPMKwS9C820yJ70hj8_VaX6N0/view"
+  },
+  {
     "resourceId": "RES-DOC-F3655BB00705",
     "documentId": "DOC-95FD194CA7E9",
     "title": "Unity で高度なビジュアル エフェクトを作成するための決定版ガイド (Unity 6 対応)",
@@ -1714,23 +1678,6 @@
     "domains": [],
     "canonicalUrl": "https://drive.google.com/file/d/1y3TPOa1FapcjN8pUZ84k1-6evX5kQtjJ/view",
     "thumbnail": null
-  },
-  {
-    "resourceId": "RES-20260812-017",
-    "documentId": "DOC-9DFAB64ACDEF",
-    "title": "スクリプト不要、仕込みも最小限。 動画と生成AIで挑む ゲームQAの現在地",
-    "sourceFormat": "PDF",
-    "thumbnail": "assets/generated/documents/DOC-9DFAB64ACDEF.webp",
-    "engine": "General",
-    "level": "unknown",
-    "tags": [
-      "CEDEC2026"
-    ],
-    "domains": [
-      "AI",
-      "GameDevelopment"
-    ],
-    "canonicalUrl": "https://drive.google.com/file/d/1yHepuucokPGHFP1IUmRAvQ1SO5cBUDGd/view"
   },
   {
     "resourceId": "RES-20260812-049",
@@ -1750,6 +1697,59 @@
     "canonicalUrl": "https://drive.google.com/file/d/1ydyK0Uy7ZLLm8be6638JbIflCoeUZt-6/view"
   },
   {
+    "resourceId": "RES-20260812-017",
+    "documentId": "DOC-9DFAB64ACDEF",
+    "title": "スクリプト不要、仕込みも最小限。 動画と生成AIで挑む ゲームQAの現在地",
+    "sourceFormat": "PDF",
+    "thumbnail": "assets/generated/documents/DOC-9DFAB64ACDEF.webp",
+    "engine": "General",
+    "level": "unknown",
+    "tags": [
+      "CEDEC2026"
+    ],
+    "domains": [
+      "AI",
+      "GameDevelopment"
+    ],
+    "canonicalUrl": "https://drive.google.com/file/d/1yHepuucokPGHFP1IUmRAvQ1SO5cBUDGd/view"
+  },
+  {
+    "resourceId": "RES-20260808-008",
+    "documentId": "DOC-C94962EB3D53",
+    "title": "GRANBLUE FANTASY Relink_Endless Ragnarokのバトル制作事例",
+    "sourceFormat": "PDF",
+    "engine": "GRANBLUE FANTASY: Relink - Endless Ragnarok",
+    "level": "game design / production",
+    "tags": [
+      "CombatDesign",
+      "CompanionAI",
+      "AssistMode",
+      "Iteration",
+      "BehaviorTree",
+      "FSM",
+      "Relink"
+    ],
+    "domains": [
+      "GameDevelopment"
+    ],
+    "canonicalUrl": "https://drive.google.com/file/d/1Yr-Eww1FacrbXGqnKhGpUaXDeHjs9YO0/view",
+    "thumbnail": null
+  },
+  {
+    "resourceId": "RES-DOC-748284CE92A0",
+    "documentId": "DOC-326300CB503C",
+    "title": "Unity ゲームの プロファイリングに 関する決定版ガイド",
+    "sourceFormat": "PDF",
+    "thumbnail": "assets/generated/documents/DOC-326300CB503C.webp",
+    "engine": "General",
+    "level": "unknown",
+    "tags": [],
+    "domains": [
+      "Programming"
+    ],
+    "canonicalUrl": "https://drive.google.com/file/d/1Z02pwqgEjymi8PvctJVQdUBLKC2F7-3S/view"
+  },
+  {
     "resourceId": "RES-DOC-50EF16C14390",
     "documentId": "DOC-99BE3E6DB6E7",
     "title": "ScriptableObject を使って Unity でモジュラーゲーム アーキテクチャを作成する",
@@ -1765,17 +1765,17 @@
     "canonicalUrl": "https://drive.google.com/file/d/1zWe6stYRQYi6lPQkgisIZBz4oUa2RZUN/view"
   },
   {
-    "resourceId": "RES-20260724-009",
-    "documentId": "DOC-8B90A3BDD17D",
-    "title": "Cinemachineを活用した 魅力的なカメラワークを実現するための技術 〜 IDOLY PRIDE 360°ライブでの活用例 〜",
+    "resourceId": "RES-DOC-7E71346B1CFB",
+    "documentId": "DOC-1DD0E8CAF7D6",
+    "title": "Unity における モバイル、XR、ウェブの パフォーマンス最適化",
     "sourceFormat": "PDF",
-    "engine": "Unity",
+    "thumbnail": "assets/generated/documents/DOC-1DD0E8CAF7D6.webp",
+    "engine": "General",
     "level": "unknown",
     "tags": [],
     "domains": [
-      "GameDevelopment"
+      "Programming"
     ],
-    "canonicalUrl": "https://drive.google.com/file/d/17DkvOg7oeO9etzmNqKpleJqwwcDEYEbG/view",
-    "thumbnail": null
+    "canonicalUrl": "https://drive.google.com/file/d/1Zx9_V8at8JvSwuy2buE0X9q0NpYXJV9a/view"
   }
 ]

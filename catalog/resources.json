@@ -2076,19 +2076,19 @@
   },
   {
     "id": "RES-20261021-001",
-    "kind": "repository",
     "title": "Narimono（鳴物）",
     "url": "https://github.com/SoraneDev/Narimono",
     "canonicalUrl": "https://github.com/SoraneDev/Narimono",
-    "tags": [
-      "Unity",
-      "C#",
-      "Audio"
-    ],
+    "kind": "repository",
     "topics": [
       "Unity 6 / AudioSource pooling / ScriptableObject Audio Cue / 3D audio distance culling / fade / concurrency control"
     ],
     "reviewState": "Inbox",
-    "useState": "Reference"
+    "useState": "Reference",
+    "tags": [
+      "Unity",
+      "C#",
+      "Audio"
+    ]
   }
 ]
