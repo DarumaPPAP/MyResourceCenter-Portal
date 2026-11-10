@@ -746,5 +746,64 @@
       "Unity",
       "C#"
     ]
+  },
+  {
+    "id": "RES-20261110-003",
+    "title": "[PREVIEW] Raytracing: Clustered Geometry, Partitioned TLAS, Indirect Acceleration Structure Builds",
+    "url": "https://devblogs.microsoft.com/directx/clas-ptlas-preview/",
+    "canonicalUrl": "https://devblogs.microsoft.com/directx/clas-ptlas-preview/",
+    "publisher": "Microsoft DirectX Developer Blog",
+    "authors": [
+      "Amar Patel"
+    ],
+    "publishedAt": "2026-10-28",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "domains": [
+      "Graphics"
+    ],
+    "topics": [],
+    "engines": [],
+    "languages": [
+      "en"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Medium",
+    "freshness": "Unknown",
+    "tags": [
+      "DirectX",
+      "RayTracing",
+      "Rendering",
+      "Mesh"
+    ]
+  },
+  {
+    "id": "RES-20261110-007",
+    "title": "Behind the Frame: Endfield",
+    "url": "https://endfield-behind-the-frame.vinluo46.chatgpt.site/en",
+    "canonicalUrl": "https://endfield-behind-the-frame.vinluo46.chatgpt.site/en",
+    "publisher": "vinluo46.chatgpt.site",
+    "authors": [
+      "vinluo46"
+    ],
+    "publishedAt": "2026-11-09",
+    "kind": "website",
+    "contentType": "visual-explainer",
+    "category": "Tech",
+    "domains": [
+      "Graphics"
+    ],
+    "topics": [],
+    "engines": [],
+    "languages": [],
+    "reviewState": "Inbox",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Rendering"
+    ]
   }
 ]
