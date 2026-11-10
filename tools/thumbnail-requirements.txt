@@ -1,4 +1,5 @@
 # Full WebP decoding is required for publication validation.
-Pillow==12.3.0
+# Pillow 13.0.0 fixes critical decoder vulnerabilities; requires Python >=3.11.
+Pillow==13.0.0
 # Match browser WHATWG hostname normalization for Website facet identity.
 idna==3.18
