@@ -403,7 +403,8 @@
     "freshness": "Unknown",
     "tags": [
       "DirectX"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-9F946479B20F.webp"
   },
   {
     "id": "RES-20261019-002",
@@ -438,7 +439,8 @@
       "DirectX",
       "ComputeShader",
       "Rendering"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20261019-002.webp"
   },
   {
     "id": "RES-20261019-006",
@@ -474,7 +476,8 @@
       "Optimization",
       "Culling",
       "Performance"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20261019-006.webp"
   },
   {
     "id": "RES-20261019-010",
@@ -498,7 +501,8 @@
     "useState": "Reference",
     "confidence": "Medium",
     "freshness": "Current",
-    "tags": []
+    "tags": [],
+    "previewImage": "assets/generated/link-previews/RES-20261019-010.webp"
   },
   {
     "id": "RES-20261027-004",
@@ -528,7 +532,8 @@
     "useState": "Reference",
     "confidence": "High",
     "freshness": "Aging",
-    "tags": []
+    "tags": [],
+    "previewImage": "assets/generated/link-previews/RES-20261027-004.webp"
   },
   {
     "id": "RES-WEB-BD05F98D31D7",
@@ -564,7 +569,8 @@
       "Mesh",
       "Animation",
       "AssetManagement"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-BD05F98D31D7.webp"
   },
   {
     "id": "RES-WEB-0ECD9A081677",
@@ -599,7 +605,8 @@
       "ComputeShader",
       "Animation",
       "Performance"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-0ECD9A081677.webp"
   },
   {
     "id": "RES-WEB-DF6A10337ED3",
@@ -635,7 +642,8 @@
       "Animation",
       "AIAgent",
       "AI"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-DF6A10337ED3.webp"
   },
   {
     "id": "RES-20261110-001",
@@ -667,7 +675,8 @@
       "Shader",
       "Mesh",
       "AMD"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20261110-001.webp"
   },
   {
     "id": "RES-20261110-005",
@@ -764,6 +773,7 @@
       "Rendering",
       "Shader",
       "PostProcessing"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-44EC3BEB529B.webp"
   }
 ]

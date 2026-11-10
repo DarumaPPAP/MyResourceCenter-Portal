@@ -497,7 +497,8 @@
       "ComputeShader",
       "Performance",
       "Shader"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-FEB14BD6991C.webp"
   },
   {
     "id": "RES-20261019-004",
@@ -571,7 +572,8 @@
       "Rendering",
       "Shader",
       "Optimization"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20261019-008.webp"
   },
   {
     "id": "RES-20261027-002",
@@ -604,7 +606,8 @@
     "freshness": "Current",
     "tags": [
       "Build"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20261027-002.webp"
   },
   {
     "id": "RES-WEB-650952303513",
@@ -639,7 +642,8 @@
       "Vulkan",
       "Rendering",
       "Shader"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-650952303513.webp"
   },
   {
     "id": "RES-WEB-551C3B566AAE",
@@ -674,7 +678,8 @@
       "ComputeShader",
       "Rendering",
       "Culling"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-551C3B566AAE.webp"
   },
   {
     "id": "RES-WEB-5A24C95C95B8",
@@ -709,7 +714,8 @@
       "Shader",
       "Animation",
       "Culling"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-5A24C95C95B8.webp"
   },
   {
     "id": "RES-WEB-CC0E0FB19BFD",
@@ -745,7 +751,8 @@
     "tags": [
       "Unity",
       "C#"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-CC0E0FB19BFD.webp"
   },
   {
     "id": "RES-20261110-003",
@@ -777,7 +784,8 @@
       "RayTracing",
       "Rendering",
       "Mesh"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20261110-003.webp"
   },
   {
     "id": "RES-20261110-007",
@@ -839,6 +847,7 @@
       "Texture",
       "Memory",
       "Optimization"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-C6F79BAAF290.webp"
   }
 ]
