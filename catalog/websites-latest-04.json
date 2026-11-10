@@ -636,5 +636,96 @@
       "AIAgent",
       "AI"
     ]
+  },
+  {
+    "id": "RES-20261110-001",
+    "title": "西川善司の3DGE：Primitive Shader対Mesh Shaderの真実。ジオメトリパイプライン戦争の内幕とAMDのゲーマー向けGPU戦略",
+    "url": "https://www.4gamer.net/games/660/G066019/20230213083/",
+    "canonicalUrl": "https://www.4gamer.net/games/660/G066019/20230213083/",
+    "publisher": "4Gamer.net",
+    "authors": [
+      "西川善司"
+    ],
+    "publishedAt": "2023-02-14",
+    "kind": "website",
+    "contentType": "interview",
+    "category": "Tech",
+    "domains": [
+      "Graphics"
+    ],
+    "topics": [],
+    "engines": [],
+    "languages": [
+      "ja"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Medium",
+    "freshness": "Stale",
+    "tags": [
+      "Rendering",
+      "Shader",
+      "Mesh",
+      "AMD"
+    ]
+  },
+  {
+    "id": "RES-20261110-005",
+    "title": "ゆるゆるシェーダー交流会 #2 WebGL LTスライド",
+    "url": "https://somahc.github.io/yuru-shader-meetup-slides/1",
+    "canonicalUrl": "https://somahc.github.io/yuru-shader-meetup-slides/1",
+    "publisher": "Soma Sekine (GitHub Pages)",
+    "authors": [
+      "Soma Sekine"
+    ],
+    "publishedAt": "2026-11-07",
+    "kind": "website",
+    "contentType": "conference-slides",
+    "category": "Tech",
+    "domains": [
+      "Graphics"
+    ],
+    "topics": [],
+    "engines": [],
+    "languages": [],
+    "reviewState": "Inbox",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Shader",
+      "Rendering"
+    ]
+  },
+  {
+    "id": "RES-20261110-009",
+    "title": "Split Radiance Cascades",
+    "url": "https://www.jacktollenaar.top/articles/split-rc.html",
+    "canonicalUrl": "https://www.jacktollenaar.top/articles/split-rc.html",
+    "publisher": "Jack Tollenaar",
+    "authors": [
+      "Jack Tollenaar"
+    ],
+    "publishedAt": "2026-10-27",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "domains": [
+      "Graphics"
+    ],
+    "topics": [],
+    "engines": [],
+    "languages": [
+      "en"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Medium",
+    "freshness": "Unknown",
+    "tags": [
+      "Rendering",
+      "Lighting",
+      "RayTracing"
+    ]
   }
 ]

@@ -699,5 +699,102 @@
       "Rendering",
       "Performance"
     ]
+  },
+  {
+    "id": "RES-20261110-002",
+    "title": "Revisiting importance sampling",
+    "url": "https://lisyarus.github.io/blog/posts/revisiting-importance-sampling.html",
+    "canonicalUrl": "https://lisyarus.github.io/blog/posts/revisiting-importance-sampling.html",
+    "publisher": "lisyarus blog",
+    "authors": [
+      "lisyarus"
+    ],
+    "publishedAt": "2026-11-03",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "domains": [
+      "Graphics"
+    ],
+    "topics": [],
+    "engines": [],
+    "languages": [
+      "en"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Medium",
+    "freshness": "Unknown",
+    "tags": [
+      "RayTracing",
+      "Rendering",
+      "Optimization"
+    ]
+  },
+  {
+    "id": "RES-20261110-006",
+    "title": "MegaLights時代にライティングは何を考えるべき？膨大な動的ライトの有効活用TIPS〖Unreal Fest Tokyo 2026〗",
+    "url": "https://gamemakers.jp/article/2026_11_06_149634/",
+    "canonicalUrl": "https://gamemakers.jp/article/2026_11_06_149634/",
+    "publisher": "ゲームメーカーズ",
+    "authors": [
+      "浜井 智史"
+    ],
+    "publishedAt": "2026-11-06",
+    "kind": "website",
+    "contentType": "conference-report",
+    "category": "Tech",
+    "domains": [
+      "GameDevelopment"
+    ],
+    "topics": [],
+    "engines": [
+      "Unreal"
+    ],
+    "languages": [
+      "ja"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Medium",
+    "freshness": "Unknown",
+    "tags": [
+      "UnrealEngine",
+      "Lighting",
+      "Rendering",
+      "Optimization"
+    ]
+  },
+  {
+    "id": "RES-20261110-010",
+    "title": "Shadow Caster Volumes For The Culling Of Potential Shadow Casters",
+    "url": "https://gamedev.net/tutorials/programming/general-and-gameplay-programming/shadow-caster-volumes-for-the-culling-of-potential-shadow-casters-r2330",
+    "canonicalUrl": "https://gamedev.net/tutorials/programming/general-and-gameplay-programming/shadow-caster-volumes-for-the-culling-of-potential-shadow-casters-r2330",
+    "publisher": "GameDev.net",
+    "authors": [
+      "Luke Hutchinson"
+    ],
+    "publishedAt": "2006-10-11",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "domains": [
+      "Graphics"
+    ],
+    "topics": [],
+    "engines": [],
+    "languages": [
+      "en"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Medium",
+    "freshness": "Stale",
+    "tags": [
+      "Culling",
+      "Lighting",
+      "Rendering",
+      "Optimization"
+    ]
   }
 ]
