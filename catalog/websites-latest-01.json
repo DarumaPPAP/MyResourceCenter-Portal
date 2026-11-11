@@ -876,5 +876,29 @@
       "Optimization",
       "Culling"
     ]
+  },
+  {
+    "id": "RES-WEB-2A7BEF12D816",
+    "title": "[발표해설] 인폴드 게임즈의 《인피니티 니키》, GDC 첫 발표: 총괄 프로듀서가 전하는 중국·일본 팀의 협업과 신진 인재 육성",
+    "url": "https://techartnomad.tistory.com/930",
+    "canonicalUrl": "https://techartnomad.tistory.com/930",
+    "publisher": "TechArtNomad",
+    "authors": [
+      "jplee"
+    ],
+    "publishedAt": "2026-11-10",
+    "kind": "website",
+    "contentType": "conference-commentary",
+    "category": "Idea",
+    "topics": [
+      "Infinity Nikki / GDC / Game Design / Cross-cultural Team Collaboration / Level Design"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "AI"
+    ]
   }
 ]
