@@ -904,5 +904,33 @@
       "DirectX",
       "Vulkan"
     ]
+  },
+  {
+    "id": "RES-WEB-06F3D4C81456",
+    "title": "Explicit LOD-Conditioned Anisotropic Filtering for Neural Texture Compression",
+    "url": "https://arxiv.org/abs/2611.12650",
+    "canonicalUrl": "https://arxiv.org/abs/2611.12650",
+    "publisher": "arXiv",
+    "authors": [
+      "Shin Fujieda",
+      "Takahiro Harada"
+    ],
+    "publishedAt": "2026-11-09",
+    "kind": "website",
+    "contentType": "research-paper",
+    "category": "Tech",
+    "topics": [
+      "Neural Texture Compression / Anisotropic Filtering / LOD"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Texture",
+      "Rendering",
+      "MachineLearning",
+      "Optimization"
+    ]
   }
 ]

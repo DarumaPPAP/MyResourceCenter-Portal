@@ -913,5 +913,33 @@
       "Rendering",
       "Camera"
     ]
+  },
+  {
+    "id": "RES-WEB-A82A743C4F50",
+    "title": "Real-Time Volumetric Light Transport Inference without a Path",
+    "url": "https://arxiv.org/abs/2611.12103",
+    "canonicalUrl": "https://arxiv.org/abs/2611.12103",
+    "publisher": "arXiv",
+    "authors": [
+      "Ludwic Leonard",
+      "Ruediger Westermann"
+    ],
+    "publishedAt": "2026-11-09",
+    "kind": "website",
+    "contentType": "research-paper",
+    "category": "Tech",
+    "topics": [
+      "Volumetric Rendering / Light Transport / Neural Inference"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Rendering",
+      "Lighting",
+      "MachineLearning",
+      "Performance"
+    ]
   }
 ]

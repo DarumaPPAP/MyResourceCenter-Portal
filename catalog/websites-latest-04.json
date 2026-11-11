@@ -802,5 +802,60 @@
       "C#",
       "Performance"
     ]
+  },
+  {
+    "id": "RES-WEB-1D28C22C389C",
+    "title": "Unity パフォーマンスチューニング ティップス 2026",
+    "url": "https://cyberagentgameentertainment.github.io/UnityPerformanceTuningTips2026/ja/index.html",
+    "canonicalUrl": "https://cyberagentgameentertainment.github.io/UnityPerformanceTuningTips2026/ja/index.html",
+    "publisher": "サイバーエージェント ゲーム・エンターテイメント事業部",
+    "authors": [
+      "サイバーエージェント ゲーム・エンターテイメント事業部"
+    ],
+    "publishedAt": "2026-11-11",
+    "kind": "website",
+    "contentType": "web-book",
+    "category": "Tech",
+    "topics": [
+      "Unity 6 / Performance Tuning / GraphicsStateCollection / RenderGraph / Shader / Animation / AssetBundle"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Unity",
+      "Rendering",
+      "Optimization",
+      "Performance",
+      "RenderGraph"
+    ]
+  },
+  {
+    "id": "RES-WEB-5EC9858F43ED",
+    "title": "Light baking with Unity CLI",
+    "url": "https://www.youtube.com/watch?v=yssXY1oKxEk",
+    "canonicalUrl": "https://www.youtube.com/watch?v=yssXY1oKxEk",
+    "publisher": "Unity",
+    "authors": [
+      "Unity"
+    ],
+    "publishedAt": "2026-10-27",
+    "kind": "website",
+    "contentType": "technical-video",
+    "category": "Tech",
+    "topics": [
+      "Unity CLI / Light Baking / Automation / URP"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Unity",
+      "Editor",
+      "Lighting",
+      "Build"
+    ]
   }
 ]
