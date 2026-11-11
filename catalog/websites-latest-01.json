@@ -849,5 +849,32 @@
       "Rendering"
     ],
     "previewImage": "assets/generated/link-previews/RES-WEB-184314A053A8.webp"
+  },
+  {
+    "id": "RES-WEB-004C52ADE78B",
+    "title": "【Unity】Mesh Rendererから卒業して爆速パフォーマンスをゲットしよう。BatchRendererGroup 2022の詳解",
+    "url": "https://infiniteloop.co.jp/tech-blog/2023/06/unity_brg_06_2023/",
+    "canonicalUrl": "https://infiniteloop.co.jp/tech-blog/2023/06/unity_brg_06_2023/",
+    "publisher": "インフィニットループ技術ブログ",
+    "authors": [
+      "y-murakami"
+    ],
+    "publishedAt": "2023-06-06",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "topics": [
+      "BatchRendererGroup / Renderer / GPU Instancing"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Unity",
+      "Rendering",
+      "Optimization",
+      "Culling"
+    ]
   }
 ]
