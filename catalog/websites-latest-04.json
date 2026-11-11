@@ -775,5 +775,32 @@
       "PostProcessing"
     ],
     "previewImage": "assets/generated/link-previews/RES-WEB-44EC3BEB529B.webp"
+  },
+  {
+    "id": "RES-WEB-6704A81D62CC",
+    "title": "【Unity】 AnimationCurveをBurstで使えるようにスレッドセーフ化しよう",
+    "url": "https://infiniteloop.co.jp/tech-blog/2023/06/animationcurve_burst_0621/",
+    "canonicalUrl": "https://infiniteloop.co.jp/tech-blog/2023/06/animationcurve_burst_0621/",
+    "publisher": "インフィニットループ技術ブログ",
+    "authors": [
+      "y-murakami"
+    ],
+    "publishedAt": "2023-06-21",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "topics": [
+      "AnimationCurve / Burst / Thread Safety"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Unity",
+      "Animation",
+      "C#",
+      "Performance"
+    ]
   }
 ]

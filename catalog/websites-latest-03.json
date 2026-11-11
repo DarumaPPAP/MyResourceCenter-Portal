@@ -855,5 +855,63 @@
     "tags": [
       "UnrealEngine"
     ]
+  },
+  {
+    "id": "RES-WEB-9EF0674A48C2",
+    "title": "【Unity】AnimatorやPlayableGraphからも卒業！？スキニング・スケルタルアニメーションの独自実装をして全局面で勝つ・前編【中級者向け】",
+    "url": "https://infiniteloop.co.jp/tech-blog/2023/07/animatorreplacepart1/",
+    "canonicalUrl": "https://infiniteloop.co.jp/tech-blog/2023/07/animatorreplacepart1/",
+    "publisher": "インフィニットループ技術ブログ",
+    "authors": [
+      "y-murakami"
+    ],
+    "publishedAt": "2023-07-26",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "topics": [
+      "Animator / PlayableGraph / Custom Skeletal Animation"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Unity",
+      "Animation",
+      "Optimization",
+      "C#"
+    ]
+  },
+  {
+    "id": "RES-WEB-D1141C314BEF",
+    "title": "Wid3R: Wide Field-of-View 3D Reconstruction via Camera Model Conditioning",
+    "url": "https://arxiv.org/html/2602.05321v2",
+    "canonicalUrl": "https://arxiv.org/html/2602.05321v2",
+    "publisher": "arXiv",
+    "authors": [
+      "Dongki Jung",
+      "Jaehoon Choi",
+      "Adil Qureshi",
+      "Somi Jeong",
+      "Dinesh Manocha",
+      "Suyong Yeon"
+    ],
+    "publishedAt": "2026-03-26",
+    "kind": "website",
+    "contentType": "research-paper",
+    "category": "Tech",
+    "topics": [
+      "Wid3R / Wide Field-of-View / 3D Reconstruction / Camera Model Conditioning"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "MachineLearning",
+      "Rendering",
+      "Camera"
+    ]
   }
 ]

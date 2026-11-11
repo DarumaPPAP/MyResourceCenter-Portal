@@ -849,5 +849,60 @@
       "Optimization"
     ],
     "previewImage": "assets/generated/link-previews/RES-WEB-C6F79BAAF290.webp"
+  },
+  {
+    "id": "RES-WEB-7F072DDCAC9D",
+    "title": "【Unity】BlendShapeを倍速化！GPU処理を自分で書いて、Unity公式BlendShapeのパフォーマンスに勝ってみよう！",
+    "url": "https://infiniteloop.co.jp/tech-blog/2023/08/blendshape_oreore/",
+    "canonicalUrl": "https://infiniteloop.co.jp/tech-blog/2023/08/blendshape_oreore/",
+    "publisher": "インフィニットループ技術ブログ",
+    "authors": [
+      "y-murakami"
+    ],
+    "publishedAt": "2023-08-08",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "topics": [
+      "GPU BlendShape / Compute Shader / SkinnedMeshRenderer"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Unity",
+      "Animation",
+      "Shader",
+      "Optimization"
+    ]
+  },
+  {
+    "id": "RES-WEB-53F75839F1A2",
+    "title": "描かない物体をどう決めるか：Frustum・Occlusion Query・Software・Hi-Z",
+    "url": "https://www.shader.jp/blog/graphics-samples-culling/",
+    "canonicalUrl": "https://www.shader.jp/blog/graphics-samples-culling/",
+    "publisher": "Shader.jp",
+    "authors": [
+      "shader dot(AI)"
+    ],
+    "publishedAt": "2026-11-10",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "topics": [
+      "Frustum Culling / Occlusion Query / Software Occlusion / Hi-Z"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Rendering",
+      "Culling",
+      "Optimization",
+      "DirectX",
+      "Vulkan"
+    ]
   }
 ]
