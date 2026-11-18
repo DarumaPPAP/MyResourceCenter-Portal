@@ -117,7 +117,7 @@ async function main() {
     await page.locator('.website-card').first().waitFor();
     assert.equal(await page.locator('.website-card').count(),20,'Websites renders 20 cards per page');
     const iconSource = await page.locator('.site-icon-image').first().getAttribute('src');
-    assert.match(iconSource,/^assets\/generated\/site-icons\/[a-z0-9._-]+\.png$/i,'Site Icons must use a safe local hostname cache path');
+    assert.match(iconSource,/^assets\/generated\/site-icons\/[a-z0-9._-]+\.png\?v=[a-f0-9]{12}$/i,'Site Icons must use a safe local path and public manifest version');
     await page.locator('.site-icon-box.is-missing .site-icon-fallback').first().waitFor();
     await page.locator('#pagination a.website-page-number[data-page="2"]').click();
     await page.waitForFunction(()=>new URL(location.href).searchParams.get('page')==='2');
