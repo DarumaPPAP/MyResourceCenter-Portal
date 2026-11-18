@@ -16,15 +16,15 @@ assert.doesNotMatch(trendHtml, /index\.html#tags/, 'Trend has no stale Home frag
 assert.match(trendHtml, /最大100件\s*\/\s*日/, 'Trend documents the validated 100-items-per-day limit');
 
 vm.runInNewContext(fs.readFileSync(path.join(__dirname, '../assets/websites.js'), 'utf8'), context);
-const W = context.window.MRCWebsites;
+const WIcon = context.window.MRCWebsites;
 const iconRow = { url: 'https://www.docswell.com/example' };
-assert.equal(W.siteIconPath(iconRow), 'assets/generated/site-icons/www.docswell.com.png');
+assert.equal(WIcon.siteIconPath(iconRow), 'assets/generated/site-icons/www.docswell.com.png');
 const sourceCommit = JSON.parse(fs.readFileSync(path.join(__dirname, '../catalog/manifest.json'), 'utf8')).sourceCommit;
-W.setSiteIconVersion(sourceCommit);
-assert.equal(W.siteIconPath(iconRow),
+WIcon.setSiteIconVersion(sourceCommit);
+assert.equal(WIcon.siteIconPath(iconRow),
   'assets/generated/site-icons/www.docswell.com.png?v=' + sourceCommit.slice(0, 12));
-W.setSiteIconVersion('javascript:evil');
-assert.equal(W.siteIconPath(iconRow), 'assets/generated/site-icons/www.docswell.com.png');
+WIcon.setSiteIconVersion('javascript:evil');
+assert.equal(WIcon.siteIconPath(iconRow), 'assets/generated/site-icons/www.docswell.com.png');
 
 vm.runInNewContext(fs.readFileSync(path.join(__dirname, '../assets/catalog.js'), 'utf8'), context);
 const C = context.window.MRCCatalog;
