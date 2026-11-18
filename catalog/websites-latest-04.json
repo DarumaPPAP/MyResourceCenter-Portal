@@ -857,5 +857,97 @@
       "Lighting",
       "Build"
     ]
+  },
+  {
+    "id": "RES-WEB-3E7918840D51",
+    "title": "ラセングル求人企画【第1回／全6回】「最強のセルルック」を共に創る。アニメーターの表現を支える、モデルとリグ",
+    "url": "https://cgworld.jp/special-feature/202610-lasengle.html",
+    "canonicalUrl": "https://cgworld.jp/special-feature/202610-lasengle.html",
+    "publisher": "CGWORLD",
+    "authors": [
+      "尾形美幸"
+    ],
+    "publishedAt": "2026-10-09",
+    "kind": "website",
+    "contentType": "production-interview",
+    "category": "Tech",
+    "topics": [
+      "Lasengle",
+      "Stylized Animation",
+      "Rigging",
+      "Character Modeling"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Animation",
+      "Mesh"
+    ]
+  },
+  {
+    "id": "RES-WEB-E75A11A39018",
+    "title": "EAG-PT: Emission-Aware Gaussians and Path Tracing for Diffuse Indoor Scene Reconstruction and Editing",
+    "url": "https://arxiv.org/abs/2601.23065",
+    "canonicalUrl": "https://arxiv.org/abs/2601.23065",
+    "publisher": "arXiv",
+    "authors": [
+      "Xijie Yang",
+      "Mulin Yu",
+      "Changjian Jiang",
+      "Kerui Ren",
+      "Tao Lu",
+      "Jiangmiao Pang",
+      "Dahua Lin",
+      "Bo Dai",
+      "Linning Xu"
+    ],
+    "publishedAt": "2026-01-30",
+    "kind": "website",
+    "contentType": "research-paper",
+    "category": "Tech",
+    "topics": [
+      "EAG-PT",
+      "3D Gaussian Splatting",
+      "Path Tracing",
+      "Scene Reconstruction"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Rendering",
+      "Lighting",
+      "RayTracing",
+      "MachineLearning"
+    ]
+  },
+  {
+    "id": "RES-WEB-F8A7C45910BF",
+    "title": "Knowledge Catalog で AI エージェントに社内の知識を渡す基盤づくり – ミッション型インターン体験記",
+    "url": "https://developers.cyberagent.co.jp/blog/archives/67259/",
+    "canonicalUrl": "https://developers.cyberagent.co.jp/blog/archives/67259/",
+    "publisher": "CyberAgent Developers Blog",
+    "authors": [
+      "広瀬 エイトル"
+    ],
+    "publishedAt": "2026-11-06",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "topics": [
+      "Knowledge Catalog / Open Knowledge Format / Context Engineering / Agent Knowledge Retrieval / Tenant Isolation"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "AIAgent",
+      "AI",
+      "LLM"
+    ]
   }
 ]

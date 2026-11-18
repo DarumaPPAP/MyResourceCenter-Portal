@@ -932,5 +932,114 @@
       "MachineLearning",
       "Optimization"
     ]
+  },
+  {
+    "id": "RES-WEB-C189ECA32031",
+    "title": "A Lightweight Differentiable Method for Real-Time Skin Rendering and Digitization",
+    "url": "https://arxiv.org/abs/2611.14451",
+    "canonicalUrl": "https://arxiv.org/abs/2611.14451",
+    "publisher": "arXiv",
+    "authors": [
+      "Mario Marquez-Balduque",
+      "Carlos Rodriguez-Pardo",
+      "Jorge Lopez-Moreno"
+    ],
+    "publishedAt": "2026-11-10",
+    "kind": "website",
+    "contentType": "research-paper",
+    "category": "Tech",
+    "topics": [
+      "Real-Time Skin Rendering",
+      "Screen-Space Subsurface Scattering",
+      "Inverse Rendering"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Rendering",
+      "Shader",
+      "MachineLearning"
+    ]
+  },
+  {
+    "id": "RES-WEB-74FE706FC83E",
+    "title": "アートディレクター視点で解き明かす、新規プロジェクトの立ち上げ方",
+    "url": "https://www.docswell.com/s/gamemakers/57NPRG-GameMakersScramble2026_ArchivesA4",
+    "canonicalUrl": "https://www.docswell.com/s/gamemakers/57NPRG-GameMakersScramble2026_ArchivesA4",
+    "publisher": "ゲームメーカーズ / Docswell",
+    "authors": [
+      "藤田 大介"
+    ],
+    "publishedAt": "2026-11-12",
+    "kind": "website",
+    "contentType": "conference-slides",
+    "category": "Idea",
+    "topics": [
+      "GameMakers Scramble 2026",
+      "Art Direction",
+      "Project Launch",
+      "Game Art"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": []
+  },
+  {
+    "id": "RES-WEB-DD6178381F69",
+    "title": "WorldPartition2024",
+    "url": "https://www.docswell.com/s/EpicGamesJapan/57VP8J-2024-03-04-235031",
+    "canonicalUrl": "https://www.docswell.com/s/EpicGamesJapan/57VP8J-2024-03-04-235031",
+    "publisher": "Epic Games Japan",
+    "authors": [
+      "Takashi Suzuki"
+    ],
+    "publishedAt": "2024-03-05",
+    "kind": "website",
+    "contentType": "presentation-slides",
+    "category": "Tech",
+    "topics": [
+      "World Partition / Streaming Cells / Data Layers / Level Instance / HLOD / OFPA"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "UnrealEngine",
+      "Load",
+      "LOD",
+      "Culling"
+    ]
+  },
+  {
+    "id": "RES-WEB-530EC9748083",
+    "title": "シーン管理と画面遷移を統合するUnityナビゲーション基盤の設計と実装",
+    "url": "https://tech.sumzap.co.jp/entry/unity-navigation-framework-design-and-implementation",
+    "canonicalUrl": "https://tech.sumzap.co.jp/entry/unity-navigation-framework-design-and-implementation",
+    "publisher": "Sumzap Engineering Blog",
+    "authors": [
+      "中北 龍秀"
+    ],
+    "publishedAt": "2026-11-06",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "topics": [
+      "Spica.Navigation / Scene Management / Root Session Screen / Navigation Graph / Async Transitions / EditMode Tests"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Unity",
+      "UI",
+      "Load",
+      "Editor"
+    ]
   }
 ]

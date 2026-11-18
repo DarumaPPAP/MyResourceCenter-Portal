@@ -900,5 +900,122 @@
     "tags": [
       "AI"
     ]
+  },
+  {
+    "id": "RES-WEB-C3A2C3CF5022",
+    "title": "大容量のエフェクトデータを圧縮し、リアルタイムに描画。Zibra AIに聞く「ZibraVDB」＆「ZibraGDS」の開発と活用",
+    "url": "https://cgworld.jp/article/202611-zibraai.html",
+    "canonicalUrl": "https://cgworld.jp/article/202611-zibraai.html",
+    "publisher": "CGWORLD",
+    "authors": [
+      "尾形美幸"
+    ],
+    "publishedAt": "2026-11-12",
+    "kind": "website",
+    "contentType": "technical-interview",
+    "category": "Tech",
+    "topics": [
+      "ZibraVDB",
+      "ZibraGDS",
+      "GPU Decoding",
+      "Volumetric Data Compression"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Rendering",
+      "Optimization",
+      "Mesh"
+    ]
+  },
+  {
+    "id": "RES-WEB-013D52210B16",
+    "title": "ラセングル求人企画【第2回／全6回】「最強のセルルック」を共に創る。表現の追求から制作の自動化まで、モデラーとTAの挑戦",
+    "url": "https://cgworld.jp/special-feature/202611-lasengle.html",
+    "canonicalUrl": "https://cgworld.jp/special-feature/202611-lasengle.html",
+    "publisher": "CGWORLD",
+    "authors": [
+      "尾形美幸"
+    ],
+    "publishedAt": "2026-11-11",
+    "kind": "website",
+    "contentType": "production-interview",
+    "category": "Tech",
+    "topics": [
+      "Lasengle",
+      "Cel Look",
+      "Subsurface Scattering",
+      "Auto Morph",
+      "Rig Automation"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Animation",
+      "Mesh",
+      "Rendering",
+      "Editor"
+    ]
+  },
+  {
+    "id": "RES-WEB-85AFDBFAFA6C",
+    "title": "Dynamic Global Illumination for InteractiveGaussian Splatting Scenes in Real Time | 3D Gaussian Splattingとポリゴンメッシュが混在したシーンで動的にGIをリアルタイム描画する研究技術！ソースコードも公開！",
+    "url": "https://3dnchu.com/archives/rtgi-3dgs-chenxiao-hu/",
+    "canonicalUrl": "https://3dnchu.com/archives/rtgi-3dgs-chenxiao-hu/",
+    "publisher": "3D人-3dnchu-",
+    "authors": [
+      "Ymt3D"
+    ],
+    "publishedAt": "2026-11-03",
+    "kind": "website",
+    "contentType": "technical-news",
+    "category": "Tech",
+    "topics": [
+      "Dynamic Global Illumination",
+      "3D Gaussian Splatting",
+      "Real-Time GI",
+      "Hybrid Mesh Scene"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Rendering",
+      "Lighting",
+      "RayTracing",
+      "MachineLearning"
+    ]
+  },
+  {
+    "id": "RES-WEB-803AC8AB3713",
+    "title": "[번역] 【붕괴: 스타레일】프레임 캡처로 살펴본 렌더링",
+    "url": "https://techartnomad.tistory.com/932",
+    "canonicalUrl": "https://techartnomad.tistory.com/932",
+    "publisher": "TECHARTNOMAD",
+    "authors": [
+      "jplee"
+    ],
+    "publishedAt": "2026-11-11",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "topics": [
+      "Honkai Star Rail / Frame Capture / GBuffer / Character Shadow / Deferred Rendering / TAA"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Rendering",
+      "Shader",
+      "PostProcessing",
+      "Lighting"
+    ]
   }
 ]

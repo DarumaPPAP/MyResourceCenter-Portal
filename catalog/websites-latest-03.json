@@ -941,5 +941,117 @@
       "MachineLearning",
       "Performance"
     ]
+  },
+  {
+    "id": "RES-WEB-35A6BC004999",
+    "title": "Independent Curl",
+    "url": "https://catlikecoding.com/godot/procedural-gpu-patterns/11-independent-curl/",
+    "canonicalUrl": "https://catlikecoding.com/godot/procedural-gpu-patterns/11-independent-curl/",
+    "publisher": "Catlike Coding",
+    "authors": [
+      "Jasper Flick"
+    ],
+    "publishedAt": "2026-11-11",
+    "kind": "website",
+    "contentType": "technical-tutorial",
+    "category": "Tech",
+    "topics": [
+      "Independent Curl",
+      "Procedural GPU Patterns",
+      "Noise"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Godot",
+      "Shader",
+      "Rendering"
+    ]
+  },
+  {
+    "id": "RES-WEB-874A9E59108A",
+    "title": "ローカルLLMはゲーム開発に使えるか、スクウェア・エニックスがNemotronで検証",
+    "url": "https://pc.watch.impress.co.jp/docs/news/2155676.html",
+    "canonicalUrl": "https://pc.watch.impress.co.jp/docs/news/2155676.html",
+    "publisher": "PC Watch",
+    "authors": [
+      "池紀彦"
+    ],
+    "publishedAt": "2026-11-11",
+    "kind": "website",
+    "contentType": "technical-news",
+    "category": "Tech",
+    "topics": [
+      "Local LLM",
+      "Square Enix",
+      "Nemotron",
+      "AI for Game Development"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "LLM",
+      "AI",
+      "AIAgent"
+    ]
+  },
+  {
+    "id": "RES-WEB-80D33CD35617",
+    "title": "Unreal Engine 5 - Mass Frameworkを用いた群衆AI制御の解説【CEDEC 2022】",
+    "url": "https://www.docswell.com/s/EpicGamesJapan/KGPLMK-UE_CEDEC2022_MassFramework",
+    "canonicalUrl": "https://www.docswell.com/s/EpicGamesJapan/KGPLMK-UE_CEDEC2022_MassFramework",
+    "publisher": "Epic Games Japan",
+    "authors": [
+      "Ken Kuwano"
+    ],
+    "publishedAt": "2022-08-24",
+    "kind": "website",
+    "contentType": "presentation-slides",
+    "category": "Tech",
+    "topics": [
+      "Mass Framework / Mass Entity / StateTree / SmartObjects / ZoneGraph / Crowd Simulation"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "UnrealEngine",
+      "ECS",
+      "AI",
+      "Performance"
+    ]
+  },
+  {
+    "id": "RES-WEB-ED5DA0DC6253",
+    "title": "Frame Debugger を全部 CSV に書き出した話",
+    "url": "https://tech.sumzap.co.jp/entry/frame-debugger-all-events-to-csv",
+    "canonicalUrl": "https://tech.sumzap.co.jp/entry/frame-debugger-all-events-to-csv",
+    "publisher": "Sumzap Engineering Blog",
+    "authors": [
+      "財津 大睦"
+    ],
+    "publishedAt": "2026-11-10",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "topics": [
+      "Frame Debugger / CSV Export / Reflection / Unity 6 / URP 17 / Draw Call Comparison"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Unity",
+      "Rendering",
+      "Editor",
+      "URP",
+      "Performance"
+    ]
   }
 ]

@@ -364,6 +364,10 @@
       {
         "id": "RES-20260904-027",
         "role": "overview"
+      },
+      {
+        "id": "RES-WEB-874A9E59108A",
+        "role": "overview"
       }
     ],
     "category": "AI"
@@ -389,6 +393,10 @@
       },
       {
         "id": "RES-20260904-026",
+        "role": "overview"
+      },
+      {
+        "id": "RES-WEB-F8A7C45910BF",
         "role": "overview"
       }
     ],
