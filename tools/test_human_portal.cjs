@@ -390,6 +390,8 @@ async function createWebsitePage(rows,href='https://portal.test/websites.html') 
     'website-facets':{sites:[],authors:[]},
     taxonomy:{categories:{Tech:{displayName:'Tech'}},tags:{Shader:{displayName:'Shader'}}}
   });
+  context.window.MRCCatalog.load=async name =>
+    name==='manifest'?{sourceCommit:'a'.repeat(40)}:{};
   vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../assets/websites.js'),'utf8'),context);
   const inlineScript=websitePageSource.match(/<script>([\s\S]*?)<\/script>/)?.[1];
   assert.ok(inlineScript,'Website page must keep an inline presentation entry point');
