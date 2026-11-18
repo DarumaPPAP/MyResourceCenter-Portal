@@ -15,6 +15,17 @@ assert.match(portalShell, /href: 'taxonomy\.html'/, 'the shared shell supplies t
 assert.doesNotMatch(trendHtml, /index\.html#tags/, 'Trend has no stale Home fragment navigation');
 assert.match(trendHtml, /最大100件\s*\/\s*日/, 'Trend documents the validated 100-items-per-day limit');
 
+vm.runInNewContext(fs.readFileSync(path.join(__dirname, '../assets/websites.js'), 'utf8'), context);
+const WIcon = context.window.MRCWebsites;
+const iconRow = { url: 'https://www.docswell.com/example' };
+assert.equal(WIcon.siteIconPath(iconRow), 'assets/generated/site-icons/www.docswell.com.png');
+const sourceCommit = JSON.parse(fs.readFileSync(path.join(__dirname, '../catalog/manifest.json'), 'utf8')).sourceCommit;
+WIcon.setSiteIconVersion(sourceCommit);
+assert.equal(WIcon.siteIconPath(iconRow),
+  'assets/generated/site-icons/www.docswell.com.png?v=' + sourceCommit.slice(0, 12));
+WIcon.setSiteIconVersion('javascript:evil');
+assert.equal(WIcon.siteIconPath(iconRow), 'assets/generated/site-icons/www.docswell.com.png');
+
 vm.runInNewContext(fs.readFileSync(path.join(__dirname, '../assets/catalog.js'), 'utf8'), context);
 const C = context.window.MRCCatalog;
 const doc = {resourceId:'RES-1', documentId:'DOC-ABC', title:'影 & 光', sourceFormat:'PDF', thumbnail:'assets/generated/documents/DOC-ABC.png', canonicalUrl:'https://drive.google.com/file/d/abc_123-/view', tags:['Shader'], domains:['Graphics'], engine:'Unity'};
@@ -379,6 +390,8 @@ async function createWebsitePage(rows,href='https://portal.test/websites.html') 
     'website-facets':{sites:[],authors:[]},
     taxonomy:{categories:{Tech:{displayName:'Tech'}},tags:{Shader:{displayName:'Shader'}}}
   });
+  context.window.MRCCatalog.load=async name =>
+    name==='manifest'?{sourceCommit:'a'.repeat(40)}:{};
   vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../assets/websites.js'),'utf8'),context);
   const inlineScript=websitePageSource.match(/<script>([\s\S]*?)<\/script>/)?.[1];
   assert.ok(inlineScript,'Website page must keep an inline presentation entry point');

@@ -1,5 +1,13 @@
 (() => {
   const OTHER = '__other__';
+  let siteIconVersion = '';
+
+  function setSiteIconVersion(sourceCommit) {
+    // The public manifest version is a trusted, stable cache key, not a URL.
+    siteIconVersion = typeof sourceCommit === 'string' && /^[a-f0-9]{40}$/i.test(sourceCommit)
+      ? sourceCommit.slice(0, 12).toLowerCase()
+      : '';
+  }
   // Unicode 15.0.0 full case-fold exceptions to JavaScript lowercasing, matching Python str.casefold() after NFKC normalization.
   const CASE_FOLD_SPECIALS = {
     "\u00b5": "\u03bc",
@@ -213,7 +221,8 @@
     if (!host) return '';
     const safeHost = host.includes(':') ? 'ip6_' + host.replace(/:/g, '-') : host;
     if (!/^[a-z0-9._-]+$/i.test(safeHost)) return '';
-    return `assets/generated/site-icons/${safeHost}.png`;
+    const path = `assets/generated/site-icons/${safeHost}.png`;
+    return siteIconVersion ? `${path}?v=${siteIconVersion}` : path;
   }
 
   function linkPreviewPath(row) {
@@ -337,6 +346,7 @@
     filterWebsites,
     sortWebsites,
     siteIconPath,
+    setSiteIconVersion,
     linkPreviewPath,
     renderWebsiteCard,
     bindWebsiteMediaFallback,

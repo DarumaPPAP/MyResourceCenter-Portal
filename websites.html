@@ -142,6 +142,7 @@
       };
       try {
         const loaded = await C.loadMany('websites', 'website-facets', 'taxonomy');
+        W.setSiteIconVersion((await C.load('manifest'))?.sourceCommit);
         ({websites: rows, 'website-facets': facets} = loaded);
         const taxonomy = loaded.taxonomy || {};
         addOptions(controls.category, Object.entries(taxonomy.categories || {}).map(([value,entry]) => ({value,label:entry.displayName || value})));
