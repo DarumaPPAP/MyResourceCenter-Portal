@@ -1017,5 +1017,113 @@
       "PostProcessing",
       "Lighting"
     ]
+  },
+  {
+    "id": "RES-WEB-71F6B2A2BE4A",
+    "title": "『hololive Dreams (ホロライブドリームス)』の背景づくりと24時間ライティング",
+    "url": "https://www.docswell.com/s/UnityJapan/Z1QGE8-2026-11-17-184813",
+    "canonicalUrl": "https://www.docswell.com/s/UnityJapan/Z1QGE8-2026-11-17-184813",
+    "publisher": "Unity Technologies Japan",
+    "authors": [
+      "Unity Technologies Japan"
+    ],
+    "publishedAt": "2026-11-17",
+    "kind": "website",
+    "contentType": "conference-slides",
+    "category": "Tech",
+    "topics": [
+      "hololive Dreams",
+      "24-hour lighting",
+      "Environment art"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Unity",
+      "Lighting",
+      "Rendering"
+    ]
+  },
+  {
+    "id": "RES-WEB-F373C0811648",
+    "title": "Unity 7が来る前に：CoreCLR 移行の仕組みと実践",
+    "url": "https://www.docswell.com/s/UnityJapan/5Q2WJW-2026-11-18-141452",
+    "canonicalUrl": "https://www.docswell.com/s/UnityJapan/5Q2WJW-2026-11-18-141452",
+    "publisher": "Unity Technologies Japan",
+    "authors": [
+      "Unity Technologies Japan"
+    ],
+    "publishedAt": "2026-11-18",
+    "kind": "website",
+    "contentType": "conference-slides",
+    "category": "Tech",
+    "topics": [
+      "CoreCLR",
+      "Unity 7"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Unity",
+      "C#",
+      "Performance"
+    ]
+  },
+  {
+    "id": "RES-WEB-C1D6E3E00713",
+    "title": "軽くて、美しくて、どんな環境でも動くURPライティングの最前線",
+    "url": "https://www.docswell.com/s/UnityJapan/53JWYM-2026-11-16-235027",
+    "canonicalUrl": "https://www.docswell.com/s/UnityJapan/53JWYM-2026-11-16-235027",
+    "publisher": "Unity Technologies Japan",
+    "authors": [
+      "Unity Technologies Japan"
+    ],
+    "publishedAt": "2026-11-16",
+    "kind": "website",
+    "contentType": "conference-slides",
+    "category": "Tech",
+    "topics": [
+      "URP lighting"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Unity",
+      "URP",
+      "Lighting",
+      "Performance"
+    ]
+  },
+  {
+    "id": "RES-WEB-736849A424DC",
+    "title": "AIでXRアプリが作れる時代に、開発者は何を知っておくべきか？",
+    "url": "https://www.docswell.com/s/UnityJapan/ZDM87L-2026-11-17-082446",
+    "canonicalUrl": "https://www.docswell.com/s/UnityJapan/ZDM87L-2026-11-17-082446",
+    "publisher": "Unity Technologies Japan",
+    "authors": [
+      "Unity Technologies Japan"
+    ],
+    "publishedAt": "2026-11-17",
+    "kind": "website",
+    "contentType": "conference-slides",
+    "category": "Tech",
+    "topics": [
+      "XR application development"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Unity",
+      "AI",
+      "AIAgent"
+    ]
   }
 ]

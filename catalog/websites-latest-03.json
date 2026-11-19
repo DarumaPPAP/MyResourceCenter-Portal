@@ -1053,5 +1053,85 @@
       "URP",
       "Performance"
     ]
+  },
+  {
+    "id": "RES-WEB-95539E6C1E5E",
+    "title": "高速で美しいUnityの2D表現",
+    "url": "https://www.docswell.com/s/UnityJapan/ZQ2W4M-2026-11-16-235111",
+    "canonicalUrl": "https://www.docswell.com/s/UnityJapan/ZQ2W4M-2026-11-16-235111",
+    "publisher": "Unity Technologies Japan",
+    "authors": [
+      "Unity Technologies Japan"
+    ],
+    "publishedAt": "2026-11-16",
+    "kind": "website",
+    "contentType": "conference-slides",
+    "category": "Tech",
+    "topics": [
+      "Unity 2D rendering"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Unity",
+      "Rendering",
+      "Performance"
+    ]
+  },
+  {
+    "id": "RES-WEB-C92DEB98BEAB",
+    "title": "Unity CLIを活用した迅速なプロトタイピング",
+    "url": "https://www.docswell.com/s/UnityJapan/ZJWMVJ-2026-11-18-141631",
+    "canonicalUrl": "https://www.docswell.com/s/UnityJapan/ZJWMVJ-2026-11-18-141631",
+    "publisher": "Unity Technologies Japan",
+    "authors": [
+      "Unity Technologies Japan"
+    ],
+    "publishedAt": "2026-11-18",
+    "kind": "website",
+    "contentType": "conference-slides",
+    "category": "Tech",
+    "topics": [
+      "Unity CLI",
+      "Prototyping"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Unity",
+      "Editor",
+      "AIAgent"
+    ]
+  },
+  {
+    "id": "RES-WEB-613092DF8623",
+    "title": "常に俺だけトークンが足りないのは何故！？コストを意識したUnityエージェンティック開発のすすめ",
+    "url": "https://www.docswell.com/s/UnityJapan/ZR8RM3-2026-11-16-234500",
+    "canonicalUrl": "https://www.docswell.com/s/UnityJapan/ZR8RM3-2026-11-16-234500",
+    "publisher": "Unity Technologies Japan",
+    "authors": [
+      "Unity Technologies Japan"
+    ],
+    "publishedAt": "2026-11-16",
+    "kind": "website",
+    "contentType": "conference-slides",
+    "category": "Tech",
+    "topics": [
+      "Token cost",
+      "Agentic development"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Unity",
+      "AIAgent",
+      "LLM"
+    ]
   }
 ]

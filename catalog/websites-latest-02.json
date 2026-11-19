@@ -1041,5 +1041,112 @@
       "Load",
       "Editor"
     ]
+  },
+  {
+    "id": "RES-WEB-EE7C711C809F",
+    "title": "Unity 6世代のコンテンツ管理最前線 ― AddressablesとContent Directories",
+    "url": "https://www.docswell.com/s/UnityJapan/Z4NP78-2026-11-18-141915",
+    "canonicalUrl": "https://www.docswell.com/s/UnityJapan/Z4NP78-2026-11-18-141915",
+    "publisher": "Unity Technologies Japan",
+    "authors": [
+      "Unity Technologies Japan"
+    ],
+    "publishedAt": "2026-11-18",
+    "kind": "website",
+    "contentType": "conference-slides",
+    "category": "Tech",
+    "topics": [
+      "Addressables",
+      "Content Directories"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Unity",
+      "AssetManagement",
+      "Load"
+    ]
+  },
+  {
+    "id": "RES-WEB-3D239AA93293",
+    "title": "AIエージェントたちにUnity開発を任せたら、ボクは疑う係になった件",
+    "url": "https://www.docswell.com/s/UnityJapan/ZMQN3G-2026-11-17-000520",
+    "canonicalUrl": "https://www.docswell.com/s/UnityJapan/ZMQN3G-2026-11-17-000520",
+    "publisher": "Unity Technologies Japan",
+    "authors": [
+      "Unity Technologies Japan"
+    ],
+    "publishedAt": "2026-11-17",
+    "kind": "website",
+    "contentType": "conference-slides",
+    "category": "Tech",
+    "topics": [
+      "Agentic Unity development"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Unity",
+      "AIAgent",
+      "AI"
+    ]
+  },
+  {
+    "id": "RES-WEB-8EB0A46DC54E",
+    "title": "ECS For All：進化するUnityのゲームプレイアーキテクチャ",
+    "url": "https://www.docswell.com/s/UnityJapan/57NP6J-2026-11-16-235408",
+    "canonicalUrl": "https://www.docswell.com/s/UnityJapan/57NP6J-2026-11-16-235408",
+    "publisher": "Unity Technologies Japan",
+    "authors": [
+      "Unity Technologies Japan"
+    ],
+    "publishedAt": "2026-11-16",
+    "kind": "website",
+    "contentType": "conference-slides",
+    "category": "Tech",
+    "topics": [
+      "Unity ECS",
+      "Gameplay architecture"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Unity",
+      "ECS",
+      "Performance"
+    ]
+  },
+  {
+    "id": "RES-WEB-2D82BFA393F2",
+    "title": "3D生成AIで、ゲームの「0→1」が変わる ― Unity制作の実例に見る「Meshy」の組み込み方",
+    "url": "https://www.docswell.com/s/UnityJapan/K9NP7P-2026-11-17-185028",
+    "canonicalUrl": "https://www.docswell.com/s/UnityJapan/K9NP7P-2026-11-17-185028",
+    "publisher": "Unity Technologies Japan",
+    "authors": [
+      "Unity Technologies Japan"
+    ],
+    "publishedAt": "2026-11-17",
+    "kind": "website",
+    "contentType": "conference-slides",
+    "category": "Tech",
+    "topics": [
+      "Meshy",
+      "3D generation AI"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Unity",
+      "AI",
+      "Mesh"
+    ]
   }
 ]

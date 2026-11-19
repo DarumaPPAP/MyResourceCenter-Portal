@@ -949,5 +949,110 @@
       "AI",
       "LLM"
     ]
+  },
+  {
+    "id": "RES-WEB-0148D9DE22AC",
+    "title": "Unite 2026 Tokyo - Roadmap",
+    "url": "https://www.docswell.com/s/UnityJapan/54NPRN-2026-11-17-153743",
+    "canonicalUrl": "https://www.docswell.com/s/UnityJapan/54NPRN-2026-11-17-153743",
+    "publisher": "Unity Technologies Japan",
+    "authors": [
+      "Unity Technologies Japan"
+    ],
+    "publishedAt": "2026-11-17",
+    "kind": "website",
+    "contentType": "conference-slides",
+    "category": "Tech",
+    "topics": [
+      "Unity roadmap",
+      "Unite 2026 Tokyo"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Unity"
+    ]
+  },
+  {
+    "id": "RES-WEB-5E005DB40BD8",
+    "title": "全UIを洗い直して作った、IRIAMのUI基盤とその運用",
+    "url": "https://www.docswell.com/s/UnityJapan/5GN7VP-2026-11-17-184906",
+    "canonicalUrl": "https://www.docswell.com/s/UnityJapan/5GN7VP-2026-11-17-184906",
+    "publisher": "Unity Technologies Japan",
+    "authors": [
+      "Unity Technologies Japan"
+    ],
+    "publishedAt": "2026-11-17",
+    "kind": "website",
+    "contentType": "conference-slides",
+    "category": "Tech",
+    "topics": [
+      "IRIAM",
+      "UI architecture"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Unity",
+      "UI",
+      "Editor"
+    ]
+  },
+  {
+    "id": "RES-WEB-A5B591626EC8",
+    "title": "Unity 6におけるUI構築：新機能のご紹介",
+    "url": "https://www.docswell.com/s/UnityJapan/Z8NP62-2026-11-16-234510",
+    "canonicalUrl": "https://www.docswell.com/s/UnityJapan/Z8NP62-2026-11-16-234510",
+    "publisher": "Unity Technologies Japan",
+    "authors": [
+      "Unity Technologies Japan"
+    ],
+    "publishedAt": "2026-11-16",
+    "kind": "website",
+    "contentType": "conference-slides",
+    "category": "Tech",
+    "topics": [
+      "Unity 6",
+      "UI Toolkit"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Unity",
+      "UI",
+      "Editor"
+    ]
+  },
+  {
+    "id": "RES-WEB-86384E683B86",
+    "title": "BIRPからURPへ ― 移行に必要な情報をまとめて解説",
+    "url": "https://www.docswell.com/s/UnityJapan/KJWMRQ-2026-11-16-235814",
+    "canonicalUrl": "https://www.docswell.com/s/UnityJapan/KJWMRQ-2026-11-16-235814",
+    "publisher": "Unity Technologies Japan",
+    "authors": [
+      "Unity Technologies Japan"
+    ],
+    "publishedAt": "2026-11-16",
+    "kind": "website",
+    "contentType": "conference-slides",
+    "category": "Tech",
+    "topics": [
+      "BIRP-to-URP migration"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Unity",
+      "URP",
+      "Rendering"
+    ]
   }
 ]
