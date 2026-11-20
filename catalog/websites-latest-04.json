@@ -704,7 +704,8 @@
     "tags": [
       "Shader",
       "Rendering"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20261110-005.webp"
   },
   {
     "id": "RES-20261110-009",
@@ -801,7 +802,8 @@
       "Animation",
       "C#",
       "Performance"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-6704A81D62CC.webp"
   },
   {
     "id": "RES-WEB-1D28C22C389C",
@@ -884,7 +886,8 @@
     "tags": [
       "Animation",
       "Mesh"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-3E7918840D51.webp"
   },
   {
     "id": "RES-WEB-E75A11A39018",
@@ -922,7 +925,8 @@
       "Lighting",
       "RayTracing",
       "MachineLearning"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-E75A11A39018.webp"
   },
   {
     "id": "RES-WEB-F8A7C45910BF",
@@ -948,7 +952,8 @@
       "AIAgent",
       "AI",
       "LLM"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-F8A7C45910BF.webp"
   },
   {
     "id": "RES-WEB-0148D9DE22AC",
@@ -973,7 +978,8 @@
     "freshness": "Unknown",
     "tags": [
       "Unity"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-0148D9DE22AC.webp"
   },
   {
     "id": "RES-WEB-5E005DB40BD8",
@@ -1000,7 +1006,8 @@
       "Unity",
       "UI",
       "Editor"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-5E005DB40BD8.webp"
   },
   {
     "id": "RES-WEB-A5B591626EC8",
@@ -1027,7 +1034,8 @@
       "Unity",
       "UI",
       "Editor"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-A5B591626EC8.webp"
   },
   {
     "id": "RES-WEB-86384E683B86",
@@ -1053,7 +1061,8 @@
       "Unity",
       "URP",
       "Rendering"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-86384E683B86.webp"
   },
   {
     "id": "RES-WEB-AD8E55F65E8B",
@@ -1081,7 +1090,8 @@
     "tags": [
       "ECS",
       "Performance"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-AD8E55F65E8B.webp"
   },
   {
     "id": "RES-WEB-B0009DED2BA0",
@@ -1106,7 +1116,8 @@
     "useState": "Reference",
     "confidence": "Unverified",
     "freshness": "Unknown",
-    "tags": []
+    "tags": [],
+    "previewImage": "assets/generated/link-previews/RES-WEB-B0009DED2BA0.webp"
   },
   {
     "id": "RES-WEB-039EE2FD1B48",
@@ -1136,6 +1147,7 @@
       "C#",
       "AI",
       "AIAgent"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-039EE2FD1B48.webp"
   }
 ]

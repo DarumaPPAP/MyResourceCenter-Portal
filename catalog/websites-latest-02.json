@@ -875,7 +875,8 @@
       "Animation",
       "Shader",
       "Optimization"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-7F072DDCAC9D.webp"
   },
   {
     "id": "RES-WEB-53F75839F1A2",
@@ -931,7 +932,8 @@
       "Rendering",
       "MachineLearning",
       "Optimization"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-06F3D4C81456.webp"
   },
   {
     "id": "RES-WEB-C189ECA32031",
@@ -961,7 +963,8 @@
       "Rendering",
       "Shader",
       "MachineLearning"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-C189ECA32031.webp"
   },
   {
     "id": "RES-WEB-74FE706FC83E",
@@ -986,7 +989,8 @@
     "useState": "Reference",
     "confidence": "Unverified",
     "freshness": "Unknown",
-    "tags": []
+    "tags": [],
+    "previewImage": "assets/generated/link-previews/RES-WEB-74FE706FC83E.webp"
   },
   {
     "id": "RES-WEB-DD6178381F69",
@@ -1013,7 +1017,8 @@
       "Load",
       "LOD",
       "Culling"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-DD6178381F69.webp"
   },
   {
     "id": "RES-WEB-530EC9748083",
@@ -1040,7 +1045,8 @@
       "UI",
       "Load",
       "Editor"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-530EC9748083.webp"
   },
   {
     "id": "RES-WEB-EE7C711C809F",
@@ -1067,7 +1073,8 @@
       "Unity",
       "AssetManagement",
       "Load"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-EE7C711C809F.webp"
   },
   {
     "id": "RES-WEB-3D239AA93293",
@@ -1093,7 +1100,8 @@
       "Unity",
       "AIAgent",
       "AI"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-3D239AA93293.webp"
   },
   {
     "id": "RES-WEB-8EB0A46DC54E",
@@ -1120,7 +1128,8 @@
       "Unity",
       "ECS",
       "Performance"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-8EB0A46DC54E.webp"
   },
   {
     "id": "RES-WEB-2D82BFA393F2",
@@ -1147,7 +1156,8 @@
       "Unity",
       "AI",
       "Mesh"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-2D82BFA393F2.webp"
   },
   {
     "id": "RES-WEB-9D84633F7562",
@@ -1179,7 +1189,8 @@
       "Performance",
       "LOD",
       "Mesh"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-9D84633F7562.webp"
   },
   {
     "id": "RES-WEB-A537EDEB2B35",
@@ -1207,7 +1218,8 @@
     "tags": [
       "Rendering",
       "Camera"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-A537EDEB2B35.webp"
   },
   {
     "id": "RES-WEB-C50142D5C4BC",
@@ -1232,6 +1244,7 @@
     "useState": "Reference",
     "confidence": "Unverified",
     "freshness": "Unknown",
-    "tags": []
+    "tags": [],
+    "previewImage": "assets/generated/link-previews/RES-WEB-C50142D5C4BC.webp"
   }
 ]

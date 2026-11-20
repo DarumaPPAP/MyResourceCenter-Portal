@@ -808,7 +808,8 @@
       "Lighting",
       "Rendering",
       "Optimization"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-20261110-010.webp"
   },
   {
     "id": "RES-WEB-184314A053A8",
@@ -875,7 +876,8 @@
       "Rendering",
       "Optimization",
       "Culling"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-004C52ADE78B.webp"
   },
   {
     "id": "RES-WEB-2A7BEF12D816",
@@ -899,7 +901,8 @@
     "freshness": "Unknown",
     "tags": [
       "AI"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-2A7BEF12D816.webp"
   },
   {
     "id": "RES-WEB-C3A2C3CF5022",
@@ -928,7 +931,8 @@
       "Rendering",
       "Optimization",
       "Mesh"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-C3A2C3CF5022.webp"
   },
   {
     "id": "RES-WEB-013D52210B16",
@@ -959,7 +963,8 @@
       "Mesh",
       "Rendering",
       "Editor"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-013D52210B16.webp"
   },
   {
     "id": "RES-WEB-85AFDBFAFA6C",
@@ -989,7 +994,8 @@
       "Lighting",
       "RayTracing",
       "MachineLearning"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-85AFDBFAFA6C.webp"
   },
   {
     "id": "RES-WEB-803AC8AB3713",
@@ -1016,7 +1022,8 @@
       "Shader",
       "PostProcessing",
       "Lighting"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-803AC8AB3713.webp"
   },
   {
     "id": "RES-WEB-71F6B2A2BE4A",
@@ -1044,7 +1051,8 @@
       "Unity",
       "Lighting",
       "Rendering"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-71F6B2A2BE4A.webp"
   },
   {
     "id": "RES-WEB-F373C0811648",
@@ -1071,7 +1079,8 @@
       "Unity",
       "C#",
       "Performance"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-F373C0811648.webp"
   },
   {
     "id": "RES-WEB-C1D6E3E00713",
@@ -1098,7 +1107,8 @@
       "URP",
       "Lighting",
       "Performance"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-C1D6E3E00713.webp"
   },
   {
     "id": "RES-WEB-736849A424DC",
@@ -1124,7 +1134,8 @@
       "Unity",
       "AI",
       "AIAgent"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-736849A424DC.webp"
   },
   {
     "id": "RES-WEB-6830D78FCC6A",
@@ -1152,7 +1163,8 @@
     "freshness": "Unknown",
     "tags": [
       "UnrealEngine"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-6830D78FCC6A.webp"
   },
   {
     "id": "RES-WEB-A47CF6FDAFDF",
@@ -1177,7 +1189,8 @@
     "useState": "Reference",
     "confidence": "Unverified",
     "freshness": "Unknown",
-    "tags": []
+    "tags": [],
+    "previewImage": "assets/generated/link-previews/RES-WEB-A47CF6FDAFDF.webp"
   },
   {
     "id": "RES-WEB-FBD614A530BA",
@@ -1206,6 +1219,7 @@
       "RayTracing",
       "Rendering",
       "Lighting"
-    ]
+    ],
+    "previewImage": "assets/generated/link-previews/RES-WEB-FBD614A530BA.webp"
   }
 ]
