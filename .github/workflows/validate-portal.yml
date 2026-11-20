@@ -48,6 +48,7 @@ jobs:
       (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
     permissions:
       contents: read
+      actions: read
       pages: write
       id-token: write
     concurrency:
@@ -69,7 +70,38 @@ jobs:
         uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:
           path: '.'
+          # Keep failed-job reruns from producing duplicate artifact names.
+          name: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
+
+      - name: Wait for Pages artifact to become visible
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ARTIFACT_NAME: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
+        run: |
+          set -euo pipefail
+          # Artifact metadata may not be immediately visible after upload.
+          for attempt in $(seq 1 15); do
+            if artifacts="$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/artifacts?per_page=100" --paginate --jq '.artifacts[].name')"; then
+              count="$(printf '%s\n' "$artifacts" | awk -v target="$ARTIFACT_NAME" '$0 == target { n++ } END { print n+0 }')"
+              if (( count == 1 )); then
+                echo "Artifact ${ARTIFACT_NAME} visible (attempt ${attempt})."
+                # Allow the Pages deployment artifact backend time to converge.
+                sleep 8
+                exit 0
+              fi
+              if (( count > 1 )); then
+                echo "::error::Multiple artifacts named ${ARTIFACT_NAME} (count=${count})"
+                exit 1
+              fi
+            fi
+            if (( attempt < 15 )); then sleep 5; fi
+          done
+          echo "::error::Artifact ${ARTIFACT_NAME} was not visible after bounded retries"
+          exit 1
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
+        with:
+          artifact_name: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
