@@ -1054,5 +1054,33 @@
       "URP",
       "Rendering"
     ]
+  },
+  {
+    "id": "RES-WEB-AD8E55F65E8B",
+    "title": "ECSでゲームロジックをシンプルに、そして速く！自社エンジン SOL-AVES の ECS 活用事例",
+    "url": "https://www.docswell.com/s/gamemakers/51QGG2-GameMakersScramble2026_ArchivesB4",
+    "canonicalUrl": "https://www.docswell.com/s/gamemakers/51QGG2-GameMakersScramble2026_ArchivesB4",
+    "publisher": "ゲームメーカーズ",
+    "authors": [
+      "ゲームメーカーズ"
+    ],
+    "publishedAt": "2026-11-19",
+    "kind": "website",
+    "contentType": "conference-slides",
+    "category": "Tech",
+    "topics": [
+      "SOL-AVES",
+      "Game Logic",
+      "ECS Workflow",
+      "GameMakers Scramble 2026"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "ECS",
+      "Performance"
+    ]
   }
 ]

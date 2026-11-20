@@ -1148,5 +1148,37 @@
       "AI",
       "Mesh"
     ]
+  },
+  {
+    "id": "RES-WEB-9D84633F7562",
+    "title": "ハイスピードアクション実現のための徹底的な最適化｜NINJA GAIDEN 4 開発ブログ",
+    "url": "https://www.platinumgames.co.jp/dev-ninjagaiden4/article/137",
+    "canonicalUrl": "https://www.platinumgames.co.jp/dev-ninjagaiden4/article/137",
+    "publisher": "プラチナゲームズ",
+    "authors": [
+      "村上 学"
+    ],
+    "publishedAt": "2025-10-17",
+    "kind": "website",
+    "contentType": "production-case",
+    "category": "Tech",
+    "topics": [
+      "NINJA GAIDEN 4",
+      "HLOD",
+      "Merged Mesh",
+      "InstaLOD",
+      "120 FPS",
+      "Production Optimization"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Optimization",
+      "Performance",
+      "LOD",
+      "Mesh"
+    ]
   }
 ]

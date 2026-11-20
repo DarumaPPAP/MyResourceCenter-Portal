@@ -1125,5 +1125,33 @@
       "AI",
       "AIAgent"
     ]
+  },
+  {
+    "id": "RES-WEB-6830D78FCC6A",
+    "title": "【日本語版】Verse：Verseとは何か？そして、私たちがVerseを作った理由 | Unreal Fest Tokyo 2026",
+    "url": "https://www.docswell.com/s/EpicGamesJapan/KN766R-UE_UFT2026_Verse_JA",
+    "canonicalUrl": "https://www.docswell.com/s/EpicGamesJapan/KN766R-UE_UFT2026_Verse_JA",
+    "publisher": "エピック ゲームズ ジャパン",
+    "authors": [
+      "エピック ゲームズ ジャパン"
+    ],
+    "publishedAt": "2026-11-19",
+    "kind": "website",
+    "contentType": "conference-slides",
+    "category": "Tech",
+    "topics": [
+      "Verse",
+      "Unreal Engine 6",
+      "Scene Graph",
+      "Programming Language Design",
+      "Unreal Fest Tokyo 2026"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "UnrealEngine"
+    ]
   }
 ]
