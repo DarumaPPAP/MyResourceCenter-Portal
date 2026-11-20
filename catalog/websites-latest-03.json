@@ -1133,5 +1133,65 @@
       "AIAgent",
       "LLM"
     ]
+  },
+  {
+    "id": "RES-WEB-DC5188CCCED1",
+    "title": "Unreal Engine Horde をより理解したい人・検証する人に贈る 知っておきたいポイントとTips 導入効果も一部ご紹介",
+    "url": "https://techblog.sega.jp/entry/Horde-20261113",
+    "canonicalUrl": "https://techblog.sega.jp/entry/Horde-20261113",
+    "publisher": "SEGA TECH Blog",
+    "authors": [
+      "門脇 優貴"
+    ],
+    "publishedAt": "2026-11-13",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "topics": [
+      "Horde",
+      "BuildGraph",
+      "Unreal Build Accelerator",
+      "Preflight",
+      "AutoSDK"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "UnrealEngine",
+      "Build"
+    ]
+  },
+  {
+    "id": "RES-WEB-DD5A411915DE",
+    "title": "自分用Unity ECS辞書 Unity 6.6版",
+    "url": "https://qiita.com/seikasan/items/a64fc9e828432838815d",
+    "canonicalUrl": "https://qiita.com/seikasan/items/a64fc9e828432838815d",
+    "publisher": "Qiita",
+    "authors": [
+      "seikasan"
+    ],
+    "publishedAt": "2026-11-18",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "topics": [
+      "Unity 6.6",
+      "Entities",
+      "EntityId",
+      "SystemAPI.Query",
+      "IJobEntity",
+      "UnityObjectRef"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Unity",
+      "ECS",
+      "C#"
+    ]
   }
 ]

@@ -266,6 +266,14 @@
       {
         "id": "RES-WEB-8EB0A46DC54E",
         "role": "overview"
+      },
+      {
+        "id": "RES-WEB-AD8E55F65E8B",
+        "role": "overview"
+      },
+      {
+        "id": "RES-WEB-DD5A411915DE",
+        "role": "overview"
       }
     ],
     "category": "Rendering"
