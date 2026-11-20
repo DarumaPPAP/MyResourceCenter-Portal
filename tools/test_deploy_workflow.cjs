@@ -31,11 +31,30 @@ assert.match(deploy, /^    needs: validate$/m, 'Pages depends on the full valida
 assert.match(deploy, /github\.ref == 'refs\/heads\/main'/, 'Pages can deploy only main');
 assert.match(deploy, /github\.event_name == 'push'.*github\.event_name == 'workflow_dispatch'/s,
   'the only deploy events are a main push and the unified workflow dispatch');
-assert.match(deploy, /^    permissions:\n      contents: read\n      pages: write\n      id-token: write$/m,
-  'Pages permissions are limited to the deploy job');
+assert.match(deploy, /^    permissions:\n      contents: read\n      actions: read\n      pages: write\n      id-token: write$/m,
+  'Pages deployment has read-only Actions artifact metadata access');
 assert.match(deploy, /actions\/configure-pages@/);
 assert.match(deploy, /actions\/upload-pages-artifact@/);
 assert.match(deploy, /actions\/deploy-pages@/);
+
+const artifactName = 'github-pages-${{ github.run_id }}-${{ github.run_attempt }}';
+assert.ok(deploy.includes(`name: ${artifactName}`),
+  'an upload attempt must use a unique Pages artifact name');
+assert.ok(deploy.includes(`ARTIFACT_NAME: ${artifactName}`),
+  'readiness polling must inspect the exact uploaded artifact');
+assert.ok(deploy.includes(`artifact_name: ${artifactName}`),
+  'deployment must select the same unique artifact as upload');
+assert.match(deploy, /name: Wait for Pages artifact to become visible/,
+  'deployment waits for artifact metadata after upload');
+assert.match(deploy, /gh api "repos\/\$\{GITHUB_REPOSITORY\}\/actions\/runs\/\$\{GITHUB_RUN_ID\}\/artifacts\?per_page=100"/,
+  'readiness gate checks artifacts in the current workflow run');
+assert.match(deploy, /if \(\( count == 1 \)\); then/,
+  'only one visible matching artifact permits deployment');
+assert.match(deploy, /if \(\( count > 1 \)\); then/,
+  'duplicate artifacts fail closed');
+assert.match(deploy, /if \(\( attempt < 15 \)\); then sleep 5; fi/,
+  'metadata polling is bounded');
+
 assert.doesNotMatch(workflow.slice(0, deployStart), /^  pages: write$/m,
   'the workflow and validation job do not receive Pages permissions');
 
