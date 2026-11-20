@@ -1180,5 +1180,58 @@
       "LOD",
       "Mesh"
     ]
+  },
+  {
+    "id": "RES-WEB-A537EDEB2B35",
+    "title": "『モンスターハンター ブリッジ』を支える技術～未踏の映像環境を実現したマルチモニターレンダリングの実装 [RE:2026 2026年10月2日登壇]",
+    "url": "https://www.docswell.com/s/CAPCOM_RandD/5L3PWG-RE2026-EAST-5",
+    "canonicalUrl": "https://www.docswell.com/s/CAPCOM_RandD/5L3PWG-RE2026-EAST-5",
+    "publisher": "カプコン技研",
+    "authors": [
+      "カプコン技研"
+    ],
+    "publishedAt": "2026-11-13",
+    "kind": "website",
+    "contentType": "conference-slides",
+    "category": "Tech",
+    "topics": [
+      "Multi-Monitor Rendering",
+      "Multi-GPU",
+      "360-degree Theater",
+      "RE ENGINE"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Rendering",
+      "Camera"
+    ]
+  },
+  {
+    "id": "RES-WEB-C50142D5C4BC",
+    "title": "『バイオハザード レクイエム』へとつながる『バイオハザード』シリーズとRE ENGINEの歩み、そして技術への挑戦 [RE:2026 2026年10月2日登壇]",
+    "url": "https://www.docswell.com/s/CAPCOM_RandD/51QNPV-RE2026-WEST-7",
+    "canonicalUrl": "https://www.docswell.com/s/CAPCOM_RandD/51QNPV-RE2026-WEST-7",
+    "publisher": "カプコン技研",
+    "authors": [
+      "カプコン技研"
+    ],
+    "publishedAt": "2026-11-13",
+    "kind": "website",
+    "contentType": "conference-slides",
+    "category": "Tech",
+    "topics": [
+      "RE ENGINE History",
+      "Resident Evil Series",
+      "Engine Development",
+      "CAPCOM RE:2026"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": []
   }
 ]

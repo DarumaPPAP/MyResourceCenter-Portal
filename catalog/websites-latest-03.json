@@ -1193,5 +1193,62 @@
       "ECS",
       "C#"
     ]
+  },
+  {
+    "id": "RES-WEB-C8177F1EE985",
+    "title": "『鬼武者 Way of the Sword』『モンスターハンターワイルズ』のVFXに息吹を与える「VORTEXEL」 [RE:2026 2026年10月2日登壇]",
+    "url": "https://www.docswell.com/s/CAPCOM_RandD/KPRPE4-RE2026-EAST-7",
+    "canonicalUrl": "https://www.docswell.com/s/CAPCOM_RandD/KPRPE4-RE2026-EAST-7",
+    "publisher": "カプコン技研",
+    "authors": [
+      "カプコン技研"
+    ],
+    "publishedAt": "2026-11-13",
+    "kind": "website",
+    "contentType": "conference-slides",
+    "category": "Tech",
+    "topics": [
+      "VORTEXEL",
+      "VFX",
+      "GPU Simulation",
+      "RE ENGINE"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Particle",
+      "Rendering"
+    ]
+  },
+  {
+    "id": "RES-WEB-5F22F0B8251E",
+    "title": "Introduction to Spherical Harmonics for Graphics Programmers",
+    "url": "https://gpfault.net/posts/sph.html",
+    "canonicalUrl": "https://gpfault.net/posts/sph.html",
+    "publisher": "General Protection Fault",
+    "authors": [
+      "nicebyte"
+    ],
+    "publishedAt": "2026-04-12",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "topics": [
+      "Spherical Harmonics",
+      "Irradiance",
+      "Real-Time Graphics",
+      "SH Lighting"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Rendering",
+      "Lighting",
+      "Shader"
+    ]
   }
 ]

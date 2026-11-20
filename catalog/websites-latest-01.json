@@ -1153,5 +1153,59 @@
     "tags": [
       "UnrealEngine"
     ]
+  },
+  {
+    "id": "RES-WEB-A47CF6FDAFDF",
+    "title": "14言語同時リリース！内製ローカライズシステム「LOCO」とRE ENGINEの連携が支える、物量に屈しないワークフロー [RE:2026 2026年10月2日登壇]",
+    "url": "https://www.docswell.com/s/CAPCOM_RandD/Z9NQJV-RE2026-EAST-3",
+    "canonicalUrl": "https://www.docswell.com/s/CAPCOM_RandD/Z9NQJV-RE2026-EAST-3",
+    "publisher": "カプコン技研",
+    "authors": [
+      "カプコン技研"
+    ],
+    "publishedAt": "2026-11-13",
+    "kind": "website",
+    "contentType": "conference-slides",
+    "category": "Tech",
+    "topics": [
+      "LOCO",
+      "Localization Workflow",
+      "RE ENGINE",
+      "CAPCOM RE:2026"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": []
+  },
+  {
+    "id": "RES-WEB-FBD614A530BA",
+    "title": "実用化の時代へ！『バイオハザード レクイエム』『プラグマタ』リアルタイムパストレーシング実践事例 [RE:2026 2026年10月2日登壇]",
+    "url": "https://www.docswell.com/s/CAPCOM_RandD/5VJ3LQ-RE2026-WEST-6",
+    "canonicalUrl": "https://www.docswell.com/s/CAPCOM_RandD/5VJ3LQ-RE2026-WEST-6",
+    "publisher": "カプコン技研",
+    "authors": [
+      "カプコン技研"
+    ],
+    "publishedAt": "2026-11-13",
+    "kind": "website",
+    "contentType": "conference-slides",
+    "category": "Tech",
+    "topics": [
+      "Real-Time Path Tracing",
+      "Denoising",
+      "Resident Evil Requiem",
+      "Pragmata"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "RayTracing",
+      "Rendering",
+      "Lighting"
+    ]
   }
 ]
