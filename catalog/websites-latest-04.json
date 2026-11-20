@@ -1082,5 +1082,60 @@
       "ECS",
       "Performance"
     ]
+  },
+  {
+    "id": "RES-WEB-B0009DED2BA0",
+    "title": "『ストリートファイター6』から『モンスターハンターワイルズ』へと続く、再現可能なサーバー設計思想と基盤化のプロセス [RE:2026 2026年10月2日登壇]",
+    "url": "https://www.docswell.com/s/CAPCOM_RandD/KGNPRX-RE2026-EAST-1",
+    "canonicalUrl": "https://www.docswell.com/s/CAPCOM_RandD/KGNPRX-RE2026-EAST-1",
+    "publisher": "カプコン技研",
+    "authors": [
+      "カプコン技研"
+    ],
+    "publishedAt": "2026-11-13",
+    "kind": "website",
+    "contentType": "conference-slides",
+    "category": "Tech",
+    "topics": [
+      "Server Architecture",
+      "ace.Network",
+      "RE ENGINE",
+      "CAPCOM RE:2026"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": []
+  },
+  {
+    "id": "RES-WEB-039EE2FD1B48",
+    "title": "次世代に向けRE ENGINEをさらに進化させる「REX」プロジェクトの展望と未来 [RE:2026 2026年10月2日登壇]",
+    "url": "https://www.docswell.com/s/CAPCOM_RandD/56N2QW-RE2026-WEST-1",
+    "canonicalUrl": "https://www.docswell.com/s/CAPCOM_RandD/56N2QW-RE2026-WEST-1",
+    "publisher": "カプコン技研",
+    "authors": [
+      "カプコン技研"
+    ],
+    "publishedAt": "2026-11-13",
+    "kind": "website",
+    "contentType": "conference-slides",
+    "category": "Tech",
+    "topics": [
+      "REX",
+      "RE:Dox",
+      "RE:Runtime",
+      "RE:Log",
+      "RE ENGINE"
+    ],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "C#",
+      "AI",
+      "AIAgent"
+    ]
   }
 ]
