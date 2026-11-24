@@ -1,5 +1,14 @@
 (() => {
   const root = document.documentElement;
+
+  // Skip capture before entering the Viewer, which opts out of transitions.
+  window.addEventListener('pageswap', ({activation,viewTransition}) => {
+    const destination = activation?.entry?.url;
+    if (viewTransition && destination && new URL(destination).pathname.endsWith('/viewer.html')) {
+      viewTransition.skipTransition();
+    }
+  });
+
   const key = 'myresourcecenter-theme';
   let stored;
   try { stored = localStorage.getItem(key); } catch { /* Storage can be disabled. */ }
@@ -75,6 +84,10 @@
       if (item.href === activePage) {
         link.classList.add('active');
         link.setAttribute('aria-current', 'page');
+        const indicator = document.createElement('span');
+        indicator.className = 'nav-indicator';
+        indicator.setAttribute('aria-hidden', 'true');
+        link.appendChild(indicator);
       }
       if (!isMobile) {
         const icon = document.createElement('span');

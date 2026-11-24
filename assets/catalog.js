@@ -155,7 +155,7 @@
   function externalLink(url, label = 'Sourceを開く') {
     const safe = safeExternalUrl(url);
     if (!safe) return '';
-    return `<a class="primary-button detail-action" href="${escapeHtml(safe)}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)} ↗</a>`;
+    return `<a class="primary-button detail-action" href="${escapeHtml(safe)}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)} <span class="motion-arrow" aria-hidden="true">↗</span></a>`;
   }
 
   // Persist only visible filter values; keep unrelated URL parameters intact.

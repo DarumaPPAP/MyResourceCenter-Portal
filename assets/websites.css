@@ -48,3 +48,14 @@
 .website-page-link:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .website-title:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
 @media(max-width:520px){.website-pagination{padding-inline:4px}.website-pagination-list{gap:4px}.website-page-link{padding:6px 8px}}
+
+.website-list .catalog-skeleton {
+  --skeleton-columns: minmax(0, 1fr) minmax(0, 3fr);
+}
+
+.website-card:focus-within { border-color: var(--accent); }
+
+@media (max-width: 620px) {
+  .website-list .catalog-skeleton { --skeleton-columns: 1fr; }
+  .website-list .catalog-skeleton:nth-child(n + 2) { display: none; }
+}

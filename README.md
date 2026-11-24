@@ -42,6 +42,8 @@ Git LFS pointerやGitHub binary pathをPortalのCanonical Original URLとして�
 
 Homeは技術Environment SVGと現在のCatalog件数を表示。WebsitesはMyResourceCenter側で安全に取得・正規化したローカルOGP Link Previewを優先するリンクカードで、Previewが無い場合はローカルSite Icon、さらにGlobeへFallbackします。外部画像はPortalからHotlinkしません。Category / Site / Author FilterはAND条件で、公開日で昇順・降順にSortできます。CollectionsはCategory / Title順のReading Path、TrendsはEditorial表示です。表示契約・検証方法は [Human Portal](docs/human-portal.md) を参照してください。
 
+Motionの調整箇所と変更前後の検証は [Technical Motion](docs/technical-motion.md) を参照してください。
+
 ## GitHub Pages
 
 https://darumappap.github.io/MyResourceCenter-Portal/

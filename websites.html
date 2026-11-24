@@ -41,7 +41,10 @@
           <button id="clear" type="button">条件をリセット</button>
         </div>
         <div class="result-meta" id="result-meta"><span id="count" role="status" aria-live="polite">読み込み中…</span><span>カードをクリックすると元記事を新しいタブで開きます</span></div>
-        <div class="website-list" id="list" aria-live="polite"></div>
+        <div class="website-list" id="list" aria-live="polite">
+          <div class="catalog-skeleton" aria-hidden="true"><span></span></div>
+          <div class="catalog-skeleton" aria-hidden="true"><span></span></div>
+        </div>
         <nav id="pagination" class="website-pagination" aria-label="Webサイト一覧のページ" hidden></nav>
       </div>
       <footer class="footer">MyResourceCenter · Technical Directory</footer>
@@ -105,8 +108,10 @@
         controls.pagination.hidden = false;
       };
       const focusResults = () => {
-        controls.resultMeta.scrollIntoView({block:'start'});
-        controls.list.querySelector('.website-title')?.focus({preventScroll:true});
+        controls.resultMeta.scrollIntoView({block:'start',behavior:'instant'});
+        const title = controls.list.querySelector('.website-title');
+        title?.scrollIntoView({block:'nearest',behavior:'instant'});
+        title?.focus({preventScroll:true});
       };
       const addOptions = (control, values) => {
         for (const item of values) {
@@ -135,6 +140,7 @@
         controls.count.textContent = totalResults === 0
           ? `0 件 / 全 ${rows.length} 件`
           : `${start+1}–${end} 件目 / ${totalResults} 件${hasFilters?`（全 ${rows.length} 件）`:''}`;
+        controls.list.classList.toggle('page-arriving', focus);
         controls.list.innerHTML = visibleRows.map(row => W.renderWebsiteCard(row, C)).join('') ||
           '<div class="empty">条件に一致する記事がありません。条件を短くするか、リセットしてください。<br><button type="button" class="icon-button" data-reset-filters>条件をリセット</button></div>';
         renderPagination(page,totalPages);
@@ -191,6 +197,7 @@
         render();
       } catch (error) {
         console.error(error);
+        controls.count.textContent = '読み込みに失敗しました';
         controls.list.innerHTML = '<div class="empty">Website Catalogの読み込みに失敗しました。</div>';
       }
     });

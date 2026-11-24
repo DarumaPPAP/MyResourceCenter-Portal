@@ -29,7 +29,10 @@
         <section class="repository-intro"><div class="eyebrow">IMPLEMENTATION REFERENCES</div><h1>Repositories</h1><p>実際のSource Codeから、技術の実装例を探す。<br>Tagやキーワードから実装Referenceへアクセスできます。</p></section>
         <div class="toolbar repository-toolbar" aria-label="Repository filters"><input id="q" type="search" aria-label="キーワード検索" placeholder="タイトル・owner/repository・Topic・Tagを検索"><select id="tag" aria-label="Tag"><option value="">Tag：すべて</option></select><button id="clear" type="button">条件をリセット</button></div>
         <div class="result-meta" id="result-meta"><span id="count" role="status" aria-live="polite">読み込み中…</span><span>カードからGitHubを新しいタブで開きます</span></div>
-        <div class="repository-list" id="list"></div><nav class="repository-pagination" id="pagination" aria-label="リポジトリ一覧のページ" hidden></nav>
+        <div class="repository-list" id="list">
+          <div class="catalog-skeleton" aria-hidden="true"><span></span></div>
+          <div class="catalog-skeleton" aria-hidden="true"><span></span></div>
+        </div><nav class="repository-pagination" id="pagination" aria-label="リポジトリ一覧のページ" hidden></nav>
       </div>
       <footer class="footer">MyResourceCenter · Technical Directory</footer>
     </main>

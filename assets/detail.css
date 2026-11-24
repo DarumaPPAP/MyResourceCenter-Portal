@@ -5,3 +5,16 @@
 .detail-hero{background:transparent;border-width:0 0 1px;padding:12px 0 26px}.detail-section{background:transparent;border-width:0 0 1px;padding:20px 0}.detail-shell{gap:36px}.detail-hero h1{font-weight:650}
 .detail-field,.relation-card,.collection-mini{background:transparent;border-width:0 0 1px}.role-chip,.state-chip,.relation-direction{background:transparent;border:1px solid var(--line);border-radius:3px;color:var(--muted)}
 .detail-grid dt{font-size:11px;color:var(--muted);margin-bottom:5px}.detail-grid dd{font-size:14px;margin:0}.detail-side p{font-size:13px;line-height:1.7}
+
+@media (prefers-reduced-motion: no-preference) {
+  .detail-hero {
+    --motion-enter-distance: 4px;
+    --motion-start-opacity: .94;
+    animation: portal-enter var(--motion-duration-feedback) var(--motion-ease-out);
+  }
+
+  .detail-hero:focus-within {
+    --motion-enter-distance: 0px;
+    --motion-start-opacity: 1;
+  }
+}

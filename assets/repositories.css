@@ -24,3 +24,12 @@
 .repository-page .detail-actions a,.repository-page .detail-side a,.repository-page .detail-section a.tag{display:inline-flex;align-items:center;min-height:44px}
 @media(max-width:820px){.repository-card{padding:16px;gap:12px}.repository-toolbar{grid-template-columns:minmax(0,1fr) auto}.repository-toolbar input{grid-column:1/-1}}
 @media(max-width:620px){.repository-toolbar{grid-template-columns:minmax(0,1fr)}.repository-card{grid-template-columns:24px minmax(0,1fr);padding:12px;gap:10px}.repository-glyph{width:24px;height:24px}.repository-head{align-items:flex-start;gap:8px}.repository-card h2{font-size:17px}.repository-bottom{flex-direction:column;align-items:flex-start;gap:12px}.repository-page .toolbar input,.repository-page .toolbar select,.repository-page .toolbar button{min-height:44px;min-width:0}.repository-page .detail-grid{grid-template-columns:minmax(0,1fr)}}
+
+.repository-list .catalog-skeleton {
+  --skeleton-columns: 28px minmax(0, 1fr);
+  --skeleton-aspect: 1;
+  --skeleton-height: 150px;
+  --skeleton-padding: 20px;
+}
+
+.repository-card:focus-within { border-color: var(--accent); }
