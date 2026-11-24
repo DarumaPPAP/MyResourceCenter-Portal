@@ -359,11 +359,32 @@ async function main() {
     await routePage.emulateMedia({reducedMotion:'no-preference'});
     assert.equal(await mesh.evaluate(node=>getComputedStyle(node).animationName),'wireframe-reveal');
 
-    await routePage.addInitScript(()=>{window.IntersectionObserver=undefined;});
-    await openPage(routePage,origin,'index.html');
-    assert.ok(await routePage.locator('#docs .document-entry').first().isVisible());
-    assert.ok(await routePage.locator('#collections .reading-guide').first().isVisible());
-    assert.equal(await routePage.locator('.motion-reveal').count(),0,'Home remains readable without an observer');
+    await routePage.addInitScript(()=>{
+      const mode=new URL(location.href).searchParams.get('motionFailure');
+      if (mode==='absent') { window.IntersectionObserver=undefined; return; }
+      window.IntersectionObserver=class {
+        constructor(callback) {
+          if (mode==='constructor') throw new Error('Motion constructor unavailable');
+          this.callback=callback;
+        }
+        observe(target) {
+          if (mode==='observe') throw new Error('Motion observe unavailable');
+          setTimeout(()=>this.callback([{isIntersecting:true,target}]));
+        }
+        unobserve() { throw new Error('Motion unobserve unavailable'); }
+      };
+    });
+    for (const failure of ['absent','constructor','observe','callback']) {
+      const warning = failure==='absent' ? null : routePage.waitForEvent('console',{
+        predicate:message=>message.type()==='warning' && message.text().startsWith('Home motion could not')
+      });
+      await openPage(routePage,origin,'index.html?motionFailure='+failure);
+      await warning;
+      assert.ok(await routePage.locator('#docs .document-entry a').first().isVisible(),failure);
+      assert.ok(await routePage.locator('#collections .reading-guide').first().isVisible(),failure);
+      assert.equal(await routePage.locator('#docs [role="alert"], #collections [role="alert"]').count(),0,failure);
+      assert.equal(await routePage.locator('.motion-reveal').count(),0,failure);
+    }
     await navigation.close();
 
     assert.deepEqual(pageErrors,[],'Portal pages should not throw browser JavaScript errors');

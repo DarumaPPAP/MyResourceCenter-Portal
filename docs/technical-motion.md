@@ -71,3 +71,61 @@ Chromium 151でローカルHTTP配信を使用した。変更前は `1914e22`。
 - Browser Smokeでは390・768・1280 px、Light／Dark、読み順の表示、読み込み中のReduced Motion、短いモバイル画面の結果フォーカス、入力に伴う即時再描画、View Transition実行中の検索欄のヒットテスト、Viewerの遷移除外を検証した。
 - モバイルでView TransitionのオプトインとIntersectionObserverがない状態も再現し、Homeのカード、タッチでの遷移、検索URLを確認した。
 - ChromiumがCSSのみの構成でも遷移の中止をスタックなしの `AbortError` として報告することを確認した。Browser Smokeではこのブラウザ通知だけを別扱いにし、Viewerでは同じ通知もエラーとして検出する。
+
+## PR #130 追加レビュー
+
+Homeの取得・描画が完了してから、任意のスクロールリビールを初期化する。IntersectionObserverの未提供、コンストラクター、監視登録、コールバックでの例外をBrowser Smokeで再現し、特集資料と読み順のリンクが表示されたままになることを確認する。Motionの例外は警告として記録する。
+
+### モバイル性能の再計測
+
+初回の3試行と同じ390 × 844、タッチあり、4倍CPUスロットリングで、元のmain `1914e22`、初回PR `6ad7224`、追加修正後の各12試行を比較した。画面ごとに新しいコンテキストを使用し、試行ごとに3条件の開始順を交替した。検索は同じ10入力の同期処理時間の中央値、ページ送りはクリックハンドラー全体の同期時間、フレーム間隔p95は起動時約1.45秒の値を各試行で求めた。
+
+中央値［第1四分位–第3四分位］を示す。初回の3試行で見られたDocuments起動時p95の67 → 117 msは再現しなかった。検索の増加幅も小さく、追加修正後の両検索中央値はmainを下回った。ページ送りは初回PRでmainより資料が10.1 ms、Webサイトが6.2 ms長く、追加修正後はそれぞれ3.4 ms、5.7 ms長かった。ページ送りの本番コードは初回PRと追加修正後で同じため、この2条件の差は測定のばらつきとして扱う。
+
+| 指標 (ms) | main | 初回PR | 追加修正後 |
+| --- | ---: | ---: | ---: |
+| 資料検索 | 9.9 [7.3–11.7] | 10.2 [9.3–11.9] | 9.1 [8.1–10.3] |
+| Webサイト検索 | 27.2 [25.3–29.7] | 29.2 [25.9–31.3] | 26.5 [25.2–27.6] |
+| 資料ページ送り | 55.2 [49.5–65.7] | 65.3 [59.7–67.5] | 58.6 [53.8–63.2] |
+| Webサイトページ送り | 124.0 [117.8–132.6] | 130.2 [124.8–141.9] | 129.7 [123.7–138.7] |
+| 資料 起動時フレーム間隔p95 | 66.6 [45.9–87.6] | 50.0 [45.8–70.8] | 66.5 [33.4–75.1] |
+| Webサイト 起動時フレーム間隔p95 | 58.3 [50.0–66.7] | 66.7 [50.1–70.9] | 75.0 [62.5–83.3] |
+
+1.5 × IQRで検出した外れ値も集計に含めた。追加修正後の資料検索 14.1 ms、mainのWebサイト検索 39.3 ms、追加修正後のWebサイト検索 31.4 ms、追加修正後の資料ページ送り 78.7 ms、初回PRのWebサイトページ送り 186.7 ms、追加修正後のWebサイトページ送り 185.3 ms、mainの資料 起動時フレーム間隔p95 199.9 ms、追加修正後のWebサイト 起動時フレーム間隔p95 116.7 ms。生データには全入力、全フレーム間隔、全ページ送りの計時を含む。 [計時データ](technical-motion/mobile-review-runs.json)
+
+### ページ送りのPerformance Trace
+
+| 初回PRの個別トレース | 最初のスクロール (ms) | 2回目のスクロール (ms) | focus (ms) | 最初のStyle Recalculation / Layout (ms) |
+| --- | ---: | ---: | ---: | ---: |
+| 資料 | 40.3 | 0.3 | 5.7 | 11.3 / 27.2 |
+| Webサイト | 122.8 | 計測分解能未満 | 6.0 | 13.2 / 107.8 |
+
+クリック区間のスタックでは、DOMを置き換えた直後の最初の `scrollIntoView` が `UpdateLayoutTree` と強制 `Layout` を同期的に実行している。mainのトレースにも同じ強制レイアウトがあり、最初のスクロールは資料45.8 ms、Webサイト109.1 msだった。追加修正後の最初のスクロールは資料35.8 ms、Webサイト106.5 msだった。フォーカスにもスタイル再計算が含まれた。フォーカスを画面内に入れる2回目のスクロールの削減で大きな改善が見込める根拠は得られず、既存のページ送り、Motion、狭い画面でのフォーカス表示を維持した。各条件・画面のトレースは計時とは別の1試行で、個別トレースの値を中央値との差分として扱わない。 [CDPトレース6件](technical-motion/mobile-review-traces.tar.gz)
+
+Webサイトの起動時p95は追加修正後もmainより高い。また、Webサイトのクリック処理には4倍CPU負荷で185 msを超える試行があり、レイアウト処理は残る。ラボ計測のため、実機の入力から描画までの応答時間は別途評価が必要。
+
+### 再実行
+
+3つの作業ツリーを同じホストからHTTP配信する。以下は修正後のリポジトリルートで実行する例。各HTTPサーバーは別のターミナルで起動する。
+
+```bash
+git worktree add --detach /tmp/motion-main 1914e22
+git worktree add --detach /tmp/motion-pr 6ad7224
+python3 -m http.server 8951 --bind 127.0.0.1 --directory /tmp/motion-main
+python3 -m http.server 8952 --bind 127.0.0.1 --directory /tmp/motion-pr
+python3 -m http.server 8953 --bind 127.0.0.1
+```
+
+```bash
+npm ci
+npx playwright install chromium
+node tools/measure_mobile_motion.cjs /tmp/motion-results 12 \
+  http://127.0.0.1:8951/ http://127.0.0.1:8952/ http://127.0.0.1:8953/
+```
+
+既存のChromiumを使う場合は `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` を設定する。出力の `runs.json` が計時データで、`*.trace.json` は計時とは別に採取するCDPトレース。Chrome DevToolsのPerformanceで読み込むと、`pagination:start` から `pagination:end` の間に各 `scrollIntoView` と `focus` の区間、Style Recalculationに対応する `UpdateLayoutTree`、`Layout` と呼び出し元スタックを確認できる。試行数を0にするとトレースだけを採取する。
+
+### ブラウザ互換性
+
+- Chromium 151のBrowser Smokeと補足試験で、通常のリンク遷移、Reduced Motion、View Transitionのオプトインを外したときのタッチ遷移・検索・現在地表示を確認した。
+- WebKitはPlaywrightのブラウザ配布先がHTTP 403を返し、実行できなかった。Firefoxは同じ配布制限に加え、Debianパッケージから展開したFirefox ESR 140も、実行環境でヘッドレス試験を完了できなかった。両エンジンの動作は未検証。

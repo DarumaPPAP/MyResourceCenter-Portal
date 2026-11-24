@@ -181,23 +181,36 @@ window.addEventListener('DOMContentLoaded', async () => {
         const preview = C.readingPreview(col);
         return `<a class="reading-guide" href="collection.html?id=${encodeURIComponent(col.id)}"><div class="eyebrow">${C.escapeHtml(col.category)}</div><h3>${C.escapeHtml(col.title)}</h3><p>${C.escapeHtml(col.description)}</p><ol class="path-preview">${preview.steps.map((step,i)=>`<li><span class="path-number">${String(i+1).padStart(2,'0')}</span><div><strong>${C.escapeHtml(C.roleLabel(step.role))}</strong><span>${C.escapeHtml(byId.get(step.id).title)}</span></div></li>`).join('')}</ol>${preview.more ? `<div class="path-more">+${preview.more} more</div>` : ''}</a>`;
       }).join('') || '<p role="status">読み順を準備中です。<a href="collections.html">コレクション一覧へ →</a></p>';
-
-      // Content stays visible throughout. Start each entrance when its card reaches the viewport.
-      if (typeof window.IntersectionObserver === 'function' && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        const observer = new IntersectionObserver(entries => {
-          for (const {isIntersecting, target} of entries) {
-            if (!isIntersecting) continue;
-            target.classList.add('motion-reveal');
-            observer.unobserve(target);
-          }
-        }, {threshold: .12});
-        document.querySelectorAll('#docs .document-entry, #collections .reading-guide')
-          .forEach(card => observer.observe(card));
-      }
     }
   } catch (error) {
     console.error(error);
     for (const id of ['list','grid','content','docs','collections']) {const target=el(id);if(target)target.innerHTML='<div class="empty" role="alert">読み込みに失敗しました。ページを再読み込みしてください。</div>';}
     if(el('count'))el('count').textContent='読み込みに失敗しました';
+    return;
+  }
+
+  // The cards are readable before any optional reveal work starts.
+  if (page !== 'index.html') return;
+  let revealEnabled = false;
+  try {
+    if (typeof window.IntersectionObserver !== 'function' || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const observer = new window.IntersectionObserver(entries => {
+      if (!revealEnabled) return;
+      try {
+        for (const {isIntersecting, target} of entries) {
+          if (!isIntersecting) continue;
+          observer.unobserve(target);
+          target.classList.add('motion-reveal');
+        }
+      } catch (error) {
+        revealEnabled = false;
+        console.warn('Home motion could not run', error);
+      }
+    }, {threshold: .12});
+    document.querySelectorAll('#docs .document-entry, #collections .reading-guide')
+      .forEach(card => observer.observe(card));
+    revealEnabled = true;
+  } catch (error) {
+    console.warn('Home motion could not initialize', error);
   }
 });
