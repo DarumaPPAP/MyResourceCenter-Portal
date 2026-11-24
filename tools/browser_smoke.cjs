@@ -55,7 +55,12 @@ async function main() {
     const page = await context.newPage();
     const pageErrors = [];
     const failedLocalResponses = [];
-    page.on('pageerror',error=>pageErrors.push(error.message));
+    const recordPageError = error => {
+      // Chromium reports CSS-only native transition cancellation without a script stack.
+      if (error.name === 'AbortError' && error.message === 'Transition was skipped' && !error.stack) return;
+      pageErrors.push(error.message);
+    };
+    page.on('pageerror',recordPageError);
     page.on('response',response=>{
       if (!response.url().startsWith(origin) || response.status() < 400) return;
       const pathname = new URL(response.url()).pathname;
@@ -99,19 +104,68 @@ async function main() {
       if (selectedHref === 'trend.html') assert.equal(await page.locator('.sidebar-note').textContent(),homeSidebarNote,'Trend sidebar note matches Home');
     }
 
-    await openPage(page,origin,'documents.html');
+    await openPage(page,origin,'index.html');
+    const heroArt = page.locator('.technical-hero > a');
+    assert.equal(await heroArt.evaluate(node=>getComputedStyle(node,'::after').animationName),'portal-scan','Home scans the illustration once');
+    assert.equal(await heroArt.evaluate(node=>getComputedStyle(node,'::after').animationIterationCount),'1');
+    await page.keyboard.press('/');
+    assert.equal(await page.locator('[data-global-search]:focus-visible').count(),1);
+    assert.notEqual(await page.locator('[data-global-search]').evaluate(node=>getComputedStyle(node).boxShadow),'none','keyboard search uses the focus halo');
+    const paths = page.locator('#collections .reading-guide').first();
+    await paths.scrollIntoViewIfNeeded();
+    await page.waitForFunction(()=>document.querySelector('#collections .reading-guide')?.classList.contains('motion-reveal'));
+    assert.equal(await paths.evaluate(node=>getComputedStyle(node).animationName),'portal-enter');
+    await paths.focus();
+    assert.equal(await paths.evaluate(node=>getComputedStyle(node).opacity),'1','focus settles a revealed link immediately');
+    await page.emulateMedia({reducedMotion:'reduce'});
+    assert.equal(await heroArt.evaluate(node=>getComputedStyle(node,'::after').animationName),'none','reduced motion stops decorative scanning');
+    assert.equal(await paths.evaluate(node=>getComputedStyle(node).translate),'none');
+    await page.emulateMedia({reducedMotion:'no-preference'});
+
+    let releaseCatalog;
+    const catalogReady = new Promise(resolve=>{releaseCatalog = resolve;});
+    await page.route('**/catalog/document-presentation.json',async route=>{
+      await catalogReady;
+      await route.continue();
+    });
+    await page.goto(origin+'/documents.html',{waitUntil:'domcontentloaded'});
+    try {
+      const skeleton = page.locator('#list .catalog-skeleton[aria-hidden="true"]').first();
+      assert.ok(await skeleton.isVisible(),'slow catalog shows a decorative skeleton');
+      assert.match(await page.locator('#count').textContent(),/読み込み中/);
+      assert.equal(await skeleton.evaluate(node=>getComputedStyle(node,'::after').animationIterationCount),'2');
+      await page.emulateMedia({reducedMotion:'reduce'});
+      assert.equal(await skeleton.evaluate(node=>getComputedStyle(node,'::after').animationName),'none');
+      await page.emulateMedia({reducedMotion:'no-preference'});
+    } finally {
+      releaseCatalog();
+    }
     await page.locator('.document-entry').first().waitFor();
+    await page.unroute('**/catalog/document-presentation.json');
+    assert.equal(await page.locator('#list .catalog-skeleton').count(),0,'loaded cards replace the skeleton');
     assert.ok(await page.locator('.document-entry').count() <= 20,'Documents renders at most 20 cards');
     assert.ok(await page.locator('#category option[value="__unclassified__"]').count(),'Documents exposes the UI-only unclassified filter');
     await page.locator('#category').selectOption('__unclassified__');
     await page.waitForFunction(()=>new URL(location.href).searchParams.get('category')==='__unclassified__');
     const unclassifiedCount = await page.locator('.document-entry').count();
     assert.ok(unclassifiedCount > 0 && unclassifiedCount <= 20,'unclassified documents remain visible');
+    await page.setViewportSize({width:390,height:375});
     await page.locator('#pagination a.document-page-number[data-page="2"]').click();
     await page.waitForFunction(()=>new URL(location.href).searchParams.get('page')==='2');
     assert.ok(await page.locator('.document-entry').count() <= 20,'Documents paginates after filtering');
+    const focusedResult = page.locator('.document-title:focus');
+    assert.equal(await focusedResult.count(),1,'pagination focuses the new results');
+    const focusedBounds = await focusedResult.boundingBox();
+    assert.ok(focusedBounds.y >= 68 && focusedBounds.y + focusedBounds.height <= 375,'focused result stays visible on a short mobile viewport');
+    assert.equal(await page.locator('.document-entry').first().evaluate(node=>getComputedStyle(node).opacity),'1');
+    assert.equal(await page.locator('.document-entry').nth(1).evaluate(node=>getComputedStyle(node).animationName),'portal-enter');
     await page.goBack();
     await page.waitForFunction(()=>!new URL(location.href).searchParams.has('page'));
+    await page.setViewportSize({width:1280,height:900});
+    await page.locator('#q').fill('no-match-motion-fixture');
+    assert.equal(await page.locator('.document-entry').count(),0,'search redraws immediately');
+    await page.locator('#q').fill('');
+    assert.equal(await page.locator('.document-entry').first().evaluate(node=>getComputedStyle(node).animationName),'none','search never replays pagination motion');
 
     await openPage(page,origin,'websites.html');
     await page.locator('.website-card').first().waitFor();
@@ -242,10 +296,101 @@ async function main() {
     await page.setViewportSize({width:390,height:844});
     if(process.env.PORTAL_SCREENSHOT_DIR) await page.screenshot({path:path.join(process.env.PORTAL_SCREENSHOT_DIR,'repositories-mobile.png'),fullPage:true});
 
+    // Use an un-intercepted context for the browser's native cross-document navigation.
+    const navigation = await browser.newContext({viewport:{width:1280,height:900}});
+    await navigation.addInitScript(()=>{
+      window.addEventListener('pagereveal',event=>{
+        const {viewTransition} = event;
+        document.documentElement.dataset.testTransition=String(Boolean(viewTransition));
+        viewTransition?.ready.then(()=>{
+          const search = document.getElementById('q');
+          if (!search) return;
+          const {x,y,width,height} = search.getBoundingClientRect();
+          document.documentElement.dataset.testTransitionInteractive=String(
+            document.elementFromPoint(x+width/2,y+height/2) === search
+          );
+        },()=>{});
+      });
+    });
+    const routePage = await navigation.newPage();
+    routePage.on('pageerror',error=>{
+      if (new URL(routePage.url()).pathname.endsWith('/viewer.html')) pageErrors.push(error.message);
+      else recordPageError(error);
+    });
+    await openPage(routePage,origin,'index.html');
+    await routePage.locator('.side-nav a[href="documents.html"]').press('Enter');
+    await routePage.waitForURL('**/documents.html');
+    const marker = routePage.locator('.side-nav a[aria-current="page"] .nav-indicator');
+    assert.equal(await marker.isVisible(),true,'the active navigation link has a visible indicator');
+    if (await routePage.evaluate(()=>'onpagereveal' in window)) {
+      await routePage.waitForFunction(()=>document.documentElement.hasAttribute('data-test-transition'));
+      assert.equal(await routePage.locator('html').getAttribute('data-test-transition'),'true','same-origin links use native view transitions');
+      assert.equal(await marker.evaluate(node=>getComputedStyle(node).viewTransitionName),'portal-nav-marker');
+      await routePage.waitForFunction(()=>document.documentElement.hasAttribute('data-test-transition-interactive'));
+      assert.equal(await routePage.locator('html').getAttribute('data-test-transition-interactive'),'true','search is clickable during the native transition');
+    }
+
+    await routePage.locator('.document-detail').first().click();
+    await routePage.waitForURL('**/document.html?id=*');
+    const detail = routePage.locator('.detail-hero');
+    assert.equal(await detail.evaluate(node=>getComputedStyle(node).animationName),'portal-enter','detail metadata has a short entrance');
+
+    await navigation.route('https://drive.google.com/**',route=>route.abort());
+    await navigation.route('https://docs.google.com/**',route=>route.abort());
+    await detail.locator('a[href^="viewer.html"]').click();
+    await routePage.waitForURL('**/viewer.html?*');
+    if (await routePage.evaluate(()=>'onpagereveal' in window)) {
+      await routePage.waitForFunction(()=>document.documentElement.hasAttribute('data-test-transition'));
+      assert.equal(await routePage.locator('html').getAttribute('data-test-transition'),'false','document viewer skips native view transitions');
+    }
+
+    await routePage.emulateMedia({reducedMotion:'reduce'});
+    await openPage(routePage,origin,'index.html');
+    await routePage.locator('.side-nav a[href="documents.html"]').click();
+    await routePage.waitForURL('**/documents.html');
+    if (await routePage.evaluate(()=>'onpagereveal' in window)) {
+      await routePage.waitForFunction(()=>document.documentElement.hasAttribute('data-test-transition'));
+      assert.equal(await routePage.locator('html').getAttribute('data-test-transition'),'false','reduced motion preserves direct navigation');
+    }
+    await openPage(routePage,origin,'assets/technical-environment.svg');
+    const mesh = routePage.locator('.technical-wireframe');
+    assert.equal(await mesh.evaluate(node=>getComputedStyle(node).opacity),'0.72','reduced motion shows the finished wireframe');
+    assert.equal(await mesh.evaluate(node=>getComputedStyle(node).animationName),'none');
+    await routePage.emulateMedia({reducedMotion:'no-preference'});
+    assert.equal(await mesh.evaluate(node=>getComputedStyle(node).animationName),'wireframe-reveal');
+
+    await routePage.addInitScript(()=>{
+      const mode=new URL(location.href).searchParams.get('motionFailure');
+      if (mode==='absent') { window.IntersectionObserver=undefined; return; }
+      window.IntersectionObserver=class {
+        constructor(callback) {
+          if (mode==='constructor') throw new Error('Motion constructor unavailable');
+          this.callback=callback;
+        }
+        observe(target) {
+          if (mode==='observe') throw new Error('Motion observe unavailable');
+          setTimeout(()=>this.callback([{isIntersecting:true,target}]));
+        }
+        unobserve() { throw new Error('Motion unobserve unavailable'); }
+      };
+    });
+    for (const failure of ['absent','constructor','observe','callback']) {
+      const warning = failure==='absent' ? null : routePage.waitForEvent('console',{
+        predicate:message=>message.type()==='warning' && message.text().startsWith('Home motion could not')
+      });
+      await openPage(routePage,origin,'index.html?motionFailure='+failure);
+      await warning;
+      assert.ok(await routePage.locator('#docs .document-entry a').first().isVisible(),failure);
+      assert.ok(await routePage.locator('#collections .reading-guide').first().isVisible(),failure);
+      assert.equal(await routePage.locator('#docs [role="alert"], #collections [role="alert"]').count(),0,failure);
+      assert.equal(await routePage.locator('.motion-reveal').count(),0,failure);
+    }
+    await navigation.close();
+
     assert.deepEqual(pageErrors,[],'Portal pages should not throw browser JavaScript errors');
     assert.deepEqual(failedLocalResponses,[],'Portal pages should not have missing local assets');
     await context.close();
-    process.stdout.write('OK: Portal pages at mobile/tablet/desktop; filters, pagination, taxonomy, theme, Viewer and local icon fallback\n');
+    process.stdout.write('OK: Portal pages at mobile/tablet/desktop; filters, pagination, taxonomy, theme, Viewer, local icon fallback and Technical Motion\n');
   } finally {
     if (browser) await browser.close();
     await new Promise(resolve=>server.close(resolve));

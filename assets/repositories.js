@@ -24,7 +24,7 @@
     const e=C.escapeHtml;
     return `<article class="repository-card">
       <a class="repository-card-link" href="${e(identity.url)}" target="_blank" rel="noopener noreferrer" aria-label="${e(row.title)} — GitHubでRepositoryを開く（新しいタブ）"></a>
-      ${glyph}<div class="repository-copy"><div class="repository-head"><span class="repository-path">${e(identity.path)}</span><a class="repository-details" href="repository.html?id=${encodeURIComponent(row.id)}">詳細 <span class="sr-only">${e(row.title)}</span> →</a></div>
+      ${glyph}<div class="repository-copy"><div class="repository-head"><span class="repository-path">${e(identity.path)}</span><a class="repository-details" href="repository.html?id=${encodeURIComponent(row.id)}">詳細 <span class="sr-only">${e(row.title)}</span> <span class="motion-arrow" aria-hidden="true">→</span></a></div>
       <h2>${e(row.title)}</h2>${row.summary?`<p class="repository-summary">${e(row.summary)}</p>`:''}
       ${row.topics?.length?`<p class="repository-topics">${row.topics.map(e).join(' · ')}</p>`:''}
       <div class="repository-bottom"><div class="tag-cloud">${C.chips(row.tags)}</div><span class="repository-open" aria-hidden="true">GitHubで開く ↗</span></div></div></article>`;
@@ -57,14 +57,16 @@
       const used=new Set(rows.flatMap(row=>row.tags || []));
       Object.keys(data.taxonomy.tags || {}).filter(tag=>used.has(tag)).sort().forEach(tag=>{const option=document.createElement('option');option.value=tag;option.textContent=tag;el('tag').appendChild(option);});
       const writePage=(page,method)=>{const url=new URL(location.href);if(page>1)url.searchParams.set('page',String(page));else url.searchParams.delete('page');if(url.href!==location.href)history[method](null,'',url);};
-      const render=()=>{
+      const render=({focus=false}={})=>{
         const filtered=filterRepositories(rows,{q:el('q').value,tag:el('tag').value});
         const totalPages=Math.ceil(filtered.length/PAGE_SIZE),raw=new URL(location.href).searchParams.get('page');
         const requested=raw && /^\d+$/.test(raw) && Number.isSafeInteger(Number(raw))?Math.max(1,Number(raw)):1;
         const page=Math.min(requested,Math.max(1,totalPages));writePage(page,'replaceState');
         const start=(page-1)*PAGE_SIZE,end=Math.min(start+PAGE_SIZE,filtered.length);
         el('count').textContent=filtered.length?`${start+1}–${end} 件目 / ${filtered.length} 件（全 ${rows.length} 件）`:`0 件 / 全 ${rows.length} 件`;
-        el('list').innerHTML=filtered.slice(start,end).map(row=>renderCard(row,C)).join('') || '<div class="empty">条件に一致するリポジトリがありません。<br><button type="button" class="icon-button" data-reset-filters>条件をリセット</button></div>';
+        const list=el('list');
+        list.classList.toggle('page-arriving',focus);
+        list.innerHTML=filtered.slice(start,end).map(row=>renderCard(row,C)).join('') || '<div class="empty">条件に一致するリポジトリがありません。<br><button type="button" class="icon-button" data-reset-filters>条件をリセット</button></div>';
         const pageLink=(target,label)=>{const url=new URL(location.href);if(target>1)url.searchParams.set('page',String(target));else url.searchParams.delete('page');return `<a class="repository-page-link" href="${C.escapeHtml(url.pathname+url.search)}" data-page="${target}"${target===page?' aria-current="page"':''}>${label}</a>`;};
         const pages=[...new Set([1,page-1,page,page+1,totalPages].filter(value=>value>=1 && value<=totalPages))].sort((a,b)=>a-b);
         el('pagination').hidden=totalPages<=1;
@@ -78,8 +80,15 @@
       el('pagination').addEventListener('click',event=>{
         const anchor=event.target.closest('a[data-page]');
         if(!anchor || event.button!==0 || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey)return;
-        event.preventDefault();writePage(Number(anchor.dataset.page),'pushState');render();
-        el('result-meta').scrollIntoView({block:'start'});el('list').querySelector('.repository-card-link')?.focus({preventScroll:true});
+        event.preventDefault();
+        const page=Number(anchor.dataset.page);
+        if (page===Number(new URL(location.href).searchParams.get('page') || '1')) return;
+        writePage(page,'pushState');
+        render({focus:true});
+        el('result-meta').scrollIntoView({block:'start',behavior:'instant'});
+        const firstResult=el('list').querySelector('.repository-card-link');
+        firstResult?.scrollIntoView({block:'nearest',behavior:'instant'});
+        firstResult?.focus({preventScroll:true});
       });
       render();
     } catch(error) {

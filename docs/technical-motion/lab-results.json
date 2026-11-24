@@ -1,0 +1,823 @@
+{
+  "baseline": "1914e223af39935639017e16d1475b3997876b14",
+  "chromium": "151.0.7922.173",
+  "cpuThrottle": 4,
+  "desktop": {
+    "viewport": [
+      1365,
+      920
+    ],
+    "iterations": 5,
+    "runs": {
+      "before": {
+        "home": [
+          {
+            "fcp": 572,
+            "lcp": 572,
+            "cls": 0.01957097543588227,
+            "longTasks": 2,
+            "maxLongTask": 300,
+            "frameP95": 83,
+            "slowFrames": 5
+          },
+          {
+            "fcp": 432,
+            "lcp": 432,
+            "cls": 0.01957097543588227,
+            "longTasks": 2,
+            "maxLongTask": 198,
+            "frameP95": 50,
+            "slowFrames": 5
+          },
+          {
+            "fcp": 412,
+            "lcp": 412,
+            "cls": 0.01957097543588227,
+            "longTasks": 1,
+            "maxLongTask": 198,
+            "frameP95": 67,
+            "slowFrames": 4
+          },
+          {
+            "fcp": 332,
+            "lcp": 332,
+            "cls": 0.01957097543588227,
+            "longTasks": 2,
+            "maxLongTask": 108,
+            "frameP95": 67,
+            "slowFrames": 5
+          },
+          {
+            "fcp": 424,
+            "lcp": 424,
+            "cls": 0.01957097543588227,
+            "longTasks": 1,
+            "maxLongTask": 76,
+            "frameP95": 67,
+            "slowFrames": 4
+          }
+        ],
+        "docs": [
+          {
+            "fcp": 264,
+            "lcp": 804,
+            "cls": 0.06400206085886032,
+            "longTasks": 3,
+            "maxLongTask": 121,
+            "frameP95": 133,
+            "slowFrames": 6,
+            "filterMedian": 10,
+            "filterMax": 16,
+            "pagingDuration": 59.5,
+            "pagingImmediate": true
+          },
+          {
+            "fcp": 248,
+            "lcp": 692,
+            "cls": 0.06400206085886032,
+            "longTasks": 3,
+            "maxLongTask": 132,
+            "frameP95": 83,
+            "slowFrames": 5,
+            "filterMedian": 7.2,
+            "filterMax": 11.7,
+            "pagingDuration": 42,
+            "pagingImmediate": true
+          },
+          {
+            "fcp": 372,
+            "lcp": 740,
+            "cls": 0.06400206085886032,
+            "longTasks": 3,
+            "maxLongTask": 189,
+            "frameP95": 83,
+            "slowFrames": 5,
+            "filterMedian": 8.7,
+            "filterMax": 19.5,
+            "pagingDuration": 53.4,
+            "pagingImmediate": true
+          },
+          {
+            "fcp": 364,
+            "lcp": 636,
+            "cls": 0.06382385730211818,
+            "longTasks": 2,
+            "maxLongTask": 142,
+            "frameP95": 67,
+            "slowFrames": 4,
+            "filterMedian": 11.4,
+            "filterMax": 16.2,
+            "pagingDuration": 47.3,
+            "pagingImmediate": true
+          },
+          {
+            "fcp": 312,
+            "lcp": 660,
+            "cls": 0.06382385730211818,
+            "longTasks": 2,
+            "maxLongTask": 185,
+            "frameP95": 100,
+            "slowFrames": 5,
+            "filterMedian": 11.9,
+            "filterMax": 15.3,
+            "pagingDuration": 67.1,
+            "pagingImmediate": true
+          }
+        ],
+        "websites": [
+          {
+            "fcp": 324,
+            "lcp": 812,
+            "cls": 0.10260295272062174,
+            "longTasks": 4,
+            "maxLongTask": 179,
+            "frameP95": 100,
+            "slowFrames": 5,
+            "filterMedian": 27.6,
+            "filterMax": 38.7,
+            "pagingDuration": 64.4,
+            "pagingImmediate": true
+          },
+          {
+            "fcp": 312,
+            "lcp": 728,
+            "cls": 0.10260295272062174,
+            "longTasks": 3,
+            "maxLongTask": 130,
+            "frameP95": 67,
+            "slowFrames": 4,
+            "filterMedian": 18.1,
+            "filterMax": 27.7,
+            "pagingDuration": 64.2,
+            "pagingImmediate": true
+          },
+          {
+            "fcp": 340,
+            "lcp": 720,
+            "cls": 0.1024247491638796,
+            "longTasks": 3,
+            "maxLongTask": 184,
+            "frameP95": 83,
+            "slowFrames": 4,
+            "filterMedian": 26.7,
+            "filterMax": 30.7,
+            "pagingDuration": 88.5,
+            "pagingImmediate": true
+          },
+          {
+            "fcp": 408,
+            "lcp": 800,
+            "cls": 0.1024247491638796,
+            "longTasks": 3,
+            "maxLongTask": 156,
+            "frameP95": 117,
+            "slowFrames": 4,
+            "filterMedian": 39.5,
+            "filterMax": 54.5,
+            "pagingDuration": 121,
+            "pagingImmediate": true
+          },
+          {
+            "fcp": 268,
+            "lcp": 800,
+            "cls": 0.10260295272062174,
+            "longTasks": 4,
+            "maxLongTask": 119,
+            "frameP95": 133,
+            "slowFrames": 5,
+            "filterMedian": 28.4,
+            "filterMax": 35.1,
+            "pagingDuration": 92.4,
+            "pagingImmediate": true
+          }
+        ],
+        "repositories": [
+          {
+            "fcp": 416,
+            "lcp": 416,
+            "cls": 0.06491383024889057,
+            "longTasks": 3,
+            "maxLongTask": 144,
+            "frameP95": 100,
+            "slowFrames": 4,
+            "filterMedian": 3.3,
+            "filterMax": 7.6
+          },
+          {
+            "fcp": 288,
+            "lcp": 288,
+            "cls": 0.06491383024889057,
+            "longTasks": 2,
+            "maxLongTask": 162,
+            "frameP95": 83,
+            "slowFrames": 5,
+            "filterMedian": 4.4,
+            "filterMax": 8.1
+          },
+          {
+            "fcp": 268,
+            "lcp": 268,
+            "cls": 0.06491383024889057,
+            "longTasks": 3,
+            "maxLongTask": 111,
+            "frameP95": 17,
+            "slowFrames": 3,
+            "filterMedian": 2.3,
+            "filterMax": 6.6
+          },
+          {
+            "fcp": 264,
+            "lcp": 264,
+            "cls": 0.06491383024889057,
+            "longTasks": 1,
+            "maxLongTask": 136,
+            "frameP95": 67,
+            "slowFrames": 4,
+            "filterMedian": 2.5,
+            "filterMax": 3.6
+          },
+          {
+            "fcp": 288,
+            "lcp": 288,
+            "cls": 0.06491383024889057,
+            "longTasks": 1,
+            "maxLongTask": 131,
+            "frameP95": 50,
+            "slowFrames": 5,
+            "filterMedian": 1.6,
+            "filterMax": 5.2
+          }
+        ],
+        "detail": [
+          {
+            "fcp": 344,
+            "lcp": 568,
+            "cls": 0.05673776219550079,
+            "longTasks": 2,
+            "maxLongTask": 116,
+            "frameP95": 33,
+            "slowFrames": 3
+          },
+          {
+            "fcp": 292,
+            "lcp": 456,
+            "cls": 0.05673776219550079,
+            "longTasks": 2,
+            "maxLongTask": 124,
+            "frameP95": 50,
+            "slowFrames": 6
+          },
+          {
+            "fcp": 344,
+            "lcp": 584,
+            "cls": 0.056915965752242934,
+            "longTasks": 2,
+            "maxLongTask": 170,
+            "frameP95": 83,
+            "slowFrames": 4
+          },
+          {
+            "fcp": 400,
+            "lcp": 568,
+            "cls": 0.05673776219550079,
+            "longTasks": 3,
+            "maxLongTask": 131,
+            "frameP95": 33,
+            "slowFrames": 2
+          },
+          {
+            "fcp": 308,
+            "lcp": 432,
+            "cls": 0.05673776219550079,
+            "longTasks": 1,
+            "maxLongTask": 111,
+            "frameP95": 50,
+            "slowFrames": 4
+          }
+        ]
+      },
+      "after": {
+        "home": [
+          {
+            "fcp": 508,
+            "lcp": 508,
+            "cls": 0.019929106947426944,
+            "longTasks": 2,
+            "maxLongTask": 189,
+            "frameP95": 83,
+            "slowFrames": 7
+          },
+          {
+            "fcp": 396,
+            "lcp": 396,
+            "cls": 0.019929106947426944,
+            "longTasks": 3,
+            "maxLongTask": 186,
+            "frameP95": 100,
+            "slowFrames": 7
+          },
+          {
+            "fcp": 236,
+            "lcp": 512,
+            "cls": 0.019929106947426944,
+            "longTasks": 2,
+            "maxLongTask": 185,
+            "frameP95": 100,
+            "slowFrames": 6
+          },
+          {
+            "fcp": 440,
+            "lcp": 440,
+            "cls": 0.019929106947426944,
+            "longTasks": 4,
+            "maxLongTask": 165,
+            "frameP95": 100,
+            "slowFrames": 5
+          },
+          {
+            "fcp": 548,
+            "lcp": 548,
+            "cls": 0.019929106947426944,
+            "longTasks": 2,
+            "maxLongTask": 206,
+            "frameP95": 67,
+            "slowFrames": 5
+          }
+        ],
+        "docs": [
+          {
+            "fcp": 304,
+            "lcp": 680,
+            "cls": 0.06491383024889057,
+            "longTasks": 4,
+            "maxLongTask": 140,
+            "frameP95": 117,
+            "slowFrames": 5,
+            "filterMedian": 10.9,
+            "filterMax": 17.3,
+            "pagingDuration": 54.8,
+            "pagingImmediate": true
+          },
+          {
+            "fcp": 316,
+            "lcp": 760,
+            "cls": 0.06491383024889057,
+            "longTasks": 3,
+            "maxLongTask": 158,
+            "frameP95": 117,
+            "slowFrames": 5,
+            "filterMedian": 14.2,
+            "filterMax": 29,
+            "pagingDuration": 73.8,
+            "pagingImmediate": true
+          },
+          {
+            "fcp": 332,
+            "lcp": 724,
+            "cls": 0.06735074904457966,
+            "longTasks": 3,
+            "maxLongTask": 106,
+            "frameP95": 117,
+            "slowFrames": 5,
+            "filterMedian": 8.6,
+            "filterMax": 14,
+            "pagingDuration": 56.2,
+            "pagingImmediate": true
+          },
+          {
+            "fcp": 424,
+            "lcp": 724,
+            "cls": 0.06473562669214843,
+            "longTasks": 1,
+            "maxLongTask": 120,
+            "frameP95": 67,
+            "slowFrames": 5,
+            "filterMedian": 7.6,
+            "filterMax": 13.6,
+            "pagingDuration": 45.2,
+            "pagingImmediate": true
+          },
+          {
+            "fcp": 368,
+            "lcp": 672,
+            "cls": 0.06473562669214843,
+            "longTasks": 3,
+            "maxLongTask": 161,
+            "frameP95": 67,
+            "slowFrames": 5,
+            "filterMedian": 9,
+            "filterMax": 17.5,
+            "pagingDuration": 67.2,
+            "pagingImmediate": true
+          }
+        ],
+        "websites": [
+          {
+            "fcp": 368,
+            "lcp": 800,
+            "cls": 0.1024247491638796,
+            "longTasks": 4,
+            "maxLongTask": 136,
+            "frameP95": 117,
+            "slowFrames": 5,
+            "filterMedian": 29.8,
+            "filterMax": 57.3,
+            "pagingDuration": 119.7,
+            "pagingImmediate": true
+          },
+          {
+            "fcp": 380,
+            "lcp": 752,
+            "cls": 0.10260295272062174,
+            "longTasks": 3,
+            "maxLongTask": 219,
+            "frameP95": 67,
+            "slowFrames": 6,
+            "filterMedian": 33.3,
+            "filterMax": 47.7,
+            "pagingDuration": 100.7,
+            "pagingImmediate": true
+          },
+          {
+            "fcp": 300,
+            "lcp": 772,
+            "cls": 0.10455200572639656,
+            "longTasks": 3,
+            "maxLongTask": 125,
+            "frameP95": 117,
+            "slowFrames": 5,
+            "filterMedian": 24.8,
+            "filterMax": 45.3,
+            "pagingDuration": 66.4,
+            "pagingImmediate": true
+          },
+          {
+            "fcp": 356,
+            "lcp": 768,
+            "cls": 0.10260295272062174,
+            "longTasks": 4,
+            "maxLongTask": 186,
+            "frameP95": 83,
+            "slowFrames": 6,
+            "filterMedian": 23.7,
+            "filterMax": 32,
+            "pagingDuration": 75.3,
+            "pagingImmediate": true
+          },
+          {
+            "fcp": 304,
+            "lcp": 744,
+            "cls": 0.10260295272062174,
+            "longTasks": 4,
+            "maxLongTask": 115,
+            "frameP95": 100,
+            "slowFrames": 4,
+            "filterMedian": 24.7,
+            "filterMax": 35.1,
+            "pagingDuration": 78.4,
+            "pagingImmediate": true
+          }
+        ],
+        "repositories": [
+          {
+            "fcp": 340,
+            "lcp": 340,
+            "cls": 0.05068918407235118,
+            "longTasks": 2,
+            "maxLongTask": 123,
+            "frameP95": 50,
+            "slowFrames": 4,
+            "filterMedian": 2.3,
+            "filterMax": 6.3
+          },
+          {
+            "fcp": 304,
+            "lcp": 304,
+            "cls": 0.05051098051560904,
+            "longTasks": 2,
+            "maxLongTask": 136,
+            "frameP95": 33,
+            "slowFrames": 2,
+            "filterMedian": 2.8,
+            "filterMax": 7.2
+          },
+          {
+            "fcp": 268,
+            "lcp": 268,
+            "cls": 0.05068918407235118,
+            "longTasks": 2,
+            "maxLongTask": 140,
+            "frameP95": 33,
+            "slowFrames": 3,
+            "filterMedian": 2.6,
+            "filterMax": 5
+          },
+          {
+            "fcp": 332,
+            "lcp": 332,
+            "cls": 0.05068918407235118,
+            "longTasks": 2,
+            "maxLongTask": 182,
+            "frameP95": 100,
+            "slowFrames": 4,
+            "filterMedian": 2.6,
+            "filterMax": 5.1
+          },
+          {
+            "fcp": 420,
+            "lcp": 420,
+            "cls": 0.05051098051560904,
+            "longTasks": 2,
+            "maxLongTask": 121,
+            "frameP95": 17,
+            "slowFrames": 2,
+            "filterMedian": 1.7,
+            "filterMax": 5.9
+          }
+        ],
+        "detail": [
+          {
+            "fcp": 356,
+            "lcp": 604,
+            "cls": 0.05673776219550079,
+            "longTasks": 1,
+            "maxLongTask": 101,
+            "frameP95": 50,
+            "slowFrames": 6
+          },
+          {
+            "fcp": 300,
+            "lcp": 464,
+            "cls": 0.05673776219550079,
+            "longTasks": 2,
+            "maxLongTask": 120,
+            "frameP95": 50,
+            "slowFrames": 4
+          },
+          {
+            "fcp": 304,
+            "lcp": 508,
+            "cls": 0.05673776219550079,
+            "longTasks": 2,
+            "maxLongTask": 132,
+            "frameP95": 33,
+            "slowFrames": 3
+          },
+          {
+            "fcp": 368,
+            "lcp": 548,
+            "cls": 0.05673776219550079,
+            "longTasks": 1,
+            "maxLongTask": 169,
+            "frameP95": 67,
+            "slowFrames": 4
+          },
+          {
+            "fcp": 300,
+            "lcp": 492,
+            "cls": 0.056915965752242934,
+            "longTasks": 2,
+            "maxLongTask": 108,
+            "frameP95": 50,
+            "slowFrames": 5
+          }
+        ]
+      }
+    }
+  },
+  "mobile": {
+    "viewport": [
+      390,
+      844
+    ],
+    "iterations": 3,
+    "runs": {
+      "before": {
+        "home": [
+          {
+            "fcp": 452,
+            "lcp": 452,
+            "cls": 0,
+            "longTasks": 1,
+            "maxLongTask": 189,
+            "frameP95": 67,
+            "slowFrames": 4
+          },
+          {
+            "fcp": 316,
+            "lcp": 316,
+            "cls": 0,
+            "longTasks": 2,
+            "maxLongTask": 185,
+            "frameP95": 83,
+            "slowFrames": 5
+          },
+          {
+            "fcp": 340,
+            "lcp": 340,
+            "cls": 0,
+            "longTasks": 1,
+            "maxLongTask": 184,
+            "frameP95": 50,
+            "slowFrames": 4
+          }
+        ],
+        "docs": [
+          {
+            "fcp": 292,
+            "lcp": 600,
+            "cls": 0,
+            "longTasks": 3,
+            "maxLongTask": 122,
+            "frameP95": 50,
+            "slowFrames": 5,
+            "filterMedian": 10.1,
+            "filterMax": 20.2,
+            "pagingDuration": 53.4,
+            "pagingImmediate": true
+          },
+          {
+            "fcp": 264,
+            "lcp": 600,
+            "cls": 0,
+            "longTasks": 3,
+            "maxLongTask": 144,
+            "frameP95": 133,
+            "slowFrames": 4,
+            "filterMedian": 7.8,
+            "filterMax": 14.1,
+            "pagingDuration": 46.9,
+            "pagingImmediate": true
+          },
+          {
+            "fcp": 280,
+            "lcp": 576,
+            "cls": 0,
+            "longTasks": 3,
+            "maxLongTask": 84,
+            "frameP95": 67,
+            "slowFrames": 5,
+            "filterMedian": 18.5,
+            "filterMax": 31.2,
+            "pagingDuration": 47.5,
+            "pagingImmediate": true
+          }
+        ],
+        "websites": [
+          {
+            "fcp": 308,
+            "lcp": 768,
+            "cls": 0,
+            "longTasks": 4,
+            "maxLongTask": 151,
+            "frameP95": 83,
+            "slowFrames": 4,
+            "filterMedian": 35.4,
+            "filterMax": 42.7,
+            "pagingDuration": 134.7,
+            "pagingImmediate": true
+          },
+          {
+            "fcp": 332,
+            "lcp": 668,
+            "cls": 0,
+            "longTasks": 3,
+            "maxLongTask": 134,
+            "frameP95": 83,
+            "slowFrames": 3,
+            "filterMedian": 23.9,
+            "filterMax": 35.9,
+            "pagingDuration": 108.7,
+            "pagingImmediate": true
+          },
+          {
+            "fcp": 320,
+            "lcp": 756,
+            "cls": 0,
+            "longTasks": 3,
+            "maxLongTask": 134,
+            "frameP95": 50,
+            "slowFrames": 5,
+            "filterMedian": 20.5,
+            "filterMax": 28.5,
+            "pagingDuration": 114.4,
+            "pagingImmediate": true
+          }
+        ]
+      },
+      "after": {
+        "home": [
+          {
+            "fcp": 376,
+            "lcp": 376,
+            "cls": 0,
+            "longTasks": 1,
+            "maxLongTask": 92,
+            "frameP95": 67,
+            "slowFrames": 5
+          },
+          {
+            "fcp": 360,
+            "lcp": 360,
+            "cls": 0,
+            "longTasks": 2,
+            "maxLongTask": 139,
+            "frameP95": 83,
+            "slowFrames": 5
+          },
+          {
+            "fcp": 384,
+            "lcp": 384,
+            "cls": 0,
+            "longTasks": 1,
+            "maxLongTask": 174,
+            "frameP95": 67,
+            "slowFrames": 5
+          }
+        ],
+        "docs": [
+          {
+            "fcp": 340,
+            "lcp": 708,
+            "cls": 0,
+            "longTasks": 2,
+            "maxLongTask": 120,
+            "frameP95": 117,
+            "slowFrames": 5,
+            "filterMedian": 17,
+            "filterMax": 19.9,
+            "pagingDuration": 69.6,
+            "pagingImmediate": true
+          },
+          {
+            "fcp": 340,
+            "lcp": 664,
+            "cls": 0,
+            "longTasks": 3,
+            "maxLongTask": 135,
+            "frameP95": 67,
+            "slowFrames": 4,
+            "filterMedian": 14.2,
+            "filterMax": 20.2,
+            "pagingDuration": 72.7,
+            "pagingImmediate": true
+          },
+          {
+            "fcp": 256,
+            "lcp": 580,
+            "cls": 0,
+            "longTasks": 3,
+            "maxLongTask": 116,
+            "frameP95": 117,
+            "slowFrames": 4,
+            "filterMedian": 12,
+            "filterMax": 17.7,
+            "pagingDuration": 59,
+            "pagingImmediate": true
+          }
+        ],
+        "websites": [
+          {
+            "fcp": 388,
+            "lcp": 780,
+            "cls": 0,
+            "longTasks": 3,
+            "maxLongTask": 175,
+            "frameP95": 67,
+            "slowFrames": 3,
+            "filterMedian": 39.9,
+            "filterMax": 72.5,
+            "pagingDuration": 160.7,
+            "pagingImmediate": true
+          },
+          {
+            "fcp": 296,
+            "lcp": 752,
+            "cls": 0,
+            "longTasks": 4,
+            "maxLongTask": 141,
+            "frameP95": 67,
+            "slowFrames": 4,
+            "filterMedian": 29.3,
+            "filterMax": 46.3,
+            "pagingDuration": 128.7,
+            "pagingImmediate": true
+          },
+          {
+            "fcp": 296,
+            "lcp": 704,
+            "cls": 0,
+            "longTasks": 3,
+            "maxLongTask": 138,
+            "frameP95": 83,
+            "slowFrames": 4,
+            "filterMedian": 25.1,
+            "filterMax": 31,
+            "pagingDuration": 130.3,
+            "pagingImmediate": true
+          }
+        ]
+      }
+    }
+  }
+}

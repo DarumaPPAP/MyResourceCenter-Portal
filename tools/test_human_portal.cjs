@@ -69,6 +69,7 @@ async function renderDocumentCard(doc) {
       innerHTML:'',
       textContent:'',
       options:[],
+      classList:{toggle() {}},
       listeners:{},
       addEventListener(type,listener) { this.listeners[type] = listener; },
       appendChild(option) { this.options.push(option); },
@@ -293,7 +294,7 @@ const websitePageSource = fs.readFileSync(path.join(__dirname, '../websites.html
 const websiteStyles = fs.readFileSync(path.join(__dirname, '../assets/websites.css'), 'utf8');
 assert.match(websitePageSource, /<nav[^>]*id="pagination"[^>]*aria-label="Webサイト一覧のページ"/);
 assert.match(websitePageSource, /id="result-meta"[^>]*class="result-meta"|class="result-meta"[^>]*id="result-meta"/);
-assert.match(websitePageSource, /id="list"[^>]*><\/div>\s*<nav[^>]*id="pagination"/);
+assert.match(websitePageSource, /id="list"[^>]*>[\s\S]*?<\/div>\s*<nav[^>]*id="pagination"/);
 assert.match(websiteStyles, /\.website-pagination[^\{]*\{[^}]*flex-wrap:\s*wrap/s);
 assert.match(websiteStyles, /\.website-page-link[^\{]*\{[^}]*min-width:\s*36px/s);
 assert.match(websiteStyles, /\.website-page-link:focus-visible/);
@@ -327,6 +328,7 @@ async function createWebsitePage(rows,href='https://portal.test/websites.html') 
       contains() { return true; }
     };
     if(id==='list') {
+      element.classList = { toggle() {} };
       element.firstTitle=null;
       element.focusCount=0;
       element.querySelector=selector=>selector==='.website-title'?element.firstTitle:null;
@@ -335,7 +337,7 @@ async function createWebsitePage(rows,href='https://portal.test/websites.html') 
         set(value){
           element._innerHTML=value;
           const hasCard=value.includes('<article class="website-card">');
-          element.firstTitle=hasCard?{focus(options){element.focusCount+=1;element.lastFocusOptions=options;}}:null;
+          element.firstTitle=hasCard?{scrollIntoView(){},focus(options){element.focusCount+=1;element.lastFocusOptions=options;}}:null;
         }
       });
     } else if(id==='pagination') {
@@ -539,7 +541,7 @@ const documentsPageSource=fs.readFileSync(path.join(__dirname,'../documents.html
 const documentsStyles=fs.readFileSync(path.join(__dirname,'../assets/documents.css'),'utf8');
 assert.match(documentsPageSource,/<nav[^>]*id="pagination"[^>]*aria-label="ドキュメント一覧のページ"/);
 assert.match(documentsPageSource,/id="list"[^>]*aria-live="polite"[^>]*tabindex="-1"/);
-assert.match(documentsPageSource,/id="list"[^>]*><\/div>\s*<nav[^>]*id="pagination"/);
+assert.match(documentsPageSource,/id="list"[^>]*>[\s\S]*?<\/div>\s*<nav[^>]*id="pagination"/);
 assert.match(documentsStyles,/\.document-pagination[^\{]*\{[^}]*flex-wrap:\s*wrap/s);
 assert.match(documentsStyles,/\.document-page-link[^\{]*\{[^}]*min-width:\s*36px/s);
 assert.match(documentsStyles,/\.document-page-link:focus-visible/);
@@ -572,11 +574,12 @@ async function createDocumentsPage(rows,href='https://portal.test/documents.html
       contains(){return true;}
     };
     if(id==='list'){
+      element.classList = { toggle() {} };
       element.focusCount=0;
       element.querySelector=selector=>selector==='.document-title'?element.firstTitle:null;
       Object.defineProperty(element,'innerHTML',{get(){return element._innerHTML || '';},set(value){
         element._innerHTML=value;
-        element.firstTitle=value.includes('<article class="document-entry">')?{focus(options){element.focusCount+=1;element.lastFocusOptions=options;}}:null;
+        element.firstTitle=value.includes('<article class="document-entry">')?{scrollIntoView(){},focus(options){element.focusCount+=1;element.lastFocusOptions=options;}}:null;
       }});
     }else if(id==='pagination')element.innerHTML='';
     else if(id==='result-meta'){

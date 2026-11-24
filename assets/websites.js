@@ -317,7 +317,7 @@
       ${cardLink}
       ${media}
       <div class="website-info">
-        <div class="website-head"><div class="site-line">${category}<span class="site-badge">${escape(publisher)}</span><span class="site-domain">${escape(host)}</span></div><a class="website-details" href="website.html?id=${encodeURIComponent(row.id)}">詳細</a></div>
+        <div class="website-head"><div class="site-line">${category}<span class="site-badge">${escape(publisher)}</span><span class="site-domain">${escape(host)}</span></div><a class="website-details" href="website.html?id=${encodeURIComponent(row.id)}">詳細 <span class="motion-arrow" aria-hidden="true">→</span></a></div>
         <h2 class="website-title" tabindex="-1">${escape(displayTitle)}</h2>
         ${summary}
         <div class="website-bottom"><div class="website-byline"><span>${escape(authors)}</span><time class="website-published-at">${escape(row.publishedAt || '—')}</time></div><div class="website-tags">${tagHtml}</div></div>

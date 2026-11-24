@@ -82,7 +82,9 @@ window.addEventListener('DOMContentLoaded', async () => {
         el('count').textContent = filtered.length
           ? `${start+1}–${end} 件目 / ${filtered.length} 件（全 ${rows.length} 件）`
           : `0 件 / 全 ${rows.length} 件`;
-        el('list').innerHTML = visible.map(doc => {
+        const list = el('list');
+        list.classList.toggle('page-arriving', focus);
+        list.innerHTML = visible.map(doc => {
           const viewer = C.viewerHref(doc);
           const href = viewer || `document.html?id=${encodeURIComponent(doc.resourceId)}`;
           const category = doc.categories[0] || doc.tags[0] || (doc.sourceFormat === 'UNKNOWN' ? 'Document' : doc.sourceFormat) || 'Document';
@@ -99,15 +101,17 @@ window.addEventListener('DOMContentLoaded', async () => {
                 <h2><a class="document-title" href="${C.escapeHtml(href)}">${C.escapeHtml(doc.title)}</a></h2>
                 <div class="document-meta">${metadata}</div>
                 <div class="tag-cloud">${C.chips(doc.tags.slice(0,6))}</div>
-                <a class="document-detail" href="document.html?id=${encodeURIComponent(doc.resourceId)}">資料情報・関連資料 →</a>
+                <a class="document-detail" href="document.html?id=${encodeURIComponent(doc.resourceId)}">資料情報・関連資料 <span class="motion-arrow" aria-hidden="true">→</span></a>
               </div>
             </div>
           </article>`;
         }).join('') || '<div class="empty">条件に一致する資料がありません。<br><button type="button" class="icon-button" data-reset-filters>条件をリセット</button></div>';
         renderPagination(page,totalPages);
         if (focus) {
-          el('result-meta').scrollIntoView({block:'start'});
-          el('list').querySelector('.document-title')?.focus({preventScroll:true});
+          el('result-meta').scrollIntoView({block:'start',behavior:'instant'});
+          const title = list.querySelector('.document-title');
+          title?.scrollIntoView({block:'nearest',behavior:'instant'});
+          title?.focus({preventScroll:true});
         }
       };
       C.bindFilterState(controls,render,{clearParams:['page']});
@@ -168,7 +172,7 @@ window.addEventListener('DOMContentLoaded', async () => {
       const docs = data['document-presentation'].filter(doc=>doc.thumbnail).slice(0,4);
       el('docs').innerHTML = docs.map(doc => {
         const href = C.viewerHref(doc) || `document.html?id=${encodeURIComponent(doc.resourceId)}`;
-        return `<article class="document-entry"><a class="thumbnail-link" aria-label="${C.escapeHtml(doc.title)}を読む" href="${C.escapeHtml(href)}">${C.documentThumbnail(doc)}</a><div class="document-copy"><h3><a href="${C.escapeHtml(href)}">${C.escapeHtml(doc.title)}</a></h3><div class="document-meta">${C.escapeHtml(doc.sourceFormat === 'UNKNOWN' ? '形式未確認' : doc.sourceFormat)} · ${C.escapeHtml(doc.engine || 'General')}</div><div class="tag-cloud">${C.chips(doc.tags.slice(0,3))}</div><a class="document-detail" href="document.html?id=${encodeURIComponent(doc.resourceId)}">資料情報・関連資料 →</a></div></article>`;
+        return `<article class="document-entry"><a class="thumbnail-link" aria-label="${C.escapeHtml(doc.title)}を読む" href="${C.escapeHtml(href)}">${C.documentThumbnail(doc)}</a><div class="document-copy"><h3><a href="${C.escapeHtml(href)}">${C.escapeHtml(doc.title)}</a></h3><div class="document-meta">${C.escapeHtml(doc.sourceFormat === 'UNKNOWN' ? '形式未確認' : doc.sourceFormat)} · ${C.escapeHtml(doc.engine || 'General')}</div><div class="tag-cloud">${C.chips(doc.tags.slice(0,3))}</div><a class="document-detail" href="document.html?id=${encodeURIComponent(doc.resourceId)}">資料情報・関連資料 <span class="motion-arrow" aria-hidden="true">→</span></a></div></article>`;
       }).join('') || '<p role="status">プレビュー付きの資料を準備中です。<a href="documents.html">資料一覧へ →</a></p>';
       C.bindThumbnailFallback(el('docs'));
       // Only display paths with at least two real, resolvable reading steps.
@@ -182,5 +186,31 @@ window.addEventListener('DOMContentLoaded', async () => {
     console.error(error);
     for (const id of ['list','grid','content','docs','collections']) {const target=el(id);if(target)target.innerHTML='<div class="empty" role="alert">読み込みに失敗しました。ページを再読み込みしてください。</div>';}
     if(el('count'))el('count').textContent='読み込みに失敗しました';
+    return;
+  }
+
+  // The cards are readable before any optional reveal work starts.
+  if (page !== 'index.html') return;
+  let revealEnabled = false;
+  try {
+    if (typeof window.IntersectionObserver !== 'function' || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const observer = new window.IntersectionObserver(entries => {
+      if (!revealEnabled) return;
+      try {
+        for (const {isIntersecting, target} of entries) {
+          if (!isIntersecting) continue;
+          observer.unobserve(target);
+          target.classList.add('motion-reveal');
+        }
+      } catch (error) {
+        revealEnabled = false;
+        console.warn('Home motion could not run', error);
+      }
+    }, {threshold: .12});
+    document.querySelectorAll('#docs .document-entry, #collections .reading-guide')
+      .forEach(card => observer.observe(card));
+    revealEnabled = true;
+  } catch (error) {
+    console.warn('Home motion could not initialize', error);
   }
 });
