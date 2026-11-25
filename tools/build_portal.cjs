@@ -5,10 +5,9 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 
-// A cached page can outlive the versioned scripts it points to after a deploy.
+// A cached page can outlive the versioned scripts or Catalog it points to.
 const releaseErrorHandler = `<script>
-    window.addEventListener('error', ({target}) => {
-      if (!target.matches?.('script[data-portal-release]')) return;
+    function offerPortalReleaseReload() {
       const show = () => {
         if (document.getElementById('portal-release-error')) return;
         const alert = document.createElement('p');
@@ -26,6 +25,10 @@ const releaseErrorHandler = `<script>
       };
       if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', show, {once:true});
       else show();
+    }
+    window.addEventListener('portal-catalog-load-error', offerPortalReleaseReload);
+    window.addEventListener('error', ({target}) => {
+      if (target.matches?.('script[data-portal-release]')) offerPortalReleaseReload();
     }, true);
   </script>`;
 

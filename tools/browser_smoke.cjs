@@ -1,10 +1,12 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const http = require('node:http');
+const os = require('node:os');
 const path = require('node:path');
 const { chromium } = require('playwright');
 
-const ROOT = path.resolve(process.env.PORTAL_SMOKE_ROOT || path.join(__dirname, '..'));
+const SOURCE = path.join(__dirname, '..');
+const ROOT = path.resolve(process.env.PORTAL_SMOKE_ROOT || SOURCE);
 const documentCatalog = /\/catalog\/document-presentation(?:\.[a-f0-9]{20})?\.json$/;
 const repositoryCatalog = /\/catalog\/repositories(?:\.[a-f0-9]{20})?\.json$/;
 const CONTENT_TYPES = {
@@ -35,6 +37,68 @@ async function openPage(page,origin,pathName) {
   const response = await page.goto(`${origin}/${pathName}`, {waitUntil:'networkidle'});
   assert.equal(response.status(),200,`${pathName} should load`);
   return response;
+}
+
+async function checkCatalogRollover(context, origin) {
+  const {buildPortal} = require('./build_portal.cjs');
+  const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'portal-rollover-'));
+  const stale = await context.newPage();
+  try {
+    const source = path.join(temp, 'source');
+    const older = path.join(temp, 'older');
+    for (const dir of ['catalog', 'assets']) {
+      fs.cpSync(path.join(SOURCE, dir), path.join(source, dir), {recursive:true});
+    }
+    fs.copyFileSync(path.join(SOURCE, 'repositories.html'), path.join(source, 'repositories.html'));
+    const file = path.join(source, 'catalog/repositories.json');
+    const rows = JSON.parse(fs.readFileSync(file, 'utf8'));
+    const title = rows[0].title;
+    rows[0].title += ' (retired revision)';
+    fs.writeFileSync(file, JSON.stringify(rows));
+    const {files, loaderPath} = await buildPortal(source, older);
+
+    const route = `/repositories.html?q=${encodeURIComponent(title)}&keep=release#list`;
+    const html = url => url.pathname === '/repositories.html';
+    const loader = url => url.pathname === '/' + loaderPath;
+    await stale.route(html, request => request.fulfill({path:path.join(older, 'repositories.html')}));
+    await stale.route(loader, request => request.fulfill({path:path.join(older, loaderPath)}));
+    const requests = [];
+    const responses = [];
+    stale.on('request', request => requests.push(new URL(request.url()).pathname));
+    stale.on('response', response => responses.push([new URL(response.url()).pathname, response.status()]));
+
+    // The old HTML and JS are available as if cached. The server only has current Catalog files.
+    await openPage(stale, origin, route.slice(1));
+    assert.ok(responses.some(([url,status]) => url === '/' + loaderPath && status === 200));
+    assert.ok(responses.some(([url,status]) => url === '/' + files.repositories && status === 404));
+    const retry = stale.getByRole('button', {name:'ページを再読み込み'});
+    await retry.waitFor({timeout:5000});
+    assert.equal(await retry.count(), 1);
+    assert.equal(requests.filter(url => url === '/' + files.repositories).length, 1);
+    assert.equal(requests.filter(url => url === '/repositories.html').length, 1);
+    assert.ok(!requests.includes('/catalog/repositories.json'), 'the old loader does not fall back to the unversioned Catalog');
+    assert.equal(await stale.locator('.repository-card').count(), 0);
+
+    await stale.unroute(html);
+    await stale.unroute(loader);
+    const newLoader = stale.waitForResponse(response => {
+      const url = new URL(response.url()).pathname;
+      return /^\/assets\/catalog\.[a-f0-9]{20}\.js$/.test(url) && url !== '/' + loaderPath && response.ok();
+    });
+    await retry.click();
+    await newLoader;
+    assert.equal(stale.url(), origin + route);
+    const card = stale.locator('.repository-card').first();
+    await card.waitFor();
+    assert.equal(await stale.locator('#q').inputValue(), title);
+    assert.ok((await card.textContent()).includes(title));
+    assert.doesNotMatch(await card.textContent(), /retired revision/);
+    assert.equal(await stale.getByRole('alert').count(), 0);
+    assert.equal(await retry.count(), 0);
+  } finally {
+    await stale.close();
+    fs.rmSync(temp, {recursive:true, force:true});
+  }
 }
 
 async function main() {
@@ -128,6 +192,7 @@ async function main() {
       } finally {
         await stale.close();
       }
+      await checkCatalogRollover(context, origin);
     }
     const heroArt = page.locator('.technical-hero > a');
     assert.equal(await heroArt.evaluate(node=>getComputedStyle(node,'::after').animationName),'portal-scan','Home scans the illustration once');

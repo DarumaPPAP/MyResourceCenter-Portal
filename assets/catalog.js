@@ -36,11 +36,16 @@
 
   function fetchCatalog(name) {
     return remember(files, name, async () => {
-      const url = release ? release.files[name] : `catalog/${name}.json`;
-      if (!url) throw new Error(`${name}.json: missing from Catalog release`);
-      const response = await fetch(url, release ? undefined : {cache:'no-cache'});
-      if (!response.ok) throw new Error(`${name}.json: HTTP ${response.status}`);
-      return response.json();
+      try {
+        const url = release ? release.files[name] : `catalog/${name}.json`;
+        if (!url) throw new Error(`${name}.json: missing from Catalog release`);
+        const response = await fetch(url, release ? undefined : {cache:'no-cache'});
+        if (!response.ok) throw new Error(`${name}.json: HTTP ${response.status}`);
+        return await response.json();
+      } catch (error) {
+        if (release) window.dispatchEvent(new Event('portal-catalog-load-error'));
+        throw error;
+      }
     });
   }
 

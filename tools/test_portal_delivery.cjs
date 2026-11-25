@@ -8,9 +8,10 @@ const root = path.resolve(__dirname, '..');
 const source = fs.readFileSync(path.join(root, 'assets/catalog.js'), 'utf8');
 const shard = 'websites-latest-01';
 
-function loader(script, directory, counts, {fail} = {}) {
-  const window = {};
-  vm.runInNewContext(script, {window, fetch: async (url, init) => {
+function loader(script, directory, counts, {fail, onReleaseError} = {}) {
+  const window = new EventTarget();
+  if (onReleaseError) window.addEventListener('portal-catalog-load-error', onReleaseError);
+  vm.runInNewContext(script, {window, Event, fetch: async (url, init) => {
     counts.set(url, (counts.get(url) || 0) + 1);
     if (fail?.(url, counts.get(url))) return {ok:false, status:503};
     if (/\.[a-f0-9]{20}\.json$/.test(url)) assert.equal(init?.cache, undefined);
@@ -66,7 +67,10 @@ async function main() {
     assert.equal(secondRelease.files['website-facets'], files['website-facets']);
     assert.equal(secondRelease.files.home, files.home);
     assert.ok(!fs.existsSync(path.join(next, files[shard])), 'a removed version cannot serve mismatched bytes');
-    await assert.rejects(loader(builtScript, next, new Map()).load('websites'), /ENOENT/);
+    let releaseErrors = 0;
+    const retiredCatalog = loader(builtScript, next, new Map(), {onReleaseError:() => { releaseErrors++; }});
+    await assert.rejects(retiredCatalog.load('websites'), /ENOENT/);
+    assert.equal(releaseErrors, 1, 'retired Catalog failures reach the shared reload UI');
     const nextCatalog = loader(fs.readFileSync(path.join(next, secondRelease.loaderPath), 'utf8'), next, new Map());
     assert.equal((await nextCatalog.load('websites')).find(row => row.id === rows[0].id).title, rows[0].title);
   } finally {
