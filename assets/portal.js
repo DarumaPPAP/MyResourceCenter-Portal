@@ -208,7 +208,7 @@
         if (!motion.matches || !('onpagereveal' in window)) return;
         const activation = window.navigation?.activation;
         const traversal = takeTraversal();
-        const kind = transitionKind(activation?.from?.url, activation?.entry?.url) || traversal;
+        const kind = transitionKind(activation?.from?.url, activation?.entry?.url) || traversal || root.dataset.pageMotion;
         if (kind && root.dataset.pageMotion !== kind) {
           root.dataset.pageMotion = kind;
           root.dataset.motionVisited = '';
