@@ -5,6 +5,30 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 
+// A cached page can outlive the versioned scripts it points to after a deploy.
+const releaseErrorHandler = `<script>
+    window.addEventListener('error', ({target}) => {
+      if (!target.matches?.('script[data-portal-release]')) return;
+      const show = () => {
+        if (document.getElementById('portal-release-error')) return;
+        const alert = document.createElement('p');
+        alert.id = 'portal-release-error';
+        alert.className = 'empty';
+        alert.setAttribute('role', 'alert');
+        alert.textContent = 'ページの読み込みに失敗しました。 ';
+        const retry = document.createElement('button');
+        retry.type = 'button';
+        retry.className = 'icon-button';
+        retry.textContent = 'ページを再読み込み';
+        retry.addEventListener('click', () => location.reload());
+        alert.append(retry);
+        (document.querySelector('main') || document.body).prepend(alert);
+      };
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', show, {once:true});
+      else show();
+    }, true);
+  </script>`;
+
 function fingerprint(file, contents) {
   const {dir, name, ext} = path.parse(file);
   const digest = createHash('sha256').update(contents).digest('hex').slice(0, 20);
@@ -61,8 +85,10 @@ async function buildPortal(root, output) {
           write(version, bytes);
           scripts.set(file, version);
         }
-        return start + scripts.get(file) + '"';
+        return start + scripts.get(file) + '" data-portal-release';
       });
+    html = html.replace(/<script\b(?=[^>]* data-portal-release)/, scriptTag => `${releaseErrorHandler}
+  ${scriptTag}`);
     if (page === 'index.html') {
       html = html.replace('  <script defer', `  <link rel="preload" as="fetch" crossorigin href="${files.home}">\n  <script defer`);
     }

@@ -113,6 +113,21 @@ async function main() {
         .map(entry => new URL(entry.name).pathname).filter(pathname => pathname.startsWith('/catalog/')));
       assert.equal(requests.length, 1, 'the staged Home fetches only its preloaded projection');
       assert.match(requests[0], /^\/catalog\/home\.[a-f0-9]{20}\.json$/);
+      // Model an old HTML document whose fingerprinted loader disappeared in a deployment.
+      const stale = await context.newPage();
+      const loader = /\/assets\/catalog\.[a-f0-9]{20}\.js$/;
+      await stale.route(loader, route => route.fulfill({status:404, body:''}));
+      try {
+        await openPage(stale, origin, 'index.html');
+        const retry = stale.getByRole('button', {name:'ページを再読み込み'});
+        await retry.waitFor({timeout:5000});
+        await stale.unroute(loader);
+        await retry.click();
+        await stale.locator('#docs .document-entry').first().waitFor();
+        assert.equal(await retry.count(),0,'reloading with the current release clears the error');
+      } finally {
+        await stale.close();
+      }
     }
     const heroArt = page.locator('.technical-hero > a');
     assert.equal(await heroArt.evaluate(node=>getComputedStyle(node,'::after').animationName),'portal-scan','Home scans the illustration once');

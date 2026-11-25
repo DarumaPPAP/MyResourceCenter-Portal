@@ -2,7 +2,7 @@
 
 ## 検証範囲
 
-Before は GitHub の最新 `main` と照合した `1c4ad5969516891a66fb29e50a5a142bdfef8b95`。After はこの変更を含む Pages 用の静的出力。現行 Catalog は Websites 207 件、Document Presentation 102 件。同条件の Before／After はローカルの公開用ビルドで比較した。GitHub Pages の公開版は別のブラウザー実行環境から確認した。
+Before は GitHub の最新 `main` と照合した `1c4ad5969516891a66fb29e50a5a142bdfef8b95`。After は主要実装 `709c7a4` の Pages 用静的出力。現行 Catalog は Websites 207 件、Document Presentation 102 件。同条件の Before／After はローカルの公開用ビルドで比較した。GitHub Pages の公開版は別のブラウザー実行環境から確認した。
 
 ## GitHub Pages の変更前ベースライン
 
@@ -14,7 +14,7 @@ Before は GitHub の最新 `main` と照合した `1c4ad5969516891a66fb29e50a5a
 
 - 公開用ビルドが、既存の Document Presentation と Collection、Resource を使って Home 向け JSON を生成する。特集資料 4 件と Reading Path 3 件の選択規則を開発用ページと共有する。HTML から先行取得し、ビルドで上限 10,000 バイトを検証する。
 - 公開 Catalog の安定 URL は既存の利用者向けに配信を続ける。ページからの読み込みは、ビルドが生成した内容ハッシュ付きの物理ファイルに切り替えた。同じ内容のシャードは更新後も同じ URL を使い、ブラウザー標準の HTTP キャッシュに載る。公開ビルドでは Manifest の Source Commit をローダーに含め、Site Icon のための個別取得を省く。
-- 同じドキュメント内では、物理ファイルごとに取得とデコードを共有する。失敗した Promise を取り除き、次の読み込みで該当ファイルを再試行できる。バージョンが異なるデータを安定 URL から補完しないため、デプロイをまたいで古い HTML がキャッシュに残り、古い内容ハッシュが CDN に無い場合はページの再読み込みが必要になる。
+- 同じドキュメント内では、物理ファイルごとに取得とデコードを共有する。失敗した Promise を取り除き、次の読み込みで該当ファイルを再試行できる。バージョンが異なるデータを安定 URL から補完しないため、デプロイをまたいで古い HTML がキャッシュに残り、古い内容ハッシュが CDN に無い場合はページの再読み込みが必要になる。初期化に必要なバージョン付きスクリプトが見つからない場合も、再読み込みボタンを表示する。
 - Websites の Host、Author、Facet、検索文字列、日付を初期化時に計算する。日付順は方向ごとに再利用し、同じ検索条件でのページ送りでは結果を再利用する。同じカードが同じ順序で並ぶ場合は DOM を保持する。検索と Filter の AND 条件、同日および日付不明の順序、URL と履歴を検証した。
 - Websites と Documents のページ送りでは、古いページリンクを結果 DOM の更新前に置き換え、新しいタイトルへのスクロールとフォーカスを描画後に実行する。Websites は 4 件目以降に `content-visibility: auto` を使う。Home の主要画像を優先し、Websites のプレビュー背後にある Site Icon は優先度を下げる。プレースホルダーと既存のモーションは表示に残る。
 
@@ -69,7 +69,7 @@ Home の診断用 JSON Parse は 8.1 → 0.8 ms。起動時の Script Evaluation
 
 ## 検証と計測ファイル
 
-既存の Portal／Viewer／Trend Validation、公開データ同期回帰、Node の検索・履歴・Home・デプロイ契約、公開ビルドに対する Chromium Browser Smoke が成功した。公開用の出力を 2 回生成して同一入力の URL が一致することを確認した。シャード更新時に変更ファイルの URL が新しくなり、同じ内容の Catalog URL は再利用される。旧ローダーへのリクエストは対応するファイルが無ければ失敗する。Chromium では短いモバイル画面でキーボード操作後も先頭結果へフォーカスし、Back 操作で結果に戻る。
+既存の Portal／Viewer／Trend Validation、公開データ同期回帰、Node の検索・履歴・Home・デプロイ契約、公開ビルドに対する Chromium Browser Smoke が成功した。公開用の出力を 2 回生成して同一入力の URL が一致することを確認した。シャード更新時に変更ファイルの URL が新しくなり、同じ内容の Catalog URL は再利用される。旧ローダーへのリクエストは対応するファイルが無ければ失敗する。Chromium では短いモバイル画面でキーボード操作後も先頭結果へフォーカスし、Back 操作で結果に戻る。レビュー後に生成 HTML に追加した復旧ガードは、旧ローダーへの HTTP 404 を再現し、ボタンで再読み込みできることを検証した。ガード追加前後で Catalog と JavaScript ファイルの生成内容を比較し、一致を確認した。
 
 - [集計 JSON](portal-performance/summary.json)
 - [現行データの生データ](portal-performance/0-runs.json.gz) ／ [1,000 件](portal-performance/1000-runs.json.gz) ／ [5,000 件](portal-performance/5000-runs.json.gz)
