@@ -101,6 +101,182 @@ async function checkCatalogRollover(context, origin) {
   }
 }
 
+async function activateViewerDuringMotion(page, touch = false) {
+  const viewerLink = page.locator('.detail-hero').locator('a[href^="viewer.html"]');
+  await viewerLink.waitFor();
+  const transitioning = await page.evaluate(() => {
+    const root = document.documentElement;
+    if (root.dataset.pageMotion !== 'forward') return false;
+    delete root.dataset.motionSettled;
+    const animation = document.querySelector('.content').getAnimations()
+      .find(item => item.animationName === 'portal-page-forward');
+    animation.pause();
+    animation.currentTime = 85;
+    return true;
+  });
+  if (transitioning) {
+    const {x,y,width,height} = await viewerLink.boundingBox();
+    if (touch) await page.touchscreen.tap(x + width / 2, y + height / 2);
+    else await page.mouse.click(x + width / 2, y + height / 2);
+  } else {
+    await viewerLink.click();
+  }
+}
+
+async function checkMotionFailures(browser, origin) {
+  for (const failure of ['absent', 'constructor', 'observe', 'initialize', 'callback']) {
+    const context = await browser.newContext();
+    try {
+      await context.addInitScript(mode => {
+        if (!location.pathname.endsWith('/documents.html')) return;
+        if (mode === 'absent') window.MutationObserver = undefined;
+        if (mode === 'constructor') {
+          window.MutationObserver = class {
+            constructor() { throw new Error('Motion observer constructor failed'); }
+          };
+        }
+        if (mode === 'observe') {
+          MutationObserver.prototype.observe = () => { throw new Error('Motion observer observe failed'); };
+        }
+        if (mode === 'initialize') {
+          const select = Document.prototype.querySelector;
+          Document.prototype.querySelector = function(selector) {
+            if (selector === '#list, #grid, #trend-list') throw new Error('Motion initialization failed');
+            return select.call(this, selector);
+          };
+        }
+        if (mode === 'callback') {
+          const add = DOMTokenList.prototype.add;
+          DOMTokenList.prototype.add = function(...tokens) {
+            add.apply(this, tokens);
+            if (tokens.includes('initial-result')) throw new Error('Motion result callback failed');
+          };
+        }
+      }, failure);
+      const page = await context.newPage();
+      const errors = [];
+      page.on('pageerror', error => {
+        if (error.name !== 'AbortError' || error.stack) errors.push(error.message);
+      });
+      await openPage(page, origin, 'index.html');
+      await page.locator('.side-nav a[href="documents.html"]').press('Enter');
+      await page.waitForURL('**/documents.html');
+      await page.locator('.document-entry').first().waitFor();
+      assert.equal(await page.locator('.side-nav a').count(), 7, failure + ': navigation initialized');
+      assert.equal(await page.locator('.side-nav a[aria-current="page"]').getAttribute('href'), 'documents.html', failure);
+      if (failure !== 'absent') {
+        const html = page.locator('html');
+        assert.equal(await html.getAttribute('data-motion-disabled'), '', failure);
+        for (const attr of ['data-page-motion', 'data-motion-pressed', 'data-motion-settled', 'data-motion-visited']) {
+          assert.equal(await html.getAttribute(attr), null, failure + ': ' + attr);
+        }
+        assert.equal(await page.locator('[data-outgoing-heading]').count(), 0, failure);
+        assert.equal(await page.locator('.content').evaluate(node => getComputedStyle(node).opacity), '1', failure);
+        assert.equal(await page.locator('.document-entry').first().evaluate(node => getComputedStyle(node).animationName), 'none', failure);
+      }
+      await page.locator('.theme-toggle').click();
+      assert.equal(await page.locator('html').getAttribute('data-theme'), 'dark', failure);
+      await page.keyboard.press('/');
+      const search = page.locator('#q:focus');
+      await search.fill('Unity');
+      assert.equal(new URL(page.url()).searchParams.get('q'), 'Unity', failure);
+      assert.ok(await page.locator('.document-entry').count(), failure + ': filtered catalog stays available');
+      await page.locator('.side-nav a[href="index.html"]').press('Enter');
+      await page.waitForURL('**/index.html');
+      await page.locator('#docs .document-entry').first().waitFor();
+      assert.equal(await page.locator('html').getAttribute('data-theme'), 'dark', failure + ': theme persisted');
+      assert.deepEqual(errors, [], failure);
+    } finally {
+      await context.close();
+    }
+  }
+}
+
+async function checkActiveSearchMotion(browser, origin, {touch = false, stopClick = false} = {}) {
+  const context = await browser.newContext({
+    viewport:touch ? {width:390,height:844} : {width:1280,height:900}, isMobile:touch, hasTouch:touch
+  });
+  try {
+    await context.addInitScript(stopClick => {
+      window.searchMotionEvents = [];
+      for (const type of ['pointerdown', 'pointerup', 'click', 'input']) {
+        window.addEventListener(type, event => {
+          if (event.target.id !== 'q') return;
+          const animation = document.querySelector('.content').getAnimations()
+            .find(item => item.animationName === 'portal-page-fade');
+          window.searchMotionEvents.push([type, event.isTrusted, animation?.playState]);
+          if (stopClick && type === 'click') event.stopPropagation();
+        }, true);
+      }
+    }, stopClick);
+    const page = await context.newPage();
+    await openPage(page, origin, 'index.html');
+    const link = page.locator(touch ? '.mobile-nav a[href="documents.html"]' : '.side-nav a[href="documents.html"]');
+    await link.press('Enter');
+    await page.waitForURL('**/documents.html', {waitUntil:'commit'});
+    if (!await page.evaluate(()=>'onpagereveal' in window)) return;
+    const ready = await page.waitForFunction(() => {
+      const content = document.querySelector('.content');
+      const animation = content?.getAnimations().find(item => item.animationName === 'portal-page-fade');
+      if (animation?.playState !== 'running' || animation.currentTime >= 280) return null;
+      const {x,y,width,height} = document.querySelector('#q').getBoundingClientRect();
+      return {x:x + width / 2,y:y + height / 2};
+    }, null, {timeout:5000});
+    const {x,y} = await ready.jsonValue();
+    const cdp = touch ? await context.newCDPSession(page) : null;
+    if (cdp) {
+      await cdp.send('Input.dispatchTouchEvent', {type:'touchStart',touchPoints:[{x,y}]});
+    } else {
+      await page.mouse.move(x,y);
+      await page.mouse.down();
+    }
+    const held = await page.waitForFunction(() => {
+      const animation = document.querySelector('.content').getAnimations()
+        .find(item => item.animationName === 'portal-page-fade');
+      if (animation?.playState === 'paused' && !animation.pending) return animation.currentTime;
+    });
+    const heldTime = await held.jsonValue();
+    const paused = await page.evaluate(async () => {
+      const input = document.querySelector('#q');
+      const rect = () => JSON.stringify(input.getBoundingClientRect());
+      const start = rect();
+      await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+      const content = document.querySelector('.content');
+      return {stationary:start === rect(), time:content.getAnimations()[0]?.currentTime};
+    });
+    assert.equal(paused.stationary,true,'search stays in place while pressed');
+    assert.equal(paused.time,heldTime,'the active animation clock stops during press');
+
+    if (cdp) await cdp.send('Input.dispatchTouchEvent', {type:'touchEnd',touchPoints:[]});
+    else await page.mouse.up();
+
+    const search = page.locator('#q');
+    assert.equal(await search.evaluate(node=>node === document.activeElement),true,'pointer click focuses the live input');
+    if (!stopClick) {
+      await page.waitForFunction(() => document.querySelector('.content').getAnimations()
+        .some(item => item.animationName === 'portal-page-fade' && item.playState === 'running'),
+        null, {timeout:1500});
+      await page.keyboard.insertText('Unity');
+      assert.equal(await search.inputValue(),'Unity');
+    }
+    await page.waitForFunction(time => {
+      const root = document.documentElement;
+      if (root.hasAttribute('data-motion-pressed')) return false;
+      const animation = document.querySelector('.content').getAnimations()
+        .find(item => item.animationName === 'portal-page-fade');
+      return !animation || animation.playState === 'running' && animation.currentTime > time;
+    }, heldTime, {timeout:2000});
+    const events = await page.evaluate(()=>window.searchMotionEvents);
+    assert.deepEqual(events.slice(0,3).map(event => event.slice(0,2)),
+      [['pointerdown',true], ['pointerup',true], ['click',true]]);
+    if (!stopClick) assert.ok(events.some(([type,trusted,state])=>type === 'input' && trusted && state === 'running'),
+      'trusted input reaches the search while the animation is running');
+    await page.waitForFunction(()=>getComputedStyle(document.querySelector('.content')).opacity === '1', null, {timeout:2000});
+  } finally {
+    await context.close();
+  }
+}
+
 async function main() {
   const server = createServer();
   await new Promise(resolve => server.listen(0,'127.0.0.1',resolve));
@@ -114,6 +290,10 @@ async function main() {
       ...(executablePath ? {executablePath} : {}),
       args:process.platform === 'linux' ? ['--no-sandbox'] : []
     });
+    await checkMotionFailures(browser, origin);
+    await checkActiveSearchMotion(browser, origin);
+    await checkActiveSearchMotion(browser, origin, {touch:true});
+    await checkActiveSearchMotion(browser, origin, {touch:true,stopClick:true});
     const context = await browser.newContext({viewport:{width:1280,height:900}});
     await context.route('**/assets/generated/site-icons/**',route=>route.abort());
     await context.route('https://drive.google.com/**',route=>route.abort());
@@ -248,7 +428,7 @@ async function main() {
     const focusedBounds = await focusedResult.boundingBox();
     assert.ok(focusedBounds.y >= 68 && focusedBounds.y + focusedBounds.height <= 375,'focused result stays visible on a short mobile viewport');
     assert.equal(await page.locator('.document-entry').first().evaluate(node=>getComputedStyle(node).opacity),'1');
-    assert.equal(await page.locator('.document-entry').nth(1).evaluate(node=>getComputedStyle(node).animationName),'portal-enter');
+    assert.equal(await page.locator('.document-entry').nth(1).evaluate(node=>getComputedStyle(node).animationName),'portal-result-page');
     await page.goBack();
     await page.waitForFunction(()=>!new URL(location.href).searchParams.has('page'));
     await page.setViewportSize({width:1280,height:900});
@@ -327,6 +507,7 @@ async function main() {
     await page.locator('[data-global-search]').fill('FidelityFX-CAS');
     await page.locator('[data-global-search]').press('Enter');
     await page.waitForURL('**/repositories.html?q=FidelityFX-CAS');
+    await page.locator('.repository-card').first().waitFor();
     assert.equal(await page.locator('.repository-card').count(),1);
 
     await openPage(page,origin,'taxonomy.html');
@@ -426,20 +607,51 @@ async function main() {
       assert.equal(await marker.evaluate(node=>getComputedStyle(node).viewTransitionName),'portal-nav-marker');
       await routePage.waitForFunction(()=>document.documentElement.hasAttribute('data-test-transition-interactive'));
       assert.equal(await routePage.locator('html').getAttribute('data-test-transition-interactive'),'true','search is clickable during the native transition');
+      await routePage.waitForFunction(()=>document.documentElement.dataset.pageMotion === 'crossfade');
+      const search = routePage.locator('#q');
+      const bounds = await search.boundingBox();
+      await routePage.mouse.click(bounds.x + bounds.width / 2, bounds.y + bounds.height / 2);
+      await routePage.keyboard.type('Unity');
+      assert.equal(await search.inputValue(),'Unity','using the live search succeeds during transition');
+      await search.fill('');
     }
 
     await routePage.locator('.document-detail').first().click();
     await routePage.waitForURL('**/document.html?id=*');
-    const detail = routePage.locator('.detail-hero');
-    assert.equal(await detail.evaluate(node=>getComputedStyle(node).animationName),'portal-enter','detail metadata has a short entrance');
+    if (await routePage.evaluate(()=>'onpagereveal' in window)) {
+      await routePage.waitForFunction(()=>document.documentElement.dataset.pageMotion === 'forward');
+      await routePage.goBack({waitUntil:'commit'});
+      await routePage.waitForURL('**/documents.html');
+      await routePage.waitForFunction(()=>document.documentElement.dataset.pageMotion === 'back');
+      await routePage.goForward({waitUntil:'commit'});
+      await routePage.waitForURL('**/document.html?id=*');
+      await routePage.waitForFunction(()=>document.documentElement.dataset.pageMotion === 'forward');
+    }
 
     await navigation.route('https://drive.google.com/**',route=>route.abort());
     await navigation.route('https://docs.google.com/**',route=>route.abort());
-    await detail.locator('a[href^="viewer.html"]').click();
+    await activateViewerDuringMotion(routePage);
     await routePage.waitForURL('**/viewer.html?*');
     if (await routePage.evaluate(()=>'onpagereveal' in window)) {
       await routePage.waitForFunction(()=>document.documentElement.hasAttribute('data-test-transition'));
       assert.equal(await routePage.locator('html').getAttribute('data-test-transition'),'false','document viewer skips native view transitions');
+    }
+
+    const touch = await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
+    try {
+      await touch.route('https://drive.google.com/**',route=>route.abort());
+      await touch.route('https://docs.google.com/**',route=>route.abort());
+      const touchPage = await touch.newPage();
+      await openPage(touchPage,origin,'documents.html');
+      await touchPage.locator('.document-detail').first().tap();
+      await touchPage.waitForURL('**/document.html?id=*');
+      if (await touchPage.evaluate(()=>'onpagereveal' in window)) {
+        await touchPage.waitForFunction(()=>document.documentElement.dataset.pageMotion === 'forward');
+      }
+      await activateViewerDuringMotion(touchPage, true);
+      await touchPage.waitForURL('**/viewer.html?*');
+    } finally {
+      await touch.close();
     }
 
     await routePage.emulateMedia({reducedMotion:'reduce'});

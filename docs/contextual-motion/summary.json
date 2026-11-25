@@ -1,0 +1,3392 @@
+{
+  "runs": {
+    "0": {
+      "trials": 2,
+      "chromium": "151.0.7922.173",
+      "variants": {
+        "before": {
+          "no-preference": {
+            "home": {
+              "readyMs": {
+                "median": 1008.65,
+                "min": 798.5,
+                "max": 1218.8,
+                "n": 2
+              },
+              "pageAnimationStartMs": null,
+              "transitionReadyMs": null,
+              "peakDrawingLayers": null,
+              "lcpMs": {
+                "median": 816.0,
+                "min": 640,
+                "max": 992,
+                "n": 2
+              },
+              "layoutShiftSum": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "frameP95Ms": {
+                "median": 109.99,
+                "min": 59.96,
+                "max": 160.02,
+                "n": 2
+              },
+              "frameOver33ms": {
+                "median": 5.0,
+                "min": 4,
+                "max": 6,
+                "n": 2
+              },
+              "longTasks": {
+                "median": 1.0,
+                "min": 1,
+                "max": 1,
+                "n": 2
+              },
+              "longTaskMs": {
+                "median": 269.0,
+                "min": 212,
+                "max": 326,
+                "n": 2
+              },
+              "heapUsedBytes": {
+                "median": 3035198.0,
+                "min": 3030988,
+                "max": 3039408,
+                "n": 2
+              },
+              "resourceRequests": {
+                "median": 12.5,
+                "min": 12,
+                "max": 13,
+                "n": 2
+              },
+              "resourceWireBytes": {
+                "median": 106531.0,
+                "min": 106381,
+                "max": 106681,
+                "n": 2
+              },
+              "catalogRequests": {
+                "median": 1.0,
+                "min": 1,
+                "max": 1,
+                "n": 2
+              },
+              "catalogDuplicateRequests": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogCacheHits": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogDecodedBytes": {
+                "median": 2906.0,
+                "min": 2906,
+                "max": 2906,
+                "n": 2
+              },
+              "catalogWireBytes": {
+                "median": 1632.0,
+                "min": 1632,
+                "max": 1632,
+                "n": 2
+              }
+            },
+            "websites": {
+              "readyMs": {
+                "median": 782.4,
+                "min": 763.2,
+                "max": 801.6,
+                "n": 2
+              },
+              "pageAnimationStartMs": null,
+              "transitionReadyMs": {
+                "median": 320.15,
+                "min": 296.8,
+                "max": 343.5,
+                "n": 2
+              },
+              "peakDrawingLayers": null,
+              "lcpMs": {
+                "median": 1040.0,
+                "min": 1020,
+                "max": 1060,
+                "n": 2
+              },
+              "layoutShiftSum": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "frameP95Ms": {
+                "median": 29.633,
+                "min": 27.525,
+                "max": 31.74,
+                "n": 2
+              },
+              "frameOver33ms": {
+                "median": 2.5,
+                "min": 2,
+                "max": 3,
+                "n": 2
+              },
+              "longTasks": {
+                "median": 1.0,
+                "min": 1,
+                "max": 1,
+                "n": 2
+              },
+              "longTaskMs": {
+                "median": 59.0,
+                "min": 53,
+                "max": 65,
+                "n": 2
+              },
+              "heapUsedBytes": {
+                "median": 5251504.0,
+                "min": 5242728,
+                "max": 5260280,
+                "n": 2
+              },
+              "resourceRequests": {
+                "median": 17.0,
+                "min": 17,
+                "max": 17,
+                "n": 2
+              },
+              "resourceWireBytes": {
+                "median": 103867.0,
+                "min": 103867,
+                "max": 103867,
+                "n": 2
+              },
+              "catalogRequests": {
+                "median": 7.0,
+                "min": 7,
+                "max": 7,
+                "n": 2
+              },
+              "catalogDuplicateRequests": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogCacheHits": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogDecodedBytes": {
+                "median": 199316.0,
+                "min": 199316,
+                "max": 199316,
+                "n": 2
+              },
+              "catalogWireBytes": {
+                "median": 43489.0,
+                "min": 43489,
+                "max": 43489,
+                "n": 2
+              }
+            },
+            "interactions": {
+              "searchMedianMs": {
+                "median": 14.625,
+                "min": 13.0,
+                "max": 16.25,
+                "n": 2
+              },
+              "searchMaxMs": {
+                "median": 24.25,
+                "min": 23.7,
+                "max": 24.8,
+                "n": 2
+              },
+              "clickSyncMs": {
+                "median": 15.75,
+                "min": 12.4,
+                "max": 19.1,
+                "n": 2
+              },
+              "clickEventTimingMs": {
+                "median": 96.0,
+                "min": 88,
+                "max": 104,
+                "n": 2
+              },
+              "clickFrameMaxMs": {
+                "median": 74.9,
+                "min": 66.6,
+                "max": 83.2,
+                "n": 2
+              },
+              "heapUsedBytes": {
+                "median": 5400780.0,
+                "min": 5397648,
+                "max": 5403912,
+                "n": 2
+              }
+            },
+            "collection": {
+              "readyMs": {
+                "median": 647.15,
+                "min": 638.7,
+                "max": 655.6,
+                "n": 2
+              },
+              "pageAnimationStartMs": null,
+              "transitionReadyMs": null,
+              "peakDrawingLayers": null,
+              "lcpMs": {
+                "median": 622.0,
+                "min": 620,
+                "max": 624,
+                "n": 2
+              },
+              "layoutShiftSum": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "frameP95Ms": {
+                "median": 16.788,
+                "min": 16.775,
+                "max": 16.8,
+                "n": 2
+              },
+              "frameOver33ms": {
+                "median": 2.0,
+                "min": 2,
+                "max": 2,
+                "n": 2
+              },
+              "longTasks": {
+                "median": 0.5,
+                "min": 0,
+                "max": 1,
+                "n": 2
+              },
+              "longTaskMs": {
+                "median": 31.0,
+                "min": 0,
+                "max": 62,
+                "n": 2
+              },
+              "heapUsedBytes": {
+                "median": 7018906.0,
+                "min": 7018372,
+                "max": 7019440,
+                "n": 2
+              },
+              "resourceRequests": {
+                "median": 14.0,
+                "min": 14,
+                "max": 14,
+                "n": 2
+              },
+              "resourceWireBytes": {
+                "median": 24198.0,
+                "min": 24198,
+                "max": 24198,
+                "n": 2
+              },
+              "catalogRequests": {
+                "median": 8.0,
+                "min": 8,
+                "max": 8,
+                "n": 2
+              },
+              "catalogDuplicateRequests": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogCacheHits": {
+                "median": 5.0,
+                "min": 5,
+                "max": 5,
+                "n": 2
+              },
+              "catalogDecodedBytes": {
+                "median": 301158.0,
+                "min": 301158,
+                "max": 301158,
+                "n": 2
+              },
+              "catalogWireBytes": {
+                "median": 22381.0,
+                "min": 22381,
+                "max": 22381,
+                "n": 2
+              }
+            },
+            "home-warm": {
+              "readyMs": {
+                "median": 339.3,
+                "min": 229.6,
+                "max": 449,
+                "n": 2
+              },
+              "pageAnimationStartMs": null,
+              "transitionReadyMs": {
+                "median": 206.2,
+                "min": 157.9,
+                "max": 254.5,
+                "n": 2
+              },
+              "peakDrawingLayers": null,
+              "lcpMs": {
+                "median": 244.0,
+                "min": 192,
+                "max": 296,
+                "n": 2
+              },
+              "layoutShiftSum": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "frameP95Ms": {
+                "median": 33.34,
+                "min": 33.3,
+                "max": 33.38,
+                "n": 2
+              },
+              "frameOver33ms": {
+                "median": 2.5,
+                "min": 1,
+                "max": 4,
+                "n": 2
+              },
+              "longTasks": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "longTaskMs": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "heapUsedBytes": {
+                "median": 8356426.0,
+                "min": 8347000,
+                "max": 8365852,
+                "n": 2
+              },
+              "resourceRequests": {
+                "median": 12.0,
+                "min": 12,
+                "max": 12,
+                "n": 2
+              },
+              "resourceWireBytes": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogRequests": {
+                "median": 1.0,
+                "min": 1,
+                "max": 1,
+                "n": 2
+              },
+              "catalogDuplicateRequests": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogCacheHits": {
+                "median": 1.0,
+                "min": 1,
+                "max": 1,
+                "n": 2
+              },
+              "catalogDecodedBytes": {
+                "median": 2906.0,
+                "min": 2906,
+                "max": 2906,
+                "n": 2
+              },
+              "catalogWireBytes": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              }
+            },
+            "websites-warm": {
+              "readyMs": {
+                "median": 412.25,
+                "min": 298.3,
+                "max": 526.2,
+                "n": 2
+              },
+              "pageAnimationStartMs": null,
+              "transitionReadyMs": {
+                "median": 232.05,
+                "min": 148,
+                "max": 316.1,
+                "n": 2
+              },
+              "peakDrawingLayers": null,
+              "lcpMs": {
+                "median": 416.0,
+                "min": 304,
+                "max": 528,
+                "n": 2
+              },
+              "layoutShiftSum": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "frameP95Ms": {
+                "median": 33.348,
+                "min": 33.3,
+                "max": 33.395,
+                "n": 2
+              },
+              "frameOver33ms": {
+                "median": 3.5,
+                "min": 3,
+                "max": 4,
+                "n": 2
+              },
+              "longTasks": {
+                "median": 0.5,
+                "min": 0,
+                "max": 1,
+                "n": 2
+              },
+              "longTaskMs": {
+                "median": 43.5,
+                "min": 0,
+                "max": 87,
+                "n": 2
+              },
+              "heapUsedBytes": {
+                "median": 11349672.0,
+                "min": 11297108,
+                "max": 11402236,
+                "n": 2
+              },
+              "resourceRequests": {
+                "median": 18.0,
+                "min": 18,
+                "max": 18,
+                "n": 2
+              },
+              "resourceWireBytes": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogRequests": {
+                "median": 7.0,
+                "min": 7,
+                "max": 7,
+                "n": 2
+              },
+              "catalogDuplicateRequests": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogCacheHits": {
+                "median": 7.0,
+                "min": 7,
+                "max": 7,
+                "n": 2
+              },
+              "catalogDecodedBytes": {
+                "median": 199316.0,
+                "min": 199316,
+                "max": 199316,
+                "n": 2
+              },
+              "catalogWireBytes": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              }
+            },
+            "documents": {
+              "readyMs": {
+                "median": 778.15,
+                "min": 610.9,
+                "max": 945.4,
+                "n": 2
+              },
+              "pageAnimationStartMs": null,
+              "transitionReadyMs": {
+                "median": 260.65,
+                "min": 198.4,
+                "max": 322.9,
+                "n": 2
+              },
+              "peakDrawingLayers": null,
+              "lcpMs": {
+                "median": 740.0,
+                "min": 560,
+                "max": 920,
+                "n": 2
+              },
+              "layoutShiftSum": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "frameP95Ms": {
+                "median": 62.505,
+                "min": 51.67,
+                "max": 73.34,
+                "n": 2
+              },
+              "frameOver33ms": {
+                "median": 5.5,
+                "min": 5,
+                "max": 6,
+                "n": 2
+              },
+              "longTasks": {
+                "median": 1.5,
+                "min": 1,
+                "max": 2,
+                "n": 2
+              },
+              "longTaskMs": {
+                "median": 210.0,
+                "min": 153,
+                "max": 267,
+                "n": 2
+              },
+              "heapUsedBytes": {
+                "median": 12528202.0,
+                "min": 12485508,
+                "max": 12570896,
+                "n": 2
+              },
+              "resourceRequests": {
+                "median": 16.0,
+                "min": 16,
+                "max": 16,
+                "n": 2
+              },
+              "resourceWireBytes": {
+                "median": 13030.0,
+                "min": 13030,
+                "max": 13030,
+                "n": 2
+              },
+              "catalogRequests": {
+                "median": 8.0,
+                "min": 8,
+                "max": 8,
+                "n": 2
+              },
+              "catalogDuplicateRequests": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogCacheHits": {
+                "median": 7.0,
+                "min": 7,
+                "max": 7,
+                "n": 2
+              },
+              "catalogDecodedBytes": {
+                "median": 306614.0,
+                "min": 306614,
+                "max": 306614,
+                "n": 2
+              },
+              "catalogWireBytes": {
+                "median": 13030.0,
+                "min": 13030,
+                "max": 13030,
+                "n": 2
+              }
+            },
+            "document": {
+              "readyMs": {
+                "median": 483.9,
+                "min": 304.5,
+                "max": 663.3,
+                "n": 2
+              },
+              "pageAnimationStartMs": null,
+              "transitionReadyMs": {
+                "median": 290.95,
+                "min": 198.8,
+                "max": 383.1,
+                "n": 2
+              },
+              "peakDrawingLayers": null,
+              "lcpMs": {
+                "median": 452.0,
+                "min": 300,
+                "max": 604,
+                "n": 2
+              },
+              "layoutShiftSum": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "frameP95Ms": {
+                "median": 28.825,
+                "min": 16.78,
+                "max": 40.87,
+                "n": 2
+              },
+              "frameOver33ms": {
+                "median": 2.0,
+                "min": 1,
+                "max": 3,
+                "n": 2
+              },
+              "longTasks": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "longTaskMs": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "heapUsedBytes": {
+                "median": 13420866.0,
+                "min": 13398600,
+                "max": 13443132,
+                "n": 2
+              },
+              "resourceRequests": {
+                "median": 17.0,
+                "min": 17,
+                "max": 17,
+                "n": 2
+              },
+              "resourceWireBytes": {
+                "median": 585.0,
+                "min": 585,
+                "max": 585,
+                "n": 2
+              },
+              "catalogRequests": {
+                "median": 10.0,
+                "min": 10,
+                "max": 10,
+                "n": 2
+              },
+              "catalogDuplicateRequests": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogCacheHits": {
+                "median": 9.0,
+                "min": 9,
+                "max": 9,
+                "n": 2
+              },
+              "catalogDecodedBytes": {
+                "median": 356923.0,
+                "min": 356923,
+                "max": 356923,
+                "n": 2
+              },
+              "catalogWireBytes": {
+                "median": 585.0,
+                "min": 585,
+                "max": 585,
+                "n": 2
+              }
+            }
+          },
+          "reduce": {
+            "home": {
+              "readyMs": {
+                "median": 723.35,
+                "min": 648.9,
+                "max": 797.8,
+                "n": 2
+              },
+              "pageAnimationStartMs": null,
+              "transitionReadyMs": null,
+              "peakDrawingLayers": null,
+              "lcpMs": {
+                "median": 590.0,
+                "min": 524,
+                "max": 656,
+                "n": 2
+              },
+              "layoutShiftSum": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "frameP95Ms": {
+                "median": 38.745,
+                "min": 33.3,
+                "max": 44.19,
+                "n": 2
+              },
+              "frameOver33ms": {
+                "median": 2.5,
+                "min": 1,
+                "max": 4,
+                "n": 2
+              },
+              "longTasks": {
+                "median": 1.0,
+                "min": 1,
+                "max": 1,
+                "n": 2
+              },
+              "longTaskMs": {
+                "median": 115.0,
+                "min": 100,
+                "max": 130,
+                "n": 2
+              },
+              "heapUsedBytes": {
+                "median": 3025270.0,
+                "min": 3025020,
+                "max": 3025520,
+                "n": 2
+              },
+              "resourceRequests": {
+                "median": 12.0,
+                "min": 12,
+                "max": 12,
+                "n": 2
+              },
+              "resourceWireBytes": {
+                "median": 106381.0,
+                "min": 106381,
+                "max": 106381,
+                "n": 2
+              },
+              "catalogRequests": {
+                "median": 1.0,
+                "min": 1,
+                "max": 1,
+                "n": 2
+              },
+              "catalogDuplicateRequests": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogCacheHits": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogDecodedBytes": {
+                "median": 2906.0,
+                "min": 2906,
+                "max": 2906,
+                "n": 2
+              },
+              "catalogWireBytes": {
+                "median": 1632.0,
+                "min": 1632,
+                "max": 1632,
+                "n": 2
+              }
+            },
+            "websites": {
+              "readyMs": {
+                "median": 743.1,
+                "min": 715,
+                "max": 771.2,
+                "n": 2
+              },
+              "pageAnimationStartMs": null,
+              "transitionReadyMs": null,
+              "peakDrawingLayers": null,
+              "lcpMs": {
+                "median": 1012.0,
+                "min": 972,
+                "max": 1052,
+                "n": 2
+              },
+              "layoutShiftSum": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "frameP95Ms": {
+                "median": 25.1,
+                "min": 16.8,
+                "max": 33.4,
+                "n": 2
+              },
+              "frameOver33ms": {
+                "median": 3.0,
+                "min": 1,
+                "max": 5,
+                "n": 2
+              },
+              "longTasks": {
+                "median": 1.0,
+                "min": 1,
+                "max": 1,
+                "n": 2
+              },
+              "longTaskMs": {
+                "median": 57.0,
+                "min": 57,
+                "max": 57,
+                "n": 2
+              },
+              "heapUsedBytes": {
+                "median": 5313540.0,
+                "min": 5269472,
+                "max": 5357608,
+                "n": 2
+              },
+              "resourceRequests": {
+                "median": 17.0,
+                "min": 17,
+                "max": 17,
+                "n": 2
+              },
+              "resourceWireBytes": {
+                "median": 103867.0,
+                "min": 103867,
+                "max": 103867,
+                "n": 2
+              },
+              "catalogRequests": {
+                "median": 7.0,
+                "min": 7,
+                "max": 7,
+                "n": 2
+              },
+              "catalogDuplicateRequests": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogCacheHits": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogDecodedBytes": {
+                "median": 199316.0,
+                "min": 199316,
+                "max": 199316,
+                "n": 2
+              },
+              "catalogWireBytes": {
+                "median": 43489.0,
+                "min": 43489,
+                "max": 43489,
+                "n": 2
+              }
+            },
+            "interactions": {
+              "searchMedianMs": {
+                "median": 10.6,
+                "min": 10.55,
+                "max": 10.65,
+                "n": 2
+              },
+              "searchMaxMs": {
+                "median": 67.7,
+                "min": 22.5,
+                "max": 112.9,
+                "n": 2
+              },
+              "clickSyncMs": {
+                "median": 12.8,
+                "min": 11.8,
+                "max": 13.8,
+                "n": 2
+              },
+              "clickEventTimingMs": {
+                "median": 108.0,
+                "min": 104,
+                "max": 112,
+                "n": 2
+              },
+              "clickFrameMaxMs": {
+                "median": 83.3,
+                "min": 83.3,
+                "max": 83.3,
+                "n": 2
+              },
+              "heapUsedBytes": {
+                "median": 5390008.0,
+                "min": 5385288,
+                "max": 5394728,
+                "n": 2
+              }
+            },
+            "collection": {
+              "readyMs": {
+                "median": 654.45,
+                "min": 649.8,
+                "max": 659.1,
+                "n": 2
+              },
+              "pageAnimationStartMs": null,
+              "transitionReadyMs": null,
+              "peakDrawingLayers": null,
+              "lcpMs": {
+                "median": 642.0,
+                "min": 632,
+                "max": 652,
+                "n": 2
+              },
+              "layoutShiftSum": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "frameP95Ms": {
+                "median": 16.795,
+                "min": 16.79,
+                "max": 16.8,
+                "n": 2
+              },
+              "frameOver33ms": {
+                "median": 1.0,
+                "min": 1,
+                "max": 1,
+                "n": 2
+              },
+              "longTasks": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "longTaskMs": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "heapUsedBytes": {
+                "median": 7062574.0,
+                "min": 7050004,
+                "max": 7075144,
+                "n": 2
+              },
+              "resourceRequests": {
+                "median": 14.0,
+                "min": 14,
+                "max": 14,
+                "n": 2
+              },
+              "resourceWireBytes": {
+                "median": 24198.0,
+                "min": 24198,
+                "max": 24198,
+                "n": 2
+              },
+              "catalogRequests": {
+                "median": 8.0,
+                "min": 8,
+                "max": 8,
+                "n": 2
+              },
+              "catalogDuplicateRequests": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogCacheHits": {
+                "median": 5.0,
+                "min": 5,
+                "max": 5,
+                "n": 2
+              },
+              "catalogDecodedBytes": {
+                "median": 301158.0,
+                "min": 301158,
+                "max": 301158,
+                "n": 2
+              },
+              "catalogWireBytes": {
+                "median": 22381.0,
+                "min": 22381,
+                "max": 22381,
+                "n": 2
+              }
+            },
+            "home-warm": {
+              "readyMs": {
+                "median": 210.1,
+                "min": 200.8,
+                "max": 219.4,
+                "n": 2
+              },
+              "pageAnimationStartMs": null,
+              "transitionReadyMs": null,
+              "peakDrawingLayers": null,
+              "lcpMs": {
+                "median": 172.0,
+                "min": 164,
+                "max": 180,
+                "n": 2
+              },
+              "layoutShiftSum": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "frameP95Ms": {
+                "median": 25.05,
+                "min": 16.8,
+                "max": 33.3,
+                "n": 2
+              },
+              "frameOver33ms": {
+                "median": 1.5,
+                "min": 1,
+                "max": 2,
+                "n": 2
+              },
+              "longTasks": {
+                "median": 0.5,
+                "min": 0,
+                "max": 1,
+                "n": 2
+              },
+              "longTaskMs": {
+                "median": 96.5,
+                "min": 0,
+                "max": 193,
+                "n": 2
+              },
+              "heapUsedBytes": {
+                "median": 8323580.0,
+                "min": 8322884,
+                "max": 8324276,
+                "n": 2
+              },
+              "resourceRequests": {
+                "median": 12.0,
+                "min": 12,
+                "max": 12,
+                "n": 2
+              },
+              "resourceWireBytes": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogRequests": {
+                "median": 1.0,
+                "min": 1,
+                "max": 1,
+                "n": 2
+              },
+              "catalogDuplicateRequests": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogCacheHits": {
+                "median": 1.0,
+                "min": 1,
+                "max": 1,
+                "n": 2
+              },
+              "catalogDecodedBytes": {
+                "median": 2906.0,
+                "min": 2906,
+                "max": 2906,
+                "n": 2
+              },
+              "catalogWireBytes": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              }
+            },
+            "websites-warm": {
+              "readyMs": {
+                "median": 314.8,
+                "min": 241.8,
+                "max": 387.8,
+                "n": 2
+              },
+              "pageAnimationStartMs": null,
+              "transitionReadyMs": null,
+              "peakDrawingLayers": null,
+              "lcpMs": {
+                "median": 302.0,
+                "min": 228,
+                "max": 376,
+                "n": 2
+              },
+              "layoutShiftSum": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "frameP95Ms": {
+                "median": 25.087,
+                "min": 16.8,
+                "max": 33.375,
+                "n": 2
+              },
+              "frameOver33ms": {
+                "median": 2.0,
+                "min": 1,
+                "max": 3,
+                "n": 2
+              },
+              "longTasks": {
+                "median": 1.5,
+                "min": 1,
+                "max": 2,
+                "n": 2
+              },
+              "longTaskMs": {
+                "median": 147.5,
+                "min": 64,
+                "max": 231,
+                "n": 2
+              },
+              "heapUsedBytes": {
+                "median": 11252002.0,
+                "min": 11239700,
+                "max": 11264304,
+                "n": 2
+              },
+              "resourceRequests": {
+                "median": 18.0,
+                "min": 18,
+                "max": 18,
+                "n": 2
+              },
+              "resourceWireBytes": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogRequests": {
+                "median": 7.0,
+                "min": 7,
+                "max": 7,
+                "n": 2
+              },
+              "catalogDuplicateRequests": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogCacheHits": {
+                "median": 7.0,
+                "min": 7,
+                "max": 7,
+                "n": 2
+              },
+              "catalogDecodedBytes": {
+                "median": 199316.0,
+                "min": 199316,
+                "max": 199316,
+                "n": 2
+              },
+              "catalogWireBytes": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              }
+            },
+            "documents": {
+              "readyMs": {
+                "median": 428.55,
+                "min": 421.2,
+                "max": 435.9,
+                "n": 2
+              },
+              "pageAnimationStartMs": null,
+              "transitionReadyMs": null,
+              "peakDrawingLayers": null,
+              "lcpMs": {
+                "median": 422.0,
+                "min": 416,
+                "max": 428,
+                "n": 2
+              },
+              "layoutShiftSum": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "frameP95Ms": {
+                "median": 25.023,
+                "min": 16.745,
+                "max": 33.3,
+                "n": 2
+              },
+              "frameOver33ms": {
+                "median": 2.5,
+                "min": 2,
+                "max": 3,
+                "n": 2
+              },
+              "longTasks": {
+                "median": 2.0,
+                "min": 1,
+                "max": 3,
+                "n": 2
+              },
+              "longTaskMs": {
+                "median": 133.0,
+                "min": 65,
+                "max": 201,
+                "n": 2
+              },
+              "heapUsedBytes": {
+                "median": 12505280.0,
+                "min": 12505216,
+                "max": 12505344,
+                "n": 2
+              },
+              "resourceRequests": {
+                "median": 16.0,
+                "min": 16,
+                "max": 16,
+                "n": 2
+              },
+              "resourceWireBytes": {
+                "median": 13030.0,
+                "min": 13030,
+                "max": 13030,
+                "n": 2
+              },
+              "catalogRequests": {
+                "median": 8.0,
+                "min": 8,
+                "max": 8,
+                "n": 2
+              },
+              "catalogDuplicateRequests": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogCacheHits": {
+                "median": 7.0,
+                "min": 7,
+                "max": 7,
+                "n": 2
+              },
+              "catalogDecodedBytes": {
+                "median": 306614.0,
+                "min": 306614,
+                "max": 306614,
+                "n": 2
+              },
+              "catalogWireBytes": {
+                "median": 13030.0,
+                "min": 13030,
+                "max": 13030,
+                "n": 2
+              }
+            },
+            "document": {
+              "readyMs": {
+                "median": 299.3,
+                "min": 267.7,
+                "max": 330.9,
+                "n": 2
+              },
+              "pageAnimationStartMs": null,
+              "transitionReadyMs": null,
+              "peakDrawingLayers": null,
+              "lcpMs": {
+                "median": 294.0,
+                "min": 264,
+                "max": 324,
+                "n": 2
+              },
+              "layoutShiftSum": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "frameP95Ms": {
+                "median": 31.69,
+                "min": 30.08,
+                "max": 33.3,
+                "n": 2
+              },
+              "frameOver33ms": {
+                "median": 3.5,
+                "min": 3,
+                "max": 4,
+                "n": 2
+              },
+              "longTasks": {
+                "median": 1.0,
+                "min": 1,
+                "max": 1,
+                "n": 2
+              },
+              "longTaskMs": {
+                "median": 54.0,
+                "min": 51,
+                "max": 57,
+                "n": 2
+              },
+              "heapUsedBytes": {
+                "median": 13394644.0,
+                "min": 13390008,
+                "max": 13399280,
+                "n": 2
+              },
+              "resourceRequests": {
+                "median": 17.0,
+                "min": 17,
+                "max": 17,
+                "n": 2
+              },
+              "resourceWireBytes": {
+                "median": 585.0,
+                "min": 585,
+                "max": 585,
+                "n": 2
+              },
+              "catalogRequests": {
+                "median": 10.0,
+                "min": 10,
+                "max": 10,
+                "n": 2
+              },
+              "catalogDuplicateRequests": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogCacheHits": {
+                "median": 9.0,
+                "min": 9,
+                "max": 9,
+                "n": 2
+              },
+              "catalogDecodedBytes": {
+                "median": 356923.0,
+                "min": 356923,
+                "max": 356923,
+                "n": 2
+              },
+              "catalogWireBytes": {
+                "median": 585.0,
+                "min": 585,
+                "max": 585,
+                "n": 2
+              }
+            }
+          }
+        },
+        "after": {
+          "no-preference": {
+            "home": {
+              "readyMs": {
+                "median": 730.1,
+                "min": 695.3,
+                "max": 764.9,
+                "n": 2
+              },
+              "pageAnimationStartMs": null,
+              "transitionReadyMs": null,
+              "peakDrawingLayers": null,
+              "lcpMs": {
+                "median": 590.0,
+                "min": 556,
+                "max": 624,
+                "n": 2
+              },
+              "layoutShiftSum": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "frameP95Ms": {
+                "median": 33.35,
+                "min": 33.3,
+                "max": 33.4,
+                "n": 2
+              },
+              "frameOver33ms": {
+                "median": 2.0,
+                "min": 2,
+                "max": 2,
+                "n": 2
+              },
+              "longTasks": {
+                "median": 1.0,
+                "min": 1,
+                "max": 1,
+                "n": 2
+              },
+              "longTaskMs": {
+                "median": 140.5,
+                "min": 127,
+                "max": 154,
+                "n": 2
+              },
+              "heapUsedBytes": {
+                "median": 3045702.0,
+                "min": 3045612,
+                "max": 3045792,
+                "n": 2
+              },
+              "resourceRequests": {
+                "median": 12.5,
+                "min": 12,
+                "max": 13,
+                "n": 2
+              },
+              "resourceWireBytes": {
+                "median": 108522.0,
+                "min": 108372,
+                "max": 108672,
+                "n": 2
+              },
+              "catalogRequests": {
+                "median": 1.0,
+                "min": 1,
+                "max": 1,
+                "n": 2
+              },
+              "catalogDuplicateRequests": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogCacheHits": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogDecodedBytes": {
+                "median": 2906.0,
+                "min": 2906,
+                "max": 2906,
+                "n": 2
+              },
+              "catalogWireBytes": {
+                "median": 1632.0,
+                "min": 1632,
+                "max": 1632,
+                "n": 2
+              }
+            },
+            "websites": {
+              "readyMs": {
+                "median": 775.75,
+                "min": 768.6,
+                "max": 782.9,
+                "n": 2
+              },
+              "pageAnimationStartMs": {
+                "median": 389.65,
+                "min": 383.4,
+                "max": 395.9,
+                "n": 2
+              },
+              "transitionReadyMs": {
+                "median": 294.8,
+                "min": 286.3,
+                "max": 303.3,
+                "n": 2
+              },
+              "peakDrawingLayers": null,
+              "lcpMs": {
+                "median": 1024.0,
+                "min": 1012,
+                "max": 1036,
+                "n": 2
+              },
+              "layoutShiftSum": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "frameP95Ms": {
+                "median": 31.685,
+                "min": 29.98,
+                "max": 33.39,
+                "n": 2
+              },
+              "frameOver33ms": {
+                "median": 2.5,
+                "min": 2,
+                "max": 3,
+                "n": 2
+              },
+              "longTasks": {
+                "median": 1.5,
+                "min": 1,
+                "max": 2,
+                "n": 2
+              },
+              "longTaskMs": {
+                "median": 88.5,
+                "min": 61,
+                "max": 116,
+                "n": 2
+              },
+              "heapUsedBytes": {
+                "median": 5332912.0,
+                "min": 5282688,
+                "max": 5383136,
+                "n": 2
+              },
+              "resourceRequests": {
+                "median": 17.0,
+                "min": 17,
+                "max": 17,
+                "n": 2
+              },
+              "resourceWireBytes": {
+                "median": 103867.0,
+                "min": 103867,
+                "max": 103867,
+                "n": 2
+              },
+              "catalogRequests": {
+                "median": 7.0,
+                "min": 7,
+                "max": 7,
+                "n": 2
+              },
+              "catalogDuplicateRequests": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogCacheHits": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogDecodedBytes": {
+                "median": 199316.0,
+                "min": 199316,
+                "max": 199316,
+                "n": 2
+              },
+              "catalogWireBytes": {
+                "median": 43489.0,
+                "min": 43489,
+                "max": 43489,
+                "n": 2
+              }
+            },
+            "interactions": {
+              "searchMedianMs": {
+                "median": 13.0,
+                "min": 12.4,
+                "max": 13.6,
+                "n": 2
+              },
+              "searchMaxMs": {
+                "median": 81.7,
+                "min": 37.4,
+                "max": 126,
+                "n": 2
+              },
+              "clickSyncMs": {
+                "median": 13.75,
+                "min": 11.1,
+                "max": 16.4,
+                "n": 2
+              },
+              "clickEventTimingMs": {
+                "median": 96.0,
+                "min": 96,
+                "max": 96,
+                "n": 2
+              },
+              "clickFrameMaxMs": {
+                "median": 75.05,
+                "min": 66.7,
+                "max": 83.4,
+                "n": 2
+              },
+              "heapUsedBytes": {
+                "median": 5424704.0,
+                "min": 5413908,
+                "max": 5435500,
+                "n": 2
+              }
+            },
+            "collection": {
+              "readyMs": {
+                "median": 615.3,
+                "min": 544.8,
+                "max": 685.8,
+                "n": 2
+              },
+              "pageAnimationStartMs": {
+                "median": 413.85,
+                "min": 344,
+                "max": 483.7,
+                "n": 2
+              },
+              "transitionReadyMs": null,
+              "peakDrawingLayers": null,
+              "lcpMs": {
+                "median": 590.0,
+                "min": 540,
+                "max": 640,
+                "n": 2
+              },
+              "layoutShiftSum": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "frameP95Ms": {
+                "median": 16.75,
+                "min": 16.7,
+                "max": 16.8,
+                "n": 2
+              },
+              "frameOver33ms": {
+                "median": 1.0,
+                "min": 1,
+                "max": 1,
+                "n": 2
+              },
+              "longTasks": {
+                "median": 0.5,
+                "min": 0,
+                "max": 1,
+                "n": 2
+              },
+              "longTaskMs": {
+                "median": 35.5,
+                "min": 0,
+                "max": 71,
+                "n": 2
+              },
+              "heapUsedBytes": {
+                "median": 7090218.0,
+                "min": 7070632,
+                "max": 7109804,
+                "n": 2
+              },
+              "resourceRequests": {
+                "median": 14.0,
+                "min": 14,
+                "max": 14,
+                "n": 2
+              },
+              "resourceWireBytes": {
+                "median": 24198.0,
+                "min": 24198,
+                "max": 24198,
+                "n": 2
+              },
+              "catalogRequests": {
+                "median": 8.0,
+                "min": 8,
+                "max": 8,
+                "n": 2
+              },
+              "catalogDuplicateRequests": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogCacheHits": {
+                "median": 5.0,
+                "min": 5,
+                "max": 5,
+                "n": 2
+              },
+              "catalogDecodedBytes": {
+                "median": 301158.0,
+                "min": 301158,
+                "max": 301158,
+                "n": 2
+              },
+              "catalogWireBytes": {
+                "median": 22381.0,
+                "min": 22381,
+                "max": 22381,
+                "n": 2
+              }
+            },
+            "home-warm": {
+              "readyMs": {
+                "median": 183.95,
+                "min": 183,
+                "max": 184.9,
+                "n": 2
+              },
+              "pageAnimationStartMs": {
+                "median": 177.5,
+                "min": 162,
+                "max": 193,
+                "n": 2
+              },
+              "transitionReadyMs": {
+                "median": 133.1,
+                "min": 123.7,
+                "max": 142.5,
+                "n": 2
+              },
+              "peakDrawingLayers": null,
+              "lcpMs": {
+                "median": 164.0,
+                "min": 148,
+                "max": 180,
+                "n": 2
+              },
+              "layoutShiftSum": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "frameP95Ms": {
+                "median": 16.7,
+                "min": 16.7,
+                "max": 16.7,
+                "n": 2
+              },
+              "frameOver33ms": {
+                "median": 1.5,
+                "min": 1,
+                "max": 2,
+                "n": 2
+              },
+              "longTasks": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "longTaskMs": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "heapUsedBytes": {
+                "median": 8464224.0,
+                "min": 8350592,
+                "max": 8577856,
+                "n": 2
+              },
+              "resourceRequests": {
+                "median": 12.0,
+                "min": 12,
+                "max": 12,
+                "n": 2
+              },
+              "resourceWireBytes": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogRequests": {
+                "median": 1.0,
+                "min": 1,
+                "max": 1,
+                "n": 2
+              },
+              "catalogDuplicateRequests": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogCacheHits": {
+                "median": 1.0,
+                "min": 1,
+                "max": 1,
+                "n": 2
+              },
+              "catalogDecodedBytes": {
+                "median": 2906.0,
+                "min": 2906,
+                "max": 2906,
+                "n": 2
+              },
+              "catalogWireBytes": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              }
+            },
+            "websites-warm": {
+              "readyMs": {
+                "median": 397.05,
+                "min": 313.3,
+                "max": 480.8,
+                "n": 2
+              },
+              "pageAnimationStartMs": {
+                "median": 236.15,
+                "min": 205.3,
+                "max": 267,
+                "n": 2
+              },
+              "transitionReadyMs": {
+                "median": 146.55,
+                "min": 143.3,
+                "max": 149.8,
+                "n": 2
+              },
+              "peakDrawingLayers": null,
+              "lcpMs": {
+                "median": 386.0,
+                "min": 312,
+                "max": 460,
+                "n": 2
+              },
+              "layoutShiftSum": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "frameP95Ms": {
+                "median": 32.063,
+                "min": 30.825,
+                "max": 33.3,
+                "n": 2
+              },
+              "frameOver33ms": {
+                "median": 2.5,
+                "min": 2,
+                "max": 3,
+                "n": 2
+              },
+              "longTasks": {
+                "median": 0.5,
+                "min": 0,
+                "max": 1,
+                "n": 2
+              },
+              "longTaskMs": {
+                "median": 121.0,
+                "min": 0,
+                "max": 242,
+                "n": 2
+              },
+              "heapUsedBytes": {
+                "median": 11440564.0,
+                "min": 11336152,
+                "max": 11544976,
+                "n": 2
+              },
+              "resourceRequests": {
+                "median": 18.0,
+                "min": 18,
+                "max": 18,
+                "n": 2
+              },
+              "resourceWireBytes": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogRequests": {
+                "median": 7.0,
+                "min": 7,
+                "max": 7,
+                "n": 2
+              },
+              "catalogDuplicateRequests": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogCacheHits": {
+                "median": 7.0,
+                "min": 7,
+                "max": 7,
+                "n": 2
+              },
+              "catalogDecodedBytes": {
+                "median": 199316.0,
+                "min": 199316,
+                "max": 199316,
+                "n": 2
+              },
+              "catalogWireBytes": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              }
+            },
+            "documents": {
+              "readyMs": {
+                "median": 466.25,
+                "min": 465.7,
+                "max": 466.8,
+                "n": 2
+              },
+              "pageAnimationStartMs": {
+                "median": 240.1,
+                "min": 237,
+                "max": 243.2,
+                "n": 2
+              },
+              "transitionReadyMs": {
+                "median": 191.75,
+                "min": 173.9,
+                "max": 209.6,
+                "n": 2
+              },
+              "peakDrawingLayers": null,
+              "lcpMs": {
+                "median": 458.0,
+                "min": 448,
+                "max": 468,
+                "n": 2
+              },
+              "layoutShiftSum": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "frameP95Ms": {
+                "median": 33.3,
+                "min": 33.3,
+                "max": 33.3,
+                "n": 2
+              },
+              "frameOver33ms": {
+                "median": 2.5,
+                "min": 2,
+                "max": 3,
+                "n": 2
+              },
+              "longTasks": {
+                "median": 2.0,
+                "min": 1,
+                "max": 3,
+                "n": 2
+              },
+              "longTaskMs": {
+                "median": 142.0,
+                "min": 78,
+                "max": 206,
+                "n": 2
+              },
+              "heapUsedBytes": {
+                "median": 12611776.0,
+                "min": 12552088,
+                "max": 12671464,
+                "n": 2
+              },
+              "resourceRequests": {
+                "median": 16.0,
+                "min": 16,
+                "max": 16,
+                "n": 2
+              },
+              "resourceWireBytes": {
+                "median": 13030.0,
+                "min": 13030,
+                "max": 13030,
+                "n": 2
+              },
+              "catalogRequests": {
+                "median": 8.0,
+                "min": 8,
+                "max": 8,
+                "n": 2
+              },
+              "catalogDuplicateRequests": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogCacheHits": {
+                "median": 7.0,
+                "min": 7,
+                "max": 7,
+                "n": 2
+              },
+              "catalogDecodedBytes": {
+                "median": 306614.0,
+                "min": 306614,
+                "max": 306614,
+                "n": 2
+              },
+              "catalogWireBytes": {
+                "median": 13030.0,
+                "min": 13030,
+                "max": 13030,
+                "n": 2
+              }
+            },
+            "document": {
+              "readyMs": {
+                "median": 388.7,
+                "min": 377.3,
+                "max": 400.1,
+                "n": 2
+              },
+              "pageAnimationStartMs": {
+                "median": 313.4,
+                "min": 312.4,
+                "max": 314.4,
+                "n": 2
+              },
+              "transitionReadyMs": {
+                "median": 222.3,
+                "min": 219.8,
+                "max": 224.8,
+                "n": 2
+              },
+              "peakDrawingLayers": null,
+              "lcpMs": {
+                "median": 376.0,
+                "min": 372,
+                "max": 380,
+                "n": 2
+              },
+              "layoutShiftSum": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "frameP95Ms": {
+                "median": 30.88,
+                "min": 16.77,
+                "max": 44.99,
+                "n": 2
+              },
+              "frameOver33ms": {
+                "median": 3.0,
+                "min": 2,
+                "max": 4,
+                "n": 2
+              },
+              "longTasks": {
+                "median": 0.5,
+                "min": 0,
+                "max": 1,
+                "n": 2
+              },
+              "longTaskMs": {
+                "median": 32.0,
+                "min": 0,
+                "max": 64,
+                "n": 2
+              },
+              "heapUsedBytes": {
+                "median": 13435790.0,
+                "min": 13412944,
+                "max": 13458636,
+                "n": 2
+              },
+              "resourceRequests": {
+                "median": 17.0,
+                "min": 17,
+                "max": 17,
+                "n": 2
+              },
+              "resourceWireBytes": {
+                "median": 585.0,
+                "min": 585,
+                "max": 585,
+                "n": 2
+              },
+              "catalogRequests": {
+                "median": 10.0,
+                "min": 10,
+                "max": 10,
+                "n": 2
+              },
+              "catalogDuplicateRequests": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogCacheHits": {
+                "median": 9.0,
+                "min": 9,
+                "max": 9,
+                "n": 2
+              },
+              "catalogDecodedBytes": {
+                "median": 356923.0,
+                "min": 356923,
+                "max": 356923,
+                "n": 2
+              },
+              "catalogWireBytes": {
+                "median": 585.0,
+                "min": 585,
+                "max": 585,
+                "n": 2
+              }
+            }
+          },
+          "reduce": {
+            "home": {
+              "readyMs": {
+                "median": 844.35,
+                "min": 769.3,
+                "max": 919.4,
+                "n": 2
+              },
+              "pageAnimationStartMs": null,
+              "transitionReadyMs": null,
+              "peakDrawingLayers": null,
+              "lcpMs": {
+                "median": 592.0,
+                "min": 492,
+                "max": 692,
+                "n": 2
+              },
+              "layoutShiftSum": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "frameP95Ms": {
+                "median": 65.77,
+                "min": 48.24,
+                "max": 83.3,
+                "n": 2
+              },
+              "frameOver33ms": {
+                "median": 3.0,
+                "min": 3,
+                "max": 3,
+                "n": 2
+              },
+              "longTasks": {
+                "median": 1.5,
+                "min": 1,
+                "max": 2,
+                "n": 2
+              },
+              "longTaskMs": {
+                "median": 166.5,
+                "min": 147,
+                "max": 186,
+                "n": 2
+              },
+              "heapUsedBytes": {
+                "median": 3029530.0,
+                "min": 3029464,
+                "max": 3029596,
+                "n": 2
+              },
+              "resourceRequests": {
+                "median": 12.0,
+                "min": 12,
+                "max": 12,
+                "n": 2
+              },
+              "resourceWireBytes": {
+                "median": 108372.0,
+                "min": 108372,
+                "max": 108372,
+                "n": 2
+              },
+              "catalogRequests": {
+                "median": 1.0,
+                "min": 1,
+                "max": 1,
+                "n": 2
+              },
+              "catalogDuplicateRequests": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogCacheHits": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogDecodedBytes": {
+                "median": 2906.0,
+                "min": 2906,
+                "max": 2906,
+                "n": 2
+              },
+              "catalogWireBytes": {
+                "median": 1632.0,
+                "min": 1632,
+                "max": 1632,
+                "n": 2
+              }
+            },
+            "websites": {
+              "readyMs": {
+                "median": 753.95,
+                "min": 724.3,
+                "max": 783.6,
+                "n": 2
+              },
+              "pageAnimationStartMs": null,
+              "transitionReadyMs": null,
+              "peakDrawingLayers": null,
+              "lcpMs": {
+                "median": 1012.0,
+                "min": 980,
+                "max": 1044,
+                "n": 2
+              },
+              "layoutShiftSum": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "frameP95Ms": {
+                "median": 32.06,
+                "min": 29.15,
+                "max": 34.97,
+                "n": 2
+              },
+              "frameOver33ms": {
+                "median": 3.0,
+                "min": 3,
+                "max": 3,
+                "n": 2
+              },
+              "longTasks": {
+                "median": 2.0,
+                "min": 2,
+                "max": 2,
+                "n": 2
+              },
+              "longTaskMs": {
+                "median": 127.0,
+                "min": 126,
+                "max": 128,
+                "n": 2
+              },
+              "heapUsedBytes": {
+                "median": 5292548.0,
+                "min": 5231020,
+                "max": 5354076,
+                "n": 2
+              },
+              "resourceRequests": {
+                "median": 17.0,
+                "min": 17,
+                "max": 17,
+                "n": 2
+              },
+              "resourceWireBytes": {
+                "median": 103867.0,
+                "min": 103867,
+                "max": 103867,
+                "n": 2
+              },
+              "catalogRequests": {
+                "median": 7.0,
+                "min": 7,
+                "max": 7,
+                "n": 2
+              },
+              "catalogDuplicateRequests": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogCacheHits": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogDecodedBytes": {
+                "median": 199316.0,
+                "min": 199316,
+                "max": 199316,
+                "n": 2
+              },
+              "catalogWireBytes": {
+                "median": 43489.0,
+                "min": 43489,
+                "max": 43489,
+                "n": 2
+              }
+            },
+            "interactions": {
+              "searchMedianMs": {
+                "median": 11.3,
+                "min": 9.55,
+                "max": 13.05,
+                "n": 2
+              },
+              "searchMaxMs": {
+                "median": 24.5,
+                "min": 24.5,
+                "max": 24.5,
+                "n": 2
+              },
+              "clickSyncMs": {
+                "median": 17.5,
+                "min": 16.7,
+                "max": 18.3,
+                "n": 2
+              },
+              "clickEventTimingMs": {
+                "median": 136.0,
+                "min": 120,
+                "max": 152,
+                "n": 2
+              },
+              "clickFrameMaxMs": {
+                "median": 116.7,
+                "min": 100,
+                "max": 133.4,
+                "n": 2
+              },
+              "heapUsedBytes": {
+                "median": 5390650.0,
+                "min": 5389668,
+                "max": 5391632,
+                "n": 2
+              }
+            },
+            "collection": {
+              "readyMs": {
+                "median": 704.05,
+                "min": 664.3,
+                "max": 743.8,
+                "n": 2
+              },
+              "pageAnimationStartMs": null,
+              "transitionReadyMs": null,
+              "peakDrawingLayers": null,
+              "lcpMs": {
+                "median": 678.0,
+                "min": 612,
+                "max": 744,
+                "n": 2
+              },
+              "layoutShiftSum": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "frameP95Ms": {
+                "median": 26.295,
+                "min": 16.7,
+                "max": 35.89,
+                "n": 2
+              },
+              "frameOver33ms": {
+                "median": 2.5,
+                "min": 1,
+                "max": 4,
+                "n": 2
+              },
+              "longTasks": {
+                "median": 0.5,
+                "min": 0,
+                "max": 1,
+                "n": 2
+              },
+              "longTaskMs": {
+                "median": 25.0,
+                "min": 0,
+                "max": 50,
+                "n": 2
+              },
+              "heapUsedBytes": {
+                "median": 7049240.0,
+                "min": 7048412,
+                "max": 7050068,
+                "n": 2
+              },
+              "resourceRequests": {
+                "median": 14.0,
+                "min": 14,
+                "max": 14,
+                "n": 2
+              },
+              "resourceWireBytes": {
+                "median": 24198.0,
+                "min": 24198,
+                "max": 24198,
+                "n": 2
+              },
+              "catalogRequests": {
+                "median": 8.0,
+                "min": 8,
+                "max": 8,
+                "n": 2
+              },
+              "catalogDuplicateRequests": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogCacheHits": {
+                "median": 5.0,
+                "min": 5,
+                "max": 5,
+                "n": 2
+              },
+              "catalogDecodedBytes": {
+                "median": 301158.0,
+                "min": 301158,
+                "max": 301158,
+                "n": 2
+              },
+              "catalogWireBytes": {
+                "median": 22381.0,
+                "min": 22381,
+                "max": 22381,
+                "n": 2
+              }
+            },
+            "home-warm": {
+              "readyMs": {
+                "median": 230.85,
+                "min": 199.4,
+                "max": 262.3,
+                "n": 2
+              },
+              "pageAnimationStartMs": null,
+              "transitionReadyMs": null,
+              "peakDrawingLayers": null,
+              "lcpMs": {
+                "median": 152.0,
+                "min": 144,
+                "max": 160,
+                "n": 2
+              },
+              "layoutShiftSum": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "frameP95Ms": {
+                "median": 22.162,
+                "min": 16.8,
+                "max": 27.525,
+                "n": 2
+              },
+              "frameOver33ms": {
+                "median": 1.0,
+                "min": 0,
+                "max": 2,
+                "n": 2
+              },
+              "longTasks": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "longTaskMs": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "heapUsedBytes": {
+                "median": 8315622.0,
+                "min": 8314460,
+                "max": 8316784,
+                "n": 2
+              },
+              "resourceRequests": {
+                "median": 12.0,
+                "min": 12,
+                "max": 12,
+                "n": 2
+              },
+              "resourceWireBytes": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogRequests": {
+                "median": 1.0,
+                "min": 1,
+                "max": 1,
+                "n": 2
+              },
+              "catalogDuplicateRequests": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogCacheHits": {
+                "median": 1.0,
+                "min": 1,
+                "max": 1,
+                "n": 2
+              },
+              "catalogDecodedBytes": {
+                "median": 2906.0,
+                "min": 2906,
+                "max": 2906,
+                "n": 2
+              },
+              "catalogWireBytes": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              }
+            },
+            "websites-warm": {
+              "readyMs": {
+                "median": 302.45,
+                "min": 248.1,
+                "max": 356.8,
+                "n": 2
+              },
+              "pageAnimationStartMs": null,
+              "transitionReadyMs": null,
+              "peakDrawingLayers": null,
+              "lcpMs": {
+                "median": 302.0,
+                "min": 248,
+                "max": 356,
+                "n": 2
+              },
+              "layoutShiftSum": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "frameP95Ms": {
+                "median": 16.785,
+                "min": 16.78,
+                "max": 16.79,
+                "n": 2
+              },
+              "frameOver33ms": {
+                "median": 2.0,
+                "min": 2,
+                "max": 2,
+                "n": 2
+              },
+              "longTasks": {
+                "median": 1.0,
+                "min": 0,
+                "max": 2,
+                "n": 2
+              },
+              "longTaskMs": {
+                "median": 57.0,
+                "min": 0,
+                "max": 114,
+                "n": 2
+              },
+              "heapUsedBytes": {
+                "median": 11259692.0,
+                "min": 11256060,
+                "max": 11263324,
+                "n": 2
+              },
+              "resourceRequests": {
+                "median": 18.0,
+                "min": 18,
+                "max": 18,
+                "n": 2
+              },
+              "resourceWireBytes": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogRequests": {
+                "median": 7.0,
+                "min": 7,
+                "max": 7,
+                "n": 2
+              },
+              "catalogDuplicateRequests": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogCacheHits": {
+                "median": 7.0,
+                "min": 7,
+                "max": 7,
+                "n": 2
+              },
+              "catalogDecodedBytes": {
+                "median": 199316.0,
+                "min": 199316,
+                "max": 199316,
+                "n": 2
+              },
+              "catalogWireBytes": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              }
+            },
+            "documents": {
+              "readyMs": {
+                "median": 443.1,
+                "min": 435.5,
+                "max": 450.7,
+                "n": 2
+              },
+              "pageAnimationStartMs": null,
+              "transitionReadyMs": null,
+              "peakDrawingLayers": null,
+              "lcpMs": {
+                "median": 434.0,
+                "min": 424,
+                "max": 444,
+                "n": 2
+              },
+              "layoutShiftSum": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "frameP95Ms": {
+                "median": 25.1,
+                "min": 16.8,
+                "max": 33.4,
+                "n": 2
+              },
+              "frameOver33ms": {
+                "median": 2.0,
+                "min": 2,
+                "max": 2,
+                "n": 2
+              },
+              "longTasks": {
+                "median": 0.5,
+                "min": 0,
+                "max": 1,
+                "n": 2
+              },
+              "longTaskMs": {
+                "median": 35.5,
+                "min": 0,
+                "max": 71,
+                "n": 2
+              },
+              "heapUsedBytes": {
+                "median": 12513650.0,
+                "min": 12511672,
+                "max": 12515628,
+                "n": 2
+              },
+              "resourceRequests": {
+                "median": 16.0,
+                "min": 16,
+                "max": 16,
+                "n": 2
+              },
+              "resourceWireBytes": {
+                "median": 13030.0,
+                "min": 13030,
+                "max": 13030,
+                "n": 2
+              },
+              "catalogRequests": {
+                "median": 8.0,
+                "min": 8,
+                "max": 8,
+                "n": 2
+              },
+              "catalogDuplicateRequests": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogCacheHits": {
+                "median": 7.0,
+                "min": 7,
+                "max": 7,
+                "n": 2
+              },
+              "catalogDecodedBytes": {
+                "median": 306614.0,
+                "min": 306614,
+                "max": 306614,
+                "n": 2
+              },
+              "catalogWireBytes": {
+                "median": 13030.0,
+                "min": 13030,
+                "max": 13030,
+                "n": 2
+              }
+            },
+            "document": {
+              "readyMs": {
+                "median": 508.3,
+                "min": 314.3,
+                "max": 702.3,
+                "n": 2
+              },
+              "pageAnimationStartMs": null,
+              "transitionReadyMs": null,
+              "peakDrawingLayers": null,
+              "lcpMs": {
+                "median": 492.0,
+                "min": 304,
+                "max": 680,
+                "n": 2
+              },
+              "layoutShiftSum": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "frameP95Ms": {
+                "median": 34.265,
+                "min": 16.77,
+                "max": 51.76,
+                "n": 2
+              },
+              "frameOver33ms": {
+                "median": 2.5,
+                "min": 1,
+                "max": 4,
+                "n": 2
+              },
+              "longTasks": {
+                "median": 0.5,
+                "min": 0,
+                "max": 1,
+                "n": 2
+              },
+              "longTaskMs": {
+                "median": 51.5,
+                "min": 0,
+                "max": 103,
+                "n": 2
+              },
+              "heapUsedBytes": {
+                "median": 13370904.0,
+                "min": 13361132,
+                "max": 13380676,
+                "n": 2
+              },
+              "resourceRequests": {
+                "median": 17.0,
+                "min": 17,
+                "max": 17,
+                "n": 2
+              },
+              "resourceWireBytes": {
+                "median": 585.0,
+                "min": 585,
+                "max": 585,
+                "n": 2
+              },
+              "catalogRequests": {
+                "median": 10.0,
+                "min": 10,
+                "max": 10,
+                "n": 2
+              },
+              "catalogDuplicateRequests": {
+                "median": 0.0,
+                "min": 0,
+                "max": 0,
+                "n": 2
+              },
+              "catalogCacheHits": {
+                "median": 9.0,
+                "min": 9,
+                "max": 9,
+                "n": 2
+              },
+              "catalogDecodedBytes": {
+                "median": 356923.0,
+                "min": 356923,
+                "max": 356923,
+                "n": 2
+              },
+              "catalogWireBytes": {
+                "median": 585.0,
+                "min": 585,
+                "max": 585,
+                "n": 2
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "traces": {
+    "0-after-no-preference": {
+      "home": {
+        "mainThreadTaskMs": 547.24,
+        "scriptEvaluationMs": 79.597,
+        "eventDispatchMs": 13.674,
+        "styleMs": 49.569,
+        "layoutMs": 91.466,
+        "paintMs": 64.295,
+        "rasterWorkerMs": 38.894,
+        "compositorCommitMs": 23.994,
+        "imageDecodeWorkerMs": 0,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 0.1
+      },
+      "websites": {
+        "mainThreadTaskMs": 537.56,
+        "scriptEvaluationMs": 39.779,
+        "eventDispatchMs": 12.636,
+        "styleMs": 44.21,
+        "layoutMs": 56.592,
+        "paintMs": 27.535,
+        "rasterWorkerMs": 14.977,
+        "compositorCommitMs": 22.481,
+        "imageDecodeWorkerMs": 2.878,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 6.2
+      },
+      "clickHandler": {
+        "mainThreadTaskMs": 16.235,
+        "scriptEvaluationMs": 0,
+        "eventDispatchMs": 16.291,
+        "styleMs": 0.48,
+        "layoutMs": 0,
+        "paintMs": 0,
+        "rasterWorkerMs": 0,
+        "compositorCommitMs": 0,
+        "imageDecodeWorkerMs": 0,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 0
+      },
+      "clickAndPresentation": {
+        "mainThreadTaskMs": 259.584,
+        "scriptEvaluationMs": 0,
+        "eventDispatchMs": 17.084,
+        "styleMs": 25.07,
+        "layoutMs": 113.295,
+        "paintMs": 29.865,
+        "rasterWorkerMs": 22.863,
+        "compositorCommitMs": 5.466,
+        "imageDecodeWorkerMs": 0.046,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 0
+      },
+      "collection": {
+        "mainThreadTaskMs": 501.924,
+        "scriptEvaluationMs": 44.138,
+        "eventDispatchMs": 8.011,
+        "styleMs": 14.082,
+        "layoutMs": 20.558,
+        "paintMs": 14.03,
+        "rasterWorkerMs": 20.838,
+        "compositorCommitMs": 18.973,
+        "imageDecodeWorkerMs": 20.538,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 3.9
+      },
+      "home-warm": {
+        "mainThreadTaskMs": 969.849,
+        "scriptEvaluationMs": 124.429,
+        "eventDispatchMs": 3.769,
+        "styleMs": 101.14,
+        "layoutMs": 27.709,
+        "paintMs": 146.377,
+        "rasterWorkerMs": 111.541,
+        "compositorCommitMs": 27.787,
+        "imageDecodeWorkerMs": 15.536,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 0.1
+      },
+      "websites-warm": {
+        "mainThreadTaskMs": 406.673,
+        "scriptEvaluationMs": 30.4,
+        "eventDispatchMs": 10.495,
+        "styleMs": 38.405,
+        "layoutMs": 35.494,
+        "paintMs": 24.608,
+        "rasterWorkerMs": 8.411,
+        "compositorCommitMs": 20.048,
+        "imageDecodeWorkerMs": 1.058,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 0.601
+      },
+      "documents": {
+        "mainThreadTaskMs": 615.074,
+        "scriptEvaluationMs": 66.336,
+        "eventDispatchMs": 11.176,
+        "styleMs": 53.322,
+        "layoutMs": 68.812,
+        "paintMs": 35.543,
+        "rasterWorkerMs": 12.427,
+        "compositorCommitMs": 36.418,
+        "imageDecodeWorkerMs": 14.694,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 4.2
+      },
+      "document": {
+        "mainThreadTaskMs": 381.23,
+        "scriptEvaluationMs": 39.795,
+        "eventDispatchMs": 22.608,
+        "styleMs": 41.743,
+        "layoutMs": 11.045,
+        "paintMs": 50.32,
+        "rasterWorkerMs": 10.713,
+        "compositorCommitMs": 11.905,
+        "imageDecodeWorkerMs": 11.033,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 2.099
+      }
+    },
+    "0-after-reduce": {
+      "home": {
+        "mainThreadTaskMs": 632.465,
+        "scriptEvaluationMs": 75.136,
+        "eventDispatchMs": 8.289,
+        "styleMs": 42.328,
+        "layoutMs": 230.264,
+        "paintMs": 73.258,
+        "rasterWorkerMs": 55.113,
+        "compositorCommitMs": 19.452,
+        "imageDecodeWorkerMs": 0,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 1.0
+      },
+      "websites": {
+        "mainThreadTaskMs": 521.28,
+        "scriptEvaluationMs": 43.093,
+        "eventDispatchMs": 16.09,
+        "styleMs": 23.503,
+        "layoutMs": 102.202,
+        "paintMs": 23.193,
+        "rasterWorkerMs": 8.451,
+        "compositorCommitMs": 23.279,
+        "imageDecodeWorkerMs": 4.886,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 5.801
+      },
+      "clickHandler": {
+        "mainThreadTaskMs": 17.167,
+        "scriptEvaluationMs": 0,
+        "eventDispatchMs": 17.189,
+        "styleMs": 0.04,
+        "layoutMs": 0,
+        "paintMs": 0,
+        "rasterWorkerMs": 0,
+        "compositorCommitMs": 0,
+        "imageDecodeWorkerMs": 0,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 0
+      },
+      "clickAndPresentation": {
+        "mainThreadTaskMs": 188.761,
+        "scriptEvaluationMs": 0,
+        "eventDispatchMs": 18.252,
+        "styleMs": 13.219,
+        "layoutMs": 76.832,
+        "paintMs": 17.437,
+        "rasterWorkerMs": 12.065,
+        "compositorCommitMs": 4.652,
+        "imageDecodeWorkerMs": 1.207,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 0
+      },
+      "collection": {
+        "mainThreadTaskMs": 310.058,
+        "scriptEvaluationMs": 46.93,
+        "eventDispatchMs": 5.242,
+        "styleMs": 8.291,
+        "layoutMs": 19.766,
+        "paintMs": 3.74,
+        "rasterWorkerMs": 7.141,
+        "compositorCommitMs": 16.831,
+        "imageDecodeWorkerMs": 2.891,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 4.599
+      },
+      "home-warm": {
+        "mainThreadTaskMs": 366.189,
+        "scriptEvaluationMs": 63.716,
+        "eventDispatchMs": 1.591,
+        "styleMs": 14.596,
+        "layoutMs": 38.953,
+        "paintMs": 55.531,
+        "rasterWorkerMs": 55.56,
+        "compositorCommitMs": 11.136,
+        "imageDecodeWorkerMs": 0,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 0
+      },
+      "websites-warm": {
+        "mainThreadTaskMs": 369.581,
+        "scriptEvaluationMs": 43.268,
+        "eventDispatchMs": 5.18,
+        "styleMs": 28.377,
+        "layoutMs": 34.994,
+        "paintMs": 10.701,
+        "rasterWorkerMs": 2.08,
+        "compositorCommitMs": 14.172,
+        "imageDecodeWorkerMs": 0.891,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 4.5
+      },
+      "documents": {
+        "mainThreadTaskMs": 908.243,
+        "scriptEvaluationMs": 99.205,
+        "eventDispatchMs": 29.772,
+        "styleMs": 35.304,
+        "layoutMs": 87.987,
+        "paintMs": 14.781,
+        "rasterWorkerMs": 17.088,
+        "compositorCommitMs": 78.099,
+        "imageDecodeWorkerMs": 10.588,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 17.5
+      },
+      "document": {
+        "mainThreadTaskMs": 448.322,
+        "scriptEvaluationMs": 50.747,
+        "eventDispatchMs": 16.122,
+        "styleMs": 9.568,
+        "layoutMs": 17.318,
+        "paintMs": 64.423,
+        "rasterWorkerMs": 17.463,
+        "compositorCommitMs": 15.28,
+        "imageDecodeWorkerMs": 18.648,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 5.499
+      }
+    },
+    "0-before-no-preference": {
+      "home": {
+        "mainThreadTaskMs": 819.451,
+        "scriptEvaluationMs": 72.965,
+        "eventDispatchMs": 11.752,
+        "styleMs": 76.779,
+        "layoutMs": 156.256,
+        "paintMs": 79.602,
+        "rasterWorkerMs": 37.936,
+        "compositorCommitMs": 63.723,
+        "imageDecodeWorkerMs": 0,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 25.0
+      },
+      "websites": {
+        "mainThreadTaskMs": 697.942,
+        "scriptEvaluationMs": 40.047,
+        "eventDispatchMs": 15.068,
+        "styleMs": 32.107,
+        "layoutMs": 69.589,
+        "paintMs": 19.86,
+        "rasterWorkerMs": 15.81,
+        "compositorCommitMs": 30.115,
+        "imageDecodeWorkerMs": 2.544,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 3.002
+      },
+      "clickHandler": {
+        "mainThreadTaskMs": 41.513,
+        "scriptEvaluationMs": 0,
+        "eventDispatchMs": 41.595,
+        "styleMs": 1.838,
+        "layoutMs": 0,
+        "paintMs": 0,
+        "rasterWorkerMs": 0,
+        "compositorCommitMs": 0,
+        "imageDecodeWorkerMs": 0,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 0
+      },
+      "clickAndPresentation": {
+        "mainThreadTaskMs": 317.993,
+        "scriptEvaluationMs": 0,
+        "eventDispatchMs": 41.947,
+        "styleMs": 25.729,
+        "layoutMs": 61.285,
+        "paintMs": 24.274,
+        "rasterWorkerMs": 7.61,
+        "compositorCommitMs": 40.445,
+        "imageDecodeWorkerMs": 7.132,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 0
+      },
+      "collection": {
+        "mainThreadTaskMs": 324.716,
+        "scriptEvaluationMs": 30.121,
+        "eventDispatchMs": 6.206,
+        "styleMs": 7.864,
+        "layoutMs": 27.794,
+        "paintMs": 6.576,
+        "rasterWorkerMs": 11.125,
+        "compositorCommitMs": 19.797,
+        "imageDecodeWorkerMs": 0,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 4.301
+      },
+      "home-warm": {
+        "mainThreadTaskMs": 537.796,
+        "scriptEvaluationMs": 66.941,
+        "eventDispatchMs": 2.171,
+        "styleMs": 52.665,
+        "layoutMs": 27.63,
+        "paintMs": 65.859,
+        "rasterWorkerMs": 53.94,
+        "compositorCommitMs": 32.396,
+        "imageDecodeWorkerMs": 0,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 0
+      },
+      "websites-warm": {
+        "mainThreadTaskMs": 465.432,
+        "scriptEvaluationMs": 34.917,
+        "eventDispatchMs": 8.523,
+        "styleMs": 35.05,
+        "layoutMs": 35.64,
+        "paintMs": 14.437,
+        "rasterWorkerMs": 5.941,
+        "compositorCommitMs": 23.866,
+        "imageDecodeWorkerMs": 1.014,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 3.801
+      },
+      "documents": {
+        "mainThreadTaskMs": 1020.386,
+        "scriptEvaluationMs": 102.968,
+        "eventDispatchMs": 33.766,
+        "styleMs": 68.879,
+        "layoutMs": 92.132,
+        "paintMs": 16.091,
+        "rasterWorkerMs": 36.66,
+        "compositorCommitMs": 69.302,
+        "imageDecodeWorkerMs": 21.241,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 4.603
+      },
+      "document": {
+        "mainThreadTaskMs": 345.551,
+        "scriptEvaluationMs": 36.198,
+        "eventDispatchMs": 3.169,
+        "styleMs": 22.776,
+        "layoutMs": 13.763,
+        "paintMs": 28.778,
+        "rasterWorkerMs": 11.549,
+        "compositorCommitMs": 17.019,
+        "imageDecodeWorkerMs": 13.003,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 4.7
+      }
+    },
+    "0-before-reduce": {
+      "home": {
+        "mainThreadTaskMs": 435.023,
+        "scriptEvaluationMs": 67.332,
+        "eventDispatchMs": 9.938,
+        "styleMs": 35.728,
+        "layoutMs": 88.112,
+        "paintMs": 70.88,
+        "rasterWorkerMs": 44.214,
+        "compositorCommitMs": 12.788,
+        "imageDecodeWorkerMs": 0,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 0.101
+      },
+      "websites": {
+        "mainThreadTaskMs": 464.493,
+        "scriptEvaluationMs": 54.074,
+        "eventDispatchMs": 18.122,
+        "styleMs": 28.45,
+        "layoutMs": 48.665,
+        "paintMs": 16.128,
+        "rasterWorkerMs": 6.6,
+        "compositorCommitMs": 30.661,
+        "imageDecodeWorkerMs": 2.433,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 4.904
+      },
+      "clickHandler": {
+        "mainThreadTaskMs": 15.301,
+        "scriptEvaluationMs": 0,
+        "eventDispatchMs": 15.321,
+        "styleMs": 0.039,
+        "layoutMs": 0,
+        "paintMs": 0,
+        "rasterWorkerMs": 0,
+        "compositorCommitMs": 0,
+        "imageDecodeWorkerMs": 0,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 0
+      },
+      "clickAndPresentation": {
+        "mainThreadTaskMs": 215.969,
+        "scriptEvaluationMs": 0,
+        "eventDispatchMs": 17.094,
+        "styleMs": 13.49,
+        "layoutMs": 77.339,
+        "paintMs": 22.513,
+        "rasterWorkerMs": 10.547,
+        "compositorCommitMs": 5.748,
+        "imageDecodeWorkerMs": 1.528,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 0
+      },
+      "collection": {
+        "mainThreadTaskMs": 343.896,
+        "scriptEvaluationMs": 35.889,
+        "eventDispatchMs": 6.41,
+        "styleMs": 5.192,
+        "layoutMs": 20.807,
+        "paintMs": 6.671,
+        "rasterWorkerMs": 7.103,
+        "compositorCommitMs": 13.223,
+        "imageDecodeWorkerMs": 2.196,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 3.501
+      },
+      "home-warm": {
+        "mainThreadTaskMs": 338.055,
+        "scriptEvaluationMs": 60.146,
+        "eventDispatchMs": 1.015,
+        "styleMs": 21.101,
+        "layoutMs": 15.844,
+        "paintMs": 65.004,
+        "rasterWorkerMs": 41.763,
+        "compositorCommitMs": 13.072,
+        "imageDecodeWorkerMs": 0,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 0.1
+      },
+      "websites-warm": {
+        "mainThreadTaskMs": 318.03,
+        "scriptEvaluationMs": 58.673,
+        "eventDispatchMs": 10.102,
+        "styleMs": 18.056,
+        "layoutMs": 26.057,
+        "paintMs": 7.609,
+        "rasterWorkerMs": 2.599,
+        "compositorCommitMs": 15.442,
+        "imageDecodeWorkerMs": 0.921,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 0.801
+      },
+      "documents": {
+        "mainThreadTaskMs": 446.574,
+        "scriptEvaluationMs": 71.005,
+        "eventDispatchMs": 2.371,
+        "styleMs": 18.478,
+        "layoutMs": 56.329,
+        "paintMs": 10.797,
+        "rasterWorkerMs": 7.115,
+        "compositorCommitMs": 17.397,
+        "imageDecodeWorkerMs": 8.78,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 3.299
+      },
+      "document": {
+        "mainThreadTaskMs": 397.893,
+        "scriptEvaluationMs": 40.021,
+        "eventDispatchMs": 10.565,
+        "styleMs": 4.713,
+        "layoutMs": 13.158,
+        "paintMs": 5.257,
+        "rasterWorkerMs": 3.762,
+        "compositorCommitMs": 14.63,
+        "imageDecodeWorkerMs": 7.592,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 9.2
+      }
+    }
+  }
+}

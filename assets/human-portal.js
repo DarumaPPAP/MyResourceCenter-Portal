@@ -72,7 +72,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         pagination.innerHTML = `<ul class="document-pagination-list"><li>${edgeLink(page-1,'前へ',page===1,'前のページ')}</li>${numbers}<li>${edgeLink(page+1,'次へ',page===totalPages,'次のページ')}</li></ul>`;
         pagination.hidden = false;
       };
-      const render = ({focus=false}={}) => {
+      const render = ({focus=false, backward=false}={}) => {
         const filtered = C.filterDocuments(rows,Object.fromEntries(controls.map(control=>[control.id,control.value])));
         const totalPages = Math.ceil(filtered.length/PAGE_SIZE);
         const page = resolvePage(totalPages);
@@ -85,6 +85,7 @@ window.addEventListener('DOMContentLoaded', async () => {
           : `0 件 / 全 ${rows.length} 件`;
         const list = el('list');
         list.classList.toggle('page-arriving', focus);
+        list.classList.toggle('page-backward', backward);
         list.innerHTML = visible.map(doc => {
           const viewer = C.viewerHref(doc);
           const href = viewer || `document.html?id=${encodeURIComponent(doc.resourceId)}`;
@@ -128,7 +129,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         const current = Number(new URL(location.href).searchParams.get('page') || '1');
         if (!Number.isSafeInteger(page) || page < 1 || page === current) return;
         writePage(page,'pushState');
-        render({focus:true});
+        render({focus:true, backward:page < current});
       });
       render();
     } else if (page === 'collections.html') {
@@ -189,7 +190,8 @@ window.addEventListener('DOMContentLoaded', async () => {
         for (const {isIntersecting, target} of entries) {
           if (!isIntersecting) continue;
           observer.unobserve(target);
-          target.classList.add('motion-reveal');
+          const {pageMotion, motionSettled} = document.documentElement.dataset;
+          if (!pageMotion || motionSettled !== undefined) target.classList.add('motion-reveal');
         }
       } catch (error) {
         revealEnabled = false;

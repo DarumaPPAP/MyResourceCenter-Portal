@@ -1,0 +1,720 @@
+{
+  "runs": {
+    "0": {
+      "trials": 3,
+      "chromium": "151.0.7922.173",
+      "variants": {
+        "before": {
+          "no-preference": {
+            "websites": {
+              "readyMs": {
+                "median": 949.8,
+                "min": 936.4,
+                "max": 1092.2,
+                "n": 3
+              },
+              "pageAnimationStartMs": null,
+              "transitionReadyMs": null,
+              "peakDrawingLayers": null,
+              "lcpMs": {
+                "median": 1196,
+                "min": 1176,
+                "max": 1332,
+                "n": 3
+              },
+              "layoutShiftSum": {
+                "median": 0,
+                "min": 0,
+                "max": 0,
+                "n": 3
+              },
+              "frameP95Ms": {
+                "median": 17.63,
+                "min": 16.8,
+                "max": 133.3,
+                "n": 3
+              },
+              "frameOver33ms": {
+                "median": 3,
+                "min": 2,
+                "max": 4,
+                "n": 3
+              },
+              "longTasks": {
+                "median": 3,
+                "min": 2,
+                "max": 4,
+                "n": 3
+              },
+              "longTaskMs": {
+                "median": 197,
+                "min": 124,
+                "max": 463,
+                "n": 3
+              },
+              "heapUsedBytes": {
+                "median": 2736736,
+                "min": 2713156,
+                "max": 2744156,
+                "n": 3
+              },
+              "resourceRequests": {
+                "median": 17,
+                "min": 17,
+                "max": 18,
+                "n": 3
+              },
+              "resourceWireBytes": {
+                "median": 117530,
+                "min": 117530,
+                "max": 117830,
+                "n": 3
+              },
+              "catalogRequests": {
+                "median": 7,
+                "min": 7,
+                "max": 7,
+                "n": 3
+              },
+              "catalogDuplicateRequests": {
+                "median": 0,
+                "min": 0,
+                "max": 0,
+                "n": 3
+              },
+              "catalogCacheHits": {
+                "median": 0,
+                "min": 0,
+                "max": 0,
+                "n": 3
+              },
+              "catalogDecodedBytes": {
+                "median": 199316,
+                "min": 199316,
+                "max": 199316,
+                "n": 3
+              },
+              "catalogWireBytes": {
+                "median": 43489,
+                "min": 43489,
+                "max": 43489,
+                "n": 3
+              }
+            },
+            "interactions": {
+              "searchMedianMs": {
+                "median": 14.5,
+                "min": 7.75,
+                "max": 15.95,
+                "n": 3
+              },
+              "searchMaxMs": {
+                "median": 22.1,
+                "min": 14.1,
+                "max": 24.7,
+                "n": 3
+              },
+              "clickSyncMs": {
+                "median": 15.3,
+                "min": 12.7,
+                "max": 41.2,
+                "n": 3
+              },
+              "clickEventTimingMs": {
+                "median": 112,
+                "min": 96,
+                "max": 240,
+                "n": 3
+              },
+              "clickFrameMaxMs": {
+                "median": 100,
+                "min": 66.7,
+                "max": 200.1,
+                "n": 3
+              },
+              "heapUsedBytes": {
+                "median": 4047124,
+                "min": 4044092,
+                "max": 4048476,
+                "n": 3
+              }
+            }
+          },
+          "reduce": {
+            "websites": {
+              "readyMs": {
+                "median": 892.7,
+                "min": 878.3,
+                "max": 961.3,
+                "n": 3
+              },
+              "pageAnimationStartMs": null,
+              "transitionReadyMs": null,
+              "peakDrawingLayers": null,
+              "lcpMs": {
+                "median": 1156,
+                "min": 1144,
+                "max": 1204,
+                "n": 3
+              },
+              "layoutShiftSum": {
+                "median": 0,
+                "min": 0,
+                "max": 0,
+                "n": 3
+              },
+              "frameP95Ms": {
+                "median": 31.74,
+                "min": 16.8,
+                "max": 50.865,
+                "n": 3
+              },
+              "frameOver33ms": {
+                "median": 3,
+                "min": 2,
+                "max": 4,
+                "n": 3
+              },
+              "longTasks": {
+                "median": 2,
+                "min": 2,
+                "max": 2,
+                "n": 3
+              },
+              "longTaskMs": {
+                "median": 137,
+                "min": 116,
+                "max": 168,
+                "n": 3
+              },
+              "heapUsedBytes": {
+                "median": 2831012,
+                "min": 2734828,
+                "max": 2831420,
+                "n": 3
+              },
+              "resourceRequests": {
+                "median": 17,
+                "min": 17,
+                "max": 17,
+                "n": 3
+              },
+              "resourceWireBytes": {
+                "median": 117530,
+                "min": 117530,
+                "max": 117530,
+                "n": 3
+              },
+              "catalogRequests": {
+                "median": 7,
+                "min": 7,
+                "max": 7,
+                "n": 3
+              },
+              "catalogDuplicateRequests": {
+                "median": 0,
+                "min": 0,
+                "max": 0,
+                "n": 3
+              },
+              "catalogCacheHits": {
+                "median": 0,
+                "min": 0,
+                "max": 0,
+                "n": 3
+              },
+              "catalogDecodedBytes": {
+                "median": 199316,
+                "min": 199316,
+                "max": 199316,
+                "n": 3
+              },
+              "catalogWireBytes": {
+                "median": 43489,
+                "min": 43489,
+                "max": 43489,
+                "n": 3
+              }
+            },
+            "interactions": {
+              "searchMedianMs": {
+                "median": 8.15,
+                "min": 7.25,
+                "max": 11.65,
+                "n": 3
+              },
+              "searchMaxMs": {
+                "median": 17.1,
+                "min": 15.7,
+                "max": 18.9,
+                "n": 3
+              },
+              "clickSyncMs": {
+                "median": 13.3,
+                "min": 7.1,
+                "max": 14.6,
+                "n": 3
+              },
+              "clickEventTimingMs": {
+                "median": 112,
+                "min": 80,
+                "max": 160,
+                "n": 3
+              },
+              "clickFrameMaxMs": {
+                "median": 83.4,
+                "min": 66.7,
+                "max": 133.3,
+                "n": 3
+              },
+              "heapUsedBytes": {
+                "median": 4045480,
+                "min": 4045388,
+                "max": 4047004,
+                "n": 3
+              }
+            }
+          }
+        },
+        "after": {
+          "no-preference": {
+            "websites": {
+              "readyMs": {
+                "median": 942.3,
+                "min": 919.5,
+                "max": 970.8,
+                "n": 3
+              },
+              "pageAnimationStartMs": null,
+              "transitionReadyMs": null,
+              "peakDrawingLayers": null,
+              "lcpMs": {
+                "median": 1200,
+                "min": 1196,
+                "max": 1228,
+                "n": 3
+              },
+              "layoutShiftSum": {
+                "median": 0,
+                "min": 0,
+                "max": 0,
+                "n": 3
+              },
+              "frameP95Ms": {
+                "median": 33.2,
+                "min": 18.45,
+                "max": 34.23,
+                "n": 3
+              },
+              "frameOver33ms": {
+                "median": 2,
+                "min": 2,
+                "max": 3,
+                "n": 3
+              },
+              "longTasks": {
+                "median": 2,
+                "min": 2,
+                "max": 2,
+                "n": 3
+              },
+              "longTaskMs": {
+                "median": 137,
+                "min": 133,
+                "max": 142,
+                "n": 3
+              },
+              "heapUsedBytes": {
+                "median": 2854332,
+                "min": 2766608,
+                "max": 2884024,
+                "n": 3
+              },
+              "resourceRequests": {
+                "median": 17,
+                "min": 17,
+                "max": 18,
+                "n": 3
+              },
+              "resourceWireBytes": {
+                "median": 119639,
+                "min": 119639,
+                "max": 119939,
+                "n": 3
+              },
+              "catalogRequests": {
+                "median": 7,
+                "min": 7,
+                "max": 7,
+                "n": 3
+              },
+              "catalogDuplicateRequests": {
+                "median": 0,
+                "min": 0,
+                "max": 0,
+                "n": 3
+              },
+              "catalogCacheHits": {
+                "median": 0,
+                "min": 0,
+                "max": 0,
+                "n": 3
+              },
+              "catalogDecodedBytes": {
+                "median": 199316,
+                "min": 199316,
+                "max": 199316,
+                "n": 3
+              },
+              "catalogWireBytes": {
+                "median": 43489,
+                "min": 43489,
+                "max": 43489,
+                "n": 3
+              }
+            },
+            "interactions": {
+              "searchMedianMs": {
+                "median": 10.75,
+                "min": 10.4,
+                "max": 12.85,
+                "n": 3
+              },
+              "searchMaxMs": {
+                "median": 18.1,
+                "min": 15.8,
+                "max": 20.8,
+                "n": 3
+              },
+              "clickSyncMs": {
+                "median": 16.3,
+                "min": 15.8,
+                "max": 19.5,
+                "n": 3
+              },
+              "clickEventTimingMs": {
+                "median": 112,
+                "min": 112,
+                "max": 136,
+                "n": 3
+              },
+              "clickFrameMaxMs": {
+                "median": 83.4,
+                "min": 83.3,
+                "max": 100,
+                "n": 3
+              },
+              "heapUsedBytes": {
+                "median": 4067420,
+                "min": 4066384,
+                "max": 4068952,
+                "n": 3
+              }
+            }
+          },
+          "reduce": {
+            "websites": {
+              "readyMs": {
+                "median": 961.7,
+                "min": 869.4,
+                "max": 963,
+                "n": 3
+              },
+              "pageAnimationStartMs": null,
+              "transitionReadyMs": null,
+              "peakDrawingLayers": null,
+              "lcpMs": {
+                "median": 1184,
+                "min": 1128,
+                "max": 1212,
+                "n": 3
+              },
+              "layoutShiftSum": {
+                "median": 0,
+                "min": 0,
+                "max": 0,
+                "n": 3
+              },
+              "frameP95Ms": {
+                "median": 16.8,
+                "min": 16.8,
+                "max": 33.215,
+                "n": 3
+              },
+              "frameOver33ms": {
+                "median": 2,
+                "min": 2,
+                "max": 2,
+                "n": 3
+              },
+              "longTasks": {
+                "median": 3,
+                "min": 2,
+                "max": 3,
+                "n": 3
+              },
+              "longTaskMs": {
+                "median": 179,
+                "min": 116,
+                "max": 230,
+                "n": 3
+              },
+              "heapUsedBytes": {
+                "median": 2746968,
+                "min": 2746424,
+                "max": 2749280,
+                "n": 3
+              },
+              "resourceRequests": {
+                "median": 17,
+                "min": 17,
+                "max": 17,
+                "n": 3
+              },
+              "resourceWireBytes": {
+                "median": 119639,
+                "min": 119639,
+                "max": 119639,
+                "n": 3
+              },
+              "catalogRequests": {
+                "median": 7,
+                "min": 7,
+                "max": 7,
+                "n": 3
+              },
+              "catalogDuplicateRequests": {
+                "median": 0,
+                "min": 0,
+                "max": 0,
+                "n": 3
+              },
+              "catalogCacheHits": {
+                "median": 0,
+                "min": 0,
+                "max": 0,
+                "n": 3
+              },
+              "catalogDecodedBytes": {
+                "median": 199316,
+                "min": 199316,
+                "max": 199316,
+                "n": 3
+              },
+              "catalogWireBytes": {
+                "median": 43489,
+                "min": 43489,
+                "max": 43489,
+                "n": 3
+              }
+            },
+            "interactions": {
+              "searchMedianMs": {
+                "median": 9.8,
+                "min": 5.45,
+                "max": 11.2,
+                "n": 3
+              },
+              "searchMaxMs": {
+                "median": 14.6,
+                "min": 14.3,
+                "max": 22.6,
+                "n": 3
+              },
+              "clickSyncMs": {
+                "median": 16,
+                "min": 12.3,
+                "max": 16.7,
+                "n": 3
+              },
+              "clickEventTimingMs": {
+                "median": 112,
+                "min": 104,
+                "max": 112,
+                "n": 3
+              },
+              "clickFrameMaxMs": {
+                "median": 83.3,
+                "min": 83.3,
+                "max": 83.3,
+                "n": 3
+              },
+              "heapUsedBytes": {
+                "median": 4051512,
+                "min": 3948660,
+                "max": 4053784,
+                "n": 3
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "traces": {
+    "0-after-no-preference": {
+      "websites": {
+        "mainThreadTaskMs": 638.614,
+        "scriptEvaluationMs": 49.956,
+        "eventDispatchMs": 16.817,
+        "styleMs": 56.267,
+        "layoutMs": 99.186,
+        "paintMs": 47.36,
+        "rasterWorkerMs": 11.732,
+        "compositorCommitMs": 18.012,
+        "imageDecodeWorkerMs": 3.773,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 4.2
+      },
+      "clickHandler": {
+        "mainThreadTaskMs": 16.739,
+        "scriptEvaluationMs": 0,
+        "eventDispatchMs": 16.775,
+        "styleMs": 0.062,
+        "layoutMs": 0,
+        "paintMs": 0,
+        "rasterWorkerMs": 0,
+        "compositorCommitMs": 0,
+        "imageDecodeWorkerMs": 0,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 0
+      },
+      "clickAndPresentation": {
+        "mainThreadTaskMs": 301.557,
+        "scriptEvaluationMs": 0,
+        "eventDispatchMs": 17.475,
+        "styleMs": 30.352,
+        "layoutMs": 96.828,
+        "paintMs": 42.672,
+        "rasterWorkerMs": 8.338,
+        "compositorCommitMs": 16.656,
+        "imageDecodeWorkerMs": 0.064,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 0
+      }
+    },
+    "0-after-reduce": {
+      "websites": {
+        "mainThreadTaskMs": 606.247,
+        "scriptEvaluationMs": 51.518,
+        "eventDispatchMs": 16.584,
+        "styleMs": 34.006,
+        "layoutMs": 75.62,
+        "paintMs": 34.134,
+        "rasterWorkerMs": 6.736,
+        "compositorCommitMs": 13.765,
+        "imageDecodeWorkerMs": 2.653,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 4.7
+      },
+      "clickHandler": {
+        "mainThreadTaskMs": 8.935,
+        "scriptEvaluationMs": 0,
+        "eventDispatchMs": 8.954,
+        "styleMs": 0.042,
+        "layoutMs": 0,
+        "paintMs": 0,
+        "rasterWorkerMs": 0,
+        "compositorCommitMs": 0,
+        "imageDecodeWorkerMs": 0,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 0
+      },
+      "clickAndPresentation": {
+        "mainThreadTaskMs": 160.216,
+        "scriptEvaluationMs": 0,
+        "eventDispatchMs": 9.437,
+        "styleMs": 8.737,
+        "layoutMs": 55.865,
+        "paintMs": 21.415,
+        "rasterWorkerMs": 7.989,
+        "compositorCommitMs": 6.456,
+        "imageDecodeWorkerMs": 0.809,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 0
+      }
+    },
+    "0-before-no-preference": {
+      "websites": {
+        "mainThreadTaskMs": 704.337,
+        "scriptEvaluationMs": 65.022,
+        "eventDispatchMs": 16.874,
+        "styleMs": 32.115,
+        "layoutMs": 89.242,
+        "paintMs": 27.41,
+        "rasterWorkerMs": 11.562,
+        "compositorCommitMs": 16.614,
+        "imageDecodeWorkerMs": 3.749,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 5.199
+      },
+      "clickHandler": {
+        "mainThreadTaskMs": 18.059,
+        "scriptEvaluationMs": 0,
+        "eventDispatchMs": 18.081,
+        "styleMs": 0.065,
+        "layoutMs": 0,
+        "paintMs": 0,
+        "rasterWorkerMs": 0,
+        "compositorCommitMs": 0,
+        "imageDecodeWorkerMs": 0,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 0
+      },
+      "clickAndPresentation": {
+        "mainThreadTaskMs": 216.872,
+        "scriptEvaluationMs": 0,
+        "eventDispatchMs": 18.527,
+        "styleMs": 20.211,
+        "layoutMs": 63.837,
+        "paintMs": 46.571,
+        "rasterWorkerMs": 16.151,
+        "compositorCommitMs": 6.119,
+        "imageDecodeWorkerMs": 3.936,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 0
+      }
+    },
+    "0-before-reduce": {
+      "websites": {
+        "mainThreadTaskMs": 528.943,
+        "scriptEvaluationMs": 43.027,
+        "eventDispatchMs": 11.897,
+        "styleMs": 27.619,
+        "layoutMs": 74.332,
+        "paintMs": 21.241,
+        "rasterWorkerMs": 8.615,
+        "compositorCommitMs": 24.778,
+        "imageDecodeWorkerMs": 2.819,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 4.101
+      },
+      "clickHandler": {
+        "mainThreadTaskMs": 14.008,
+        "scriptEvaluationMs": 0,
+        "eventDispatchMs": 14.028,
+        "styleMs": 0.035,
+        "layoutMs": 0,
+        "paintMs": 0,
+        "rasterWorkerMs": 0,
+        "compositorCommitMs": 0,
+        "imageDecodeWorkerMs": 0,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 0
+      },
+      "clickAndPresentation": {
+        "mainThreadTaskMs": 178.229,
+        "scriptEvaluationMs": 0,
+        "eventDispatchMs": 15.999,
+        "styleMs": 11.168,
+        "layoutMs": 63.766,
+        "paintMs": 19.994,
+        "rasterWorkerMs": 11.174,
+        "compositorCommitMs": 6.83,
+        "imageDecodeWorkerMs": 1.246,
+        "imageDecodeMainMs": 0,
+        "diagnosticJsonParseMs": 0
+      }
+    }
+  }
+}

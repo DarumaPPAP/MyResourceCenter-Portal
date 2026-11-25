@@ -22,6 +22,11 @@ def navigation_metrics(sample):
     frames = [frame["duration"] for frame in sample["frames"] if frame["time"] <= 1500]
     return {
         "readyMs": sample["ready"],
+        "pageAnimationStartMs": next((m["startTime"] for m in sample.get("marks", [])
+                                      if m["name"] == "lab:page-animation-start"), None),
+        "transitionReadyMs": next((m["startTime"] for m in sample.get("marks", [])
+                                   if m["name"] == "lab:transition-ready"), None),
+        "peakDrawingLayers": sample.get("peakLayers") or None,
         "lcpMs": sample["lcp"][-1]["startTime"] if sample["lcp"] else None,
         # The isolated lab navigation has one short observation window.
         "layoutShiftSum": sum(entry["value"] for entry in sample["shifts"] if not entry["hadRecentInput"]),

@@ -6,11 +6,15 @@ const path = require('node:path');
 const {createHash} = require('node:crypto');
 const {gzipSync} = require('node:zlib');
 const {chromium} = require('playwright');
+const contextual = process.env.PORTAL_LAB_CONTEXTUAL === '1';
+const websitesOnly = process.env.PORTAL_LAB_WEBSITES_ONLY === '1';
 
 const selectors = {
   home: ['index.html', '#docs .document-entry'],
   websites: ['websites.html', '.website-card'],
-  collection: ['collection.html', '.reading-path li']
+  collection: ['collection.html', '.reading-path li'],
+  documents: ['documents.html', '.document-entry'],
+  document: ['document.html', '.detail-hero']
 };
 const types = {'.html':'text/html', '.js':'text/javascript', '.css':'text/css', '.json':'application/json',
   '.svg':'image/svg+xml', '.webp':'image/webp', '.png':'image/png'};
@@ -53,6 +57,13 @@ async function serve(root) {
 
 function observe() {
   const data = window.labPerformance = {lcp:[], shifts:[], longTasks:[], events:[], frames:[], interactions:[]};
+  window.addEventListener('pagereveal', event => {
+    if (!event.viewTransition) return;
+    event.viewTransition.ready.then(() => performance.mark('lab:transition-ready'), () => {});
+  });
+  document.addEventListener('animationstart', event => {
+    if (event.animationName.startsWith('portal-page-')) performance.mark('lab:page-animation-start');
+  });
   const options = {'largest-contentful-paint': 'lcp',
     'layout-shift': 'shifts', longtask: 'longTasks', event: 'events'};
   performance.setResourceTimingBufferSize(3000);
@@ -159,6 +170,7 @@ async function snapshot(page, cdp, network) {
     navigation:performance.getEntriesByType('navigation')[0]?.toJSON(),
     resources:performance.getEntriesByType('resource').map(entry => entry.toJSON()),
     measures:performance.getEntriesByType('measure').map(entry => entry.toJSON()),
+    marks:performance.getEntriesByType('mark').map(entry => entry.toJSON()),
     cards:document.querySelectorAll('.website-card').length,
     count:document.querySelector('#count')?.textContent
   }));
@@ -177,29 +189,44 @@ async function scenario(browser, origin, reducedMotion, size, trace) {
       offline:false, latency:80, downloadThroughput:200000, uploadThroughput:95000
     });
     await cdp.send('Performance.enable');
+    let peakLayers = 0;
+    cdp.on('LayerTree.layerTreeDidChange', ({layers}) => {
+      peakLayers = Math.max(peakLayers, (layers || []).filter(layer => layer.drawsContent).length);
+    });
+    if (contextual) await cdp.send('LayerTree.enable');
     const network = collectNetwork(cdp, origin);
     await page.addInitScript(observe);
     if (trace) await page.addInitScript(instrumentJsonParse);
     const samples = [];
-    let collectionUrl;
+    let collectionUrl, documentUrl;
     async function navigate(route, label = route) {
       const [file, selector] = selectors[route];
       network.clear();
-      const url = route === 'collection' ? collectionUrl : new URL(file, origin).href;
-      const response = await page.goto(url, {waitUntil:'domcontentloaded'});
-      assert.equal(response.status(), 200);
+      peakLayers = 0;
+      const url = route === 'collection' ? collectionUrl : route === 'document' ? documentUrl : new URL(file, origin).href;
+      const previous = new URL(page.url());
+      const link = route === 'document' ? page.locator('.document-detail').first()
+        : page.locator(`.mobile-nav a[href="${file}"]`);
+      if (contextual && previous.origin === new URL(url).origin && await link.count()) {
+        await link.tap();
+        await page.waitForURL(url, {waitUntil:'domcontentloaded'});
+      } else {
+        const response = await page.goto(url, {waitUntil:'domcontentloaded'});
+        assert.equal(response.status(), 200);
+      }
       await page.locator(selector).first().waitFor();
       const ready = await page.evaluate(name => {
         performance.mark('lab:ready:' + name);
         return performance.now();
       }, label);
       if (route === 'home') collectionUrl = await page.locator('#collections a.reading-guide').first().evaluate(link => link.href);
+      if (route === 'documents') documentUrl = await page.locator('.document-detail').first().evaluate(link => link.href);
       await page.waitForTimeout(1000); // Common observation window for LCP, CLS, decode and animation.
-      samples.push({label, ready, ...await snapshot(page, cdp, network)});
+      samples.push({label, ready, ...(contextual ? {peakLayers} : {}), ...await snapshot(page, cdp, network)});
     }
 
     return await withTrace(cdp, trace, async () => {
-      if (!size) await navigate('home');
+      if (!size && !websitesOnly) await navigate('home');
       await navigate('websites');
       const before = samples.at(-1);
       const search = await page.locator('#q').evaluate(input =>
@@ -218,10 +245,14 @@ async function scenario(browser, origin, reducedMotion, size, trace) {
       assert.equal(new URL(page.url()).searchParams.get('page'), '2');
       await page.waitForTimeout(350);
       samples.push({label:'interactions', search, ready:before.ready, ...await snapshot(page, cdp, network)});
-      if (!size) {
+      if (!size && !websitesOnly) {
         await navigate('collection');
         await navigate('home', 'home-warm');
         await navigate('websites', 'websites-warm');
+        if (contextual) {
+          await navigate('documents');
+          await navigate('document');
+        }
       }
       return samples;
     });
@@ -262,7 +293,7 @@ async function main() {
         }
       }
     }
-    const payload = {size, trials, chromium:browser.version(), node:process.version, measuredAt:new Date().toISOString(),
+    const payload = {size, trials, websitesOnly, chromium:browser.version(), node:process.version, measuredAt:new Date().toISOString(),
       variants:variants.map(({name,origin,runs}) => ({name,origin,runs}))};
     fs.writeFileSync(path.join(out, `${size}-runs.json.gz`), gzipSync(JSON.stringify(payload)));
   } finally {
@@ -271,4 +302,6 @@ async function main() {
   }
 }
 
-main().catch(error => {console.error(error); process.exitCode = 1;});
+module.exports = {serve};
+
+if (require.main === module) main().catch(error => {console.error(error); process.exitCode = 1;});

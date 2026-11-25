@@ -1,0 +1,43 @@
+HTTP/2 200
+etag: "6b064919-142c"
+cache-control: max-age=600
+37c4ac3ab7ca8753ae6130f832d35546babd53f7f7e84a993afff959c46ab972  /tmp/motion-pages-js
+{
+  "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+  "hits": 1,
+  "lcp": 204,
+  "path": "/MyResourceCenter-Portal/index.html",
+  "protocol": "h2",
+  "requests": 1,
+  "viewport": [
+    1920,
+    993
+  ],
+  "wire": 0
+}
+{
+  "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+  "hits": 0,
+  "lcp": 220,
+  "path": "/MyResourceCenter-Portal/documents.html",
+  "protocol": "h2",
+  "requests": 8,
+  "viewport": [
+    1920,
+    993
+  ],
+  "wire": 69121
+}
+{
+  "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+  "hits": 1,
+  "lcp": 72,
+  "path": "/MyResourceCenter-Portal/index.html",
+  "protocol": "h2",
+  "requests": 1,
+  "viewport": [
+    1920,
+    993
+  ],
+  "wire": 0
+}
