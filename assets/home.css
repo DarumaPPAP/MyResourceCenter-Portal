@@ -79,10 +79,6 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .home-page .hero-copy > :is(.eyebrow, h1, p:first-of-type) {
-    animation: portal-enter var(--motion-duration-hero) var(--motion-ease-out);
-  }
-
   .technical-hero > a::after {
     content: "";
     position: absolute;

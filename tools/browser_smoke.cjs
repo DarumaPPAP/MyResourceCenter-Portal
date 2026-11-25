@@ -248,7 +248,7 @@ async function main() {
     const focusedBounds = await focusedResult.boundingBox();
     assert.ok(focusedBounds.y >= 68 && focusedBounds.y + focusedBounds.height <= 375,'focused result stays visible on a short mobile viewport');
     assert.equal(await page.locator('.document-entry').first().evaluate(node=>getComputedStyle(node).opacity),'1');
-    assert.equal(await page.locator('.document-entry').nth(1).evaluate(node=>getComputedStyle(node).animationName),'portal-enter');
+    assert.equal(await page.locator('.document-entry').nth(1).evaluate(node=>getComputedStyle(node).animationName),'portal-result-page');
     await page.goBack();
     await page.waitForFunction(()=>!new URL(location.href).searchParams.has('page'));
     await page.setViewportSize({width:1280,height:900});
@@ -426,16 +426,48 @@ async function main() {
       assert.equal(await marker.evaluate(node=>getComputedStyle(node).viewTransitionName),'portal-nav-marker');
       await routePage.waitForFunction(()=>document.documentElement.hasAttribute('data-test-transition-interactive'));
       assert.equal(await routePage.locator('html').getAttribute('data-test-transition-interactive'),'true','search is clickable during the native transition');
+      await routePage.waitForFunction(()=>document.documentElement.dataset.pageMotion === 'crossfade');
+      const search = routePage.locator('#q');
+      const bounds = await search.boundingBox();
+      await routePage.mouse.click(bounds.x + bounds.width / 2, bounds.y + bounds.height / 2);
+      await routePage.keyboard.type('Unity');
+      assert.equal(await search.inputValue(),'Unity','using the live search succeeds during transition');
+      await search.fill('');
     }
 
     await routePage.locator('.document-detail').first().click();
     await routePage.waitForURL('**/document.html?id=*');
     const detail = routePage.locator('.detail-hero');
-    assert.equal(await detail.evaluate(node=>getComputedStyle(node).animationName),'portal-enter','detail metadata has a short entrance');
+    if (await routePage.evaluate(()=>'onpagereveal' in window)) {
+      await routePage.waitForFunction(()=>document.documentElement.dataset.pageMotion === 'forward');
+      await routePage.goBack({waitUntil:'commit'});
+      await routePage.waitForURL('**/documents.html');
+      await routePage.waitForFunction(()=>document.documentElement.dataset.pageMotion === 'back');
+      await routePage.goForward({waitUntil:'commit'});
+      await routePage.waitForURL('**/document.html?id=*');
+      await routePage.waitForFunction(()=>document.documentElement.dataset.pageMotion === 'forward');
+    }
 
     await navigation.route('https://drive.google.com/**',route=>route.abort());
     await navigation.route('https://docs.google.com/**',route=>route.abort());
-    await detail.locator('a[href^="viewer.html"]').click();
+    const viewerLink = detail.locator('a[href^="viewer.html"]');
+    await viewerLink.waitFor();
+    const transitioning = await routePage.evaluate(() => {
+      const root = document.documentElement;
+      if (root.dataset.pageMotion !== 'forward') return false;
+      delete root.dataset.motionSettled;
+      const animation = document.querySelector('.content').getAnimations()
+        .find(item => item.animationName === 'portal-page-forward');
+      animation.pause();
+      animation.currentTime = 85;
+      return true;
+    });
+    if (transitioning) {
+      const {x,y,width,height} = await viewerLink.boundingBox();
+      await routePage.mouse.click(x + width / 2, y + height / 2);
+    } else {
+      await viewerLink.click();
+    }
     await routePage.waitForURL('**/viewer.html?*');
     if (await routePage.evaluate(()=>'onpagereveal' in window)) {
       await routePage.waitForFunction(()=>document.documentElement.hasAttribute('data-test-transition'));
