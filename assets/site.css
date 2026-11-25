@@ -257,25 +257,25 @@ body{overflow-wrap:break-word}button,a,input,select{touch-action:manipulation}
   }
   [data-page-motion="back"] .content { animation-name: portal-page-back; }
   [data-page-motion][data-motion-settled] .content { animation: none; }
-  [data-motion-pressed] :is(.content, .toolbar, .search-global, .initial-result, #list.page-arriving > article) { animation-play-state: paused; }
+  [data-motion-pressed] :is(.content, .toolbar, .trend-controls, .trend-filter-row, .initial-result, #list.page-arriving > article) { animation-play-state: paused; }
 
   /* Reveal individual heading lines only when the parent is stationary. */
   :root:not([data-motion-visited]) .content :is(.hero-copy, .documents-heading, .website-intro, .repository-intro, .trend-header > div:first-child)
-    > :is(.eyebrow, h1, p) {
+    > :is(.eyebrow, .trend-kicker, h1, p) {
     animation: portal-enter var(--motion-duration-header) var(--motion-ease-out) backwards;
     --motion-enter-distance: 16px;
     --motion-start-opacity: .42;
   }
   :root:not([data-motion-visited]) .content :is(.hero-copy, .documents-heading, .website-intro, .repository-intro, .trend-header > div:first-child)
-    > .eyebrow + h1 { animation-delay: 38ms; }
+    > :is(.eyebrow, .trend-kicker) + h1 { animation-delay: 38ms; }
   :root:not([data-motion-visited]) .content :is(.hero-copy, .documents-heading, .website-intro, .repository-intro, .trend-header > div:first-child)
     > h1 + p { animation-delay: 76ms; }
-  :root:not([data-motion-visited]) .content :is(.toolbar, .result-meta) {
+  :root:not([data-motion-visited]) .content :is(.toolbar, .result-meta, .trend-controls, .trend-filter-row) {
     --motion-enter-distance: 6px;
     --motion-start-opacity: .7;
     animation: portal-enter var(--motion-duration-toolbar) var(--motion-ease-out);
   }
-  :root:not([data-motion-pressed]) .content .toolbar:focus-within { animation: none; }
+  :root:not([data-motion-pressed]) .content :is(.toolbar, .trend-controls, .trend-filter-row):focus-within { animation: none; }
   :root:not([data-motion-visited]) .initial-result {
     --motion-enter-distance: 13px;
     --motion-start-opacity: .55;

@@ -38,10 +38,41 @@ Home → Documents → Document Detail → 戻る → Websites → ページ送�
 - デスクトップ（ライト） [Before](contextual-motion/before-desktop.webm) ／ [After](contextual-motion/after-desktop.webm)
 - モバイル（ダーク） [Before](contextual-motion/before-mobile.webm) ／ [After](contextual-motion/after-mobile.webm)
 
+## ローカル性能
+
+モーション有効時の 2 試行の中央値。初期表示はナビゲーションから最初のカードまたは詳細が表示されるまで。p95 は各試行の最初の 1.5 秒のフレーム間隔。
+
+| 画面 | 初期表示 (ms) | LCP (ms) | フレーム間隔 p95 (ms) |
+| --- | ---: | ---: | ---: |
+| Home 初回 | 1,009 → 730 | 816 → 590 | 110.0 → 33.3 |
+| Home 再訪 | 339 → 184 | 244 → 164 | 33.3 → 16.7 |
+| Websites 初回 | 782 → 776 | 1,040 → 1,024 | 29.6 → 31.7 |
+| Websites 再訪 | 412 → 397 | 416 → 386 | 33.3 → 32.1 |
+| Documents | 778 → 466 | 740 → 458 | 62.5 → 33.3 |
+| Document Detail | 484 → 389 | 452 → 376 | 28.8 → 30.9 |
+
+全ナビゲーションの観測区間で CLS は 0。Home の初回は 1 Catalog・1,632 B 転送、Home と Websites の再訪は 0 B 転送。Documents と Document Detail の本文アニメーション開始はナビゲーション開始後の中央値 240／313 ms。モーションなしの場合は開始マークがない。
+
+| Websites の操作、モーション有効時 | Before → After |
+| --- | ---: |
+| 検索同期時間の中央値 | 14.6 → 13.0 ms |
+| ページ送り同期時間の中央値 | 15.8 → 13.8 ms |
+| ページ送り Event Timing の中央値 | 96 → 96 ms |
+
+全ルートを通す比較では、After の検索で 126 ms、Before でも 112.9 ms が各 1 回あり、全試行で 50 ms を下回る目標は未達だった。ページ送り同期処理は両モーション条件を含めて最大 18.3 ms。同期処理と入力から描画までの Event Timing は別指標で、Reduced Motion のページ送り Event Timing の中央値は 108 → 136 ms だった。Reduced Motion の Document Detail LCP には After の 680 ms の試行があり、少数試行でのばらつきとして記録した。
+
+タッチ復旧を追加した版で Websites のみを測る再試験を各条件 3 回行った。After の全試行の最大は、検索 22.6 ms、ページ送り 19.5 ms。ページ送りのクリック区間に強制 Layout は計測されなかった。全ルート比較は静止したページ送りリンクでスタイルを更新しないよう絞り込んだ段階、追加試験はタッチの互換クリックまで位置を保持する修正後に採取した。 [操作再試験の集計](contextual-motion/interactions/summary.json) ／ [生データ](contextual-motion/interactions/0-runs.json.gz)
+
+モーション有効時の CDP トレースで、ページ送りのクリック中の Layout は両版とも計測されなかった。Documents の Style／Layout／Paint／Raster／Compositor Commit は 68.9／92.1／16.1／36.7／69.3 → 53.3／68.8／35.5／12.4／36.4 ms。Document Detail の Paint は 28.8 → 50.3 ms。見た目の連続性と引き換えに一部の描画負荷が残る。レイヤー数はこの Chromium の CDP が比較可能な値を返さず集計外。60 Hz 実機でのフレーム間隔は今回のラボから判定できない。
+
+- [計測集計](contextual-motion/summary.json) ／ [生データ](contextual-motion/0-runs.json.gz)
+- [CDP トレース Before](contextual-motion/0-before-no-preference.trace.json.gz) ／ [After](contextual-motion/0-after-no-preference.trace.json.gz)
+- [Reduced Motion Before](contextual-motion/0-before-reduce.trace.json.gz) ／ [After](contextual-motion/0-after-reduce.trace.json.gz)
+
 ## 操作と復旧の検証
 
 - 公開ビルドで Browser Smoke が成功した。標準の検索・絞り込み・ページ送り・履歴、モバイルの短い画面での結果フォーカス、Viewer、バージョン付き JavaScript と Catalog が 404 を返した場合の復旧を含む。
-- 同階層の遷移中に検索欄を座標でクリックして文字を入力した。前進中は移動した Viewer リンクを座標でクリックし、Viewer が開くことを確認した。独立レビューでは Chromium の BFCache を有効にし、戻る・進む両方でキャッシュから復元して方向を確認した。
+- 同階層の遷移中に検索欄を座標でクリックして文字を入力した。前進中は移動した Viewer リンクを座標でクリックし、モバイルでもタップして、両方で Viewer が開くことを確認した。独立レビューでは Chromium の BFCache を有効にし、戻る・進む両方でキャッシュから復元して方向を確認した。
 - Reduced Motion、View Transition を無効にした構成、従来のライト／ダーク切り替えも Browser Smoke に含む。Portal、Viewer、Trend、同期、Node の既存検証が成功した。
 - 比較用の公開ビルド間で、Catalog のファイル名と内容がすべて一致した。既存の Home Projection、HTTP キャッシュ、ファイル単位の取得共有と復旧を保持した。
 
@@ -56,6 +87,8 @@ node tools/build_portal.cjs /tmp/mrc-motion-after-pages
 PORTAL_LAB_CONTEXTUAL=1 node tools/measure_portal_performance.cjs /tmp/mrc-motion-lab 2 0 \
   before=/tmp/mrc-motion-before-pages after=/tmp/mrc-motion-after-pages
 python tools/summarize_portal_performance.py /tmp/mrc-motion-lab
+PORTAL_LAB_CONTEXTUAL=1 PORTAL_LAB_WEBSITES_ONLY=1 node tools/measure_portal_performance.cjs /tmp/mrc-motion-interactions 3 0 \
+  before=/tmp/mrc-motion-before-pages after=/tmp/mrc-motion-after-pages
 node tools/record_contextual_motion.cjs /tmp/mrc-motion-video \
   before=/tmp/mrc-motion-before-pages after=/tmp/mrc-motion-after-pages
 PORTAL_SMOKE_ROOT=/tmp/mrc-motion-after-pages npm run test:browser-smoke

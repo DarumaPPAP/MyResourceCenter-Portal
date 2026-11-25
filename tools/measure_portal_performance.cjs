@@ -7,6 +7,7 @@ const {createHash} = require('node:crypto');
 const {gzipSync} = require('node:zlib');
 const {chromium} = require('playwright');
 const contextual = process.env.PORTAL_LAB_CONTEXTUAL === '1';
+const websitesOnly = process.env.PORTAL_LAB_WEBSITES_ONLY === '1';
 
 const selectors = {
   home: ['index.html', '#docs .document-entry'],
@@ -225,7 +226,7 @@ async function scenario(browser, origin, reducedMotion, size, trace) {
     }
 
     return await withTrace(cdp, trace, async () => {
-      if (!size) await navigate('home');
+      if (!size && !websitesOnly) await navigate('home');
       await navigate('websites');
       const before = samples.at(-1);
       const search = await page.locator('#q').evaluate(input =>
@@ -244,7 +245,7 @@ async function scenario(browser, origin, reducedMotion, size, trace) {
       assert.equal(new URL(page.url()).searchParams.get('page'), '2');
       await page.waitForTimeout(350);
       samples.push({label:'interactions', search, ready:before.ready, ...await snapshot(page, cdp, network)});
-      if (!size) {
+      if (!size && !websitesOnly) {
         await navigate('collection');
         await navigate('home', 'home-warm');
         await navigate('websites', 'websites-warm');
@@ -292,7 +293,7 @@ async function main() {
         }
       }
     }
-    const payload = {size, trials, chromium:browser.version(), node:process.version, measuredAt:new Date().toISOString(),
+    const payload = {size, trials, websitesOnly, chromium:browser.version(), node:process.version, measuredAt:new Date().toISOString(),
       variants:variants.map(({name,origin,runs}) => ({name,origin,runs}))};
     fs.writeFileSync(path.join(out, `${size}-runs.json.gz`), gzipSync(JSON.stringify(payload)));
   } finally {

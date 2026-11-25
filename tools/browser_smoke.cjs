@@ -101,6 +101,28 @@ async function checkCatalogRollover(context, origin) {
   }
 }
 
+async function activateViewerDuringMotion(page, touch = false) {
+  const viewerLink = page.locator('.detail-hero').locator('a[href^="viewer.html"]');
+  await viewerLink.waitFor();
+  const transitioning = await page.evaluate(() => {
+    const root = document.documentElement;
+    if (root.dataset.pageMotion !== 'forward') return false;
+    delete root.dataset.motionSettled;
+    const animation = document.querySelector('.content').getAnimations()
+      .find(item => item.animationName === 'portal-page-forward');
+    animation.pause();
+    animation.currentTime = 85;
+    return true;
+  });
+  if (transitioning) {
+    const {x,y,width,height} = await viewerLink.boundingBox();
+    if (touch) await page.touchscreen.tap(x + width / 2, y + height / 2);
+    else await page.mouse.click(x + width / 2, y + height / 2);
+  } else {
+    await viewerLink.click();
+  }
+}
+
 async function main() {
   const server = createServer();
   await new Promise(resolve => server.listen(0,'127.0.0.1',resolve));
@@ -437,7 +459,6 @@ async function main() {
 
     await routePage.locator('.document-detail').first().click();
     await routePage.waitForURL('**/document.html?id=*');
-    const detail = routePage.locator('.detail-hero');
     if (await routePage.evaluate(()=>'onpagereveal' in window)) {
       await routePage.waitForFunction(()=>document.documentElement.dataset.pageMotion === 'forward');
       await routePage.goBack({waitUntil:'commit'});
@@ -450,28 +471,28 @@ async function main() {
 
     await navigation.route('https://drive.google.com/**',route=>route.abort());
     await navigation.route('https://docs.google.com/**',route=>route.abort());
-    const viewerLink = detail.locator('a[href^="viewer.html"]');
-    await viewerLink.waitFor();
-    const transitioning = await routePage.evaluate(() => {
-      const root = document.documentElement;
-      if (root.dataset.pageMotion !== 'forward') return false;
-      delete root.dataset.motionSettled;
-      const animation = document.querySelector('.content').getAnimations()
-        .find(item => item.animationName === 'portal-page-forward');
-      animation.pause();
-      animation.currentTime = 85;
-      return true;
-    });
-    if (transitioning) {
-      const {x,y,width,height} = await viewerLink.boundingBox();
-      await routePage.mouse.click(x + width / 2, y + height / 2);
-    } else {
-      await viewerLink.click();
-    }
+    await activateViewerDuringMotion(routePage);
     await routePage.waitForURL('**/viewer.html?*');
     if (await routePage.evaluate(()=>'onpagereveal' in window)) {
       await routePage.waitForFunction(()=>document.documentElement.hasAttribute('data-test-transition'));
       assert.equal(await routePage.locator('html').getAttribute('data-test-transition'),'false','document viewer skips native view transitions');
+    }
+
+    const touch = await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
+    try {
+      await touch.route('https://drive.google.com/**',route=>route.abort());
+      await touch.route('https://docs.google.com/**',route=>route.abort());
+      const touchPage = await touch.newPage();
+      await openPage(touchPage,origin,'documents.html');
+      await touchPage.locator('.document-detail').first().tap();
+      await touchPage.waitForURL('**/document.html?id=*');
+      if (await touchPage.evaluate(()=>'onpagereveal' in window)) {
+        await touchPage.waitForFunction(()=>document.documentElement.dataset.pageMotion === 'forward');
+      }
+      await activateViewerDuringMotion(touchPage, true);
+      await touchPage.waitForURL('**/viewer.html?*');
+    } finally {
+      await touch.close();
     }
 
     await routePage.emulateMedia({reducedMotion:'reduce'});

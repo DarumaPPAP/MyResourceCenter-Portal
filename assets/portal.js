@@ -30,13 +30,18 @@
     }
   }
 
-  let pressedPointer;
+  let pressedPointer, releaseTimer;
+  function releasePointer() {
+    pressedPointer = undefined;
+    clearTimeout(releaseTimer);
+    releaseTimer = undefined;
+    delete root.dataset.motionPressed;
+  }
   const motion = matchMedia('(prefers-reduced-motion: no-preference)');
   window.addEventListener('pageswap', ({activation, viewTransition}) => {
     delete root.dataset.pageMotion;
     delete root.dataset.motionSettled;
-    delete root.dataset.motionPressed;
-    pressedPointer = undefined;
+    if (pressedPointer !== undefined) releasePointer();
     if (!viewTransition) return;
     const kind = transitionKind(activation?.from?.url, activation?.entry?.url);
     if (!kind || !motion.matches) {
@@ -76,17 +81,29 @@
   });
 
   content?.addEventListener('pointerdown', event => {
-    if (!event.isPrimary) return;
+    if (!motion.matches || !event.isPrimary) return;
+    const movingPage = root.dataset.pageMotion && root.dataset.motionSettled === undefined;
+    if (!movingPage && !event.target.closest('.toolbar, .trend-controls, .trend-filter-row, .initial-result, #list.page-arriving > article')) return;
+    clearTimeout(releaseTimer);
+    releaseTimer = undefined;
     pressedPointer = event.pointerId;
     root.dataset.motionPressed = '';
   }, true);
-  const resumeMotion = event => {
+  window.addEventListener('pointerup', event => {
     if (event.pointerId !== pressedPointer) return;
-    pressedPointer = undefined;
-    delete root.dataset.motionPressed;
-  };
-  window.addEventListener('pointerup', resumeMotion, true);
-  window.addEventListener('pointercancel', resumeMotion, true);
+    // Touch sends its compatibility mouse/focus events after pointerup.
+    // A canceled gesture can omit click, so also release after a bounded delay.
+    releaseTimer = setTimeout(releasePointer, 350);
+  }, true);
+  window.addEventListener('pointercancel', event => {
+    if (event.pointerId === pressedPointer) releasePointer();
+  }, true);
+  window.addEventListener('click', () => {
+    if (releaseTimer !== undefined) releasePointer();
+  });
+  window.addEventListener('blur', () => {
+    if (pressedPointer !== undefined) releasePointer();
+  });
   content?.addEventListener('focusin', () => {
     if (root.dataset.pageMotion && pressedPointer === undefined) root.dataset.motionSettled = '';
   });
@@ -96,7 +113,7 @@
   if (results && motion.matches && typeof MutationObserver === 'function') {
     const revealFirstResults = () => {
       const cards = results.querySelectorAll('.document-entry, .website-card, .repository-card, .reading-guide, .trend-row');
-      if (!cards.length && !results.querySelector('.empty, .trend-empty')) return;
+      if (!cards.length && !results.querySelector('.empty, .trend-empty:not([data-motion-loading])')) return;
       observer.disconnect();
       for (let index = 0; index < Math.min(3, cards.length); index++) {
         cards[index].classList.add('initial-result');
