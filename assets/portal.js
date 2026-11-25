@@ -108,7 +108,7 @@
 
   function initializeMotion() {
     let failed = false;
-    let observer, outgoingHeading, pressedPointer, releaseTimer;
+    let observer, outgoingContent, activeTransition, pressedPointer, releaseTimer;
 
     function guard(action) {
       return (...args) => {
@@ -123,7 +123,8 @@
           delete root.dataset.motionVisited;
           delete root.dataset.motionPressed;
           clearTimeout(releaseTimer);
-          outgoingHeading?.removeAttribute('data-outgoing-heading');
+          outgoingContent?.removeAttribute('data-outgoing-content');
+          try { activeTransition?.skipTransition(); } catch { /* Native transition already ended. */ }
           try { observer?.disconnect(); } catch { /* The observer may be the failing API. */ }
           try { args[0]?.viewTransition?.skipTransition(); } catch { /* CSS falls back to the live page. */ }
           console.warn('Portal motion could not run', error);
@@ -184,13 +185,26 @@
             }));
           } catch { /* History still traverses without the visual fallback. */ }
         }
-        // Capture one non-interactive heading. The destination's live content stays clickable.
-        outgoingHeading = document.querySelector('.content h1');
-        outgoingHeading?.setAttribute('data-outgoing-heading', '');
+        // Do not cover a sticky header or a restored scroll position with a stale view.
+        // The old surface is clipped to at most one viewport of visible content.
+        if (window.scrollY <= 1) {
+          outgoingContent = document.querySelector('.content');
+          outgoingContent?.setAttribute('data-outgoing-content', '');
+        }
       });
-      function revealPage() {
-        outgoingHeading?.removeAttribute('data-outgoing-heading');
-        outgoingHeading = null;
+      function finishSurface() {
+        if (root.dataset.pageMotion) root.dataset.motionSettled = '';
+      }
+      function skipSurface() {
+        if (activeTransition) {
+          activeTransition.skipTransition();
+          activeTransition = null;
+        }
+        finishSurface();
+      }
+      function revealPage(event) {
+        outgoingContent?.removeAttribute('data-outgoing-content');
+        outgoingContent = null;
         if (!motion.matches || !('onpagereveal' in window)) return;
         const activation = window.navigation?.activation;
         const traversal = takeTraversal();
@@ -199,21 +213,43 @@
           root.dataset.pageMotion = kind;
           root.dataset.motionVisited = '';
         }
+        if (!event) return;
+        activeTransition = event.viewTransition || null;
+        if (!activeTransition) {
+          finishSurface();
+          return;
+        }
+        const current = activeTransition;
+        current.finished.then(guard(() => {
+          if (activeTransition === current) {
+            activeTransition = null;
+            finishSurface();
+          }
+        }), guard(() => {
+          if (activeTransition === current) {
+            activeTransition = null;
+            finishSurface();
+          }
+        }));
+        // Restored scroll positions must never be masked by the outgoing page.
+        if (!kind || window.scrollY > 1) skipSurface();
       }
 
       // Activate from the navigation record even if pagereveal precedes this deferred script.
       listen(window, 'pagereveal', revealPage);
       revealPage();
 
-      const content = document.querySelector('.content');
-      listen(content, 'animationend', ({target, animationName}) => {
-        if (target === content && animationName.startsWith('portal-page-')) root.dataset.motionSettled = '';
-      });
+      // Remove the old visual immediately on real interaction, before it can
+      // obscure the target. No pause, translation, or opacity on the live page.
+      for (const type of ['pointerdown', 'keydown', 'focusin', 'wheel', 'scroll']) {
+        listen(window, type, skipSurface, {capture:true, passive:true});
+      }
+      listen(motion, 'change', () => { if (!motion.matches) skipSurface(); });
 
+      const content = document.querySelector('.content');
       listen(content, 'pointerdown', event => {
         if (!motion.matches || !event.isPrimary) return;
-        const movingPage = root.dataset.pageMotion && root.dataset.motionSettled === undefined;
-        if (!movingPage && !event.target.closest('.toolbar, .trend-controls, .trend-filter-row, .initial-result, #list.page-arriving > article')) return;
+        if (!event.target.closest('.initial-result, #list.page-arriving > article')) return;
         clearTimeout(releaseTimer);
         releaseTimer = undefined;
         pressedPointer = event.pointerId;
@@ -234,10 +270,6 @@
       listen(window, 'blur', () => {
         if (pressedPointer !== undefined) releasePointer();
       });
-      listen(content, 'focusin', () => {
-        if (root.dataset.pageMotion && pressedPointer === undefined) root.dataset.motionSettled = '';
-      });
-
       // Observe just the first successful population of a result list.
       const results = document.querySelector('#list, #grid, #trend-list');
       if (results && motion.matches && typeof MutationObserver === 'function') {

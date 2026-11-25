@@ -59,11 +59,11 @@ body{overflow-wrap:break-word}button,a,input,select{touch-action:manipulation}
   --motion-duration-hero: 460ms;
   --motion-duration-scan: 920ms;
   --motion-duration-route: 300ms;
-  --motion-duration-crossfade: 420ms;
-  --motion-duration-stack: 480ms;
-  --motion-duration-header: 340ms;
+  --motion-duration-crossfade: 320ms;
+  --motion-duration-stack: 340ms;
+  --motion-duration-header: 280ms;
   --motion-duration-toolbar: 200ms;
-  --motion-duration-pagination: 280ms;
+  --motion-duration-pagination: 240ms;
   --motion-duration-shimmer: 1100ms;
   --motion-delay-shimmer: 360ms;
   --motion-stagger: 42ms;
@@ -158,11 +158,11 @@ body{overflow-wrap:break-word}button,a,input,select{touch-action:manipulation}
   }
 
   #list.page-arriving > article:nth-child(-n + 3) {
-    --page-offset: 24px;
+    --page-offset: 14px;
     animation: portal-result-page var(--motion-duration-pagination) var(--motion-ease-out);
   }
 
-  #list.page-arriving.page-backward > article { --page-offset: -24px; }
+  #list.page-arriving.page-backward > article { --page-offset: -14px; }
   :root:not([data-motion-pressed]) #list.page-arriving > article:focus-within { animation: none; }
 
   :where(.document-entry, .website-card, .repository-card) {
@@ -215,71 +215,64 @@ body{overflow-wrap:break-word}button,a,input,select{touch-action:manipulation}
 
 .motion-arrow { display: inline-block; }
 
-@keyframes portal-page-fade { from { opacity: .35; } }
-@keyframes portal-page-forward { from { opacity: .42; translate: 0 min(12vh, 106px); } }
-@keyframes portal-page-back { from { opacity: .52; translate: 0 -28px; } }
-@keyframes portal-heading-out { to { opacity: 0; } }
-@keyframes portal-heading-retreat { to { opacity: 0; translate: 0 -10px; scale: .96; } }
-@keyframes portal-heading-leave { to { opacity: 0; translate: 0 min(12vh, 106px); } }
-@keyframes portal-result-page { from { opacity: .57; translate: var(--page-offset) 0; } }
+/* One outgoing surface, not two independently animated pages. */
+@keyframes portal-surface-out { from { opacity: 1; } to { opacity: 0; } }
+@keyframes portal-surface-forward { from { opacity: 1; } to { opacity: 0; translate: 0 -24px; } }
+@keyframes portal-surface-back { from { opacity: 1; } to { opacity: 0; translate: 0 24px; } }
+@keyframes portal-result-page { from { opacity: .88; translate: var(--page-offset) 0; } }
 @keyframes portal-nav-stretch { 45% { scale: .95 1.35; } }
 @keyframes portal-nav-stretch-inline { 45% { scale: 1.18 1; } }
 
 @media (prefers-reduced-motion: no-preference) {
   @view-transition { navigation: auto; }
 
-  /* Keep the live page visible and reserve snapshots for bounded, inert elements. */
+  /* Only the old document contributes a content snapshot. The new page
+     is always opaque, stationary, and interactive. Never capture root. */
   :root { view-transition-name: none; }
   .nav-indicator { view-transition-name: portal-nav-marker; }
   ::view-transition { pointer-events: none; }
-  [data-outgoing-heading] { view-transition-name: portal-outgoing-heading; }
-  ::view-transition-group(portal-outgoing-heading) {
-    animation-duration: var(--motion-duration-crossfade);
-    animation-timing-function: var(--motion-ease-in-out);
+  .content[data-outgoing-content] {
+    view-transition-name: portal-outgoing-content;
+    background: var(--bg);
+    clip-path: inset(0 0 max(0px, calc(100% - 100vh)) 0);
   }
-  ::view-transition-old(portal-outgoing-heading) { animation-name: portal-heading-out; }
-  :root[data-page-motion="forward"]::view-transition-group(portal-outgoing-heading) {
+  ::view-transition-group(portal-outgoing-content) {
+    animation: none;
+    overflow: clip;
+    pointer-events: none;
+  }
+  ::view-transition-image-pair(portal-outgoing-content) { isolation: isolate; }
+  ::view-transition-old(portal-outgoing-content) {
+    mix-blend-mode: normal;
+    animation: portal-surface-out var(--motion-duration-crossfade) var(--motion-ease-in-out) both;
+    pointer-events: none;
+  }
+  :root[data-page-motion="forward"]::view-transition-old(portal-outgoing-content) {
+    animation-name: portal-surface-forward;
     animation-duration: var(--motion-duration-stack);
   }
-  :root[data-page-motion="forward"]::view-transition-old(portal-outgoing-heading) {
-    animation-name: portal-heading-retreat;
-  }
-  :root[data-page-motion="back"]::view-transition-old(portal-outgoing-heading) {
-    animation-name: portal-heading-leave;
-  }
-
-  [data-page-motion] .content {
-    animation: portal-page-fade var(--motion-duration-crossfade) var(--motion-ease-in-out);
-  }
-  [data-page-motion="forward"] .content {
-    animation-name: portal-page-forward;
+  :root[data-page-motion="back"]::view-transition-old(portal-outgoing-content) {
+    animation-name: portal-surface-back;
     animation-duration: var(--motion-duration-stack);
   }
-  [data-page-motion="back"] .content { animation-name: portal-page-back; }
-  [data-page-motion][data-motion-settled] .content { animation: none; }
-  [data-motion-pressed] :is(.content, .toolbar, .trend-controls, .trend-filter-row, .initial-result, #list.page-arriving > article) { animation-play-state: paused; }
+  [data-motion-pressed] :is(.initial-result, #list.page-arriving > article) { animation-play-state: paused; }
 
   /* Reveal individual heading lines only when the parent is stationary. */
   :root:not([data-motion-visited]) .content :is(.hero-copy, .documents-heading, .website-intro, .repository-intro, .trend-header > div:first-child)
     > :is(.eyebrow, .trend-kicker, h1, p) {
     animation: portal-enter var(--motion-duration-header) var(--motion-ease-out) backwards;
-    --motion-enter-distance: 16px;
-    --motion-start-opacity: .42;
+    --motion-enter-distance: 12px;
+    --motion-start-opacity: .9;
   }
   :root:not([data-motion-visited]) .content :is(.hero-copy, .documents-heading, .website-intro, .repository-intro, .trend-header > div:first-child)
-    > :is(.eyebrow, .trend-kicker) + h1 { animation-delay: 38ms; }
+    > :is(.eyebrow, .trend-kicker) + h1 { animation-delay: 20ms; }
   :root:not([data-motion-visited]) .content :is(.hero-copy, .documents-heading, .website-intro, .repository-intro, .trend-header > div:first-child)
-    > h1 + p { animation-delay: 76ms; }
-  :root:not([data-motion-visited]) .content :is(.toolbar, .result-meta, .trend-controls, .trend-filter-row) {
-    --motion-enter-distance: 6px;
-    --motion-start-opacity: .7;
-    animation: portal-enter var(--motion-duration-toolbar) var(--motion-ease-out);
-  }
-  :root:not([data-motion-pressed]) .content :is(.toolbar, .trend-controls, .trend-filter-row):focus-within { animation: none; }
+    > h1 + p { animation-delay: 40ms; }
+  /* Input and filter controls never move or dim on entry. */
   :root:not([data-motion-visited]) .initial-result {
-    --motion-enter-distance: 13px;
-    --motion-start-opacity: .55;
-    animation: portal-enter 290ms var(--motion-ease-out) calc(var(--result-order) * 40ms) backwards;
+    --motion-enter-distance: 10px;
+    --motion-start-opacity: .88;
+    animation: portal-enter 240ms var(--motion-ease-out) calc(var(--result-order) * 24ms) backwards;
   }
   :root:not([data-motion-pressed]) .initial-result:focus-within,
   [data-page-motion] .detail-hero { animation: none; }

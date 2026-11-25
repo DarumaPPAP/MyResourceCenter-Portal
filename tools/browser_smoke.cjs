@@ -104,23 +104,10 @@ async function checkCatalogRollover(context, origin) {
 async function activateViewerDuringMotion(page, touch = false) {
   const viewerLink = page.locator('.detail-hero').locator('a[href^="viewer.html"]');
   await viewerLink.waitFor();
-  const transitioning = await page.evaluate(() => {
-    const root = document.documentElement;
-    if (root.dataset.pageMotion !== 'forward') return false;
-    delete root.dataset.motionSettled;
-    const animation = document.querySelector('.content').getAnimations()
-      .find(item => item.animationName === 'portal-page-forward');
-    animation.pause();
-    animation.currentTime = 85;
-    return true;
-  });
-  if (transitioning) {
-    const {x,y,width,height} = await viewerLink.boundingBox();
-    if (touch) await page.touchscreen.tap(x + width / 2, y + height / 2);
-    else await page.mouse.click(x + width / 2, y + height / 2);
-  } else {
-    await viewerLink.click();
-  }
+  assert.equal(await page.locator('.content').evaluate(node => getComputedStyle(node).opacity), '1');
+  assert.equal(await page.locator('.content').evaluate(node => getComputedStyle(node).translate), 'none');
+  if (touch) await viewerLink.tap();
+  else await viewerLink.click();
 }
 
 async function checkMotionFailures(browser, origin) {
@@ -170,7 +157,7 @@ async function checkMotionFailures(browser, origin) {
         for (const attr of ['data-page-motion', 'data-motion-pressed', 'data-motion-settled', 'data-motion-visited']) {
           assert.equal(await html.getAttribute(attr), null, failure + ': ' + attr);
         }
-        assert.equal(await page.locator('[data-outgoing-heading]').count(), 0, failure);
+        assert.equal(await page.locator('[data-outgoing-content]').count(), 0, failure);
         assert.equal(await page.locator('.content').evaluate(node => getComputedStyle(node).opacity), '1', failure);
         assert.equal(await page.locator('.document-entry').first().evaluate(node => getComputedStyle(node).animationName), 'none', failure);
       }
@@ -202,9 +189,7 @@ async function checkActiveSearchMotion(browser, origin, {touch = false, stopClic
       for (const type of ['pointerdown', 'pointerup', 'click', 'input']) {
         window.addEventListener(type, event => {
           if (event.target.id !== 'q') return;
-          const animation = document.querySelector('.content').getAnimations()
-            .find(item => item.animationName === 'portal-page-fade');
-          window.searchMotionEvents.push([type, event.isTrusted, animation?.playState]);
+          window.searchMotionEvents.push([type, event.isTrusted]);
           if (stopClick && type === 'click') event.stopPropagation();
         }, true);
       }
@@ -216,13 +201,20 @@ async function checkActiveSearchMotion(browser, origin, {touch = false, stopClic
     await page.waitForURL('**/documents.html', {waitUntil:'commit'});
     if (!await page.evaluate(()=>'onpagereveal' in window)) return;
     const ready = await page.waitForFunction(() => {
-      const content = document.querySelector('.content');
-      const animation = content?.getAnimations().find(item => item.animationName === 'portal-page-fade');
-      if (animation?.playState !== 'running' || animation.currentTime >= 280) return null;
-      const {x,y,width,height} = document.querySelector('#q').getBoundingClientRect();
-      return {x:x + width / 2,y:y + height / 2};
+      const animation = document.getAnimations().find(item => item.animationName === 'portal-surface-out');
+      if (animation?.playState !== 'running' || animation.currentTime >= 220) return null;
+      const content = document.querySelector('.content'), input = document.querySelector('#q');
+      const {x,y,width,height} = input.getBoundingClientRect();
+      return {
+        x:x+width/2, y:y+height/2, rect:JSON.stringify(input.getBoundingClientRect()),
+        hit:document.elementFromPoint(x+width/2,y+height/2) === input,
+        opacity:getComputedStyle(content).opacity, translate:getComputedStyle(content).translate
+      };
     }, null, {timeout:5000});
-    const {x,y} = await ready.jsonValue();
+    const {x,y,rect,hit,opacity,translate} = await ready.jsonValue();
+    assert.equal(hit,true,'old-only snapshot leaves the new input hittable');
+    assert.equal(opacity,'1','new page is fully opaque throughout the transition');
+    assert.equal(translate,'none','new page and controls never translate');
     const cdp = touch ? await context.newCDPSession(page) : null;
     if (cdp) {
       await cdp.send('Input.dispatchTouchEvent', {type:'touchStart',touchPoints:[{x,y}]});
@@ -230,48 +222,20 @@ async function checkActiveSearchMotion(browser, origin, {touch = false, stopClic
       await page.mouse.move(x,y);
       await page.mouse.down();
     }
-    const held = await page.waitForFunction(() => {
-      const animation = document.querySelector('.content').getAnimations()
-        .find(item => item.animationName === 'portal-page-fade');
-      if (animation?.playState === 'paused' && !animation.pending) return animation.currentTime;
-    });
-    const heldTime = await held.jsonValue();
-    const paused = await page.evaluate(async () => {
-      const input = document.querySelector('#q');
-      const rect = () => JSON.stringify(input.getBoundingClientRect());
-      const start = rect();
-      await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
-      const content = document.querySelector('.content');
-      return {stationary:start === rect(), time:content.getAnimations()[0]?.currentTime};
-    });
-    assert.equal(paused.stationary,true,'search stays in place while pressed');
-    assert.equal(paused.time,heldTime,'the active animation clock stops during press');
-
     if (cdp) await cdp.send('Input.dispatchTouchEvent', {type:'touchEnd',touchPoints:[]});
     else await page.mouse.up();
-
     const search = page.locator('#q');
     assert.equal(await search.evaluate(node=>node === document.activeElement),true,'pointer click focuses the live input');
+    assert.equal(await search.evaluate(node=>JSON.stringify(node.getBoundingClientRect())),rect,'input does not move during the interaction');
     if (!stopClick) {
-      await page.waitForFunction(() => document.querySelector('.content').getAnimations()
-        .some(item => item.animationName === 'portal-page-fade' && item.playState === 'running'),
-        null, {timeout:1500});
       await page.keyboard.insertText('Unity');
       assert.equal(await search.inputValue(),'Unity');
     }
-    await page.waitForFunction(time => {
-      const root = document.documentElement;
-      if (root.hasAttribute('data-motion-pressed')) return false;
-      const animation = document.querySelector('.content').getAnimations()
-        .find(item => item.animationName === 'portal-page-fade');
-      return !animation || animation.playState === 'running' && animation.currentTime > time;
-    }, heldTime, {timeout:2000});
+    await page.waitForFunction(() => !document.getAnimations().some(item => item.animationName === 'portal-surface-out' && item.playState === 'running'), null, {timeout:2000});
     const events = await page.evaluate(()=>window.searchMotionEvents);
-    assert.deepEqual(events.slice(0,3).map(event => event.slice(0,2)),
-      [['pointerdown',true], ['pointerup',true], ['click',true]]);
-    if (!stopClick) assert.ok(events.some(([type,trusted,state])=>type === 'input' && trusted && state === 'running'),
-      'trusted input reaches the search while the animation is running');
-    await page.waitForFunction(()=>getComputedStyle(document.querySelector('.content')).opacity === '1', null, {timeout:2000});
+    assert.deepEqual(events.slice(0,3),[['pointerdown',true], ['pointerup',true], ['click',true]]);
+    if (!stopClick) assert.ok(events.some(([type,trusted])=>type === 'input' && trusted));
+    assert.equal(await page.locator('html').getAttribute('data-motion-pressed'),null);
   } finally {
     await context.close();
   }
