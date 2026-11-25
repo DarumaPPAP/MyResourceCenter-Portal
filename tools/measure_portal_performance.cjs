@@ -62,7 +62,7 @@ function observe() {
     event.viewTransition.ready.then(() => performance.mark('lab:transition-ready'), () => {});
   });
   document.addEventListener('animationstart', event => {
-    if (event.animationName.startsWith('portal-page-')) performance.mark('lab:page-animation-start');
+    if (/^portal-(?:page-|surface-)/.test(event.animationName)) performance.mark('lab:page-animation-start');
   });
   const options = {'largest-contentful-paint': 'lcp',
     'layout-shift': 'shifts', longtask: 'longTasks', event: 'events'};
