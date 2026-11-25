@@ -108,10 +108,12 @@ async function checkRouteMotion(browser, origin, {touch = false, failure = false
   });
   try {
     await context.addInitScript(failure => {
-      window.routeProbe = {settled:false, animations:[]};
+      window.routeProbe = {settled:false, shellReady:false, captured:false, animations:[]};
       window.addEventListener('pagereveal', ({viewTransition}) => {
+        window.routeProbe.shellReady = !!document.querySelector('.breadcrumb-indicator');
         if (!viewTransition) { window.routeProbe.settled = true; return; }
         viewTransition.ready.then(() => {
+          window.routeProbe.captured = true;
           window.routeProbe.animations = document.getAnimations().map(animation => animation.animationName);
         }, () => {}).finally(() => { window.routeProbe.settled = true; });
       });
@@ -147,10 +149,16 @@ async function checkRouteMotion(browser, origin, {touch = false, failure = false
     if (await page.evaluate(() => 'onpageswap' in window)) {
       assert.equal(await page.evaluate(() => sessionStorage.getItem('capture')), 'none', 'outgoing body is never captured');
     }
-    if (!touch && !failure && await page.evaluate(() => 'onpagereveal' in window)) {
+    const verifyMarker = async (matches, message) => {
+      if (failure || !await page.evaluate(() => 'onpagereveal' in window)) return;
       await page.waitForFunction(() => window.routeProbe.settled);
-      assert.ok(await page.evaluate(() => window.routeProbe.animations.some(name => name?.endsWith('portal-nav-marker'))),
-        'desktop pointer navigation animates the shared marker');
+      const probe = await page.evaluate(() => window.routeProbe);
+      await page.locator('.breadcrumb-indicator').waitFor({state:'attached', timeout:5000});
+      if (probe.shellReady && probe.captured) assert.ok(probe.animations.some(matches), message);
+      else assert.deepEqual(probe.animations, [], 'a browser-skipped transition uses a static page');
+    };
+    if (!touch) {
+      await verifyMarker(name => name?.endsWith('portal-nav-marker'), 'desktop pointer navigation animates the shared marker');
     }
     await activate(search);
     assert.equal(await search.evaluate(node => node === document.activeElement), true);
@@ -163,11 +171,7 @@ async function checkRouteMotion(browser, origin, {touch = false, failure = false
     await activate(page.locator('.document-detail').first());
     await page.waitForURL('**/document.html?id=*');
     await page.locator('.detail-hero').waitFor();
-    if (!failure && await page.evaluate(() => 'onpagereveal' in window)) {
-      await page.waitForFunction(() => window.routeProbe.settled);
-      assert.ok(await page.evaluate(() => window.routeProbe.animations.includes('portal-depth-cue')),
-        'a pointer-initiated hierarchy change animates only the breadcrumb cue');
-    }
+    await verifyMarker(name => name === 'portal-depth-cue', 'a pointer-initiated hierarchy change animates the breadcrumb cue');
 
     await page.goBack({waitUntil:'commit'});
     await page.waitForFunction(url => location.href === url, listUrl, {timeout:5000});
@@ -205,17 +209,18 @@ async function checkMobileCurrentLocation(browser, origin) {
   try {
     await context.addInitScript(() => {
       window.addEventListener('pagereveal', ({viewTransition}) => {
+        const shellReady = !!document.querySelector('.breadcrumb-indicator');
         if (!viewTransition) {
-          window.depthCue = {status:'unavailable'};
+          window.depthCue = {status:'unavailable', shellReady};
           return;
         }
         viewTransition.ready.then(() => {
           const started = performance.now();
           const cue = document.getAnimations().find(animation => animation.animationName === 'portal-depth-cue');
           return viewTransition.finished.then(() => {
-            window.depthCue = {status:'finished', cue:!!cue, duration:performance.now() - started};
+            window.depthCue = {status:'finished', shellReady, cue:!!cue, duration:performance.now() - started};
           });
-        }).catch(error => { window.depthCue = {status:'skipped', error:error.message}; });
+        }).catch(error => { window.depthCue = {status:'skipped', shellReady, error:error.message}; });
       });
     });
     const page = await context.newPage();
@@ -238,10 +243,13 @@ async function checkMobileCurrentLocation(browser, origin) {
     assert.equal(await page.evaluate(() => scrollY), 0, 'aligning the rail does not scroll the page');
     await page.locator('.reading-guide').first().tap();
     await page.waitForURL('**/collection.html?id=*');
+    await page.locator('.detail-hero').waitFor();
+    assert.equal(await page.evaluate(() => scrollY), 0, 'the new page stays stationary');
     if (await page.evaluate(() => 'onpagereveal' in window)) {
       const sample = await (await page.waitForFunction(() => window.depthCue, null, {timeout:5000})).jsonValue();
-      assert.ok(sample.cue && sample.duration >= 100, 'rail alignment lets the breadcrumb cue finish: ' + JSON.stringify(sample));
-      assert.equal(await page.evaluate(() => scrollY), 0, 'the completed cue keeps the page stationary');
+      if (sample.shellReady && sample.status === 'finished') {
+        assert.ok(sample.cue && sample.duration >= 100, 'rail alignment lets the breadcrumb cue finish: ' + JSON.stringify(sample));
+      }
     }
   } finally {
     await context.close();
