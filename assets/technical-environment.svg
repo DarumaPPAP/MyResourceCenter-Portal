@@ -1,15 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="760" height="600" viewBox="0 0 760 600" role="img" aria-labelledby="title desc">
 <title id="title">Environment / Geometry / GPU</title><desc id="desc">A technical cutaway of a game environment with geometry wireframes, light rays, and a GPU frame graph.</desc>
-<style>
-@keyframes wireframe-reveal {
-  from { opacity: .22; }
-}
-@media (prefers-reduced-motion: no-preference) {
-  .technical-wireframe {
-    animation: wireframe-reveal 460ms cubic-bezier(.22, .71, .24, 1) 120ms backwards;
-  }
-}
-</style>
 <defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#16272a"/><stop offset="1" stop-color="#30434a"/></linearGradient><linearGradient id="ground" x2="1" y2="1"><stop stop-color="#455b60"/><stop offset="1" stop-color="#142b31"/></linearGradient><pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse"><path d="M36 0H0V36" fill="none" stroke="#9ac3c3" stroke-opacity=".1"/></pattern></defs>
 <rect width="760" height="600" fill="url(#sky)"/><rect width="760" height="600" fill="url(#grid)"/>
 <g fill="none" stroke="#67858b" stroke-width="1"><path d="M0 400L300 250 760 350M0 480L300 300 760 420M0 550L300 350 760 490M70 600L300 400 760 550M200 600L300 450M360 600L300 500M540 600L300 550"/></g>

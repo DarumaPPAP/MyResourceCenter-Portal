@@ -558,7 +558,9 @@ Promise.resolve().then(async()=>{
 const documentsPageSource=fs.readFileSync(path.join(__dirname,'../documents.html'),'utf8');
 const documentsStyles=fs.readFileSync(path.join(__dirname,'../assets/documents.css'),'utf8');
 assert.match(documentsPageSource,/<nav[^>]*id="pagination"[^>]*aria-label="ドキュメント一覧のページ"/);
-assert.match(documentsPageSource,/id="list"[^>]*aria-live="polite"[^>]*tabindex="-1"/);
+assert.match(documentsPageSource, /id="count"[^>]*role="status"[^>]*aria-live="polite"/);
+assert.match(documentsPageSource, /id="list"[^>]*aria-label="検索結果"[^>]*tabindex="-1"/);
+assert.doesNotMatch(documentsPageSource, /id="list"[^>]*aria-live=/, 'updates are announced once via the result count');
 assert.match(documentsPageSource,/id="list"[^>]*>[\s\S]*?<\/div>\s*<nav[^>]*id="pagination"/);
 assert.match(documentsStyles,/\.document-pagination[^\{]*\{[^}]*flex-wrap:\s*wrap/s);
 assert.match(documentsStyles,/\.document-page-link[^\{]*\{[^}]*min-width:\s*36px/s);

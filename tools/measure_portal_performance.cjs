@@ -8,6 +8,8 @@ const {gzipSync} = require('node:zlib');
 const {chromium} = require('playwright');
 const contextual = process.env.PORTAL_LAB_CONTEXTUAL === '1';
 const websitesOnly = process.env.PORTAL_LAB_WEBSITES_ONLY === '1';
+const desktop = process.env.PORTAL_LAB_VIEWPORT === 'desktop';
+const dark = process.env.PORTAL_LAB_THEME === 'dark';
 
 const selectors = {
   home: ['index.html', '#docs .document-entry'],
@@ -62,7 +64,7 @@ function observe() {
     event.viewTransition.ready.then(() => performance.mark('lab:transition-ready'), () => {});
   });
   document.addEventListener('animationstart', event => {
-    if (/^portal-(?:page-|surface-)/.test(event.animationName)) performance.mark('lab:page-animation-start');
+    if (/^(?:portal-(?:page-|surface-|depth-)|-ua-view-transition-group-anim-portal-nav-marker)/.test(event.animationName)) performance.mark('lab:page-animation-start');
   });
   const options = {'largest-contentful-paint': 'lcp',
     'layout-shift': 'shifts', longtask: 'longTasks', event: 'events'};
@@ -178,9 +180,14 @@ async function snapshot(page, cdp, network) {
 }
 
 async function scenario(browser, origin, reducedMotion, size, trace) {
-  const context = await browser.newContext({viewport:{width:390,height:844}, deviceScaleFactor:2,
-    isMobile:true, hasTouch:true, reducedMotion});
+  const context = await browser.newContext({
+    viewport:desktop ? {width:1280,height:900} : {width:390,height:844},
+    deviceScaleFactor:desktop ? 1 : 2, isMobile:!desktop, hasTouch:!desktop, reducedMotion
+  });
   try {
+    if (dark) await context.addInitScript(() => {
+      localStorage.setItem('myresourcecenter-theme', 'dark');
+    });
     const page = await context.newPage();
     const cdp = await context.newCDPSession(page);
     await cdp.send('Emulation.setCPUThrottlingRate', {rate:4});
@@ -206,9 +213,10 @@ async function scenario(browser, origin, reducedMotion, size, trace) {
       const url = route === 'collection' ? collectionUrl : route === 'document' ? documentUrl : new URL(file, origin).href;
       const previous = new URL(page.url());
       const link = route === 'document' ? page.locator('.document-detail').first()
-        : page.locator(`.mobile-nav a[href="${file}"]`);
+        : page.locator(`${desktop ? ".side-nav" : ".mobile-nav"} a[href="${file}"]`);
       if (contextual && previous.origin === new URL(url).origin && await link.count()) {
-        await link.tap();
+        if (desktop) await link.click();
+        else await link.tap();
         await page.waitForURL(url, {waitUntil:'domcontentloaded'});
       } else {
         const response = await page.goto(url, {waitUntil:'domcontentloaded'});
@@ -293,7 +301,7 @@ async function main() {
         }
       }
     }
-    const payload = {size, trials, websitesOnly, chromium:browser.version(), node:process.version, measuredAt:new Date().toISOString(),
+    const payload = {size, trials, websitesOnly, viewport:desktop ? 'desktop' : 'mobile', theme:dark ? 'dark' : 'light', chromium:browser.version(), node:process.version, measuredAt:new Date().toISOString(),
       variants:variants.map(({name,origin,runs}) => ({name,origin,runs}))};
     fs.writeFileSync(path.join(out, `${size}-runs.json.gz`), gzipSync(JSON.stringify(payload)));
   } finally {

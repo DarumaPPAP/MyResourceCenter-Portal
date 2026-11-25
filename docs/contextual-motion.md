@@ -1,5 +1,7 @@
 # Contextual Page Transition & Layout Motion
 
+現在の実装と再検証は [Portal の画面遷移と閲覧操作](motion-craft.md) に記録した。以下は #133 までの履歴。
+
 対象は MyResourceCenter-Portal の MPA。比較元は PR #130・#131 を含む `b4482c2074e06f27c65f19c3b58203ddf98979d1`。
 
 ## 参考モーションと Portal での採用

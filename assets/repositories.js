@@ -57,7 +57,7 @@
       const used=new Set(rows.flatMap(row=>row.tags || []));
       Object.keys(data.taxonomy.tags || {}).filter(tag=>used.has(tag)).sort().forEach(tag=>{const option=document.createElement('option');option.value=tag;option.textContent=tag;el('tag').appendChild(option);});
       const writePage=(page,method)=>{const url=new URL(location.href);if(page>1)url.searchParams.set('page',String(page));else url.searchParams.delete('page');if(url.href!==location.href)history[method](null,'',url);};
-      const render=({focus=false, backward=false}={})=>{
+      const render=()=>{
         const filtered=filterRepositories(rows,{q:el('q').value,tag:el('tag').value});
         const totalPages=Math.ceil(filtered.length/PAGE_SIZE),raw=new URL(location.href).searchParams.get('page');
         const requested=raw && /^\d+$/.test(raw) && Number.isSafeInteger(Number(raw))?Math.max(1,Number(raw)):1;
@@ -65,8 +65,6 @@
         const start=(page-1)*PAGE_SIZE,end=Math.min(start+PAGE_SIZE,filtered.length);
         el('count').textContent=filtered.length?`${start+1}–${end} 件目 / ${filtered.length} 件（全 ${rows.length} 件）`:`0 件 / 全 ${rows.length} 件`;
         const list=el('list');
-        list.classList.toggle('page-arriving',focus);
-        list.classList.toggle('page-backward', backward);
         list.innerHTML=filtered.slice(start,end).map(row=>renderCard(row,C)).join('') || '<div class="empty">条件に一致するリポジトリがありません。<br><button type="button" class="icon-button" data-reset-filters>条件をリセット</button></div>';
         const pageLink=(target,label)=>{const url=new URL(location.href);if(target>1)url.searchParams.set('page',String(target));else url.searchParams.delete('page');return `<a class="repository-page-link" href="${C.escapeHtml(url.pathname+url.search)}" data-page="${target}"${target===page?' aria-current="page"':''}>${label}</a>`;};
         const pages=[...new Set([1,page-1,page,page+1,totalPages].filter(value=>value>=1 && value<=totalPages))].sort((a,b)=>a-b);
@@ -86,7 +84,7 @@
         const current=Number(new URL(location.href).searchParams.get('page') || '1');
         if (page===current) return;
         writePage(page,'pushState');
-        render({focus:true, backward:page < current});
+        render();
         el('result-meta').scrollIntoView({block:'start',behavior:'instant'});
         const firstResult=el('list').querySelector('.repository-card-link');
         firstResult?.scrollIntoView({block:'nearest',behavior:'instant'});

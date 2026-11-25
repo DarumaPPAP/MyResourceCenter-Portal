@@ -1,0 +1,21 @@
+{
+  "home-to-documents": 1093,
+  "documents-to-detail": 1952,
+  "history-back": 2749,
+  "history-forward": 3347,
+  "detail-to-documents": 3931,
+  "peer-to-home": 4675,
+  "home-to-websites": 5355,
+  "websites-to-detail": 6181,
+  "website-history-back": 6962,
+  "website-page-2": 7560,
+  "website-page-1": 8280,
+  "website-search": 8891,
+  "website-filter": 9477,
+  "peer-to-collections": 10046,
+  "collection-to-detail": 10863,
+  "collection-to-list": 11584,
+  "theme-toggle": 12371,
+  "peer-to-documents": 12976,
+  "documents-to-viewer": 14000
+}

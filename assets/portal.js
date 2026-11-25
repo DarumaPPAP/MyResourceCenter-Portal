@@ -65,16 +65,19 @@
   ];
   const current = location.pathname.split('/').pop() || 'index.html';
   const activePage = detailParents[current] || current;
+  const mobileLayout = matchMedia('(max-width: 820px)');
 
   document.querySelectorAll('.side-nav, .mobile-nav').forEach(nav => {
     const isMobile = nav.classList.contains('mobile-nav');
     nav.setAttribute('aria-label', isMobile ? 'モバイルナビゲーション' : 'メインナビゲーション');
 
     // 各HTMLに残る旧表記や旧順序に依存しないよう、単一の定義から再生成する。
+    let activeLink;
     nav.replaceChildren(...navigationItems.map(item => {
       const link = document.createElement('a');
       link.href = item.href;
       if (item.href === activePage) {
+        activeLink = link;
         link.classList.add('active');
         link.setAttribute('aria-current', 'page');
         const indicator = document.createElement('span');
@@ -93,6 +96,19 @@
       link.appendChild(document.createTextNode(item.label));
       return link;
     }));
+    if (isMobile && activeLink) {
+      // Align only when the rail first becomes available. Leave user scrolling alone.
+      const alignCurrent = () => requestAnimationFrame(() => {
+        const rail = nav.getBoundingClientRect();
+        const link = activeLink.getBoundingClientRect();
+        if (link.right > rail.right - 12) nav.scrollLeft += link.right - rail.right + 12;
+        else if (link.left < rail.left + 12) nav.scrollLeft += link.left - rail.left - 12;
+      });
+      if (mobileLayout.matches) alignCurrent();
+      mobileLayout.addEventListener?.('change', ({matches}) => {
+        if (matches) alignCurrent();
+      });
+    }
   });
   const main = document.querySelector('main');
   if (main) {
@@ -106,190 +122,87 @@
   }
   syncButtons();
 
-  function initializeMotion() {
-    let failed = false;
-    let observer, outgoingContent, activeTransition, pressedPointer, releaseTimer;
+  // The only snapshots are small decorative marks. Links and the live page
+  // use ordinary document navigation even if this enhancement is unavailable.
+  if (!('onpageswap' in window) || !('onpagereveal' in window)) return;
 
-    function guard(action) {
-      return (...args) => {
-        if (failed) return;
-        try {
-          action(...args);
-        } catch (error) {
-          failed = true;
-          root.dataset.motionDisabled = '';
-          delete root.dataset.pageMotion;
-          delete root.dataset.motionSettled;
-          delete root.dataset.motionVisited;
-          delete root.dataset.motionPressed;
-          clearTimeout(releaseTimer);
-          outgoingContent?.removeAttribute('data-outgoing-content');
-          try { activeTransition?.skipTransition(); } catch { /* Native transition already ended. */ }
-          try { observer?.disconnect(); } catch { /* The observer may be the failing API. */ }
-          try { args[0]?.viewTransition?.skipTransition(); } catch { /* CSS falls back to the live page. */ }
-          console.warn('Portal motion could not run', error);
-        }
-      };
-    }
+  const motion = matchMedia('(prefers-reduced-motion: no-preference)');
+  const breadcrumb = document.querySelector('.breadcrumb');
+  if (breadcrumb) {
+    const marker = document.createElement('span');
+    marker.className = 'breadcrumb-indicator';
+    marker.setAttribute('aria-hidden', 'true');
+    breadcrumb.append(marker);
+  }
+  let pointerDestination;
+  let activeTransition;
 
-    function listen(target, type, handler, capture = false) {
-      target?.addEventListener(type, guard(handler), capture);
-    }
-
-    function startMotion() {
-      const pageName = url => url && (new URL(url).pathname.split('/').pop() || 'index.html');
-      function transitionKind(from, to) {
-        const source = pageName(from);
-        const target = pageName(to);
-        if (!source || !target || source === target || source === 'viewer.html' || target === 'viewer.html') return '';
-        if (detailParents[target] === source) return 'forward';
-        if (detailParents[source] === target) return 'back';
-        return 'crossfade';
-      }
-
-      const traverseKey = 'mrc-motion-traverse';
-      function takeTraversal() {
-        try {
-          const saved = sessionStorage.getItem(traverseKey);
-          if (!saved) return '';
-          sessionStorage.removeItem(traverseKey);
-          const {from, to, time} = JSON.parse(saved);
-          return to === location.href && Date.now() - time < 2500 ? transitionKind(from, to) : '';
-        } catch {
-          return '';
-        }
-      }
-
-      function releasePointer() {
-        pressedPointer = undefined;
-        clearTimeout(releaseTimer);
-        releaseTimer = undefined;
-        delete root.dataset.motionPressed;
-      }
-      const motion = matchMedia('(prefers-reduced-motion: no-preference)');
-      listen(window, 'pageswap', ({activation, viewTransition}) => {
-        delete root.dataset.pageMotion;
-        delete root.dataset.motionSettled;
-        if (pressedPointer !== undefined) releasePointer();
-        if (!viewTransition) return;
-        const kind = transitionKind(activation?.from?.url, activation?.entry?.url);
-        if (!kind || !motion.matches) {
-          viewTransition.skipTransition();
-          return;
-        }
-        // Some history traversals lack an incoming snapshot or NavigationActivation.from.
-        if (activation.navigationType === 'traverse') {
-          try {
-            sessionStorage.setItem(traverseKey, JSON.stringify({
-              from:activation.from.url, to:activation.entry.url, time:Date.now()
-            }));
-          } catch { /* History still traverses without the visual fallback. */ }
-        }
-        // Do not cover a sticky header or a restored scroll position with a stale view.
-        // The old surface is clipped to at most one viewport of visible content.
-        if (window.scrollY <= 1) {
-          outgoingContent = document.querySelector('.content');
-          outgoingContent?.setAttribute('data-outgoing-content', '');
-        }
-      });
-      function finishSurface() {
-        if (root.dataset.pageMotion) root.dataset.motionSettled = '';
-      }
-      function skipSurface() {
-        if (activeTransition) {
-          activeTransition.skipTransition();
-          activeTransition = null;
-        }
-        finishSurface();
-      }
-      function revealPage(event) {
-        outgoingContent?.removeAttribute('data-outgoing-content');
-        outgoingContent = null;
-        if (!motion.matches || !('onpagereveal' in window)) return;
-        const activation = window.navigation?.activation;
-        const traversal = takeTraversal();
-        const kind = transitionKind(activation?.from?.url, activation?.entry?.url) || traversal || root.dataset.pageMotion;
-        if (kind && root.dataset.pageMotion !== kind) {
-          root.dataset.pageMotion = kind;
-          root.dataset.motionVisited = '';
-        }
-        if (!event) return;
-        activeTransition = event.viewTransition || null;
-        if (!activeTransition) {
-          finishSurface();
-          return;
-        }
-        const current = activeTransition;
-        current.finished.then(guard(() => {
-          if (activeTransition === current) {
-            activeTransition = null;
-            finishSurface();
-          }
-        }), guard(() => {
-          if (activeTransition === current) {
-            activeTransition = null;
-            finishSurface();
-          }
-        }));
-        // Restored scroll positions must never be masked by the outgoing page.
-        if (!kind || window.scrollY > 1) skipSurface();
-      }
-
-      // Activate from the navigation record even if pagereveal precedes this deferred script.
-      listen(window, 'pagereveal', revealPage);
-      revealPage();
-
-      // Remove the old visual immediately on real interaction, before it can
-      // obscure the target. No pause, translation, or opacity on the live page.
-      for (const type of ['pointerdown', 'keydown', 'focusin', 'wheel', 'scroll']) {
-        listen(window, type, skipSurface, {capture:true, passive:true});
-      }
-      listen(motion, 'change', () => { if (!motion.matches) skipSurface(); });
-
-      const content = document.querySelector('.content');
-      listen(content, 'pointerdown', event => {
-        if (!motion.matches || !event.isPrimary) return;
-        if (!event.target.closest('.initial-result, #list.page-arriving > article')) return;
-        clearTimeout(releaseTimer);
-        releaseTimer = undefined;
-        pressedPointer = event.pointerId;
-        root.dataset.motionPressed = '';
-      }, true);
-      listen(window, 'pointerup', event => {
-        if (event.pointerId !== pressedPointer) return;
-        // Touch sends its compatibility mouse/focus events after pointerup.
-        // A canceled gesture can omit click, so also release after a bounded delay.
-        releaseTimer = setTimeout(guard(releasePointer), 350);
-      }, true);
-      listen(window, 'pointercancel', event => {
-        if (event.pointerId === pressedPointer) releasePointer();
-      }, true);
-      listen(window, 'click', () => {
-        if (releaseTimer !== undefined) releasePointer();
-      });
-      listen(window, 'blur', () => {
-        if (pressedPointer !== undefined) releasePointer();
-      });
-      // Observe just the first successful population of a result list.
-      const results = document.querySelector('#list, #grid, #trend-list');
-      if (results && motion.matches && typeof MutationObserver === 'function') {
-        const revealFirstResults = () => {
-          const cards = results.querySelectorAll('.document-entry, .website-card, .repository-card, .reading-guide, .trend-row');
-          if (!cards.length && !results.querySelector('.empty, .trend-empty:not([data-motion-loading])')) return;
-          observer.disconnect();
-          for (let index = 0; index < Math.min(3, cards.length); index++) {
-            cards[index].classList.add('initial-result');
-            cards[index].style.setProperty('--result-order', index);
-          }
-        };
-        observer = new MutationObserver(guard(revealFirstResults));
-        observer.observe(results, {childList:true, subtree:true});
-        revealFirstResults();
-      }
-    }
-
-    guard(startMotion)();
+  function routeMotion(activation) {
+    if (!motion.matches || activation?.navigationType !== 'push' || !activation.from || !activation.entry) return '';
+    const from = new URL(activation.from.url).pathname.split('/').pop() || 'index.html';
+    const to = new URL(activation.entry.url).pathname.split('/').pop() || 'index.html';
+    if (from === to || from === 'viewer.html' || to === 'viewer.html') return '';
+    if (detailParents[to] === from) return 'forward';
+    if (detailParents[from] === to) return 'back';
+    if (!mobileLayout.matches && (detailParents[from] || from) !== (detailParents[to] || to)) return 'peer';
+    return '';
   }
 
-  initializeMotion();
+  function cancelTransition(transition = activeTransition) {
+    activeTransition = undefined;
+    delete root.dataset.routeMotion;
+    try { transition?.skipTransition(); } catch { /* The live page is already usable. */ }
+  }
+
+  window.addEventListener('click', event => {
+    pointerDestination = undefined;
+    if (!event.isTrusted || event.detail === 0 || event.button !== 0 ||
+      event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+    const link = event.target.closest('a[href]');
+    if (link && (!link.target || link.target === '_self') && !link.hasAttribute('download')) {
+      pointerDestination = link.href;
+    }
+  }, true);
+
+  window.addEventListener('pageswap', ({activation, viewTransition}) => {
+    cancelTransition();
+    const destination = pointerDestination;
+    pointerDestination = undefined;
+    if (!viewTransition) return;
+    const kind = routeMotion(activation);
+    if (!kind || destination !== activation.entry.url) return cancelTransition(viewTransition);
+    root.dataset.routeMotion = kind;
+  });
+
+  window.addEventListener('pagereveal', ({viewTransition}) => {
+    delete root.dataset.routeMotion;
+    if (!viewTransition) return;
+    try {
+      const kind = routeMotion(window.navigation?.activation);
+      if (!kind) return cancelTransition(viewTransition);
+      activeTransition = viewTransition;
+      root.dataset.routeMotion = kind;
+      const clear = () => {
+        if (activeTransition !== viewTransition) return;
+        activeTransition = undefined;
+        delete root.dataset.routeMotion;
+      };
+      viewTransition.finished.then(clear, clear);
+    } catch {
+      cancelTransition(viewTransition);
+    }
+  });
+
+  const cancelOnInteraction = () => {
+    if (activeTransition) cancelTransition();
+  };
+  for (const event of ['pointerdown', 'keydown', 'focusin', 'wheel']) {
+    window.addEventListener(event, cancelOnInteraction, {capture:true, passive:true});
+  }
+  // The mobile rail aligns its current link on arrival. Only a page scroll
+  // should interrupt the marker, since rail alignment never moves the page.
+  document.addEventListener('scroll', cancelOnInteraction, {passive:true});
+  motion.addEventListener('change', () => {
+    if (!motion.matches) cancelTransition();
+  });
 })();
