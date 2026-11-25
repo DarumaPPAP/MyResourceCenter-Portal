@@ -753,7 +753,7 @@ def main() -> None:
             errors.append("Websites page must load local Website presentation assets")
         if "C.loadMany('websites', 'website-facets', 'taxonomy')" not in website_html:
             errors.append("Websites page must consume public Websites, facets and taxonomy")
-        if "category: controls.category.value" not in website_html or "row.category === filters.category" not in website_js:
+        if "category: controls.category.value" not in website_html or "row.category === category" not in website_js:
             errors.append("Websites page must apply the dedicated Category filter")
         if "taxonomy.tags" not in website_html or "taxonomy.categories" not in website_html:
             errors.append("Website Category and Tag filters must use the public taxonomy")

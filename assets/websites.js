@@ -217,7 +217,10 @@
   }
 
   function siteIconPath(row) {
-    const host = websiteHost(row);
+    return iconPathForHost(websiteHost(row));
+  }
+
+  function iconPathForHost(host) {
     if (!host) return '';
     const safeHost = host.includes(':') ? 'ip6_' + host.replace(/:/g, '-') : host;
     if (!/^[a-z0-9._-]+$/i.test(safeHost)) return '';
@@ -251,24 +254,44 @@
     });
   }
 
-  function filterWebsites(rows, filters = {}, facetConfig = {}) {
-    const term = String(filters.q || '').trim().toLocaleLowerCase();
-    const presented = presentWebsites(rows, facetConfig);
+  function createWebsiteSearch(rows, facetConfig = {}) {
     const approvedSites = new Set((facetConfig.sites || []).map(facet => facet.key));
     const approvedAuthors = new Set((facetConfig.authors || []).map(facet => facet.key));
-    const selectedSite = String(filters.site || '');
-    const selectedAuthor = String(filters.author || '');
-    const siteKey = selectedSite.startsWith('site:') ? selectedSite.slice(5) : selectedSite;
-    const authorKey = selectedAuthor.startsWith('author:') ? selectedAuthor.slice(7) : selectedAuthor;
-    return presented.filter(row => {
-      const searchText = [row.title, row.publisher, row.siteKey, ...(Array.isArray(row.authors) ? row.authors : []), ...(Array.isArray(row.domains) ? row.domains : []), ...(row.topics || []), ...(row.tags || []), ...(Array.isArray(row.engines) ? row.engines : [])]
-        .filter(Boolean).join(' ').toLocaleLowerCase();
-      return (!term || searchText.includes(term)) &&
-        (!filters.category || row.category === filters.category) &&
-        (!filters.tag || (Array.isArray(row.tags) && row.tags.includes(filters.tag))) &&
-        (!selectedSite || ((siteKey === OTHER || siteKey === 'other') ? row.siteFacet === OTHER : approvedSites.has(siteKey) && row.siteKey === siteKey)) &&
-        (!selectedAuthor || ((authorKey === OTHER || authorKey === 'other') ? row.hasOtherAuthor : approvedAuthors.has(authorKey) && row.authorKeys.includes(authorKey)));
-    });
+    const entries = presentWebsites(rows, facetConfig).map(row => ({
+      row,
+      date: validDate(row.publishedAt),
+      searchText: [row.title, row.publisher, row.siteKey, ...(Array.isArray(row.authors) ? row.authors : []),
+        ...(Array.isArray(row.domains) ? row.domains : []), ...(row.topics || []), ...(row.tags || []),
+        ...(Array.isArray(row.engines) ? row.engines : [])].filter(Boolean).join(' ').toLocaleLowerCase()
+    }));
+    const orders = new Map([['', entries]]);
+    let lastKey, lastResult;
+    return (filters = {}, direction = '') => {
+      const term = String(filters.q || '').trim().toLocaleLowerCase();
+      const {category = '', tag = ''} = filters;
+      const site = String(filters.site || '').replace(/^site:/, '');
+      const author = String(filters.author || '').replace(/^author:/, '');
+      const key = JSON.stringify([term, category, tag, site, author, direction]);
+      if (key === lastKey) return lastResult;
+
+      if (!orders.has(direction)) orders.set(direction, sortByDate(entries, direction));
+      const otherSite = site === OTHER || site === 'other';
+      const otherAuthor = author === OTHER || author === 'other';
+      const result = orders.get(direction).filter(({row, searchText}) =>
+        (!term || searchText.includes(term)) &&
+        (!category || row.category === category) &&
+        (!tag || (Array.isArray(row.tags) && row.tags.includes(tag))) &&
+        (!site || (otherSite ? row.siteFacet === OTHER : approvedSites.has(site) && row.siteKey === site)) &&
+        (!author || (otherAuthor ? row.hasOtherAuthor : approvedAuthors.has(author) && row.authorKeys.includes(author)))
+      ).map(({row}) => row);
+      lastKey = key;
+      lastResult = result;
+      return result;
+    };
+  }
+
+  function filterWebsites(rows, filters = {}, facetConfig = {}) {
+    return createWebsiteSearch(rows, facetConfig)(filters);
   }
 
   function validDate(value) {
@@ -277,23 +300,27 @@
     return Number.isNaN(parsed.getTime()) || parsed.toISOString().slice(0, 10) !== value ? '' : value;
   }
 
-  function sortWebsites(rows, direction = 'desc') {
+  function sortByDate(entries, direction) {
     const sign = direction === 'asc' ? 1 : -1;
-    return (rows || []).map((row, index) => ({row, index, date:validDate(row.publishedAt)}))
-      .sort((a, b) => {
-        if (!a.date && b.date) return 1;
-        if (a.date && !b.date) return -1;
-        if (a.date && b.date && a.date !== b.date) return sign * a.date.localeCompare(b.date);
-        return a.index - b.index;
-      }).map(entry => entry.row);
+    // Array sort is stable. Keep input order for equal dates and put unknown dates last.
+    return [...entries].sort((a, b) => {
+      if (!a.date && b.date) return 1;
+      if (a.date && !b.date) return -1;
+      return a.date === b.date ? 0 : sign * (a.date < b.date ? -1 : 1);
+    });
+  }
+
+  function sortWebsites(rows, direction = 'desc') {
+    return sortByDate((rows || []).map(row => ({row, date:validDate(row.publishedAt)})), direction)
+      .map(({row}) => row);
   }
 
   function renderWebsiteCard(row, catalog) {
     const escape = catalog.escapeHtml;
-    const host = row.siteKey || websiteHost(row) || '—';
+    const host = row.siteKey ?? websiteHost(row);
     const publisher = typeof row.publisher === 'string' && row.publisher.trim() ? row.publisher.trim() : 'Site';
     const fallbackIcon = '<svg class="site-icon-fallback-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3a15 15 0 0 1 0 18"></path><path d="M12 3a15 15 0 0 0 0 18"></path></svg>';
-    const icon = siteIconPath(row);
+    const icon = iconPathForHost(host);
     const preview = linkPreviewPath(row);
     const source = catalog.safeExternalUrl(row.url || row.canonicalUrl || '');
     const displayTitle = row.title || 'Untitled';
@@ -311,13 +338,13 @@
     const summary = typeof row.summary === 'string' && row.summary.trim()
       ? `<p class="website-summary">${escape(row.summary.trim())}</p>`
       : '';
-    const fallback = `<div class="website-preview-fallback"><div class="site-icon-box" aria-hidden="true"><span class="site-icon-fallback">${fallbackIcon}</span>${icon ? `<img class="site-icon-image" src="${escape(icon)}" alt="" loading="lazy" decoding="async">` : ''}</div></div>`;
+    const fallback = `<div class="website-preview-fallback"><div class="site-icon-box" aria-hidden="true"><span class="site-icon-fallback">${fallbackIcon}</span>${icon ? `<img class="site-icon-image" src="${escape(icon)}" alt="" loading="lazy" decoding="async"${preview ? ' fetchpriority="low"' : ''}>` : ''}</div></div>`;
     const media = `<div class="website-preview" aria-hidden="true">${fallback}${preview ? `<img class="website-preview-image" src="${escape(preview)}" alt="" loading="lazy" decoding="async">` : ''}</div>`;
     return `<article class="website-card${source ? '' : ' is-disabled'}">
       ${cardLink}
       ${media}
       <div class="website-info">
-        <div class="website-head"><div class="site-line">${category}<span class="site-badge">${escape(publisher)}</span><span class="site-domain">${escape(host)}</span></div><a class="website-details" href="website.html?id=${encodeURIComponent(row.id)}">詳細 <span class="motion-arrow" aria-hidden="true">→</span></a></div>
+        <div class="website-head"><div class="site-line">${category}<span class="site-badge">${escape(publisher)}</span><span class="site-domain">${escape(host || '—')}</span></div><a class="website-details" href="website.html?id=${encodeURIComponent(row.id)}">詳細 <span class="motion-arrow" aria-hidden="true">→</span></a></div>
         <h2 class="website-title" tabindex="-1">${escape(displayTitle)}</h2>
         ${summary}
         <div class="website-bottom"><div class="website-byline"><span>${escape(authors)}</span><time class="website-published-at">${escape(row.publishedAt || '—')}</time></div><div class="website-tags">${tagHtml}</div></div>
@@ -343,6 +370,7 @@
     websiteHost,
     normalizeAuthor,
     presentWebsites,
+    createWebsiteSearch,
     filterWebsites,
     sortWebsites,
     siteIconPath,

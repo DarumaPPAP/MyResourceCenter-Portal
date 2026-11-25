@@ -8,6 +8,7 @@ on:
       - "catalog/**"
       - "data/**"
       - "tools/browser_smoke.cjs"
+      - "tools/build_portal.cjs"
       - "package.json"
       - "package-lock.json"
       - ".github/workflows/browser-smoke.yml"
@@ -19,6 +20,7 @@ on:
       - "catalog/**"
       - "data/**"
       - "tools/browser_smoke.cjs"
+      - "tools/build_portal.cjs"
       - "package.json"
       - "package-lock.json"
       - ".github/workflows/browser-smoke.yml"
@@ -39,4 +41,7 @@ jobs:
           cache: npm
       - run: npm ci --no-audit --no-fund
       - run: npx playwright install --with-deps chromium
+      - run: node tools/build_portal.cjs "${RUNNER_TEMP}/portal-smoke"
       - run: npm run test:browser-smoke
+        env:
+          PORTAL_SMOKE_ROOT: ${{ runner.temp }}/portal-smoke

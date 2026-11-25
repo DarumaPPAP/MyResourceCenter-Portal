@@ -59,3 +59,15 @@
   .website-list .catalog-skeleton { --skeleton-columns: 1fr; }
   .website-list .catalog-skeleton:nth-child(n + 2) { display: none; }
 }
+
+/* Keep the first results ready to focus. Let Chromium skip offscreen card contents. */
+.website-card:nth-child(n + 4) {
+  content-visibility: auto;
+  contain-intrinsic-block-size: auto 180px;
+}
+
+@media (max-width: 620px) {
+  .website-card:nth-child(n + 4) {
+    contain-intrinsic-block-size: auto calc(50vw + 150px);
+  }
+}

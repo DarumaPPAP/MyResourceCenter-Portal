@@ -281,6 +281,11 @@ assert.match(websiteCard,/>Tech<\/span>/);
 assert.doesNotMatch(websiteCard,/technical-article/,'contentType must not be rendered as Website classification');
 assert.deepEqual(Array.from(W.sortWebsites(websiteRows,'desc'),row=>row.id),['RES-1','RES-3','RES-2','RES-4','RES-6','RES-5']);
 assert.deepEqual(Array.from(W.sortWebsites(websiteRows,'asc'),row=>row.id),['RES-6','RES-4','RES-2','RES-3','RES-1','RES-5']);
+const searchWebsites = W.createWebsiteSearch(websiteRows, facetConfig);
+const unityResults = searchWebsites({q:'Unity'}, 'desc');
+assert.deepEqual(Array.from(unityResults, row => row.id), ['RES-1','RES-2','RES-6']);
+assert.equal(searchWebsites({q:' unity '}, 'desc'), unityResults, 'pagination and equivalent search reuse results');
+assert.deepEqual(Array.from(searchWebsites({}, 'asc'), row => row.id), ['RES-6','RES-4','RES-2','RES-3','RES-1','RES-5']);
 assert.equal(W.siteIconPath(websiteRows[0]),'assets/generated/site-icons/a.example.png');
 assert.notEqual(W.siteIconPath({...websiteRows[0],canonicalUrl:'https://[2001:db8::1]/'}),W.siteIconPath({...websiteRows[0],canonicalUrl:'https://[200:1db8::1]/'}));
 assert.notEqual(W.siteIconPath({...websiteRows[0],canonicalUrl:'https://[a::b]/'}),W.siteIconPath({...websiteRows[0],canonicalUrl:'https://ip6-a--b/'}));
@@ -337,7 +342,7 @@ async function createWebsitePage(rows,href='https://portal.test/websites.html') 
         set(value){
           element._innerHTML=value;
           const hasCard=value.includes('<article class="website-card">');
-          element.firstTitle=hasCard?{scrollIntoView(){},focus(options){element.focusCount+=1;element.lastFocusOptions=options;}}:null;
+          element.firstTitle=hasCard?{scrollIntoView(){element.titleScrollCount=(element.titleScrollCount || 0)+1;},focus(options){element.focusCount+=1;element.lastFocusOptions=options;}}:null;
         }
       });
     } else if(id==='pagination') {
@@ -385,7 +390,10 @@ async function createWebsitePage(rows,href='https://portal.test/websites.html') 
   const window={
     addEventListener(type,listener){(windowHandlers[type] ||= []).push(listener);}
   };
-  const context={URL,URLSearchParams,location,history,document,window,console,encodeURIComponent};
+  const frames=[];
+  const context={URL,URLSearchParams,location,history,document,window,console,encodeURIComponent,
+    requestAnimationFrame:callback=>frames.push(callback)};
+  const flushFrames=()=>{while(frames.length) frames.splice(0).forEach(callback=>callback());};
   vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../assets/catalog.js'),'utf8'),context);
   context.window.MRCCatalog.loadMany=async()=>({
     websites:rows,
@@ -400,7 +408,7 @@ async function createWebsitePage(rows,href='https://portal.test/websites.html') 
   vm.runInNewContext(inlineScript,context);
   await windowHandlers.DOMContentLoaded[0]();
   return {
-    elements,history,location,
+    elements,history,location,flushFrames,
     pageNumbers(){
       const listMarkup=elements.get('pagination').innerHTML.match(/<ul class="website-pagination-list">([\s\S]*?)<\/ul>/)?.[1] || '';
       return [...listMarkup.matchAll(/<a\b(?=[^>]*class="[^"]*website-page-number[^"]*")[^>]*data-page="(\d+)"/g)].map(match=>Number(match[1]));
@@ -442,6 +450,12 @@ Promise.resolve().then(async()=>{
   assert.match(page2Nav.innerHTML,/aria-label="2ページ目"/);
   assert.match(page2Nav.innerHTML,/aria-label="前のページ"/);
   assert.match(page2Nav.innerHTML,/href="\/websites.html\?q=Article&amp;page=3&amp;keep=yes"/);
+  const sameRows=await createWebsitePage(rows45,'https://portal.test/websites.html?q=Article');
+  const sameList=sameRows.elements.get('list'), sameTitle=sameList.firstTitle;
+  sameRows.elements.get('q').value='article';
+  sameRows.elements.get('q').emit('input');
+  assert.equal(sameList.firstTitle,sameTitle,'equivalent filters keep existing card nodes');
+
   const page3Click=page2.clickPage(3);
   assert.equal(page3Click.defaultPrevented,true);
   assert.equal(page2.pushCount,1);
@@ -451,16 +465,20 @@ Promise.resolve().then(async()=>{
   assert.ok(page2List.innerHTML.includes('Article 045'));
   assert.equal(page2Count.textContent,'41–45 件目 / 45 件（全 45 件）');
   assert.match(page2Nav.innerHTML,/aria-disabled="true">次へ/);
-  assert.equal(page2.elements.get('result-meta').scrollCount,1);
+  assert.equal(page2List.focusCount,0,'pagination returns before scroll and focus');
+  page2.flushFrames();
+  assert.equal(page2List.titleScrollCount,1);
   assert.equal(page2List.focusCount,1);
   assert.equal(page2List.lastFocusOptions.preventScroll,true);
   page2.clickPage(3);
   assert.equal(page2.pushCount,1,'clicking the current page must not add history');
   page2.travel(-1);
+  page2.flushFrames();
   assert.equal(page2.location.search,'?q=Article&page=2&keep=yes');
   assert.equal(page2.elements.get('sort').value,'desc','Back restores the default sort selection when the URL omits sort');
   assert.ok(page2List.innerHTML.includes('Article 021'));
   page2.travel(1);
+  page2.flushFrames();
   assert.equal(page2.location.search,'?q=Article&page=3&keep=yes');
   assert.equal(page2.elements.get('sort').value,'desc','Forward keeps the default sort selection when the URL omits sort');
   assert.ok(page2List.innerHTML.includes('Article 041'));
@@ -468,7 +486,7 @@ Promise.resolve().then(async()=>{
   assert.equal(modifiedClick.defaultPrevented,false,'modified page-link activation must keep native browser behavior');
   assert.equal(page2.pushCount,1);
   assert.equal(page2.location.search,'?q=Article&page=3&keep=yes');
-  assert.equal(page2.elements.get('result-meta').scrollCount,3,'Back/Forward returns focus to the result area');
+  assert.equal(page2List.focusCount,3,'Back/Forward returns focus to the result area');
 
   const query=page2.elements.get('q');
   query.value='Article 0';
@@ -579,7 +597,7 @@ async function createDocumentsPage(rows,href='https://portal.test/documents.html
       element.querySelector=selector=>selector==='.document-title'?element.firstTitle:null;
       Object.defineProperty(element,'innerHTML',{get(){return element._innerHTML || '';},set(value){
         element._innerHTML=value;
-        element.firstTitle=value.includes('<article class="document-entry">')?{scrollIntoView(){},focus(options){element.focusCount+=1;element.lastFocusOptions=options;}}:null;
+        element.firstTitle=value.includes('<article class="document-entry">')?{scrollIntoView(){element.titleScrollCount=(element.titleScrollCount || 0)+1;},focus(options){element.focusCount+=1;element.lastFocusOptions=options;}}:null;
       }});
     }else if(id==='pagination')element.innerHTML='';
     else if(id==='result-meta'){
@@ -601,13 +619,16 @@ async function createDocumentsPage(rows,href='https://portal.test/documents.html
   const document={getElementById:id=>elements.get(id),createElement:()=>({value:'',textContent:''}),
     addEventListener(type,listener){(documentHandlers[type] ||= []).push(listener);}};
   const window={addEventListener(type,listener){(windowHandlers[type] ||= []).push(listener);}};
-  const context={URL,URLSearchParams,location,history,document,window,console,encodeURIComponent};
+  const frames=[];
+  const context={URL,URLSearchParams,location,history,document,window,console,encodeURIComponent,
+    requestAnimationFrame:callback=>frames.push(callback)};
+  const flushFrames=()=>{while(frames.length) frames.splice(0).forEach(callback=>callback());};
   vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../assets/catalog.js'),'utf8'),context);
   context.window.MRCCatalog.loadMany=async()=>({'document-presentation':rows,resources:[],taxonomy:{domains:{Graphics:{displayName:'Graphics'}},tags:{Shader:{displayName:'Shader'},Unused:{displayName:'Unused'}}}});
   vm.runInNewContext(humanPortalSource,context);
   await windowHandlers.DOMContentLoaded[0]();
   return{
-    elements,history,location,get pushCount(){return pushCount;},get replaceCount(){return replaceCount;},
+    elements,history,location,flushFrames,get pushCount(){return pushCount;},get replaceCount(){return replaceCount;},
     pageNumbers(){const markup=elements.get('pagination').innerHTML.match(/<ul class="document-pagination-list">([\s\S]*?)<\/ul>/)?.[1]||'';
       return [...markup.matchAll(/<a\b(?=[^>]*class="[^"]*document-page-number[^"]*")[^>]*data-page="(\d+)"/g)].map(match=>Number(match[1]));},
     clickPage(page,options={}){const event={button:0,altKey:false,ctrlKey:false,metaKey:false,shiftKey:false,...options,defaultPrevented:false,preventDefault(){this.defaultPrevented=true;}};
@@ -663,13 +684,17 @@ Promise.resolve().then(async()=>{
   assert.equal((list.innerHTML.match(/<article class="document-entry">/g)||[]).length,5);
   assert.ok(list.innerHTML.includes('Document 041'));
   assert.equal(count.textContent,'41–45 件目 / 45 件（全 45 件）');
-  assert.equal(page2.elements.get('result-meta').scrollCount,1);
+  assert.equal(list.focusCount,0);
+  page2.flushFrames();
+  assert.equal(list.titleScrollCount,1);
   assert.equal(list.focusCount,1);
   assert.equal(list.lastFocusOptions.preventScroll,true);
   page2.travel(-1);
+  page2.flushFrames();
   assert.equal(page2.location.search,'?page=2&keep=yes');
   assert.ok(list.innerHTML.includes('Document 021'));
   page2.travel(1);
+  page2.flushFrames();
   assert.equal(page2.location.search,'?page=3&keep=yes');
   assert.ok(list.innerHTML.includes('Document 041'));
 

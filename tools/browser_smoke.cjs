@@ -4,7 +4,9 @@ const http = require('node:http');
 const path = require('node:path');
 const { chromium } = require('playwright');
 
-const ROOT = path.resolve(__dirname, '..');
+const ROOT = path.resolve(process.env.PORTAL_SMOKE_ROOT || path.join(__dirname, '..'));
+const documentCatalog = /\/catalog\/document-presentation(?:\.[a-f0-9]{20})?\.json$/;
+const repositoryCatalog = /\/catalog\/repositories(?:\.[a-f0-9]{20})?\.json$/;
 const CONTENT_TYPES = {
   '.css':'text/css', '.html':'text/html', '.ico':'image/x-icon', '.js':'text/javascript',
   '.json':'application/json', '.png':'image/png', '.svg':'image/svg+xml', '.webp':'image/webp'
@@ -105,6 +107,13 @@ async function main() {
     }
 
     await openPage(page,origin,'index.html');
+    const preload = page.locator('link[rel="preload"][as="fetch"]');
+    if (await preload.count()) {
+      const requests = await page.evaluate(() => performance.getEntriesByType('resource')
+        .map(entry => new URL(entry.name).pathname).filter(pathname => pathname.startsWith('/catalog/')));
+      assert.equal(requests.length, 1, 'the staged Home fetches only its preloaded projection');
+      assert.match(requests[0], /^\/catalog\/home\.[a-f0-9]{20}\.json$/);
+    }
     const heroArt = page.locator('.technical-hero > a');
     assert.equal(await heroArt.evaluate(node=>getComputedStyle(node,'::after').animationName),'portal-scan','Home scans the illustration once');
     assert.equal(await heroArt.evaluate(node=>getComputedStyle(node,'::after').animationIterationCount),'1');
@@ -124,7 +133,7 @@ async function main() {
 
     let releaseCatalog;
     const catalogReady = new Promise(resolve=>{releaseCatalog = resolve;});
-    await page.route('**/catalog/document-presentation.json',async route=>{
+    await page.route(documentCatalog,async route=>{
       await catalogReady;
       await route.continue();
     });
@@ -141,7 +150,7 @@ async function main() {
       releaseCatalog();
     }
     await page.locator('.document-entry').first().waitFor();
-    await page.unroute('**/catalog/document-presentation.json');
+    await page.unroute(documentCatalog);
     assert.equal(await page.locator('#list .catalog-skeleton').count(),0,'loaded cards replace the skeleton');
     assert.ok(await page.locator('.document-entry').count() <= 20,'Documents renders at most 20 cards');
     assert.ok(await page.locator('#category option[value="__unclassified__"]').count(),'Documents exposes the UI-only unclassified filter');
@@ -154,6 +163,7 @@ async function main() {
     await page.waitForFunction(()=>new URL(location.href).searchParams.get('page')==='2');
     assert.ok(await page.locator('.document-entry').count() <= 20,'Documents paginates after filtering');
     const focusedResult = page.locator('.document-title:focus');
+    await focusedResult.waitFor();
     assert.equal(await focusedResult.count(),1,'pagination focuses the new results');
     const focusedBounds = await focusedResult.boundingBox();
     assert.ok(focusedBounds.y >= 68 && focusedBounds.y + focusedBounds.height <= 375,'focused result stays visible on a short mobile viewport');
@@ -173,10 +183,18 @@ async function main() {
     const iconSource = await page.locator('.site-icon-image').first().getAttribute('src');
     assert.match(iconSource,/^assets\/generated\/site-icons\/[a-z0-9._-]+\.png\?v=[a-f0-9]{12}$/i,'Site Icons must use a safe local path and public manifest version');
     await page.locator('.site-icon-box.is-missing .site-icon-fallback').first().waitFor();
-    await page.locator('#pagination a.website-page-number[data-page="2"]').click();
+    await page.setViewportSize({width:390,height:375});
+    await page.locator('#pagination a.website-page-number[data-page="2"]').press('Enter');
     await page.waitForFunction(()=>new URL(location.href).searchParams.get('page')==='2');
+    const focusedWebsite = page.locator('.website-title:focus');
+    await focusedWebsite.waitFor();
+    const websiteBounds = await focusedWebsite.boundingBox();
+    assert.ok(websiteBounds.y >= 68 && websiteBounds.y + websiteBounds.height <= 375,
+      'keyboard pagination keeps the focused Website visible below the sticky navigation');
     await page.goBack();
     await page.waitForFunction(()=>!new URL(location.href).searchParams.has('page'));
+    await focusedWebsite.waitFor();
+    await page.setViewportSize({width:1280,height:900});
     await page.locator('#category').selectOption('Tech');
     await page.locator('#site').selectOption('__other__');
     await page.locator('#author').selectOption('__other__');
@@ -272,7 +290,7 @@ async function main() {
     // Exercise pagination/history with a public projection fixture, without adding seed data.
     const sample=JSON.parse(fs.readFileSync(path.join(ROOT,'catalog/repositories.json'),'utf8'))[0];
     const fixture=Array.from({length:45},(_,i)=>({...sample,id:`RES-FIXTURE-${i}`,title:`Reference ${i}`}));
-    await context.route('**/catalog/repositories.json',route=>route.fulfill({json:fixture}));
+    await context.route(repositoryCatalog,route=>route.fulfill({json:fixture}));
     await openPage(page,origin,'repositories.html?keep=1&page=2');
     assert.equal(await page.locator('.repository-card').count(),20);
     assert.match(await page.locator('#list').textContent(),/Reference 20/);
@@ -286,7 +304,7 @@ async function main() {
     assert.equal(new URL(page.url()).searchParams.get('keep'),'1');
     await page.locator('#clear').click();
     assert.equal(await page.locator('.repository-card').count(),20);
-    await context.unroute('**/catalog/repositories.json');
+    await context.unroute(repositoryCatalog);
     await openPage(page,origin,'repositories.html');
     await page.setViewportSize({width:1280,height:900});
     if(process.env.PORTAL_SCREENSHOT_DIR) {
