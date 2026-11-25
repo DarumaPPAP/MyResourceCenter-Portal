@@ -7,124 +7,6 @@
     'repository.html': 'repositories.html',
     'collection.html': 'collections.html'
   };
-  const pageName = url => url && (new URL(url).pathname.split('/').pop() || 'index.html');
-  function transitionKind(from, to) {
-    const source = pageName(from);
-    const target = pageName(to);
-    if (!source || !target || source === target || source === 'viewer.html' || target === 'viewer.html') return '';
-    if (detailParents[target] === source) return 'forward';
-    if (detailParents[source] === target) return 'back';
-    return 'crossfade';
-  }
-
-  const traverseKey = 'mrc-motion-traverse';
-  function takeTraversal() {
-    try {
-      const saved = sessionStorage.getItem(traverseKey);
-      if (!saved) return '';
-      sessionStorage.removeItem(traverseKey);
-      const {from, to, time} = JSON.parse(saved);
-      return to === location.href && Date.now() - time < 2500 ? transitionKind(from, to) : '';
-    } catch {
-      return '';
-    }
-  }
-
-  let pressedPointer, releaseTimer;
-  function releasePointer() {
-    pressedPointer = undefined;
-    clearTimeout(releaseTimer);
-    releaseTimer = undefined;
-    delete root.dataset.motionPressed;
-  }
-  const motion = matchMedia('(prefers-reduced-motion: no-preference)');
-  window.addEventListener('pageswap', ({activation, viewTransition}) => {
-    delete root.dataset.pageMotion;
-    delete root.dataset.motionSettled;
-    if (pressedPointer !== undefined) releasePointer();
-    if (!viewTransition) return;
-    const kind = transitionKind(activation?.from?.url, activation?.entry?.url);
-    if (!kind || !motion.matches) {
-      viewTransition.skipTransition();
-      return;
-    }
-    // Some history traversals lack an incoming snapshot or NavigationActivation.from.
-    if (activation.navigationType === 'traverse') {
-      try {
-        sessionStorage.setItem(traverseKey, JSON.stringify({
-          from:activation.from.url, to:activation.entry.url, time:Date.now()
-        }));
-      } catch { /* History still traverses without the visual fallback. */ }
-    }
-    // Capture one non-interactive heading. The destination's live content stays clickable.
-    document.querySelector('.content h1')?.setAttribute('data-outgoing-heading', '');
-  });
-  function revealPage() {
-    document.querySelector('[data-outgoing-heading]')?.removeAttribute('data-outgoing-heading');
-    if (!motion.matches || !('onpagereveal' in window)) return;
-    const activation = window.navigation?.activation;
-    const traversal = takeTraversal();
-    const kind = transitionKind(activation?.from?.url, activation?.entry?.url) || traversal;
-    if (kind && root.dataset.pageMotion !== kind) {
-      root.dataset.pageMotion = kind;
-      root.dataset.motionVisited = '';
-    }
-  }
-
-  // Activate from the navigation record even if pagereveal precedes this deferred script.
-  window.addEventListener('pagereveal', revealPage);
-  revealPage();
-
-  const content = document.querySelector('.content');
-  content?.addEventListener('animationend', ({target, animationName}) => {
-    if (target === content && animationName.startsWith('portal-page-')) root.dataset.motionSettled = '';
-  });
-
-  content?.addEventListener('pointerdown', event => {
-    if (!motion.matches || !event.isPrimary) return;
-    const movingPage = root.dataset.pageMotion && root.dataset.motionSettled === undefined;
-    if (!movingPage && !event.target.closest('.toolbar, .trend-controls, .trend-filter-row, .initial-result, #list.page-arriving > article')) return;
-    clearTimeout(releaseTimer);
-    releaseTimer = undefined;
-    pressedPointer = event.pointerId;
-    root.dataset.motionPressed = '';
-  }, true);
-  window.addEventListener('pointerup', event => {
-    if (event.pointerId !== pressedPointer) return;
-    // Touch sends its compatibility mouse/focus events after pointerup.
-    // A canceled gesture can omit click, so also release after a bounded delay.
-    releaseTimer = setTimeout(releasePointer, 350);
-  }, true);
-  window.addEventListener('pointercancel', event => {
-    if (event.pointerId === pressedPointer) releasePointer();
-  }, true);
-  window.addEventListener('click', () => {
-    if (releaseTimer !== undefined) releasePointer();
-  });
-  window.addEventListener('blur', () => {
-    if (pressedPointer !== undefined) releasePointer();
-  });
-  content?.addEventListener('focusin', () => {
-    if (root.dataset.pageMotion && pressedPointer === undefined) root.dataset.motionSettled = '';
-  });
-
-  // Observe just the first successful population of a result list.
-  const results = document.querySelector('#list, #grid, #trend-list');
-  if (results && motion.matches && typeof MutationObserver === 'function') {
-    const revealFirstResults = () => {
-      const cards = results.querySelectorAll('.document-entry, .website-card, .repository-card, .reading-guide, .trend-row');
-      if (!cards.length && !results.querySelector('.empty, .trend-empty:not([data-motion-loading])')) return;
-      observer.disconnect();
-      for (let index = 0; index < Math.min(3, cards.length); index++) {
-        cards[index].classList.add('initial-result');
-        cards[index].style.setProperty('--result-order', index);
-      }
-    };
-    const observer = new MutationObserver(revealFirstResults);
-    observer.observe(results, {childList:true, subtree:true});
-    revealFirstResults();
-  }
-
   const key = 'myresourcecenter-theme';
   let stored;
   try { stored = localStorage.getItem(key); } catch { /* Storage can be disabled. */ }
@@ -223,4 +105,159 @@
     document.body.prepend(skip);
   }
   syncButtons();
+
+  function initializeMotion() {
+    let failed = false;
+    let observer, outgoingHeading, pressedPointer, releaseTimer;
+
+    function guard(action) {
+      return (...args) => {
+        if (failed) return;
+        try {
+          action(...args);
+        } catch (error) {
+          failed = true;
+          root.dataset.motionDisabled = '';
+          delete root.dataset.pageMotion;
+          delete root.dataset.motionSettled;
+          delete root.dataset.motionVisited;
+          delete root.dataset.motionPressed;
+          clearTimeout(releaseTimer);
+          outgoingHeading?.removeAttribute('data-outgoing-heading');
+          try { observer?.disconnect(); } catch { /* The observer may be the failing API. */ }
+          try { args[0]?.viewTransition?.skipTransition(); } catch { /* CSS falls back to the live page. */ }
+          console.warn('Portal motion could not run', error);
+        }
+      };
+    }
+
+    function listen(target, type, handler, capture = false) {
+      target?.addEventListener(type, guard(handler), capture);
+    }
+
+    function startMotion() {
+      const pageName = url => url && (new URL(url).pathname.split('/').pop() || 'index.html');
+      function transitionKind(from, to) {
+        const source = pageName(from);
+        const target = pageName(to);
+        if (!source || !target || source === target || source === 'viewer.html' || target === 'viewer.html') return '';
+        if (detailParents[target] === source) return 'forward';
+        if (detailParents[source] === target) return 'back';
+        return 'crossfade';
+      }
+
+      const traverseKey = 'mrc-motion-traverse';
+      function takeTraversal() {
+        try {
+          const saved = sessionStorage.getItem(traverseKey);
+          if (!saved) return '';
+          sessionStorage.removeItem(traverseKey);
+          const {from, to, time} = JSON.parse(saved);
+          return to === location.href && Date.now() - time < 2500 ? transitionKind(from, to) : '';
+        } catch {
+          return '';
+        }
+      }
+
+      function releasePointer() {
+        pressedPointer = undefined;
+        clearTimeout(releaseTimer);
+        releaseTimer = undefined;
+        delete root.dataset.motionPressed;
+      }
+      const motion = matchMedia('(prefers-reduced-motion: no-preference)');
+      listen(window, 'pageswap', ({activation, viewTransition}) => {
+        delete root.dataset.pageMotion;
+        delete root.dataset.motionSettled;
+        if (pressedPointer !== undefined) releasePointer();
+        if (!viewTransition) return;
+        const kind = transitionKind(activation?.from?.url, activation?.entry?.url);
+        if (!kind || !motion.matches) {
+          viewTransition.skipTransition();
+          return;
+        }
+        // Some history traversals lack an incoming snapshot or NavigationActivation.from.
+        if (activation.navigationType === 'traverse') {
+          try {
+            sessionStorage.setItem(traverseKey, JSON.stringify({
+              from:activation.from.url, to:activation.entry.url, time:Date.now()
+            }));
+          } catch { /* History still traverses without the visual fallback. */ }
+        }
+        // Capture one non-interactive heading. The destination's live content stays clickable.
+        outgoingHeading = document.querySelector('.content h1');
+        outgoingHeading?.setAttribute('data-outgoing-heading', '');
+      });
+      function revealPage() {
+        outgoingHeading?.removeAttribute('data-outgoing-heading');
+        outgoingHeading = null;
+        if (!motion.matches || !('onpagereveal' in window)) return;
+        const activation = window.navigation?.activation;
+        const traversal = takeTraversal();
+        const kind = transitionKind(activation?.from?.url, activation?.entry?.url) || traversal;
+        if (kind && root.dataset.pageMotion !== kind) {
+          root.dataset.pageMotion = kind;
+          root.dataset.motionVisited = '';
+        }
+      }
+
+      // Activate from the navigation record even if pagereveal precedes this deferred script.
+      listen(window, 'pagereveal', revealPage);
+      revealPage();
+
+      const content = document.querySelector('.content');
+      listen(content, 'animationend', ({target, animationName}) => {
+        if (target === content && animationName.startsWith('portal-page-')) root.dataset.motionSettled = '';
+      });
+
+      listen(content, 'pointerdown', event => {
+        if (!motion.matches || !event.isPrimary) return;
+        const movingPage = root.dataset.pageMotion && root.dataset.motionSettled === undefined;
+        if (!movingPage && !event.target.closest('.toolbar, .trend-controls, .trend-filter-row, .initial-result, #list.page-arriving > article')) return;
+        clearTimeout(releaseTimer);
+        releaseTimer = undefined;
+        pressedPointer = event.pointerId;
+        root.dataset.motionPressed = '';
+      }, true);
+      listen(window, 'pointerup', event => {
+        if (event.pointerId !== pressedPointer) return;
+        // Touch sends its compatibility mouse/focus events after pointerup.
+        // A canceled gesture can omit click, so also release after a bounded delay.
+        releaseTimer = setTimeout(guard(releasePointer), 350);
+      }, true);
+      listen(window, 'pointercancel', event => {
+        if (event.pointerId === pressedPointer) releasePointer();
+      }, true);
+      listen(window, 'click', () => {
+        if (releaseTimer !== undefined) releasePointer();
+      });
+      listen(window, 'blur', () => {
+        if (pressedPointer !== undefined) releasePointer();
+      });
+      listen(content, 'focusin', () => {
+        if (root.dataset.pageMotion && pressedPointer === undefined) root.dataset.motionSettled = '';
+      });
+
+      // Observe just the first successful population of a result list.
+      const results = document.querySelector('#list, #grid, #trend-list');
+      if (results && motion.matches && typeof MutationObserver === 'function') {
+        const revealFirstResults = () => {
+          const cards = results.querySelectorAll('.document-entry, .website-card, .repository-card, .reading-guide, .trend-row');
+          if (!cards.length && !results.querySelector('.empty, .trend-empty:not([data-motion-loading])')) return;
+          observer.disconnect();
+          for (let index = 0; index < Math.min(3, cards.length); index++) {
+            cards[index].classList.add('initial-result');
+            cards[index].style.setProperty('--result-order', index);
+          }
+        };
+        observer = new MutationObserver(guard(revealFirstResults));
+        observer.observe(results, {childList:true, subtree:true});
+        revealFirstResults();
+      }
+    }
+
+    guard(startMotion)();
+  }
+
+  initializeMotion();
 })();

@@ -309,3 +309,13 @@ body{overflow-wrap:break-word}button,a,input,select{touch-action:manipulation}
     a:hover .motion-arrow { translate: 3px; }
   }
 }
+
+/* A failed enhancement leaves the live page in its static styles. */
+:root[data-motion-disabled] *,
+:root[data-motion-disabled] *::before,
+:root[data-motion-disabled] *::after {
+  animation: none !important;
+  transition: none !important;
+  view-transition-name: none !important;
+}
+:root[data-motion-disabled]::view-transition { display: none; }
