@@ -19,7 +19,8 @@ for (const command of [
   'node tools/test_filter_state.cjs',
   'node tools/test_human_portal.cjs',
   'node tools/test_home.cjs',
-  'node tools/test_deploy_workflow.cjs'
+  'node tools/test_deploy_workflow.cjs',
+  'node tools/test_portal_delivery.cjs'
 ]) {
   assert.ok(workflow.includes(command), `full validation includes ${command}`);
 }
@@ -36,6 +37,8 @@ assert.match(deploy, /^    permissions:\n      contents: read\n      actions: re
 assert.match(deploy, /actions\/configure-pages@/);
 assert.match(deploy, /actions\/upload-pages-artifact@/);
 assert.match(deploy, /actions\/deploy-pages@/);
+assert.match(deploy, /node tools\/build_portal\.cjs "\${RUNNER_TEMP}\/portal-pages"/);
+assert.match(deploy, /path: \${{ runner\.temp }}\/portal-pages/);
 
 const artifactName = 'github-pages-${{ github.run_id }}-${{ github.run_attempt }}';
 assert.ok(deploy.includes(`name: ${artifactName}`),

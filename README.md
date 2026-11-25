@@ -40,7 +40,7 @@ Private MyResourceCenterからPortalへの同期は、public projection + Valida
 
 Git LFS pointerやGitHub binary pathをPortalのCanonical Original URLとして使用しません。
 
-Homeは技術Environment SVGと現在のCatalog件数を表示。WebsitesはMyResourceCenter側で安全に取得・正規化したローカルOGP Link Previewを優先するリンクカードで、Previewが無い場合はローカルSite Icon、さらにGlobeへFallbackします。外部画像はPortalからHotlinkしません。Category / Site / Author FilterはAND条件で、公開日で昇順・降順にSortできます。CollectionsはCategory / Title順のReading Path、TrendsはEditorial表示です。表示契約・検証方法は [Human Portal](docs/human-portal.md) を参照してください。
+Homeは技術Environment SVG、特集資料、Reading Pathを表示。WebsitesはMyResourceCenter側で安全に取得・正規化したローカルOGP Link Previewを優先するリンクカードで、Previewが無い場合はローカルSite Icon、さらにGlobeへFallbackします。外部画像はPortalからHotlinkしません。Category / Site / Author FilterはAND条件で、公開日で昇順・降順にSortできます。CollectionsはCategory / Title順のReading Path、TrendsはEditorial表示です。表示契約・検証方法は [Human Portal](docs/human-portal.md) を参照してください。
 
 Motionの調整箇所と変更前後の検証は [Technical Motion](docs/technical-motion.md) を参照してください。
 
@@ -48,7 +48,16 @@ Motionの調整箇所と変更前後の検証は [Technical Motion](docs/technic
 
 https://darumappap.github.io/MyResourceCenter-Portal/
 
-`.github/workflows/validate-portal.yml` の全Validation成功後に自動Deployします。Trend更新の自動Merge後も同じWorkflowを起動します。
+`.github/workflows/validate-portal.yml` の全Validation成功後に自動Deployします。Trend更新の自動Merge後も同じWorkflowを起動します。公開用ビルドは既存の公開CatalogからHome用の小さなProjectionと、内容ハッシュ付きのCatalogを生成します。
+
+公開構成をローカルで確認する場合は、存在しない出力ディレクトリを指定します。
+
+```bash
+node tools/build_portal.cjs /tmp/mrc-portal-pages
+python -m http.server 8951 --bind 127.0.0.1 --directory /tmp/mrc-portal-pages
+```
+
+計測条件、Before／After、再実行手順は [Portal性能検証](docs/portal-performance.md) を参照してください。
 
 ## Validation
 
@@ -61,6 +70,7 @@ node tools/test_filter_state.cjs
 node tools/test_human_portal.cjs
 node tools/test_home.cjs
 node tools/test_deploy_workflow.cjs
+node tools/test_portal_delivery.cjs
 ```
 
 Validatorは次を確認します。

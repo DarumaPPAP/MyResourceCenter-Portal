@@ -1,10 +1,14 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const http = require('node:http');
+const os = require('node:os');
 const path = require('node:path');
 const { chromium } = require('playwright');
 
-const ROOT = path.resolve(__dirname, '..');
+const SOURCE = path.join(__dirname, '..');
+const ROOT = path.resolve(process.env.PORTAL_SMOKE_ROOT || SOURCE);
+const documentCatalog = /\/catalog\/document-presentation(?:\.[a-f0-9]{20})?\.json$/;
+const repositoryCatalog = /\/catalog\/repositories(?:\.[a-f0-9]{20})?\.json$/;
 const CONTENT_TYPES = {
   '.css':'text/css', '.html':'text/html', '.ico':'image/x-icon', '.js':'text/javascript',
   '.json':'application/json', '.png':'image/png', '.svg':'image/svg+xml', '.webp':'image/webp'
@@ -33,6 +37,68 @@ async function openPage(page,origin,pathName) {
   const response = await page.goto(`${origin}/${pathName}`, {waitUntil:'networkidle'});
   assert.equal(response.status(),200,`${pathName} should load`);
   return response;
+}
+
+async function checkCatalogRollover(context, origin) {
+  const {buildPortal} = require('./build_portal.cjs');
+  const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'portal-rollover-'));
+  const stale = await context.newPage();
+  try {
+    const source = path.join(temp, 'source');
+    const older = path.join(temp, 'older');
+    for (const dir of ['catalog', 'assets']) {
+      fs.cpSync(path.join(SOURCE, dir), path.join(source, dir), {recursive:true});
+    }
+    fs.copyFileSync(path.join(SOURCE, 'repositories.html'), path.join(source, 'repositories.html'));
+    const file = path.join(source, 'catalog/repositories.json');
+    const rows = JSON.parse(fs.readFileSync(file, 'utf8'));
+    const title = rows[0].title;
+    rows[0].title += ' (retired revision)';
+    fs.writeFileSync(file, JSON.stringify(rows));
+    const {files, loaderPath} = await buildPortal(source, older);
+
+    const route = `/repositories.html?q=${encodeURIComponent(title)}&keep=release#list`;
+    const html = url => url.pathname === '/repositories.html';
+    const loader = url => url.pathname === '/' + loaderPath;
+    await stale.route(html, request => request.fulfill({path:path.join(older, 'repositories.html')}));
+    await stale.route(loader, request => request.fulfill({path:path.join(older, loaderPath)}));
+    const requests = [];
+    const responses = [];
+    stale.on('request', request => requests.push(new URL(request.url()).pathname));
+    stale.on('response', response => responses.push([new URL(response.url()).pathname, response.status()]));
+
+    // The old HTML and JS are available as if cached. The server only has current Catalog files.
+    await openPage(stale, origin, route.slice(1));
+    assert.ok(responses.some(([url,status]) => url === '/' + loaderPath && status === 200));
+    assert.ok(responses.some(([url,status]) => url === '/' + files.repositories && status === 404));
+    const retry = stale.getByRole('button', {name:'ページを再読み込み'});
+    await retry.waitFor({timeout:5000});
+    assert.equal(await retry.count(), 1);
+    assert.equal(requests.filter(url => url === '/' + files.repositories).length, 1);
+    assert.equal(requests.filter(url => url === '/repositories.html').length, 1);
+    assert.ok(!requests.includes('/catalog/repositories.json'), 'the old loader does not fall back to the unversioned Catalog');
+    assert.equal(await stale.locator('.repository-card').count(), 0);
+
+    await stale.unroute(html);
+    await stale.unroute(loader);
+    const newLoader = stale.waitForResponse(response => {
+      const url = new URL(response.url()).pathname;
+      return /^\/assets\/catalog\.[a-f0-9]{20}\.js$/.test(url) && url !== '/' + loaderPath && response.ok();
+    });
+    await retry.click();
+    await newLoader;
+    assert.equal(stale.url(), origin + route);
+    const card = stale.locator('.repository-card').first();
+    await card.waitFor();
+    assert.equal(await stale.locator('#q').inputValue(), title);
+    assert.ok((await card.textContent()).includes(title));
+    assert.doesNotMatch(await card.textContent(), /retired revision/);
+    assert.equal(await stale.getByRole('alert').count(), 0);
+    assert.equal(await retry.count(), 0);
+  } finally {
+    await stale.close();
+    fs.rmSync(temp, {recursive:true, force:true});
+  }
 }
 
 async function main() {
@@ -105,6 +171,29 @@ async function main() {
     }
 
     await openPage(page,origin,'index.html');
+    const preload = page.locator('link[rel="preload"][as="fetch"]');
+    if (await preload.count()) {
+      const requests = await page.evaluate(() => performance.getEntriesByType('resource')
+        .map(entry => new URL(entry.name).pathname).filter(pathname => pathname.startsWith('/catalog/')));
+      assert.equal(requests.length, 1, 'the staged Home fetches only its preloaded projection');
+      assert.match(requests[0], /^\/catalog\/home\.[a-f0-9]{20}\.json$/);
+      // Model an old HTML document whose fingerprinted loader disappeared in a deployment.
+      const stale = await context.newPage();
+      const loader = /\/assets\/catalog\.[a-f0-9]{20}\.js$/;
+      await stale.route(loader, route => route.fulfill({status:404, body:''}));
+      try {
+        await openPage(stale, origin, 'index.html');
+        const retry = stale.getByRole('button', {name:'ページを再読み込み'});
+        await retry.waitFor({timeout:5000});
+        await stale.unroute(loader);
+        await retry.click();
+        await stale.locator('#docs .document-entry').first().waitFor();
+        assert.equal(await retry.count(),0,'reloading with the current release clears the error');
+      } finally {
+        await stale.close();
+      }
+      await checkCatalogRollover(context, origin);
+    }
     const heroArt = page.locator('.technical-hero > a');
     assert.equal(await heroArt.evaluate(node=>getComputedStyle(node,'::after').animationName),'portal-scan','Home scans the illustration once');
     assert.equal(await heroArt.evaluate(node=>getComputedStyle(node,'::after').animationIterationCount),'1');
@@ -124,7 +213,7 @@ async function main() {
 
     let releaseCatalog;
     const catalogReady = new Promise(resolve=>{releaseCatalog = resolve;});
-    await page.route('**/catalog/document-presentation.json',async route=>{
+    await page.route(documentCatalog,async route=>{
       await catalogReady;
       await route.continue();
     });
@@ -141,7 +230,7 @@ async function main() {
       releaseCatalog();
     }
     await page.locator('.document-entry').first().waitFor();
-    await page.unroute('**/catalog/document-presentation.json');
+    await page.unroute(documentCatalog);
     assert.equal(await page.locator('#list .catalog-skeleton').count(),0,'loaded cards replace the skeleton');
     assert.ok(await page.locator('.document-entry').count() <= 20,'Documents renders at most 20 cards');
     assert.ok(await page.locator('#category option[value="__unclassified__"]').count(),'Documents exposes the UI-only unclassified filter');
@@ -154,6 +243,7 @@ async function main() {
     await page.waitForFunction(()=>new URL(location.href).searchParams.get('page')==='2');
     assert.ok(await page.locator('.document-entry').count() <= 20,'Documents paginates after filtering');
     const focusedResult = page.locator('.document-title:focus');
+    await focusedResult.waitFor();
     assert.equal(await focusedResult.count(),1,'pagination focuses the new results');
     const focusedBounds = await focusedResult.boundingBox();
     assert.ok(focusedBounds.y >= 68 && focusedBounds.y + focusedBounds.height <= 375,'focused result stays visible on a short mobile viewport');
@@ -173,10 +263,18 @@ async function main() {
     const iconSource = await page.locator('.site-icon-image').first().getAttribute('src');
     assert.match(iconSource,/^assets\/generated\/site-icons\/[a-z0-9._-]+\.png\?v=[a-f0-9]{12}$/i,'Site Icons must use a safe local path and public manifest version');
     await page.locator('.site-icon-box.is-missing .site-icon-fallback').first().waitFor();
-    await page.locator('#pagination a.website-page-number[data-page="2"]').click();
+    await page.setViewportSize({width:390,height:375});
+    await page.locator('#pagination a.website-page-number[data-page="2"]').press('Enter');
     await page.waitForFunction(()=>new URL(location.href).searchParams.get('page')==='2');
+    const focusedWebsite = page.locator('.website-title:focus');
+    await focusedWebsite.waitFor();
+    const websiteBounds = await focusedWebsite.boundingBox();
+    assert.ok(websiteBounds.y >= 68 && websiteBounds.y + websiteBounds.height <= 375,
+      'keyboard pagination keeps the focused Website visible below the sticky navigation');
     await page.goBack();
     await page.waitForFunction(()=>!new URL(location.href).searchParams.has('page'));
+    await focusedWebsite.waitFor();
+    await page.setViewportSize({width:1280,height:900});
     await page.locator('#category').selectOption('Tech');
     await page.locator('#site').selectOption('__other__');
     await page.locator('#author').selectOption('__other__');
@@ -272,7 +370,7 @@ async function main() {
     // Exercise pagination/history with a public projection fixture, without adding seed data.
     const sample=JSON.parse(fs.readFileSync(path.join(ROOT,'catalog/repositories.json'),'utf8'))[0];
     const fixture=Array.from({length:45},(_,i)=>({...sample,id:`RES-FIXTURE-${i}`,title:`Reference ${i}`}));
-    await context.route('**/catalog/repositories.json',route=>route.fulfill({json:fixture}));
+    await context.route(repositoryCatalog,route=>route.fulfill({json:fixture}));
     await openPage(page,origin,'repositories.html?keep=1&page=2');
     assert.equal(await page.locator('.repository-card').count(),20);
     assert.match(await page.locator('#list').textContent(),/Reference 20/);
@@ -286,7 +384,7 @@ async function main() {
     assert.equal(new URL(page.url()).searchParams.get('keep'),'1');
     await page.locator('#clear').click();
     assert.equal(await page.locator('.repository-card').count(),20);
-    await context.unroute('**/catalog/repositories.json');
+    await context.unroute(repositoryCatalog);
     await openPage(page,origin,'repositories.html');
     await page.setViewportSize({width:1280,height:900});
     if(process.env.PORTAL_SCREENSHOT_DIR) {

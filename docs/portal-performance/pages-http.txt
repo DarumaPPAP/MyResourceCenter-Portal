@@ -1,0 +1,49 @@
+index.html
+HTTP/2 200
+last-modified: Tue, 24 Nov 2026 11:27:23 GMT
+etag: "6b05749b-14e9"
+cache-control: max-age=600
+age: 0
+x-cache: MISS
+vary: Accept-Encoding
+content-length: 5353
+896a58acb01ecb4316fd00c2bcabb849a5dd46d66818305b65e316b56a78fa50
+If-None-Match HTTP 304
+catalog/manifest.json
+HTTP/2 200
+last-modified: Tue, 24 Nov 2026 11:27:23 GMT
+etag: "6b05749b-177"
+cache-control: max-age=600
+age: 0
+x-cache: MISS
+vary: Accept-Encoding
+content-length: 375
+f3d3a910158572718a6080062f63700902de57511e29aa41c2411e0ed68d839d
+{
+  "schemaVersion": "1.6.0",
+  "sourceCommit": "cf772974cea975bf5c227b9db4251a4838d30c2c",
+  "generatedAt": "2026-11-20T13:05:00.473373+00:00",
+  "counts": {
+    "resources": 316,
+    "websites": 207,
+    "website-facets": 7,
+    "documents": 100,
+    "taxonomy": 64,
+    "relations": 23,
+    "collections": 12,
+    "document-presentation": 102,
+    "repositories": 7
+  }
+}
+If-None-Match HTTP 304
+catalog/websites-latest-01.json
+HTTP/2 200
+last-modified: Tue, 24 Nov 2026 11:27:23 GMT
+etag: "6b05749b-9e5f"
+cache-control: max-age=600
+age: 0
+x-cache: MISS
+vary: Accept-Encoding
+content-length: 40543
+a18edee464e55658129a2c89543ff79bbbe7e9bce3ee7925ef8f41a485a094a1
+If-None-Match HTTP 304

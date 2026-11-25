@@ -1,5 +1,9 @@
 (() => {
-  const cache = new Map();
+  // The Pages build fills this with content-addressed paths. A source checkout
+  // can still run from a plain static server against the public Catalog.
+  const release = null;
+  const files = new Map();
+  const assembled = new Map();
   const UNCLASSIFIED_CATEGORY = '__unclassified__';
   const latestWebsiteShards = [
     'websites-latest-01',
@@ -20,10 +24,29 @@
       .replaceAll("'", '&#039;');
   }
 
-  async function fetchCatalog(name) {
-    const response = await fetch(`catalog/${name}.json`, { cache: 'no-store' });
-    if (!response.ok) throw new Error(`${name}.json: HTTP ${response.status}`);
-    return response.json();
+  function remember(cache, key, read) {
+    if (!cache.has(key)) {
+      cache.set(key, read().catch(error => {
+        cache.delete(key);
+        throw error;
+      }));
+    }
+    return cache.get(key);
+  }
+
+  function fetchCatalog(name) {
+    return remember(files, name, async () => {
+      try {
+        const url = release ? release.files[name] : `catalog/${name}.json`;
+        if (!url) throw new Error(`${name}.json: missing from Catalog release`);
+        const response = await fetch(url, release ? undefined : {cache:'no-cache'});
+        if (!response.ok) throw new Error(`${name}.json: HTTP ${response.status}`);
+        return await response.json();
+      } catch (error) {
+        if (release) window.dispatchEvent(new Event('portal-catalog-load-error'));
+        throw error;
+      }
+    });
   }
 
   function toResource(row) {
@@ -39,31 +62,27 @@
     return shards.flat();
   }
 
-  async function load(name) {
-    if (!cache.has(name)) {
-      if (name === 'resources') {
-        cache.set(name, Promise.all([
-          fetchCatalog('resources'),
-          fetchCatalog('resources-06'),
-          loadLatestWebsites()
-        ]).then(([baseResources, supplementalResources, latestWebsites]) => [
-          ...baseResources,
-          ...supplementalResources,
-          ...latestWebsites.map(toResource)
-        ]));
-      } else if (name === 'websites') {
-        cache.set(name, Promise.all([
-          fetchCatalog('websites'),
-          loadLatestWebsites()
-        ]).then(([baseWebsites, latestWebsites]) => [
-          ...baseWebsites,
-          ...latestWebsites
-        ]));
-      } else {
-        cache.set(name, fetchCatalog(name));
-      }
+  function load(name) {
+    if (name === 'resources') {
+      return remember(assembled, name, async () => {
+        const [base, supplemental, websites] = await Promise.all([
+          fetchCatalog('resources'), fetchCatalog('resources-06'), loadLatestWebsites()
+        ]);
+        return [...base, ...supplemental, ...websites.map(toResource)];
+      });
     }
-    return cache.get(name);
+    if (name === 'websites') {
+      return remember(assembled, name, async () => {
+        const [base, latest] = await Promise.all([fetchCatalog('websites'), loadLatestWebsites()]);
+        return [...base, ...latest];
+      });
+    }
+    if (name === 'home' && !release) {
+      return remember(assembled, name, async () => selectHome(
+        await loadMany('document-presentation', 'resources', 'collections')
+      ));
+    }
+    return fetchCatalog(name);
   }
 
   async function loadMany(...names) {
@@ -185,6 +204,17 @@
     window.addEventListener('popstate', () => { restore(); render(); });
   }
 
+  function focusPaginatedResults(list, selector, fallback) {
+    const title = list.querySelector(selector);
+    const active = document.activeElement;
+    // Let the replacement cards paint before scroll and focus read their layout.
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      if (document.activeElement !== active || list.querySelector(selector) !== title) return;
+      (title || fallback).scrollIntoView({block:'start', behavior:'instant'});
+      title?.focus({preventScroll:true});
+    }));
+  }
+
   // Viewer IDs are derived only from the approved public canonical URL.
   function viewerHref(doc) {
     try {
@@ -239,10 +269,29 @@
     return {steps:members.slice(0,3), more:Math.max(0,members.length - 3)};
   }
 
+  function selectHome(data) {
+    const resources = byId(data.resources);
+    // Feature available previews in catalog order.
+    const docs = data['document-presentation'].filter(doc => doc.thumbnail).slice(0, 4)
+      .map(({resourceId, title, thumbnail, canonicalUrl, sourceFormat, engine, tags}) =>
+        ({resourceId, title, thumbnail, canonicalUrl, sourceFormat, engine, tags:tags.slice(0, 3)}));
+    // Only show paths with at least two resolvable steps, as on the source page.
+    const paths = sortCollections(data.collections)
+      .filter(col => col.resources.length >= 2 && col.resources.every(step => resources.has(step.id)))
+      .slice(0, 3)
+      .map(({id, title, category, description, resources:members}) => ({
+        id, title, category, description,
+        steps:members.slice(0, 3).map(({id,role}) => ({title:resources.get(id).title, role})),
+        more:Math.max(0, members.length - 3)
+      }));
+    return {docs, paths};
+  }
+
   window.MRCCatalog = {
     viewerHref, documentThumbnail, thumbnailFailed, bindThumbnailFallback,
     presentDocuments, filterDocuments, sortCollections, readingPreview,
-    bindFilterState,
+    bindFilterState, focusPaginatedResults,
+    sourceCommit: release?.sourceCommit,
     unclassifiedCategoryValue: UNCLASSIFIED_CATEGORY,
     load,
     loadMany,
