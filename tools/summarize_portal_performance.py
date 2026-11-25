@@ -16,6 +16,21 @@ def catalog_resources(sample):
     return [entry for entry in sample["resources"] if "/catalog/" in entry["name"]]
 
 
+def frame_metrics(frames):
+    percentiles = quantiles(frames, n=100, method="inclusive") if len(frames) >= 2 else None
+    longest = streak = 0
+    for duration in frames:
+        streak = streak + 1 if duration > 33.4 else 0
+        longest = max(longest, streak)
+    return {
+        "frameP95Ms": percentiles[94] if percentiles else None,
+        "frameP99Ms": percentiles[98] if percentiles else None,
+        "frameOver16Ms": sum(duration > 16.7 for duration in frames),
+        "frameOver33ms": sum(duration > 33.4 for duration in frames),
+        "frameConsecutiveOver33ms": longest,
+    }
+
+
 def navigation_metrics(sample):
     catalog = catalog_resources(sample)
     catalog_counts = Counter(entry["name"] for entry in catalog)
@@ -30,8 +45,7 @@ def navigation_metrics(sample):
         "lcpMs": sample["lcp"][-1]["startTime"] if sample["lcp"] else None,
         # The isolated lab navigation has one short observation window.
         "layoutShiftSum": sum(entry["value"] for entry in sample["shifts"] if not entry["hadRecentInput"]),
-        "frameP95Ms": quantiles(frames, n=100, method="inclusive")[94] if len(frames) >= 2 else None,
-        "frameOver33ms": sum(duration > 33.4 for duration in frames),
+        **frame_metrics(frames),
         "longTasks": len(sample["longTasks"]),
         "longTaskMs": sum(entry["duration"] for entry in sample["longTasks"]),
         "heapUsedBytes": sample["heap"]["usedSize"],
@@ -56,12 +70,14 @@ def interaction_metrics(sample):
         "clickSyncMs": click["duration"],
         "clickEventTimingMs": click_events[-1]["duration"] if click_events else None,
         "clickFrameMaxMs": max(window, default=None),
+        **frame_metrics(window),
         "heapUsedBytes": sample["heap"]["usedSize"],
     }
 
 
 def summarize_runs(payload):
-    result = {"trials":payload["trials"], "chromium":payload["chromium"], "variants":{}}
+    result = {"trials":payload["trials"], "chromium":payload["chromium"], "viewport":payload.get("viewport"),
+              "theme":payload.get("theme"), "variants":{}}
     for variant in payload["variants"]:
         variant_result = result["variants"].setdefault(variant["name"], {})
         for motion in ("no-preference", "reduce"):
@@ -111,7 +127,15 @@ def trace_window(events, marker, start, end):
         right = min(end, event["ts"] + event.get("dur", 0))
         if right > left:
             elapsed[field] += (right - left) / 1000
-    return {key:round(elapsed[key], 3) for key in (*TRACE_EVENTS.values(), "diagnosticJsonParseMs")}
+            if name == "Layout" and event.get("args", {}).get("beginData", {}).get("stackTrace"):
+                elapsed["layoutWithJSStackMs"] += (right - left) / 1000
+    fields = (*TRACE_EVENTS.values(), "diagnosticJsonParseMs", "layoutWithJSStackMs")
+    # DroppedFrame is a compositor event. Its process can differ from the renderer's.
+    dropped = sum(
+        event["name"] == "DroppedFrame" and start <= event["ts"] <= end
+        for event in events
+    )
+    return {**{key:round(elapsed[key], 3) for key in fields}, "traceDroppedFrameEvents": dropped}
 
 
 def summarize_trace(payload):

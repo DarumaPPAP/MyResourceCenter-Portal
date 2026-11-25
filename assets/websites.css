@@ -71,3 +71,9 @@
     contain-intrinsic-block-size: auto calc(50vw + 150px);
   }
 }
+
+
+@media (pointer: coarse) {
+  .website-page-link, .website-details { min-width: 44px; min-height: 44px; }
+  .website-details { display: inline-flex; align-items: center; justify-content: center; }
+}

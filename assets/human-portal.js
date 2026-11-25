@@ -72,7 +72,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         pagination.innerHTML = `<ul class="document-pagination-list"><li>${edgeLink(page-1,'前へ',page===1,'前のページ')}</li>${numbers}<li>${edgeLink(page+1,'次へ',page===totalPages,'次のページ')}</li></ul>`;
         pagination.hidden = false;
       };
-      const render = ({focus=false, backward=false}={}) => {
+      const render = ({focus=false}={}) => {
         const filtered = C.filterDocuments(rows,Object.fromEntries(controls.map(control=>[control.id,control.value])));
         const totalPages = Math.ceil(filtered.length/PAGE_SIZE);
         const page = resolvePage(totalPages);
@@ -84,8 +84,6 @@ window.addEventListener('DOMContentLoaded', async () => {
           ? `${start+1}–${end} 件目 / ${filtered.length} 件（全 ${rows.length} 件）`
           : `0 件 / 全 ${rows.length} 件`;
         const list = el('list');
-        list.classList.toggle('page-arriving', focus);
-        list.classList.toggle('page-backward', backward);
         list.innerHTML = visible.map(doc => {
           const viewer = C.viewerHref(doc);
           const href = viewer || `document.html?id=${encodeURIComponent(doc.resourceId)}`;
@@ -129,7 +127,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         const current = Number(new URL(location.href).searchParams.get('page') || '1');
         if (!Number.isSafeInteger(page) || page < 1 || page === current) return;
         writePage(page,'pushState');
-        render({focus:true, backward:page < current});
+        render({focus:true});
       });
       render();
     } else if (page === 'collections.html') {
@@ -177,31 +175,5 @@ window.addEventListener('DOMContentLoaded', async () => {
     for (const id of ['list','grid','content','docs','collections']) {const target=el(id);if(target)target.innerHTML='<div class="empty" role="alert">読み込みに失敗しました。ページを再読み込みしてください。</div>';}
     if(el('count'))el('count').textContent='読み込みに失敗しました';
     return;
-  }
-
-  // The cards are readable before any optional reveal work starts.
-  if (page !== 'index.html') return;
-  let revealEnabled = false;
-  try {
-    if (typeof window.IntersectionObserver !== 'function' || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const observer = new window.IntersectionObserver(entries => {
-      if (!revealEnabled) return;
-      try {
-        for (const {isIntersecting, target} of entries) {
-          if (!isIntersecting) continue;
-          observer.unobserve(target);
-          const {pageMotion, motionSettled} = document.documentElement.dataset;
-          if (!pageMotion || motionSettled !== undefined) target.classList.add('motion-reveal');
-        }
-      } catch (error) {
-        revealEnabled = false;
-        console.warn('Home motion could not run', error);
-      }
-    }, {threshold: .12});
-    document.querySelectorAll('#docs .document-entry, #collections .reading-guide')
-      .forEach(card => observer.observe(card));
-    revealEnabled = true;
-  } catch (error) {
-    console.warn('Home motion could not initialize', error);
   }
 });

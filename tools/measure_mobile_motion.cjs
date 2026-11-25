@@ -11,7 +11,7 @@ const routes = {
   websites: ['.website-card', '.website-title']
 };
 
-async function tracePagination(cdp, page, link, file) {
+async function tracePagination(cdp, page, link, focusedTitle, file) {
   await page.evaluate(()=>{
     for (const [prototype, method] of [[Element.prototype,'scrollIntoView'],[HTMLElement.prototype,'focus']]) {
       const original=prototype[method];
@@ -33,6 +33,7 @@ async function tracePagination(cdp, page, link, file) {
     performance.mark('pagination:end');
     performance.measure('pagination:click','pagination:start','pagination:end');
   });
+  await focusedTitle.waitFor();
   await cdp.send('Tracing.end');
   const {stream} = await done;
   const chunks = [];
@@ -76,8 +77,9 @@ async function run(browser, origin, route, traceFile) {
     );
     const pageLink=page.locator('#pagination a[data-page="2"]').first();
     await pageLink.scrollIntoViewIfNeeded();
+    const focusedTitle = page.locator(title+':focus');
     if (traceFile) {
-      await tracePagination(cdp,page,pageLink,traceFile);
+      await tracePagination(cdp,page,pageLink,focusedTitle,traceFile);
       return;
     }
     const paging=await pageLink.evaluate(node=>{
@@ -86,7 +88,7 @@ async function run(browser, origin, route, traceFile) {
       return performance.now()-start;
     });
     assert.equal(new URL(page.url()).searchParams.get('page'),'2');
-    assert.equal(await page.locator(title+':focus').count(),1);
+    await focusedTitle.waitFor();
     return {frameIntervals,search,paging};
   } finally {
     await context.close();
