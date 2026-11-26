@@ -1221,5 +1221,55 @@
       "Lighting"
     ],
     "previewImage": "assets/generated/link-previews/RES-WEB-FBD614A530BA.webp"
+  },
+  {
+    "id": "RES-WEB-C6D17F2308E5",
+    "title": "『学園アイドルマスター』UI演出はUnity拡張の内製ツールで実装。画面越しでもキャラを間近に見せる技法【CEDEC+KYUSHU 2026】",
+    "url": "https://gamemakers.jp/article/2026_11_20_151270/",
+    "canonicalUrl": "https://gamemakers.jp/article/2026_11_20_151270/",
+    "publisher": "ゲームメーカーズ",
+    "authors": [
+      "浜井 智史"
+    ],
+    "publishedAt": "2026-11-20",
+    "kind": "website",
+    "contentType": "conference-report",
+    "category": "Tech",
+    "topics": [],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Unity",
+      "UI",
+      "Editor",
+      "Animation"
+    ]
+  },
+  {
+    "id": "RES-WEB-EDB62A31A158",
+    "title": "テクスチャなしで魔法陣を描くHLSL実装（SDF／自動ルーン／3D多層視差）",
+    "url": "https://qiita.com/YYYGame/items/e59485469244adb57237",
+    "canonicalUrl": "https://qiita.com/YYYGame/items/e59485469244adb57237",
+    "publisher": "Qiita",
+    "authors": [
+      "YYYGame"
+    ],
+    "publishedAt": "2026-11-25",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "topics": [],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Unity",
+      "URP",
+      "Shader",
+      "Rendering"
+    ]
   }
 ]

@@ -1246,5 +1246,27 @@
     "freshness": "Unknown",
     "tags": [],
     "previewImage": "assets/generated/link-previews/RES-WEB-C50142D5C4BC.webp"
+  },
+  {
+    "id": "RES-WEB-005A7C23308B",
+    "title": "ざっくりVerse解説",
+    "url": "https://qiita.com/GorosukeDev/items/b4f57ea88da18826f8d5",
+    "canonicalUrl": "https://qiita.com/GorosukeDev/items/b4f57ea88da18826f8d5",
+    "publisher": "Qiita",
+    "authors": [
+      "GorosukeDev"
+    ],
+    "publishedAt": "2026-11-22",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "topics": [],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "UnrealEngine"
+    ]
   }
 ]

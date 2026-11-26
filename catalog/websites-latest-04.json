@@ -1149,5 +1149,53 @@
       "AIAgent"
     ],
     "previewImage": "assets/generated/link-previews/RES-WEB-039EE2FD1B48.webp"
+  },
+  {
+    "id": "RES-WEB-560915B21E8A",
+    "title": "トゥーン調キャラクターのタイツ表現",
+    "url": "https://tech.sumzap.co.jp/entry/toon-character-tights-wet-expression",
+    "canonicalUrl": "https://tech.sumzap.co.jp/entry/toon-character-tights-wet-expression",
+    "publisher": "Sumzap Engineering Blog",
+    "authors": [
+      "財津 大睦"
+    ],
+    "publishedAt": "2026-11-20",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "topics": [],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "Unity",
+      "URP",
+      "Shader",
+      "Rendering"
+    ]
+  },
+  {
+    "id": "RES-WEB-B9110B23D1F4",
+    "title": "テスト自動化の先、テスト自律化に向けて",
+    "url": "https://speakerdeck.com/mineo_matsuya/jidouka-no-saki-tesuto-jiritsuka-ni-muke-te-pptx",
+    "canonicalUrl": "https://speakerdeck.com/mineo_matsuya/jidouka-no-saki-tesuto-jiritsuka-ni-muke-te-pptx",
+    "publisher": "Speaker Deck",
+    "authors": [
+      "松谷 峰生"
+    ],
+    "publishedAt": "2026-11-23",
+    "kind": "website",
+    "contentType": "presentation",
+    "category": "Tech",
+    "topics": [],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "AI",
+      "AIAgent"
+    ]
   }
 ]
