@@ -1262,5 +1262,31 @@
       "Lighting",
       "Shader"
     ]
+  },
+  {
+    "id": "RES-WEB-0B65279E0576",
+    "title": "Ray tracing large, dynamic worlds with RT-MLAS",
+    "url": "https://gpuopen.com/learn/amd-rt-mlas-vulkan/",
+    "canonicalUrl": "https://gpuopen.com/learn/amd-rt-mlas-vulkan/",
+    "publisher": "AMD GPUOpen",
+    "authors": [
+      "Andy Wright"
+    ],
+    "publishedAt": "2026-11-24",
+    "kind": "website",
+    "contentType": "technical-article",
+    "category": "Tech",
+    "topics": [],
+    "reviewState": "Triaged",
+    "useState": "Reference",
+    "confidence": "Unverified",
+    "freshness": "Unknown",
+    "tags": [
+      "AMD",
+      "RayTracing",
+      "Vulkan",
+      "Rendering",
+      "Optimization"
+    ]
   }
 ]
